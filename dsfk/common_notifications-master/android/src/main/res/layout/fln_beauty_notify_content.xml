@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/fln_bg_border"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp">
+        <ImageView
+            android:id="@+id/fln_beauty_notify_image"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/img_radius"
+            android:clipToOutline="true"
+            tools:ignore="ContentDescription" />
+        <ImageView
+            android:id="@+id/fln_beauty_notify_app_icon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fln_beauty_notify_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:textColor="#000000"
+                android:ellipsize="end"
+                android:singleLine="false"
+                android:scrollHorizontally="false"
+                android:textSize="18sp"
+                android:maxLines="2"
+                android:textStyle="bold"
+                tools:text="This is title" />
+
+            <TextView
+                android:id="@+id/fln_beauty_notify_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fln_beauty_notify_btn_bg"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:visibility="gone"
+                android:textStyle="bold"
+                tools:text="This is button" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
