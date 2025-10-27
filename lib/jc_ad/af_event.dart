@@ -2,7 +2,7 @@
 // import 'dart:math';
 //
 // import 'package:appsflyer_sdk/appsflyer_sdk.dart';
-// import 'package:slots_132/hive/sshive.dart';
+// import 'package:slots_132/jc_hive/sshive.dart';
 // import 'package:slots_132/jc_gj/denglugengzhong.dart';
 //
 //

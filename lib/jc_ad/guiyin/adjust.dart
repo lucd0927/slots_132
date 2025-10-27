@@ -28,44 +28,44 @@ class JcAdjust {
     config.logLevel = AdjustLogLevel.verbose;
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // config.externalDeviceId =distinct_id;
-    pbLog("$TGA===initSdk=");
+    ssLogggg("$TGA===initSdk=");
     _config = config;
     Adjust.addGlobalCallbackParameter("customer_user_id", distinct_id);
     config.attributionCallback = (AdjustAttribution attributionChangedData) {
-      pbLog('$TGA: Attribution changed!');
+      ssLogggg('$TGA: Attribution changed!');
 
       if (attributionChangedData.trackerToken != null) {
-        pbLog(
+        ssLogggg(
           '$TGA: Tracker token: ${attributionChangedData!.trackerToken ?? ""}',
         );
       }
       if (attributionChangedData.trackerName != null) {
-        pbLog('$TGA: Tracker name: ${attributionChangedData.trackerName}');
+        ssLogggg('$TGA: Tracker name: ${attributionChangedData.trackerName}');
       }
       if (attributionChangedData.campaign != null) {
-        pbLog('$TGA: Campaign: ${attributionChangedData.campaign}');
+        ssLogggg('$TGA: Campaign: ${attributionChangedData.campaign}');
       }
       String? network = attributionChangedData.network;
       if (network != null) {
-        pbLog('$TGA: Network: ${network}');
+        ssLogggg('$TGA: Network: ${network}');
         // JCABluoji().guiyin(network);
       }
       if (attributionChangedData.creative != null) {
-        pbLog('$TGA: Creative: ${attributionChangedData.creative}');
+        ssLogggg('$TGA: Creative: ${attributionChangedData.creative}');
       }
       if (attributionChangedData.adgroup != null) {
-        pbLog('$TGA: Adgroup: ${attributionChangedData.adgroup}');
+        ssLogggg('$TGA: Adgroup: ${attributionChangedData.adgroup}');
       }
       if (attributionChangedData.clickLabel != null) {
-        pbLog('$TGA: Click label: ${attributionChangedData.clickLabel}');
+        ssLogggg('$TGA: Click label: ${attributionChangedData.clickLabel}');
       }
       if (attributionChangedData.fbInstallReferrer != null) {
-        pbLog(
+        ssLogggg(
           '$TGA: facebook install referrer: ${attributionChangedData.fbInstallReferrer}',
         );
       }
       if (attributionChangedData.jsonResponse != null) {
-        pbLog('$TGA: JSON Response: ${attributionChangedData.jsonResponse}');
+        ssLogggg('$TGA: JSON Response: ${attributionChangedData.jsonResponse}');
       }
     };
 
@@ -74,7 +74,7 @@ class JcAdjust {
 
     Adjust.getAttribution().then((attributionChangedData){
       String? network = attributionChangedData.network;
-      pbLog("$TGA====network:$network");
+      ssLogggg("$TGA====network:$network");
       JCABluoji().guiyin(network??"");
     });
     // JCShijianBaogao.adjust_req();

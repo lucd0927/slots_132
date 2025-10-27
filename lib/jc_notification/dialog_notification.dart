@@ -13,7 +13,7 @@ showTongzhiDialog(
       required VoidCallback onClose,
     }) {
   // PBMaiDian.inform_back_pop();
-  return showBaseDialog(
+  return jcShowBKuang(
     context: context,
     child: TongzhiWidget(
       onClose: () {

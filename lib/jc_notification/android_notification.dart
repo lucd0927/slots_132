@@ -19,37 +19,27 @@ import 'package:slots_132/jc_huanjing/config.dart';
 // }
 
 @pragma('vm:entry-point')
-void ntb(NotificationResponse notificationResponse) {
+void backgourdListener(NotificationResponse ntftRse) {
   WidgetsFlutterBinding.ensureInitialized();
   // ignore: avoid_print
   print(
-    '点击通知 notificationTapBackground (${notificationResponse.id}) action tapped: '
-    '${notificationResponse.actionId} with'
-    ' payload: ${notificationResponse.payload}',
+    '点击通知 notificationTapBackground (${ntftRse.id}) action tapped: '
+    '${ntftRse.actionId} with'
+    ' payload: ${ntftRse.payload}',
   );
-  String payload = notificationResponse.payload ?? "local";
 
-  if (notificationResponse.input?.isNotEmpty ?? false) {
-    // ignore: avoid_print
-    print(
-      'notification action tapped with input: ${notificationResponse.input}',
-    );
-  }
-  // GGEventReport.push_click();
 }
 
-class PBTongzhizzzzzz {
-  static final PBTongzhizzzzzz _instance = PBTongzhizzzzzz._();
-
-  PBTongzhizzzzzz._();
-
-  factory PBTongzhizzzzzz() {
-    return _instance;
+class SSTzNotificattttt {
+  static final SSTzNotificattttt _shli = SSTzNotificattttt._();
+  SSTzNotificattttt._();
+  factory SSTzNotificattttt() {
+    return _shli;
   }
 
-  static bool _clickTz = false;
+  static bool _dianjTzzzz = false;
 
-  static bool get clickTz => _clickTz;
+  static bool get clickTz => _dianjTzzzz;
 
   static String baioti = "";
   static String neirong = "";
@@ -60,55 +50,46 @@ class PBTongzhizzzzzz {
   androidFlutterLocalNotificationsPlugin =
       AndroidFlutterLocalNotificationsPlugin();
 
-  initNotificationCount() async {
+  csTzNum() async {
     final String payload = "local";
     try {
-      int bendishuliang = await AndroidFlutterLocalNotificationsPlugin()
+      int localN = await AndroidFlutterLocalNotificationsPlugin()
           .extractMessageReceivedNum("local");
-      pbLog("==initNotificationCount==localcount:$bendishuliang==");
-      if (bendishuliang > 0) {
-        for (int i = 0; i < bendishuliang; i++) {
+      ssLogggg("==initNotificationCount==localcount:$localN==");
+      if (localN > 0) {
+        for (int i = 0; i < localN; i++) {
           // PBMaiDian.inform_p(veinKeyValue: "local");
         }
       }
 
-      int fcmwwww = await AndroidFlutterLocalNotificationsPlugin()
+      int fcmNnnn = await AndroidFlutterLocalNotificationsPlugin()
           .extractMessageReceivedNum("fcm");
-      pbLog("==initNotificationCount==fcmcount:$fcmwwww==");
-      if (fcmwwww > 0) {
-        for (int i = 0; i < bendishuliang; i++) {
+      ssLogggg("==initNotificationCount==fcmcount:$fcmNnnn==");
+      if (fcmNnnn > 0) {
+        for (int i = 0; i < localN; i++) {
           // PBMaiDian.inform_p(veinKeyValue: "fcm");
         }
       }
 
-      int jiesuo = await AndroidFlutterLocalNotificationsPlugin()
+      int lockNnnn = await AndroidFlutterLocalNotificationsPlugin()
           .extractMessageReceivedNum("unlock");
-      pbLog("==initNotificationCount==unlockcount:$jiesuo==");
-      if (jiesuo > 0) {
-        for (int i = 0; i < bendishuliang; i++) {
+      ssLogggg("==initNotificationCount==unlockcount:$lockNnnn==");
+      if (lockNnnn > 0) {
+        for (int i = 0; i < localN; i++) {
           // PBMaiDian.inform_p(veinKeyValue: "unlock");
         }
       }
     } catch (e) {
-      pbLog("===initNotificationCount==error:$e=");
+      ssLogggg("===initNotificationCount==error:$e=");
     }
   }
 
   List get contents => [
-    {"title": "tzT1".tr, "content": "tzC1".tr},
-    {"title": "tzT2".tr, "content": "tzC2".tr},
-    {"title": "tzT3".tr, "content": "tzC3".tr},
-    {"title": "tzT4".tr, "content": "tzC4".tr},
-    {"title": "tzT5".tr, "content": "tzC5".tr},
+
   ];
 
   List get imgTz => [
-    "tzimg1",
-    "tzimg2",
-    "tzimg3",
-    "tzimg4",
-    "tzimg5",
-    "tzimg6",
+
   ];
 
   List<T> getRandomNMinus3<T>(List<T> source) {
@@ -123,7 +104,7 @@ class PBTongzhizzzzzz {
 
   init() async {
     await requestNotificationPermission();
-    initNotificationCount();
+    csTzNum();
 
     int length = contents.length;
     int random = Random().nextInt(length);
@@ -133,7 +114,7 @@ class PBTongzhizzzzzz {
     baioti = contents[random]['title'];
     neirong = contents[random]['content'];
 
-    pbLog("=initNotification====init===");
+    ssLogggg("=initNotification====init===");
     const AndroidInitializationSettings androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher'); // 通知图标
 
@@ -149,12 +130,12 @@ class PBTongzhizzzzzz {
         String payload = response.payload ?? "local";
         tongsongdianji(response.id);
       },
-      onDidReceiveBackgroundNotificationResponse: ntb,
+      onDidReceiveBackgroundNotificationResponse: backgourdListener,
     );
     NotificationAppLaunchDetails? notificationAppLaunchDetails =
         await AndroidFlutterLocalNotificationsPlugin()
             .getNotificationAppLaunchDetails();
-    pbLog(
+    ssLogggg(
       "=initNotification====getNotificationAppLaunchDetails==notificationAppLaunchDetails:$notificationAppLaunchDetails=",
     );
 
@@ -163,7 +144,7 @@ class PBTongzhizzzzzz {
           notificationAppLaunchDetails.notificationResponse;
       bool didNotificationLaunchApp =
           notificationAppLaunchDetails.didNotificationLaunchApp ?? false;
-      _clickTz = didNotificationLaunchApp;
+      _dianjTzzzz = didNotificationLaunchApp;
       print(
         "点击通知 notificationAppLaunchDetails: didNotificationLaunchApp:${didNotificationLaunchApp} id:${notificationResponse?.id} data:${notificationResponse?.payload}",
       );
@@ -176,21 +157,21 @@ class PBTongzhizzzzzz {
     print("=====newContents:$newContents");
     dingshi(
       id: dingshitzid,
-      minutes: PBPeizhi.isDEV() ? 1 : 30,
+      minutes: SSHuanjing.hasDevvvvv() ? 1 : 30,
       title: newContents[0]['title'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
     dingshi(
       id: dingshitzid2,
-      minutes: PBPeizhi.isDEV() ? 2 : 60,
+      minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
       title: newContents[1]['title'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
     dingshi(
       id: dingshitzid3,
-      minutes: PBPeizhi.isDEV() ? 3 : 90,
+      minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
       title: newContents[2]['title'],
       content: newContents[2]['content'],
       tzimage: tzimages[2],
@@ -223,7 +204,7 @@ class PBTongzhizzzzzz {
           .request();
       result = permissionStatus == PermissionStatus.granted;
     }
-    pbLog("==requestNotificationPermission=result:$result");
+    ssLogggg("==requestNotificationPermission=result:$result");
     return result;
   }
 
@@ -240,7 +221,7 @@ class PBTongzhizzzzzz {
     required String content,
     required String tzimage,
   }) async {
-    pbLog("==initNotification=_repeatNotification===id:$id minutes:$minutes");
+    ssLogggg("==initNotification=_repeatNotification===id:$id minutes:$minutes");
     //自定义通知ID
     // id = dingshitzid;
 
@@ -290,9 +271,9 @@ class PBTongzhizzzzzz {
               importance: Importance.high,
             ),
           );
-      pbLog("==initNotification=_subscribeFcmTopic===$result");
+      ssLogggg("==initNotification=_subscribeFcmTopic===$result");
     } catch (e) {
-      pbLog("==initNotification=_subscribeFcmTopic=error==$e");
+      ssLogggg("==initNotification=_subscribeFcmTopic=error==$e");
     }
   }
 
@@ -311,7 +292,7 @@ class PBTongzhizzzzzz {
       tttttt,
       ccccc,
       //两次发送解锁通知的间隔，根据需求设置
-      PBPeizhi.isDEV() ? Duration(seconds: 5) : Duration(minutes: 15),
+      SSHuanjing.hasDevvvvv() ? Duration(seconds: 5) : Duration(minutes: 15),
       'android.intent.action.USER_PRESENT',
       AndroidNotificationDetails(
         'pbwwww',
@@ -334,7 +315,7 @@ class PBTongzhizzzzzz {
 
   Future<bool> checkNotificationPermission() async {
     bool result = await Permission.notification.isGranted;
-    pbLog("==requestNotificationPermission=result:$result");
+    ssLogggg("==requestNotificationPermission=result:$result");
     return result;
   }
 }

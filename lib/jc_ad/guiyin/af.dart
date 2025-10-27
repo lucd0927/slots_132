@@ -21,7 +21,7 @@ class JcAF{
   // afDevKey : asdasf1122xadfaf
   // appId: 56564645
   initAppsFlyer({required String afDevKey, required String appId}) async {
-    pbLog("======initAppsFlyer====afDevKey:$afDevKey appId:$appId");
+    ssLogggg("======initAppsFlyer====afDevKey:$afDevKey appId:$appId");
     try {
       AppsFlyerOptions dfghdfhdfhg = AppsFlyerOptions(
         afDevKey: afDevKey ?? "应用识别码，产品经理提供",
@@ -45,7 +45,7 @@ class JcAF{
       // 2.应用归因监听
 
       afSdkkkkkk.onInstallConversionData((p) {
-        pbLog(
+        ssLogggg(
           "==========initAppsFlyer=进入回调===appsFlyerAdk.onInstallConversionData= data$p",
         );
 
@@ -60,20 +60,20 @@ class JcAF{
 
       afSdkkkkkk.startSDK(
         onSuccess: () {
-          pbLog("=initAppsFlyer=appsFlyerAdk:onSuccess==初始化成功");
+          ssLogggg("=initAppsFlyer=appsFlyerAdk:onSuccess==初始化成功");
         },
         onError: (int errorCode, String errorMessage) {
-          pbLog(
+          ssLogggg(
             "=initAppsFlyer=appsFlyerAdk:onError=初始化失败=errorCode:$errorCode errorMessage:$errorMessage ",
           );
         },
       );
       _appsFlyerAdk = afSdkkkkkk;
-      pbLog(
+      ssLogggg(
         "======initAppsFlyer===appsFlyerAdk.onInstallConversion==_appsFlyerAdk:$_appsFlyerAdk",
       );
     } catch (e) {
-      pbLog("======initAppsFlyer===error:$e");
+      ssLogggg("======initAppsFlyer===error:$e");
     }
   }
 

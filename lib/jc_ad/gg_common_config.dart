@@ -176,5 +176,5 @@ class GGCommonJson {
     ]
   };
 
-  static var local =PBPeizhi.isDEV()?localTopon: localB;
+  static var local =SSHuanjing.hasDevvvvv()?localTopon: localB;
 }

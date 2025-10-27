@@ -9,7 +9,7 @@ showMeiwangDialog(
   required VoidCallback onBtn,
   required VoidCallback onClose,
 }) {
-  return showBaseDialog(
+  return jcShowBKuang(
     context: context,
     child: MeiwangWidget(
       onClose: () {

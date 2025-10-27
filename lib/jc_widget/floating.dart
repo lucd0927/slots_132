@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PBFloating {
+class SSFfffft {
 
   ///是否真正显示
   bool get hasShow => _isShowing;

@@ -4,41 +4,41 @@ import 'config_dev.dart';
 import 'config_prod.dart';
 import 'enum_app_evn.dart';
 
-abstract class PBPeizhi {
+abstract class SSHuanjing {
 
-  static PBPeizhiEnv? _env;
+  static SSHuanjingEnv? _env;
 
-  static PBPeizhiEnv get env => _env ?? PBPeizhiEnv.dev;
-  static bool isDEV(){
-    return env == PBPeizhiEnv.dev;
+  static SSHuanjingEnv get env => _env ?? SSHuanjingEnv.prod;
+  static bool hasDevvvvv(){
+    return env == SSHuanjingEnv.dev;
   }
-  static bool isProd(){
-    return env == PBPeizhiEnv.prod;
+  static bool hasPppord(){
+    return env == SSHuanjingEnv.prod;
   }
-  static initEvn(PBPeizhiEnv env){
+  static initEvn(SSHuanjingEnv env){
     _env = env;
   }
-  static PBPeizhi? _instance;
-  static PBPeizhi get instance => _getInstance();
+  static SSHuanjing? _instance;
+  static SSHuanjing get instance => _getInstance();
 
-  static PBPeizhi  _getInstance(){
+  static SSHuanjing  _getInstance(){
     switch(_env){
-      case PBPeizhiEnv.dev:
-        _instance = PBPeizhiDev();
+      case SSHuanjingEnv.dev:
+        _instance = SSHuanjingDev();
         break;
-      case PBPeizhiEnv.prod:
-        _instance = PBPeizhiProd();
+      case SSHuanjingEnv.prod:
+        _instance = SSHuanjingProd();
         break;
       default:
-        _instance = PBPeizhiProd();
+        _instance = SSHuanjingProd();
     }
     return _instance!;
   }
 
 
 
-  String baseUrl();
-  String tttbbbaaaUrl();
+  String bUuuu();
+  String tbaUuuuu();
 
 
 

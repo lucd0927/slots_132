@@ -29,9 +29,9 @@ class PBFireBbbbbb {
     //   return;
     // }
     try {
-      pbLog("==PBFireBbbbbb==initFirebase====");
+      ssLogggg("==PBFireBbbbbb==initFirebase====");
       FirebaseApp firebaseApp = await Firebase.initializeApp();
-      pbLog(
+      ssLogggg(
         "==PBFireBbbbbb==initFirebase===firebaseApp:${firebaseApp.toString()}=",
       );
       FlutterError.onError =
@@ -44,31 +44,31 @@ class PBFireBbbbbb {
       // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
       FirebaseRemoteConfig.instance.onConfigUpdated.listen((event) async {
         await FirebaseRemoteConfig.instance.activate();
-        pbLog(
+        ssLogggg(
           "===PBFireBbbbbb.instance.onConfigUpdated.listen=====$event=",
         );
         // Use the new jc_huanjing values here.
       });
       await _remote();
     } catch (e) {
-      pbLog("==PBFireBbbbbb==initFirebase===error:$e");
+      ssLogggg("==PBFireBbbbbb==initFirebase===error:$e");
     }
   }
 
   _remote() async {
     try {
-      pbLog("==PBFireBbbbbb=====remote ensureInitialized");
+      ssLogggg("==PBFireBbbbbb=====remote ensureInitialized");
       await FirebaseRemoteConfig.instance.ensureInitialized();
       // auto patch 99
-      pbLog("==PBFireBbbbbb=====remote fetchAndActivate");
+      ssLogggg("==PBFireBbbbbb=====remote fetchAndActivate");
       await FirebaseRemoteConfig.instance.fetchAndActivate();
       // auto patch 393
       // AbaoUtils().runme();
       update.sink.add(true);
     } catch (e) {
-      pbLog("==PBFireBbbbbb=====remote error:$e");
+      ssLogggg("==PBFireBbbbbb=====remote error:$e");
       // FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     }
-    pbLog("==PBFireBbbbbb=====remote end");
+    ssLogggg("==PBFireBbbbbb=====remote end");
   }
 }

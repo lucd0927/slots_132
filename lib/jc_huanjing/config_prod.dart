@@ -3,15 +3,15 @@
 
 import 'config.dart';
 
-class PBPeizhiProd implements PBPeizhi{
+class SSHuanjingProd implements SSHuanjing{
   @override
-  String baseUrl() {
+  String bUuuu() {
     // TODO: implement baseUrl
     return "https://hug.piggybankboostreward.com/squaw/mulligan/borate";
   }
 
   @override
-  String tttbbbaaaUrl() {
+  String tbaUuuuu() {
 // auto patch 793
     // TODO: implement cloakUrl
 // auto patch 79

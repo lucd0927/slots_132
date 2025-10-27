@@ -8,7 +8,7 @@ class GGAdsTips {
   static void toast({
     String text = "Ad loading failed, please try again later",
   }) {
-    pbToast(text: text);
+    ssTushi(text: text);
   }
 
   static noAds({

@@ -2,12 +2,12 @@
 import 'dart:io';
 
 
-class Guojia {
+class SSCountry {
   // 美国
-  static const String usCountry = "USA";
+  static const String usCountry = "ssssss";
 
   // 巴西
-  static const String brCountry = "Brazil";
+  static const String brCountry = "Bxxxxx";
 
   static bool hasUSA() {
     bool result = _huoquGuojia() == usCountry;

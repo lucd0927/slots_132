@@ -60,25 +60,25 @@ class PbUuuump {
   init() async {
     Completer<bool> tmalsdflfPpppp = Completer();
     bool gdprHhhhh = _isUuuuump();
-    pbLog("$TGA==_huoquGuojia==hasUmp:${gdprHhhhh}");
+    ssLogggg("$TGA==_huoquGuojia==hasUmp:${gdprHhhhh}");
     // PBMaiDian.eu_user(gdprHhhhh ? "1" : "0");
     if (gdprHhhhh) {
-      if(PBPeizhi.isDEV()) {
+      if(SSHuanjing.hasDevvvvv()) {
         // ConsentInformation.instance.reset();
       }
       InitializationStatus status = await MobileAds.instance.initialize();
       ConsentStatus consentStatus = await ConsentInformation.instance
           .getConsentStatus();
-      pbLog("$TGA====hasUmp:  consentStatus$consentStatus");
+      ssLogggg("$TGA====hasUmp:  consentStatus$consentStatus");
       if (consentStatus == ConsentStatus.notRequired) {
         tmalsdflfPpppp.complete(true);
       } else {
-        pbLog("$TGA==InitializationStatus==status:${status.adapterStatuses}");
+        ssLogggg("$TGA==InitializationStatus==status:${status.adapterStatuses}");
         ConsentDebugSettings consentDebugSettings = ConsentDebugSettings(
           debugGeography: DebugGeography.debugGeographyEea,
           testIdentifiers: ["55D85BD904B20574A5E0920D3F9F2E3D","65975D90CC135191705D829CCE4E6BAC"],
         );
-        final params = PBPeizhi.isDEV()
+        final params = SSHuanjing.hasDevvvvv()
             ? ConsentRequestParameters(
                 // todo: 去掉
                 consentDebugSettings: consentDebugSettings,
@@ -90,18 +90,18 @@ class PbUuuump {
           params,
           () async {
             // Called when consent information is successfully updated.
-            pbLog("$TGA==requestConsentInfoUpdate success==");
+            ssLogggg("$TGA==requestConsentInfoUpdate success==");
 
             // PrivacyOptionsRequirementStatus privacyOptionsRequirementStatus = await ConsentInformation.instance.getPrivacyOptionsRequirementStatus();
 
             ConsentForm.loadAndShowConsentFormIfRequired((loadAndShowError) {
               if (loadAndShowError != null) {
-                pbLog("$TGA==loadAndShowConsentFormIfRequired error==${loadAndShowError.errorCode} ${loadAndShowError.message}");
+                ssLogggg("$TGA==loadAndShowConsentFormIfRequired error==${loadAndShowError.errorCode} ${loadAndShowError.message}");
                 // Consent gathering failed.
                 // PBMaiDian.ad_privacypop_fail(loadAndShowError.message);
                 tmalsdflfPpppp.complete(false);
               } else {
-                pbLog("$TGA==loadAndShowConsentFormIfRequired success==");
+                ssLogggg("$TGA==loadAndShowConsentFormIfRequired success==");
                 // PBMaiDian.ad_privacypop_suc();
                 tmalsdflfPpppp.complete(true);
               }
@@ -111,7 +111,7 @@ class PbUuuump {
           },
           (FormError error) {
             String reason = error.message;
-            pbLog("$TGA==requestConsentInfoUpdate error==${reason}");
+            ssLogggg("$TGA==requestConsentInfoUpdate error==${reason}");
             // Called when there's an error updating consent information.
             // PBMaiDian.ad_privacypop_fail(reason);
             tmalsdflfPpppp.complete(false);
@@ -130,7 +130,7 @@ class PbUuuump {
     if (gdprHhhhh) {
       ConsentStatus consentStatus = await ConsentInformation.instance
           .getConsentStatus();
-      pbLog("$TGA==consentStatus:${consentStatus}===");
+      ssLogggg("$TGA==consentStatus:${consentStatus}===");
       if (consentStatus == ConsentStatus.obtained) {
         BasicConsentInfo? info = await IabtcfConsentInfo.instance
             .currentConsentInfo();
@@ -139,7 +139,7 @@ class PbUuuump {
             DataUsagePurpose.selectPersonalisedContent,
           );
           AppLovinMAX.setHasUserConsent(hasSelect);
-          pbLog("$TGA==hasSelect:${hasSelect}===");
+          ssLogggg("$TGA==hasSelect:${hasSelect}===");
         }
       } else if (consentStatus == ConsentStatus.unknown) {
         AppLovinMAX.setHasUserConsent(false);
@@ -155,7 +155,7 @@ class PbUuuump {
     Locale sdfgsdfgds = WidgetsBinding.instance.platformDispatcher.locale;
     String fghhdfhsaefsadf = sdfgsdfgds.countryCode ?? "6565";
     // todo: 去掉
-    if(PBPeizhi.isDEV()){
+    if(SSHuanjing.hasDevvvvv()){
       fghhdfhsaefsadf = "CH";
     }
 

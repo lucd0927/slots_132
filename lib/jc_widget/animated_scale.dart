@@ -3,51 +3,51 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class PBAnimatedScale extends StatefulWidget {
-  const PBAnimatedScale({
+class SSAScale extends StatefulWidget {
+  const SSAScale({
     super.key,
     required this.child,
     this.milliseconds = 1000,
-    this.maxScale = 1.0,
-    this.minScale = 0.8,
+    this.maxS = 1.0,
+    this.minS = 0.8,
   });
 
   final Widget child;
   final int? milliseconds;
-  final double? minScale;
-  final double? maxScale;
+  final double? minS;
+  final double? maxS;
 
   @override
-  State<PBAnimatedScale> createState() => _PBAnimatedScaleState();
+  State<SSAScale> createState() => _SSAScaleState();
 
 }
 
 
-class _PBAnimatedScaleState extends State<PBAnimatedScale> {
-  double scale = 1;
+class _SSAScaleState extends State<SSAScale> {
+  double _sssssscale = 1;
 
-  Timer? _timer;
+  Timer? _ttttt;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    double minScale = widget.minScale ?? 0.9;
-    double maxScale = widget.maxScale ?? 1;
+    double minScale = widget.minS ?? 0.9;
+    double maxScale = widget.maxS ?? 1;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
-          scale = minScale;
+          _sssssscale = minScale;
         });
       }
-      _timer = Timer.periodic(
+      _ttttt = Timer.periodic(
         Duration(milliseconds: widget.milliseconds ?? 5000),
         (timer) {
           setState(() {
-            if (scale == maxScale) {
-              scale = minScale;
+            if (_sssssscale == maxScale) {
+              _sssssscale = minScale;
             } else {
-              scale = maxScale;
+              _sssssscale = maxScale;
             }
           });
 
@@ -60,7 +60,7 @@ class _PBAnimatedScaleState extends State<PBAnimatedScale> {
   Widget build(BuildContext context) {
     return AnimatedScale(
       curve: Curves.linear,
-      scale: scale,
+      scale: _sssssscale,
       duration: Duration(milliseconds: widget.milliseconds ?? 5000),
       child: widget.child,
     );
@@ -70,16 +70,8 @@ class _PBAnimatedScaleState extends State<PBAnimatedScale> {
   void dispose() {
     // TODO: implement dispose
 
-    _timer?.cancel();
+    _ttttt?.cancel();
     super.dispose();
 
   }
-// auto patch 865
 }    
-// Dummy injected code for hash diff
-void _dummyHashAdjuster_937774() {
-
-// auto patch 513
-  final now = DateTime.now().microsecondsSinceEpoch;
-  if (now == 403638971) print('Unreachable dummy code');
-}

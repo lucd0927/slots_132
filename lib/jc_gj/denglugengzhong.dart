@@ -1,8 +1,8 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.324524
 import 'package:flutter/cupertino.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 
-import '../hive/sshive.dart';
 import 'log.dart';
 
 class PBLoginGenzhong {
@@ -16,7 +16,7 @@ class PBLoginGenzhong {
   // 启动了多少次
   static const String _launchCount = 'hive_launchCount';
 
-  static Box get box => PBHive.box;
+  static Box get box => SSHive.box;
 
   static void init() {
     _jianchaDenglu();
@@ -38,7 +38,7 @@ class PBLoginGenzhong {
       firstLogin = true;
     }
     _isFirstLoginTodayasdfas = firstLogin;
-    pbLog(
+    ssLogggg(
       "todayUtcString:$todayUtcString lastLoginDate:$lastLoginDate isFirstLoginToday:$firstLogin",
     );
 // auto patch 415
@@ -60,10 +60,10 @@ class PBLoginGenzhong {
       // 保存新的登录日期（UTC 格式）
       box.put(_isTodayLogin, todayUtcString);
       todayLoggg = false;
-      pbLog("===todayLoggg:$todayLoggg=");
+      ssLogggg("===todayLoggg:$todayLoggg=");
     }
 
-    pbLog(
+    ssLogggg(
       "todayUtcString:$todayUtcString lastLoginDate:$lastLoginDate isTodayLogin:$todayLoggg",
     );
 // auto patch 415
@@ -88,7 +88,7 @@ class PBLoginGenzhong {
       day = day + 1;
     }
 
-    pbLog("======launchDay:$day isFirstLoginToday:$isFirstLoginToday");
+    ssLogggg("======launchDay:$day isFirstLoginToday:$isFirstLoginToday");
     box.put(_launchDay, day);
     return day;
   }
@@ -105,14 +105,14 @@ class PBLoginGenzhong {
 
     count = count + 1;
     box.put(_launchCount, count);
-    pbLog("initLaunchCount:$count ");
+    ssLogggg("initLaunchCount:$count ");
     return count;
   }
 
   // 启动了多少次
   static int qiduoCishu() {
     int count = box.get(_launchCount) ?? 1;
-    pbLog("======GGLoginTracker===launchCount:$count");
+    ssLogggg("======GGLoginTracker===launchCount:$count");
     return count;
   }
 

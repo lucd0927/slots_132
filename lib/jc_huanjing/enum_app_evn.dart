@@ -1,9 +1,9 @@
 
-enum PBPeizhiEnv {
+enum SSHuanjingEnv {
   dev(name: "dev"),
   prod(name: "prod");
 
-  const PBPeizhiEnv({required this.name});
+  const SSHuanjingEnv({required this.name});
 
   final String name;
 }

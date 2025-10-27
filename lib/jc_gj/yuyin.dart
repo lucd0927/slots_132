@@ -1,8 +1,8 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.316367
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 
 
-import '../hive/sshive.dart';
 import 'log.dart';
 
 const qianzhui = "assets/";
@@ -26,14 +26,14 @@ class YuYinBoFan {
 
   bool _hasOn = true;
 
-  bool get hasOn => PBHive.box.get(audioKey) ?? true;
+  bool get hasOn => SSHive.box.get(audioKey) ?? true;
 
   final audioPlayer = AssetsAudioPlayer();
 
   setReleaseMode() async {}
 
   Future<void> play() async {
-    pbLog("=====playLocalAssetBg==hasOn:$hasOn");
+    ssLogggg("=====playLocalAssetBg==hasOn:$hasOn");
     if (hasOn) {
       await audioPlayer.open(
         Audio(audioPath),
@@ -55,10 +55,10 @@ class YuYinBoFan {
   void setSWHasOn(bool isOn, {required bool showAudioPlayOrPause}) {
     _hasOn = isOn;
     PlayerState state = audioPlayer.playerState.value;
-    pbLog(
+    ssLogggg(
       "===GGAudioPlayer=audioKey:$audioKey=setHasOn=_hasOn=$_hasOn  state:$state",
     );
-    PBHive.box.put(audioKey, isOn);
+    SSHive.box.put(audioKey, isOn);
     if(showAudioPlayOrPause){
       if (isOn) {
         if (state == PlayerState.stop || state == PlayerState.pause) {
@@ -74,14 +74,14 @@ class YuYinBoFan {
   }
 
   pause() {
-    pbLog("=====audioplayer=pause=hasOn:$hasOn");
+    ssLogggg("=====audioplayer=pause=hasOn:$hasOn");
     if (hasOn) {
       audioPlayer.pause();
     }
   }
 
   resume() {
-    pbLog("=====audioplayer=resume=");
+    ssLogggg("=====audioplayer=resume=");
     if (hasOn) {
       audioPlayer.play();
       // auto patch 794

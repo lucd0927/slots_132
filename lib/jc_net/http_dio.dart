@@ -8,15 +8,13 @@ import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_huanjing/config.dart';
 
-
-
-class PBWangluo {
+class SSHttpDio {
   late Dio _dio;
 
-  PBWangluo({String? url}) {
+  SSHttpDio({String? url}) {
     _dio = Dio(
       BaseOptions(
-        baseUrl: url ?? PBPeizhi.instance.baseUrl(),
+        baseUrl: url ?? SSHuanjing.instance.bUuuu(),
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
         sendTimeout: const Duration(seconds: 30),
@@ -43,7 +41,7 @@ class PBWangluo {
       cancelToken: cancelToken,
       onReceiveProgress: onReceiveProgress,
     );
-    pbLog("==response:${response.data}");
+    ssLogggg("==response:${response.data}");
     return response.data;
   }
 
@@ -89,7 +87,7 @@ class PBWangluo {
 
   Future<String> cloak() async {
     try {
-      _dio.options.baseUrl = PBPeizhi.instance.tttbbbaaaUrl();
+      _dio.options.baseUrl = SSHuanjing.instance.tbaUuuuu();
       DateTime dateTime = DateTime.now();
       int client_ts = dateTime.millisecondsSinceEpoch;
       var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
@@ -123,7 +121,7 @@ class PBWangluo {
         "",
         data:jsonData,
       );
-      pbLog(
+      ssLogggg(
         "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:cloak\ndata:$jsonData\nsession_responseData:${data?.data}",
       );
       String cl = data?.data?.toString() ?? "";
@@ -296,7 +294,7 @@ class PBWangluo {
 
     dataJson['kudo'] = bismuth;
     // dataJson.addAll(bismuth);
-    final Uri _url = Uri.parse(PBPeizhi.instance.baseUrl());
+    final Uri _url = Uri.parse(SSHuanjing.instance.bUuuu());
 
     // Dio dio = Dio(
     //   BaseOptions(headers: {'nebulae': distinct_id, 'hair': bundle_id}),
@@ -306,12 +304,12 @@ class PBWangluo {
     _dio.options.headers['gaid'] = gaid;
     // _dio.options.headers['hair'] = bundle_id;
     var data2 = jsonEncode(dataJson);
-    pbLog("=========installJson:   $data2");
+    ssLogggg("=========installJson:   $data2");
     var response = await _dio.postUri(_url, data: dataJson);
 
     var data = response.data;
 
-    pbLog("===install=data:$data=");
+    ssLogggg("===install=data:$data=");
   }
 
   // 前后台切换的时候上报
@@ -326,7 +324,7 @@ class PBWangluo {
     // var data2 = jsonEncode(dataJson);
     // swPrint("=========sessionJson:   $data2");
     var response = await post("", data: sessionJson);
-    pbLog(
+    ssLogggg(
       "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:ad_permission\ndata:$sessionJson\nsession_responseData:${response?.data}",
     );
   }
@@ -389,11 +387,11 @@ class PBWangluo {
     // adJson.addAll(stuntJson);
     // adJson['scrawny'] = stuntJson;
     var data = jsonEncode(adJson);
-    pbLog("=========adJson:   $data");
+    ssLogggg("=========adJson:   $data");
 
     Response? response = await post("", data: adJson);
     var responseData = response?.data;
-    pbLog(
+    ssLogggg(
       "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:ad_permission\ndata:$data\nad_pos_id:$ad_pos_id\nadJson_responseData:$responseData",
     );
   }
@@ -435,7 +433,7 @@ class PBWangluo {
     Response? response = await post("", data: dataJson);
     var responseData = response?.data;
 
-    pbLog(
+    ssLogggg(
       "====url\n${_dio.options.baseUrl}\nstuntValue:$moistValue\ndata:$data\nburyPoint_responseData:$responseData",
     );
     // dataJson[stuntValue] = {"cloak_user": 0};

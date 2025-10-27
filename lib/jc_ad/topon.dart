@@ -49,14 +49,14 @@ class InitTool {
   // 判断是否位于欧盟地区
   getUserLocation() async {
     await ATInitManger.getUserLocation().then((value) {
-      pbLog('flutter: Get user location -- ${value.toString()}');
+      ssLogggg('flutter: Get user location -- ${value.toString()}');
     });
   }
 
   // 获取GDPR的授权级别
   getGDPRLevel() async {
     await ATInitManger.getGDPRLevel().then((value) {
-      pbLog('flutter:Get GDPR --${value.toString()}');
+      ssLogggg('flutter:Get GDPR --${value.toString()}');
     });
   }
 
@@ -88,7 +88,7 @@ class InitTool {
       if (value.userLocation != null) {
         switch (value.userLocation) {
           case InitUserLocation.initUserLocationInEU:
-            pbLog("flutter Monitor initial user location in the EU--");
+            ssLogggg("flutter Monitor initial user location in the EU--");
 
             ATInitManger.getGDPRLevel().then((value) {
               if (value == ATInitManger.dataConsentSetUnknown()) {
@@ -97,12 +97,12 @@ class InitTool {
             });
             break;
           case InitUserLocation.initUserLocationOutOfEU:
-            pbLog(
+            ssLogggg(
               "flutter: flutter The location of the listening initial user is not in the EU",
             );
             break;
           case InitUserLocation.initUserLocationUnknown:
-            pbLog(
+            ssLogggg(
               "flutter: flutter The location of the initial listening user is unknown",
             );
             break;
@@ -110,7 +110,7 @@ class InitTool {
       }
 
       if (value.consentDismiss != null) {
-        pbLog("flutter: flutter consent dismiss callback");
+        ssLogggg("flutter: flutter consent dismiss callback");
       }
     });
   }
@@ -121,8 +121,8 @@ class InitTool {
     required void Function(ATInterstitialResponse)? atInterstitialResponse,
   }) async {
     try {
-      String appidS = PBPeizhi.isDEV() ? "h68f08f5ae3b21" : "h68ad7ba66635c";
-      String appidkeyStr= PBPeizhi.isDEV()
+      String appidS = SSHuanjing.hasDevvvvv() ? "h68f08f5ae3b21" : "h68ad7ba66635c";
+      String appidkeyStr= SSHuanjing.hasDevvvvv()
           ? "a6e684ab80848d5a5792d0027fb5443b5"
           : "aa25858a3da423bc9ff10facbbeed3794";
       String result = await ATInitManger.initAnyThinkSDK(
@@ -131,9 +131,9 @@ class InitTool {
       );
       interstitialListener(atInterstitialResponse);
       rewardListener(atRewardResponse);
-      pbLog("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
+      ssLogggg("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
     } catch (e) {
-      pbLog("==initTopon====error:$e");
+      ssLogggg("==initTopon====error:$e");
     }
   }
 
@@ -151,7 +151,7 @@ class InitTool {
     bool result = await ATInterstitialManager.hasInterstitialAdReady(
       placementID: placementId,
     );
-    pbLog('===topon===flutter插屏广告视频缓存hasInterAdReady:$result');
+    ssLogggg('===topon===flutter插屏广告视频缓存hasInterAdReady:$result');
     return result;
   }
 
@@ -182,7 +182,7 @@ class InitTool {
   }
 
   loadRewardedVideo({required String placementId}) async {
-    pbLog("====topon激励=====loadRewardedVideo");
+    ssLogggg("====topon激励=====loadRewardedVideo");
     await ATRewardedManager.loadRewardedVideo(
       placementID: placementId,
       extraMap: {
@@ -197,7 +197,7 @@ class InitTool {
     bool result = await ATRewardedManager.rewardedVideoReady(
       placementID: placementId,
     );
-    pbLog('==topon===广告视频缓存hasRewardAdReady:$result');
+    ssLogggg('==topon===广告视频缓存hasRewardAdReady:$result');
     return result;
   }
 

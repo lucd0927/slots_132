@@ -4,16 +4,16 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
-import 'package:slots_132/hive/sshive.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_ad/kuangkuang/mei_wang.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 
 
-PBWangluoJiancha pbWangluoCheck = PBWangluoJiancha();
+SSHttpChhhh ssNetChecccc = SSHttpChhhh();
 
-class PBWangluoJiancha {
+class SSHttpChhhh {
   StreamSubscription<List<ConnectivityResult>>? _subscription;
 
   report() {
@@ -100,12 +100,12 @@ const h_no_network_pop_close = "iasdf35asf";
 
 void _record(String key, EnumGetScene scene) {
   try {
-    var dataScene = PBHive.box.get(key) ?? {};
+    var dataScene = SSHive.box.get(key) ?? {};
     String name = scene.name;
     dataScene[name] = name;
-    PBHive.box.put(key, dataScene);
+    SSHive.box.put(key, dataScene);
   } catch (e) {
-    pbLog("==_record==error:$e");
+    ssLogggg("==_record==error:$e");
   }
 }
 
@@ -123,34 +123,34 @@ void recordCountClose(EnumGetScene scene) {
 
 _report_no_internet_popup() {
   String key = h_no_network_pop;
-  var dataScene = PBHive.box.get(key) ?? {};
+  var dataScene = SSHive.box.get(key) ?? {};
   if (dataScene is Map) {
     dataScene.forEach((key, value) {
       // PBMaiDian.no_network_pop();
       // GGEventReport.no_internet_popup(veinKeyValue: "$key");
     });
   }
-  PBHive.box.put(key, null);
+  SSHive.box.put(key, null);
 }
 
 _report_no_internet_ack() {
   String key = h_no_network_pop_ack;
-  var dataScene = PBHive.box.get(key) ?? {};
+  var dataScene = SSHive.box.get(key) ?? {};
   if (dataScene is Map) {
     dataScene.forEach((key, value) {
       // GGEventReport.no_internet_ack(veinKeyValue: "$key");
     });
   }
-  PBHive.box.put(key, null);
+  SSHive.box.put(key, null);
 }
 
 _report_no_internet_close() {
   String key = h_no_network_pop_close;
-  var dataScene = PBHive.box.get(key) ?? {};
+  var dataScene = SSHive.box.get(key) ?? {};
   if (dataScene is Map) {
     dataScene.forEach((key, value) {
       // GGEventReport.no_internet_close(veinKeyValue: "$key");
     });
   }
-  PBHive.box.put(key, null);
+  SSHive.box.put(key, null);
 }

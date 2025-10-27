@@ -2,32 +2,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PBProgress extends StatelessWidget {
-  const PBProgress({
+class SSProjjjj extends StatelessWidget {
+  const SSProjjjj({
     super.key,
     required this.height,
     required this.innerHeight,
-
-    required this.gradientColors,
-    // required this.progressColor,
-    required this.bgColor,
-    required this.text,
     required this.width,
     required this.progress,
+    required this.gradientColors,
+    required this.bgColor,
     this.border,
+    required this.text,
+
   });
   final String text;
   final Color bgColor;
-  final double width;
   final double height;
-  // final Color progressColor;
   final List<Color> gradientColors;
-
   final double innerHeight;
-
-
-  // auto patch 368
   final double progress;
+  final double width;
   final BoxBorder? border;
   @override
   Widget build(BuildContext context) {
@@ -85,11 +79,4 @@ class PBProgress extends StatelessWidget {
       ],
     );
   }
-}
-
-// Dummy injected code for hash diff
-void _dummyHashAdjuster_836491() {
-  // auto patch 513
-  final now = DateTime.now().microsecondsSinceEpoch;
-  if (now == 820088530) print('Unreachable dummy code');
 }

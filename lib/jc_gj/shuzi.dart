@@ -3,11 +3,11 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 
-extension PBShuzi on num {
+extension SSNumE on num {
   // 向下取整
   double toAsFixedFloor(int asdf) {
-    num rewtrew = pow(10, asdf);
-    double sdfgsdfg = (this * rewtrew).floor() / rewtrew;
-    return sdfgsdfg;
+    num askdfjaslk = pow(10, asdf);
+    double kshdfjsd = (this * askdfjaslk).floor() / askdfjaslk;
+    return kshdfjsd;
   }
 }    

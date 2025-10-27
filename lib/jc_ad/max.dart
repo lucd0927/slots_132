@@ -29,14 +29,14 @@ class GGMaxAdsNew {
     // _cacheAdsData = cacheAdsData;
 
     String asdfasfdmaxkey = PBBaseUtils.decrypt(encodeKey,117);
-    pbLog("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
+    ssLogggg("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
     MaxConfiguration? configuration = await AppLovinMAX.initialize(asdfasfdmaxkey);
     if (configuration == null) {
-      pbLog('======GGMaxAdsNew initMax failed to initialize.');
+      ssLogggg('======GGMaxAdsNew initMax failed to initialize.');
       return false;
     } else {
-      pbLog(
+      ssLogggg(
         '=======GGMaxAdsNew initMax Initialized in ${configuration.toString()}',
       );
 
@@ -49,7 +49,7 @@ class GGMaxAdsNew {
 
   // 插屏
   static initInterstitialAds(InterstitialListener? interstitialListener) {
-    pbLog("插屏initializeInterstitialAds======");
+    ssLogggg("插屏initializeInterstitialAds======");
 
     AppLovinMAX.setInterstitialListener(interstitialListener);
 
@@ -59,7 +59,7 @@ class GGMaxAdsNew {
 
   static loadInterstitial(String adsId) {
     // _cacheAdsData[adsId] =
-    pbLog("插屏===GGMaxAdsNew=loadInterstitial===adsId:$adsId");
+    ssLogggg("插屏===GGMaxAdsNew=loadInterstitial===adsId:$adsId");
     AppLovinMAX.loadInterstitial(adsId);
   }
 
@@ -69,7 +69,7 @@ class GGMaxAdsNew {
 
   static Future<bool> hasInterstitialReady({required String adsId}) async {
     bool isReady = (await AppLovinMAX.isInterstitialReady(adsId))!;
-    pbLog(
+    ssLogggg(
       "激励======isInterstitialReady:$isReady adsId: $adsId",
     );
     return isReady;
@@ -77,13 +77,13 @@ class GGMaxAdsNew {
 
 
   static  initializeRewardedAd( RewardedAdListener? rewardedAdListener) {
-    pbLog("激励initializeRewardedAd======");
+    ssLogggg("激励initializeRewardedAd======");
     AppLovinMAX.setRewardedAdListener(rewardedAdListener);
     return;
   }
 
   static loadRewardedAd(String adsId) {
-    pbLog("激励===GGMaxAdsNew=loadRewardedAd===adsId:$adsId");
+    ssLogggg("激励===GGMaxAdsNew=loadRewardedAd===adsId:$adsId");
     AppLovinMAX.loadRewardedAd(adsId);
   }
   static  showRewardedAd({required String adsId}) async {
@@ -91,7 +91,7 @@ class GGMaxAdsNew {
   }
   static Future<bool> hasRewardedAdReady({required String adsId}) async {
     bool isReady = (await AppLovinMAX.isRewardedAdReady(adsId))!;
-    pbLog(
+    ssLogggg(
       "激励======isRewardedAdReady:$isReady adsId: $adsId",
     );
     return isReady;
