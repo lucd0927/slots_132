@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-class PBBaseUtils {
-
-
+class SSBaseUuuu {
 
   //加密：“data”：原始字符串；“code”：需求文档标题前的项目编号
   static String encrypt(String data, int code) {
@@ -29,9 +27,9 @@ class PBBaseUtils {
 
 
 void main(){
-  String max = PBBaseUtils.encrypt("MWJzhnEPtKqxLKRLAlVrTyQfO2VxWZWtVx_SzTWC_MgoZL7kTKNt9t3M_OgIZ24nBXRXxVd9ogQEp7616TWf3C", 117);
-  String fengkong = PBBaseUtils.encrypt("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMYl4KczbxQYcRCOgSH0lzRtfuI/jffXOXpHUXRVm3CRiyNL4M5U0Vy3qC+HO64/a1ZZ2FFcKLG69oOvUkCuMr0CAwEAAQ==", 117);
+  String max = SSBaseUuuu.encrypt("MWJzhnEPtKqxLKRLAlVrTyQfO2VxWZWtVx_SzTWC_MgoZL7kTKNt9t3M_OgIZ24nBXRXxVd9ogQEp7616TWf3C", 117);
+  String fengkong = SSBaseUuuu.encrypt("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMYl4KczbxQYcRCOgSH0lzRtfuI/jffXOXpHUXRVm3CRiyNL4M5U0Vy3qC+HO64/a1ZZ2FFcKLG69oOvUkCuMr0CAwEAAQ==", 117);
   print("==encrypt=:$fengkong");
-  String dd = PBBaseUtils.decrypt(fengkong,117);
+  String dd = SSBaseUuuu.decrypt(fengkong,117);
   print("==decrypt=:$dd");
 }

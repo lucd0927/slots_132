@@ -4,6 +4,7 @@ import 'dart:io';
 
 
 import 'package:rxdart/rxdart.dart';
+import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/fengkong.dart';
@@ -11,7 +12,6 @@ import 'package:slots_132/jc_ad/guiyin/adjust.dart';
 import 'package:slots_132/jc_ad/guiyin/af.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/jc_net/http_dio.dart';
 
 
 class JCABluoji {
@@ -71,7 +71,7 @@ class JCABluoji {
       _name = packageB;
 
       box.put(kHivePackage, packageB);
-      PBFk.initNumberUnit();
+      SSWindsCccc.initNumberUnit();
 
       initCompleter?.complete(true);
       initCompleter = null;
@@ -217,7 +217,7 @@ class JCABluoji {
     int time3 = DateTime.now().millisecondsSinceEpoch;
     ssLogggg("$TGA===_initB===_initAppsFlyer() end===耗时:${time3 - time2}");
     if (Platform.isAndroid) {
-      await PBFk.initNumberUnit();
+      await SSWindsCccc.initNumberUnit();
       int time4 = DateTime.now().millisecondsSinceEpoch;
       ssLogggg("$TGA===_initB===SWFengKong() end===耗时:${time4 - time3}");
     }
@@ -268,7 +268,7 @@ class JCABluoji {
     if (isPackageB()) {
       DateTime dd = DateTime.now();
       // 初始化firebase
-      await PBCommonAds().init();
+      await SSCommonAds().init();
       DateTime dddd = DateTime.now();
       ssLogggg(
         "$TGA===PBCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",

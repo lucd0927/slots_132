@@ -4,7 +4,7 @@
 // import 'package:permission_handler/permission_handler.dart';
 // import 'package:piggyboost117/jc_gj/index.dart';
 //
-// import '../jc_huanjing/config.dart';
+// import '../jc_huanjing/cccc.dart';
 // import '../jc_net/event_report.dart';
 //
 //

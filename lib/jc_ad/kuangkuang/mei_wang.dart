@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:slots_132/jc_kuangggg/base_dialog.dart';
+import 'package:slots_132/jc_gj/jc_kuangggg/base_dialog.dart';
 
 
 

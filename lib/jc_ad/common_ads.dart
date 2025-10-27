@@ -10,8 +10,8 @@ import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/package.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
-import 'package:slots_132/jc_net/http_dio.dart';
-import 'package:slots_132/jc_widget/pb_tushi.dart';
+import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 
 import 'package:thinkup_sdk/at_index.dart';
 import 'package:applovin_max/applovin_max.dart';
@@ -32,14 +32,14 @@ import 'topon.dart';
 
 
 
-class PBCommonAds {
-  static final PBCommonAds _instance = PBCommonAds._();
+class SSCommonAds {
+  static final SSCommonAds _innnn = SSCommonAds._();
 
-  factory PBCommonAds() {
-    return _instance;
+  factory SSCommonAds() {
+    return _innnn;
   }
 
-  PBCommonAds._();
+  SSCommonAds._();
 
   var box = SSHive.box;
 
@@ -69,7 +69,7 @@ class PBCommonAds {
   // var rewardData = {};
 
   GGCommonAdsListener? _ggCommonAdsListener;
-  static const String kSWlvac = "kSWlvac";
+  static const String kSWlvac = "asdfasdfasdf";
 
   static void addAdEndCount() {
     var box = SSHive.box;
@@ -273,7 +273,7 @@ class PBCommonAds {
   void loadAdWithAdsId(EnumAdsType adsType, String adsId) {
     ssLogggg("=====loadAdWithAdsId EnumAdsType:$adsType  adsID:$adsId");
 
-    AdsJsonModel? adsJsonModel;
+    SSAdsModel? adsJsonModel;
     if (adsType == EnumAdsType.reward) {
       adsJsonModel ??= jiliAdsModel[adsId];
     } else {
@@ -335,8 +335,8 @@ class PBCommonAds {
   ) {
     ssLogggg("==onAdHiddenCallback===platform:$platform adsType:$adsType");
     if (adsType == EnumAdsType.reward) {
-      FKAds().ad_short_close();
-      FKAds().ad_short_show();
+      SSWindsCccAds().ad_short_close();
+      SSWindsCccAds().ad_short_show();
     }
     DateTime curDateTime = DateTime.now();
     int curTime = curDateTime.millisecondsSinceEpoch;
@@ -735,10 +735,10 @@ class PBCommonAds {
 
 
     ssLogggg("====init==PbUuuump start");
-    await PbUuuump().init();
+    await SSUMPpppp().init();
     ssLogggg("====init==PbUuuump end");
     ssLogggg("====init==initMax");
-    bool result = await GGMaxAdsNew.initMax(
+    bool result = await SSApplovinMax.initMax(
       encodeKey: GGCommonJson.maxkeyEncode,
       cacheAdsData: cacheAdsData,
       interstitialListener: _ggCommonAdsListener!.interstitialListener,
@@ -773,7 +773,7 @@ class PBCommonAds {
     ssLogggg("====init==end:$jiliAdsModel");
   }
 
-  _loadAd(AdsJsonModel? tuple4) {
+  _loadAd(SSAdsModel? tuple4) {
     ssLogggg("==_loadAd===tuple4:$tuple4=");
     if (tuple4 == null) {
       return;
@@ -784,10 +784,10 @@ class PBCommonAds {
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adsType == GGCommonJson.ad_type_int) {
         ssLogggg("=$platform=_loadAd===插屏loadInterstitial:$tuple4=");
-        GGMaxAdsNew.loadInterstitial(adsId);
+        SSApplovinMax.loadInterstitial(adsId);
       } else if (adsType == GGCommonJson.ad_type_rv) {
         ssLogggg("=$platform=_loadAd===激励loadRewardedAd:$tuple4=");
-        GGMaxAdsNew.loadRewardedAd(adsId);
+        SSApplovinMax.loadRewardedAd(adsId);
       }
     } else if (platform == GGCommonJson.ad_platfrom_topon) {
       if (adsType == GGCommonJson.ad_type_int) {
@@ -826,7 +826,7 @@ class PBCommonAds {
     return result;
   }
 
-  Future<Tuple2> _hasReady(AdsJsonModel? rvOne) async {
+  Future<Tuple2> _hasReady(SSAdsModel? rvOne) async {
     ssLogggg("======_hasReady==Tuple4:$rvOne=");
     if (rvOne == null) {
       return Tuple2(false, "");
@@ -838,9 +838,9 @@ class PBCommonAds {
     String adsType = rvOne.adsType;
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adsType == GGCommonJson.ad_type_int) {
-        isReady = await GGMaxAdsNew.hasInterstitialReady(adsId: adsId);
+        isReady = await SSApplovinMax.hasInterstitialReady(adsId: adsId);
       } else if (adsType == GGCommonJson.ad_type_rv) {
-        isReady = await GGMaxAdsNew.hasRewardedAdReady(adsId: adsId);
+        isReady = await SSApplovinMax.hasRewardedAdReady(adsId: adsId);
       }
     } else if (platform == GGCommonJson.ad_platfrom_topon) {
       if (adsType == GGCommonJson.ad_type_int) {
@@ -853,7 +853,7 @@ class PBCommonAds {
     return Tuple2(isReady, adsId);
   }
 
-  _showAd(AdsJsonModel? tuple4) {
+  _showAd(SSAdsModel? tuple4) {
     ssLogggg("=====_showAd===tuple4:$tuple4");
     if (tuple4 == null) {
       return;
@@ -863,9 +863,9 @@ class PBCommonAds {
     String adType = tuple4.adsType;
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adType == GGCommonJson.ad_type_int) {
-        GGMaxAdsNew.showInterstitial(adsId: adsId);
+        SSApplovinMax.showInterstitial(adsId: adsId);
       } else {
-        GGMaxAdsNew.showRewardedAd(adsId: adsId);
+        SSApplovinMax.showRewardedAd(adsId: adsId);
       }
     } else if (platform == GGCommonJson.ad_platfrom_topon) {
       if (adType == GGCommonJson.ad_type_int) {
@@ -880,7 +880,7 @@ class PBCommonAds {
 
   Future<bool> _showAdLogic({
     required String adPosId,
-    required Map<String, AdsJsonModel> adIdWithJsonModel,
+    required Map<String, SSAdsModel> adIdWithJsonModel,
     required List<String> curAdTypeIds,
     required EnumAdsType adsType,
     Completer<bool>? outCompleter,
@@ -894,8 +894,8 @@ class PBCommonAds {
       "$text=========_hasDisplayAd:$_hasDisplayAd  count:$count hashCode:$hashCode",
     );
     bool showFkDanger = hasInter
-        ? FKAds().showDangerWidthInter()
-        : FKAds().showDangerWidthRv();
+        ? SSWindsCccAds().showDangerWidthInter()
+        : SSWindsCccAds().showDangerWidthRv();
     ssLogggg("$text========fengkong=showFkDanger:$showFkDanger");
     resetRvRevenueReceived();
     if (showFkDanger) {
@@ -931,7 +931,7 @@ class PBCommonAds {
     }
 
     bool isReady = false;
-    AdsJsonModel? tupe4;
+    SSAdsModel? tupe4;
     String? firstRequestAdsId;
     ssLogggg(
       "$text=======adPosId:$adPosId _scheme:$_scheme adsModel:$adIdWithJsonModel",
@@ -948,7 +948,7 @@ class PBCommonAds {
           }
         }
 
-        AdsJsonModel? adsJsonModel = adIdWithJsonModel[adsId];
+        SSAdsModel? adsJsonModel = adIdWithJsonModel[adsId];
         Tuple2 rvOne1 = await _hasReady(adsJsonModel);
         isReady = rvOne1.item1;
         ssLogggg(
@@ -1024,7 +1024,7 @@ class PBCommonAds {
       ssLogggg("$text=======调用显示广告 失败count:$count canTryAgain:$canTryAgain");
       resetDisplayAd();
       if (count < 1 && canTryAgain) {
-        GGAdsTips.noAds(
+        SSAdsTtt.noAds(
           onTryAgain: () async {
             resetDisplayAd();
             adIdWithJsonModel.forEach((key, value) {
@@ -1051,7 +1051,7 @@ class PBCommonAds {
           },
         );
       } else {
-        GGAdsTips.toast();
+        SSAdsTtt.toast();
         resetDisplayAd();
         completer.complete(false);
       }
@@ -1064,7 +1064,7 @@ class PBCommonAds {
       // GGAdsTips.noAds();
 
       if (firstRequestAdsId != null) {
-        AdsJsonModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
+        SSAdsModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
         String? ad_platform = adsJsonModel?.adsPlatform;
         ssLogggg(
           "$text=====回调成功 显示广告 失败：adid:$firstRequestAdsId reason:$_loadFailReason ad_platform:$ad_platform",
@@ -1080,7 +1080,7 @@ class PBCommonAds {
       }
     }
 
-    AdsJsonModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
+    SSAdsModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
     String? ad_platform222 = adsJsonModel?.adsPlatform;
     if (ad_platform222 == null ||
         ad_platform222 == EnumAdsPlatform.topon.name) {
@@ -1136,16 +1136,16 @@ class PBCommonAds {
   }
 
   // key: adsId value:AdsJsonModel
-  Map<String, AdsJsonModel> chapingAdsModel = {};
+  Map<String, SSAdsModel> chapingAdsModel = {};
 
   // key: adsId value:AdsJsonModel
-  Map<String, AdsJsonModel> jiliAdsModel = {};
+  Map<String, SSAdsModel> jiliAdsModel = {};
 
   _interstitialAdsModel() {
     var data = firebaseJson[GGCommonJson.k_out_int];
     if (data is List && data.isNotEmpty) {
       for (var element in data) {
-        AdsJsonModel adsJsonModel = _initAdsJsonModel(element);
+        SSAdsModel adsJsonModel = _initAdsJsonModel(element);
         String adsId = adsJsonModel.adsId ?? "";
 
         chapingAdsModel[adsId] = adsJsonModel;
@@ -1159,7 +1159,7 @@ class PBCommonAds {
     var data = firebaseJson[GGCommonJson.k_out_rv];
     if (data is List && data.isNotEmpty) {
       for (var element in data) {
-        AdsJsonModel adsJsonModel = _initAdsJsonModel(element);
+        SSAdsModel adsJsonModel = _initAdsJsonModel(element);
         String adsId = adsJsonModel.adsId ?? "";
 
         jiliAdsModel[adsId] = adsJsonModel;
@@ -1169,13 +1169,13 @@ class PBCommonAds {
     }
   }
 
-  AdsJsonModel _initAdsJsonModel(Map<String, dynamic> json) {
+  SSAdsModel _initAdsJsonModel(Map<String, dynamic> json) {
     // var ad_id = json[GGCommonJson.k_ads_id];
     // var ad_platform = json[GGCommonJson.k_platfrom];
     // var time_out = json[GGCommonJson.k_time_out];
     // var ad_type = json[GGCommonJson.k_ad_type];
 
-    return AdsJsonModel.fromJson(json);
+    return SSAdsModel.fromJson(json);
   }
 }
 

@@ -5,7 +5,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/jc_huanjing/config.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 
 
 

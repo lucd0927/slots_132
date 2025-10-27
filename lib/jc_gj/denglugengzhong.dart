@@ -5,16 +5,16 @@ import 'package:slots_132/jc_hive/sshive.dart';
 
 import 'log.dart';
 
-class PBLoginGenzhong {
-  static const String _lastLoginKey = 'last_login_utc_date';
+class SSDlTracking {
+  static const String _lastLoginKey = 'asddfg';
   // 检查当天登录
-  static const String _isTodayLogin = 'slkjfldsjlfgj';
+  static const String _isTodayLogin = 'yteehtshd';
 
   // 启动了多少天
-  static const String _launchDay = 'hive_launchDay';
+  static const String _launchDay = 'ewqrqwwqer';
 
   // 启动了多少次
-  static const String _launchCount = 'hive_launchCount';
+  static const String _launchCount = 'agsdherfdahhdfh';
 
   static Box get box => SSHive.box;
 

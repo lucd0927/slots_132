@@ -1,12 +1,12 @@
 
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/jc_huanjing/config.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:thinkup_sdk/at_index.dart';
 
 
-final InitManger = InitTool();
+final InitManger = SSTopon();
 
-class InitTool {
+class SSTopon {
   // 打开SDK的Debug log，强烈建议在测试阶段打开，方便排查问题。
   setLogEnabled() async {
     await ATInitManger.setLogEnabled(logEnabled: true);

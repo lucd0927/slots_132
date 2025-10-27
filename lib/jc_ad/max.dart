@@ -8,17 +8,15 @@ import 'package:slots_132/jc_gj/log.dart';
 
 
 
-class GGMaxAdsNew {
-  static final GGMaxAdsNew _instance = GGMaxAdsNew._();
+class SSApplovinMax {
+  static final SSApplovinMax _insssss = SSApplovinMax._();
 
-  GGMaxAdsNew._();
+  SSApplovinMax._();
 
-  factory GGMaxAdsNew() {
-    return _instance;
+  factory SSApplovinMax() {
+    return _insssss;
   }
 
-  static final Map<String, Completer> _map = {};
-  static Map<dynamic, dynamic> _cacheAdsData = {};
 
   static Future<bool> initMax({
     required String encodeKey,
@@ -28,7 +26,7 @@ class GGMaxAdsNew {
   }) async {
     // _cacheAdsData = cacheAdsData;
 
-    String asdfasfdmaxkey = PBBaseUtils.decrypt(encodeKey,117);
+    String asdfasfdmaxkey = SSBaseUuuu.decrypt(encodeKey,117);
     ssLogggg("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
     MaxConfiguration? configuration = await AppLovinMAX.initialize(asdfasfdmaxkey);

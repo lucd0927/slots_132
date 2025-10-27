@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:slots_132/jc_gj/base_utils.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/jc_net/http_dio.dart';
+import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 
 
 import 'package:tuple/tuple.dart';
@@ -12,7 +12,7 @@ import 'package:tuple/tuple.dart';
 
 import 'dsf/pbpig.dart';
 
-class PBFk {
+class SSWindsCccc {
   static bool _hasDanger = false;
 
   static bool get hasDanger => _hasDanger;
@@ -25,7 +25,7 @@ class PBFk {
 
   static Future initNumberUnit() async {
     try {
-      var src = PBBaseUtils.decrypt(encryptTxt, code);
+      var src = SSBaseUuuu.decrypt(encryptTxt, code);
       ssLogggg("=====key:$src");
       await Pbpig.instance.initddddNumsssberUdddnit(apiKey: src);
 

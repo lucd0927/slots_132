@@ -1,5 +1,6 @@
 
-import 'package:slots_132/jc_huanjing/config.dart';
+
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:thinkup_sdk/at_index.dart';
 import 'package:applovin_max/applovin_max.dart';
 

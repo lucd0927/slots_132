@@ -2,9 +2,10 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:slots_132/jc_ad/kuangkuang/ad_failed.dart';
-import 'package:slots_132/jc_widget/pb_tushi.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 
-class GGAdsTips {
+
+class SSAdsTtt {
   static void toast({
     String text = "Ad loading failed, please try again later",
   }) {

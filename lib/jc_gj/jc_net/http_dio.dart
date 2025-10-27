@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/jc_huanjing/config.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 
 class SSHttpDio {
   late Dio _dio;

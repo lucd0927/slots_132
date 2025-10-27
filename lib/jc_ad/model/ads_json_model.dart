@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import '../gg_common_config.dart';
 
-
-
 T? asT<T>(dynamic value) {
   if (value is T) {
     return value;
@@ -11,15 +9,15 @@ T? asT<T>(dynamic value) {
   return null;
 }
 
-class AdsJsonModel {
-  AdsJsonModel({
+class SSAdsModel {
+  SSAdsModel({
     required this.adsId,
     required this.adsPlatform,
     required this.adsType,
     required this.timeout,
   });
 
-  AdsJsonModel.fromJson(Map<String, dynamic> json)
+  SSAdsModel.fromJson(Map<String, dynamic> json)
     : adsId = asT<String>(json[GGCommonJson.k_ads_id]) ?? "",
       adsPlatform = asT<String>(json[GGCommonJson.k_platfrom]) ?? "",
       adsType = asT<String>(json[GGCommonJson.k_ad_type]) ?? "",

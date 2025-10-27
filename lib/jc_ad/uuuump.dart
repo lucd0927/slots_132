@@ -6,21 +6,18 @@ import 'package:applovin_max/applovin_max.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:iabtcf_consent_info/iabtcf_consent_info.dart';
-import 'package:slots_132/jc_huanjing/config.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 
 
-class PbUuuump {
-  static const TGA = "PbUuuump:";
-
-  static final PbUuuump _instance = PbUuuump._();
-
-  factory PbUuuump() {
-    return _instance;
+class SSUMPpppp {
+  static const String TGA = "SSUMPpppp:";
+  static final SSUMPpppp _iiiiii = SSUMPpppp._();
+  factory SSUMPpppp() {
+    return _iiiiii;
   }
-
-  PbUuuump._();
+  SSUMPpppp._();
 
   final countryCoddddd = [
     "AT",
