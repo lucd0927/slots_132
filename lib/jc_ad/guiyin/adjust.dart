@@ -75,7 +75,7 @@ class JcAdjust {
     Adjust.getAttribution().then((attributionChangedData){
       String? network = attributionChangedData.network;
       ssLogggg("$TGA====network:$network");
-      JCABluoji().guiyin(network??"");
+      SSABChange().guiyin(network??"");
     });
     // JCShijianBaogao.adjust_req();
 

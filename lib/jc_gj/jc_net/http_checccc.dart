@@ -60,7 +60,7 @@ class SSHttpChhhh {
         // No available network types
         print("没有网络连接");
         if (Get.context != null) {
-          showMeiwangDialog(Get.context!, onBtn: () {}, onClose: () {});
+          // showMeiwangDialog(Get.context!, onBtn: () {}, onClose: () {});
           recordCountPop(EnumGetScene.unknow);
         }
       }
@@ -77,12 +77,12 @@ class SSHttpChhhh {
 
   Future<bool> isOnline() async {
     try {
-      final result2 = await InternetAddress.lookup('www.google.com');
-      bool net2 = result2.isNotEmpty && result2[0].rawAddress.isNotEmpty;
-      final result = await InternetAddress.lookup('www.youtube.com');
+      final asdasfd = await InternetAddress.lookup('www.google.com');
+      bool net2 = asdasfd.isNotEmpty && asdasfd[0].rawAddress.isNotEmpty;
+      final dfsgdsfgsd = await InternetAddress.lookup('www.youtube.com');
 
-      bool net = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-      print("ping youtube jc_net:$net ;ping google jc_net:$net2");
+      bool net = dfsgdsfgsd.isNotEmpty && dfsgdsfgsd[0].rawAddress.isNotEmpty;
+      print("ping youtube :$net ;ping google :$net2");
       return net || net2;
     } catch (_) {
       return false;
@@ -94,9 +94,9 @@ class SSHttpChhhh {
   }
 }
 
-const h_no_network_pop = "iohshkahklakl";
-const h_no_network_pop_ack = "nfgkdsfehkjdsf";
-const h_no_network_pop_close = "iasdf35asf";
+const h_no_network_pop = "dfhdfghdfh";
+const h_no_network_pop_ack = "asasdfsdffsh";
+const h_no_network_pop_close = "dfrasdasasdf";
 
 void _record(String key, EnumGetScene scene) {
   try {

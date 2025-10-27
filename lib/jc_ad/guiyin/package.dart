@@ -14,15 +14,15 @@ import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 
-class JCABluoji {
-  static final JCABluoji _instance = JCABluoji._();
+class SSABChange {
+  static final SSABChange _instance = SSABChange._();
 
   // auto patch 642
-  factory JCABluoji() {
+  factory SSABChange() {
     return _instance;
   }
 
-  JCABluoji._();
+  SSABChange._();
 
   static const String cloakBData = "chromium";
   static const String cloakAData = "sprung";

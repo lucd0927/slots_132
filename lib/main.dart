@@ -1,122 +1,160 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_net/http_checccc.dart';
+import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/routes.dart';
+import 'package:spine_flutter/spine_flutter.dart';
+import 'package:toastification/toastification.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:flutter/services.dart';
+
+
+main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  // // 2 本地存储
+  await Hive.initFlutter();
+  await Hive.openBox(SSHive.hkBbbb);
+  await initSpineFlutter(enableMemoryDebugging: false);
+  // 设置只允许竖屏
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
+  ]);
+
+  SSDlTracking.init();
+  await SSHttpChhhh().isOnline();
+  ssNetChecccc.init();
   runApp(const MyApp());
 }
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class _MyAppState extends State<MyApp> {
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    lifecycleChange();
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      // splitScreenMode: true,
+      child: GlobalLoaderOverlay(
+        child: ToastificationWrapper(
+          child: GetMaterialApp(
+            // main: MyHomePage(title: '1'),
+            title: "Slots",
+            initialRoute: SSRouttttt.splash,
+            builder: (BuildContext context, Widget? child) {
+              return AnnotatedRegion<SystemUiOverlayStyle>(
+                value: SystemUiOverlayStyle(
+                  statusBarColor: Colors.transparent,
+                  statusBarBrightness:Brightness.dark,
+                  statusBarIconBrightness: Brightness.light,
+                ),
+                child: Overlay(
+                  initialEntries: <OverlayEntry>[
+                    OverlayEntry(
+                      builder: (BuildContext ctx) {
+                        return child!;
+                      },
+                    ),
+                  ],
+                ),
+              );
+              return Overlay();
+            },
+            theme: ThemeData(),
+            getPages: SSRouttttt.pages,
+
+            // translations: FanyiTools(),
+            // 你的翻译
+            // fallbackLocale: Locale('en', 'US'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
+
+
+Timer? _bgTtttt;
+bool sssshowAd = false;
+
+void lifecycleChange() {
+  SystemChannels.lifecycle.setMessageHandler((msg) async {
+    ssLogggg('lifecycle> $msg');
+    // if(!GGABPackage.isPackageB()){
+    //   return msg;
+    // }
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top,SystemUiOverlay.bottom]);
+    // msg是个字符串，是下面的值
+    // AppLifecycleState.resumed
+    // AppLifecycleState.inactive
+    // AppLifecycleState.paused
+    // AppLifecycleState.detached
+    if (msg == "AppLifecycleState.resumed") {
+      // bgGGAudioPlayer.resume();
+      // JCShijianBaogao.session();
+      _bgTtttt?.cancel();
+
+      if (sssshowAd) {
+        ssLogggg("===前后切换加载=GGCommonAds().showInterstitialAd=${SSCommonAds.hasDisplayAd()}=");
+        if (!SSCommonAds.hasDisplayAd()) {
+          ssLogggg("===前后切换加载=GGCommonAds().showInterstitialAd==");
+
+          if (SSABChange.isPackageB()) {
+            SSCommonAds().showInterstitialAd(
+              adPosId: SSAdsPosId.test,
+              ignored_hasDisplayAd: false,
+              canTryAgain: false,
+            );
+          }
+        }
+      }
+      sssshowAd = false;
+    } else {
+      // bgGGAudioPlayer.pause();
+      if (msg == "AppLifecycleState.paused") {
+        ssLogggg("====AppLifecycleState.paused===");
+        // JCShijianBaogao.app_background();
+        sssshowAd = false;
+        _bgTtttt?.cancel();
+        _bgTtttt = Timer(Duration(seconds: 3), () {
+          sssshowAd = true;
+          ssLogggg("====AppLifecycleState.paused==showAd:$sssshowAd=");
+          _bgTtttt?.cancel();
+        });
+      } else if (msg == "AppLifecycleState.detached") {
+      } else if (msg == "AppLifecycleState.inactive") {}
+    }
+
+    return msg;
+  });
+}
+
+

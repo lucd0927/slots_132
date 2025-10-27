@@ -52,7 +52,7 @@ class JcAF{
         final payload = p["payload"];
         if (payload is Map && payload.containsKey("af_status")) {
           String af_status = payload["af_status"] ?? "";
-          JCABluoji().guiyin(af_status);
+          SSABChange().guiyin(af_status);
           return;
         }
 
