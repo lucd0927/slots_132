@@ -7,7 +7,7 @@ class SSHuanjingProd implements SSHuanjing{
   @override
   String bUuuu() {
     // TODO: implement baseUrl
-    return "https://hug.piggybankboostreward.com/squaw/mulligan/borate";
+    return "";
   }
 
   @override
@@ -15,7 +15,7 @@ class SSHuanjingProd implements SSHuanjing{
 // auto patch 793
     // TODO: implement cloakUrl
 // auto patch 79
-    return "https://sikorsky.piggybankboostreward.com/forget/cheyenne";
+    return "";
   }
 
 }    

@@ -5,7 +5,7 @@ class SSTxtGraBorder extends StatelessWidget {
   final Color? fontColor;
   final Gradient? gradient;
   final FontStyle? fontStyle;
-  final double fontSize;
+  final double? fontSize;
   final Color strokeColor;
   final double? height;
   final FontWeight fontWeight;
@@ -19,9 +19,9 @@ class SSTxtGraBorder extends StatelessWidget {
     super.key,
     required this.text,
     this.gradient,
-    this.fontSize = 14,
+    this.fontSize ,
     this.strokeWidth = 2,
-    this.fontWeight = FontWeight.bold,
+    this.fontWeight = FontWeight.w400,
     this.fontColor = Colors.white,
     this.height = 1,
     this.strokeColor = const Color(0xffFFFAD7),
@@ -37,15 +37,17 @@ class SSTxtGraBorder extends StatelessWidget {
         gradient ??
             LinearGradient(
               colors: [
-                Color(0xffFFF565),
-                Color(0xffFFE0A7),
-                Color(0xffFFFE10),
-                Color(0xffFFF9AA),
+                Color(0xffFFD70F),
+                Color(0xffF0A00D),
+                Color(0xffEAFF00),
+                Color(0xffFFD500),
                 Color(0xffFDDE51),
               ],
               end: Alignment.bottomCenter,
               begin: Alignment.topCenter,
             );
+
+    double tmpfontSize = fontSize??14.sp;
     return Stack(
       children: [
         // 边框层
@@ -71,7 +73,7 @@ class SSTxtGraBorder extends StatelessWidget {
                 : null,
             fontWeight: fontWeight,
             height: height,
-            fontSize: fontSize,
+            fontSize: tmpfontSize,
             fontStyle: fontStyle,
             foreground: Paint()
               ..style = PaintingStyle.stroke
@@ -86,7 +88,7 @@ class SSTxtGraBorder extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: fontSize,
+              fontSize: tmpfontSize,
               fontStyle: fontStyle,
               color: fontColor,
               fontWeight: fontWeight,

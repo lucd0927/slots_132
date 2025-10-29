@@ -195,12 +195,12 @@ class _SplashProgressState extends State<SplashProgress> {
     int time = DateTime.now().millisecondsSinceEpoch;
     ssLogggg("==SSABChange().init start====");
     // // // 5 ab包逻辑
-    bool result = await SSABChange().init();
-    int time2 = DateTime.now().millisecondsSinceEpoch;
-    ssLogggg(
-      "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",
-    );
-    await Future.delayed(Duration(milliseconds:SSABChange.isPackageB()? 3000:0));
+    // bool result = await SSABChange().init();
+    // int time2 = DateTime.now().millisecondsSinceEpoch;
+    // ssLogggg(
+    //   "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",
+    // );
+    // await Future.delayed(Duration(milliseconds:SSABChange.isPackageB()? 3000:0));
     _timer.cancel();
     if (canGoToMain) {
       ssLogggg("==SSABChange().init 等待进入main page====");

@@ -4,7 +4,7 @@ import 'dart:ui' show FontFeature;
 
 import 'package:flutter/widgets.dart';
 
-class AnimatedCount extends StatelessWidget {
+class SSAniiiiCount extends StatelessWidget {
   /// The value of this counter.
   ///
   /// When a new value is specified, the counter will automatically animate
@@ -90,7 +90,7 @@ class AnimatedCount extends StatelessWidget {
   /// Add padding for every digit, defaults is none.
   final EdgeInsets padding;
 
-  const AnimatedCount({
+  const SSAniiiiCount({
     super.key,
     required this.value,
     this.duration = const Duration(milliseconds: 300),
