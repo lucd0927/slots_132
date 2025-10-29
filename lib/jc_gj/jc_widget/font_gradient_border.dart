@@ -20,7 +20,7 @@ class SSTxtGraBorder extends StatelessWidget {
     required this.text,
     this.gradient,
     this.fontSize ,
-    this.strokeWidth = 2,
+    this.strokeWidth = 1,
     this.fontWeight = FontWeight.w400,
     this.fontColor = Colors.white,
     this.height = 1,

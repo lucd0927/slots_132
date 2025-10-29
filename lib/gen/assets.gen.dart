@@ -38,6 +38,10 @@ class $AssetsImgGen {
   AssetGenImage get btnTxtSpin =>
       const AssetGenImage('assets/img/btn_txt_spin.png');
 
+  /// File path: assets/img/main_addmoney.png
+  AssetGenImage get mainAddmoney =>
+      const AssetGenImage('assets/img/main_addmoney.png');
+
   /// File path: assets/img/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/img/main_bg.png');
 
@@ -83,6 +87,14 @@ class $AssetsImgGen {
   /// File path: assets/img/main_major.png
   AssetGenImage get mainMajor =>
       const AssetGenImage('assets/img/main_major.png');
+
+  /// File path: assets/img/main_max_add.png
+  AssetGenImage get mainMaxAdd =>
+      const AssetGenImage('assets/img/main_max_add.png');
+
+  /// File path: assets/img/main_max_sub.png
+  AssetGenImage get mainMaxSub =>
+      const AssetGenImage('assets/img/main_max_sub.png');
 
   /// File path: assets/img/main_mini.png
   AssetGenImage get mainMini => const AssetGenImage('assets/img/main_mini.png');
@@ -140,6 +152,7 @@ class $AssetsImgGen {
     avatarBottom,
     btnSpin,
     btnTxtSpin,
+    mainAddmoney,
     mainBg,
     mainBonusBg,
     mainBottom,
@@ -152,6 +165,8 @@ class $AssetsImgGen {
     mainGrand,
     mainLingdang,
     mainMajor,
+    mainMaxAdd,
+    mainMaxSub,
     mainMini,
     mainPhone,
     mainShengdaolaoren,

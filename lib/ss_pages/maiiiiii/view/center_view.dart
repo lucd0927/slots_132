@@ -200,8 +200,6 @@ class CenterView extends StatelessWidget {
       ],
     );
   }
-
-
 }
 
 class FreeSpin extends StatefulWidget {
@@ -215,6 +213,11 @@ class _FreeSpinState extends State<FreeSpin> {
   int select = -1;
   double scale = 1.5;
   Timer? timer;
+  double firstH = 40.h;
+  double secondH = 90.h;
+  double thirdH = 120.h;
+  double fourthH = 90.h;
+  double fiveH = 40.h;
 
   @override
   void initState() {
@@ -227,10 +230,16 @@ class _FreeSpinState extends State<FreeSpin> {
     return freeSpinWidget();
   }
 
+  reset() {
+    select = -1;
+    scale = 1.5;
+    timer?.cancel();
+    firstH = 40.h;
+    secondH = 90.h;
+    thirdH = 120.h;
+  }
+
   freeSpinWidget() {
-    double firstH = 40.h;
-    double secondH = 90.h;
-    double thirdH = 120.h;
     double leftW = 0.w;
     double itemW = (ScreenUtil().screenWidth - leftW * 2) / 5.2;
     double alpha = 0.0;
@@ -244,9 +253,12 @@ class _FreeSpinState extends State<FreeSpin> {
 
           if (tmpT > 50) {
             v.cancel();
+            setState(() {
+              secondH = 70.h;
+            });
             Future.delayed(Duration(milliseconds: 5000), () {
               setState(() {
-                select = -1;
+                reset();
               });
             });
           } else {
@@ -283,7 +295,11 @@ class _FreeSpinState extends State<FreeSpin> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(height: firstH),
+                    // SizedBox(height: firstH),
+                    AnimatedContainer(
+                      height: firstH,
+                      duration: Duration(milliseconds: 100),
+                    ),
                     childI(icon: Assets.img.mainCWheel.path, index: 0),
                   ],
                 ),
@@ -293,7 +309,11 @@ class _FreeSpinState extends State<FreeSpin> {
                 color: Colors.green.withValues(alpha: alpha),
                 child: Column(
                   children: [
-                    SizedBox(height: secondH),
+                    // SizedBox(height: secondH),
+                    AnimatedContainer(
+                      height: secondH,
+                      duration: Duration(milliseconds: 100),
+                    ),
                     childI(icon: Assets.img.mainCMoney.path, index: 1),
                   ],
                 ),
@@ -303,7 +323,11 @@ class _FreeSpinState extends State<FreeSpin> {
                 color: Colors.red.withValues(alpha: alpha),
                 child: Column(
                   children: [
-                    SizedBox(height: thirdH),
+                    // SizedBox(height: thirdH),
+                    AnimatedContainer(
+                      height: thirdH,
+                      duration: Duration(milliseconds: 100),
+                    ),
                     childI(icon: Assets.img.mainCAvatar.path, index: 2),
                   ],
                 ),
@@ -313,7 +337,11 @@ class _FreeSpinState extends State<FreeSpin> {
                 color: Colors.green.withValues(alpha: alpha),
                 child: Column(
                   children: [
-                    SizedBox(height: secondH),
+                    // SizedBox(height: fourthH),
+                    AnimatedContainer(
+                      height: fourthH,
+                      duration: Duration(milliseconds: 100),
+                    ),
                     childI(icon: Assets.img.mainCWheel.path, index: 3),
                   ],
                 ),
@@ -324,7 +352,11 @@ class _FreeSpinState extends State<FreeSpin> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: firstH),
+                    // SizedBox(height: fiveH),
+                    AnimatedContainer(
+                      height: fiveH,
+                      duration: Duration(milliseconds: 100),
+                    ),
                     childI(icon: Assets.img.mainCMoney.path, index: 4),
                   ],
                 ),
@@ -372,8 +404,9 @@ class _FreeSpinState extends State<FreeSpin> {
     //   },
     // );
 
-    return Container(
-      // duration: Duration(milliseconds: 200),
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 200),
+      // width: childIW,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: [
@@ -389,56 +422,6 @@ class _FreeSpinState extends State<FreeSpin> {
         width: childIW,
         height: childIH,
         gaplessPlayback: true,
-      ),
-    );
-  }
-
-  Widget _item({
-    required String icon,
-    required int index,
-    required double height,
-    required double width,
-  }) {
-    bool hasSelect = index == select;
-    double scale = hasSelect ? 1.5 : 1.0;
-    double glowOpacity = hasSelect ? 1.0 : 0.0;
-
-    return Container(
-      width: width,
-      alignment: Alignment.center,
-      child: Column(
-        children: [
-          SizedBox(height: height),
-          TweenAnimationBuilder<double>(
-            duration: const Duration(milliseconds: 200),
-            tween: Tween(begin: 1.0, end: scale),
-            curve: Curves.easeOutBack,
-            builder: (context, value, child) {
-              return Transform.scale(
-                scale: value,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 250),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.yellow.withOpacity(glowOpacity * 0.8),
-                        blurRadius: 15,
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: Image.asset(
-                    icon,
-                    width: 46.h,
-                    height: 58.h,
-                    gaplessPlayback: true,
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
       ),
     );
   }

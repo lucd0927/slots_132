@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
@@ -86,7 +87,7 @@ class _MyAppState extends State<MyApp> {
               );
               return Overlay();
             },
-            theme: ThemeData(),
+            theme: ThemeData(fontFamily: FontFamily.sansitaOne),
             getPages: SSRouttttt.pages,
 
             // translations: FanyiTools(),
