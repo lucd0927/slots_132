@@ -11,6 +11,8 @@ import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 
+import 'glow_border/glow_border.dart';
+
 class CenterView extends StatelessWidget {
   const CenterView({super.key});
 
@@ -60,23 +62,38 @@ class CenterView extends StatelessWidget {
               duration: Duration(milliseconds: 200),
             ),
           ),
-
           Positioned.fill(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              // color: Colors.white,
-              child: AnimatedCrossFade(
-                firstChild: SizedBox(width: 58.h, height: 64.h),
-                secondChild: FreeSpin(),
-                crossFadeState: MainController.to.showFreeSpin.value
-                    ? CrossFadeState.showSecond
-                    : CrossFadeState.showFirst,
-                secondCurve: Curves.linear,
-                duration: Duration(milliseconds: 200),
-              ),
+            child: TweenAnimationBuilder<double>(
+              duration: const Duration(milliseconds: 200),
+              tween: Tween(begin: 0.0, end: MainController.to.showFreeSpin.value?1.0:0),
+              curve: Curves.linear,
+              builder: (context, value, child) {
+                return Transform.translate(
+                  offset: Offset(0, ScreenUtil().screenHeight*(1-value)),
+                  child:FreeSpin(),
+                );
+              },
             ),
           ),
+          // Positioned.fill(
+          //   child: Container(
+          //     width: double.infinity,
+          //     height: double.infinity,
+          //     // color: Colors.white,
+          //
+          //     child: AnimatedBuilder(animation: animation, builder: builder),
+          //
+          //     // child: AnimatedCrossFade(
+          //     //   firstChild: SizedBox(width: 58.h, height: 64.h),
+          //     //   secondChild: FreeSpin(),
+          //     //   crossFadeState: MainController.to.showFreeSpin.value
+          //     //       ? CrossFadeState.showSecond
+          //     //       : CrossFadeState.showFirst,
+          //     //   secondCurve: Curves.linear,
+          //     //   duration: Duration(milliseconds: 200),
+          //     // ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -404,8 +421,8 @@ class _FreeSpinState extends State<FreeSpin> {
     //   },
     // );
 
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
+    Widget child = Container(
+      // duration: Duration(milliseconds: 200),
       // width: childIW,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -424,5 +441,8 @@ class _FreeSpinState extends State<FreeSpin> {
         gaplessPlayback: true,
       ),
     );
+
+
+    return child;
   }
 }

@@ -6,8 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 
+import 'glow_border/border2.dart';
 
 class SSSlotMachine extends StatefulWidget {
   const SSSlotMachine({super.key});
@@ -60,15 +63,21 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
         return Container(
           width: double.infinity,
           height: slotsH,
-          color: Colors.teal.withValues(alpha: 0.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          color: Colors.red.withValues(alpha: 0.2),
+          child: Stack(
             children: [
-              rollerWidget(key: firstRoller,index: 0),
-              rollerWidget(key: secondRoller,index: 1),
-              rollerWidget(key: thirdRoller,index: 2),
-              rollerWidget(key: fourthRoller,index: 3),
-              rollerWidget(key: fiveRoller,index: 4),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    rollerWidget(key: firstRoller, index: 0),
+                    rollerWidget(key: secondRoller, index: 3),
+                    rollerWidget(key: thirdRoller, index: 2),
+                    rollerWidget(key: fourthRoller, index: 1),
+                    rollerWidget(key: fiveRoller, index: 5),
+                  ],
+                ),
+              ),
             ],
           ),
         );
@@ -76,7 +85,7 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
     );
   }
 
-  rollerWidget({required Key key,required int index}) {
+  rollerWidget({required Key key, required int index}) {
     return RollerList(
       items: _getSlots(),
       visibilityRadius: 1,
@@ -100,13 +109,31 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
     double width = slotsH / 3.5;
     List<Widget> result = [];
     for (int i = 0; i <= 6; i++) {
+      Widget child = Image.asset(
+        slotsI[i],
+        width: width - 10.w,
+        height: width - 10.w,
+      );
+
       result.add(
         Container(
           width: width,
           height: width,
           padding: EdgeInsets.all(4.0),
           // color: Colors.red,
-          child: Image.asset(slotsI[i]),
+          child: Center(
+            child: i % 2 == 0
+                ? child
+                : ZoMonoCromeBorder(
+                    trackBorderColor: Colors.yellow,
+                    cornerRadius: 4.w,
+                    animationDuration: Duration(milliseconds: 800),
+                    borderStyle: ZoMonoCromeBorderStyle.stroke,
+                    borderWidth: 4.w,
+                    // color: Colors.green,
+                    child: child,
+                  ),
+          ),
         ),
       );
     }
