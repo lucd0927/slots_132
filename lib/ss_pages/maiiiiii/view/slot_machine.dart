@@ -54,6 +54,7 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   double slotsH = 250.h;
+  final double slotsItemW = ScreenUtil().screenWidth / 6;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
         return Container(
           width: double.infinity,
           height: slotsH,
-          color: Colors.red.withValues(alpha: 0.2),
+          color: Colors.blueAccent.withValues(alpha: 0.0),
           child: Stack(
             children: [
               Center(
@@ -90,7 +91,7 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
       items: _getSlots(),
       visibilityRadius: 1,
       scrollType: ScrollType.goesOnlyBottom,
-      width: ScreenUtil().screenWidth / 6,
+      width: slotsItemW,
       // height: 150.h,
       initialIndex: index,
       enabled: false,
@@ -108,32 +109,37 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
   List<Widget> _getSlots() {
     double width = slotsH / 3.5;
     List<Widget> result = [];
+    double dd = 8.w;
+    double dd2 = 4.w;
     for (int i = 0; i <= 6; i++) {
-      Widget child = Image.asset(
-        slotsI[i],
-        width: width - 10.w,
-        height: width - 10.w,
+      Widget tmpC = Container(
+        // color: Colors.green,
+        child: Image.asset(slotsI[i], width: width - dd, height: width - dd),
       );
-
+      Widget child = Container(
+        width: width - dd2,
+        height: width - dd2,
+        padding: EdgeInsets.all(4.0),
+        color:  Colors.transparent,
+        child: Center(child: tmpC),
+      );
       result.add(
         Container(
           width: width,
           height: width,
-          padding: EdgeInsets.all(4.0),
-          // color: Colors.red,
-          child: Center(
-            child: i % 2 == 0
-                ? child
-                : ZoMonoCromeBorder(
+          // color: Colors.green,
+          child: i % 2 == 0
+              ? Center(
+                  child: ZoMonoCromeBorder(
                     trackBorderColor: Colors.yellow,
-                    cornerRadius: 4.w,
+                    cornerRadius: dd2,
                     animationDuration: Duration(milliseconds: 800),
                     borderStyle: ZoMonoCromeBorderStyle.stroke,
-                    borderWidth: 4.w,
-                    // color: Colors.green,
+                    borderWidth: dd2,
                     child: child,
                   ),
-          ),
+                )
+              : child,
         ),
       );
     }

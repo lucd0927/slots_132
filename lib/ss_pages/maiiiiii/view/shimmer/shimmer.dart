@@ -8,6 +8,7 @@ class ShiningEffect extends StatefulWidget {
   final double shineWidth; // 闪光带宽占比 (0.0 - 1.0)，相对于控件宽度
   final Color shineColor;
   final double opacity;
+  final double? borderRadius;
 
   const ShiningEffect({
     super.key,
@@ -17,6 +18,7 @@ class ShiningEffect extends StatefulWidget {
     this.shineWidth = 0.3,
     this.shineColor = Colors.white,
     this.opacity = 0.6,
+    this.borderRadius ,
   });
 
   @override
@@ -30,8 +32,7 @@ class _ShiningEffectState extends State<ShiningEffect>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: widget.duration);
+    _controller = AnimationController(vsync: this, duration: widget.duration);
 
     if (widget.enabled) {
       _controller.repeat();
@@ -68,53 +69,62 @@ class _ShiningEffectState extends State<ShiningEffect>
   Widget build(BuildContext context) {
     if (!widget.enabled) return widget.child;
 
-    return ClipOval(
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          final double percent = _controller.value;
-          return ShaderMask(
-            blendMode: BlendMode.plus, // 保留子控件原色并在上面叠加高光
-            shaderCallback: (Rect bounds) {
-              final double width = bounds.width;
-              final double height = bounds.height;
-      
-              // 计算闪光带在控件坐标系内的偏移 - 从 -width 到 +width
-              final double startX = width * (percent * 2 - 1);
-      
-              // 闪光带实际像素宽度
-              final double shinePixel = (width * widget.shineWidth).clamp(1.0, width);
-      
-              // 为了让渐变平滑，构建比控件宽度更长的 rect（覆盖左右移动范围）
-              // 这里我们把 shaderRect 放在 startX - shinePixel ... startX + shinePixel
-              final double shaderLeft = startX - shinePixel;
-              final double shaderWidth = width + shinePixel * 2;
-      
-              // 渐变颜色与定位：透明 -> 高亮 -> 透明
-              final gradient = LinearGradient(
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-                colors: [
-                  Colors.transparent,
-                  widget.shineColor.withValues(alpha: widget.opacity),
-                  Colors.transparent,
-                ],
-                // stops: const [0.0, 0.5, 1.0],
+    return LayoutBuilder(
+      builder: (context, c) {
+        double maxW = c.maxWidth;
+        double maxH = c.maxHeight;
+        double tmpR = maxH < maxW ? maxW:maxH;
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(widget.borderRadius??tmpR),
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              final double percent = _controller.value;
+              return ShaderMask(
+                blendMode: BlendMode.plus, // 保留子控件原色并在上面叠加高光
+                shaderCallback: (Rect bounds) {
+                  final double width = bounds.width;
+                  final double height = bounds.height;
+
+                  // 计算闪光带在控件坐标系内的偏移 - 从 -width 到 +width
+                  final double startX = width * (percent * 2 - 1);
+
+                  // 闪光带实际像素宽度
+                  final double shinePixel = (width * widget.shineWidth).clamp(
+                    1.0,
+                    width,
+                  );
+
+                  // 为了让渐变平滑，构建比控件宽度更长的 rect（覆盖左右移动范围）
+                  // 这里我们把 shaderRect 放在 startX - shinePixel ... startX + shinePixel
+                  final double shaderLeft = startX - shinePixel;
+                  final double shaderWidth = width + shinePixel * 2;
+
+                  // 渐变颜色与定位：透明 -> 高亮 -> 透明
+                  final gradient = LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                    colors: [
+                      Colors.transparent,
+                      widget.shineColor.withValues(alpha: widget.opacity),
+                      Colors.transparent,
+
+                    ],
+                    stops: const [0.0, 0.5, 1],
+                  );
+
+                  // createShader 的 Rect 决定了渐变的位置与伸展，这里通过偏移 rect 实现移动效果
+                  return gradient.createShader(
+                    Rect.fromLTWH(shaderLeft, 0, shaderWidth, height),
+                  );
+                },
+                child: child,
               );
-      
-              // createShader 的 Rect 决定了渐变的位置与伸展，这里通过偏移 rect 实现移动效果
-              return gradient.createShader(Rect.fromLTWH(
-                shaderLeft,
-                0,
-                shaderWidth,
-                height,
-              ));
             },
-            child: child,
-          );
-        },
-        child: widget.child,
-      ),
+            child: widget.child,
+          ),
+        );
+      },
     );
   }
 }

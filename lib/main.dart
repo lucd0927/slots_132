@@ -36,7 +36,7 @@ main() async {
   ]);
 
   SSDlTracking.init();
-  await SSHttpChhhh().isOnline();
+  SSHttpChhhh().isOnline();
   ssNetChecccc.init();
   runApp(const MyApp());
 }

@@ -111,7 +111,7 @@ class RollerListState extends State<RollerList> {
         onNotification: _onNotification,
         child: Container(
           // color: Colors.red,
-          height: _itemHeight! * (1 + widget.visibilityRadius * 2) + 2,
+          height: _itemHeight! * (1 + widget.visibilityRadius * 2) ,
           width: _itemWidth,
           child: Stack(
             children: <Widget>[

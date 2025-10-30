@@ -81,6 +81,8 @@ dependencies:
 #  roller_list: ^1.0.3
   infinite_listview: ^1.1.0
   zo_animated_border: ^1.0.4
+  newton_particles: ^0.2.2
+  confetti: ^0.8.0
 #  shimmer: ^3.0.0
 #  slot_machine_roller: ^1.0.1
   adjust_sdk: ^5.4.4

@@ -32,7 +32,7 @@ class MainController extends GetxController {
     await _roller(thirdRoller);
     await _roller(fourthRoller);
     await _roller(fiveRoller);
-    await Future.delayed(Duration(milliseconds: 2500));
+    await Future.delayed(Duration(milliseconds: 3000));
     _resetRoller(firstRoller);
     _resetRoller(secondRoller);
     _resetRoller(thirdRoller);
@@ -53,8 +53,9 @@ class MainController extends GetxController {
     key.currentState
         ?.smoothScrollToIndex(
           random,
-          duration: Duration(milliseconds: 2000),
+          duration: Duration(milliseconds: 1200),
           curve: Curves.easeIn,
+          // curve: Curves.easeInQuad,
         )
         .then((v) {
           ssLogggg("==smoothScrollToIndex end====");

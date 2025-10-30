@@ -18,84 +18,125 @@ class CenterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return centerWidget();
-    });
+    // return Obx(() {
+    //   return centerWidget();
+    // });
     return centerWidget();
   }
 
   centerWidget() {
-    return Container(
-      width: double.infinity,
-      // height: 200.h,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            key: ValueKey("SpineShengdaolaoren"),
+    return LayoutBuilder(
+      builder: (context, c) {
+        double maxH = c.maxHeight;
+        double maxW = c.maxWidth;
+        return Obx(() {
+          return Container(
             width: double.infinity,
-            height: 336.h,
-            child: const SpineShengdaolaoren(),
-          ),
+            // height: 200.h,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  key: ValueKey("SpineShengdaolaoren"),
+                  width: double.infinity,
+                  height: 336.h,
+                  child: const SpineShengdaolaoren(),
+                ),
 
-          Positioned(
-            left: 16.w,
-            top: 30.h,
-            child: AnimatedCrossFade(
-              firstChild: leftWidget(),
-              secondChild: SizedBox(width: 58.h, height: 64.h),
-              crossFadeState: MainController.to.showFreeSpin.value
-                  ? CrossFadeState.showSecond
-                  : CrossFadeState.showFirst,
-              duration: Duration(milliseconds: 200),
+                Positioned.fill(
+                  child: TweenAnimationBuilder<double>(
+                    duration: const Duration(milliseconds: 300),
+                    tween: Tween(
+                      begin: 0.0,
+                      end: MainController.to.showFreeSpin.value ? 0 : 1.0,
+                    ),
+                    curve: Curves.linear,
+                    builder: (context, value, child) {
+                      return Transform.translate(
+                        // offset: Offset(maxW*(1-value), maxH*(1-value)),
+                        offset: Offset(-maxW * (1 - value), 0),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              left: 16.w,
+                              top: 30.h,
+                              child: AnimatedCrossFade(
+                                firstChild: leftWidget(),
+                                secondChild: SizedBox(
+                                  width: 58.h,
+                                  height: 64.h,
+                                ),
+                                crossFadeState:
+                                    MainController.to.showFreeSpin.value
+                                    ? CrossFadeState.showSecond
+                                    : CrossFadeState.showFirst,
+                                duration: Duration(milliseconds: 200),
+                              ),
+                            ),
+                            Positioned(
+                              right: 0,
+                              top: 10.h,
+                              child: AnimatedCrossFade(
+                                firstChild: rightWidget(),
+                                secondChild: SizedBox(
+                                  width: 58.h,
+                                  height: 64.h,
+                                ),
+                                crossFadeState:
+                                    MainController.to.showFreeSpin.value
+                                    ? CrossFadeState.showSecond
+                                    : CrossFadeState.showFirst,
+                                duration: Duration(milliseconds: 200),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+
+                Positioned.fill(
+                  child: TweenAnimationBuilder<double>(
+                    duration: const Duration(milliseconds: 300),
+                    tween: Tween(
+                      begin: 0.0,
+                      end: MainController.to.showFreeSpin.value ? 1.0 : 0,
+                    ),
+                    curve: Curves.linear,
+                    builder: (context, value, child) {
+                      return Transform.translate(
+                        // offset: Offset(maxW*(1-value), maxH*(1-value)),
+                        offset: Offset(maxW * (1 - value), 0),
+                        child: FreeSpin(),
+                      );
+                    },
+                  ),
+                ),
+                // Positioned.fill(
+                //   child: Container(
+                //     width: double.infinity,
+                //     height: double.infinity,
+                //     // color: Colors.white,
+                //
+                //     child: AnimatedBuilder(animation: animation, builder: builder),
+                //
+                //     // child: AnimatedCrossFade(
+                //     //   firstChild: SizedBox(width: 58.h, height: 64.h),
+                //     //   secondChild: FreeSpin(),
+                //     //   crossFadeState: MainController.to.showFreeSpin.value
+                //     //       ? CrossFadeState.showSecond
+                //     //       : CrossFadeState.showFirst,
+                //     //   secondCurve: Curves.linear,
+                //     //   duration: Duration(milliseconds: 200),
+                //     // ),
+                //   ),
+                // ),
+              ],
             ),
-          ),
-          Positioned(
-            right: 0,
-            top: 10.h,
-            child: AnimatedCrossFade(
-              firstChild: rightWidget(),
-              secondChild: SizedBox(width: 58.h, height: 64.h),
-              crossFadeState: MainController.to.showFreeSpin.value
-                  ? CrossFadeState.showSecond
-                  : CrossFadeState.showFirst,
-              duration: Duration(milliseconds: 200),
-            ),
-          ),
-          Positioned.fill(
-            child: TweenAnimationBuilder<double>(
-              duration: const Duration(milliseconds: 200),
-              tween: Tween(begin: 0.0, end: MainController.to.showFreeSpin.value?1.0:0),
-              curve: Curves.linear,
-              builder: (context, value, child) {
-                return Transform.translate(
-                  offset: Offset(0, ScreenUtil().screenHeight*(1-value)),
-                  child:FreeSpin(),
-                );
-              },
-            ),
-          ),
-          // Positioned.fill(
-          //   child: Container(
-          //     width: double.infinity,
-          //     height: double.infinity,
-          //     // color: Colors.white,
-          //
-          //     child: AnimatedBuilder(animation: animation, builder: builder),
-          //
-          //     // child: AnimatedCrossFade(
-          //     //   firstChild: SizedBox(width: 58.h, height: 64.h),
-          //     //   secondChild: FreeSpin(),
-          //     //   crossFadeState: MainController.to.showFreeSpin.value
-          //     //       ? CrossFadeState.showSecond
-          //     //       : CrossFadeState.showFirst,
-          //     //   secondCurve: Curves.linear,
-          //     //   duration: Duration(milliseconds: 200),
-          //     // ),
-          //   ),
-          // ),
-        ],
-      ),
+          );
+        });
+      },
     );
   }
 
@@ -113,6 +154,20 @@ class CenterView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+              ),
+              Center(
+                child: ShiningEffect(
+                  shineColor: Colors.white,
+                  opacity: 1,
+                  borderRadius: 100,
+                  shineWidth: 0.1,
+                  duration: const Duration(seconds: 2),
+                  child: Container(
+                    width: 100.w,
+                    height: 20.h,
+                    // child: Text("--------"),
+                  ),
+                ),
               ),
             ],
           ),
@@ -441,7 +496,6 @@ class _FreeSpinState extends State<FreeSpin> {
         gaplessPlayback: true,
       ),
     );
-
 
     return child;
   }
