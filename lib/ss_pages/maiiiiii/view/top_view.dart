@@ -1,15 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 
 class TopView extends StatelessWidget {
   const TopView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  topWidget();
+    return topWidget();
   }
 
   topWidget() {
@@ -50,11 +50,17 @@ class TopView extends StatelessWidget {
                     bottom: 0,
                     left: -8.w,
                     child: Center(
-                      child: Image.asset(
-                        Assets.img.money.path,
-                        width: 30.h,
-                        height: 28.h,
-                        fit: BoxFit.fill,
+                      child: Builder(
+                        builder: (context) {
+                          Widget child = Image.asset(
+                            Assets.img.money.path,
+                            width: 30.h,
+                            height: 28.h,
+                            fit: BoxFit.fill,
+                          );
+                          overlayMainTopMoney.targetContext = context;
+                          return child;
+                        },
                       ),
                     ),
                   ),
@@ -119,11 +125,33 @@ class TopView extends StatelessWidget {
               ),
             ),
           ),
+
+          Positioned(
+            bottom: 12.h,
+            right: 4.w,
+            child: GestureDetector(
+              onTap: onMenu,
+              child: Container(
+                width: 32.h,
+                height: 32.h,
+                color: Colors.yellow.withValues(alpha: 0),
+                child: Image.asset(
+                  Assets.img.menu.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
+  onMenu() async {
+    overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
+  }
 
   topMoney() {
     return Container(
