@@ -128,14 +128,33 @@ class MainController extends GetxController {
     ],
   ];
 
+  int slotsColumn = 5;
+  String splitSymbol = "*";
+
+  Map<String, Map<String, int>> _recordZuobiao(List<String> keys, int column) {
+    Map<String, Map<String, int>> tmp = {};
+    int length = keys.length;
+    ssLogggg("=_recordZuobiao==length:$length==keys:$keys");
+    for (int i = 0; i < length; i++) {
+      String key = "${keys[i]}";
+      String tmpKkkk = "$i";
+
+      int value = 1 + column + i * slotsColumn;
+      Map<String, int> tmpppp = {key: value};
+      tmp[tmpKkkk] = tmpppp;
+    }
+    return tmp;
+  }
+
   initRoller5({bool hasFirstInit = false}) {
     // 中奖图案
     List<String> winReel1 = SSReelStrips.reel1ImgName();
+
     List<String> winReel2 = SSReelStrips.reel2ImgName();
     List<String> winReel3 = SSReelStrips.reel3ImgName();
     List<String> winReel4 = SSReelStrips.reel4ImgName();
     List<String> winReel5 = SSReelStrips.reel5ImgName();
-    // 原来的图案
+
     List<String> preReel1 = rollerImgs[0];
     List<String> preReel2 = rollerImgs[1];
     List<String> preReel3 = rollerImgs[2];
@@ -159,6 +178,191 @@ class MainController extends GetxController {
       preReel4.setRange(0, end, preWinReel4);
       preReel5.setRange(0, end, preWinReel5);
       ssLogggg("rollerImgs change first-end:0-$end:$rollerImgs");
+    }else{
+      Map<String, Map<String, int>> kImgName_vIndex1 = _recordZuobiao(winReel1, 0,);
+      Map<String, Map<String, int>> kImgName_vIndex2 = _recordZuobiao(winReel2, 1,);
+      Map<String, Map<String, int>> kImgName_vIndex3 = _recordZuobiao(winReel3, 2,);
+      Map<String, Map<String, int>> kImgName_vIndex4 = _recordZuobiao(winReel4, 3,);
+      Map<String, Map<String, int>> kImgName_vIndex5 = _recordZuobiao(winReel5, 4,);
+      // 记录中奖坐标
+      Map<String, List<int>> winLines = {};
+      kImgName_vIndex1.forEach((tmpkey1, value1) {
+        String key1 = value1.keys.first;
+
+        ssLogggg("=tmp:$key1===");
+        if (key1 == slotNumWild) {
+          kImgName_vIndex2.forEach((tmpkey2, value2) {
+            String key2 = value2.keys.first;
+            if (key2 == slotNumWild) {
+              kImgName_vIndex3.forEach((tmpkey3, value3) {
+                String key3 = value3.keys.first;
+                String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                winLines[winKey] = [
+                  value1.values.first,
+                  value2.values.first,
+                  value3.values.first,
+                ];
+                if (key3 == slotNumWild) {
+                  // 记录中奖
+
+                  kImgName_vIndex4.forEach((tmpkey4, value4) {
+                    String key4 = value4.keys.first;
+                    if (key4 == slotNumWild) {
+                      // 记录中奖
+                      winLines[winKey] = [
+                        value1.values.first,
+                        value2.values.first,
+                        value3.values.first,
+                        value4.values.first,
+                      ];
+                      kImgName_vIndex5.forEach((tmpkey5, value5) {
+                        String key5 = value5.keys.first;
+                        // 记录中奖
+                        winLines[winKey] = [
+                          value1.values.first,
+                          value2.values.first,
+                          value3.values.first,
+                          value4.values.first,
+                          value5.values.first,
+                        ];
+                      });
+                    } else {
+                      // 记录中奖
+                      winLines[winKey] = [
+                        value1.values.first,
+                        value2.values.first,
+                        value3.values.first,
+                        value4.values.first,
+                      ];
+                      kImgName_vIndex5.forEach((tmpkey5, value5) {
+                        String key5 = value5.keys.first;
+                        if (key5 == slotNumWild || key5 == key4) {
+                          // 记录中奖
+                          winLines[winKey] = [
+                            value1.values.first,
+                            value2.values.first,
+                            value3.values.first,
+                            value4.values.first,
+                            value5.values.first,
+                          ];
+                        }
+                      });
+                    }
+                  });
+                } else {
+                  // 记录中奖
+                  kImgName_vIndex4.forEach((tmpkey4, value4) {
+                    String key4 = value4.keys.first;
+                    if (key4 == slotNumWild || key4 == key3) {
+                      winLines[winKey] = [
+                        value1.values.first,
+                        value2.values.first,
+                        value3.values.first,
+                        value4.values.first,
+                      ];
+                      // 记录中奖
+                      kImgName_vIndex5.forEach((tmpkey5, value5) {
+                        String key5 = value5.keys.first;
+                        if (key5 == slotNumWild || key5 == key3) {
+                          winLines[winKey] = [
+                            value1.values.first,
+                            value2.values.first,
+                            value3.values.first,
+                            value4.values.first,
+                            value5.values.first,
+                          ];
+                          // 记录中奖
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            } else {
+              kImgName_vIndex3.forEach((tmpkey3, value3) {
+                String key3 = value3.keys.first;
+                if (key3 == slotNumWild || key3 == key2) {
+                  // 记录中奖
+
+                  String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                  winLines[winKey] = [
+                    value1.values.first,
+                    value2.values.first,
+                    value3.values.first,
+                  ];
+                  kImgName_vIndex4.forEach((tmpkey4, value4) {
+                    String key4 = value4.keys.first;
+                    if (key4 == slotNumWild || key4 == key2) {
+                      // 记录中奖
+                      winLines[winKey] = [
+                        value1.values.first,
+                        value2.values.first,
+                        value3.values.first,
+                        value4.values.first,
+                      ];
+                      kImgName_vIndex5.forEach((tmpkey5, value5) {
+                        String key5 = value5.keys.first;
+                        if (key5 == slotNumWild || key5 == key2) {
+                          // 记录中奖
+                          winLines[winKey] = [
+                            value1.values.first,
+                            value2.values.first,
+                            value3.values.first,
+                            value4.values.first,
+                            value5.values.first,
+                          ];
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            }
+          });
+        } else {
+          kImgName_vIndex2.forEach((tmpkey2, value2) {
+            String key2 = value2.keys.first;
+            if (key2 == slotNumWild || key2 == key1) {
+              kImgName_vIndex3.forEach((tmpkey3, value3) {
+                String key3 = value3.keys.first;
+                if (key3 == slotNumWild || key3 == key1) {
+                  // 记录中奖
+                  String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                  winLines[winKey] = [value1.values.first, value2.values.first, value3.values.first];
+                  kImgName_vIndex4.forEach((tmpkey4, value4) {
+                    String key4 = value4.keys.first;
+                    if (key4 == slotNumWild || key4 == key1) {
+                      // 记录中奖
+                      winLines[winKey] = [value1.values.first, value2.values.first, value3.values.first, value4.values.first];
+                      kImgName_vIndex5.forEach((tmpkey5, value5) {
+                        String key5 = value5.keys.first;
+                        if (key5 == slotNumWild || key5 == key1) {
+                          // 记录中奖
+                          winLines[winKey] = [
+                            value1.values.first,
+                            value2.values.first,
+                            value3.values.first,
+                            value4.values.first,
+                            value5.values.first,
+                          ];
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+
+      ssLogggg("rollerImgs win lines:$kImgName_vIndex1");
+      ssLogggg("rollerImgs win lines:$kImgName_vIndex2");
+      ssLogggg("rollerImgs win lines:$kImgName_vIndex3");
+      ssLogggg("rollerImgs win lines:$kImgName_vIndex4");
+      ssLogggg("rollerImgs win lines:$kImgName_vIndex5");
+      ssLogggg("rollerImgs win lines:$winLines");
+      // 原来的图案
     }
 
     preReel1.setRange(start, end, winReel1);
@@ -179,8 +383,9 @@ class MainController extends GetxController {
   Completer<int>? result;
   int cunt = 0;
   var hasScrollerEnd = false.obs;
+
   onStartRoller() async {
-    if(hasScrollerEnd.value){
+    if (hasScrollerEnd.value) {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
     }
@@ -212,6 +417,7 @@ class MainController extends GetxController {
     _resetRoller(thirdRoller);
     _resetRoller(fourthRoller);
     _resetRoller(fiveRoller);
+
     hasScrollerEnd.value = false;
     // await Future.delayed(Duration(milliseconds: 1000));
     // showFreeSpin.value = true;

@@ -70,12 +70,43 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                   ],
                 ),
               ),
+
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _rollerForground(0),
+                    _rollerForground(1),
+                    _rollerForground(2),
+                    _rollerForground(3),
+                    _rollerForground(4),
+                  ],
+                ),
+              ),
             ],
           ),
         );
       },
     );
   }
+
+  _rollerForground(int index){
+    int iiii = index+1+0*5;
+    int iiii2 = index+1+(1)*5;
+    int iiii3 = index+1+(2)*5;
+    return Container(
+      width: slotsItemW,
+      height: slotsItemW*3,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+        Text("$iiii"),
+        Text("$iiii2"),
+        Text("$iiii3"),
+      ],),
+    );
+  }
+
 
   rollerWidget({required Key key, required int index}) {
     return RollerList(
