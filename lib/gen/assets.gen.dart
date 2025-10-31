@@ -241,43 +241,58 @@ class $AssetsImgAvatarGen {
 class $AssetsImgSlotsGen {
   const $AssetsImgSlotsGen();
 
-  /// File path: assets/img/slots/slots_bouns.png
-  AssetGenImage get slotsBouns =>
-      const AssetGenImage('assets/img/slots/slots_bouns.png');
+  /// File path: assets/img/slots/slots_h1.png
+  AssetGenImage get slotsH1 =>
+      const AssetGenImage('assets/img/slots/slots_h1.png');
 
-  /// File path: assets/img/slots/slots_j.png
-  AssetGenImage get slotsJ =>
-      const AssetGenImage('assets/img/slots/slots_j.png');
+  /// File path: assets/img/slots/slots_h2.png
+  AssetGenImage get slotsH2 =>
+      const AssetGenImage('assets/img/slots/slots_h2.png');
 
-  /// File path: assets/img/slots/slots_k.png
-  AssetGenImage get slotsK =>
-      const AssetGenImage('assets/img/slots/slots_k.png');
+  /// File path: assets/img/slots/slots_h3.png
+  AssetGenImage get slotsH3 =>
+      const AssetGenImage('assets/img/slots/slots_h3.png');
 
-  /// File path: assets/img/slots/slots_lingdang.png
-  AssetGenImage get slotsLingdang =>
-      const AssetGenImage('assets/img/slots/slots_lingdang.png');
+  /// File path: assets/img/slots/slots_key.png
+  AssetGenImage get slotsKey =>
+      const AssetGenImage('assets/img/slots/slots_key.png');
 
-  /// File path: assets/img/slots/slots_shengdanshu.png
-  AssetGenImage get slotsShengdanshu =>
-      const AssetGenImage('assets/img/slots/slots_shengdanshu.png');
+  /// File path: assets/img/slots/slots_l1.png
+  AssetGenImage get slotsL1 =>
+      const AssetGenImage('assets/img/slots/slots_l1.png');
+
+  /// File path: assets/img/slots/slots_l2.png
+  AssetGenImage get slotsL2 =>
+      const AssetGenImage('assets/img/slots/slots_l2.png');
+
+  /// File path: assets/img/slots/slots_m1.png
+  AssetGenImage get slotsM1 =>
+      const AssetGenImage('assets/img/slots/slots_m1.png');
+
+  /// File path: assets/img/slots/slots_m2.png
+  AssetGenImage get slotsM2 =>
+      const AssetGenImage('assets/img/slots/slots_m2.png');
+
+  /// File path: assets/img/slots/slots_scatter.png
+  AssetGenImage get slotsScatter =>
+      const AssetGenImage('assets/img/slots/slots_scatter.png');
 
   /// File path: assets/img/slots/slots_wild.png
   AssetGenImage get slotsWild =>
       const AssetGenImage('assets/img/slots/slots_wild.png');
 
-  /// File path: assets/img/slots/slots_xuehua.png
-  AssetGenImage get slotsXuehua =>
-      const AssetGenImage('assets/img/slots/slots_xuehua.png');
-
   /// List of all assets
   List<AssetGenImage> get values => [
-    slotsBouns,
-    slotsJ,
-    slotsK,
-    slotsLingdang,
-    slotsShengdanshu,
+    slotsH1,
+    slotsH2,
+    slotsH3,
+    slotsKey,
+    slotsL1,
+    slotsL2,
+    slotsM1,
+    slotsM2,
+    slotsScatter,
     slotsWild,
-    slotsXuehua,
   ];
 }
 

@@ -33,6 +33,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
 
   double slotsH = 250.h;
   final double slotsItemW = ScreenUtil().screenWidth / 6;
+  double get slotsItemH => slotsH / 3;
 
   @override
   void initState() {
@@ -71,18 +72,18 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                 ),
               ),
 
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _rollerForground(0),
-                    _rollerForground(1),
-                    _rollerForground(2),
-                    _rollerForground(3),
-                    _rollerForground(4),
-                  ],
-                ),
-              ),
+              // Center(
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       _rollerForground(0),
+              //       _rollerForground(1),
+              //       _rollerForground(2),
+              //       _rollerForground(3),
+              //       _rollerForground(4),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         );
@@ -119,7 +120,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       visibilityRadius: 1,
       scrollType: ScrollType.goesOnlyBottom,
       width: slotsItemW,
-      // height: 150.h,
+      height: slotsItemH,
       initialIndex: 1,
       enabled: false,
       // dividerThickness: 8,
@@ -134,7 +135,8 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   List<Widget> getSlots(int index) {
-    double width = slotsH / 3.5;
+    double width = slotsItemW;
+    double height = slotsItemH;
     List<Widget> result = [];
     double dd = 8.w;
     double dd2 = 4.w;
@@ -142,13 +144,13 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     int length = imgs.length;
     for (int i = 0; i < length; i++) {
       Widget tmpC = Container(
-        // color: Colors.green,
-        // child: Image.asset(MainController.kName_vImgName[imgs[i]]!, width: width - dd, height: width - dd),
-        child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
+        color: Colors.blueAccent.withValues(alpha: 0),
+        child: Image.asset(MainController.kName_vImgName[imgs[i]]!, width: width - dd, height: height - dd),
+        // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
       Widget child = Container(
         width: width - dd2,
-        height: width - dd2,
+        height: height - dd2,
         padding: EdgeInsets.all(4.0),
         color: Colors.transparent,
         child: Center(child: tmpC),
@@ -156,8 +158,8 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       result.add(
         Container(
           width: width,
-          height: width,
-          // color: Colors.green,
+          height: height,
+          color: Colors.green.withValues(alpha: 0),
           child: i % 2 == 0 && false
               ? Center(
                   child: ZoMonoCromeBorder(
@@ -176,13 +178,4 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     return result;
   }
 
-  List<String> slotsI = [
-    Assets.img.slots.slotsBouns.path,
-    Assets.img.slots.slotsJ.path,
-    Assets.img.slots.slotsK.path,
-    Assets.img.slots.slotsXuehua.path,
-    Assets.img.slots.slotsLingdang.path,
-    Assets.img.slots.slotsShengdanshu.path,
-    Assets.img.slots.slotsWild.path,
-  ];
 }

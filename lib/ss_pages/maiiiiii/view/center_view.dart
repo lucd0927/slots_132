@@ -56,38 +56,41 @@ class CenterView extends StatelessWidget {
                         // offset: Offset(maxW*(1-value), maxH*(1-value)),
                         offset: Offset(-maxW * (1 - value), 0),
                         child: Stack(
+                          clipBehavior: Clip.none,
                           children: [
                             Positioned(
                               left: 16.w,
                               top: 30.h,
-                              child: AnimatedCrossFade(
-                                firstChild: leftWidget(),
-                                secondChild: SizedBox(
-                                  width: 58.h,
-                                  height: 64.h,
-                                ),
-                                crossFadeState:
-                                    MainController.to.showFreeSpin.value
-                                    ? CrossFadeState.showSecond
-                                    : CrossFadeState.showFirst,
-                                duration: Duration(milliseconds: 200),
-                              ),
+                              // child: AnimatedCrossFade(
+                              //   firstChild: leftWidget(),
+                              //   secondChild: SizedBox(
+                              //     width: 58.h,
+                              //     height: 64.h,
+                              //   ),
+                              //   crossFadeState:
+                              //       MainController.to.showFreeSpin.value
+                              //       ? CrossFadeState.showSecond
+                              //       : CrossFadeState.showFirst,
+                              //   duration: Duration(milliseconds: 200),
+                              // ),
+                              child:  leftWidget(),
                             ),
                             Positioned(
                               right: 0,
                               top: 10.h,
-                              child: AnimatedCrossFade(
-                                firstChild: rightWidget(),
-                                secondChild: SizedBox(
-                                  width: 58.h,
-                                  height: 64.h,
-                                ),
-                                crossFadeState:
-                                    MainController.to.showFreeSpin.value
-                                    ? CrossFadeState.showSecond
-                                    : CrossFadeState.showFirst,
-                                duration: Duration(milliseconds: 200),
-                              ),
+                              // child: AnimatedCrossFade(
+                              //   firstChild: rightWidget(),
+                              //   secondChild: SizedBox(
+                              //     width: 58.h,
+                              //     height: 64.h,
+                              //   ),
+                              //   crossFadeState:
+                              //       MainController.to.showFreeSpin.value
+                              //       ? CrossFadeState.showSecond
+                              //       : CrossFadeState.showFirst,
+                              //   duration: Duration(milliseconds: 200),
+                              // ),
+                              child: rightWidget(),
                             ),
                           ],
                         ),
@@ -210,6 +213,7 @@ class CenterView extends StatelessWidget {
         Container(
           width: 58.h,
           height: 64.h,
+          // clipBehavior: Clip.none,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -229,10 +233,10 @@ class CenterView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: -10.w,
-                right: -10.w,
+                left: -4.w,
+                right: -4.w,
                 bottom: 0,
-                child: Center(child: SSTxtGraBorder(text: "10:10:00")),
+                child: Center(child: SSTxtGraBorder(text: "10:10:00000000")),
               ),
             ],
           ),

@@ -52,15 +52,15 @@ class MainController extends GetxController {
   ];
   static final Map<String, String> kName_vImgName = {
     slotNumWild: Assets.img.slots.slotsWild.path,
-    slotNumH1: Assets.img.slots.slotsJ.path,
-    slotNumH2: Assets.img.slots.slotsK.path,
-    slotNumH3: Assets.img.slots.slotsXuehua.path,
-    slotNumM1: Assets.img.slots.slotsLingdang.path,
-    slotNumM2: Assets.img.slots.slotsShengdanshu.path,
-    slotNumL1: Assets.img.slots.slotsXuehua.path,
-    slotNumL2: Assets.img.slots.slotsXuehua.path,
-    slotNumKEY: Assets.img.slots.slotsBouns.path,
-    slotNumSCATTER: Assets.img.slots.slotsBouns.path,
+    slotNumH1: Assets.img.slots.slotsH1.path,
+    slotNumH2: Assets.img.slots.slotsH2.path,
+    slotNumH3: Assets.img.slots.slotsH3.path,
+    slotNumM1: Assets.img.slots.slotsM1.path,
+    slotNumM2: Assets.img.slots.slotsM2.path,
+    slotNumL1: Assets.img.slots.slotsL1.path,
+    slotNumL2: Assets.img.slots.slotsL2.path,
+    slotNumKEY: Assets.img.slots.slotsKey.path,
+    slotNumSCATTER: Assets.img.slots.slotsScatter.path,
   };
 
   List<List<String>> rollerImgs = [
@@ -489,7 +489,7 @@ class MainController extends GetxController {
 
     hasScrollerEnd.value = false;
     // await Future.delayed(Duration(milliseconds: 1000));
-    // showFreeSpin.value = true;
+    showFreeSpin.value = true;
   }
 
   _changeChild(GlobalKey<RollerListState> key, int index) {
