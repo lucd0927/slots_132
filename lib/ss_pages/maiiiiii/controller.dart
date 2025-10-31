@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
@@ -149,12 +150,12 @@ class MainController extends GetxController {
   initRoller5({bool hasFirstInit = false}) {
     // 中奖图案
     List<String> winReel1 = SSReelStrips.reel1ImgName();
-
     List<String> winReel2 = SSReelStrips.reel2ImgName();
     List<String> winReel3 = SSReelStrips.reel3ImgName();
     List<String> winReel4 = SSReelStrips.reel4ImgName();
     List<String> winReel5 = SSReelStrips.reel5ImgName();
 
+    // 原来的图案
     List<String> preReel1 = rollerImgs[0];
     List<String> preReel2 = rollerImgs[1];
     List<String> preReel3 = rollerImgs[2];
@@ -179,190 +180,7 @@ class MainController extends GetxController {
       preReel5.setRange(0, end, preWinReel5);
       ssLogggg("rollerImgs change first-end:0-$end:$rollerImgs");
     }else{
-      Map<String, Map<String, int>> kImgName_vIndex1 = _recordZuobiao(winReel1, 0,);
-      Map<String, Map<String, int>> kImgName_vIndex2 = _recordZuobiao(winReel2, 1,);
-      Map<String, Map<String, int>> kImgName_vIndex3 = _recordZuobiao(winReel3, 2,);
-      Map<String, Map<String, int>> kImgName_vIndex4 = _recordZuobiao(winReel4, 3,);
-      Map<String, Map<String, int>> kImgName_vIndex5 = _recordZuobiao(winReel5, 4,);
-      // 记录中奖坐标
-      Map<String, List<int>> winLines = {};
-      kImgName_vIndex1.forEach((tmpkey1, value1) {
-        String key1 = value1.keys.first;
 
-        ssLogggg("=tmp:$key1===");
-        if (key1 == slotNumWild) {
-          kImgName_vIndex2.forEach((tmpkey2, value2) {
-            String key2 = value2.keys.first;
-            if (key2 == slotNumWild) {
-              kImgName_vIndex3.forEach((tmpkey3, value3) {
-                String key3 = value3.keys.first;
-                String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
-                winLines[winKey] = [
-                  value1.values.first,
-                  value2.values.first,
-                  value3.values.first,
-                ];
-                if (key3 == slotNumWild) {
-                  // 记录中奖
-
-                  kImgName_vIndex4.forEach((tmpkey4, value4) {
-                    String key4 = value4.keys.first;
-                    if (key4 == slotNumWild) {
-                      // 记录中奖
-                      winLines[winKey] = [
-                        value1.values.first,
-                        value2.values.first,
-                        value3.values.first,
-                        value4.values.first,
-                      ];
-                      kImgName_vIndex5.forEach((tmpkey5, value5) {
-                        String key5 = value5.keys.first;
-                        // 记录中奖
-                        winLines[winKey] = [
-                          value1.values.first,
-                          value2.values.first,
-                          value3.values.first,
-                          value4.values.first,
-                          value5.values.first,
-                        ];
-                      });
-                    } else {
-                      // 记录中奖
-                      winLines[winKey] = [
-                        value1.values.first,
-                        value2.values.first,
-                        value3.values.first,
-                        value4.values.first,
-                      ];
-                      kImgName_vIndex5.forEach((tmpkey5, value5) {
-                        String key5 = value5.keys.first;
-                        if (key5 == slotNumWild || key5 == key4) {
-                          // 记录中奖
-                          winLines[winKey] = [
-                            value1.values.first,
-                            value2.values.first,
-                            value3.values.first,
-                            value4.values.first,
-                            value5.values.first,
-                          ];
-                        }
-                      });
-                    }
-                  });
-                } else {
-                  // 记录中奖
-                  kImgName_vIndex4.forEach((tmpkey4, value4) {
-                    String key4 = value4.keys.first;
-                    if (key4 == slotNumWild || key4 == key3) {
-                      winLines[winKey] = [
-                        value1.values.first,
-                        value2.values.first,
-                        value3.values.first,
-                        value4.values.first,
-                      ];
-                      // 记录中奖
-                      kImgName_vIndex5.forEach((tmpkey5, value5) {
-                        String key5 = value5.keys.first;
-                        if (key5 == slotNumWild || key5 == key3) {
-                          winLines[winKey] = [
-                            value1.values.first,
-                            value2.values.first,
-                            value3.values.first,
-                            value4.values.first,
-                            value5.values.first,
-                          ];
-                          // 记录中奖
-                        }
-                      });
-                    }
-                  });
-                }
-              });
-            } else {
-              kImgName_vIndex3.forEach((tmpkey3, value3) {
-                String key3 = value3.keys.first;
-                if (key3 == slotNumWild || key3 == key2) {
-                  // 记录中奖
-
-                  String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
-                  winLines[winKey] = [
-                    value1.values.first,
-                    value2.values.first,
-                    value3.values.first,
-                  ];
-                  kImgName_vIndex4.forEach((tmpkey4, value4) {
-                    String key4 = value4.keys.first;
-                    if (key4 == slotNumWild || key4 == key2) {
-                      // 记录中奖
-                      winLines[winKey] = [
-                        value1.values.first,
-                        value2.values.first,
-                        value3.values.first,
-                        value4.values.first,
-                      ];
-                      kImgName_vIndex5.forEach((tmpkey5, value5) {
-                        String key5 = value5.keys.first;
-                        if (key5 == slotNumWild || key5 == key2) {
-                          // 记录中奖
-                          winLines[winKey] = [
-                            value1.values.first,
-                            value2.values.first,
-                            value3.values.first,
-                            value4.values.first,
-                            value5.values.first,
-                          ];
-                        }
-                      });
-                    }
-                  });
-                }
-              });
-            }
-          });
-        } else {
-          kImgName_vIndex2.forEach((tmpkey2, value2) {
-            String key2 = value2.keys.first;
-            if (key2 == slotNumWild || key2 == key1) {
-              kImgName_vIndex3.forEach((tmpkey3, value3) {
-                String key3 = value3.keys.first;
-                if (key3 == slotNumWild || key3 == key1) {
-                  // 记录中奖
-                  String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
-                  winLines[winKey] = [value1.values.first, value2.values.first, value3.values.first];
-                  kImgName_vIndex4.forEach((tmpkey4, value4) {
-                    String key4 = value4.keys.first;
-                    if (key4 == slotNumWild || key4 == key1) {
-                      // 记录中奖
-                      winLines[winKey] = [value1.values.first, value2.values.first, value3.values.first, value4.values.first];
-                      kImgName_vIndex5.forEach((tmpkey5, value5) {
-                        String key5 = value5.keys.first;
-                        if (key5 == slotNumWild || key5 == key1) {
-                          // 记录中奖
-                          winLines[winKey] = [
-                            value1.values.first,
-                            value2.values.first,
-                            value3.values.first,
-                            value4.values.first,
-                            value5.values.first,
-                          ];
-                        }
-                      });
-                    }
-                  });
-                }
-              });
-            }
-          });
-        }
-      });
-
-      ssLogggg("rollerImgs win lines:$kImgName_vIndex1");
-      ssLogggg("rollerImgs win lines:$kImgName_vIndex2");
-      ssLogggg("rollerImgs win lines:$kImgName_vIndex3");
-      ssLogggg("rollerImgs win lines:$kImgName_vIndex4");
-      ssLogggg("rollerImgs win lines:$kImgName_vIndex5");
-      ssLogggg("rollerImgs win lines:$winLines");
-      // 原来的图案
     }
 
     preReel1.setRange(start, end, winReel1);
@@ -371,8 +189,259 @@ class MainController extends GetxController {
     preReel4.setRange(start, end, winReel4);
     preReel5.setRange(start, end, winReel5);
 
+
+    Map<String, Map<String, int>> kImgName_vIndex1 = _recordZuobiao(winReel1, 0,);
+    Map<String, Map<String, int>> kImgName_vIndex2 = _recordZuobiao(winReel2, 1,);
+    Map<String, Map<String, int>> kImgName_vIndex3 = _recordZuobiao(winReel3, 2,);
+    Map<String, Map<String, int>> kImgName_vIndex4 = _recordZuobiao(winReel4, 3,);
+    Map<String, Map<String, int>> kImgName_vIndex5 = _recordZuobiao(winReel5, 4,);
+    // 记录中奖坐标
+    Map<String, List<List<int>>> winLines = {};
+
+
+    kImgName_vIndex1.forEach((tmpkey1, value1) {
+      String key1 = value1.keys.first;
+
+      ssLogggg("=tmp:$key1===");
+      if (key1 == slotNumWild) {
+        kImgName_vIndex2.forEach((tmpkey2, value2) {
+          String key2 = value2.keys.first;
+          if (key2 == slotNumWild) {
+            kImgName_vIndex3.forEach((tmpkey3, value3) {
+              List<List<int>> tmpWins= [];
+              String key3 = value3.keys.first;
+              String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+              List<int> tmp= [
+                value1.values.first,
+                value2.values.first,
+                value3.values.first,
+              ];
+              tmpWins.add(tmp);
+              winLines[winKey] =tmpWins;
+
+              if (key3 == slotNumWild) {
+                // 记录中奖
+
+                kImgName_vIndex4.forEach((tmpkey4, value4) {
+                  String key4 = value4.keys.first;
+                  if (key4 == slotNumWild) {
+                    // 记录中奖
+                    List<int> tmp=  [
+                      value1.values.first,
+                      value2.values.first,
+                      value3.values.first,
+                      value4.values.first,
+                    ];
+                    tmpWins.add(tmp);
+                    kImgName_vIndex5.forEach((tmpkey5, value5) {
+                      String key5 = value5.keys.first;
+                      // 记录中奖
+                      List<int> tmp = [
+                        value1.values.first,
+                        value2.values.first,
+                        value3.values.first,
+                        value4.values.first,
+                        value5.values.first,
+                      ];
+                      tmpWins.add(tmp);
+                    });
+                  } else {
+                    // 记录中奖
+                    List<int> tmp = [
+                      value1.values.first,
+                      value2.values.first,
+                      value3.values.first,
+                      value4.values.first,
+                    ];
+                    tmpWins.add(tmp);
+                    kImgName_vIndex5.forEach((tmpkey5, value5) {
+                      String key5 = value5.keys.first;
+                      if (key5 == slotNumWild || key5 == key4) {
+                        // 记录中奖
+                        List<int> tmp = [
+                          value1.values.first,
+                          value2.values.first,
+                          value3.values.first,
+                          value4.values.first,
+                          value5.values.first,
+                        ];
+                        tmpWins.add(tmp);
+                      }
+                    });
+                  }
+                });
+              } else {
+                // 记录中奖
+                kImgName_vIndex4.forEach((tmpkey4, value4) {
+                  String key4 = value4.keys.first;
+                  if (key4 == slotNumWild || key4 == key3) {
+                    List<int> tmp= [
+                      value1.values.first,
+                      value2.values.first,
+                      value3.values.first,
+                      value4.values.first,
+                    ];
+                    tmpWins.add(tmp);
+                    // 记录中奖
+                    kImgName_vIndex5.forEach((tmpkey5, value5) {
+                      String key5 = value5.keys.first;
+                      if (key5 == slotNumWild || key5 == key3) {
+                        List<int> tmp = [
+                          value1.values.first,
+                          value2.values.first,
+                          value3.values.first,
+                          value4.values.first,
+                          value5.values.first,
+                        ];
+                        tmpWins.add(tmp);
+                        // 记录中奖
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          } else {
+            kImgName_vIndex3.forEach((tmpkey3, value3) {
+              List<List<int>> tmpWins= [];
+              String key3 = value3.keys.first;
+              if (key3 == slotNumWild || key3 == key2) {
+                // 记录中奖
+
+                String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                List<int> tmp  = [
+                  value1.values.first,
+                  value2.values.first,
+                  value3.values.first,
+                ];
+                winLines[winKey] =tmpWins;
+                tmpWins.add(tmp);
+                kImgName_vIndex4.forEach((tmpkey4, value4) {
+                  String key4 = value4.keys.first;
+                  if (key4 == slotNumWild || key4 == key2) {
+                    // 记录中奖
+                    List<int> tmp  = [
+                      value1.values.first,
+                      value2.values.first,
+                      value3.values.first,
+                      value4.values.first,
+                    ];
+                    tmpWins.add(tmp);
+                    kImgName_vIndex5.forEach((tmpkey5, value5) {
+                      String key5 = value5.keys.first;
+                      if (key5 == slotNumWild || key5 == key2) {
+                        // 记录中奖
+                        List<int> tmp= [
+                          value1.values.first,
+                          value2.values.first,
+                          value3.values.first,
+                          value4.values.first,
+                          value5.values.first,
+                        ];
+                        tmpWins.add(tmp);
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      } else {
+        kImgName_vIndex2.forEach((tmpkey2, value2) {
+          String key2 = value2.keys.first;
+          if (key2 == slotNumWild || key2 == key1) {
+            kImgName_vIndex3.forEach((tmpkey3, value3) {
+              String key3 = value3.keys.first;
+              List<List<int>> tmpWins= [];
+              if (key3 == slotNumWild || key3 == key1) {
+                // 记录中奖
+                String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                List<int> tmp= [value1.values.first, value2.values.first, value3.values.first];
+                tmpWins.add(tmp);
+                winLines[winKey] =tmpWins;
+                kImgName_vIndex4.forEach((tmpkey4, value4) {
+                  String key4 = value4.keys.first;
+                  if (key4 == slotNumWild || key4 == key1) {
+                    // 记录中奖
+                    List<int> tmp= [value1.values.first, value2.values.first, value3.values.first, value4.values.first];
+                    tmpWins.add(tmp);
+                    kImgName_vIndex5.forEach((tmpkey5, value5) {
+                      String key5 = value5.keys.first;
+                      if (key5 == slotNumWild || key5 == key1) {
+                        // 记录中奖
+                        List<int> tmp = [
+                          value1.values.first,
+                          value2.values.first,
+                          value3.values.first,
+                          value4.values.first,
+                          value5.values.first,
+                        ];
+                        tmpWins.add(tmp);
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+
+    ssLogggg("rollerImgs win lines:$kImgName_vIndex1");
+    ssLogggg("rollerImgs win lines:$kImgName_vIndex2");
+    ssLogggg("rollerImgs win lines:$kImgName_vIndex3");
+    ssLogggg("rollerImgs win lines:$kImgName_vIndex4");
+    ssLogggg("rollerImgs win lines:$kImgName_vIndex5");
+    ssLogggg("rollerImgs win lines last:$winLines");
     ssLogggg("rollerImgs after:$rollerImgs");
+    var paylines = SSPaylines.paylines();
+    if(paylines is List<List<int>>){
+      for (var values in winLines.values) {
+        List tmpDddd = findAllLongestLists(values);
+        for (var ddddaaa in tmpDddd) {
+         bool container =  containsPrefix(paylines,ddddaaa);
+         if(container){
+           ssLogggg("=====win lines last=ddddaaa:$ddddaaa");
+         }
+        }
+
+      }
+    }
+
+    
   }
+  // 找出二维数组中最长的数组
+  List<List<T>> findAllLongestLists<T>(List<List<T>> lists) {
+    if (lists.isEmpty) return [];
+
+    // 1️⃣ 找出最大长度
+    final maxLen = lists.fold<int>(
+      0,
+          (prev, list) => list.length > prev ? list.length : prev,
+    );
+
+    // 2️⃣ 过滤出所有长度等于 maxLen 的数组
+    return lists.where((list) => list.length == maxLen).toList();
+  }
+
+ // 在一个二维数组中，判断是否存在一个内部数组，它的前几个元素与目标数组完全一致。
+  bool containsPrefix<T>(List<List<T>> data, List<T> target) {
+    if (target.isEmpty) return false;
+
+    return data.any((list) {
+      // 如果内部数组长度比目标短，肯定不可能匹配
+      if (list.length < target.length) return false;
+
+      // 从头开始比较 target 长度的部分
+      for (int i = 0; i < target.length; i++) {
+        if (list[i] != target[i]) return false;
+      }
+      return true;
+    });
+  }
+
 
   @override
   void onInit() {

@@ -67,11 +67,11 @@ class SSPaylines {
       ssLogggg("$TGA===onlineJson error:$e");
     }
     _onlinJsonnnnn = localJson;
-    ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
+    // ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
     return localJson;
   }
 
-  static paylines() {
+  static List paylines() {
     _onlineJson();
     var tmpData = _onlinJsonnnnn?['paylines'];
     if (tmpData is List) {

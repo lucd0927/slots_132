@@ -97,13 +97,18 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     return Container(
       width: slotsItemW,
       height: slotsItemW*3,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-        Text("$iiii"),
-        Text("$iiii2"),
-        Text("$iiii3"),
-      ],),
+      child: DefaultTextStyle(
+        style: TextStyle(
+          color: Colors.blueAccent.withValues(alpha: 1)
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          Text("$iiii"),
+          Text("$iiii2"),
+          Text("$iiii3"),
+        ],),
+      ),
     );
   }
 
