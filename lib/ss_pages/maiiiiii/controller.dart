@@ -14,7 +14,14 @@ import '../../jc_gj/log.dart';
 class MainController extends GetxController {
   static MainController get to => Get.find();
 
+  @override
+  void onInit() {
+    super.onInit();
+    initRoller5(hasFirstInit: true);
+  }
+
   var showFreeSpin = false.obs;
+  var showWinLines = false.obs;
 
   final firstRoller = GlobalKey<RollerListState>();
   final secondRoller = GlobalKey<RollerListState>();
@@ -22,11 +29,7 @@ class MainController extends GetxController {
   final fourthRoller = GlobalKey<RollerListState>();
   final fiveRoller = GlobalKey<RollerListState>();
   final slotMachineKey = GlobalKey<SSSlotMachineState>();
-  int? first;
-  int? second;
-  int? third;
-  int? fourth;
-  int? five;
+
   static const String slotNumWild = "WILD";
   static const String slotNumH1 = "H1";
   static const String slotNumH2 = "H2";
@@ -129,18 +132,18 @@ class MainController extends GetxController {
     ],
   ];
 
-  int slotsColumn = 5;
-  String splitSymbol = "*";
+  final int slotsColumn = 5;
 
   Map<String, Map<String, int>> _recordZuobiao(List<String> keys, int column) {
     Map<String, Map<String, int>> tmp = {};
     int length = keys.length;
     ssLogggg("=_recordZuobiao==length:$length==keys:$keys");
     for (int i = 0; i < length; i++) {
-      String key = "${keys[i]}";
-      String tmpKkkk = "$i";
+
 
       int value = 1 + column + i * slotsColumn;
+      String key = "${keys[i]}";
+      String tmpKkkk = "$value";
       Map<String, int> tmpppp = {key: value};
       tmp[tmpKkkk] = tmpppp;
     }
@@ -403,13 +406,18 @@ class MainController extends GetxController {
         for (var ddddaaa in tmpDddd) {
          bool container =  containsPrefix(paylines,ddddaaa);
          if(container){
+           if(ddddaaa is List){
+             for (var zuobiao in ddddaaa) {
+               winZuobiao.add(zuobiao);
+             }
+           }
            ssLogggg("=====win lines last=ddddaaa:$ddddaaa");
          }
         }
 
       }
     }
-
+    ssLogggg("=====win lines last=winZuobiao:$winZuobiao");
     
   }
   // 找出二维数组中最长的数组
@@ -443,12 +451,8 @@ class MainController extends GetxController {
   }
 
 
-  @override
-  void onInit() {
-    super.onInit();
-    initRoller5(hasFirstInit: true);
-  }
 
+  Set<int> winZuobiao = {};
   Completer<int>? result;
   int cunt = 0;
   var hasScrollerEnd = false.obs;
@@ -460,6 +464,7 @@ class MainController extends GetxController {
     }
     ssLogggg("==onStartRoller==start=");
     showFreeSpin.value = false;
+    showWinLines.value = false;
     cunt = 0;
     hasScrollerEnd.value = true;
     result = Completer();
@@ -470,7 +475,7 @@ class MainController extends GetxController {
     await _roller(fiveRoller);
     await result?.future;
     await Future.delayed(Duration(milliseconds: 1000));
-
+    showWinLines.value = true;
     ssLogggg("==onStartRoller==end=cunt:$cunt");
 
     initRoller5();
