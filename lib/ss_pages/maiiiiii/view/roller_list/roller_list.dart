@@ -47,8 +47,8 @@ class RollerList extends StatefulWidget {
     this.scrollType = ScrollType.bothDirections,
     Key? key,
     this.onScrollStarted,
-  })  : assert(items != null || (builder != null && length != null)),
-        super(key: key);
+  }) : assert(items != null || (builder != null && length != null)),
+       super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -64,7 +64,9 @@ class RollerListState extends State<RollerList> {
   bool _oneTimeAction = false;
   double? _itemHeight;
   double? _itemWidth;
-  int get _length => widget.length ?? widget.items!.length;
+
+  int get _length => widget.length ?? tmpChildItems.length;
+  List<Widget> tmpChildItems = [];
 
   @override
   void initState() {
@@ -74,6 +76,7 @@ class RollerListState extends State<RollerList> {
     } else if (widget.scrollType == ScrollType.goesOnlyTop) {
       _scrollPhysics = OneDirectionScrollPhysics(goesOnlyBottom: false);
     }
+    tmpChildItems = widget.items ?? [];
     _itemWidth = widget.width;
     _itemHeight = widget.height;
     _currentIndex = widget.initialIndex ?? 0;
@@ -102,16 +105,19 @@ class RollerListState extends State<RollerList> {
   Widget build(BuildContext context) {
     if (_itemHeight == null || _itemWidth == null) {
       if (widget.builder == null) {
-        return widget.items![selectedIndex];
+        if (tmpChildItems.length > selectedIndex) {
+          return tmpChildItems[selectedIndex];
+        }
+        return SizedBox();
       } else {
         return widget.builder!(context, _currentIndex);
       }
     } else {
-      final Widget list = NotificationListener(
+      Widget list = NotificationListener(
         onNotification: _onNotification,
         child: Container(
           // color: Colors.red,
-          height: _itemHeight! * (1 + widget.visibilityRadius * 2) ,
+          height: _itemHeight! * (1 + widget.visibilityRadius * 2),
           width: _itemWidth,
           child: Stack(
             children: <Widget>[
@@ -120,10 +126,11 @@ class RollerListState extends State<RollerList> {
                   physics: _scrollPhysics,
                   controller: scrollController,
                   itemExtent: _itemHeight,
-                  itemBuilder: widget.builder ??
+                  itemBuilder:
+                      widget.builder ??
                       (BuildContext context, int index) {
-                        int inListIndex = index % widget.items!.length;
-                        return widget.items![inListIndex];
+                        int inListIndex = index % tmpChildItems.length;
+                        return tmpChildItems[inListIndex];
                       },
                 ),
               ),
@@ -154,9 +161,7 @@ class RollerListState extends State<RollerList> {
       if (widget.enabled) {
         return list;
       } else {
-        return AbsorbPointer(
-          child: list,
-        );
+        return AbsorbPointer(child: list);
       }
     }
   }
@@ -181,8 +186,9 @@ class RollerListState extends State<RollerList> {
           _programedJump = true;
           double jumpLength =
               (_currentIndex - widget.visibilityRadius) * _itemHeight!;
-          WidgetsBinding.instance
-              .addPostFrameCallback((duration) => smoothScrollTo(jumpLength));
+          WidgetsBinding.instance.addPostFrameCallback(
+            (duration) => smoothScrollTo(jumpLength),
+          );
         }
         return true;
       }
@@ -199,35 +205,45 @@ class RollerListState extends State<RollerList> {
 
   ///scroll to [scrollLength] position in dp. Animation parameters [curve] and
   ///[duration] can be provided.
-  void smoothScrollTo(double scrollLength,
-      {Curve curve = Curves.easeIn,
-      Duration duration = const Duration(milliseconds: 150)}) {
-    scrollController.animateTo(
-      scrollLength,
-      curve: curve,
-      duration: duration,
-    );
+  Future smoothScrollTo(
+    double scrollLength, {
+    Curve curve = Curves.easeIn,
+    Duration duration = const Duration(milliseconds: 150),
+  }) async{
+    return  scrollController.animateTo(scrollLength, curve: curve, duration: duration);
   }
 
   ///scroll to item [index]. [index] can be outside of [items] values. So it
   ///can animate multiple rotations of the wheel. Animation parameters [curve] and
   //  ///[duration] can be provided.
-   Future smoothScrollToIndex(int index,
-      {Curve curve = Curves.easeIn,
-      Duration duration = const Duration(milliseconds: 150)}) async{
-    return scrollController.animateTo(
+  Future smoothScrollToIndex(
+    int index, {
+    Curve curve = Curves.easeIn,
+    Duration duration = const Duration(milliseconds: 150),
+  }) async {
+    return await scrollController.animateTo(
       _getOffsetForSelection(index),
       curve: curve,
       duration: duration,
     );
   }
 
-   smoothJumpToIndex(int index,
-      {Curve curve = Curves.easeIn,
-        Duration duration = const Duration(milliseconds: 150)}) {
-    return scrollController.jumpTo(
-      _getOffsetForSelection(index),
-    );
+  changeChildItem(List<Widget> children){
+    if(children.isNotEmpty){
+      setState(() {
+        tmpChildItems = children;
+      });
+    }
+
+
+  }
+
+  smoothJumpToIndex(
+    int index, {
+    Curve curve = Curves.easeIn,
+    Duration duration = const Duration(milliseconds: 150),
+  }) {
+    return scrollController.jumpTo(_getOffsetForSelection(index));
   }
 
   double _getOffsetForSelection(int index) {
@@ -237,7 +253,8 @@ class RollerListState extends State<RollerList> {
   int _findSelectedItem(double offset) {
     int indexOffset =
         (offset + widget.visibilityRadius * _itemHeight!) ~/ _itemHeight!;
-    int borderMovement = (offset +
+    int borderMovement =
+        (offset +
             widget.visibilityRadius * _itemHeight! -
             indexOffset * _itemHeight!) ~/
         (_itemHeight! / 2);

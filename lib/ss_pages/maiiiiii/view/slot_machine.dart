@@ -16,10 +16,10 @@ class SSSlotMachine extends StatefulWidget {
   const SSSlotMachine({super.key});
 
   @override
-  State<SSSlotMachine> createState() => _SSSlotMachineState();
+  State<SSSlotMachine> createState() => SSSlotMachineState();
 }
 
-class _SSSlotMachineState extends State<SSSlotMachine> {
+class SSSlotMachineState extends State<SSSlotMachine> {
   final firstRoller = MainController.to.firstRoller;
   final secondRoller = MainController.to.secondRoller;
   final thirdRoller = MainController.to.thirdRoller;
@@ -31,34 +31,25 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
   int? fourth;
   int? five;
 
-  onStartRoller() async {
-    await _roller(firstRoller);
-    await _roller(secondRoller);
-    await _roller(thirdRoller);
-    await _roller(fourthRoller);
-    await _roller(fiveRoller);
-  }
-
-  _roller(GlobalKey<RollerListState> key) async {
-    int random = Random().nextInt(100) + 30;
-    key.currentState
-        ?.smoothScrollToIndex(
-          random,
-          duration: Duration(milliseconds: 2000),
-          curve: Curves.easeInCubic,
-        )
-        .then((v) {
-          ssLogggg("==smoothScrollToIndex end====");
-        });
-    await Future.delayed(Duration(milliseconds: 200));
-  }
-
   double slotsH = 250.h;
   final double slotsItemW = ScreenUtil().screenWidth / 6;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  update(){
+    setState(() {
+
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    ssLogggg("==slot machine build==");
     return LayoutBuilder(
+
       builder: (context, c) {
         slotsH = c.maxHeight;
         return Container(
@@ -72,10 +63,10 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     rollerWidget(key: firstRoller, index: 0),
-                    rollerWidget(key: secondRoller, index: 3),
+                    rollerWidget(key: secondRoller, index: 1),
                     rollerWidget(key: thirdRoller, index: 2),
-                    rollerWidget(key: fourthRoller, index: 1),
-                    rollerWidget(key: fiveRoller, index: 5),
+                    rollerWidget(key: fourthRoller, index: 3),
+                    rollerWidget(key: fiveRoller, index: 4),
                   ],
                 ),
               ),
@@ -88,39 +79,42 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
 
   rollerWidget({required Key key, required int index}) {
     return RollerList(
-      items: _getSlots(),
+      items: getSlots(index),
       visibilityRadius: 1,
       scrollType: ScrollType.goesOnlyBottom,
       width: slotsItemW,
       // height: 150.h,
-      initialIndex: index,
+      initialIndex: 1,
       enabled: false,
       // dividerThickness: 8,
       key: key,
       onSelectedIndexChanged: (value) {
         ssLogggg("=onSelectedIndexChanged===value:$value");
-        setState(() {
-          first = value;
-        });
+        // setState(() {
+        //   first = value;
+        // });
       },
     );
   }
 
-  List<Widget> _getSlots() {
+  List<Widget> getSlots(int index) {
     double width = slotsH / 3.5;
     List<Widget> result = [];
     double dd = 8.w;
     double dd2 = 4.w;
-    for (int i = 0; i <= 6; i++) {
+    List<String> imgs = MainController.to.rollerImgs[index];
+    int length = imgs.length;
+    for (int i = 0; i < length; i++) {
       Widget tmpC = Container(
         // color: Colors.green,
-        child: Image.asset(slotsI[i], width: width - dd, height: width - dd),
+        // child: Image.asset(MainController.kName_vImgName[imgs[i]]!, width: width - dd, height: width - dd),
+        child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
       Widget child = Container(
         width: width - dd2,
         height: width - dd2,
         padding: EdgeInsets.all(4.0),
-        color:  Colors.transparent,
+        color: Colors.transparent,
         child: Center(child: tmpC),
       );
       result.add(
@@ -128,7 +122,7 @@ class _SSSlotMachineState extends State<SSSlotMachine> {
           width: width,
           height: width,
           // color: Colors.green,
-          child: i % 2 == 0
+          child: i % 2 == 0 && false
               ? Center(
                   child: ZoMonoCromeBorder(
                     trackBorderColor: Colors.yellow,

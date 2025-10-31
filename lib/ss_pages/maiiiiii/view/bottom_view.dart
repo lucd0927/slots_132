@@ -128,7 +128,7 @@ class BottomView extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 2.w,),
+          SizedBox(width: 2.w),
           Container(
             width: 30.w,
             height: 30.h,
@@ -251,7 +251,7 @@ class BottomView extends StatelessWidget {
       width: double.infinity,
       color: Colors.green.withValues(alpha: 0.0),
       height: 240.h,
-      child: SSSlotMachine(),
+      child: SSSlotMachine(key: MainController.to.slotMachineKey),
     );
   }
 
