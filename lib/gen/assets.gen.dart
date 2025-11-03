@@ -11,6 +11,25 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAuddddGen {
+  const $AssetsAuddddGen();
+
+  /// File path: assets/audddd/bg.mp3
+  String get bg => 'assets/audddd/bg.mp3';
+
+  /// File path: assets/audddd/coin.mp3
+  String get coin => 'assets/audddd/coin.mp3';
+
+  /// File path: assets/audddd/scratch1.mp3
+  String get scratch1 => 'assets/audddd/scratch1.mp3';
+
+  /// File path: assets/audddd/scratch2.mp3
+  String get scratch2 => 'assets/audddd/scratch2.mp3';
+
+  /// List of all assets
+  List<String> get values => [bg, coin, scratch1, scratch2];
+}
+
 class $AssetsDonghuaGen {
   const $AssetsDonghuaGen();
 
@@ -31,12 +50,20 @@ class $AssetsImgGen {
   AssetGenImage get avatarBottom =>
       const AssetGenImage('assets/img/avatar_bottom.png');
 
+  /// File path: assets/img/btn_setting.png
+  AssetGenImage get btnSetting =>
+      const AssetGenImage('assets/img/btn_setting.png');
+
   /// File path: assets/img/btn_spin.png
   AssetGenImage get btnSpin => const AssetGenImage('assets/img/btn_spin.png');
 
   /// File path: assets/img/btn_txt_spin.png
   AssetGenImage get btnTxtSpin =>
       const AssetGenImage('assets/img/btn_txt_spin.png');
+
+  /// File path: assets/img/close_setting.png
+  AssetGenImage get closeSetting =>
+      const AssetGenImage('assets/img/close_setting.png');
 
   /// File path: assets/img/main_addmoney.png
   AssetGenImage get mainAddmoney =>
@@ -137,6 +164,17 @@ class $AssetsImgGen {
   /// File path: assets/img/money.png
   AssetGenImage get money => const AssetGenImage('assets/img/money.png');
 
+  /// File path: assets/img/setti_audio.png
+  AssetGenImage get settiAudio =>
+      const AssetGenImage('assets/img/setti_audio.png');
+
+  /// File path: assets/img/setti_bg.png
+  AssetGenImage get settiBg => const AssetGenImage('assets/img/setti_bg.png');
+
+  /// File path: assets/img/setti_music.png
+  AssetGenImage get settiMusic =>
+      const AssetGenImage('assets/img/setti_music.png');
+
   /// File path: assets/img/slot1.png
   AssetGenImage get slot1 => const AssetGenImage('assets/img/slot1.png');
 
@@ -150,8 +188,10 @@ class $AssetsImgGen {
   List<AssetGenImage> get values => [
     avatarBg,
     avatarBottom,
+    btnSetting,
     btnSpin,
     btnTxtSpin,
+    closeSetting,
     mainAddmoney,
     mainBg,
     mainBonusBg,
@@ -178,6 +218,9 @@ class $AssetsImgGen {
     mainWheel,
     menu,
     money,
+    settiAudio,
+    settiBg,
+    settiMusic,
     slot1,
     tCashapp,
   ];
@@ -299,6 +342,7 @@ class $AssetsImgSlotsGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsAuddddGen audddd = $AssetsAuddddGen();
   static const $AssetsDonghuaGen donghua = $AssetsDonghuaGen();
   static const $AssetsImgGen img = $AssetsImgGen();
 }

@@ -184,7 +184,7 @@ class Source2FlyTarget extends StatefulWidget {
 
 class _Source2FlyTargetState extends State<Source2FlyTarget>
     with TickerProviderStateMixin {
-  final List<_FlyingItem> _items = [];
+  final List<_FlyModel> _items = [];
 
   @override
   void initState() {
@@ -236,7 +236,7 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
         weight: 6,
       ),
     ]).animate(controller);
-    final flyingItem = _FlyingItem(
+    final flyingItem = _FlyModel(
       widget: widgetToFly,
       animation: animation,
       controller: controller,
@@ -305,26 +305,15 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
   }
 }
 
-class _FlyingItem {
+class _FlyModel {
   final Widget widget;
   final Animation<Offset> animation;
   final AnimationController controller;
 
-  _FlyingItem({
+  _FlyModel({
     required this.widget,
     required this.animation,
     required this.controller,
   });
 }
 
-// class _FlyingItem {
-//   final Widget widget;
-//   final Animation<double> animation;
-//   final AnimationController controller;
-//
-//   _FlyingItem({
-//     required this.widget,
-//     required this.animation,
-//     required this.controller,
-//   });
-// }

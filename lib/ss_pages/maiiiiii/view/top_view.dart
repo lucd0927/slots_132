@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
+import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
 
 class TopView extends StatelessWidget {
   const TopView({super.key});
@@ -150,7 +151,10 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-    overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
+    // overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
+
+    OverlaySettinnn().show();
+
   }
 
   topMoney() {

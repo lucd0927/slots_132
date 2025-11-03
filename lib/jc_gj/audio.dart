@@ -5,15 +5,15 @@ import 'package:slots_132/jc_hive/sshive.dart';
 
 import 'log.dart';
 
-const qianzhui = "assets/";
-// SWAudioPlayer bgGGAudioPlayer = SWAudioPlayer(
-//   audioKey: SWAudioPlayer.kAudioPlayerBg,
-//   audioPath: "${qianzhui}audio/bg.mp3",
-// );
-// SWAudioPlayer btnGGAudioPlayer = SWAudioPlayer(
-//   audioKey: SWAudioPlayer.kAudioPlayerScratch,
-//   audioPath: "${qianzhui}audio/scratch2.mp3",
-// );
+const prevVvvv = "assets/";
+SSAudio bgMusic = SSAudio(
+  audioKey: SSAudio.kAudioPlayerBg,
+  audioPath: "${prevVvvv}audddd/bg.mp3",
+);
+SSAudio btnAudio = SSAudio(
+  audioKey: SSAudio.kAudioPlayerScratch,
+  audioPath: "${prevVvvv}audddd/scratch2.mp3",
+);
 
 class SSAudio {
   String audioKey;
@@ -21,8 +21,8 @@ class SSAudio {
 
   SSAudio({required this.audioKey, required this.audioPath});
 
-  static const String kAudioPlayerBg = "sdfgsd";
-  static const String kAudioPlayerScratch = "fgktykukdghsdfg";
+  static const String kAudioPlayerBg = "dfghdhg";
+  static const String kAudioPlayerScratch = "sdfgsdfgsdf";
 
   bool _hasOn = true;
 
