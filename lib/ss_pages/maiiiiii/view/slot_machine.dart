@@ -101,7 +101,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     int iiii2 = index+1+(1)*5;
     int iiii3 = index+1+(2)*5;
 
-    var data = MainController.to.winZuobiao;
+    var data = MainController.to.winCurZuobiao;
     return Container(
       width: slotsItemW,
       height: slotsItemW*3,
@@ -149,7 +149,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     double dd2 = 4.w;
     List<String> imgs = MainController.to.rollerImgs[index];
     int length = imgs.length;
-    var data = MainController.to.winZuobiao;
+    var data = MainController.to.winCurZuobiao;
     for (int i = 0; i < length; i++) {
       int iiii = index+1+i*5;
       bool showWin = data.contains(iiii) && MainController.to.showWinLines.value;

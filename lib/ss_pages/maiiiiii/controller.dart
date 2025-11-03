@@ -139,13 +139,25 @@ class MainController extends GetxController {
     int length = keys.length;
     ssLogggg("=_recordZuobiao==length:$length==keys:$keys");
     for (int i = 0; i < length; i++) {
-
-
       int value = 1 + column + i * slotsColumn;
       String key = "${keys[i]}";
       String tmpKkkk = "$value";
       Map<String, int> tmpppp = {key: value};
       tmp[tmpKkkk] = tmpppp;
+    }
+    return tmp;
+  }
+
+  Map<int, String> _recordWinZuobiaoCategory(List<String> keys, int column) {
+    Map<int, String> tmp = {};
+    int length = keys.length;
+    ssLogggg("=_recordZuobiao==length:$length==keys:$keys");
+    for (int i = 0; i < length; i++) {
+      int value = 1 + column + i * slotsColumn;
+      String key = "${keys[i]}";
+      String tmpKkkk = "$value";
+      Map<String, int> tmpppp = {key: value};
+      tmp[value] = key;
     }
     return tmp;
   }
@@ -182,25 +194,38 @@ class MainController extends GetxController {
       preReel4.setRange(0, end, preWinReel4);
       preReel5.setRange(0, end, preWinReel5);
       ssLogggg("rollerImgs change first-end:0-$end:$rollerImgs");
-    }else{
-
-    }
-
+    } else {}
+    // 设置最后的几个中奖图
     preReel1.setRange(start, end, winReel1);
     preReel2.setRange(start, end, winReel2);
     preReel3.setRange(start, end, winReel3);
     preReel4.setRange(start, end, winReel4);
     preReel5.setRange(start, end, winReel5);
 
+    // 整复杂了，只需要记录<int,String> 坐标，类型
+    Map<String, Map<String, int>> kImgName_vIndex1 = _recordZuobiao(
+      winReel1,
+      0,
+    );
+    Map<String, Map<String, int>> kImgName_vIndex2 = _recordZuobiao(
+      winReel2,
+      1,
+    );
+    Map<String, Map<String, int>> kImgName_vIndex3 = _recordZuobiao(
+      winReel3,
+      2,
+    );
+    Map<String, Map<String, int>> kImgName_vIndex4 = _recordZuobiao(
+      winReel4,
+      3,
+    );
+    Map<String, Map<String, int>> kImgName_vIndex5 = _recordZuobiao(
+      winReel5,
+      4,
+    );
 
-    Map<String, Map<String, int>> kImgName_vIndex1 = _recordZuobiao(winReel1, 0,);
-    Map<String, Map<String, int>> kImgName_vIndex2 = _recordZuobiao(winReel2, 1,);
-    Map<String, Map<String, int>> kImgName_vIndex3 = _recordZuobiao(winReel3, 2,);
-    Map<String, Map<String, int>> kImgName_vIndex4 = _recordZuobiao(winReel4, 3,);
-    Map<String, Map<String, int>> kImgName_vIndex5 = _recordZuobiao(winReel5, 4,);
     // 记录中奖坐标
     Map<String, List<List<int>>> winLines = {};
-
 
     kImgName_vIndex1.forEach((tmpkey1, value1) {
       String key1 = value1.keys.first;
@@ -211,16 +236,17 @@ class MainController extends GetxController {
           String key2 = value2.keys.first;
           if (key2 == slotNumWild) {
             kImgName_vIndex3.forEach((tmpkey3, value3) {
-              List<List<int>> tmpWins= [];
+              List<List<int>> tmpWins = [];
               String key3 = value3.keys.first;
-              String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
-              List<int> tmp= [
+              String winKey =
+                  "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+              List<int> tmp = [
                 value1.values.first,
                 value2.values.first,
                 value3.values.first,
               ];
               tmpWins.add(tmp);
-              winLines[winKey] =tmpWins;
+              winLines[winKey] = tmpWins;
 
               if (key3 == slotNumWild) {
                 // 记录中奖
@@ -229,7 +255,7 @@ class MainController extends GetxController {
                   String key4 = value4.keys.first;
                   if (key4 == slotNumWild) {
                     // 记录中奖
-                    List<int> tmp=  [
+                    List<int> tmp = [
                       value1.values.first,
                       value2.values.first,
                       value3.values.first,
@@ -278,7 +304,7 @@ class MainController extends GetxController {
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
                   if (key4 == slotNumWild || key4 == key3) {
-                    List<int> tmp= [
+                    List<int> tmp = [
                       value1.values.first,
                       value2.values.first,
                       value3.values.first,
@@ -306,24 +332,25 @@ class MainController extends GetxController {
             });
           } else {
             kImgName_vIndex3.forEach((tmpkey3, value3) {
-              List<List<int>> tmpWins= [];
+              List<List<int>> tmpWins = [];
               String key3 = value3.keys.first;
               if (key3 == slotNumWild || key3 == key2) {
                 // 记录中奖
 
-                String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
-                List<int> tmp  = [
+                String winKey =
+                    "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                List<int> tmp = [
                   value1.values.first,
                   value2.values.first,
                   value3.values.first,
                 ];
-                winLines[winKey] =tmpWins;
+                winLines[winKey] = tmpWins;
                 tmpWins.add(tmp);
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
                   if (key4 == slotNumWild || key4 == key2) {
                     // 记录中奖
-                    List<int> tmp  = [
+                    List<int> tmp = [
                       value1.values.first,
                       value2.values.first,
                       value3.values.first,
@@ -334,7 +361,7 @@ class MainController extends GetxController {
                       String key5 = value5.keys.first;
                       if (key5 == slotNumWild || key5 == key2) {
                         // 记录中奖
-                        List<int> tmp= [
+                        List<int> tmp = [
                           value1.values.first,
                           value2.values.first,
                           value3.values.first,
@@ -356,18 +383,28 @@ class MainController extends GetxController {
           if (key2 == slotNumWild || key2 == key1) {
             kImgName_vIndex3.forEach((tmpkey3, value3) {
               String key3 = value3.keys.first;
-              List<List<int>> tmpWins= [];
+              List<List<int>> tmpWins = [];
               if (key3 == slotNumWild || key3 == key1) {
                 // 记录中奖
-                String winKey = "${value1.values.first}_${value2.values.first}_${value3.values.first}";
-                List<int> tmp= [value1.values.first, value2.values.first, value3.values.first];
+                String winKey =
+                    "${value1.values.first}_${value2.values.first}_${value3.values.first}";
+                List<int> tmp = [
+                  value1.values.first,
+                  value2.values.first,
+                  value3.values.first,
+                ];
                 tmpWins.add(tmp);
-                winLines[winKey] =tmpWins;
+                winLines[winKey] = tmpWins;
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
                   if (key4 == slotNumWild || key4 == key1) {
                     // 记录中奖
-                    List<int> tmp= [value1.values.first, value2.values.first, value3.values.first, value4.values.first];
+                    List<int> tmp = [
+                      value1.values.first,
+                      value2.values.first,
+                      value3.values.first,
+                      value4.values.first,
+                    ];
                     tmpWins.add(tmp);
                     kImgName_vIndex5.forEach((tmpkey5, value5) {
                       String key5 = value5.keys.first;
@@ -399,27 +436,71 @@ class MainController extends GetxController {
     ssLogggg("rollerImgs win lines:$kImgName_vIndex5");
     ssLogggg("rollerImgs win lines last:$winLines");
     ssLogggg("rollerImgs after:$rollerImgs");
+    // 记录坐标对应的类型
+    Map<int, String> kZuobiao_vCategory = {};
+    Map<int, String> kZuobiao_vCategory1 = _recordWinZuobiaoCategory(
+      winReel1,
+      0,
+    );
+    Map<int, String> kZuobiao_vCategory2 = _recordWinZuobiaoCategory(
+      winReel2,
+      1,
+    );
+    Map<int, String> kZuobiao_vCategory3 = _recordWinZuobiaoCategory(
+      winReel3,
+      2,
+    );
+    Map<int, String> kZuobiao_vCategory4 = _recordWinZuobiaoCategory(
+      winReel4,
+      3,
+    );
+    Map<int, String> kZuobiao_vCategory5 = _recordWinZuobiaoCategory(
+      winReel5,
+      4,
+    );
+    kZuobiao_vCategory.addAll(kZuobiao_vCategory1);
+    kZuobiao_vCategory.addAll(kZuobiao_vCategory2);
+    kZuobiao_vCategory.addAll(kZuobiao_vCategory3);
+    kZuobiao_vCategory.addAll(kZuobiao_vCategory4);
+    kZuobiao_vCategory.addAll(kZuobiao_vCategory5);
+    ssLogggg("rollerImgs zuobiao_category:$kZuobiao_vCategory");
     var paylines = SSPaylines.paylines();
-    if(paylines is List<List<int>>){
+    winNextZuobiao = {};
+    winNextCategoryLines = [];
+    if (paylines is List<List<int>>) {
       for (var values in winLines.values) {
+        // 筛选当前数组中最长的数组，可以是多个一样长的数组线路
         List tmpDddd = findAllLongestLists(values);
         for (var ddddaaa in tmpDddd) {
-         bool container =  containsPrefix(paylines,ddddaaa);
-         if(container){
-           if(ddddaaa is List){
-             for (var zuobiao in ddddaaa) {
-               winZuobiao.add(zuobiao);
-             }
-           }
-           ssLogggg("=====win lines last=ddddaaa:$ddddaaa");
-         }
+          // 是否再给的中奖线路上
+          bool container = containsPrefix(paylines, ddddaaa);
+          if (container) {
+            if (ddddaaa is List<int>) {
+              Map<String, List<int>> tmp = {};
+              String key = "";
+              for (var zuobiao in ddddaaa) {
+                winNextZuobiao.add(zuobiao);
+                bool result = kZuobiao_vCategory.containsKey(zuobiao);
+                if (result) {
+                  var value = kZuobiao_vCategory[zuobiao] ?? "";
+                  if (value.isNotEmpty &&
+                      value != slotNumWild &&
+                      value != slotNumSCATTER) {
+                    key = value;
+                  }
+                }
+              }
+              tmp[key] = ddddaaa;
+              winNextCategoryLines.add(tmp);
+              ssLogggg("=====win lines last=下次中奖线路:$ddddaaa");
+            }
+          }
         }
-
       }
     }
-    ssLogggg("=====win lines last=winZuobiao:$winZuobiao");
-    
+    ssLogggg("=====win lines last=winNextCategoryLines:$winNextCategoryLines");
   }
+
   // 找出二维数组中最长的数组
   List<List<T>> findAllLongestLists<T>(List<List<T>> lists) {
     if (lists.isEmpty) return [];
@@ -427,14 +508,14 @@ class MainController extends GetxController {
     // 1️⃣ 找出最大长度
     final maxLen = lists.fold<int>(
       0,
-          (prev, list) => list.length > prev ? list.length : prev,
+      (prev, list) => list.length > prev ? list.length : prev,
     );
 
     // 2️⃣ 过滤出所有长度等于 maxLen 的数组
     return lists.where((list) => list.length == maxLen).toList();
   }
 
- // 在一个二维数组中，判断是否存在一个内部数组，它的前几个元素与目标数组完全一致。
+  // 在一个二维数组中，判断是否存在一个内部数组，它的前几个元素与目标数组完全一致。
   bool containsPrefix<T>(List<List<T>> data, List<T> target) {
     if (target.isEmpty) return false;
 
@@ -450,9 +531,18 @@ class MainController extends GetxController {
     });
   }
 
+  // 当前中奖的坐标
+  Set<int> winCurZuobiao = {};
 
+  // 当前中奖的类型对应的坐标
+  List<Map<String, List<int>>> winCurCategoryLines = [];
 
-  Set<int> winZuobiao = {};
+  // 下一次中奖的坐标
+  Set<int> winNextZuobiao = {};
+
+  // 下一次中奖的类型对应的坐标
+  List<Map<String, List<int>>> winNextCategoryLines = [];
+
   Completer<int>? result;
   int cunt = 0;
   var hasScrollerEnd = false.obs;
@@ -474,10 +564,17 @@ class MainController extends GetxController {
     await _roller(fourthRoller);
     await _roller(fiveRoller);
     await result?.future;
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(Duration(milliseconds: 300));
     showWinLines.value = true;
     ssLogggg("==onStartRoller==end=cunt:$cunt");
-
+    winCurZuobiao = {};
+    for (var v in winNextZuobiao) {
+      winCurZuobiao.add(v);
+    }
+    winCurCategoryLines = [];
+    for (var v in winNextCategoryLines) {
+      winCurCategoryLines.add(v);
+    }
     initRoller5();
 
     _changeChild(firstRoller, 0);
