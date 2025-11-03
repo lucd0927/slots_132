@@ -14,6 +14,9 @@ import '../../jc_gj/log.dart';
 class MainController extends GetxController {
   static MainController get to => Get.find();
 
+
+
+
   @override
   void onInit() {
     super.onInit();
@@ -22,6 +25,7 @@ class MainController extends GetxController {
 
   var showFreeSpin = false.obs;
   var showWinLines = false.obs;
+  var hasScrollerEnd = false.obs;
 
   final firstRoller = GlobalKey<RollerListState>();
   final secondRoller = GlobalKey<RollerListState>();
@@ -545,7 +549,7 @@ class MainController extends GetxController {
 
   Completer<int>? result;
   int cunt = 0;
-  var hasScrollerEnd = false.obs;
+
 
   onStartRoller() async {
     if (hasScrollerEnd.value) {

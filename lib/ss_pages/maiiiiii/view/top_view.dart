@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -179,7 +180,7 @@ class TopView extends StatelessWidget {
         child: SSAniiiiCount(
           duration: Duration(milliseconds: 500),
           fractionDigits: 2,
-          prefix: "\$",
+          prefix: SSCountry.curGuojiaFuhao(),
           value: 1000,
           // pass in a value like 2014
           textStyle: TextStyle(

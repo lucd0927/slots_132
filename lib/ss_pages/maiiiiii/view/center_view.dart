@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
-
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'glow_border/glow_border.dart';
 
 class CenterView extends StatelessWidget {
@@ -73,7 +75,7 @@ class CenterView extends StatelessWidget {
                               //       : CrossFadeState.showFirst,
                               //   duration: Duration(milliseconds: 200),
                               // ),
-                              child:  leftWidget(),
+                              child: leftWidget(),
                             ),
                             Positioned(
                               right: 0,
@@ -144,6 +146,11 @@ class CenterView extends StatelessWidget {
   }
 
   Column rightWidget() {
+
+    int grandN = 2000;
+    int majorN = 1000;
+    int miniN = 500;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -158,17 +165,21 @@ class CenterView extends StatelessWidget {
                 height: double.infinity,
                 fit: BoxFit.fill,
               ),
-              Center(
-                child: ShiningEffect(
-                  shineColor: Colors.white,
-                  opacity: 1,
-                  borderRadius: 100,
-                  shineWidth: 0.1,
-                  duration: const Duration(seconds: 2),
-                  child: Container(
-                    width: 100.w,
-                    height: 20.h,
-                    // child: Text("--------"),
+              Positioned(
+                top: 20.h,
+                bottom: 18.h,
+                left: 16.w,
+                right: 0,
+                child: Container(
+                  color: Colors.blueAccent.withValues(alpha: 0.0),
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Center(
+                    child: SSTxtBorder(
+                      text: "${SSCountry.curGuojiaFuhao()}$grandN",
+                      fontColor: Color(0xff6AFF00),
+                      fontSize: 16.sp,
+                    ),
                   ),
                 ),
               ),
@@ -186,6 +197,24 @@ class CenterView extends StatelessWidget {
                 height: double.infinity,
                 fit: BoxFit.fill,
               ),
+              Positioned(
+                top: 20.h,
+                bottom: 18.h,
+                left: 16.w,
+                right: 0,
+                child: Container(
+                  color: Colors.blueAccent.withValues(alpha: 0.0),
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Center(
+                    child: SSTxtBorder(
+                      text: "${SSCountry.curGuojiaFuhao()}$majorN",
+                      fontColor: Color(0xff6AFF00),
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -199,6 +228,24 @@ class CenterView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+              ),
+              Positioned(
+                top: 20.h,
+                bottom: 18.h,
+                left: 30.w,
+                right: 0,
+                child: Container(
+                  color: Colors.red.withValues(alpha: 0),
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Center(
+                    child: SSTxtBorder(
+                      text: "${SSCountry.curGuojiaFuhao()}$miniN",
+                      fontColor: Color(0xff6AFF00),
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

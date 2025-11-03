@@ -270,6 +270,10 @@ class $AssetsImgAvatarGen {
   AssetGenImage get avatar6 =>
       const AssetGenImage('assets/img/avatar/avatar6.png');
 
+  /// File path: assets/img/avatar/avatar_d.png
+  AssetGenImage get avatarD =>
+      const AssetGenImage('assets/img/avatar/avatar_d.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     avatar1,
@@ -278,6 +282,7 @@ class $AssetsImgAvatarGen {
     avatar4,
     avatar5,
     avatar6,
+    avatarD,
   ];
 }
 

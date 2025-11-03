@@ -193,14 +193,14 @@ class _SettingWidgetState extends State<SettingWidget> {
           img: Assets.img.settiAudio.path,
           txt: "Sound",
           onChange: _onBgMusic,
-          positive: positive,
+          positive: positive2,
         ),
         SizedBox(width: 20.w),
         _audioWidgetItem(
           img: Assets.img.settiMusic.path,
           txt: "Music",
           onChange: _onBtnMusic,
-          positive: positive2,
+          positive: positive ,
         ),
       ],
     );

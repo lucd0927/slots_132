@@ -11,7 +11,7 @@ class SSTxtGraBorder extends StatelessWidget {
   final FontWeight fontWeight;
   final double strokeWidth;
   final String text;
-
+  final String? fontFamily;
 
   final bool showShadow;
 
@@ -19,7 +19,7 @@ class SSTxtGraBorder extends StatelessWidget {
     super.key,
     required this.text,
     this.gradient,
-    this.fontSize ,
+    this.fontSize,
     this.strokeWidth = 1,
     this.fontWeight = FontWeight.w400,
     this.fontColor = Colors.white,
@@ -28,26 +28,26 @@ class SSTxtGraBorder extends StatelessWidget {
 
     this.showShadow = false,
     this.fontStyle,
-
+    this.fontFamily,
   });
 
   @override
   Widget build(BuildContext context) {
     var tmpGradient =
         gradient ??
-            LinearGradient(
-              colors: [
-                Color(0xffFFD70F),
-                Color(0xffF0A00D),
-                Color(0xffEAFF00),
-                Color(0xffFFD500),
-                Color(0xffFDDE51),
-              ],
-              end: Alignment.bottomCenter,
-              begin: Alignment.topCenter,
-            );
+        LinearGradient(
+          colors: [
+            Color(0xffFFD70F),
+            Color(0xffF0A00D),
+            Color(0xffEAFF00),
+            Color(0xffFFD500),
+            Color(0xffFDDE51),
+          ],
+          end: Alignment.bottomCenter,
+          begin: Alignment.topCenter,
+        );
 
-    double tmpfontSize = fontSize??14.sp;
+    double tmpfontSize = fontSize ?? 14.sp;
     return Stack(
       children: [
         // 边框层
@@ -58,23 +58,24 @@ class SSTxtGraBorder extends StatelessWidget {
           style: TextStyle(
             shadows: showShadow
                 ? [
-              // Shadow(color: Colors.black,offset: Offset(2, 2),blurRadius: 5),
-              Shadow(
-                color: strokeColor,
-                offset: Offset(-1.sp, 3.sp),
-                blurRadius: 0,
-              ),
-              Shadow(
-                color: strokeColor,
-                offset: Offset(1.sp, 3.sp),
-                blurRadius: 0,
-              ),
-            ]
+                    // Shadow(color: Colors.black,offset: Offset(2, 2),blurRadius: 5),
+                    Shadow(
+                      color: strokeColor,
+                      offset: Offset(-1.sp, 3.sp),
+                      blurRadius: 0,
+                    ),
+                    Shadow(
+                      color: strokeColor,
+                      offset: Offset(1.sp, 3.sp),
+                      blurRadius: 0,
+                    ),
+                  ]
                 : null,
             fontWeight: fontWeight,
             height: height,
             fontSize: tmpfontSize,
             fontStyle: fontStyle,
+            fontFamily: fontFamily,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth
@@ -92,6 +93,7 @@ class SSTxtGraBorder extends StatelessWidget {
               fontStyle: fontStyle,
               color: fontColor,
               fontWeight: fontWeight,
+              fontFamily: fontFamily,
               height: height,
             ),
           ),

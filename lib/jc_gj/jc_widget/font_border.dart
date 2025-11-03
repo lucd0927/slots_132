@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:auto_size_text_plus/auto_size_text_plus.dart';
+
 class SSTxtBorder extends StatelessWidget {
   const SSTxtBorder({
     super.key,
@@ -13,11 +14,13 @@ class SSTxtBorder extends StatelessWidget {
 
     this.fontColor,
     this.fontStyle,
-
+    this.fontFamily,
   });
+
   final FontStyle? fontStyle;
 
   final String text;
+  final String? fontFamily;
   final double? height;
 
   final double? fontSize;
@@ -40,8 +43,8 @@ class SSTxtBorder extends StatelessWidget {
             fontSize: fontSize ?? 16.sp,
             overflow: TextOverflow.visible,
             fontStyle: fontStyle,
-
-            height: height??1,
+            fontFamily: fontFamily,
+            height: height ?? 1,
             // backgroundColor: TBColor.ffFFFFFF,
             foreground: Paint()
               ..strokeWidth = strokeWidth ?? 2.w
@@ -60,8 +63,9 @@ class SSTxtBorder extends StatelessWidget {
             fontWeight: fontWeight ?? FontWeight.w600,
             fontSize: fontSize ?? 16.sp,
             overflow: TextOverflow.visible,
-            color: fontColor ??  Color(0xffffffff),
-            height: height??1,
+            color: fontColor ?? Color(0xffffffff),
+            height: height ?? 1,
+            fontFamily: fontFamily,
             fontStyle: fontStyle,
             // color: TBColor.ff000000,
           ),

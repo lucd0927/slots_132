@@ -9,7 +9,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 
 import 'glow_border/border2.dart';
 

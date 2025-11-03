@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -186,8 +187,9 @@ class BottomView extends StatelessWidget {
                   children: [
                     SizedBox(height: 2.h),
                     SSTxtGraBorder(
-                      text: "Spin",
+                      text: "SPIN",
                       fontSize: 28.sp,
+                      fontFamily: FontFamily.rubik,
                       fontWeight: FontWeight.w700,
                       strokeColor: Color(0xff174726),
                     ),
@@ -196,6 +198,7 @@ class BottomView extends StatelessWidget {
                       "HOLD FOR AUTO",
                       style: TextStyle(
                         fontSize: 10.sp,
+                        fontFamily: FontFamily.rubik,
                         fontWeight: FontWeight.w700,
                         color: Color(0xff2B4735),
                       ),

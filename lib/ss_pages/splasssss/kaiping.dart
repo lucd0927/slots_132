@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -33,11 +34,11 @@ class _SSSplassssState extends State<SSSplassss> {
 
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // AssetImage assetImage6 = AssetImage(Assets.bbb.navQuiz.path);
-      // precacheImage(assetImage6, context);
+      AssetImage assetImage6 = AssetImage(Assets.img.mainBg.path);
+      precacheImage(assetImage6, context);
       //
-      // AssetImage assetImage7 = AssetImage(Assets.bbb.navCash.path);
-      // precacheImage(assetImage7, context);
+      AssetImage assetImage7 = AssetImage(Assets.img.settiBg.path);
+      precacheImage(assetImage7, context);
       // // AssetImage assetImage8 = AssetImage(Assets.bbb.mainSetting.path);
       // // precacheImage(assetImage8, context);
       //
