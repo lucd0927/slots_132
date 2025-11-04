@@ -93,11 +93,13 @@ class _SSMapViewState extends State<SSMapView> {
     _leftC = _controllers.addAndGet();
     _rightC = _controllers.addAndGet();
     _lineC = _controllers.addAndGet();
-    init();
-    scrollTo(jumpIndex);
+    init().then((_){
+      scrollTo(jumpIndex);
+    });
+
   }
 
-  init() {
+  Future init() async{
     leftWidgetChildren = [];
     rightWidgetChildren = [];
     lineWidgetChildren = [];
@@ -107,7 +109,7 @@ class _SSMapViewState extends State<SSMapView> {
       loopMaxN = loopMaxN + v;
     }
     // 获取女精灵总数量
-    int curGirlJinglingN = 10;
+    int curGirlJinglingN = 80;
     // 获取当前最大的循环数,向下取整
     int floor = (curGirlJinglingN / loopMaxN).floor();
     int loopNum = jumpToNextStar.length;
@@ -497,10 +499,12 @@ class BoxGiftModel {
   bool showAdImg;
   final double money;
   final bool hasLock;
+  final bool hasClickCollect;
 
   BoxGiftModel({
     required this.img,
     this.showAdImg = true,
+    this.hasClickCollect = true,
     required this.money,
     required this.hasLock,
   });

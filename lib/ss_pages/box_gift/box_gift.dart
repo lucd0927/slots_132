@@ -16,13 +16,7 @@ class BoxGift extends StatefulWidget {
 class _BoxGiftState extends State<BoxGift> {
   @override
   Widget build(BuildContext context) {
-    final points = [
-      const Offset(100, 80),
-      const Offset(300, 280),
-      const Offset(100, 500),
-      const Offset(320, 720),
-      const Offset(150, 940),
-    ];
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(

@@ -562,11 +562,11 @@ class MainController extends GetxController {
     cunt = 0;
     hasScrollerEnd.value = true;
     result = Completer();
-    await _roller(firstRoller);
-    await _roller(secondRoller);
-    await _roller(thirdRoller);
-    await _roller(fourthRoller);
-    await _roller(fiveRoller);
+    await _roller(firstRoller,0);
+    await _roller(secondRoller,1);
+    await _roller(thirdRoller,2);
+    await _roller(fourthRoller,3);
+    await _roller(fiveRoller,4);
     await result?.future;
     await Future.delayed(Duration(milliseconds: 300));
     showWinLines.value = true;
@@ -609,13 +609,13 @@ class MainController extends GetxController {
     key.currentState?.smoothJumpToIndex(1);
   }
 
-  _roller(GlobalKey<RollerListState> key) async {
+  _roller(GlobalKey<RollerListState> key,int index) async {
     int allImgs = defaultImgName.length;
-    int random = allImgs + (allImgs - 2);
+    int random =  (allImgs - 2);
     key.currentState
         ?.smoothScrollToIndex(
           random,
-          duration: Duration(milliseconds: 600),
+          duration: Duration(milliseconds: index*50+300),
           curve: Curves.easeIn,
           // curve: Curves.easeInQuad,
         )
@@ -628,6 +628,6 @@ class MainController extends GetxController {
             result = null;
           }
         });
-    await Future.delayed(Duration(milliseconds: 20));
+    await Future.delayed(Duration(milliseconds: 50));
   }
 }
