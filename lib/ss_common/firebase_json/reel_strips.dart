@@ -397,23 +397,23 @@ class SSReelStrips {
       // img1 = MainController.slotNumWild;
       // img2 = MainController.slotNumWild;
       // img3 = MainController.slotNumWild;
-      if (img1 == MainController.slotNumWild) {
+      if (img1.contains(MainController.slotNumWild)) {
         img1 = MainController.slotNumWild1;
-        if (img2 == MainController.slotNumWild) {
+        if (img2.contains(MainController.slotNumWild)) {
           img2 = MainController.slotNumWild2;
-          if (img3 == MainController.slotNumWild) {
+          if (img3.contains(MainController.slotNumWild)) {
             img3 = MainController.slotNumWild3;
           }
-        }else if (img3 == MainController.slotNumWild) {
+        }else if (img3.contains(MainController.slotNumWild)) {
           img3 = MainController.slotNumWild2;
         }
 
-      }else if (img2 == MainController.slotNumWild) {
+      }else if (img2.contains(MainController.slotNumWild)) {
         img2 = MainController.slotNumWild1;
-        if (img3 == MainController.slotNumWild) {
+        if (img3.contains(MainController.slotNumWild)) {
           img3 = MainController.slotNumWild2;
         }
-      }else if (img3 == MainController.slotNumWild) {
+      }else if (img3.contains(MainController.slotNumWild)) {
         img3 = MainController.slotNumWild1;
       }
 

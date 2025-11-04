@@ -240,10 +240,10 @@ class MainController extends GetxController {
       String key1 = value1.keys.first;
 
       ssLogggg("=tmp:$key1===");
-      if (key1 == slotNumWild) {
+      if (key1.contains(slotNumWild)) {
         kImgName_vIndex2.forEach((tmpkey2, value2) {
           String key2 = value2.keys.first;
-          if (key2 == slotNumWild) {
+          if (key2.contains(slotNumWild)) {
             kImgName_vIndex3.forEach((tmpkey3, value3) {
               List<List<int>> tmpWins = [];
               String key3 = value3.keys.first;
@@ -257,12 +257,12 @@ class MainController extends GetxController {
               tmpWins.add(tmp);
               winLines[winKey] = tmpWins;
 
-              if (key3 == slotNumWild) {
+              if (key3.contains(slotNumWild)) {
                 // 记录中奖
 
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
-                  if (key4 == slotNumWild) {
+                  if (key4.contains(slotNumWild)) {
                     // 记录中奖
                     List<int> tmp = [
                       value1.values.first,
@@ -294,7 +294,7 @@ class MainController extends GetxController {
                     tmpWins.add(tmp);
                     kImgName_vIndex5.forEach((tmpkey5, value5) {
                       String key5 = value5.keys.first;
-                      if (key5 == slotNumWild || key5 == key4) {
+                      if (key5.contains(slotNumWild) || key5 == key4) {
                         // 记录中奖
                         List<int> tmp = [
                           value1.values.first,
@@ -312,7 +312,7 @@ class MainController extends GetxController {
                 // 记录中奖
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
-                  if (key4 == slotNumWild || key4 == key3) {
+                  if (key4.contains(slotNumWild) || key4 == key3) {
                     List<int> tmp = [
                       value1.values.first,
                       value2.values.first,
@@ -323,7 +323,7 @@ class MainController extends GetxController {
                     // 记录中奖
                     kImgName_vIndex5.forEach((tmpkey5, value5) {
                       String key5 = value5.keys.first;
-                      if (key5 == slotNumWild || key5 == key3) {
+                      if (key5.contains(slotNumWild) || key5 == key3) {
                         List<int> tmp = [
                           value1.values.first,
                           value2.values.first,
@@ -343,7 +343,7 @@ class MainController extends GetxController {
             kImgName_vIndex3.forEach((tmpkey3, value3) {
               List<List<int>> tmpWins = [];
               String key3 = value3.keys.first;
-              if (key3 == slotNumWild || key3 == key2) {
+              if (key3.contains(slotNumWild) || key3 == key2) {
                 // 记录中奖
 
                 String winKey =
@@ -357,7 +357,7 @@ class MainController extends GetxController {
                 tmpWins.add(tmp);
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
-                  if (key4 == slotNumWild || key4 == key2) {
+                  if (key4.contains(slotNumWild) || key4 == key2) {
                     // 记录中奖
                     List<int> tmp = [
                       value1.values.first,
@@ -368,7 +368,7 @@ class MainController extends GetxController {
                     tmpWins.add(tmp);
                     kImgName_vIndex5.forEach((tmpkey5, value5) {
                       String key5 = value5.keys.first;
-                      if (key5 == slotNumWild || key5 == key2) {
+                      if (key5.contains(slotNumWild) || key5 == key2) {
                         // 记录中奖
                         List<int> tmp = [
                           value1.values.first,
@@ -389,11 +389,11 @@ class MainController extends GetxController {
       } else {
         kImgName_vIndex2.forEach((tmpkey2, value2) {
           String key2 = value2.keys.first;
-          if (key2 == slotNumWild || key2 == key1) {
+          if (key2.contains(slotNumWild) || key2 == key1) {
             kImgName_vIndex3.forEach((tmpkey3, value3) {
               String key3 = value3.keys.first;
               List<List<int>> tmpWins = [];
-              if (key3 == slotNumWild || key3 == key1) {
+              if (key3.contains(slotNumWild) || key3 == key1) {
                 // 记录中奖
                 String winKey =
                     "${value1.values.first}_${value2.values.first}_${value3.values.first}";
@@ -406,7 +406,7 @@ class MainController extends GetxController {
                 winLines[winKey] = tmpWins;
                 kImgName_vIndex4.forEach((tmpkey4, value4) {
                   String key4 = value4.keys.first;
-                  if (key4 == slotNumWild || key4 == key1) {
+                  if (key4.contains(slotNumWild) || key4 == key1) {
                     // 记录中奖
                     List<int> tmp = [
                       value1.values.first,
@@ -417,7 +417,7 @@ class MainController extends GetxController {
                     tmpWins.add(tmp);
                     kImgName_vIndex5.forEach((tmpkey5, value5) {
                       String key5 = value5.keys.first;
-                      if (key5 == slotNumWild || key5 == key1) {
+                      if (key5.contains(slotNumWild) || key5 == key1) {
                         // 记录中奖
                         List<int> tmp = [
                           value1.values.first,
@@ -493,7 +493,7 @@ class MainController extends GetxController {
                 if (result) {
                   var value = kZuobiao_vCategory[zuobiao] ?? "";
                   if (value.isNotEmpty &&
-                      value != slotNumWild &&
+                      !value.contains(slotNumWild)  &&
                       value != slotNumSCATTER) {
                     key = value;
                   }

@@ -117,7 +117,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     return RollerList(
       items: getSlots(column),
       visibilityRadius: 1,
-      scrollType: ScrollType.goesOnlyBottom,
+      scrollType: ScrollType.bothDirections,
       width: slotsItemW,
       height: slotsItemH,
       initialIndex: 1,
@@ -149,10 +149,10 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       bool showWin =
           data.contains(iiii) && MainController.to.showWinLines.value;
       String category = imgs[i];
-      if (category != MainController.slotNumWild){
-        dd = 0.w;
-        dd2 = 0.w;
-      }
+      // if (category != MainController.slotNumWild){
+      //   dd = 0.w;
+      //   dd2 = 0.w;
+      // }
       Widget tmpC = Container(
         color: Colors.blueAccent.withValues(alpha: 0.0),
         child: Image.asset(
