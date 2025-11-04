@@ -595,7 +595,7 @@ class MainController extends GetxController {
 
     hasScrollerEnd.value = false;
     // await Future.delayed(Duration(milliseconds: 1000));
-    showFreeSpin.value = true;
+    // showFreeSpin.value = true;
   }
 
   _changeChild(GlobalKey<RollerListState> key, int index) {

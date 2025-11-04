@@ -5,6 +5,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 
@@ -93,13 +94,12 @@ class _SSMapViewState extends State<SSMapView> {
     _leftC = _controllers.addAndGet();
     _rightC = _controllers.addAndGet();
     _lineC = _controllers.addAndGet();
-    init().then((_){
+    init().then((_) {
       scrollTo(jumpIndex);
     });
-
   }
 
-  Future init() async{
+  Future init() async {
     leftWidgetChildren = [];
     rightWidgetChildren = [];
     lineWidgetChildren = [];
@@ -128,8 +128,8 @@ class _SSMapViewState extends State<SSMapView> {
       int star = jumpToNextStar[quyu];
       tmpAddN = tmpAddN + star;
       // 是否解锁
-      bool hasLock = tmpAddN <= curGirlJinglingN;
-      if (hasLock) {
+      bool hasUnlock = tmpAddN <= curGirlJinglingN;
+      if (hasUnlock) {
         unlockMaxIndex = i;
       }
       int num = 25;
@@ -143,13 +143,9 @@ class _SSMapViewState extends State<SSMapView> {
       BoxGiftModel boxGiftModel = BoxGiftModel(
         img: img,
         money: money,
-        hasLock: hasLock,
+        hasUnlock: hasUnlock,
       );
-      Widget item = _itemLockWidget(boxGiftModel);
-      if (hasLock) {
-        item = _itemUnlockWidget(boxGiftModel);
-      }
-
+      Widget item = ItemWidget(model: boxGiftModel, index: i);
       bool hasEven = i.isEven;
 
       if (hasEven) {
@@ -169,7 +165,7 @@ class _SSMapViewState extends State<SSMapView> {
 
   scrollTo(int index) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      double offset = index * (itemH + bottomDistance);
+      double offset = index * (_itemH + _bottomDistance);
       _controllers.animateTo(
         offset,
         curve: Curves.easeInOut,
@@ -181,20 +177,20 @@ class _SSMapViewState extends State<SSMapView> {
   @override
   Widget build(BuildContext context) {
     // bottomDistance = 60.h;
-    init();
+    // init();
     return Container(
       width: double.infinity,
       height: double.infinity,
       color: Colors.yellow.withValues(alpha: 0),
       child: Stack(
         children: [
+          linesWidget(),
           Row(
             children: [
               Expanded(child: leftWidget()),
               Expanded(child: rightWidget()),
             ],
           ),
-          linesWidget(),
         ],
       ),
     );
@@ -232,9 +228,6 @@ class _SSMapViewState extends State<SSMapView> {
     return SizedBox(height: 80.h);
   }
 
-  double itemH = 112.h;
-  double itemW = 100.w;
-
   _lineItemWidget({required int index, bool hasLast = false}) {
     int topIndex = 2 * index;
     int bottomIndex = 2 * index + 1;
@@ -242,7 +235,7 @@ class _SSMapViewState extends State<SSMapView> {
     bool bottomLineUnlock = bottomIndex < unlockMaxIndex;
     return Container(
       width: double.infinity,
-      height: itemH + bottomDistance,
+      height: _itemH + _bottomDistance,
 
       child: Stack(
         clipBehavior: Clip.none,
@@ -275,7 +268,279 @@ class _SSMapViewState extends State<SSMapView> {
     );
   }
 
-  double bottomDistance = 50.h;
+  btnWidget({required bool hasUnlock}) {
+    return GestureDetector(
+      onTap: () {
+        ssLogggg("==btnUnlock===");
+      },
+      child: Container(
+        color: Colors.red.withValues(alpha: 0.0),
+        width: 70.w,
+        height: 25.h,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              hasUnlock
+                  ? Assets.img.btnGiftUnlcok.path
+                  : Assets.img.btnGiftLock.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+
+            if (hasUnlock)
+              Positioned(
+                top: -8.h,
+                right: -4.w,
+                child: Image.asset(
+                  Assets.img.video.path,
+                  width: 16.h,
+                  height: 16.h,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 5.h,
+              child: Center(
+                child: SSTxtBorder(text: "Collect", fontSize: 14.sp),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+double _bottomDistance = 50.h;
+double _itemH = 112.h;
+double _itemW = 100.w;
+
+class ItemWidget extends StatefulWidget {
+  const ItemWidget({super.key, required this.model, required this.index});
+
+  final int index;
+  final BoxGiftModel model;
+
+  @override
+  State<ItemWidget> createState() => _ItemWidgetState();
+}
+
+class _ItemWidgetState extends State<ItemWidget> {
+  var box = SSHive.box;
+
+  String keyIndexGift(int index) {
+    return "asdfafdasdf$index";
+  }
+
+  String keyLastIndexClick() {
+    return "sdfgdsfghgdfghdf";
+  }
+
+  bool sfIndexClick(int index) {
+    bool open = false;
+    var data = box.get(keyIndexGift(index)) ?? {};
+    open = data['hasOpen'] ?? false;
+
+    return open;
+  }
+
+  // bool hasFloatBox(int index) {
+  //   bool open = false;
+  //   var data = box.get(keyIndexGift(index)) ?? {};
+  //   open = data['floatBox'] ?? false;
+  //
+  //   return open;
+  // }
+
+  setIndexJson({
+    required int index,
+    required bool hasClick,
+    required double money,
+    bool floatBox = false,
+  }) {
+    box.put(keyIndexGift(index), {
+      "hasOpen": hasClick,
+      "money": money,
+      "floatBox": floatBox,
+    });
+
+    box.put(keyLastIndexClick(), index);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool hasUnlock = widget.model.hasUnlock;
+    if (hasUnlock) {
+      return _itemUnlockWidget(widget.model);
+    }
+    return _itemLockWidget(widget.model);
+  }
+
+  _itemUnlockWidget(BoxGiftModel model) {
+    String centerImg = model.img;
+    String money = "+${model.money.toStringAsFixed(0)}";
+    return Container(
+      color: Colors.yellow.withValues(alpha: 0.0),
+      child: Center(
+        child: Container(
+          width: itemW,
+          height: itemH,
+          margin: EdgeInsets.only(bottom: bottomDistance),
+          color: Colors.red.withValues(alpha: 0.0),
+          child: Stack(
+            children: [
+              Image.asset(
+                Assets.img.giftItemUmlock.path,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              ),
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    SizedBox(height: 14.h),
+                    Container(
+                      width: 78.w,
+                      height: 60.h,
+                      // color: Colors.green,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            Assets.img.giftItemUnlockBg.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+                          Center(
+                            child: Image.asset(
+                              centerImg,
+                              width: 60.w,
+                              height: 40.h,
+                            ),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 2.h,
+                            child: Center(
+                              child: SSTxtGraBorder(
+                                text: money,
+                                // fontFamily: FontFamily.rubik,
+                                gradient: LinearGradient(
+                                  end: Alignment.bottomCenter,
+                                  begin: Alignment.topCenter,
+                                  colors: [
+                                    Color(0xff0FFF63),
+                                    Color(0xffA4F00D),
+                                    Color(0xffD0FF00),
+                                    Color(0xff00FF1E),
+                                  ],
+                                ),
+                                fontSize: 18.sp,
+                                strokeColor: Color(0xff0C402B),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    btnWidget(hasUnlock: true),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  double itemH = _itemH;
+  double itemW = _itemW;
+  double bottomDistance = _bottomDistance;
+
+  onClick() {
+
+    bool hasUnlock = widget.model.hasUnlock;
+    ssLogggg("==onClick==hasUnlock:$hasUnlock=");
+    if(hasUnlock){
+      bool hasClick11 = sfIndexClick(widget.index);
+      if(hasClick11){
+        ssLogggg("==onClick==hasUnlock:$hasUnlock=hasClick:$hasClick11");
+        ssTushi(text: "you had collected");
+        return;
+      }
+
+      setState(() {
+        int index = widget.index;
+        double money = 0;
+        setIndexJson(index: index, hasClick: true, money: money);
+      });
+    }else{
+      ssTushi(text: "Please collect star");
+    }
+
+
+
+  }
+
+  btnWidget({required bool hasUnlock}) {
+
+    bool hasClick = sfIndexClick(widget.index);
+    if(hasUnlock){
+      if(hasClick){
+        hasUnlock = false;
+      }
+    }
+    return GestureDetector(
+      onTap: onClick,
+      child: Container(
+        color: Colors.red.withValues(alpha: 0.0),
+        width: 70.w,
+        height: 25.h,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              hasUnlock
+                  ? Assets.img.btnGiftUnlcok.path
+                  : Assets.img.btnGiftLock.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+
+            if (hasUnlock)
+              Positioned(
+                top: -8.h,
+                right: -4.w,
+                child: Image.asset(
+                  Assets.img.video.path,
+                  width: 16.h,
+                  height: 16.h,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 5.h,
+              child: Center(
+                child: SSTxtBorder(text: "Collect", fontSize: 14.sp),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   _itemLockWidget(BoxGiftModel model) {
     String centerImg = model.img;
@@ -365,140 +630,13 @@ class _SSMapViewState extends State<SSMapView> {
       ),
     );
   }
-
-  _itemUnlockWidget(BoxGiftModel model) {
-    String centerImg = model.img;
-    String money = "+${model.money.toStringAsFixed(0)}";
-    return Container(
-      color: Colors.yellow.withValues(alpha: 0.0),
-      child: Center(
-        child: Container(
-          width: itemW,
-          height: itemH,
-          margin: EdgeInsets.only(bottom: bottomDistance),
-          color: Colors.red.withValues(alpha: 0.0),
-          child: Stack(
-            children: [
-              Image.asset(
-                Assets.img.giftItemUmlock.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Positioned.fill(
-                child: Column(
-                  children: [
-                    SizedBox(height: 14.h),
-                    Container(
-                      width: 78.w,
-                      height: 60.h,
-                      // color: Colors.green,
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                            Assets.img.giftItemUnlockBg.path,
-                            width: double.infinity,
-                            height: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
-                          Center(
-                            child: Image.asset(
-                              centerImg,
-                              width: 60.w,
-                              height: 40.h,
-                            ),
-                          ),
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            bottom: 2.h,
-                            child: Center(
-                              child: SSTxtGraBorder(
-                                text: money,
-                                // fontFamily: FontFamily.rubik,
-                                gradient: LinearGradient(
-                                  end: Alignment.bottomCenter,
-                                  begin: Alignment.topCenter,
-                                  colors: [
-                                    Color(0xff0FFF63),
-                                    Color(0xffA4F00D),
-                                    Color(0xffD0FF00),
-                                    Color(0xff00FF1E),
-                                  ],
-                                ),
-                                fontSize: 18.sp,
-                                strokeColor: Color(0xff0C402B),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 4.h),
-                    btnWidget(hasUnlock: true),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  btnWidget({required bool hasUnlock}) {
-    return GestureDetector(
-      onTap: () {
-        ssLogggg("==btnUnlock===");
-      },
-      child: Container(
-        color: Colors.red.withValues(alpha: 0.0),
-        width: 70.w,
-        height: 25.h,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Image.asset(
-              hasUnlock
-                  ? Assets.img.btnGiftUnlcok.path
-                  : Assets.img.btnGiftLock.path,
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.fill,
-            ),
-
-            if (hasUnlock)
-              Positioned(
-                top: -8.h,
-                right: -4.w,
-                child: Image.asset(
-                  Assets.img.video.path,
-                  width: 16.h,
-                  height: 16.h,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 5.h,
-              child: Center(
-                child: SSTxtBorder(text: "Collect", fontSize: 14.sp),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class BoxGiftModel {
   final String img;
   bool showAdImg;
   final double money;
-  final bool hasLock;
+  final bool hasUnlock;
   final bool hasClickCollect;
 
   BoxGiftModel({
@@ -506,7 +644,7 @@ class BoxGiftModel {
     this.showAdImg = true,
     this.hasClickCollect = true,
     required this.money,
-    required this.hasLock,
+    required this.hasUnlock,
   });
 }
 
