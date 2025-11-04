@@ -14,7 +14,6 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
 
-
 double scale = 2;
 
 class SSSplassss extends StatefulWidget {
@@ -39,8 +38,8 @@ class _SSSplassssState extends State<SSSplassss> {
       //
       AssetImage assetImage7 = AssetImage(Assets.img.settiBg.path);
       precacheImage(assetImage7, context);
-      // // AssetImage assetImage8 = AssetImage(Assets.bbb.mainSetting.path);
-      // // precacheImage(assetImage8, context);
+      AssetImage assetImage8 = AssetImage(Assets.img.giftBg.path);
+      precacheImage(assetImage8, context);
       //
       // AssetImage assetImage = AssetImage(Assets.ttt.quizDaanRightBg.path);
       // precacheImage(assetImage, context);
@@ -102,7 +101,6 @@ class _SSSplassssState extends State<SSSplassss> {
                       //   fit: BoxFit.contain,
                       // ),
                       child: Container(
-        
                         width: double.infinity,
                         height: double.infinity,
                         color: Colors.green,
@@ -260,8 +258,6 @@ class _SplashProgressState extends State<SplashProgress> {
     _delayTimer?.cancel();
   }
 }
-
-
 
 class AnimatedGradientProgressBar extends StatelessWidget {
   final BorderRadius borderRadius;

@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/ss_pages/box_gift/map_view.dart';
+
+
+class BoxGift extends StatefulWidget {
+  const BoxGift({super.key});
+
+  @override
+  State<BoxGift> createState() => _BoxGiftState();
+}
+
+class _BoxGiftState extends State<BoxGift> {
+  @override
+  Widget build(BuildContext context) {
+    final points = [
+      const Offset(100, 80),
+      const Offset(300, 280),
+      const Offset(100, 500),
+      const Offset(320, 720),
+      const Offset(150, 940),
+    ];
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Stack(
+          children: [
+            Image.asset(
+              Assets.img.giftBg.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            Column(
+              children: [
+                SizedBox(height: 210.h),
+                Container(
+                  width: double.infinity,
+                  height: 60.h,
+                  color: Colors.blueAccent.withValues(alpha: 0.0),
+                  child: Column(
+                    children: [
+                      SSTxtGraBorder(
+                        text: "Casino Royale",
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w700,
+                        strokeColor: Color(0xffCC1420),
+                        strokeWidth: 3.w,
+                      ),
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Image.asset(
+                                Assets.img.giftCenterTxtBg.path,
+                                width: 200.w,
+                                height: double.infinity,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            Center(
+                              child: SSTxtGraBorder(
+                                text: "Endless Treasure",
+                                fontSize: 16.sp,
+                                fontFamily: FontFamily.rubik,
+                                fontWeight: FontWeight.w700,
+                                strokeColor: Color(0xff30120A),
+                                strokeWidth: 1.w,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: SSMapView(),
+                ),
+                SizedBox(height: 50.h),
+              ],
+            ),
+
+            Positioned(
+              top: 50.h,
+              left: 20.w,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset(
+                  Assets.img.btnBack.path,
+                  width: 42.w,
+                  height: 27.w,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

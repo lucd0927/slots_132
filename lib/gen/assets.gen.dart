@@ -50,6 +50,17 @@ class $AssetsImgGen {
   AssetGenImage get avatarBottom =>
       const AssetGenImage('assets/img/avatar_bottom.png');
 
+  /// File path: assets/img/btn_back.png
+  AssetGenImage get btnBack => const AssetGenImage('assets/img/btn_back.png');
+
+  /// File path: assets/img/btn_gift_lock.png
+  AssetGenImage get btnGiftLock =>
+      const AssetGenImage('assets/img/btn_gift_lock.png');
+
+  /// File path: assets/img/btn_gift_unlcok.png
+  AssetGenImage get btnGiftUnlcok =>
+      const AssetGenImage('assets/img/btn_gift_unlcok.png');
+
   /// File path: assets/img/btn_setting.png
   AssetGenImage get btnSetting =>
       const AssetGenImage('assets/img/btn_setting.png');
@@ -64,6 +75,67 @@ class $AssetsImgGen {
   /// File path: assets/img/close_setting.png
   AssetGenImage get closeSetting =>
       const AssetGenImage('assets/img/close_setting.png');
+
+  /// File path: assets/img/gift_bg.png
+  AssetGenImage get giftBg => const AssetGenImage('assets/img/gift_bg.png');
+
+  /// File path: assets/img/gift_bottom.png
+  AssetGenImage get giftBottom =>
+      const AssetGenImage('assets/img/gift_bottom.png');
+
+  /// File path: assets/img/gift_center.png
+  AssetGenImage get giftCenter =>
+      const AssetGenImage('assets/img/gift_center.png');
+
+  /// File path: assets/img/gift_center_txt_bg.png
+  AssetGenImage get giftCenterTxtBg =>
+      const AssetGenImage('assets/img/gift_center_txt_bg.png');
+
+  /// File path: assets/img/gift_item_lock.png
+  AssetGenImage get giftItemLock =>
+      const AssetGenImage('assets/img/gift_item_lock.png');
+
+  /// File path: assets/img/gift_item_lock_bg.png
+  AssetGenImage get giftItemLockBg =>
+      const AssetGenImage('assets/img/gift_item_lock_bg.png');
+
+  /// File path: assets/img/gift_item_umlock.png
+  AssetGenImage get giftItemUmlock =>
+      const AssetGenImage('assets/img/gift_item_umlock.png');
+
+  /// File path: assets/img/gift_item_unlock_bg.png
+  AssetGenImage get giftItemUnlockBg =>
+      const AssetGenImage('assets/img/gift_item_unlock_bg.png');
+
+  /// File path: assets/img/gift_lock.png
+  AssetGenImage get giftLock => const AssetGenImage('assets/img/gift_lock.png');
+
+  /// File path: assets/img/gift_lock_lb.png
+  AssetGenImage get giftLockLb =>
+      const AssetGenImage('assets/img/gift_lock_lb.png');
+
+  /// File path: assets/img/gift_lock_rb.png
+  AssetGenImage get giftLockRb =>
+      const AssetGenImage('assets/img/gift_lock_rb.png');
+
+  /// File path: assets/img/gift_top.png
+  AssetGenImage get giftTop => const AssetGenImage('assets/img/gift_top.png');
+
+  /// File path: assets/img/gift_unlock_lb.png
+  AssetGenImage get giftUnlockLb =>
+      const AssetGenImage('assets/img/gift_unlock_lb.png');
+
+  /// File path: assets/img/gift_unlock_rb.png
+  AssetGenImage get giftUnlockRb =>
+      const AssetGenImage('assets/img/gift_unlock_rb.png');
+
+  /// File path: assets/img/gift_xp_lock.png
+  AssetGenImage get giftXpLock =>
+      const AssetGenImage('assets/img/gift_xp_lock.png');
+
+  /// File path: assets/img/gift_xp_unlock.png
+  AssetGenImage get giftXpUnlock =>
+      const AssetGenImage('assets/img/gift_xp_unlock.png');
 
   /// File path: assets/img/main_addmoney.png
   AssetGenImage get mainAddmoney =>
@@ -164,6 +236,14 @@ class $AssetsImgGen {
   /// File path: assets/img/money.png
   AssetGenImage get money => const AssetGenImage('assets/img/money.png');
 
+  /// File path: assets/img/money_gift.png
+  AssetGenImage get moneyGift =>
+      const AssetGenImage('assets/img/money_gift.png');
+
+  /// File path: assets/img/money_lock.png
+  AssetGenImage get moneyLock =>
+      const AssetGenImage('assets/img/money_lock.png');
+
   /// File path: assets/img/setti_audio.png
   AssetGenImage get settiAudio =>
       const AssetGenImage('assets/img/setti_audio.png');
@@ -184,14 +264,36 @@ class $AssetsImgGen {
   /// File path: assets/img/t_cashapp.png
   AssetGenImage get tCashapp => const AssetGenImage('assets/img/t_cashapp.png');
 
+  /// File path: assets/img/video.png
+  AssetGenImage get video => const AssetGenImage('assets/img/video.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     avatarBg,
     avatarBottom,
+    btnBack,
+    btnGiftLock,
+    btnGiftUnlcok,
     btnSetting,
     btnSpin,
     btnTxtSpin,
     closeSetting,
+    giftBg,
+    giftBottom,
+    giftCenter,
+    giftCenterTxtBg,
+    giftItemLock,
+    giftItemLockBg,
+    giftItemUmlock,
+    giftItemUnlockBg,
+    giftLock,
+    giftLockLb,
+    giftLockRb,
+    giftTop,
+    giftUnlockLb,
+    giftUnlockRb,
+    giftXpLock,
+    giftXpUnlock,
     mainAddmoney,
     mainBg,
     mainBonusBg,
@@ -218,11 +320,14 @@ class $AssetsImgGen {
     mainWheel,
     menu,
     money,
+    moneyGift,
+    moneyLock,
     settiAudio,
     settiBg,
     settiMusic,
     slot1,
     tCashapp,
+    video,
   ];
 }
 

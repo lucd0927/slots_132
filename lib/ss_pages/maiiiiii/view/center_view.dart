@@ -8,6 +8,7 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
@@ -146,7 +147,6 @@ class CenterView extends StatelessWidget {
   }
 
   Column rightWidget() {
-
     int grandN = 2000;
     int majorN = 1000;
     int miniN = 500;
@@ -254,21 +254,27 @@ class CenterView extends StatelessWidget {
     );
   }
 
+  _onBoxGift() {
+    Get.toNamed(SSRouttttt.boxGift);
+  }
+
   Column leftWidget() {
     return Column(
       children: [
-        Container(
-          width: 58.h,
-          height: 64.h,
-          // clipBehavior: Clip.none,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  ssLogggg("=mainBox==");
-                },
-                child: ShiningEffect(
+        GestureDetector(
+          onTap: () {
+            ssLogggg("=mainBox==");
+            _onBoxGift();
+          },
+          child: Container(
+            width: 58.h,
+            height: 64.h,
+            // clipBehavior: Clip.none,
+            color: Colors.red.withValues(alpha: 0),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                ShiningEffect(
                   shineColor: Colors.white,
                   opacity: 0.5,
                   duration: const Duration(seconds: 2),
@@ -278,14 +284,14 @@ class CenterView extends StatelessWidget {
                     height: 58.h,
                   ),
                 ),
-              ),
-              Positioned(
-                left: -4.w,
-                right: -4.w,
-                bottom: 0,
-                child: Center(child: SSTxtGraBorder(text: "10:10:00000000")),
-              ),
-            ],
+                Positioned(
+                  left: -4.w,
+                  right: -4.w,
+                  bottom: 0,
+                  child: Center(child: SSTxtGraBorder(text: "10:10:00")),
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(height: 20.h),
