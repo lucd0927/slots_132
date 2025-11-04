@@ -11,6 +11,15 @@
 class FontFamily {
   FontFamily._();
 
+  /// Font family: Alkatra
+  static const String alkatra = 'Alkatra';
+
+  /// Font family: Fraunces
+  static const String fraunces = 'Fraunces';
+
+  /// Font family: MarkoOne
+  static const String markoOne = 'MarkoOne';
+
   /// Font family: Rubik
   static const String rubik = 'Rubik';
 

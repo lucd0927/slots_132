@@ -138,6 +138,15 @@ flutter:
     - family: SansitaOne
       fonts:
        - asset: assets/fff/SansitaOne.ttf
+    - family: Alkatra
+      fonts:
+        - asset: assets/fff/Alkatra-Bold.ttf
+    - family: Fraunces
+      fonts:
+        - asset: assets/fff/Fraunces-Bold.ttf
+    - family: MarkoOne
+      fonts:
+        - asset: assets/fff/MarkoOne-Regular.ttf
 #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

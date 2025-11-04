@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 
 class SSMapView extends StatefulWidget {
@@ -19,8 +23,66 @@ class _SSMapViewState extends State<SSMapView> {
 
   List<BoxGiftModel> leftData = [];
   List<BoxGiftModel> rightData = [];
-  List<int> jumpToNextStar = [3, 6, 2, 8, 5, 1, 9, 4, 7, 10];
+
+  List<Widget> leftWidgetChildren = [];
+  List<Widget> rightWidgetChildren = [];
+  List<Widget> lineWidgetChildren = [];
+
   var box = SSHive.box;
+  Map<int, GiftRewardModel> kStarNum_vReward = {
+    3: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img: Assets.img.moneyGift.path,
+    ),
+    6: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 200,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    2: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img: Assets.img.moneyGift.path,
+    ),
+    8: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphone,
+      num: 1,
+      img: Assets.img.mainPhone.path,
+    ),
+    5: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 120,
+      img: Assets.img.moneyGift.path,
+    ),
+    1: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.spin,
+      num: 20,
+      img: Assets.img.btnTxtSpin.path,
+    ),
+    9: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphone,
+      num: 1,
+      img: Assets.img.mainPhone.path,
+    ),
+    4: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.spin,
+      num: 100,
+      img: Assets.img.btnTxtSpin.path,
+    ),
+    7: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 200,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    10: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphone,
+      num: 1,
+      img: Assets.img.mainPhone.path,
+    ),
+  };
+  int jumpIndex = 0;
+  int unlockMaxIndex = 0;
 
   @override
   void initState() {
@@ -31,158 +93,191 @@ class _SSMapViewState extends State<SSMapView> {
     _leftC = _controllers.addAndGet();
     _rightC = _controllers.addAndGet();
     _lineC = _controllers.addAndGet();
+    init();
+    scrollTo(jumpIndex);
+  }
 
-    for (int i = 0; i < 200; i++) {
+  init() {
+    leftWidgetChildren = [];
+    rightWidgetChildren = [];
+    lineWidgetChildren = [];
+    List<int> jumpToNextStar = kStarNum_vReward.keys.toList();
+    int loopMaxN = 0;
+    for (var v in jumpToNextStar) {
+      loopMaxN = loopMaxN + v;
+    }
+    // 获取女精灵总数量
+    int curGirlJinglingN = 10;
+    // 获取当前最大的循环数,向下取整
+    int floor = (curGirlJinglingN / loopMaxN).floor();
+    int loopNum = jumpToNextStar.length;
+    int showMaxNum = loopNum * (floor + 4);
+
+    int tmpAddN = 0;
+
+    int left = showMaxNum ~/ 2;
+
+    ssLogggg(
+      "=====loopMaxN:$loopMaxN curGirlJinglingN:$curGirlJinglingN floor:$floor showMaxNum:$showMaxNum",
+    );
+
+    for (int i = 0; i < showMaxNum; i++) {
+      int quyu = i % loopNum;
+      int star = jumpToNextStar[quyu];
+      tmpAddN = tmpAddN + star;
+      // 是否解锁
+      bool hasLock = tmpAddN <= curGirlJinglingN;
+      if (hasLock) {
+        unlockMaxIndex = i;
+      }
+      int num = 25;
+      String img = Assets.img.moneyGift.path;
+      GiftRewardModel? tmpGiftRewardModel = kStarNum_vReward[star];
+      if (tmpGiftRewardModel != null) {
+        img = tmpGiftRewardModel.img;
+        num = tmpGiftRewardModel.num;
+      }
+      double money = num * 1.0;
+      BoxGiftModel boxGiftModel = BoxGiftModel(
+        img: img,
+        money: money,
+        hasLock: hasLock,
+      );
+      Widget item = _itemLockWidget(boxGiftModel);
+      if (hasLock) {
+        item = _itemUnlockWidget(boxGiftModel);
+      }
+
       bool hasEven = i.isEven;
-      bool showAdImg = false;
-      double money = 100;
-      bool hasLock = false;
-      if (hasEven) {
-        String img = Assets.img.moneyGift.path;
 
-        BoxGiftModel boxGiftModel = BoxGiftModel(
-          img,
-          showAdImg,
-          money,
-          hasLock,
-        );
-        leftData.add(boxGiftModel);
+      if (hasEven) {
+        leftWidgetChildren.add(item);
       } else {
-        String img = Assets.img.giftXpUnlock.path;
-        BoxGiftModel boxGiftModel = BoxGiftModel(
-          img,
-          showAdImg,
-          money,
-          hasLock,
-        );
-        rightData.add(boxGiftModel);
+        rightWidgetChildren.add(item);
       }
     }
+    ssLogggg("=====unlockMaxNum:$unlockMaxIndex left:$left");
+    jumpIndex = unlockMaxIndex ~/ 2;
+    for (int i = 0; i < left; i++) {
+      bool hasLast = i == left - 1;
+      Widget item = _lineItemWidget(index: i, hasLast: hasLast);
+      lineWidgetChildren.add(item);
+    }
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_){
-      _controllers.animateTo(200, curve: Curves.easeInOut, duration: Duration(milliseconds: 500));
+  scrollTo(int index) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      double offset = index * (itemH + bottomDistance);
+      _controllers.animateTo(
+        offset,
+        curve: Curves.easeInOut,
+        duration: Duration(milliseconds: 500),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    bottomDistance = 60.h;
+    // bottomDistance = 60.h;
+    init();
     return Container(
       width: double.infinity,
       height: double.infinity,
       color: Colors.yellow.withValues(alpha: 0),
       child: Stack(
         children: [
-          Positioned.fill(
-            child: SingleChildScrollView(
-              controller: _lineC,
-              child: Column(
-                children: [
-                  _lineWidgetRb(index: 0),
-                  _lineWidgetRb(index: 1),
-                  _lineWidgetRb(index: 2),
-                  _lineWidgetRb(index: 3),
-                  _lineWidgetRb(index: 4),
-                  commonWidget(),
-                ],
-              ),
-            ),
-          ),
           Row(
             children: [
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  controller: _leftC,
-                  children: <Widget>[
-
-                    _itemUnlockWidget(),
-                    _itemUnlockWidget(),
-                    _itemUnlockWidget(),
-                    _itemUnlockWidget(),
-                    _itemUnlockWidget(),
-                    commonWidget(),
-
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  controller: _rightC,
-                  children: <Widget>[
-                    commonWidget(),
-                    _itemLockWidget(),
-                    _itemLockWidget(),
-                    _itemLockWidget(),
-                    _itemLockWidget(),
-                    _itemLockWidget(),
-                  ],
-                ),
-              ),
+              Expanded(child: leftWidget()),
+              Expanded(child: rightWidget()),
             ],
           ),
+          linesWidget(),
         ],
       ),
     );
   }
 
-  commonWidget(){
-    return  SizedBox(height: 80.h);
+  leftWidget() {
+    return ListView(
+      padding: EdgeInsets.zero,
+      controller: _leftC,
+      children: <Widget>[...leftWidgetChildren, commonWidget()],
+    );
+  }
+
+  rightWidget() {
+    return ListView(
+      padding: EdgeInsets.zero,
+      controller: _rightC,
+      children: <Widget>[commonWidget(), ...rightWidgetChildren],
+    );
+  }
+
+  linesWidget() {
+    return Positioned.fill(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        child: SingleChildScrollView(
+          controller: _lineC,
+          child: Column(children: [...lineWidgetChildren, commonWidget()]),
+        ),
+      ),
+    );
+  }
+
+  commonWidget() {
+    return SizedBox(height: 80.h);
   }
 
   double itemH = 112.h;
   double itemW = 100.w;
 
-  _lineWidgetRb({required int index}) {
-    bool hasEven = index.isEven;
+  _lineItemWidget({required int index, bool hasLast = false}) {
+    int topIndex = 2 * index;
+    int bottomIndex = 2 * index + 1;
+    bool topLineUnlock = topIndex < unlockMaxIndex;
+    bool bottomLineUnlock = bottomIndex < unlockMaxIndex;
     return Container(
       width: double.infinity,
       height: itemH + bottomDistance,
 
-      // color: hasEven
-      //     ? Colors.red.withValues(alpha: 0.8)
-      //     : Colors.green.withValues(alpha: 0.8),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             left: 146.w,
             top: 38.h,
             child: Image.asset(
-              Assets.img.giftLockRb.path,
+              topLineUnlock
+                  ? Assets.img.giftUnlockRb.path
+                  : Assets.img.giftLockRb.path,
               width: 124.h,
               height: 44.h,
             ),
           ),
-          Positioned(
-            right: 146.w,
-            top: 130.h,
-            child: Image.asset(
-              Assets.img.giftLockLb.path,
-              width: 124.h,
-              height: 44.h,
+          if (!hasLast)
+            Positioned(
+              right: 146.w,
+              top: 120.h,
+              child: Image.asset(
+                bottomLineUnlock
+                    ? Assets.img.giftUnlockLb.path
+                    : Assets.img.giftLockLb.path,
+                width: 124.h,
+                height: 44.h,
+              ),
             ),
-          ),
         ],
-      ),
-    );
-  }
-
-  _lineWidgetLb() {
-    return Container(
-      margin: EdgeInsets.only(top: 60.h, right: 50.w),
-      color: Colors.green.withValues(alpha: 0),
-      child: Image.asset(
-        Assets.img.giftLockLb.path,
-        width: 124.h,
-        height: 44.h,
       ),
     );
   }
 
   double bottomDistance = 50.h;
 
-  _itemLockWidget() {
+  _itemLockWidget(BoxGiftModel model) {
+    String centerImg = model.img;
+    String money = "+${model.money.toStringAsFixed(0)}";
     return Container(
       color: Colors.yellow.withValues(alpha: 0.0),
       child: Center(
@@ -190,7 +285,7 @@ class _SSMapViewState extends State<SSMapView> {
           width: itemW,
           height: itemH,
           margin: EdgeInsets.only(bottom: bottomDistance),
-          color: Colors.red.withValues(alpha: 0.2),
+          color: Colors.red.withValues(alpha: 0.0),
           child: Stack(
             children: [
               Image.asset(
@@ -199,6 +294,69 @@ class _SSMapViewState extends State<SSMapView> {
                 height: double.infinity,
                 fit: BoxFit.fill,
               ),
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    SizedBox(height: 14.h),
+                    Container(
+                      width: 78.w,
+                      height: 60.h,
+                      // color: Colors.green,
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Image.asset(
+                              centerImg,
+                              width: 60.w,
+                              height: 40.h,
+                            ),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 2.h,
+                            child: Center(
+                              child: SSTxtGraBorder(
+                                text: money,
+                                // fontFamily: FontFamily.rubik,
+                                gradient: LinearGradient(
+                                  end: Alignment.bottomCenter,
+                                  begin: Alignment.topCenter,
+                                  colors: [
+                                    Color(0xff0FFF63),
+                                    Color(0xffA4F00D),
+                                    Color(0xffD0FF00),
+                                    Color(0xff00FF1E),
+                                  ],
+                                ),
+                                fontSize: 18.sp,
+                                strokeColor: Color(0xff0C402B),
+                              ),
+                            ),
+                          ),
+                          Image.asset(
+                            Assets.img.giftItemLockBg.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+
+                          Center(
+                            child: Image.asset(
+                              Assets.img.giftLock.path,
+                              width: 29.w,
+                              height: 36.w,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    btnWidget(hasUnlock: false),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -206,7 +364,9 @@ class _SSMapViewState extends State<SSMapView> {
     );
   }
 
-  _itemUnlockWidget() {
+  _itemUnlockWidget(BoxGiftModel model) {
+    String centerImg = model.img;
+    String money = "+${model.money.toStringAsFixed(0)}";
     return Container(
       color: Colors.yellow.withValues(alpha: 0.0),
       child: Center(
@@ -214,7 +374,7 @@ class _SSMapViewState extends State<SSMapView> {
           width: itemW,
           height: itemH,
           margin: EdgeInsets.only(bottom: bottomDistance),
-          color: Colors.red.withValues(alpha: 0.2),
+          color: Colors.red.withValues(alpha: 0.0),
           child: Stack(
             children: [
               Image.asset(
@@ -223,8 +383,109 @@ class _SSMapViewState extends State<SSMapView> {
                 height: double.infinity,
                 fit: BoxFit.fill,
               ),
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    SizedBox(height: 14.h),
+                    Container(
+                      width: 78.w,
+                      height: 60.h,
+                      // color: Colors.green,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            Assets.img.giftItemUnlockBg.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+                          Center(
+                            child: Image.asset(
+                              centerImg,
+                              width: 60.w,
+                              height: 40.h,
+                            ),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 2.h,
+                            child: Center(
+                              child: SSTxtGraBorder(
+                                text: money,
+                                // fontFamily: FontFamily.rubik,
+                                gradient: LinearGradient(
+                                  end: Alignment.bottomCenter,
+                                  begin: Alignment.topCenter,
+                                  colors: [
+                                    Color(0xff0FFF63),
+                                    Color(0xffA4F00D),
+                                    Color(0xffD0FF00),
+                                    Color(0xff00FF1E),
+                                  ],
+                                ),
+                                fontSize: 18.sp,
+                                strokeColor: Color(0xff0C402B),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    btnWidget(hasUnlock: true),
+                  ],
+                ),
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  btnWidget({required bool hasUnlock}) {
+    return GestureDetector(
+      onTap: () {
+        ssLogggg("==btnUnlock===");
+      },
+      child: Container(
+        color: Colors.red.withValues(alpha: 0.0),
+        width: 70.w,
+        height: 25.h,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              hasUnlock
+                  ? Assets.img.btnGiftUnlcok.path
+                  : Assets.img.btnGiftLock.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+
+            if (hasUnlock)
+              Positioned(
+                top: -8.h,
+                right: -4.w,
+                child: Image.asset(
+                  Assets.img.video.path,
+                  width: 16.h,
+                  height: 16.h,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 5.h,
+              child: Center(
+                child: SSTxtBorder(text: "Collect", fontSize: 14.sp),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -233,9 +494,28 @@ class _SSMapViewState extends State<SSMapView> {
 
 class BoxGiftModel {
   final String img;
-  final bool showAdImg;
+  bool showAdImg;
   final double money;
   final bool hasLock;
 
-  const BoxGiftModel(this.img, this.showAdImg, this.money, this.hasLock);
+  BoxGiftModel({
+    required this.img,
+    this.showAdImg = true,
+    required this.money,
+    required this.hasLock,
+  });
+}
+
+enum EnumGiftRewardModel { spin, cash, iphone, xp }
+
+class GiftRewardModel {
+  final EnumGiftRewardModel rewardModelType;
+  final String img;
+  final int num;
+
+  const GiftRewardModel({
+    required this.rewardModelType,
+    required this.num,
+    required this.img,
+  });
 }
