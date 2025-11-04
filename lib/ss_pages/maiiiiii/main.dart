@@ -55,7 +55,6 @@ class _MainState extends State<Main> {
             fit: BoxFit.fill,
           ),
           Positioned.fill(
-
             child:SSContetti(),
           ),
           Column(

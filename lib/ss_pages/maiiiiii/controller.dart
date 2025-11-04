@@ -14,9 +14,6 @@ import '../../jc_gj/log.dart';
 class MainController extends GetxController {
   static MainController get to => Get.find();
 
-
-
-
   @override
   void onInit() {
     super.onInit();
@@ -35,6 +32,9 @@ class MainController extends GetxController {
   final slotMachineKey = GlobalKey<SSSlotMachineState>();
 
   static const String slotNumWild = "WILD";
+  static const String slotNumWild1 = "WILD1";
+  static const String slotNumWild2 = "WILD2";
+  static const String slotNumWild3 = "WILD3";
   static const String slotNumH1 = "H1";
   static const String slotNumH2 = "H2";
   static const String slotNumH3 = "H3";
@@ -58,7 +58,10 @@ class MainController extends GetxController {
     slotNumSCATTER,
   ];
   static final Map<String, String> kName_vImgName = {
-    slotNumWild: Assets.img.slots.slotsWild.path,
+    slotNumWild: Assets.img.slots.slotsWild1.path,
+    slotNumWild1: Assets.img.slots.slotsWild1.path,
+    slotNumWild2: Assets.img.slots.slotsWild2.path,
+    slotNumWild3: Assets.img.slots.slotsWild3.path,
     slotNumH1: Assets.img.slots.slotsH1.path,
     slotNumH2: Assets.img.slots.slotsH2.path,
     slotNumH3: Assets.img.slots.slotsH3.path,
@@ -73,6 +76,8 @@ class MainController extends GetxController {
   List<List<String>> rollerImgs = [
     [
       slotNumWild,
+      // slotNumWild,
+      // slotNumWild,
       slotNumH1,
       slotNumH2,
       slotNumH3,
@@ -550,7 +555,6 @@ class MainController extends GetxController {
   Completer<int>? result;
   int cunt = 0;
 
-
   onStartRoller() async {
     if (hasScrollerEnd.value) {
       ssLogggg("==onStartRoller=正在滚动==");
@@ -562,11 +566,11 @@ class MainController extends GetxController {
     cunt = 0;
     hasScrollerEnd.value = true;
     result = Completer();
-    await _roller(firstRoller,0);
-    await _roller(secondRoller,1);
-    await _roller(thirdRoller,2);
-    await _roller(fourthRoller,3);
-    await _roller(fiveRoller,4);
+    await _roller(firstRoller, 0);
+    await _roller(secondRoller, 1);
+    await _roller(thirdRoller, 2);
+    await _roller(fourthRoller, 3);
+    await _roller(fiveRoller, 4);
     await result?.future;
     await Future.delayed(Duration(milliseconds: 300));
     showWinLines.value = true;
@@ -609,13 +613,13 @@ class MainController extends GetxController {
     key.currentState?.smoothJumpToIndex(1);
   }
 
-  _roller(GlobalKey<RollerListState> key,int index) async {
+  _roller(GlobalKey<RollerListState> key, int index) async {
     int allImgs = defaultImgName.length;
-    int random =  (allImgs - 2);
+    int random = (allImgs - 2);
     key.currentState
         ?.smoothScrollToIndex(
           random,
-          duration: Duration(milliseconds: index*50+300),
+          duration: Duration(milliseconds: index * 50 + 300),
           curve: Curves.easeIn,
           // curve: Curves.easeInQuad,
         )

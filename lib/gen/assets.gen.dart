@@ -175,6 +175,10 @@ class $AssetsImgGen {
   AssetGenImage get mainCWheel =>
       const AssetGenImage('assets/img/main_c_wheel.png');
 
+  /// File path: assets/img/main_collect.png
+  AssetGenImage get mainCollect =>
+      const AssetGenImage('assets/img/main_collect.png');
+
   /// File path: assets/img/main_grand.png
   AssetGenImage get mainGrand =>
       const AssetGenImage('assets/img/main_grand.png');
@@ -304,6 +308,7 @@ class $AssetsImgGen {
     mainCAvatar,
     mainCMoney,
     mainCWheel,
+    mainCollect,
     mainGrand,
     mainLingdang,
     mainMajor,
@@ -430,9 +435,17 @@ class $AssetsImgSlotsGen {
   AssetGenImage get slotsScatter =>
       const AssetGenImage('assets/img/slots/slots_scatter.png');
 
-  /// File path: assets/img/slots/slots_wild.png
-  AssetGenImage get slotsWild =>
-      const AssetGenImage('assets/img/slots/slots_wild.png');
+  /// File path: assets/img/slots/slots_wild1.png
+  AssetGenImage get slotsWild1 =>
+      const AssetGenImage('assets/img/slots/slots_wild1.png');
+
+  /// File path: assets/img/slots/slots_wild2.png
+  AssetGenImage get slotsWild2 =>
+      const AssetGenImage('assets/img/slots/slots_wild2.png');
+
+  /// File path: assets/img/slots/slots_wild3.png
+  AssetGenImage get slotsWild3 =>
+      const AssetGenImage('assets/img/slots/slots_wild3.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -445,7 +458,9 @@ class $AssetsImgSlotsGen {
     slotsM1,
     slotsM2,
     slotsScatter,
-    slotsWild,
+    slotsWild1,
+    slotsWild2,
+    slotsWild3,
   ];
 }
 

@@ -39,11 +39,16 @@ class CenterView extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                Container(
-                  key: ValueKey("SpineShengdaolaoren"),
-                  width: double.infinity,
-                  height: 336.h,
-                  child: const SpineShengdaolaoren(),
+                Positioned(
+                  left: 20.w,
+                  top: 40.h,
+                  right: 20.w,
+                  child: Container(
+                    key: ValueKey("SpineShengdaolaoren"),
+                    width: 10.w,
+                    height: 250.h,
+                    child: const SpineShengdaolaoren(),
+                  ),
                 ),
 
                 Positioned.fill(

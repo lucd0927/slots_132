@@ -33,97 +33,89 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   int? five;
 
   double slotsH = 250.h;
-  final double slotsItemW = ScreenUtil().screenWidth / 5.8;
-  double get slotsItemH => slotsH / 3;
+  final double slotsItemW = 64.h;
+
+  double get slotsItemH => 64.h;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
-  update(){
-    setState(() {
 
-    });
+  update() {
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     ssLogggg("==slot machine build==");
     return LayoutBuilder(
-
       builder: (context, c) {
         slotsH = c.maxHeight;
-        return Obx((){
+        return Obx(() {
           bool show = MainController.to.showFreeSpin.value;
           return Container(
-          width: double.infinity,
-          height: slotsH,
-          color: Colors.blueAccent.withValues(alpha: 0.0),
-          child: Stack(
-            children: [
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    rollerWidget(key: firstRoller, index: 0),
-                    rollerWidget(key: secondRoller, index: 1),
-                    rollerWidget(key: thirdRoller, index: 2),
-                    rollerWidget(key: fourthRoller, index: 3),
-                    rollerWidget(key: fiveRoller, index: 4),
-                  ],
+            width: double.infinity,
+            height: slotsH,
+            color: Colors.blueAccent.withValues(alpha: 0.0),
+            child: Stack(
+              children: [
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      rollerWidget(key: firstRoller, column: 0),
+                      rollerWidget(key: secondRoller, column: 1),
+                      rollerWidget(key: thirdRoller, column: 2),
+                      rollerWidget(key: fourthRoller, column: 3),
+                      rollerWidget(key: fiveRoller, column: 4),
+                    ],
+                  ),
                 ),
-              ),
 
-              // if(MainController.to.showFreeSpin.value)   Center(
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       _rollerForground(0),
-              //       _rollerForground(1),
-              //       _rollerForground(2),
-              //       _rollerForground(3),
-              //       _rollerForground(4),
-              //     ],
-              //   ),
-              // ),
-            ],
-          ),
-        );});
-
+                // if(MainController.to.showFreeSpin.value)   Center(
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       _rollerForground(0),
+                //       _rollerForground(1),
+                //       _rollerForground(2),
+                //       _rollerForground(3),
+                //       _rollerForground(4),
+                //     ],
+                //   ),
+                // ),
+              ],
+            ),
+          );
+        });
       },
     );
-
   }
 
-  _rollerForground(int index){
-    int iiii = index+1+0*5;
-    int iiii2 = index+1+(1)*5;
-    int iiii3 = index+1+(2)*5;
+  _rollerForground(int index) {
+    int iiii = index + 1 + 0 * 5;
+    int iiii2 = index + 1 + (1) * 5;
+    int iiii3 = index + 1 + (2) * 5;
 
     var data = MainController.to.winCurZuobiao;
     return Container(
       width: slotsItemW,
-      height: slotsItemW*3,
+      height: slotsItemW * 3,
       child: DefaultTextStyle(
-        style: TextStyle(
-          color: Colors.blueAccent.withValues(alpha: 1)
-        ),
+        style: TextStyle(color: Colors.blueAccent.withValues(alpha: 1)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-          Text("$iiii"),
-          Text("$iiii2"),
-          Text("$iiii3"),
-        ],),
+          children: [Text("$iiii"), Text("$iiii2"), Text("$iiii3")],
+        ),
       ),
     );
   }
 
-
-  rollerWidget({required Key key, required int index}) {
+  rollerWidget({required Key key, required int column}) {
     return RollerList(
-      items: getSlots(index),
+      items: getSlots(column),
       visibilityRadius: 1,
       scrollType: ScrollType.goesOnlyBottom,
       width: slotsItemW,
@@ -141,27 +133,39 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     );
   }
 
-  List<Widget> getSlots(int index) {
+  List<Widget> getSlots(int column) {
     double width = slotsItemW;
     double height = slotsItemH;
     List<Widget> result = [];
-    double dd = 4.w;
-    double dd2 = 4.w;
-    List<String> imgs = MainController.to.rollerImgs[index];
+
+    List<String> imgs = MainController.to.rollerImgs[column];
     int length = imgs.length;
     var data = MainController.to.winCurZuobiao;
     for (int i = 0; i < length; i++) {
-      int iiii = index+1+i*5;
-      bool showWin = data.contains(iiii) && MainController.to.showWinLines.value;
+      int iiii = column + 1 + i * 5;
+      double dd = 0.w;
+      double dd2 = 0.w;
+
+      bool showWin =
+          data.contains(iiii) && MainController.to.showWinLines.value;
+      String category = imgs[i];
+      if (category != MainController.slotNumWild){
+        dd = 0.w;
+        dd2 = 0.w;
+      }
       Widget tmpC = Container(
         color: Colors.blueAccent.withValues(alpha: 0.0),
-        child: Image.asset(MainController.kName_vImgName[imgs[i]]!, width: width - dd, height: height - dd),
+        child: Image.asset(
+          MainController.kName_vImgName[category]!,
+          width: width - dd,
+          height: height - dd,
+        ),
         // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
       Widget child = Container(
         width: width - dd2,
         height: height - dd2,
-        padding: EdgeInsets.all(4.w),
+        padding: EdgeInsets.all(0.w),
         color: Colors.transparent,
         child: Center(child: tmpC),
       );
@@ -170,22 +174,18 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           width: width,
           height: height,
           color: Colors.green.withValues(alpha: 0.0),
-          child: showWin
-              ? Center(
-                  child: ZoMonoCromeBorder(
-                    trackBorderColor: Colors.yellow,
-                    cornerRadius: dd2,
-                    animationDuration: Duration(milliseconds: 800),
-                    borderStyle: ZoMonoCromeBorderStyle.stroke,
-                    borderWidth: dd2,
-                    child: child,
-                  ),
-                )
-              : child,
+          child: Stack(children: [ child,
+            if(showWin) Container(
+              width: width,
+              height: height,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black,width: 3.w)
+              ),
+            )
+          ]),
         ),
       );
     }
     return result;
   }
-
 }

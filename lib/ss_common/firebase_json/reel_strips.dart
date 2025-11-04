@@ -351,8 +351,6 @@ class SSReelStrips {
     return localJson;
   }
 
-  static List<String> defaultImgName = MainController.defaultImgName;
-
   static List<String> reel1ImgName() {
     return _reelImgName(key: "Reel1");
   }
@@ -372,6 +370,8 @@ class SSReelStrips {
   static List<String> reel5ImgName() {
     return _reelImgName(key: "Reel5");
   }
+
+  static List<String> defaultImgName = MainController.defaultImgName;
 
   static List<String> _reelImgName({required String key}) {
     _onlineJson();
@@ -394,6 +394,30 @@ class SSReelStrips {
       String img1 = tmpReel[ra];
       String img2 = tmpReel[ra2];
       String img3 = tmpReel[ra3];
+      // img1 = MainController.slotNumWild;
+      // img2 = MainController.slotNumWild;
+      // img3 = MainController.slotNumWild;
+      if (img1 == MainController.slotNumWild) {
+        img1 = MainController.slotNumWild1;
+        if (img2 == MainController.slotNumWild) {
+          img2 = MainController.slotNumWild2;
+          if (img3 == MainController.slotNumWild) {
+            img3 = MainController.slotNumWild3;
+          }
+        }else if (img3 == MainController.slotNumWild) {
+          img3 = MainController.slotNumWild2;
+        }
+
+      }else if (img2 == MainController.slotNumWild) {
+        img2 = MainController.slotNumWild1;
+        if (img3 == MainController.slotNumWild) {
+          img3 = MainController.slotNumWild2;
+        }
+      }else if (img3 == MainController.slotNumWild) {
+        img3 = MainController.slotNumWild1;
+      }
+
+
       reel1s.add(img1);
       reel1s.add(img2);
       reel1s.add(img3);
