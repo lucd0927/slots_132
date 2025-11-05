@@ -38,22 +38,24 @@ class _SSSplassssState extends State<SSSplassss> {
       //
       AssetImage assetImage7 = AssetImage(Assets.img.settiBg.path);
       precacheImage(assetImage7, context);
+
       AssetImage assetImage8 = AssetImage(Assets.img.giftBg.path);
       precacheImage(assetImage8, context);
       //
-      // AssetImage assetImage = AssetImage(Assets.ttt.quizDaanRightBg.path);
-      // precacheImage(assetImage, context);
+      AssetImage assetImage = AssetImage(Assets.img.mainWheel.path);
+      precacheImage(assetImage, context);
+
+      AssetImage assetImage2 = AssetImage(Assets.img.wheelZp.path);
+      precacheImage(assetImage2, context);
+
+
+      AssetImage assetImage3 = AssetImage(Assets.img.wheelBg.path);
+      precacheImage(assetImage3, context);
       //
-      // AssetImage assetImage2 = AssetImage(Assets.ttt.quizDaanErrorBg.path);
-      // precacheImage(assetImage2, context);
-      //
-      // AssetImage assetImage3 = AssetImage(Assets.ttt.navMetal.path);
-      // precacheImage(assetImage3, context);
-      //
-      // AssetImage assetImage4 = AssetImage(Assets.ttt.navQuiz.path);
-      // precacheImage(assetImage4, context);
-      // AssetImage assetImage5 = AssetImage(Assets.ttt.navCategory.path);
-      // precacheImage(assetImage5, context);
+      AssetImage assetImage4 = AssetImage(Assets.img.wheelZpF.path);
+      precacheImage(assetImage4, context);
+      AssetImage assetImage5 = AssetImage(Assets.img.wheelZpF2.path);
+      precacheImage(assetImage5, context);
     });
   }
 

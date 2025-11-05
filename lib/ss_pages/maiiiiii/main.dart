@@ -18,6 +18,7 @@ import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
+import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 
 class Main extends StatefulWidget {
   const Main({super.key});
@@ -32,7 +33,8 @@ class _MainState extends State<Main> {
     // TODO: implement initState
     super.initState();
     Get.put(MainController());
-    bgMusic.play();
+    Get.put(WheController());
+    // bgMusic.play();
   }
 
   @override

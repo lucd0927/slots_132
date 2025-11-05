@@ -143,22 +143,22 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     var data = MainController.to.winCurZuobiao;
     for (int i = 0; i < length; i++) {
       int iiii = column + 1 + i * 5;
-      double dd = 0.w;
+      double imgSubD = 0.w;
       double dd2 = 0.w;
 
       bool showWin =
           data.contains(iiii) && MainController.to.showWinLines.value;
       String category = imgs[i];
-      // if (category != MainController.slotNumWild){
-      //   dd = 0.w;
-      //   dd2 = 0.w;
-      // }
+      if (!category.contains(MainController.slotNumWild)) {
+        imgSubD = 8.w;
+        dd2 = 4.w;
+      }
       Widget tmpC = Container(
         color: Colors.blueAccent.withValues(alpha: 0.0),
         child: Image.asset(
           MainController.kName_vImgName[category]!,
-          width: width - dd,
-          height: height - dd,
+          width: width - imgSubD,
+          height: height - imgSubD,
         ),
         // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
@@ -166,23 +166,36 @@ class SSSlotMachineState extends State<SSSlotMachine> {
         width: width - dd2,
         height: height - dd2,
         padding: EdgeInsets.all(0.w),
-        color: Colors.transparent,
+        color: Colors.cyan.withValues(alpha: 0),
         child: Center(child: tmpC),
       );
       result.add(
         Container(
           width: width,
           height: height,
-          color: Colors.green.withValues(alpha: 0.0),
-          child: Stack(children: [ child,
-            if(showWin) Container(
-              width: width,
-              height: height,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black,width: 3.w)
-              ),
-            )
-          ]),
+          color: Colors.green.withValues(alpha: 0),
+          child: Stack(
+            children: [
+              Center(child: child),
+              if (showWin)
+                Center(
+                  child: ZoMonoCromeBorder(
+                    trackBorderColor: Colors.yellow,
+                    cornerRadius: 4.w,
+                    animationDuration: Duration(milliseconds: 800),
+                    borderStyle: ZoMonoCromeBorderStyle.stroke,
+                    borderWidth: 4.w,
+                    child: Container(
+                      width: width-4.w,
+                      height: height-4.w,
+                      // decoration: BoxDecoration(
+                      //   border: Border.all(color: Colors.black, width: 3.w),
+                      // ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       );
     }

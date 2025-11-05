@@ -271,6 +271,51 @@ class $AssetsImgGen {
   /// File path: assets/img/video.png
   AssetGenImage get video => const AssetGenImage('assets/img/video.png');
 
+  /// File path: assets/img/wheel_bg.png
+  AssetGenImage get wheelBg => const AssetGenImage('assets/img/wheel_bg.png');
+
+  /// File path: assets/img/wheel_count.png
+  AssetGenImage get wheelCount =>
+      const AssetGenImage('assets/img/wheel_count.png');
+
+  /// File path: assets/img/wheel_rili.png
+  AssetGenImage get wheelRili =>
+      const AssetGenImage('assets/img/wheel_rili.png');
+
+  /// File path: assets/img/wheel_time.png
+  AssetGenImage get wheelTime =>
+      const AssetGenImage('assets/img/wheel_time.png');
+
+  /// File path: assets/img/wheel_time2.png
+  AssetGenImage get wheelTime2 =>
+      const AssetGenImage('assets/img/wheel_time2.png');
+
+  /// File path: assets/img/wheel_time3.png
+  AssetGenImage get wheelTime3 =>
+      const AssetGenImage('assets/img/wheel_time3.png');
+
+  /// File path: assets/img/wheel_time_bg.png
+  AssetGenImage get wheelTimeBg =>
+      const AssetGenImage('assets/img/wheel_time_bg.png');
+
+  /// File path: assets/img/wheel_title.png
+  AssetGenImage get wheelTitle =>
+      const AssetGenImage('assets/img/wheel_title.png');
+
+  /// File path: assets/img/wheel_zp.png
+  AssetGenImage get wheelZp => const AssetGenImage('assets/img/wheel_zp.png');
+
+  /// File path: assets/img/wheel_zp_f.png
+  AssetGenImage get wheelZpF =>
+      const AssetGenImage('assets/img/wheel_zp_f.png');
+
+  /// File path: assets/img/wheel_zp_f2.png
+  AssetGenImage get wheelZpF2 =>
+      const AssetGenImage('assets/img/wheel_zp_f2.png');
+
+  /// File path: assets/img/wheel_zz.png
+  AssetGenImage get wheelZz => const AssetGenImage('assets/img/wheel_zz.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     avatarBg,
@@ -333,6 +378,18 @@ class $AssetsImgGen {
     slot1,
     tCashapp,
     video,
+    wheelBg,
+    wheelCount,
+    wheelRili,
+    wheelTime,
+    wheelTime2,
+    wheelTime3,
+    wheelTimeBg,
+    wheelTitle,
+    wheelZp,
+    wheelZpF,
+    wheelZpF2,
+    wheelZz,
   ];
 }
 

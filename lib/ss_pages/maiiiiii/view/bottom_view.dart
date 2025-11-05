@@ -8,6 +8,7 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 
@@ -213,29 +214,27 @@ class BottomView extends StatelessWidget {
     );
   }
 
-  Container wheelWidget() {
-    return Container(
-      width: 65.h,
-      height: 72.h,
-      // color: Colors.red,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Image.asset(
-            Assets.img.mainWheel.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-          ),
-          Positioned(
-            bottom: 0,
-            left: -10.w,
-            right: -10.w,
-            child: Center(
-              child: GestureDetector(
-                onTap: () {
-                  // MainController.to.onStartRoller();
-                },
+  Widget wheelWidget() {
+    return GestureDetector(
+      onTap: onWheel,
+      child: Container(
+        width: 65.h,
+        height: 72.h,
+        color: Colors.red.withValues(alpha: 0),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              Assets.img.mainWheel.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            Positioned(
+              bottom: 0,
+              left: -10.w,
+              right: -10.w,
+              child: Center(
                 child: SSTxtGraBorder(
                   text: "Wheel",
                   strokeColor: Color(0xff30120A),
@@ -243,10 +242,14 @@ class BottomView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
+  }
+
+  onWheel(){
+    Get.toNamed(SSRouttttt.wheeee);
   }
 
   Container slotsMachine() {

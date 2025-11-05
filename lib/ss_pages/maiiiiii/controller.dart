@@ -493,7 +493,7 @@ class MainController extends GetxController {
                 if (result) {
                   var value = kZuobiao_vCategory[zuobiao] ?? "";
                   if (value.isNotEmpty &&
-                      !value.contains(slotNumWild)  &&
+                      !value.contains(slotNumWild) &&
                       value != slotNumSCATTER) {
                     key = value;
                   }
@@ -615,18 +615,20 @@ class MainController extends GetxController {
 
   _roller(GlobalKey<RollerListState> key, int index) async {
     int allImgs = defaultImgName.length;
-    int random = (allImgs - 2);
+    int random = allImgs + (allImgs - 2);
+    int time = index * 50 + 400;
     key.currentState
         ?.smoothScrollToIndex(
           random,
-          duration: Duration(milliseconds: index * 50 + 300),
-          curve: Curves.easeIn,
+          duration: Duration(milliseconds: time),
+          // curve: Curves.bounceIn,
+          curve: Curves.easeInCirc,
           // curve: Curves.easeInQuad,
         )
         .then((v) {
           cunt = cunt + 1;
 
-          ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==");
+          ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
           if (cunt >= 5) {
             result?.complete(5);
             result = null;

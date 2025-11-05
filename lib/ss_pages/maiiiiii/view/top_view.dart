@@ -155,7 +155,6 @@ class TopView extends StatelessWidget {
     // overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
 
     OverlaySettinnn().show();
-
   }
 
   topMoney() {
@@ -180,8 +179,9 @@ class TopView extends StatelessWidget {
         child: SSAniiiiCount(
           duration: Duration(milliseconds: 500),
           fractionDigits: 2,
+          wholeDigits: 2,
           prefix: SSCountry.curGuojiaFuhao(),
-          value: 1000,
+          value: 10000,
           // pass in a value like 2014
           textStyle: TextStyle(
             fontWeight: FontWeight.w700,

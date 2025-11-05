@@ -130,7 +130,6 @@ class SSAniiiiCount extends StatelessWidget {
     // `Opacity` and `AnimatedOpacity` widget, for better performance.
     final Color color = style.color ?? const Color(0xffff0000);
 
-// auto patch 867
     // Convert the decimal value to int. For example, if we want 2 decimal
     // places, we will convert 5.21 into 521.
     final int value = (this.value * math.pow(10, fractionDigits)).round();
