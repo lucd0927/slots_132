@@ -1,9 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/ss_pages/wheeee/vieee/wheee_bottom.dart';
 import 'package:slots_132/ss_pages/wheeee/vieee/wheel_detail.dart';
+import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 
 class Wheeee extends StatefulWidget {
   const Wheeee({super.key});
@@ -28,15 +28,31 @@ class _WheeeeState extends State<Wheeee> {
               height: double.infinity,
               fit: BoxFit.fill,
             ),
-            
-            Positioned.fill(child: Column(
-              children: [
-                SizedBox(height: 90.h,),
-                Image.asset(Assets.img.wheelTitle.path,width: 333.w,height: 165.w,fit: BoxFit.fill,),
-                SSWheelDetail(),
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.black.withValues(alpha: 0.0),
+            ),
 
-              ],
-            )),
+            Positioned.fill(
+              child: Column(
+                children: [
+                  SizedBox(height: 70.h),
+                  Image.asset(
+                    Assets.img.wheelTitle.path,
+                    width: 333.w,
+                    height: 165.w,
+                    fit: BoxFit.fill,
+                  ),
+                  SSWheelDetail(
+                    onEnd: (value) {
+                      WheController.to.onSpinSub(value);
+                    },
+                  ),
+                  WheeeBottom(),
+                ],
+              ),
+            ),
 
             Positioned(
               top: 50.h,
@@ -58,4 +74,6 @@ class _WheeeeState extends State<Wheeee> {
       ),
     );
   }
+
+
 }

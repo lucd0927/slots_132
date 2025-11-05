@@ -18,6 +18,7 @@ class MainController extends GetxController {
   void onInit() {
     super.onInit();
     initRoller5(hasFirstInit: true);
+
   }
 
   var showFreeSpin = false.obs;

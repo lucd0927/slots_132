@@ -45,7 +45,7 @@ class _AvatarRowState extends State<AvatarRow> {
   initData() {
     for (int i = 1; i < 50; i++) {
       int aIndex = i % avatarLength + 1;
-      ssLogggg("=====aIndex:$aIndex");
+      // ssLogggg("=====aIndex:$aIndex");
       String avatar = "assets/img/avatar/avatar$aIndex.png";
       int maxLength = Random().nextInt(8) + 2;
       String name = randomName(maxLength: maxLength);

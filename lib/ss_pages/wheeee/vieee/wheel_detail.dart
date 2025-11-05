@@ -8,11 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 
 class SSWheelDetail extends StatefulWidget {
-  const SSWheelDetail({super.key});
+  const SSWheelDetail({super.key, required this.onEnd});
+
+  final ValueChanged onEnd;
 
   @override
   State<SSWheelDetail> createState() => _SSWheelDetailState();
@@ -36,19 +41,24 @@ class _SSWheelDetailState extends State<SSWheelDetail> {
               ),
             ),
           ),
-          Positioned.fill(child: ControlledWheel()),
+          Positioned.fill(
+            child: ControlledWheel(
+              onEnd: (value) {
+                widget.onEnd(value);
+              },
+            ),
+          ),
         ],
       ),
     );
     return child;
-    return Obx(() {
-      return child;
-    });
   }
 }
 
 class ControlledWheel extends StatefulWidget {
-  const ControlledWheel({super.key});
+  const ControlledWheel({super.key, required this.onEnd});
+
+  final ValueChanged onEnd;
 
   @override
   State<ControlledWheel> createState() => _ControlledWheelState();
@@ -70,14 +80,16 @@ class _ControlledWheelState extends State<ControlledWheel>
     _animation = AlwaysStoppedAnimation(0);
   }
 
-  void spinTo(int fromIndex, int toIndex) {
-    const int segmentCount = 16;
-    const double segmentAngle = 360 / segmentCount;
+  spinTo(int fromIndex, int toIndex) async {
+    // 分成多少份
+    int segmentCount = 16;
+    // 每份多少度
+    double segmentAngle = 360 / segmentCount;
 
     final fromAngle = fromIndex * segmentAngle + segmentAngle / 2;
     final toAngle = toIndex * segmentAngle + segmentAngle / 2;
-
-    final double turns = 360 * 2; // 转5圈
+    // 旋转多少圈
+    final double turns = 360 * 2; // 转2圈
     final double target = turns + (toAngle - fromAngle);
 
     _animation = Tween<double>(begin: _startAngle, end: _startAngle + target)
@@ -85,9 +97,10 @@ class _ControlledWheelState extends State<ControlledWheel>
           CurvedAnimation(parent: _controller, curve: Curves.linearToEaseOut),
         );
 
-    _controller.forward(from: 0).whenComplete(() {
-      _startAngle += target % 360; // 只保留余角
+    await _controller.forward(from: 0).whenComplete(() {
+      _startAngle = 0; // 只保留余角
     });
+    ssLogggg("_controller.forward end:");
   }
 
   @override
@@ -122,104 +135,152 @@ class _ControlledWheelState extends State<ControlledWheel>
           right: 0,
           top: 0,
           bottom: 0,
-          child: Center(
-            child: GestureDetector(
-              onTap: _onSpin,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    width: 70.w,
-                    height: 90.w,
-                    color: Colors.red.withValues(alpha: 0),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          Assets.img.wheelZz.path,
-                          width: double.infinity,
-                          height: double.infinity,
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: 20.h,
-                          bottom: 0,
-                          child: Center(
-                            child: SSTxtGraBorder(
-                              text: "SPIN",
-                              strokeColor: Color(0xffCC1420),
-                              strokeWidth: 1.w,
-                              fontSize: 24.sp,
+          child: Obx(() {
+            return Center(
+              child: GestureDetector(
+                onTap: _onSpin,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      width: 70.w,
+                      height: 90.w,
+                      color: Colors.red.withValues(alpha: 0),
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            Assets.img.wheelZz.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 20.h,
+                            bottom: 0,
+                            child: Center(
+                              child: SSTxtGraBorder(
+                                text: "SPIN",
+                                strokeColor: Color(0xffCC1420),
+                                strokeWidth: 1.w,
+                                fontSize: 24.sp,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 20.h,
-                    child: Container(
-                      width: 24.w,
-                      height: 24.w,
-                      decoration: BoxDecoration(
-                        color: Color(0xffFF4949),
-                        borderRadius: BorderRadius.circular(24.w),
-                        border: Border.all(
-                          color: Color(0xffffffff),
-                          width: 2.w,
-                        ),
+                        ],
                       ),
-                      child: Center(
-                        child: AutoSizeText(
-                          "30",
-                          style: TextStyle(
+                    ),
+                    Positioned(
+                      right: 0,
+                      top: 20.h,
+                      child: Container(
+                        width: 24.w,
+                        height: 24.w,
+                        decoration: BoxDecoration(
+                          color: Color(0xffFF4949),
+                          borderRadius: BorderRadius.circular(24.w),
+                          border: Border.all(
                             color: Color(0xffffffff),
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: FontFamily.rubik,
+                            width: 2.w,
                           ),
-                          minFontSize: 7.w,
-                          stepGranularity: 7.w,
-                          maxLines: 1,
+                        ),
+                        child: Center(
+                          child: SSAniiiiCount(
+                            value: WheController.to.curWheNum.value,
+                            textStyle: TextStyle(
+                              color: Color(0xffffffff),
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: FontFamily.rubik,
+                              height: 1,
+                            ),
+                          ),
+                          // child: AutoSizeText(
+                          //   "${}",
+                          //   style: TextStyle(
+                          //     color: Color(0xffffffff),
+                          //     fontSize: 20.sp,
+                          //     fontWeight: FontWeight.w700,
+                          //     fontFamily: FontFamily.rubik,
+                          //   ),
+                          //   minFontSize: 7.w,
+                          //   stepGranularity: 7.w,
+                          //   maxLines: 1,
+                          // ),
                         ),
                       ),
                     ),
-                  ),
-
-                  // if (canClick)
-                  // Positioned(
-                  //   top: 100.h,
-                  //   // bottom: 0,
-                  //   // right: 0.w,
-                  //   left: 100.w,
-                  //   child: Center(
-                  //     child: IgnorePointer(
-                  //       child: PBAnimatedScale(
-                  //         child: Image.asset(
-                  //           Assets.tupian.gesture.path,
-                  //           width: 120.w,
-                  //           height: 120.w,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ),
+            );
+          }),
         ),
       ],
     );
   }
 
-  _onSpin() {
+  _onSpin() async {
+    int time = WheController.to.curWheNum.value;
+    if (time <= 0) {
+      widget.onEnd(null);
+      return;
+    }
+
     int current = Random().nextInt(16);
     int target = Random().nextInt(16);
+    current = 0;
+    target = 6;
     ssLogggg("=_onSpin==current:$current=target:$target=");
-    spinTo(current, target);
+    await spinTo(current, target);
+    GiftRewardModel tmpGiftRewardModel =
+        vIndex_vReward[target] ?? vIndex_vReward[2]!;
+    widget.onEnd(tmpGiftRewardModel);
+    ssLogggg("=_onSpin==spinTo:end=");
   }
+
+  Map<int, GiftRewardModel> vIndex_vReward = {
+    0: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.phoneSuip.path,
+    ),
+    1: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 150,
+      img: Assets.img.phoneSuip.path,
+    ),
+    2: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
+      img: Assets.img.phoneSuip.path,
+    ),
+    3: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
+      img: Assets.img.phoneSuip.path,
+    ),
+    4: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
+      img: Assets.img.phoneSuip.path,
+    ),
+    5: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.spin,
+      num: 10,
+      img: Assets.img.phoneSuip.path,
+    ),
+    6: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 150,
+      img: Assets.img.phoneSuip.path,
+    ),
+    7: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 500,
+      img: Assets.img.phoneSuip.path,
+    ),
+  };
 }
 
 class ZpBorder extends StatefulWidget {

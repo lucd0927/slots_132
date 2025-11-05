@@ -13,13 +13,15 @@ class SSRouttttt {
   static const test = "/tyukitkghlk";
 
   static const wheeee = "/aishdoiudfgio";
+  static const wheeeeOld = "/lkjskfgklkjjkl";
 
   // static const quiz_cash = "/quiz_cash";
 
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
       GetPage(name: main, page: () =>  Main()),
-      GetPage(name: boxGift, page: () =>  BoxGift(),transition: Transition.cupertinoDialog),
-      GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.cupertinoDialog),
+      GetPage(name: boxGift, page: () =>  BoxGift(),transition: Transition.zoom),
+      GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.zoom),
+      // GetPage(name: wheeeeOld, page: () =>  WheeeeOld(),transition: Transition.size),
   ];
 }

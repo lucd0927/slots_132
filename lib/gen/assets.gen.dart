@@ -72,6 +72,9 @@ class $AssetsImgGen {
   AssetGenImage get btnTxtSpin =>
       const AssetGenImage('assets/img/btn_txt_spin.png');
 
+  /// File path: assets/img/btn_wheel.png
+  AssetGenImage get btnWheel => const AssetGenImage('assets/img/btn_wheel.png');
+
   /// File path: assets/img/close_setting.png
   AssetGenImage get closeSetting =>
       const AssetGenImage('assets/img/close_setting.png');
@@ -248,6 +251,10 @@ class $AssetsImgGen {
   AssetGenImage get moneyLock =>
       const AssetGenImage('assets/img/money_lock.png');
 
+  /// File path: assets/img/phone_suip.png
+  AssetGenImage get phoneSuip =>
+      const AssetGenImage('assets/img/phone_suip.png');
+
   /// File path: assets/img/setti_audio.png
   AssetGenImage get settiAudio =>
       const AssetGenImage('assets/img/setti_audio.png');
@@ -302,8 +309,24 @@ class $AssetsImgGen {
   AssetGenImage get wheelTitle =>
       const AssetGenImage('assets/img/wheel_title.png');
 
+  /// File path: assets/img/wheel_title_congrats.png
+  AssetGenImage get wheelTitleCongrats =>
+      const AssetGenImage('assets/img/wheel_title_congrats.png');
+
   /// File path: assets/img/wheel_zp.png
   AssetGenImage get wheelZp => const AssetGenImage('assets/img/wheel_zp.png');
+
+  /// File path: assets/img/wheel_zp_bottom_bg.png
+  AssetGenImage get wheelZpBottomBg =>
+      const AssetGenImage('assets/img/wheel_zp_bottom_bg.png');
+
+  /// File path: assets/img/wheel_zp_bottom_money_bg.png
+  AssetGenImage get wheelZpBottomMoneyBg =>
+      const AssetGenImage('assets/img/wheel_zp_bottom_money_bg.png');
+
+  /// File path: assets/img/wheel_zp_bottom_w.png
+  AssetGenImage get wheelZpBottomW =>
+      const AssetGenImage('assets/img/wheel_zp_bottom_w.png');
 
   /// File path: assets/img/wheel_zp_f.png
   AssetGenImage get wheelZpF =>
@@ -326,6 +349,7 @@ class $AssetsImgGen {
     btnSetting,
     btnSpin,
     btnTxtSpin,
+    btnWheel,
     closeSetting,
     giftBg,
     giftBottom,
@@ -372,6 +396,7 @@ class $AssetsImgGen {
     money,
     moneyGift,
     moneyLock,
+    phoneSuip,
     settiAudio,
     settiBg,
     settiMusic,
@@ -386,7 +411,11 @@ class $AssetsImgGen {
     wheelTime3,
     wheelTimeBg,
     wheelTitle,
+    wheelTitleCongrats,
     wheelZp,
+    wheelZpBottomBg,
+    wheelZpBottomMoneyBg,
+    wheelZpBottomW,
     wheelZpF,
     wheelZpF2,
     wheelZz,

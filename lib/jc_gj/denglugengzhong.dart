@@ -22,6 +22,7 @@ class SSDlTracking {
     _jianchaDenglu();
     _jisuanqidongCishu();
     jisuanqidongduoshaoDay();
+    checkLoginStreak();
   }
 
   /// 检查是否是当天第一次登录（基于 UTC 时间）
@@ -121,7 +122,52 @@ class SSDlTracking {
 
   static bool _isFirstLoginTodayasdfas = false;
 
+  static const int _maxStreak = 7; // 连续7天后重置
+  // 连续登录天数
+  static const String hLianxuLoginDay = "akjshfdkjahfs";
+  //  连续登录时间
+  static const String hLianxuLoginTime = "zbcjvhjysdf";
+  /// 检查是否连续登录，并更新计数
+  static  checkLoginStreak()  {
 
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
 
+    final lastMillis = box.get(hLianxuLoginTime);
+    final lastDate = lastMillis != null
+        ? DateTime.fromMillisecondsSinceEpoch(lastMillis)
+        : null;
+
+    int streak = box.get(hLianxuLoginDay) ?? 0;
+
+    if (lastDate == null) {
+      // 首次登录
+      streak = 1;
+    } else {
+      final lastDay = DateTime(lastDate.year, lastDate.month, lastDate.day);
+      final diff = today.difference(lastDay).inDays;
+
+      if (diff == 1) {
+        streak += 1; // 连续登录 +1
+        if (streak > _maxStreak) {
+          streak = 1; // 达到7天后重置
+        }
+      } else if (diff > 1) {
+        streak = 1; // 中断重置
+      } else {
+        // diff == 0 => 今天已登录，不变
+      }
+    }
+
+    // 存储数据
+    box.put(hLianxuLoginDay, streak);
+    box.put(hLianxuLoginTime, today.millisecondsSinceEpoch);
+
+    return streak;
+  }
+
+  static int lianxuLoginDay(){
+    return box.get(hLianxuLoginDay) ?? 1;
+  }
 
 }    

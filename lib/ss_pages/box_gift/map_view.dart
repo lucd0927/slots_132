@@ -8,6 +8,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 
 class SSMapView extends StatefulWidget {
   const SSMapView({super.key});
@@ -47,7 +48,7 @@ class _SSMapViewState extends State<SSMapView> {
       img: Assets.img.moneyGift.path,
     ),
     8: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphone,
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
       img: Assets.img.mainPhone.path,
     ),
@@ -62,7 +63,7 @@ class _SSMapViewState extends State<SSMapView> {
       img: Assets.img.btnTxtSpin.path,
     ),
     9: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphone,
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
       img: Assets.img.mainPhone.path,
     ),
@@ -77,7 +78,7 @@ class _SSMapViewState extends State<SSMapView> {
       img: Assets.img.giftXpUnlock.path,
     ),
     10: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphone,
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
       img: Assets.img.mainPhone.path,
     ),
@@ -95,7 +96,9 @@ class _SSMapViewState extends State<SSMapView> {
     _rightC = _controllers.addAndGet();
     _lineC = _controllers.addAndGet();
     init().then((_) {
-      scrollTo(jumpIndex);
+      Future.delayed(Duration(milliseconds: 300),(){
+        scrollTo(jumpIndex);
+      });
     });
   }
 
@@ -645,19 +648,5 @@ class BoxGiftModel {
     this.hasClickCollect = true,
     required this.money,
     required this.hasUnlock,
-  });
-}
-
-enum EnumGiftRewardModel { spin, cash, iphone, xp }
-
-class GiftRewardModel {
-  final EnumGiftRewardModel rewardModelType;
-  final String img;
-  final int num;
-
-  const GiftRewardModel({
-    required this.rewardModelType,
-    required this.num,
-    required this.img,
   });
 }
