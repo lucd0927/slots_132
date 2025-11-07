@@ -48,7 +48,6 @@ class _SSSplassssState extends State<SSSplassss> {
       AssetImage assetImage2 = AssetImage(Assets.img.wheelZp.path);
       precacheImage(assetImage2, context);
 
-
       AssetImage assetImage3 = AssetImage(Assets.img.wheelBg.path);
       precacheImage(assetImage3, context);
       //
@@ -70,6 +69,9 @@ class _SSSplassssState extends State<SSSplassss> {
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.transparent,
+        // systemStatusBarContrastEnforced:true,
+        // systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Material(
         color: Colors.white,

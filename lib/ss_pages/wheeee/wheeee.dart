@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/ss_pages/wheeee/vieee/wheee_bottom.dart';
 import 'package:slots_132/ss_pages/wheeee/vieee/wheel_detail.dart';
@@ -38,12 +39,15 @@ class _WheeeeState extends State<Wheeee> {
               child: Column(
                 children: [
                   SizedBox(height: 70.h),
-                  Image.asset(
-                    Assets.img.wheelTitle.path,
-                    width: 333.w,
-                    height: 165.w,
-                    fit: BoxFit.fill,
-                  ),
+                  Obx((){
+                    bool hasOver = WheController.to.wheelEnd.value;
+                    return Image.asset(
+                      hasOver?Assets.img.wheelTitleCongrats.path:  Assets.img.wheelTitle.path,
+                      width: 333.w,
+                      height: 165.w,
+                      fit: BoxFit.fill,
+                    );
+                  }),
                   SSWheelDetail(
                     onEnd: (value) {
                       WheController.to.onSpinSub(value);

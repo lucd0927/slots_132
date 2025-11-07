@@ -5,6 +5,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_pages/wheeee/diaaa/whe_bouns.dart';
 
 enum EnumWheType {
@@ -20,6 +21,7 @@ class WheController extends GetxController {
   static const String hhWheNum = "zioualsknfg";
 
   var curWheNum = initWheNum.obs;
+  var wheelEnd = false.obs;
 
   @override
   void onInit() {
@@ -52,17 +54,21 @@ class WheController extends GetxController {
     if (tmpN <= 0) {
       return;
     }
-
+    wheelEnd.value = true;
     subWheNum();
-    bottomWidget();
+    bottomWidget(value as GiftRewardModel);
   }
 
-  bottomWidget() {
-    showModalBottomSheet(
+  bottomWidget(GiftRewardModel giftRewardModel) async {
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      enableDrag: false,
+      backgroundColor: Colors.transparent,
       context: Get.overlayContext!,
       builder: (context) {
-        return WheBouns();
+        return WheBouns(giftRewardModel: giftRewardModel);
       },
     );
+    wheelEnd.value = false;
   }
 }
