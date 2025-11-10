@@ -21,7 +21,7 @@ class MainController extends GetxController {
 
   }
 
-  var showFreeSpin = false.obs;
+  var showFreeSpin = true.obs;
   var showWinLines = false.obs;
   var hasScrollerEnd = false.obs;
 
@@ -637,4 +637,10 @@ class MainController extends GetxController {
         });
     await Future.delayed(Duration(milliseconds: 50));
   }
+
+
+
+
+  var curMonnnn = 0.obs;
+
 }

@@ -339,6 +339,65 @@ class $AssetsImgGen {
   /// File path: assets/img/wheel_zz.png
   AssetGenImage get wheelZz => const AssetGenImage('assets/img/wheel_zz.png');
 
+  /// File path: assets/img/withdd_ai.png
+  AssetGenImage get withddAi => const AssetGenImage('assets/img/withdd_ai.png');
+
+  /// File path: assets/img/withdd_bank.png
+  AssetGenImage get withddBank =>
+      const AssetGenImage('assets/img/withdd_bank.png');
+
+  /// File path: assets/img/withdd_bank2.png
+  AssetGenImage get withddBank2 =>
+      const AssetGenImage('assets/img/withdd_bank2.png');
+
+  /// File path: assets/img/withdd_bank_s.png
+  AssetGenImage get withddBankS =>
+      const AssetGenImage('assets/img/withdd_bank_s.png');
+
+  /// File path: assets/img/withdd_cashapp.png
+  AssetGenImage get withddCashapp =>
+      const AssetGenImage('assets/img/withdd_cashapp.png');
+
+  /// File path: assets/img/withdd_cashapp_s.png
+  AssetGenImage get withddCashappS =>
+      const AssetGenImage('assets/img/withdd_cashapp_s.png');
+
+  /// File path: assets/img/withdd_history.png
+  AssetGenImage get withddHistory =>
+      const AssetGenImage('assets/img/withdd_history.png');
+
+  /// File path: assets/img/withdd_look.png
+  AssetGenImage get withddLook =>
+      const AssetGenImage('assets/img/withdd_look.png');
+
+  /// File path: assets/img/withdd_look_c.png
+  AssetGenImage get withddLookC =>
+      const AssetGenImage('assets/img/withdd_look_c.png');
+
+  /// File path: assets/img/withdd_paypal.png
+  AssetGenImage get withddPaypal =>
+      const AssetGenImage('assets/img/withdd_paypal.png');
+
+  /// File path: assets/img/withdd_paypal2.png
+  AssetGenImage get withddPaypal2 =>
+      const AssetGenImage('assets/img/withdd_paypal2.png');
+
+  /// File path: assets/img/withdd_paypal_s.png
+  AssetGenImage get withddPaypalS =>
+      const AssetGenImage('assets/img/withdd_paypal_s.png');
+
+  /// File path: assets/img/withdd_time.png
+  AssetGenImage get withddTime =>
+      const AssetGenImage('assets/img/withdd_time.png');
+
+  /// File path: assets/img/withdd_vip.png
+  AssetGenImage get withddVip =>
+      const AssetGenImage('assets/img/withdd_vip.png');
+
+  /// File path: assets/img/withdd_warn.png
+  AssetGenImage get withddWarn =>
+      const AssetGenImage('assets/img/withdd_warn.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     avatarBg,
@@ -419,6 +478,21 @@ class $AssetsImgGen {
     wheelZpF,
     wheelZpF2,
     wheelZz,
+    withddAi,
+    withddBank,
+    withddBank2,
+    withddBankS,
+    withddCashapp,
+    withddCashappS,
+    withddHistory,
+    withddLook,
+    withddLookC,
+    withddPaypal,
+    withddPaypal2,
+    withddPaypalS,
+    withddTime,
+    withddVip,
+    withddWarn,
   ];
 }
 

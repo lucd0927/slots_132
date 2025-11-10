@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
+import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
 
 class TopView extends StatelessWidget {
@@ -158,36 +160,41 @@ class TopView extends StatelessWidget {
   }
 
   topMoney() {
-    return Container(
-      width: 100.w,
-      height: 24.h,
-      padding: EdgeInsets.only(left: 12.w),
-      decoration: BoxDecoration(
-        color: Colors.teal.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(30.h),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xff540406),
-            Color(0xff3C0302),
-            Color(0xff360100),
-            Color(0xff560000),
-          ],
+    return GestureDetector(
+      onTap: (){
+        Get.toNamed(SSRouttttt.withdrawwwww);
+      },
+      child: Container(
+        width: 100.w,
+        height: 24.h,
+        padding: EdgeInsets.only(left: 12.w),
+        decoration: BoxDecoration(
+          color: Colors.teal.withValues(alpha: 0.5),
+          borderRadius: BorderRadius.circular(30.h),
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff540406),
+              Color(0xff3C0302),
+              Color(0xff360100),
+              Color(0xff560000),
+            ],
+          ),
+          border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
         ),
-        border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
-      ),
-      child: Center(
-        child: SSAniiiiCount(
-          duration: Duration(milliseconds: 500),
-          fractionDigits: 2,
-          wholeDigits: 2,
-          prefix: SSCountry.curGuojiaFuhao(),
-          value: 10000,
-          // pass in a value like 2014
-          textStyle: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: Color(0xff6AFF00),
-            fontSize: 16.sp,
-            // height: 1.1,
+        child: Center(
+          child: SSAniiiiCount(
+            duration: Duration(milliseconds: 500),
+            fractionDigits: 2,
+            wholeDigits: 2,
+            prefix: SSCountry.curGuojiaFuhao(),
+            value: 10000,
+            // pass in a value like 2014
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: Color(0xff6AFF00),
+              fontSize: 16.sp,
+              // height: 1.1,
+            ),
           ),
         ),
       ),

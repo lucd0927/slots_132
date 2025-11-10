@@ -88,6 +88,7 @@ dependencies:
   adjust_sdk: ^5.4.4
   google_mobile_ads: ^6.0.0
   iabtcf_consent_info: ^3.4.0+1
+  image_picker: ^1.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

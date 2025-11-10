@@ -34,6 +34,7 @@ main() async {
     DeviceOrientation.portraitUp,
     // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
   ]);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,);
 
   SSDlTracking.init();
   SSHttpChhhh().isOnline();

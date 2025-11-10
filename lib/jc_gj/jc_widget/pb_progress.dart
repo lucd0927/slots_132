@@ -12,10 +12,10 @@ class SSProjjjj extends StatelessWidget {
     required this.gradientColors,
     required this.bgColor,
     this.border,
-    required this.text,
-
+    this.text,
   });
-  final String text;
+
+  final String? text;
   final Color bgColor;
   final double height;
   final List<Color> gradientColors;
@@ -23,6 +23,7 @@ class SSProjjjj extends StatelessWidget {
   final double progress;
   final double width;
   final BoxBorder? border;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -67,7 +68,7 @@ class SSProjjjj extends StatelessWidget {
           right: 0,
           child: Center(
             child: Text(
-              text,
+              text ?? "",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: height - 2,

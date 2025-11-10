@@ -5,6 +5,8 @@ import 'package:slots_132/ss_pages/box_gift/box_gift.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/splasssss/kaiping.dart';
 import 'package:slots_132/ss_pages/wheeee/wheeee.dart';
+import 'package:slots_132/ss_pages/zhifu/history/history.dart';
+import 'package:slots_132/ss_pages/zhifu/withdrawwwww.dart';
 
 class SSRouttttt {
   static const splash = "/asdfadfdsfg";
@@ -13,15 +15,16 @@ class SSRouttttt {
   static const test = "/tyukitkghlk";
 
   static const wheeee = "/aishdoiudfgio";
-  static const wheeeeOld = "/lkjskfgklkjjkl";
 
-  // static const quiz_cash = "/quiz_cash";
+  static const withdrawwwww = "/Withdrawwwww";
+  static const historyyyy = "/Historyyyy";
 
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
       GetPage(name: main, page: () =>  Main()),
-      GetPage(name: boxGift, page: () =>  BoxGift(),transition: Transition.zoom),
-      GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.zoom),
-      // GetPage(name: wheeeeOld, page: () =>  WheeeeOld(),transition: Transition.size),
+      GetPage(name: boxGift, page: () =>  BoxGift(),transition: Transition.cupertinoDialog),
+      GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.cupertinoDialog),
+      GetPage(name: withdrawwwww, page: () =>  Withdrawwwww(),transition: Transition.cupertinoDialog),
+      GetPage(name: historyyyy, page: () =>  Historyyyy(),transition: Transition.cupertinoDialog),
   ];
 }

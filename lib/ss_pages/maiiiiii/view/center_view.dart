@@ -27,11 +27,13 @@ class CenterView extends StatelessWidget {
     return centerWidget();
   }
 
+
   centerWidget() {
     return LayoutBuilder(
       builder: (context, c) {
         double maxH = c.maxHeight;
         double maxW = c.maxWidth;
+        ssLogggg("===maxH:${maxH/1.h}=maxW:$maxW");
         return Obx(() {
           return Container(
             width: double.infinity,
@@ -124,6 +126,7 @@ class CenterView extends StatelessWidget {
                     },
                   ),
                 ),
+
                 // Positioned.fill(
                 //   child: Container(
                 //     width: double.infinity,
@@ -347,11 +350,11 @@ class _FreeSpinState extends State<FreeSpin> {
   int select = -1;
   double scale = 1.5;
   Timer? timer;
-  double firstH = 40.h;
-  double secondH = 90.h;
-  double thirdH = 120.h;
-  double fourthH = 90.h;
-  double fiveH = 40.h;
+  double firstH = 40.w;
+  double secondH = 90.w;
+  double thirdH = 110.w;
+  double fourthH = 90.w;
+  double fiveH = 40.w;
 
   @override
   void initState() {
@@ -378,127 +381,131 @@ class _FreeSpinState extends State<FreeSpin> {
     double itemW = (ScreenUtil().screenWidth - leftW * 2) / 5.2;
     double alpha = 0.0;
 
-    return GestureDetector(
-      onTap: () {
-        ssLogggg("====fress spin=");
-        timer?.cancel();
-        timer = Timer.periodic(Duration(milliseconds: 70), (v) {
-          int tmpT = v.tick;
+    return LayoutBuilder(
+      builder: (context,constraints) {
+        return GestureDetector(
+          onTap: () {
+            ssLogggg("====free spin=");
+            timer?.cancel();
+            timer = Timer.periodic(Duration(milliseconds: 70), (v) {
+              int tmpT = v.tick;
 
-          if (tmpT > 50) {
-            v.cancel();
-            setState(() {
-              secondH = 70.h;
-            });
-            Future.delayed(Duration(milliseconds: 5000), () {
-              setState(() {
-                reset();
-              });
-            });
-          } else {
-            setState(() {
-              if (select == -1) {
-                select = 0;
-              } else if (select == 0) {
-                select = 1;
-              } else if (select == 1) {
-                select = 2;
-              } else if (select == 2) {
-                select = 3;
-              } else if (select == 3) {
-                select = 4;
+              if (tmpT > 50) {
+                v.cancel();
+                setState(() {
+                  secondH = 70.h;
+                });
+                Future.delayed(Duration(milliseconds: 5000), () {
+                  setState(() {
+                    reset();
+                  });
+                });
               } else {
-                select = -1;
+                setState(() {
+                  if (select == -1) {
+                    select = 0;
+                  } else if (select == 0) {
+                    select = 1;
+                  } else if (select == 1) {
+                    select = 2;
+                  } else if (select == 2) {
+                    select = 3;
+                  } else if (select == 3) {
+                    select = 4;
+                  } else {
+                    select = -1;
+                  }
+                });
               }
             });
-          }
-        });
-      },
-      child: Container(
-        width: double.infinity,
-        // height: double.infinity,
-        margin: EdgeInsets.only(top: 20.h, left: leftW, right: leftW),
-        child: Center(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: itemW,
-                color: Colors.yellow.withValues(alpha: alpha),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    // SizedBox(height: firstH),
-                    AnimatedContainer(
-                      height: firstH,
-                      duration: Duration(milliseconds: 100),
+          },
+          child: Container(
+            width: double.infinity,
+            // height: double.infinity,
+            margin: EdgeInsets.only(top: 10.w, left: leftW, right: leftW),
+            child: Center(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: itemW,
+                    color: Colors.yellow.withValues(alpha: alpha),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        // SizedBox(height: firstH),
+                        AnimatedContainer(
+                          height: firstH,
+                          duration: Duration(milliseconds: 100),
+                        ),
+                        childI(icon: Assets.img.mainCWheel.path, index: 0),
+                      ],
                     ),
-                    childI(icon: Assets.img.mainCWheel.path, index: 0),
-                  ],
-                ),
-              ),
-              Container(
-                width: itemW,
-                color: Colors.green.withValues(alpha: alpha),
-                child: Column(
-                  children: [
-                    // SizedBox(height: secondH),
-                    AnimatedContainer(
-                      height: secondH,
-                      duration: Duration(milliseconds: 100),
+                  ),
+                  Container(
+                    width: itemW,
+                    color: Colors.green.withValues(alpha: alpha),
+                    child: Column(
+                      children: [
+                        // SizedBox(height: secondH),
+                        AnimatedContainer(
+                          height: secondH,
+                          duration: Duration(milliseconds: 100),
+                        ),
+                        childI(icon: Assets.img.mainCMoney.path, index: 1),
+                      ],
                     ),
-                    childI(icon: Assets.img.mainCMoney.path, index: 1),
-                  ],
-                ),
-              ),
-              Container(
-                width: itemW,
-                color: Colors.red.withValues(alpha: alpha),
-                child: Column(
-                  children: [
-                    // SizedBox(height: thirdH),
-                    AnimatedContainer(
-                      height: thirdH,
-                      duration: Duration(milliseconds: 100),
+                  ),
+                  Container(
+                    width: itemW,
+                    color: Colors.red.withValues(alpha: alpha),
+                    child: Column(
+                      children: [
+                        // SizedBox(height: thirdH),
+                        AnimatedContainer(
+                          height: thirdH,
+                          duration: Duration(milliseconds: 100),
+                        ),
+                        childI(icon: Assets.img.mainCAvatar.path, index: 2),
+                      ],
                     ),
-                    childI(icon: Assets.img.mainCAvatar.path, index: 2),
-                  ],
-                ),
-              ),
-              Container(
-                width: itemW,
-                color: Colors.green.withValues(alpha: alpha),
-                child: Column(
-                  children: [
-                    // SizedBox(height: fourthH),
-                    AnimatedContainer(
-                      height: fourthH,
-                      duration: Duration(milliseconds: 100),
+                  ),
+                  Container(
+                    width: itemW,
+                    color: Colors.green.withValues(alpha: alpha),
+                    child: Column(
+                      children: [
+                        // SizedBox(height: fourthH),
+                        AnimatedContainer(
+                          height: fourthH,
+                          duration: Duration(milliseconds: 100),
+                        ),
+                        childI(icon: Assets.img.mainCWheel.path, index: 3),
+                      ],
                     ),
-                    childI(icon: Assets.img.mainCWheel.path, index: 3),
-                  ],
-                ),
-              ),
-              Container(
-                width: itemW,
-                color: Colors.yellow.withValues(alpha: alpha),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // SizedBox(height: fiveH),
-                    AnimatedContainer(
-                      height: fiveH,
-                      duration: Duration(milliseconds: 100),
+                  ),
+                  Container(
+                    width: itemW,
+                    color: Colors.yellow.withValues(alpha: alpha),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // SizedBox(height: fiveH),
+                        AnimatedContainer(
+                          height: fiveH,
+                          duration: Duration(milliseconds: 100),
+                        ),
+                        childI(icon: Assets.img.mainCMoney.path, index: 4),
+                      ],
                     ),
-                    childI(icon: Assets.img.mainCMoney.path, index: 4),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 
@@ -506,8 +513,8 @@ class _FreeSpinState extends State<FreeSpin> {
     bool hasSelect = index == select;
     double tmpScale = hasSelect ? scale : 1;
     // tmpScale = 1;
-    double childIW = 46.h * tmpScale;
-    double childIH = 58.h * tmpScale;
+    double childIW = 46.w * tmpScale;
+    double childIH = 58.w * tmpScale;
     double glowOpacity = hasSelect ? 1.0 : 0.0;
     // return  TweenAnimationBuilder<double>(
     //   duration: const Duration(milliseconds: 200),

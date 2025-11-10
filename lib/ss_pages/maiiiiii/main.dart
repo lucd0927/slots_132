@@ -19,6 +19,7 @@ import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
+import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class Main extends StatefulWidget {
   const Main({super.key});
@@ -34,6 +35,7 @@ class _MainState extends State<Main> {
     super.initState();
     Get.put(MainController());
     Get.put(WheController());
+    Get.put(WithdddController());
     // bgMusic.play();
   }
 
@@ -57,6 +59,7 @@ class _MainState extends State<Main> {
             fit: BoxFit.fill,
           ),
           Positioned.fill(
+            top: 400.h,
             child:SSContetti(),
           ),
           Column(
@@ -65,6 +68,11 @@ class _MainState extends State<Main> {
               AvatarRow(),
               Expanded(child: CenterView()),
               BottomView(),
+              SizedBox(
+                width: double.infinity,
+                height: ScreenUtil().bottomBarHeight,
+                // decoration: BoxDecoration(color: Color(0xffEAECF6)),
+              ),
             ],
           ),
 
