@@ -43,13 +43,16 @@ class _SSAScaleState extends State<SSAScale> {
       _ttttt = Timer.periodic(
         Duration(milliseconds: widget.milliseconds ?? 5000),
         (timer) {
-          setState(() {
-            if (_sssssscale == maxScale) {
-              _sssssscale = minScale;
-            } else {
-              _sssssscale = maxScale;
-            }
-          });
+          if(mounted){
+            setState(() {
+              if (_sssssscale == maxScale) {
+                _sssssscale = minScale;
+              } else {
+                _sssssscale = maxScale;
+              }
+            });
+          }
+
 
         },
       );

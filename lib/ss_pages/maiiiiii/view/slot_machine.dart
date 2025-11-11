@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
@@ -117,10 +118,10 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     return RollerList(
       items: getSlots(column),
       visibilityRadius: 1,
-      scrollType: ScrollType.bothDirections,
+      scrollType: ScrollType.goesOnlyTop,
       width: slotsItemW,
       height: slotsItemH,
-      initialIndex: 1,
+      initialIndex:MainController.to.initRollerIndex,
       enabled: false,
       // dividerThickness: 8,
       key: key,
@@ -176,7 +177,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           color: Colors.green.withValues(alpha: 0),
           child: Stack(
             children: [
-              Center(child: child),
+              Center(child:showWin?SSAScale(child: child): child),
               if (showWin)
                 Center(
                   child: ZoMonoCromeBorder(

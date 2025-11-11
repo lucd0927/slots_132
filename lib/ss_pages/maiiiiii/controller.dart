@@ -18,7 +18,6 @@ class MainController extends GetxController {
   void onInit() {
     super.onInit();
     initRoller5(hasFirstInit: true);
-
   }
 
   var showFreeSpin = true.obs;
@@ -611,19 +610,22 @@ class MainController extends GetxController {
   }
 
   _resetRoller(GlobalKey<RollerListState> key) {
-    key.currentState?.smoothJumpToIndex(1);
+    key.currentState?.smoothJumpToIndex(initRollerIndex);
   }
+
+  int get initRollerIndex => 1 + rollerImgs.length * 4;
 
   _roller(GlobalKey<RollerListState> key, int index) async {
     int allImgs = defaultImgName.length;
-    int random = allImgs + (allImgs - 2);
+    int random = allImgs- 2;
     int time = index * 50 + 400;
     key.currentState
         ?.smoothScrollToIndex(
           random,
           duration: Duration(milliseconds: time),
           // curve: Curves.bounceIn,
-          curve: Curves.easeInCirc,
+          // curve: Curves.linear,
+          curve: Curves.easeIn,
           // curve: Curves.easeInQuad,
         )
         .then((v) {
@@ -638,9 +640,5 @@ class MainController extends GetxController {
     await Future.delayed(Duration(milliseconds: 50));
   }
 
-
-
-
   var curMonnnn = 0.obs;
-
 }

@@ -84,21 +84,21 @@ class _SSTabViewState extends State<SSTabView> {
                 children: [
                   Image.asset(
                     Assets.img.withddVip.path,
-                    width: 32.w,
-                    height: 32.w,
+                    width: 30.w,
+                    height: 30.w,
                   ),
                   SizedBox(width: 12.w),
                   Text(
                     "Daily",
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       height: 1,
                     ),
                   ),
 
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 4.w),
+                    padding: EdgeInsets.symmetric(horizontal: 2.w),
                     child: Text(
                       "$money",
                       style: TextStyle(
@@ -113,7 +113,7 @@ class _SSTabViewState extends State<SSTabView> {
                   Text(
                     "Payout",
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       height: 1,
                     ),
