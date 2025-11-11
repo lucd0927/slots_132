@@ -19,6 +19,7 @@ import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
+import 'package:slots_132/ss_pages/zhifu/chat/chat_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class Main extends StatefulWidget {
@@ -36,12 +37,14 @@ class _MainState extends State<Main> {
     Get.put(MainController());
     Get.put(WheController());
     Get.put(WithdddController());
+    Get.put(SSChatController());
     // bgMusic.play();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: mainView(),
     );
   }

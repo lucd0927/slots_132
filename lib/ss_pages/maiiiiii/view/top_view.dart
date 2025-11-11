@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
+import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class TopView extends StatelessWidget {
   const TopView({super.key});
@@ -77,17 +80,20 @@ class TopView extends StatelessWidget {
             top: 44.h,
             left: 142.w,
             right: 142.w,
-            child: Container(
-              width: double.infinity,
-              height: 34.h,
-              decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: 0.0),
-              ),
-              child: Center(
-                child: Image.asset(
-                  Assets.img.tCashapp.path,
-                  width: double.infinity,
-                  height: double.infinity,
+            child: GestureDetector(
+              onTap: onWithddd,
+              child: Container(
+                width: double.infinity,
+                height: 34.h,
+                decoration: BoxDecoration(
+                  color: Colors.red.withValues(alpha: 0.0),
+                ),
+                child: Center(
+                  child: Image.asset(
+                    WithdddController.to.currentPaymentIconSelected(),
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
                 ),
               ),
             ),
@@ -159,11 +165,24 @@ class TopView extends StatelessWidget {
     OverlaySettinnn().show();
   }
 
+  onWithddd() {
+    Get.toNamed(SSRouttttt.withdrawwwww);
+  }
+
   topMoney() {
+
+    double money = MainController.to.curMonnnn.value;
+    money = 30510.1;
+    String suffix = "";
+    if (money >= 1000000) {
+      money = money / 1000000;
+      suffix = "M";
+    } else if (money >= 1000) {
+      money = money / 1000;
+      suffix = "k";
+    }
     return GestureDetector(
-      onTap: (){
-        Get.toNamed(SSRouttttt.withdrawwwww);
-      },
+      onTap:onWithddd,
       child: Container(
         width: 100.w,
         height: 24.h,
@@ -183,17 +202,18 @@ class TopView extends StatelessWidget {
         ),
         child: Center(
           child: SSAniiiiCount(
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 800),
             fractionDigits: 2,
-            wholeDigits: 2,
+            // wholeDigits: 2,
             prefix: SSCountry.curGuojiaFuhao(),
-            value: 10000,
-            // pass in a value like 2014
+            suffix: suffix,
+            value: money,
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
               color: Color(0xff6AFF00),
               fontSize: 16.sp,
-              // height: 1.1,
+              height: 1,
+              fontFamily: FontFamily.rubik
             ),
           ),
         ),

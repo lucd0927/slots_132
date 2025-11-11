@@ -640,5 +640,5 @@ class MainController extends GetxController {
     await Future.delayed(Duration(milliseconds: 50));
   }
 
-  var curMonnnn = 0.obs;
+  var curMonnnn = 0.0.obs;
 }

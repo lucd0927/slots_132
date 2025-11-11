@@ -103,7 +103,7 @@ class SSAniiiiCount extends StatelessWidget {
     this.fractionDigits = 0,
     this.wholeDigits = 1,
     this.hideLeadingZeroes = false,
-    this.thousandSeparator,
+    this.thousandSeparator=",",
     this.decimalSeparator = '.',
     this.mainAxisAlignment = MainAxisAlignment.center,
     this.padding = EdgeInsets.zero,
@@ -177,6 +177,32 @@ class SSAniiiiCount extends StatelessWidget {
       integerWidgets.add(digit);
     }
 
+    // // 修改后的千分位插入逻辑
+    // if (thousandSeparator != null) {
+    //   // 整数部分位数（widgets 列表的长度）
+    //   final intCount = digits.length - fractionDigits;
+    //
+    //   // 计算第一个可见位的索引（在 digits 数组中的索引）
+    //   int firstVisibleDigitIndex = 0;
+    //   if (hideLeadingZeroes) {
+    //     firstVisibleDigitIndex = digits.indexWhere((d) => d != 0);
+    //     if (firstVisibleDigitIndex == -1) {
+    //       firstVisibleDigitIndex = digits.length - 1;
+    //     }
+    //   }
+    //
+    //   // 从右向左每 3 位插入分隔符，插入时使用合并后的 style 保持一致外观
+    //   for (int insertAt = intCount - 3; insertAt > firstVisibleDigitIndex; insertAt -= 3) {
+    //     integerWidgets.insert(
+    //       insertAt,
+    //       Padding(
+    //         padding: const EdgeInsets.symmetric(horizontal: 2.0),
+    //         child: Text(thousandSeparator!, style: style),
+    //       ),
+    //     );
+    //   }
+    // }
+
     // Insert "thousand separator" jc_widget if needed.
     if (thousandSeparator != null) {
       // Find the first digit that's NOT a HIDDEN leading zero.
@@ -189,7 +215,6 @@ class SSAniiiiCount extends StatelessWidget {
       int firstVisibleDigitIndex = 0;
       if (hideLeadingZeroes) {
         // Find the first digit that's not zero.
-// auto patch 828
         firstVisibleDigitIndex = digits.indexWhere((d) => d != 0);
         // If all digits are zero, then the first visible digit is the last one.
         // E.g. the first visible digit for "0000" is the last "0" at index 3.
