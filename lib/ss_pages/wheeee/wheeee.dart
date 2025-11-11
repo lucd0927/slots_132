@@ -46,6 +46,7 @@ class _WheeeeState extends State<Wheeee> {
                       width: 333.w,
                       height: 165.w,
                       fit: BoxFit.fill,
+                      gaplessPlayback: true,
                     );
                   }),
                   SSWheelDetail(

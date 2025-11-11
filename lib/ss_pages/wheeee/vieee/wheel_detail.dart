@@ -127,6 +127,7 @@ class _ControlledWheelState extends State<ControlledWheel>
               width: 362.w,
               height: 362.w,
               fit: BoxFit.fill,
+              gaplessPlayback: true,
             ),
           ),
         ),
@@ -152,6 +153,7 @@ class _ControlledWheelState extends State<ControlledWheel>
                             Assets.img.wheelZz.path,
                             width: double.infinity,
                             height: double.infinity,
+                            gaplessPlayback: true,
                           ),
                           Positioned(
                             left: 0,
@@ -294,6 +296,7 @@ class _ZpBorderState extends State<ZpBorder> {
   String icon = Assets.img.wheelZpF.path;
   bool showFirst = false;
   late Timer timer;
+  int curIndex = 0;
 
   @override
   void initState() {
@@ -303,9 +306,9 @@ class _ZpBorderState extends State<ZpBorder> {
       setState(() {
         showFirst = !showFirst;
         if (showFirst) {
-          icon = Assets.img.wheelZpF.path;
+          curIndex = 1;
         } else {
-          icon = Assets.img.wheelZpF2.path;
+          curIndex = 0;
         }
       });
     });
@@ -313,11 +316,24 @@ class _ZpBorderState extends State<ZpBorder> {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      icon,
-      width: double.infinity,
-      height: double.infinity,
-      fit: BoxFit.fill,
+    return IndexedStack(
+      index: curIndex,
+      children: [
+        Image.asset(
+          Assets.img.wheelZpF.path,
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+          gaplessPlayback: true,
+        ),
+        Image.asset(
+          Assets.img.wheelZpF2.path,
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+          gaplessPlayback: true,
+        ),
+      ],
     );
   }
 
