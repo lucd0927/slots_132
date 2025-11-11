@@ -641,4 +641,10 @@ class MainController extends GetxController {
   }
 
   var curMonnnn = 0.0.obs;
+
+  var curLevel = 1.obs;
+  static const int maxLevel = 32;
+  static const double minWithdddMoney = 1000;
+
+
 }

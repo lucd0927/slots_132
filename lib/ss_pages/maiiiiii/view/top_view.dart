@@ -222,6 +222,7 @@ class TopView extends StatelessWidget {
   }
 
   topXp() {
+    int level = MainController.to.curLevel.value;
     return Container(
       width: 100.w,
       height: 26.h,
@@ -244,7 +245,7 @@ class TopView extends StatelessWidget {
           duration: Duration(milliseconds: 500),
           fractionDigits: 0,
           prefix: "LV.",
-          value: 1,
+          value: level,
           // pass in a value like 2014
           textStyle: TextStyle(
             fontWeight: FontWeight.w700,

@@ -275,6 +275,14 @@ class $AssetsImgGen {
   /// File path: assets/img/t_cashapp.png
   AssetGenImage get tCashapp => const AssetGenImage('assets/img/t_cashapp.png');
 
+  /// File path: assets/img/tx_activate_bg.png
+  AssetGenImage get txActivateBg =>
+      const AssetGenImage('assets/img/tx_activate_bg.png');
+
+  /// File path: assets/img/tx_activate_money.png
+  AssetGenImage get txActivateMoney =>
+      const AssetGenImage('assets/img/tx_activate_money.png');
+
   /// File path: assets/img/video.png
   AssetGenImage get video => const AssetGenImage('assets/img/video.png');
 
@@ -461,6 +469,8 @@ class $AssetsImgGen {
     settiMusic,
     slot1,
     tCashapp,
+    txActivateBg,
+    txActivateMoney,
     video,
     wheelBg,
     wheelCount,

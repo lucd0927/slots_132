@@ -90,7 +90,7 @@ class _MyAppState extends State<MyApp> {
               );
               return Overlay();
             },
-            theme: ThemeData(fontFamily: FontFamily.sansitaOne),
+            theme: ThemeData(fontFamily: FontFamily.rubik),
             getPages: SSRouttttt.pages,
 
             // translations: FanyiTools(),

@@ -68,10 +68,7 @@ class _TopNavMoneyState extends State<TopNavMoney> {
                           : CircleAvatar(
                               radius: 12.h,
                               backgroundColor: Colors.grey.shade300,
-                              child: const Icon(
-                                Icons.person,
-                                color: Colors.grey,
-                              ),
+                              child: Image.asset(Assets.img.avatar.avatarD.path),
                             ),
                     ),
                   );

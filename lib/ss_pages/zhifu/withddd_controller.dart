@@ -20,6 +20,17 @@ enum EnumSSPaymentMethod {
 class WithdddController extends GetxController {
   static WithdddController get to => Get.find();
   static const String hkAvatar = 'avatar_path';
+  static const String hkVipClick = 'sdfglksdjklsdeqrrfsdg';
+  static const String hkVipTime = 'orutgmqqqasdfasfd';
+  static const int vipPartnerTime = 60*60*24;
+  // static const int vipPartnerTime = 6;
+  void onClickVipGetChange(){
+    box.put(hkVipClick, true);
+  }
+
+  bool hasClickVipGet(){
+    return box.get(hkVipClick, defaultValue: false);
+  }
 
   var box = SSHive.box;
 
