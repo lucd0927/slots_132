@@ -6,12 +6,10 @@ import 'package:flutter_chat_core/flutter_chat_core.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/zhifu/chat/chat_controller.dart';
-import 'package:slots_132/ss_pages/zhifu/chat/view/chat_detail.dart';
 
 class AiChat extends StatefulWidget {
   const AiChat({super.key});
@@ -155,34 +153,49 @@ class _AiChatState extends State<AiChat> {
   }
 
   Widget _buildHeader(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.of(context).maybePop(),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-        child: Row(
-          children: [
-            Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 24.h),
-            SizedBox(width: 8.w),
-            Text(
-              'Agent Alex',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+    return Obx((){
+      String text = "";
+      bool hasRespone = SSChatController.to.hasResponing.value;
+      if(hasRespone){
+        text="Typing...";
+      }
+      return GestureDetector(
+        onTap: () => Navigator.of(context).maybePop(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+          child: Row(
+            children: [
+              Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 24.h),
+              SizedBox(width: 8.w),
+              Text(
+                'Agent Alex',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            Text(
-              ' (ID: 87328)',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w500,
+              Text(
+                ' (ID: 87328)',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            const Spacer(),
-          ],
+              Text(
+                text,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const Spacer(),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

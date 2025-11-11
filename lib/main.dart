@@ -28,7 +28,8 @@ main() async {
   // // 2 本地存储
   await Hive.initFlutter();
   await Hive.openBox(SSHive.hkBbbb);
-  await Hive.openBox(SSHive.hkBbb2);
+  await Hive.openBox(SSHive.hkBoxChat);
+  await Hive.openBox(SSHive.hkHistory);
   await initSpineFlutter(enableMemoryDebugging: false);
   // 设置只允许竖屏
   await SystemChrome.setPreferredOrientations([

@@ -1,5 +1,10 @@
 // dart
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_ce_flutter/adapters.dart';
+import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/ss_pages/zhifu/history/history_c.dart';
 
 class Historyyyy extends StatefulWidget {
@@ -15,156 +20,132 @@ class _HistoryyyyState extends State<Historyyyy> {
   @override
   void initState() {
     super.initState();
-    groups = _sampleGroups();
-  }
-
-  List<TransactionGroup> _sampleGroups() {
-    return [];
-  }
-
-  void _removeItem(String id) {
-    setState(() {
-      for (final g in groups) {
-        g.items.removeWhere((it) => it.id == id);
-      }
-      groups.removeWhere((g) => g.items.isEmpty);
-    });
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('已删除')));
-  }
-
-  Color _amountColor(double v) => v >= 0 ? Colors.green : Colors.red;
-
-  String _formatAmount(double v) {
-    final sign = v >= 0 ? '+' : '-';
-    final absStr = v
-        .abs()
-        .toStringAsFixed(2)
-        .replaceAll('.', ','); // 使用逗号小数点符合示例
-    return '$sign \$$absStr';
-  }
-
-  Widget _buildItem(TransactionItem item) {
-    return Dismissible(
-      key: ValueKey(item.id),
-      direction: DismissDirection.endToStart,
-      background: Container(
-        alignment: Alignment.centerRight,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.red.shade400,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: const Icon(Icons.delete_forever, color: Colors.white),
-      ),
-      onDismissed: (_) => _removeItem(item.id),
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 6,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: ListTile(
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 12,
-          ),
-          leading: _buildLeading(item.channel),
-          title: Text(
-            item.title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
-          subtitle: Text(
-            "item.subtitle",
-            style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
-          ),
-          trailing: Text(
-            _formatAmount(item.amount),
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: _amountColor(item.amount),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLeading(String channel) {
-    if (channel.toLowerCase().contains('paypal')) {
-      return Container(
-        width: 44,
-        height: 44,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Center(
-          child: Icon(
-            Icons.account_balance_wallet,
-            color: Colors.blue.shade700,
-          ),
-        ),
-      );
-    }
-    return Container(
-      width: 44,
-      height: 44,
-      decoration: BoxDecoration(
-        color: const Color(0xFF2EE0A3),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: const Center(child: Icon(Icons.attach_money, color: Colors.white)),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // flatten groups into a list of widgets (header + items)
-    final List<Widget> children = [];
-    for (final g in groups) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
-          child: Text(
-            g.title,
-            style: TextStyle(
-              color: Colors.grey.shade600,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-      );
-      children.addAll(g.items.map(_buildItem));
-    }
-
     return Scaffold(
       backgroundColor: const Color(0xFFF1F4F8),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: BackButton(color: Colors.black87),
-        title: const Text(
-          'Transaction History',
-          style: TextStyle(color: Colors.black87),
+
+      body: DefaultTextStyle(
+        style: TextStyle(fontFamily: FontFamily.rubik),
+        child: Column(
+          children: [
+            header(),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4),
+                children: [
+                  _item(),
+                  _item(),
+                  _item(),
+                  _item(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        children: children,
+    );
+  }
+
+  Widget header() {
+    return Container(
+      padding: EdgeInsets.only(left: 16.w, right: 16.w),
+      child: Column(
+        children: [
+          SizedBox(height: ScreenUtil().statusBarHeight + 10.h),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () => Navigator.of(context).maybePop(),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.black,
+                      size: 24.h,
+                    ),
+                    SizedBox(width: 8.w),
+                    Text(
+                      'Transaction History',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  _item() {
+    String leftImg = Assets.img.withddCashappS.path;
+    String title = "Withdraw";
+    String time = "12:12:12";
+    double money = 100;
+    bool hasAdd = true;
+    String symbol = hasAdd ?"+":"-";
+    Color color = Color(0xffD03131);
+    if (hasAdd) {
+      color = Color(0xff3AAD47);
+    }
+
+    String rightTxt = "$symbol ${SSCountry.curGuojiaFuhao()}${money.toStringAsFixed(2)}";
+    return Container(
+      width: double.infinity,
+      height: 80.h,
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      margin: EdgeInsets.only(top: 8.h, bottom: 8.h),
+      decoration: BoxDecoration(
+        color: Color(0xffffffff),
+        borderRadius: BorderRadius.circular(12.w),
+      ),
+      child: Row(
+        children: [
+          Image.asset(leftImg, width: 32.w, height: 32.w),
+          SizedBox(width: 16.w),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  color: color,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.sp,
+                ),
+              ),
+              SizedBox(height: 4.h,),
+              Text(
+                time,
+                style: TextStyle(
+                  color: Color(0xffA2A2A7),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 12.sp,
+                ),
+              ),
+            ],
+          ),
+          const Spacer(),
+          Text(
+            rightTxt,
+            style: TextStyle(
+              color: color,
+              fontWeight: FontWeight.w600,
+              fontSize: 24.sp,
+            ),
+          ),
+          SizedBox(width: 8.w),
+        ],
       ),
     );
   }

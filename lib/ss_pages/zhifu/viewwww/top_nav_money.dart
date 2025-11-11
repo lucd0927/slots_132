@@ -25,7 +25,7 @@ class _TopNavMoneyState extends State<TopNavMoney> {
       padding: EdgeInsets.only(left: 16.w, right: 16.w),
       child: Column(
         children: [
-          SizedBox(height: ScreenUtil().statusBarHeight),
+          SizedBox(height: ScreenUtil().statusBarHeight+10.h),
           Row(
             children: [
               GestureDetector(
