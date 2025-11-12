@@ -315,6 +315,14 @@ class $AssetsImgGen {
   AssetGenImage get txPopupBankJindu =>
       const AssetGenImage('assets/img/tx_popup_bank_jindu.png');
 
+  /// File path: assets/img/tx_popup_jindu2.png
+  AssetGenImage get txPopupJindu2 =>
+      const AssetGenImage('assets/img/tx_popup_jindu2.png');
+
+  /// File path: assets/img/tx_popup_jindu3.png
+  AssetGenImage get txPopupJindu3 =>
+      const AssetGenImage('assets/img/tx_popup_jindu3.png');
+
   /// File path: assets/img/tx_popup_money.png
   AssetGenImage get txPopupMoney =>
       const AssetGenImage('assets/img/tx_popup_money.png');
@@ -527,6 +535,8 @@ class $AssetsImgGen {
     txBuzuTips,
     txPopupBank,
     txPopupBankJindu,
+    txPopupJindu2,
+    txPopupJindu3,
     txPopupMoney,
     txPopupMore,
     txPopupSelect,

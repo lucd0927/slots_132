@@ -8,6 +8,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu2.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class OverlayJindu1 {
@@ -24,6 +25,9 @@ class OverlayJindu1 {
         return WithdddJindu1(
           onClose: () {
             close();
+            OverlayWithddJindu2().show();
+
+
           },
         );
       },
@@ -70,6 +74,10 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
         if (mounted) {
           setState(() {
             showJindu2 = true;
+          });
+
+          Future.delayed(Duration(milliseconds: 2000), () {
+            onClose();
           });
         }
       });
