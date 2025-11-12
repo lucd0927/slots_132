@@ -165,7 +165,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                         ),
                         SizedBox(height: 4.h),
                         Text(
-                          "Daily ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}  Payout",
+                          "Daily ${MainController.to.minWithdddMoneyWithCountry}  Payout",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,

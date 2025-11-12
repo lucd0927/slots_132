@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/activate_my_status.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class TabBalance extends StatefulWidget {
@@ -134,7 +137,12 @@ class _TabBalanceState extends State<TabBalance> {
         !WithdddController.to.showBalance.value;
   }
 
-  void onAdd() {}
+  void onAdd() {
+
+    // OverlayWithddBuzu().show();
+    OverlayJindu1().show();
+
+  }
 
   void onWithdraw() {}
 }

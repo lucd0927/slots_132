@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
@@ -631,7 +632,7 @@ class MainController extends GetxController {
         .then((v) {
           cunt = cunt + 1;
 
-          ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
+          // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
           if (cunt >= 5) {
             result?.complete(5);
             result = null;
@@ -646,5 +647,8 @@ class MainController extends GetxController {
   static const int maxLevel = 32;
   static const double minWithdddMoney = 1000;
 
+  String get minWithdddMoneyWithCountry{
+    return "${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}";
+  }
 
 }

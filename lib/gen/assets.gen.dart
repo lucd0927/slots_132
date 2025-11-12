@@ -75,6 +75,10 @@ class $AssetsImgGen {
   /// File path: assets/img/btn_wheel.png
   AssetGenImage get btnWheel => const AssetGenImage('assets/img/btn_wheel.png');
 
+  /// File path: assets/img/close_popup.png
+  AssetGenImage get closePopup =>
+      const AssetGenImage('assets/img/close_popup.png');
+
   /// File path: assets/img/close_setting.png
   AssetGenImage get closeSetting =>
       const AssetGenImage('assets/img/close_setting.png');
@@ -283,6 +287,50 @@ class $AssetsImgGen {
   AssetGenImage get txActivateMoney =>
       const AssetGenImage('assets/img/tx_activate_money.png');
 
+  /// File path: assets/img/tx_buzu_bg.png
+  AssetGenImage get txBuzuBg =>
+      const AssetGenImage('assets/img/tx_buzu_bg.png');
+
+  /// File path: assets/img/tx_buzu_jindu.png
+  AssetGenImage get txBuzuJindu =>
+      const AssetGenImage('assets/img/tx_buzu_jindu.png');
+
+  /// File path: assets/img/tx_buzu_jindu2.png
+  AssetGenImage get txBuzuJindu2 =>
+      const AssetGenImage('assets/img/tx_buzu_jindu2.png');
+
+  /// File path: assets/img/tx_buzu_pay.png
+  AssetGenImage get txBuzuPay =>
+      const AssetGenImage('assets/img/tx_buzu_pay.png');
+
+  /// File path: assets/img/tx_buzu_tips.png
+  AssetGenImage get txBuzuTips =>
+      const AssetGenImage('assets/img/tx_buzu_tips.png');
+
+  /// File path: assets/img/tx_popup_bank.png
+  AssetGenImage get txPopupBank =>
+      const AssetGenImage('assets/img/tx_popup_bank.png');
+
+  /// File path: assets/img/tx_popup_bank_jindu.png
+  AssetGenImage get txPopupBankJindu =>
+      const AssetGenImage('assets/img/tx_popup_bank_jindu.png');
+
+  /// File path: assets/img/tx_popup_money.png
+  AssetGenImage get txPopupMoney =>
+      const AssetGenImage('assets/img/tx_popup_money.png');
+
+  /// File path: assets/img/tx_popup_more.png
+  AssetGenImage get txPopupMore =>
+      const AssetGenImage('assets/img/tx_popup_more.png');
+
+  /// File path: assets/img/tx_popup_select.png
+  AssetGenImage get txPopupSelect =>
+      const AssetGenImage('assets/img/tx_popup_select.png');
+
+  /// File path: assets/img/tx_popup_tips2.png
+  AssetGenImage get txPopupTips2 =>
+      const AssetGenImage('assets/img/tx_popup_tips2.png');
+
   /// File path: assets/img/video.png
   AssetGenImage get video => const AssetGenImage('assets/img/video.png');
 
@@ -417,6 +465,7 @@ class $AssetsImgGen {
     btnSpin,
     btnTxtSpin,
     btnWheel,
+    closePopup,
     closeSetting,
     giftBg,
     giftBottom,
@@ -471,6 +520,17 @@ class $AssetsImgGen {
     tCashapp,
     txActivateBg,
     txActivateMoney,
+    txBuzuBg,
+    txBuzuJindu,
+    txBuzuJindu2,
+    txBuzuPay,
+    txBuzuTips,
+    txPopupBank,
+    txPopupBankJindu,
+    txPopupMoney,
+    txPopupMore,
+    txPopupSelect,
+    txPopupTips2,
     video,
     wheelBg,
     wheelCount,

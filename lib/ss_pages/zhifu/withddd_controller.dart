@@ -1,10 +1,13 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 
 enum EnumSSPaymentMethod {
@@ -22,13 +25,14 @@ class WithdddController extends GetxController {
   static const String hkAvatar = 'avatar_path';
   static const String hkVipClick = 'sdfglksdjklsdeqrrfsdg';
   static const String hkVipTime = 'orutgmqqqasdfasfd';
-  static const int vipPartnerTime = 60*60*24;
+  static const int vipPartnerTime = 60 * 60 * 24;
+
   // static const int vipPartnerTime = 6;
-  void onClickVipGetChange(){
+  void onClickVipGetChange() {
     box.put(hkVipClick, true);
   }
 
-  bool hasClickVipGet(){
+  bool hasClickVipGet() {
     return box.get(hkVipClick, defaultValue: false);
   }
 
@@ -54,6 +58,8 @@ class WithdddController extends GetxController {
       // 简单处理，可换成 SnackBar 或日志
       ssLogggg('pick avatar error: $e');
     }
+
+    SystemUiHelper.restoreTransparentNavBar();
     update();
   }
 
@@ -71,6 +77,7 @@ class WithdddController extends GetxController {
   String currentPaymentIconSelected() {
     return selectedPaymentIconSelected2(selectedPaymentBank.value);
   }
+
   String currentPaymentIconS() {
     return selectedPaymentIconS2(selectedPaymentBank.value);
   }
@@ -123,11 +130,9 @@ class WithdddController extends GetxController {
   Color bgColor() {
     if (selectedPaymentBank.value == EnumSSPaymentMethod.paypal.name) {
       return Color(0xFF263DD9);
-    } else if (selectedPaymentBank.value ==
-        EnumSSPaymentMethod.cashApp.name) {
+    } else if (selectedPaymentBank.value == EnumSSPaymentMethod.cashApp.name) {
       return Color(0xFF3AAD47);
-    } else if (selectedPaymentBank.value ==
-        EnumSSPaymentMethod.bank.name) {
+    } else if (selectedPaymentBank.value == EnumSSPaymentMethod.bank.name) {
       return Color(0xFF000000);
     }
     return Color(0xFF263DD9); // 默认颜色

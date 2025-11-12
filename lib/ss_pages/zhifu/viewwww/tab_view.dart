@@ -239,12 +239,12 @@ class _VipPartnerState extends State<VipPartner> {
       shengyuTime = WithdddController.vipPartnerTime - tmpDiff;
     }
 
-    ssLogggg("=init shengyuTime:$shengyuTime===");
+    // ssLogggg("=init shengyuTime:$shengyuTime===");
     _timer = Timer.periodic(Duration(seconds: 1), (tmpTimer) {
       int curTime = curSecondSinceEpoch();
       int tmpDiff = curTime - time!;
       shengyuTime = WithdddController.vipPartnerTime - tmpDiff;
-      ssLogggg("=shengyuTime:$shengyuTime===");
+      // ssLogggg("=shengyuTime:$shengyuTime===");
       setState(() {});
       if (shengyuTime < 0) {
         box.put(key, time);
@@ -274,12 +274,11 @@ class _VipPartnerState extends State<VipPartner> {
 
   @override
   Widget build(BuildContext context) {
-    String money =
-        "${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}";
+    String money = MainController.to.minWithdddMoneyWithCountry;
     String des =
         "Become a Partner and wake up to \$1000 in your account. Every. Single. Day.";
     String time = toTime();
-    ssLogggg("====time:$time");
+    // ssLogggg("====time:$time");
     return Container(
       width: double.infinity,
       height: 100.h,

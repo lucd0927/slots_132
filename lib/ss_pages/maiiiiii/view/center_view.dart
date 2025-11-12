@@ -376,6 +376,42 @@ class _FreeSpinState extends State<FreeSpin> {
     thirdH = 120.h;
   }
 
+  onStar() {
+    ssLogggg("====free spin=");
+    timer?.cancel();
+    timer = Timer.periodic(Duration(milliseconds: 50), (v) {
+      int tmpT = v.tick;
+
+      if (tmpT > 50) {
+        v.cancel();
+        setState(() {
+          secondH = 70.h;
+        });
+        Future.delayed(Duration(milliseconds: 5000), () {
+          setState(() {
+            reset();
+          });
+        });
+      } else {
+        setState(() {
+          if (select == -1) {
+            select = 0;
+          } else if (select == 0) {
+            select = 1;
+          } else if (select == 1) {
+            select = 2;
+          } else if (select == 2) {
+            select = 3;
+          } else if (select == 3) {
+            select = 4;
+          } else {
+            select = -1;
+          }
+        });
+      }
+    });
+  }
+
   freeSpinWidget() {
     double leftW = 0.w;
     double itemW = (ScreenUtil().screenWidth - leftW * 2) / 5.2;
@@ -384,41 +420,7 @@ class _FreeSpinState extends State<FreeSpin> {
     return LayoutBuilder(
       builder: (context,constraints) {
         return GestureDetector(
-          onTap: () {
-            ssLogggg("====free spin=");
-            timer?.cancel();
-            timer = Timer.periodic(Duration(milliseconds: 70), (v) {
-              int tmpT = v.tick;
-
-              if (tmpT > 50) {
-                v.cancel();
-                setState(() {
-                  secondH = 70.h;
-                });
-                Future.delayed(Duration(milliseconds: 5000), () {
-                  setState(() {
-                    reset();
-                  });
-                });
-              } else {
-                setState(() {
-                  if (select == -1) {
-                    select = 0;
-                  } else if (select == 0) {
-                    select = 1;
-                  } else if (select == 1) {
-                    select = 2;
-                  } else if (select == 2) {
-                    select = 3;
-                  } else if (select == 3) {
-                    select = 4;
-                  } else {
-                    select = -1;
-                  }
-                });
-              }
-            });
-          },
+          onTap: onStar,
           child: Container(
             width: double.infinity,
             // height: double.infinity,
@@ -512,7 +514,7 @@ class _FreeSpinState extends State<FreeSpin> {
   childI({required String icon, required int index}) {
     bool hasSelect = index == select;
     double tmpScale = hasSelect ? scale : 1;
-    // tmpScale = 1;
+    tmpScale = 1;
     double childIW = 46.w * tmpScale;
     double childIH = 58.w * tmpScale;
     double glowOpacity = hasSelect ? 1.0 : 0.0;
