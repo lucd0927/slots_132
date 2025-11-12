@@ -33,15 +33,15 @@ class _SSSplassssState extends State<SSSplassss> {
 
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      AssetImage assetImage1 = AssetImage(Assets.img.mainBg.path);
-      precacheImage(assetImage1, context);
+
 
 
 
       //
       AssetImage assetImage = AssetImage(Assets.img.mainWheel.path);
       precacheImage(assetImage, context);
-
+      AssetImage assetImage1 = AssetImage(Assets.img.mainBg.path);
+      precacheImage(assetImage1, context);
       AssetImage assetImage2 = AssetImage(Assets.img.wheelZp.path);
       precacheImage(assetImage2, context);
 
