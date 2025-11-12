@@ -10,6 +10,7 @@ import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/http_checccc.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:spine_flutter/spine_flutter.dart';
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    lifecycleChange();
+    lcChange();
   }
 
   @override
@@ -72,21 +73,14 @@ class _MyAppState extends State<MyApp> {
             title: "Slots",
             initialRoute: SSRouttttt.splash,
             builder: (BuildContext context, Widget? child) {
-              return AnnotatedRegion<SystemUiOverlayStyle>(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: Colors.transparent,
-                  statusBarBrightness:Brightness.dark,
-                  statusBarIconBrightness: Brightness.light,
-                ),
-                child: Overlay(
-                  initialEntries: <OverlayEntry>[
-                    OverlayEntry(
-                      builder: (BuildContext ctx) {
-                        return child!;
-                      },
-                    ),
-                  ],
-                ),
+              return Overlay(
+                initialEntries: <OverlayEntry>[
+                  OverlayEntry(
+                    builder: (BuildContext ctx) {
+                      return child!;
+                    },
+                  ),
+                ],
               );
               return Overlay();
             },
@@ -109,13 +103,13 @@ class _MyAppState extends State<MyApp> {
 Timer? _bgTtttt;
 bool sssshowAd = false;
 
-void lifecycleChange() {
+void lcChange() {
   SystemChannels.lifecycle.setMessageHandler((msg) async {
     ssLogggg('lifecycle> $msg');
     // if(!GGABPackage.isPackageB()){
     //   return msg;
     // }
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top,SystemUiOverlay.bottom]);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top,SystemUiOverlay.bottom]);
     // msg是个字符串，是下面的值
     // AppLifecycleState.resumed
     // AppLifecycleState.inactive
@@ -125,7 +119,7 @@ void lifecycleChange() {
       // bgGGAudioPlayer.resume();
       // JCShijianBaogao.session();
       _bgTtttt?.cancel();
-
+      SystemUiHelper.restoreTransparentNavBar();
       if (sssshowAd) {
         ssLogggg("===前后切换加载=GGCommonAds().showInterstitialAd=${SSCommonAds.hasDisplayAd()}=");
         if (!SSCommonAds.hasDisplayAd()) {

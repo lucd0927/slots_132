@@ -182,10 +182,12 @@ class _WithddJindu2State extends State<WithddJindu2> {
 
   onClose() async {
     ssLogggg("======Setting close");
-    setState(() {
-      showAnimated = false;
-    });
-    await Future.delayed(animD);
-    widget.onClose();
+    if(mounted){
+      setState(() {
+        showAnimated = false;
+      });
+      await Future.delayed(animD);
+      widget.onClose();
+    }
   }
 }

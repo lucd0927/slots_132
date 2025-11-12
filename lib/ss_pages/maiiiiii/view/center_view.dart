@@ -49,7 +49,7 @@ class CenterView extends StatelessWidget {
                     key: ValueKey("SpineShengdaolaoren"),
                     width: 10.w,
                     height: 250.h,
-                    child: const SpineShengdaolaoren(),
+                    child: const SpineShengdaolaoren(key: ValueKey("ooeirtjtjkl"),),
                   ),
                 ),
 

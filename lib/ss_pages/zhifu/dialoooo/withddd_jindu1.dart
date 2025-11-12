@@ -75,7 +75,6 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
           setState(() {
             showJindu2 = true;
           });
-
           Future.delayed(Duration(milliseconds: 2000), () {
             onClose();
           });
@@ -442,11 +441,14 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
 
   onClose() async {
     ssLogggg("======Setting close");
-    setState(() {
-      showAnimated = false;
-    });
-    await Future.delayed(animD);
-    widget.onClose();
+    if(mounted){
+      setState(() {
+        showAnimated = false;
+      });
+      await Future.delayed(animD);
+      widget.onClose();
+    }
+
   }
 }
 
