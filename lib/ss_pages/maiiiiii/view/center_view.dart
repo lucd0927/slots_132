@@ -307,6 +307,7 @@ class CenterView extends StatelessWidget {
         GestureDetector(
           onTap: () {
             ssLogggg("=mainPhone==");
+            onPhoneClick();
           },
           child: Container(
             width: 58.h,
@@ -336,6 +337,10 @@ class CenterView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  onPhoneClick(){
+    Get.toNamed(SSRouttttt.phoneCardPage);
   }
 }
 

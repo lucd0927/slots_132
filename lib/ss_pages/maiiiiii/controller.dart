@@ -21,7 +21,7 @@ class MainController extends GetxController {
     initRoller5(hasFirstInit: true);
   }
 
-  var showFreeSpin = true.obs;
+  var showFreeSpin = false.obs;
   var showWinLines = false.obs;
   var hasScrollerEnd = false.obs;
 

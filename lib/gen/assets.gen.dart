@@ -255,6 +255,102 @@ class $AssetsImgGen {
   AssetGenImage get moneyLock =>
       const AssetGenImage('assets/img/money_lock.png');
 
+  /// File path: assets/img/phone_card_bg.png
+  AssetGenImage get phoneCardBg =>
+      const AssetGenImage('assets/img/phone_card_bg.png');
+
+  /// File path: assets/img/phone_card_bottom_bg.png
+  AssetGenImage get phoneCardBottomBg =>
+      const AssetGenImage('assets/img/phone_card_bottom_bg.png');
+
+  /// File path: assets/img/phone_card_card_1.png
+  AssetGenImage get phoneCardCard1 =>
+      const AssetGenImage('assets/img/phone_card_card_1.png');
+
+  /// File path: assets/img/phone_card_card_1_s.png
+  AssetGenImage get phoneCardCard1S =>
+      const AssetGenImage('assets/img/phone_card_card_1_s.png');
+
+  /// File path: assets/img/phone_card_card_2.png
+  AssetGenImage get phoneCardCard2 =>
+      const AssetGenImage('assets/img/phone_card_card_2.png');
+
+  /// File path: assets/img/phone_card_card_2_s.png
+  AssetGenImage get phoneCardCard2S =>
+      const AssetGenImage('assets/img/phone_card_card_2_s.png');
+
+  /// File path: assets/img/phone_card_card_3.png
+  AssetGenImage get phoneCardCard3 =>
+      const AssetGenImage('assets/img/phone_card_card_3.png');
+
+  /// File path: assets/img/phone_card_card_3_s.png
+  AssetGenImage get phoneCardCard3S =>
+      const AssetGenImage('assets/img/phone_card_card_3_s.png');
+
+  /// File path: assets/img/phone_card_card_4.png
+  AssetGenImage get phoneCardCard4 =>
+      const AssetGenImage('assets/img/phone_card_card_4.png');
+
+  /// File path: assets/img/phone_card_card_4_s.png
+  AssetGenImage get phoneCardCard4S =>
+      const AssetGenImage('assets/img/phone_card_card_4_s.png');
+
+  /// File path: assets/img/phone_card_card_5.png
+  AssetGenImage get phoneCardCard5 =>
+      const AssetGenImage('assets/img/phone_card_card_5.png');
+
+  /// File path: assets/img/phone_card_card_5_s.png
+  AssetGenImage get phoneCardCard5S =>
+      const AssetGenImage('assets/img/phone_card_card_5_s.png');
+
+  /// File path: assets/img/phone_card_card_6.png
+  AssetGenImage get phoneCardCard6 =>
+      const AssetGenImage('assets/img/phone_card_card_6.png');
+
+  /// File path: assets/img/phone_card_card_6_s.png
+  AssetGenImage get phoneCardCard6S =>
+      const AssetGenImage('assets/img/phone_card_card_6_s.png');
+
+  /// File path: assets/img/phone_card_card_7.png
+  AssetGenImage get phoneCardCard7 =>
+      const AssetGenImage('assets/img/phone_card_card_7.png');
+
+  /// File path: assets/img/phone_card_card_7_s.png
+  AssetGenImage get phoneCardCard7S =>
+      const AssetGenImage('assets/img/phone_card_card_7_s.png');
+
+  /// File path: assets/img/phone_card_card_8.png
+  AssetGenImage get phoneCardCard8 =>
+      const AssetGenImage('assets/img/phone_card_card_8.png');
+
+  /// File path: assets/img/phone_card_card_8_s.png
+  AssetGenImage get phoneCardCard8S =>
+      const AssetGenImage('assets/img/phone_card_card_8_s.png');
+
+  /// File path: assets/img/phone_card_card_9.png
+  AssetGenImage get phoneCardCard9 =>
+      const AssetGenImage('assets/img/phone_card_card_9.png');
+
+  /// File path: assets/img/phone_card_card_9_s.png
+  AssetGenImage get phoneCardCard9S =>
+      const AssetGenImage('assets/img/phone_card_card_9_s.png');
+
+  /// File path: assets/img/phone_card_center_bg.png
+  AssetGenImage get phoneCardCenterBg =>
+      const AssetGenImage('assets/img/phone_card_center_bg.png');
+
+  /// File path: assets/img/phone_card_phone.png
+  AssetGenImage get phoneCardPhone =>
+      const AssetGenImage('assets/img/phone_card_phone.png');
+
+  /// File path: assets/img/phone_card_top_bg.png
+  AssetGenImage get phoneCardTopBg =>
+      const AssetGenImage('assets/img/phone_card_top_bg.png');
+
+  /// File path: assets/img/phone_card_xuanguang.png
+  AssetGenImage get phoneCardXuanguang =>
+      const AssetGenImage('assets/img/phone_card_xuanguang.png');
+
   /// File path: assets/img/phone_suip.png
   AssetGenImage get phoneSuip =>
       const AssetGenImage('assets/img/phone_suip.png');
@@ -520,6 +616,30 @@ class $AssetsImgGen {
     money,
     moneyGift,
     moneyLock,
+    phoneCardBg,
+    phoneCardBottomBg,
+    phoneCardCard1,
+    phoneCardCard1S,
+    phoneCardCard2,
+    phoneCardCard2S,
+    phoneCardCard3,
+    phoneCardCard3S,
+    phoneCardCard4,
+    phoneCardCard4S,
+    phoneCardCard5,
+    phoneCardCard5S,
+    phoneCardCard6,
+    phoneCardCard6S,
+    phoneCardCard7,
+    phoneCardCard7S,
+    phoneCardCard8,
+    phoneCardCard8S,
+    phoneCardCard9,
+    phoneCardCard9S,
+    phoneCardCenterBg,
+    phoneCardPhone,
+    phoneCardTopBg,
+    phoneCardXuanguang,
     phoneSuip,
     settiAudio,
     settiBg,

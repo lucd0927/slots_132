@@ -7,6 +7,7 @@ class SSTxtGraBorder extends StatelessWidget {
   final FontStyle? fontStyle;
   final double? fontSize;
   final Color strokeColor;
+  final Color? shadowColor;
   final double? height;
   final FontWeight fontWeight;
   final double strokeWidth;
@@ -28,7 +29,7 @@ class SSTxtGraBorder extends StatelessWidget {
 
     this.showShadow = false,
     this.fontStyle,
-    this.fontFamily,
+    this.fontFamily, this.shadowColor,
   });
 
   @override
@@ -60,14 +61,14 @@ class SSTxtGraBorder extends StatelessWidget {
                 ? [
                     // Shadow(color: Colors.black,offset: Offset(2, 2),blurRadius: 5),
                     Shadow(
-                      color: strokeColor,
-                      offset: Offset(-1.sp, 3.sp),
+                      color: shadowColor??strokeColor,
+                      offset: Offset(-1.sp, 2.sp),
                       blurRadius: 0,
                     ),
                     Shadow(
-                      color: strokeColor,
-                      offset: Offset(1.sp, 3.sp),
-                      blurRadius: 0,
+                      color:  shadowColor??strokeColor,
+                      offset: Offset(1.sp, 2.sp),
+                      blurRadius: 20,
                     ),
                   ]
                 : null,

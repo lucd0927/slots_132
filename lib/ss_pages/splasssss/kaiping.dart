@@ -37,12 +37,7 @@ class _SSSplassssState extends State<SSSplassss> {
       precacheImage(assetImage1, context);
 
 
-      //
-      AssetImage assetImage7 = AssetImage(Assets.img.settiBg.path);
-      precacheImage(assetImage7, context);
 
-      AssetImage assetImage8 = AssetImage(Assets.img.giftBg.path);
-      precacheImage(assetImage8, context);
       //
       AssetImage assetImage = AssetImage(Assets.img.mainWheel.path);
       precacheImage(assetImage, context);
@@ -59,6 +54,14 @@ class _SSSplassssState extends State<SSSplassss> {
       precacheImage(assetImage5, context);
       AssetImage assetImage6 = AssetImage(Assets.img.wheelTitle.path);
       precacheImage(assetImage6, context);
+      //
+      AssetImage assetImage7 = AssetImage(Assets.img.settiBg.path);
+      precacheImage(assetImage7, context);
+
+      AssetImage assetImage8 = AssetImage(Assets.img.giftBg.path);
+      precacheImage(assetImage8, context);
+      AssetImage assetImage9 = AssetImage(Assets.img.phoneCardBg.path);
+      precacheImage(assetImage9, context);
     });
   }
 
