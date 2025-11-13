@@ -1,8 +1,14 @@
 import 'dart:async';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_pages/phone_card/ddd/phone_spin_to_pieces.dart';
 
 class PhoneCardController extends GetxController {
   static PhoneCardController get to => Get.find();
@@ -11,6 +17,7 @@ class PhoneCardController extends GetxController {
   static const String hkCurTime = "wrsag345234";
   static const String hkTimeIndex = "54wqerwhriy";
   static const String hkCollectIndexCard = "989dfgsdwesd";
+  static const String hkUserName = "sdfgyu78781asdf";
 
   var canClickClaim = false.obs;
   var shengyuTime = 0.obs;
@@ -56,6 +63,7 @@ class PhoneCardController extends GetxController {
 
   List getCardIndexList() {
     var index = box.get(hkCollectIndexCard) ?? [];
+    ssLogggg("======getCardIndexList:$index");
     return index;
   }
 
@@ -105,6 +113,7 @@ class PhoneCardController extends GetxController {
     return DateTime.now().millisecondsSinceEpoch ~/ 1000;
   }
 
+  var showSelectImage = true.obs;
   onclickClaim() {
     ssLogggg(
       "=====onclickClaim===canClickClaim:${PhoneCardController.to.canClickClaim.value}==",
@@ -116,6 +125,56 @@ class PhoneCardController extends GetxController {
     canClickClaim.value = false;
     changeWhichStageIndex();
     initTimer();
+    showSelectImage.value = false;
+    overlayPhoneCard.showWithSize(
+      childSize: Size(96.w, 96.w),
+      count: 1,
+      topLeftOffset: Offset(ScreenUtil().screenWidth/2-40.w, 100.w),
+      heroChild: cardHeroWidget(),
+      onEnd: (){
+        showSelectImage.value = true;
+        OverlayPhoneSpinToPieces().show();
+      }
+    );
+
+    //
+  }
+
+  int curHeroIndex = -1;
+
+  Widget? cardHeroWidget() {
+    int index = curHeroIndex;
+    String path = Assets.img.phoneCardCard1S.path;
+    switch (index) {
+      case 0:
+        path = Assets.img.phoneCardCard1S.path;
+        break;
+      case 1:
+        path = Assets.img.phoneCardCard2S.path;
+        break;
+      case 2:
+        path = Assets.img.phoneCardCard3S.path;
+        break;
+      case 3:
+        path = Assets.img.phoneCardCard4S.path;
+        break;
+      case 4:
+        path = Assets.img.phoneCardCard5S.path;
+        break;
+      case 5:
+        path = Assets.img.phoneCardCard6S.path;
+        break;
+      case 6:
+        path = Assets.img.phoneCardCard7S.path;
+        break;
+      case 7:
+        path = Assets.img.phoneCardCard8S.path;
+        break;
+      case 8:
+        path = Assets.img.phoneCardCard9S.path;
+        break;
+    }
+    return Image.asset(path, width: 96.h, height: 96.h, fit: BoxFit.contain);
   }
 
   void changeWhichStageIndex() {
@@ -172,6 +231,19 @@ class PhoneCardController extends GetxController {
         return;
       }
     });
+  }
+
+  void setUserName(String name) {
+    box.put(hkUserName, name);
+  }
+
+  String getUserName() {
+    String? name = box.get(hkUserName);
+    ssLogggg("===getUserName:$name=");
+    if (name == null) {
+      return "";
+    }
+    return name;
   }
 
   @override

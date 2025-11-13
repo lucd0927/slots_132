@@ -7,6 +7,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 SSAnimSource2TargetOverlay overlayMainTopMoney = SSAnimSource2TargetOverlay();
+SSAnimSource2TargetOverlay overlayPhoneCard = SSAnimSource2TargetOverlay();
 
 class SSAnimSource2TargetOverlay {
   ///是否真正显示
@@ -99,6 +100,7 @@ class SSAnimSource2TargetOverlay {
     required Size childSize,
     int count = 10,
     VoidCallback? onEnd,
+    Offset? topLeftOffset,
   }) {
     // if (_isShowing) return;
     _overlay = null;
@@ -123,10 +125,12 @@ class SSAnimSource2TargetOverlay {
     }
 
     Size startSize = childSize;
-    var topLeftPosition = Offset(
-      ScreenUtil().screenWidth / 2 - startSize.width / 2,
-      ScreenUtil().screenHeight / 2,
-    );
+    var topLeftPosition =
+        topLeftOffset ??
+        Offset(
+          ScreenUtil().screenWidth / 2 - startSize.width / 2,
+          ScreenUtil().screenHeight / 2,
+        );
     if (targetContext != null && targetContext!.mounted) {
       RenderBox targetBox = targetContext!.findRenderObject() as RenderBox;
       Size endSize = targetBox.size;
@@ -316,4 +320,3 @@ class _FlyModel {
     required this.controller,
   });
 }
-
