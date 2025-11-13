@@ -18,7 +18,7 @@ class ShiningEffect extends StatefulWidget {
     this.shineWidth = 0.3,
     this.shineColor = Colors.white,
     this.opacity = 0.6,
-    this.borderRadius ,
+    this.borderRadius,
   });
 
   @override
@@ -73,9 +73,9 @@ class _ShiningEffectState extends State<ShiningEffect>
       builder: (context, c) {
         double maxW = c.maxWidth;
         double maxH = c.maxHeight;
-        double tmpR = maxH < maxW ? maxW:maxH;
+        double tmpR = maxH < maxW ? maxW : maxH;
         return ClipRRect(
-          borderRadius: BorderRadius.circular(widget.borderRadius??tmpR),
+          borderRadius: BorderRadius.circular(widget.borderRadius ?? tmpR),
           child: AnimatedBuilder(
             animation: _controller,
             builder: (context, child) {
@@ -108,7 +108,6 @@ class _ShiningEffectState extends State<ShiningEffect>
                       Colors.transparent,
                       widget.shineColor.withValues(alpha: widget.opacity),
                       Colors.transparent,
-
                     ],
                     stops: const [0.0, 0.5, 1],
                   );

@@ -14,6 +14,7 @@ import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
+import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'glow_border/glow_border.dart';
 
 class CenterView extends StatelessWidget {
@@ -27,13 +28,12 @@ class CenterView extends StatelessWidget {
     return centerWidget();
   }
 
-
   centerWidget() {
     return LayoutBuilder(
       builder: (context, c) {
         double maxH = c.maxHeight;
         double maxW = c.maxWidth;
-        ssLogggg("===maxH:${maxH/1.h}=maxW:$maxW");
+        ssLogggg("===maxH:${maxH / 1.h}=maxW:$maxW");
         return Obx(() {
           return Container(
             width: double.infinity,
@@ -49,7 +49,9 @@ class CenterView extends StatelessWidget {
                     key: ValueKey("SpineShengdaolaoren"),
                     width: 10.w,
                     height: 250.h,
-                    child: const SpineShengdaolaoren(key: ValueKey("ooeirtjtjkl"),),
+                    child: const SpineShengdaolaoren(
+                      key: ValueKey("ooeirtjtjkl"),
+                    ),
                   ),
                 ),
 
@@ -309,40 +311,47 @@ class CenterView extends StatelessWidget {
             ssLogggg("=mainPhone==");
             onPhoneClick();
           },
-          child: Container(
-            width: 58.h,
-            height: 64.h,
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                ShiningEffect(
-                  shineColor: Colors.white,
-                  opacity: 0.5,
-                  duration: const Duration(seconds: 2),
-                  child: Hero(
-                    tag: "Phoneeee",
-                    child: Image.asset(
-                      Assets.img.mainPhone.path,
-                      width: 58.h,
-                      height: 58.h,
+          child: Obx((){
+            int card = PhoneCardController.to.collectCardNum.value;
+            return Container(
+              width: 58.h,
+              height: 64.h,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  ShiningEffect(
+                    shineColor: Colors.white,
+                    opacity: 0.5,
+                    duration: const Duration(seconds: 2),
+                    child: Hero(
+                      tag: "Phoneeee",
+                      child: Image.asset(
+                        Assets.img.mainPhone.path,
+                        width: 58.h,
+                        height: 58.h,
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  left: -10.w,
-                  right: -10.w,
-                  bottom: 0,
-                  child: Center(child: SSTxtGraBorder(text: "10:10:00")),
-                ),
-              ],
-            ),
-          ),
+                  Positioned(
+                    left: -10.w,
+                    right: -10.w,
+                    bottom: 0,
+                    child: Center(
+                      child: SSTxtGraBorder(
+                        text: "$card/${PhoneCardController.to.durations.length}",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
         ),
       ],
     );
   }
 
-  onPhoneClick(){
+  onPhoneClick() {
     Get.toNamed(SSRouttttt.phoneCardPage);
   }
 }
@@ -426,7 +435,7 @@ class _FreeSpinState extends State<FreeSpin> {
     double alpha = 0.0;
 
     return LayoutBuilder(
-      builder: (context,constraints) {
+      builder: (context, constraints) {
         return GestureDetector(
           onTap: onStar,
           child: Container(
@@ -515,7 +524,7 @@ class _FreeSpinState extends State<FreeSpin> {
             ),
           ),
         );
-      }
+      },
     );
   }
 

@@ -7,6 +7,7 @@ import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'package:slots_132/ss_pages/phone_card/vvvvv/bottom_time.dart';
 
@@ -25,7 +26,6 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
     // TODO: implement initState
     super.initState();
 
-    Get.put(PhoneCardController());
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -199,7 +199,9 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                                   fontWeight: FontWeight.w500,
                                 ),
                                 SizedBox(height: 16.h),
-                                card(),
+                                Obx((){
+                                  return card();
+                                }),
                               ],
                             ),
                           ),
@@ -245,15 +247,35 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
     String img8 = Assets.img.phoneCardCard8.path;
     String img9 = Assets.img.phoneCardCard9.path;
 
-    img1 = Assets.img.phoneCardCard1S.path;
-    // img2 =  Assets.img.phoneCardCard2S.path;
-    img3 = Assets.img.phoneCardCard3S.path;
-    // img4 =  Assets.img.phoneCardCard4S.path;
-    img5 = Assets.img.phoneCardCard5S.path;
-    img6 = Assets.img.phoneCardCard6S.path;
-    // img7 =  Assets.img.phoneCardCard7S.path;
-    img8 = Assets.img.phoneCardCard8S.path;
-    // img9 =  Assets.img.phoneCardCard9S.path;
+    int collectIndex = PhoneCardController.to.collectCardNum.value;
+    List data = PhoneCardController.to.getCardIndexList();
+    int length = data.length;
+    for(int i = 0;i < collectIndex;i++){
+      if(i < length){
+        int selected = data[i];
+        if(selected == 0){
+            img1 = Assets.img.phoneCardCard1S.path;
+        }else if(selected == 1){
+          img2 = Assets.img.phoneCardCard2S.path;
+        }else if(selected == 2){
+          img3 = Assets.img.phoneCardCard3S.path;
+        }else if(selected == 3){
+          img4 = Assets.img.phoneCardCard4S.path;
+        }else if(selected == 4){
+          img5 = Assets.img.phoneCardCard5S.path;
+        }else if(selected == 5){
+          img6 = Assets.img.phoneCardCard6S.path;
+        }else if(selected == 6){
+          img7 = Assets.img.phoneCardCard7S.path;
+        }else if(selected == 7){
+          img8 = Assets.img.phoneCardCard8S.path;
+        }else if(selected == 8){
+          img9 = Assets.img.phoneCardCard9S.path;
+        }
+      }
+
+    }
+
 
     return AnimatedOpacity(
       duration: Duration(milliseconds: 500),

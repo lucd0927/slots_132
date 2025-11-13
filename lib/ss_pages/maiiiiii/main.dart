@@ -19,6 +19,7 @@ import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
+import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/chat/chat_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
@@ -39,6 +40,7 @@ class _MainState extends State<Main> {
     Get.put(WheController());
     Get.put(WithdddController());
     Get.put(SSChatController());
+    Get.put(PhoneCardController());
     // bgMusic.play();
   }
 
