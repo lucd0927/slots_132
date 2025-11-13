@@ -62,6 +62,12 @@ class _SSSplassssState extends State<SSSplassss> {
       precacheImage(assetImage8, context);
       AssetImage assetImage9 = AssetImage(Assets.img.phoneCardBg.path);
       precacheImage(assetImage9, context);
+
+      AssetImage assetImage10 = AssetImage(Assets.img.phonePopupJindu1.path);
+      precacheImage(assetImage10, context);
+
+      AssetImage assetImage11 = AssetImage(Assets.img.phonePopupJindu2.path);
+      precacheImage(assetImage11, context);
     });
   }
 

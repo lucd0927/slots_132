@@ -224,11 +224,14 @@ class BottomView extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            Image.asset(
-              Assets.img.mainWheel.path,
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.fill,
+            Hero(
+              tag: "Wheellll",
+              child: Image.asset(
+                Assets.img.mainWheel.path,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              ),
             ),
             Positioned(
               bottom: 0,

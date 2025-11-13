@@ -319,10 +319,13 @@ class CenterView extends StatelessWidget {
                   shineColor: Colors.white,
                   opacity: 0.5,
                   duration: const Duration(seconds: 2),
-                  child: Image.asset(
-                    Assets.img.mainPhone.path,
-                    width: 58.h,
-                    height: 58.h,
+                  child: Hero(
+                    tag: "Phoneeee",
+                    child: Image.asset(
+                      Assets.img.mainPhone.path,
+                      width: 58.h,
+                      height: 58.h,
+                    ),
                   ),
                 ),
                 Positioned(

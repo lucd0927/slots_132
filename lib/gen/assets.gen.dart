@@ -61,6 +61,14 @@ class $AssetsImgGen {
   AssetGenImage get btnGiftUnlcok =>
       const AssetGenImage('assets/img/btn_gift_unlcok.png');
 
+  /// File path: assets/img/btn_phone_click.png
+  AssetGenImage get btnPhoneClick =>
+      const AssetGenImage('assets/img/btn_phone_click.png');
+
+  /// File path: assets/img/btn_popup2.png
+  AssetGenImage get btnPopup2 =>
+      const AssetGenImage('assets/img/btn_popup2.png');
+
   /// File path: assets/img/btn_setting.png
   AssetGenImage get btnSetting =>
       const AssetGenImage('assets/img/btn_setting.png');
@@ -351,6 +359,26 @@ class $AssetsImgGen {
   AssetGenImage get phoneCardXuanguang =>
       const AssetGenImage('assets/img/phone_card_xuanguang.png');
 
+  /// File path: assets/img/phone_popup_jindu1.png
+  AssetGenImage get phonePopupJindu1 =>
+      const AssetGenImage('assets/img/phone_popup_jindu1.png');
+
+  /// File path: assets/img/phone_popup_jindu2.png
+  AssetGenImage get phonePopupJindu2 =>
+      const AssetGenImage('assets/img/phone_popup_jindu2.png');
+
+  /// File path: assets/img/phone_popup_jindu2_btntime.png
+  AssetGenImage get phonePopupJindu2Btntime =>
+      const AssetGenImage('assets/img/phone_popup_jindu2_btntime.png');
+
+  /// File path: assets/img/phone_popup_jindu2_star.png
+  AssetGenImage get phonePopupJindu2Star =>
+      const AssetGenImage('assets/img/phone_popup_jindu2_star.png');
+
+  /// File path: assets/img/phone_popup_jindu2_time.png
+  AssetGenImage get phonePopupJindu2Time =>
+      const AssetGenImage('assets/img/phone_popup_jindu2_time.png');
+
   /// File path: assets/img/phone_suip.png
   AssetGenImage get phoneSuip =>
       const AssetGenImage('assets/img/phone_suip.png');
@@ -558,6 +586,10 @@ class $AssetsImgGen {
   AssetGenImage get withddWarn =>
       const AssetGenImage('assets/img/withdd_warn.png');
 
+  /// File path: assets/img/xuanguang.png
+  AssetGenImage get xuanguang =>
+      const AssetGenImage('assets/img/xuanguang.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     avatarBg,
@@ -565,6 +597,8 @@ class $AssetsImgGen {
     btnBack,
     btnGiftLock,
     btnGiftUnlcok,
+    btnPhoneClick,
+    btnPopup2,
     btnSetting,
     btnSpin,
     btnTxtSpin,
@@ -640,6 +674,11 @@ class $AssetsImgGen {
     phoneCardPhone,
     phoneCardTopBg,
     phoneCardXuanguang,
+    phonePopupJindu1,
+    phonePopupJindu2,
+    phonePopupJindu2Btntime,
+    phonePopupJindu2Star,
+    phonePopupJindu2Time,
     phoneSuip,
     settiAudio,
     settiBg,
@@ -693,6 +732,7 @@ class $AssetsImgGen {
     withddTime,
     withddVip,
     withddWarn,
+    xuanguang,
   ];
 }
 

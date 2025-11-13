@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
+import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
+import 'package:slots_132/ss_pages/phone_card/vvvvv/bottom_time.dart';
 
 class PhoneCardPage extends StatefulWidget {
   const PhoneCardPage({super.key});
@@ -16,12 +19,15 @@ class PhoneCardPage extends StatefulWidget {
 
 class _PhoneCardPageState extends State<PhoneCardPage> {
   bool showA = false;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){
-      if(mounted){
+
+    Get.put(PhoneCardController());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
         setState(() {
           showA = true;
         });
@@ -49,27 +55,34 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 90.h),
+                  SizedBox(height: 80.h),
 
                   Container(
                     width: 314.h,
                     height: 314.h,
                     child: Stack(
                       children: [
-                        SSRotateWidget(
-                          child: Image.asset(
-                            Assets.img.phoneCardXuanguang.path,
-                            width: double.infinity,
-                            height: double.infinity,
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          top: -20.h,
+                          bottom: 20.h,
+                          child: SSRotateWidget(
+                            child: Image.asset(
+                              Assets.img.phoneCardXuanguang.path,
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
                           ),
                         ),
                         Positioned(
                           left: 0,
                           right: 0,
-                          top: 0,
+                          top: 10.h,
                           child: Container(
                             width: 280.w,
                             height: 41.h,
+
                             child: Stack(
                               clipBehavior: Clip.none,
                               children: [
@@ -136,11 +149,19 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                             ),
                           ),
                         ),
-                        Center(
-                          child: Image.asset(
-                            Assets.img.phoneCardPhone.path,
-                            width: 164.h,
-                            height: 164.h,
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          top: 40.h,
+                          child: Center(
+                            child: Hero(
+                              tag: "Phoneeee",
+                              child: Image.asset(
+                                Assets.img.phoneCardPhone.path,
+                                width: 164.h,
+                                height: 164.h,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -153,35 +174,41 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
             Positioned(
               left: 0,
               right: 0,
-              top: 340.h,
+              top: 290.h,
               child: Center(
-                child: Container(
-                  width: 338.h,
-                  height: 357.h,
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        Assets.img.phoneCardCenterBg.path,
-                        width: double.infinity,
-                        height: double.infinity,
-                        fit: BoxFit.fill,
-                      ),
-                      Positioned.fill(
-                        child: Column(
-                          children: [
-                            SizedBox(height: 16.h),
-                            SSTxtGraBorder(
-                              text: "9 pieces = Your signed phone.",
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w500,
+                child: Column(
+                  children: [
+                    Container(
+                      width: 338.h,
+                      height: 357.h,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            Assets.img.phoneCardCenterBg.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+                          Positioned.fill(
+                            child: Column(
+                              children: [
+                                SizedBox(height: 16.h),
+                                SSTxtGraBorder(
+                                  text: "9 pieces = Your signed phone.",
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                SizedBox(height: 16.h),
+                                card(),
+                              ],
                             ),
-                            SizedBox(height: 16.h),
-                            card(),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 16.h),
+                    PhoneBottomTime(),
+                  ],
                 ),
               ),
             ),
@@ -208,33 +235,29 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
   }
 
   card() {
+    String img1 = Assets.img.phoneCardCard1.path;
+    String img2 = Assets.img.phoneCardCard2.path;
+    String img3 = Assets.img.phoneCardCard3.path;
+    String img4 = Assets.img.phoneCardCard4.path;
+    String img5 = Assets.img.phoneCardCard5.path;
+    String img6 = Assets.img.phoneCardCard6.path;
+    String img7 = Assets.img.phoneCardCard7.path;
+    String img8 = Assets.img.phoneCardCard8.path;
+    String img9 = Assets.img.phoneCardCard9.path;
 
-    String img1 =  Assets.img.phoneCardCard1.path;
-    String img2 =  Assets.img.phoneCardCard2.path;
-    String img3 =  Assets.img.phoneCardCard3.path;
-    String img4 =  Assets.img.phoneCardCard4.path;
-    String img5 =  Assets.img.phoneCardCard5.path;
-    String img6 =  Assets.img.phoneCardCard6.path;
-    String img7 =  Assets.img.phoneCardCard7.path;
-    String img8 =  Assets.img.phoneCardCard8.path;
-    String img9 =  Assets.img.phoneCardCard9.path;
-
-    img1 =  Assets.img.phoneCardCard1S.path;
+    img1 = Assets.img.phoneCardCard1S.path;
     // img2 =  Assets.img.phoneCardCard2S.path;
-    img3 =  Assets.img.phoneCardCard3S.path;
+    img3 = Assets.img.phoneCardCard3S.path;
     // img4 =  Assets.img.phoneCardCard4S.path;
-    img5 =  Assets.img.phoneCardCard5S.path;
-    img6 =  Assets.img.phoneCardCard6S.path;
+    img5 = Assets.img.phoneCardCard5S.path;
+    img6 = Assets.img.phoneCardCard6S.path;
     // img7 =  Assets.img.phoneCardCard7S.path;
-    img8 =  Assets.img.phoneCardCard8S.path;
+    img8 = Assets.img.phoneCardCard8S.path;
     // img9 =  Assets.img.phoneCardCard9S.path;
-
-
-
 
     return AnimatedOpacity(
       duration: Duration(milliseconds: 500),
-      opacity: showA?1.0:0.5,
+      opacity: showA ? 1.0 : 0.5,
       // offset:showA? Offset.zero:Offset(0, 1),
       child: Container(
         width: 286.h,
