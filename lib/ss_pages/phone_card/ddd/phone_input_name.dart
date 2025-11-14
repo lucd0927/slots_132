@@ -235,28 +235,28 @@ class _PhoneInputNameState extends State<PhoneInputName>
                               ),
 
                               SizedBox(height: 30.h),
-
-                              GestureDetector(
-                                onTap: () {
-                                  onClose();
-                                },
-                                child: Container(
-                                  width: 230.h,
-                                  height: 42.h,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff31C520),
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                  child: Center(
-                                    child: SSTxtBorder(
-                                      text: "Claim My New Phone",
-                                      fontSize: 18.sp,
-                                      fontFamily: FontFamily.alkatra,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              btn(),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     onClose();
+                              //   },
+                              //   child: Container(
+                              //     width: 230.h,
+                              //     height: 42.h,
+                              //     decoration: BoxDecoration(
+                              //       color: Color(0xff31C520),
+                              //       borderRadius: BorderRadius.circular(100),
+                              //     ),
+                              //     child: Center(
+                              //       child: SSTxtBorder(
+                              //         text: "Claim My New Phone",
+                              //         fontSize: 18.sp,
+                              //         fontFamily: FontFamily.alkatra,
+                              //         fontWeight: FontWeight.w800,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -271,6 +271,36 @@ class _PhoneInputNameState extends State<PhoneInputName>
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  btn() {
+    return GestureDetector(
+      onTap: () {
+        onClose();
+      },
+      child: Container(
+        width: 212.h,
+        height: 48.h,
+        child: Stack(
+          children: [
+            Image.asset(
+              Assets.img.btnWheel.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            Center(
+              child: SSTxtBorder(
+                text: "Claim My New Phone",
+                fontSize: 18.sp,
+                fontFamily: FontFamily.alkatra,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ],
         ),
       ),
     );

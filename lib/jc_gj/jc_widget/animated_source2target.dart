@@ -74,7 +74,7 @@ class SSAnimSource2TargetOverlay {
             child: Source2FlyTarget(
               start: topLeftPosition,
               end: targetLocation,
-              arcHeight: 120,
+              arcHeight: 10,
               startSize: startSize,
               endSize: endSize,
               duration: Duration(milliseconds: 1200),
@@ -175,7 +175,7 @@ class Source2FlyTarget extends StatefulWidget {
     required this.start,
     required this.end,
     this.arcHeight = 80,
-    this.duration = const Duration(milliseconds: 300),
+    this.duration = const Duration(milliseconds: 1000),
     this.delayBetween = const Duration(milliseconds: 50),
     required this.startSize,
     required this.endSize,
@@ -236,7 +236,7 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
         tween: Tween(
           begin: middleOffset,
           end: widget.end,
-        ).chain(CurveTween(curve: Curves.easeIn)),
+        ).chain(CurveTween(curve: Curves.linearToEaseOut)),
         weight: 6,
       ),
     ]).animate(controller);
@@ -254,9 +254,29 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
     });
   }
 
-  double _calcY(double t, double y0, double y1, double arcHeight) {
+  double _calcY2(double t, double y0, double y1, double arcHeight) {
     final parabolic = 4 * arcHeight * t * (1 - t); // 抛物线
     return lerpDouble(y0, y1, t)! - parabolic;
+  }
+
+  double _calcY(double t, double y0, double y1, double arcHeight) {
+    // 线性基线（从 y0 插值到 y1）
+    final base = lerpDouble(y0, y1, t)!;
+
+    // 波次数（可根据需要调整或通过参数传入）
+    final int waves = 3;
+
+    // 衰减因子：越靠近终点振幅越小
+    final double damping = (1.0 - t);
+
+    // 振幅以 arcHeight 为基准并做适当缩放
+    final double amplitude = arcHeight * 0.6 * damping;
+
+    // 正弦偏移（2π * waves * t）
+    final double offset = amplitude * sin(2 * pi * waves * t);
+
+    // 返回最终 y（减去 offset 使正弦正值时物体向上偏移，与原抛物线方向一致）
+    return base - offset;
   }
 
   double? lerpDouble(double a, double b, double t) => a + (b - a) * t;
@@ -271,15 +291,27 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
 
   @override
   Widget build(BuildContext context) {
+    final positionTween = Tween<Offset>(
+      begin: widget.start,
+      end: widget.end,
+    ).chain(CurveTween(curve: Curves.easeInOut));
+    final sizeTween = Tween<Size>(
+      begin: widget.startSize,
+      end: widget.endSize,
+    ).chain(CurveTween(curve: Curves.easeInOut));
+    // ssLogggg("===size:${widget.startSize}==widget.endSize:${widget.endSize}");
     return Stack(
       children: _items.map((item) {
         return AnimatedBuilder(
           animation: item.animation,
           builder: (_, __) {
             final t = item.animation.value;
-            // final dx = lerpDouble(widget.start.dx, widget.end.dx, t)!;
+            final pos = positionTween.evaluate(item.controller);
+            final size = sizeTween.evaluate(item.controller);
+            // ssLogggg("===size:$size==");
+            // final dx = lerpDouble(widget.start.dx, widget.end.dx, item.controller.value)!;
             // final dy = _calcY(
-            //   t,
+            //   item.controller.value,
             //   widget.start.dy,
             //   widget.end.dy,
             //   widget.arcHeight,
@@ -289,15 +321,16 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
             final dy = t.dy;
 
             // 处理大小插值
-            double width = widget.endSize!.width;
-            double height = widget.endSize!.height;
+            double width = size.width;
+            double height = size.height;
 
             Widget child = item.widget;
             if (widget.startSize != null && widget.endSize != null) {
-              child = SizedBox(
+              child = Container(
                 width: width,
                 height: height,
-                child: FittedBox(child: item.widget),
+                color: Colors.teal.withValues(alpha: 0.0),
+                child: FittedBox(fit:BoxFit.contain, child: item.widget),
               );
             }
 

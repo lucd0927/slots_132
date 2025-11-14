@@ -170,7 +170,6 @@ class TopView extends StatelessWidget {
   }
 
   topMoney() {
-
     double money = MainController.to.curMonnnn.value;
     money = 30510.1;
     String suffix = "";
@@ -182,7 +181,7 @@ class TopView extends StatelessWidget {
       suffix = "k";
     }
     return GestureDetector(
-      onTap:onWithddd,
+      onTap: onWithddd,
       child: Container(
         width: 100.w,
         height: 24.h,
@@ -213,7 +212,7 @@ class TopView extends StatelessWidget {
               color: Color(0xff6AFF00),
               fontSize: 16.sp,
               height: 1,
-              fontFamily: FontFamily.rubik
+              fontFamily: FontFamily.rubik,
             ),
           ),
         ),

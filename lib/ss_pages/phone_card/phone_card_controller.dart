@@ -114,6 +114,7 @@ class PhoneCardController extends GetxController {
   }
 
   var showSelectImage = true.obs;
+
   onclickClaim() {
     ssLogggg(
       "=====onclickClaim===canClickClaim:${PhoneCardController.to.canClickClaim.value}==",
@@ -127,14 +128,14 @@ class PhoneCardController extends GetxController {
     initTimer();
     showSelectImage.value = false;
     overlayPhoneCard.showWithSize(
-      childSize: Size(96.w, 96.w),
+      childSize: Size(50.w, 50.w),
       count: 1,
-      topLeftOffset: Offset(ScreenUtil().screenWidth/2-40.w, 100.w),
+      topLeftOffset: Offset(ScreenUtil().screenWidth / 2 - 40.w, 100.w),
       heroChild: cardHeroWidget(),
-      onEnd: (){
+      onEnd: () {
         showSelectImage.value = true;
-        OverlayPhoneSpinToPieces().show();
-      }
+        // OverlayPhoneSpinToPieces().show();
+      },
     );
 
     //
@@ -174,7 +175,7 @@ class PhoneCardController extends GetxController {
         path = Assets.img.phoneCardCard9S.path;
         break;
     }
-    return Image.asset(path, width: 96.h, height: 96.h, fit: BoxFit.contain);
+    return Image.asset(path, fit: BoxFit.contain);
   }
 
   void changeWhichStageIndex() {
