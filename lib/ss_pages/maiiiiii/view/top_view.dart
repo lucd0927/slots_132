@@ -171,9 +171,9 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-    overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
 
-    // OverlaySettinnn().show();
+
+    OverlaySettinnn().show();
 
     // MainController.to.curLevelExp.value = 980;
   }

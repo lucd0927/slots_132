@@ -13,39 +13,58 @@ class SSPayTable {
   static Map<String, dynamic> local =
   {
   "paytable": {
-  "WILD_x5": 300,  // Wild符号本身连线，支付最高奖励
-  "WILD_x4": 150,
-  "WILD_x3": 75,
-
-  "H1_x5": 300,    // 高价值符号1 (金发女精灵)
-  "H1_x4": 150,
-  "H1_x3": 75,
-
-  "H2_x5": 225,    // 高价值符号2 (男精灵A)
-  "H2_x4": 115,    // 故意设置一些变化
-  "H2_x3": 50,
-
-  "H3_x5": 225,    // 高价值符号3 (男精灵B)
-  "H3_x4": 115,
-  "H3_x3": 50,
-
-  "M1_x5": 150,    // 中价值符号1 (姜饼人)
-  "M1_x4": 75,
-  "M1_x3": 30,
-
-  "M2_x5": 150,    // 中价值符号2 (圣诞袜)
-  "M2_x4": 75,
-  "M2_x3": 30,
-
-  "L1_x5": 75,     // 低价值符号1 (雪花A)
-  "L1_x4": 30,
-  "L1_x3": 20,     // 最低奖励
-
-  "L2_x5": 75,     // 低价值符号2 (雪花B)
-  "L2_x4": 30,
-  "L2_x3": 20
+  "WILD_x5": 70,
+  "WILD_x4": 35,
+  "WILD_x3": 18,
+  "H1_x5": 70,
+  "H1_x4": 35,
+  "H1_x3": 18,
+  "H2_x5": 55,
+  "H2_x4": 28,
+  "H2_x3": 12,
+  "H3_x5": 55,
+  "H3_x4": 28,
+  "H3_x3": 12,
+  "M1_x5": 35,
+  "M1_x4": 18,
+  "M1_x3": 7,
+  "M2_x5": 35,
+  "M2_x4": 18,
+  "M2_x3": 7,
+  "L1_x5": 18,
+  "L1_x4": 7,
+  "L1_x3": 5,
+  "L2_x5": 18,
+  "L2_x4": 7,
+  "L2_x3": 5
   }
   };
+
+  static int lines() {
+    _onlineJson();
+
+    var tmpData = _onlinJsonnnnn?['paytable'];
+    if (tmpData is List) {
+      return tmpData.length;
+    }
+    return 30;
+  }
+
+  static double payBeishu(String category, int count) {
+    _onlineJson();
+    if (category.contains(MainController.slotNumWild)) {
+      category = MainController.slotNumWild;
+    }
+
+    String key = "${category}_x${count}";
+    var tmpData = _onlinJsonnnnn?['paytable']?[key];
+    double tmpBeisu = 1.0;
+    if (tmpData is num) {
+      tmpBeisu = tmpData * 1.0;
+    }
+    ssLogggg("======tmpBeisu:$tmpBeisu");
+    return tmpBeisu;
+  }
 
   static _onlineJson({bool reset = false}) {
     if (!reset) {
@@ -72,17 +91,4 @@ class SSPayTable {
     ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
     return localJson;
   }
-
-  static double _payBeishu(String key){
-    _onlineJson();
-    var tmpData = _onlinJsonnnnn?['paytable']?[key];
-    if(tmpData is num){
-      return tmpData * 1.0;
-    }
-    return 1.0;
-  }
-
-
-
-
 }

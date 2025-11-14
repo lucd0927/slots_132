@@ -156,12 +156,14 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       }
       Widget tmpC = Container(
         color: Colors.blueAccent.withValues(alpha: 0.0),
-        child: Image.asset(
-          MainController.kName_vImgName[category]!,
-          width: width - imgSubD,
-          height: height - imgSubD,
+        // child: Image.asset(
+        //   MainController.kName_vImgName[category]!,
+        //   width: width - imgSubD,
+        //   height: height - imgSubD,
+        // ),
+        child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),
+
         ),
-        // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
       Widget child = Container(
         width: width - dd2,

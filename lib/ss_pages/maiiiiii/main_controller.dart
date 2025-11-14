@@ -3,10 +3,13 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
@@ -604,10 +607,28 @@ class MainController extends GetxController {
     hasScrollerEnd.value = false;
 
     onAddExp(100);
+    double tmpAddMoney = 0.0;
+    List<double> payBeisu = [];
+    int lines = SSPayTable.lines();
+    double beisu = curBeisu.value;
+    for (var data in winCurCategoryLines) {
+      String category = data.keys.first;
+      int count = data.values.first.length;
+      double tmpPay = SSPayTable.payBeishu(category, count);
+
+      double tmpPayyy = beisu/lines*tmpPay;
+      ssLogggg("==onStartRoller==end=tmpPayyy:$tmpPayyy");
+      tmpAddMoney = tmpAddMoney+ tmpPayyy;
+      payBeisu.add(tmpPay);
+    }
+    onAddMoney(tmpAddMoney);
+
+
     ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
     ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
-    // await Future.delayed(Duration(milliseconds: 1000));
-    // showFreeSpin.value = true;
+    ssLogggg("==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney");
+
+
   }
 
   _changeChild(GlobalKey<RollerListState> key, int index) {
@@ -749,10 +770,15 @@ class MainController extends GetxController {
 
 
   onAddMoney(double money) {
+    if(money==0){
+      return;
+    }
+
     double tmpCurMmmm = curMonnnn.value;
     tmpCurMmmm = tmpCurMmmm + money;
     box.put(hkMonnnn, tmpCurMmmm);
     curMonnnn.value = tmpCurMmmm;
+    overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
   }
 
   onAddExp(int exp) {
