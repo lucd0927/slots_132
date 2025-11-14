@@ -155,7 +155,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                         ),
                         SizedBox(height: 20.h),
                         Text(
-                          "Level ${MainController.to.curLevel.value}/${MainController.maxLevel}",
+                          "Level ${MainController.to.level()}/${MainController.maxLevel}",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 24.sp,

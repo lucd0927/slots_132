@@ -154,6 +154,9 @@ flutter:
     - family: MarkoOne
       fonts:
         - asset: assets/fff/MarkoOne-Regular.ttf
+    - family: Ephesis
+      fonts:
+        - asset: assets/fff/Ephesis-Regular.ttf
 #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

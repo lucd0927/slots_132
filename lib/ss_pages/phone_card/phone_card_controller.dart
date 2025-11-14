@@ -127,10 +127,19 @@ class PhoneCardController extends GetxController {
     changeWhichStageIndex();
     initTimer();
     showSelectImage.value = false;
-    overlayPhoneCard.showWithSize(
-      childSize: Size(50.w, 50.w),
+    // overlayPhoneCard.showWithSize(
+    //   childSize: Size(50.w, 50.w),
+    //   count: 1,
+    //   topLeftOffset: Offset(ScreenUtil().screenWidth / 2 - 40.w, 100.w),
+    //   heroChild: cardHeroWidget(),
+    //   onEnd: () {
+    //     showSelectImage.value = true;
+    //     // OverlayPhoneSpinToPieces().show();
+    //   },
+    // );
+
+    overlayPhoneCard.show(
       count: 1,
-      topLeftOffset: Offset(ScreenUtil().screenWidth / 2 - 40.w, 100.w),
       heroChild: cardHeroWidget(),
       onEnd: () {
         showSelectImage.value = true;
@@ -143,7 +152,7 @@ class PhoneCardController extends GetxController {
 
   int curHeroIndex = -1;
 
-  Widget? cardHeroWidget() {
+  Widget cardHeroWidget() {
     int index = curHeroIndex;
     String path = Assets.img.phoneCardCard1S.path;
     switch (index) {

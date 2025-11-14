@@ -6,6 +6,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -16,7 +17,9 @@ class TopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return topWidget();
+    return Obx((){
+      return topWidget();
+    });
   }
 
   topWidget() {
@@ -114,9 +117,9 @@ class TopView extends StatelessWidget {
                   Positioned(
                     left: 0.w,
                     right: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: Center(child: topXp()),
+                    top: 6.h,
+                    bottom: 6.h,
+                    child: expProgress(),
                   ),
                   Positioned(
                     top: 0,
@@ -130,6 +133,14 @@ class TopView extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                     ),
+                  ),
+
+                  Positioned(
+                    left: 0.w,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    child: Center(child: topXp()),
                   ),
                 ],
               ),
@@ -163,6 +174,8 @@ class TopView extends StatelessWidget {
     overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
 
     // OverlaySettinnn().show();
+
+    MainController.to.curLevelExp.value = 980;
   }
 
   onWithddd() {
@@ -171,7 +184,7 @@ class TopView extends StatelessWidget {
 
   topMoney() {
     double money = MainController.to.curMonnnn.value;
-    money = 30510.1;
+    // money = 30510.1;
     String suffix = "";
     if (money >= 1000000) {
       money = money / 1000000;
@@ -221,23 +234,23 @@ class TopView extends StatelessWidget {
   }
 
   topXp() {
-    int level = MainController.to.curLevel.value;
+    int level = MainController.to.level();
     return Container(
       width: 100.w,
       height: 26.h,
-      padding: EdgeInsets.only(left: 12.w),
+      padding: EdgeInsets.only(left: 22.w),
       decoration: BoxDecoration(
-        color: Colors.teal.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(30.h),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xff540406),
-            Color(0xff3C0302),
-            Color(0xff360100),
-            Color(0xff560000),
-          ],
-        ),
-        border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
+        // color: Colors.teal.withValues(alpha: 0.5),
+        // borderRadius: BorderRadius.circular(30.h),
+        // gradient: LinearGradient(
+        //   colors: [
+        //     Color(0xff540406),
+        //     Color(0xff3C0302),
+        //     Color(0xff360100),
+        //     Color(0xff560000),
+        //   ],
+        // ),
+        // border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
       ),
       child: Center(
         child: SSAniiiiCount(
@@ -249,8 +262,34 @@ class TopView extends StatelessWidget {
           textStyle: TextStyle(
             fontWeight: FontWeight.w700,
             color: Color(0xffFFFFFF),
-            fontSize: 16.sp,
+            fontSize: 14.sp,
             // height: 1.1,
+          ),
+        ),
+      ),
+    );
+  }
+
+  expProgress() {
+    double progress = MainController.to.curLevelProgress();
+    return Center(
+      child: Container(
+        width: 100.w,
+        height: 20.h,
+        child: Center(
+          child: SSProjjjj(
+            height: 20.h,
+            innerHeight: 16.h,
+            width: 100.w,
+            progress: progress,
+            gradientColors: [
+              Color(0xff139FCE),
+              Color(0xff64F7FE),
+              Color(0xff055AD5),
+              Color(0xff178AEF),
+              // Color(0xff139FCE),
+            ],
+            bgColor: Color(0xff3C0302),
           ),
         ),
       ),

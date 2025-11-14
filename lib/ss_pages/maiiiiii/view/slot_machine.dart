@@ -121,7 +121,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       scrollType: ScrollType.goesOnlyTop,
       width: slotsItemW,
       height: slotsItemH,
-      initialIndex:MainController.to.initRollerIndex,
+      initialIndex:MainController.to.initRollerIndex(column),
       enabled: false,
       // dividerThickness: 8,
       key: key,

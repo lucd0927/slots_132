@@ -76,90 +76,108 @@ class BottomView extends StatelessWidget {
   }
 
   addMoneyWidget() {
-    return Container(
-      width: 100.w,
-      height: 40.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            width: 65.w,
-            height: 40.h,
-            // color: Colors.white.withValues(alpha: 0.2),
-            child: Stack(
-              children: [
-                Center(
-                  child: Container(
-                    height: 25.h,
-                    padding: EdgeInsets.symmetric(horizontal: 4.w),
-                    decoration: BoxDecoration(
-                      color: Color(0xff090909).withValues(alpha: 0.8),
-                    ),
-                    child: Center(
-                      child: SSAniiiiCount(
-                        value: 10,
-                        textStyle: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
+    return Obx((){
+      return Container(
+        width: 100.w,
+        height: 40.h,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: 65.w,
+              height: 40.h,
+              // color: Colors.white.withValues(alpha: 0.2),
+              child: Stack(
+                children: [
+                  Center(
+                    child: Container(
+                      height: 25.h,
+                      padding: EdgeInsets.symmetric(horizontal: 4.w),
+                      decoration: BoxDecoration(
+                        color: Color(0xff090909).withValues(alpha: 0.8),
+                      ),
+                      child: Center(
+                        child: SSAniiiiCount(
+                          value: MainController.to.curBeisu.value,
+                          textStyle: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  child: Image.asset(
-                    Assets.img.mainMaxSub.path,
-                    width: 18.w,
-                    height: 31.w,
-                  ),
-                ),
-                Positioned(
-                  top: 0,
-                  bottom: 0,
-                  right: 0,
-                  child: Image.asset(
-                    Assets.img.mainMaxAdd.path,
-                    width: 18.w,
-                    height: 31.w,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(width: 2.w),
-          Container(
-            width: 30.w,
-            height: 30.h,
-            child: Stack(
-              children: [
-                Image.asset(
-                  Assets.img.mainBottomMax.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-                Positioned.fill(
-                  child: Center(
-                    child: SSTxtBorder(
-                      text: "MAX\nBET",
-                      fontSize: 10.w,
-                      fontWeight: FontWeight.w700,
-                      fontColor: Colors.white,
-                      foreground: Color(0xffFF6200),
-                      height: 1,
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    child: GestureDetector(
+                      onTap: (){
+                        MainController.to.changeBeisu(-1.0);
+                      },
+                      child: Image.asset(
+                        Assets.img.mainMaxSub.path,
+                        width: 18.w,
+                        height: 31.w,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
+                    child:  GestureDetector(
+                      onTap: (){
+                        MainController.to.changeBeisu(1.0);
+                      },
+                      child: Image.asset(
+                        Assets.img.mainMaxAdd.path,
+                        width: 18.w,
+                        height: 31.w,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+            SizedBox(width: 2.w),
+            GestureDetector(
+              onTap: (){
+                MainController.to.addMaxBeisu();
+              },
+              child: Container(
+                width: 30.w,
+                height: 30.h,
+                color: Colors.red.withValues(alpha: 0),
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      Assets.img.mainBottomMax.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+                    Positioned.fill(
+                      child: Center(
+                        child: SSTxtBorder(
+                          text: "MAX\nBET",
+                          fontSize: 10.w,
+                          fontWeight: FontWeight.w700,
+                          fontColor: Colors.white,
+                          foreground: Color(0xffFF6200),
+                          height: 1,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget spinWidget() {
@@ -242,6 +260,7 @@ class BottomView extends StatelessWidget {
                   text: "Wheel",
                   strokeColor: Color(0xff30120A),
                   fontSize: 14.sp,
+                  fontFamily: FontFamily.alkatra,
                 ),
               ),
             ),

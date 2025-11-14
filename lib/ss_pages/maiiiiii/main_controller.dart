@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
@@ -19,6 +21,7 @@ class MainController extends GetxController {
   void onInit() {
     super.onInit();
     initRoller5(hasFirstInit: true);
+    initOther();
   }
 
   var showFreeSpin = false.obs;
@@ -592,11 +595,11 @@ class MainController extends GetxController {
     _changeChild(fourthRoller, 3);
     _changeChild(fiveRoller, 4);
 
-    _resetRoller(firstRoller);
-    _resetRoller(secondRoller);
-    _resetRoller(thirdRoller);
-    _resetRoller(fourthRoller);
-    _resetRoller(fiveRoller);
+    _resetRoller(firstRoller, 0);
+    _resetRoller(secondRoller, 1);
+    _resetRoller(thirdRoller, 2);
+    _resetRoller(fourthRoller, 3);
+    _resetRoller(fiveRoller, 4);
 
     hasScrollerEnd.value = false;
     // await Future.delayed(Duration(milliseconds: 1000));
@@ -610,24 +613,32 @@ class MainController extends GetxController {
     key.currentState?.changeChildItem(slotsWidget1);
   }
 
-  _resetRoller(GlobalKey<RollerListState> key) {
-    key.currentState?.smoothJumpToIndex(initRollerIndex);
+  _resetRoller(GlobalKey<RollerListState> key, int index) {
+    key.currentState?.smoothJumpToIndex(initRollerIndex(index));
   }
 
-  int get initRollerIndex => 1 + rollerImgs.length * 4;
+  int initRollerIndex(int index) {
+    int random = index + 5;
+    if (random.isOdd) {
+      random = random + 1;
+    }
+    return 1 + rollerImgs.length * random;
+  }
 
   _roller(GlobalKey<RollerListState> key, int index) async {
     int allImgs = defaultImgName.length;
-    int random = allImgs- 2;
-    int time = index * 50 + 400;
+    int random = allImgs - 2;
+    int time = 800 + index * 100;
+    if (index == 4) {
+      time = 1300;
+    }
+    ssLogggg("=======time:$time");
     key.currentState
         ?.smoothScrollToIndex(
           random,
           duration: Duration(milliseconds: time),
-          // curve: Curves.bounceIn,
-          // curve: Curves.linear,
-          curve: Curves.easeInOutCubicEmphasized,
-          // curve: Curves.easeInQuad,
+          // curve: Curves.easeInOutBack,
+          curve: Cubic(0.68, -0.15, 0.265, 1.1),
         )
         .then((v) {
           cunt = cunt + 1;
@@ -638,17 +649,159 @@ class MainController extends GetxController {
             result = null;
           }
         });
-    await Future.delayed(Duration(milliseconds: 50));
+    await Future.delayed(Duration(milliseconds: 30));
   }
 
+  /// ****************************************************************************************************************
+  /// 除去slot machine的逻辑
+
+  var box = SSHive.box;
   var curMonnnn = 0.0.obs;
 
-  var curLevel = 1.obs;
   static const int maxLevel = 32;
   static const double minWithdddMoney = 1000;
 
-  String get minWithdddMoneyWithCountry{
+  String get minWithdddMoneyWithCountry {
     return "${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}";
   }
 
+  static const String hkLevelExp = "9151iuwriyhi";
+  static const String hkBeisuNum = "fa3323werfgdsg";
+
+  // 经验值
+  var curLevelExp = 120.obs;
+  var curBeisu = 8.0.obs;
+
+  // key: 经验值
+  // value： 等级范围
+  Map<int, List<int>> kExp_vLevels = {
+    100: [1, 5],
+    200: [6, 15],
+    400: [16, 1000],
+  };
+  static const int stage1_5 = 5;
+  static const int stage1_5Exp = 100;
+  static const int stage6_15 = 10;
+  static const int stage6_15Exp = 200;
+  static const int stage16_1MaxExp = 400;
+  static const int level1_5 = stage1_5Exp * stage1_5;
+  static const int level6_15 = stage6_15Exp * stage6_15;
+  static const int level1_15 = level1_5 + level6_15;
+
+  double curLevelProgress() {
+    double pro = 0.0;
+    int tmpLevelExp = curLevelExp.value;
+
+    int tmpLevel = level();
+    if (tmpLevelExp <= level1_5) {
+      pro = (tmpLevelExp - tmpLevel * stage1_5Exp) / stage1_5Exp;
+
+      // pro = (tmpLevelExp - (tmpLevel - 1) * stage1_5Exp) / stage1_5Exp;
+    }
+    // 6-15
+    else if (tmpLevelExp <= level1_15) {
+      int tmpExp = tmpLevelExp - level1_5;
+      int tmpLevel = tmpExp ~/ stage6_15Exp;
+      pro = (tmpExp - tmpLevel * stage6_15Exp) / stage6_15Exp;
+    }
+    // 16 - infinity
+    else {
+      int tmpExp = tmpLevelExp - level1_15;
+      pro =
+          (tmpExp - (tmpLevel - stage1_5 - stage6_15 - 1) * stage16_1MaxExp) /
+          stage16_1MaxExp;
+    }
+    ssLogggg("======curLevelProgress:$pro=");
+    return pro;
+  }
+
+  int level() {
+    int tmpLevel = 1;
+    int tmpLevelExp = curLevelExp.value;
+    // curLevelExp = 2900;
+
+    // 1-5
+    if (tmpLevelExp <= level1_5) {
+      tmpLevel = tmpLevelExp ~/ stage1_5Exp;
+    }
+    // 6-15
+    else if (tmpLevelExp <= level1_15) {
+      int tmpExp = tmpLevelExp - level1_5;
+
+      tmpLevel = tmpExp ~/ stage6_15Exp + stage1_5;
+    }
+    // 16 - infinity
+    else {
+      int tmpExp = tmpLevelExp - level1_15;
+      tmpLevel = tmpExp ~/ stage16_1MaxExp + stage1_5 + stage6_15;
+    }
+
+    ssLogggg("=====Level:$tmpLevel curLevelExp:$tmpLevelExp");
+    return tmpLevel;
+  }
+
+  changeBeisu(double addNum) {
+    double beisu = curBeisu.value + addNum * 1.0;
+    if (beisu < 8.0) {
+      beisu = 8.0;
+    }
+    if (beisu > 10.0) {
+      beisu = 10.0;
+    }
+
+    box.put(hkBeisuNum, beisu);
+    curBeisu.value = beisu;
+    ssLogggg("=====changeBeisu curBeisu:$beisu");
+  }
+
+  addMaxBeisu() {
+    box.put(hkBeisuNum, 10.0);
+    curBeisu.value = 10.0;
+    ssLogggg("=====addMaxBeisu curBeisu:10.0");
+  }
+
+  initOther() {
+    int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;
+    curLevelExp = tmpCurLevelExp.obs;
+    curLevelExp = 120.obs;
+    ssLogggg("=====initOther curLevelExp:$tmpCurLevelExp");
+
+    double tmpcurBeisu = box.get(hkBeisuNum) ?? 8.0;
+    curBeisu = tmpcurBeisu.obs;
+    ssLogggg("=====initOther curBeisu:$tmpcurBeisu");
+  }
 }
+
+// class CustomBounceCurve extends Curve {
+//   double stage1 = 0.2;
+//   double stage2 = 0.62;
+//   double stage3 = 1;
+//   double stage4 = 0.9;
+//
+//   double lerpDouble(double a, double b, double t) {
+//     return a + (b - a) * t;
+//   }
+//
+//   @override
+//   double transform(double t) {
+//     // 先向上弹一点（负值），再加速，减速，结束再弹一点
+//     // 强化的起始反向弹
+//     const double undershoot = -0.8; // 往上弹得更多（调大）
+//     const double overshoot = 1.12; // 结束向下弹一点（可以调大）
+//
+//     if (t < stage1) {
+//       // 起始上弹 → 回到 0
+//       return lerpDouble(undershoot, 0, t / stage1);
+//     } else if (t < stage2) {
+//       // 加速 → 超过 1.0
+//       return lerpDouble(0, t, t / stage2);
+//     } else if (t < stage3) {
+//       // 从 overshoot 回到接近终点
+//       // return t;
+//       return lerpDouble(stage2, stage3, t / stage3);
+//     } else {
+//       // 最终收敛到 1.0
+//       return lerpDouble(stage3, 1.0, t);
+//     }
+//   }
+// }

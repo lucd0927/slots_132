@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -50,11 +51,22 @@ class _PhoneBottomTimeState extends State<PhoneBottomTime> {
                     fit: BoxFit.fill,
                   ),
                   Center(
-                    child: SSTxtBorder(
-                      text: "Claim Today’s Piece",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 24.sp,
-                      fontFamily: FontFamily.alkatra,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SSTxtBorder(
+                          text: "Claim Today’s Piece",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 24.sp,
+                          fontFamily: FontFamily.alkatra,
+                        ),
+                        Builder(
+                          builder: (context) {
+                            overlayPhoneCard.childContext = context;
+                            return Image.asset(Assets.img.phoneSuip.path,width: 34.w,height: 24,);
+                          }
+                        ),
+                      ],
                     ),
                   ),
                 ],

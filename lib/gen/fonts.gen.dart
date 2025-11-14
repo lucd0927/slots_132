@@ -14,6 +14,9 @@ class FontFamily {
   /// Font family: Alkatra
   static const String alkatra = 'Alkatra';
 
+  /// Font family: Ephesis
+  static const String ephesis = 'Ephesis';
+
   /// Font family: Fraunces
   static const String fraunces = 'Fraunces';
 
