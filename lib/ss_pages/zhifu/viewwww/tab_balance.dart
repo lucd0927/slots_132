@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
-import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/activate_my_status.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';

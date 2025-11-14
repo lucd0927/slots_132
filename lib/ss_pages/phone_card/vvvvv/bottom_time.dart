@@ -37,8 +37,8 @@ class _PhoneBottomTimeState extends State<PhoneBottomTime> {
           GestureDetector(
             onTap: onclickClaim,
             child: Container(
-              width: 277.h,
-              height: 48.h,
+              width: 285.h,
+              height: 58.h,
               child: Stack(
                 children: [
                   Image.asset(

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class OverlayWithddBuzu {

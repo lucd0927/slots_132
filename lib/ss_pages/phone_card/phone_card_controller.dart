@@ -114,7 +114,7 @@ class PhoneCardController extends GetxController {
   }
 
   var showSelectImage = true.obs;
-
+  static const double scale = 0.5;
   onclickClaim() {
     ssLogggg(
       "=====onclickClaim===canClickClaim:${PhoneCardController.to.canClickClaim.value}==",

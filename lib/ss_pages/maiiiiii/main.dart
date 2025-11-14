@@ -9,7 +9,7 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
-import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';

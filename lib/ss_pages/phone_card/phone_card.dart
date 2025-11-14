@@ -295,177 +295,184 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
 
 
     ssLogggg("===nextIndex:$nextIndex==collectIndex:$collectIndex==");
-
+    double scale2 = 1;
+    double scale = 1;
     return AnimatedOpacity(
       duration: Duration(milliseconds: 500),
       opacity: showA ? 1.0 : 0.5,
       // offset:showA? Offset.zero:Offset(0, 1),
-      child: Container(
-        width: 286.h,
-        height: 284.h,
-        color: Colors.teal.withValues(alpha: 0),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 0) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img1,
-                    width: 96.h,
-                    height: 96.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
-            Positioned(
-              left: 75.h,
-              top: 0,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 1) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img2,
-                    width: 140.h,
-                    height: 96.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
-            Positioned(
-              right: 0.h,
-              top: 0,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 2) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img3,
-                    width: 92.h,
-                    height: 96.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
+      child: SizedBox(
+        width: 286.h*scale2,
+        height: 284.h*scale2,
+        child: FittedBox(
+          child: Container(
+            width: 286.h,
+            height: 284.h,
+            color: Colors.teal.withValues(alpha: 0),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 0) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img1,
+                        width: 96.h*scale,
+                        height: 96.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
+                Positioned(
+                  left: 75.h,
+                  top: 0,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 1) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img2,
+                        width: 140.h*scale,
+                        height: 96.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
+                Positioned(
+                  right: 0.h,
+                  top: 0,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 2) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img3,
+                        width: 92.h*scale,
+                        height: 96.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
 
-            Positioned(
-              left: 0.h,
-              top: 96.h,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 3) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img4,
-                    width: 96.h,
-                    height: 114.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
+                Positioned(
+                  left: 0.h,
+                  top: 96.h,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 3) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img4,
+                        width: 96.h*scale,
+                        height: 114.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
 
-            Positioned(
-              left: 74.8.h,
-              top: 73.h,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 4) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img5,
-                    width: 140.h,
-                    height: 137.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
+                Positioned(
+                  left: 74.8.h,
+                  top: 73.h,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 4) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img5,
+                        width: 140.h*scale,
+                        height: 137.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
 
-            Positioned(
-              right: 0.h,
-              top: 96.h,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 5) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img6,
-                    width: 93.h,
-                    height: 115.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
+                Positioned(
+                  right: 0.h,
+                  top: 96.h,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 5) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img6,
+                        width: 93.h*scale,
+                        height: 115.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
 
-            Positioned(
-              left: 0.h,
-              bottom: 0.h,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 6) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img7,
-                    width: 96.h,
-                    height: 95.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
+                Positioned(
+                  left: 0.h,
+                  bottom: 0.h,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 6) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img7,
+                        width: 96.h*scale,
+                        height: 95.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
 
-            Positioned(
-              left: 75.h,
-              bottom: 0.h,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 7) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img8,
-                    width: 140.h,
-                    height: 96.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
+                Positioned(
+                  left: 75.h,
+                  bottom: 0.h,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 7) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img8,
+                        width: 140.h*scale,
+                        height: 96.h*scale,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
+                Positioned(
+                  right: 0.h,
+                  bottom: 0.h,
+                  child: Builder(
+                    builder: (context) {
+                      if(nextIndex == 8) {
+                        overlayPhoneCard.targetContext = context;
+                      }
+                      return Image.asset(
+                        img9,
+                        width: 92.h*scale,
+                        height: 96.h,
+                        fit: BoxFit.fill,
+                      );
+                    }
+                  ),
+                ),
+              ],
             ),
-            Positioned(
-              right: 0.h,
-              bottom: 0.h,
-              child: Builder(
-                builder: (context) {
-                  if(nextIndex == 8) {
-                    overlayPhoneCard.targetContext = context;
-                  }
-                  return Image.asset(
-                    img9,
-                    width: 92.h,
-                    height: 96.h,
-                    fit: BoxFit.fill,
-                  );
-                }
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

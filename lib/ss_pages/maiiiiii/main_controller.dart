@@ -626,7 +626,7 @@ class MainController extends GetxController {
           duration: Duration(milliseconds: time),
           // curve: Curves.bounceIn,
           // curve: Curves.linear,
-          curve: Curves.easeIn,
+          curve: Curves.easeInOutCubicEmphasized,
           // curve: Curves.easeInQuad,
         )
         .then((v) {

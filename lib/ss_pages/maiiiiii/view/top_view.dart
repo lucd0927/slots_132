@@ -7,7 +7,7 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/ss_common/routes.dart';
-import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
@@ -160,9 +160,9 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-    // overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
+    overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
 
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
   }
 
   onWithddd() {

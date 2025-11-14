@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/jc_widget/floating.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/ss_pages/maiiiiii/controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 class SSReelStrips {
   static const String TGA = "ReelStrips";

@@ -236,7 +236,7 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
         tween: Tween(
           begin: middleOffset,
           end: widget.end,
-        ).chain(CurveTween(curve: Curves.linearToEaseOut)),
+        ).chain(CurveTween(curve: Curves.bounceOut)),
         weight: 6,
       ),
     ]).animate(controller);
