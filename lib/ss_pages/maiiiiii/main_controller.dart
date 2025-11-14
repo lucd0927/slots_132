@@ -602,6 +602,10 @@ class MainController extends GetxController {
     _resetRoller(fiveRoller, 4);
 
     hasScrollerEnd.value = false;
+
+    onAddExp(100);
+    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
+    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
     // await Future.delayed(Duration(milliseconds: 1000));
     // showFreeSpin.value = true;
   }
@@ -667,9 +671,10 @@ class MainController extends GetxController {
 
   static const String hkLevelExp = "9151iuwriyhi";
   static const String hkBeisuNum = "fa3323werfgdsg";
+  static const String hkMonnnn = "54ewqr2g45sd4g5";
 
   // 经验值
-  var curLevelExp = 120.obs;
+  var curLevelExp = 0.obs;
   var curBeisu = 8.0.obs;
 
   // key: 经验值
@@ -706,12 +711,13 @@ class MainController extends GetxController {
     }
     // 16 - infinity
     else {
-      int tmpExp = tmpLevelExp - level1_15;
-      pro =
-          (tmpExp - (tmpLevel - stage1_5 - stage6_15 - 1) * stage16_1MaxExp) /
-          stage16_1MaxExp;
+      int tmpExp = tmpLevelExp - level1_5 - level6_15;
+      int tmpLevel = tmpExp ~/ stage16_1MaxExp;
+      pro = (tmpExp - tmpLevel * stage16_1MaxExp) / stage16_1MaxExp;
     }
-    ssLogggg("======curLevelProgress:$pro=");
+    ssLogggg(
+      "======curLevelProgress:$pro=tmpLevelExp:$tmpLevelExp level1_15:$level1_15",
+    );
     return pro;
   }
 
@@ -740,7 +746,27 @@ class MainController extends GetxController {
     return tmpLevel;
   }
 
-  changeBeisu(double addNum) {
+
+
+  onAddMoney(double money) {
+    double tmpCurMmmm = curMonnnn.value;
+    tmpCurMmmm = tmpCurMmmm + money;
+    box.put(hkMonnnn, tmpCurMmmm);
+    curMonnnn.value = tmpCurMmmm;
+  }
+
+  onAddExp(int exp) {
+    int tmpExp = curLevelExp.value;
+
+    tmpExp = tmpExp + exp;
+
+    box.put(hkLevelExp, tmpExp);
+
+    curLevelExp.value = tmpExp;
+    ssLogggg("======tmpExp:$tmpExp=");
+  }
+
+  onChangeBeisu(double addNum) {
     double beisu = curBeisu.value + addNum * 1.0;
     if (beisu < 8.0) {
       beisu = 8.0;
@@ -754,7 +780,7 @@ class MainController extends GetxController {
     ssLogggg("=====changeBeisu curBeisu:$beisu");
   }
 
-  addMaxBeisu() {
+  onAddMaxBeisu() {
     box.put(hkBeisuNum, 10.0);
     curBeisu.value = 10.0;
     ssLogggg("=====addMaxBeisu curBeisu:10.0");
@@ -763,12 +789,15 @@ class MainController extends GetxController {
   initOther() {
     int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;
     curLevelExp = tmpCurLevelExp.obs;
-    curLevelExp = 120.obs;
     ssLogggg("=====initOther curLevelExp:$tmpCurLevelExp");
 
     double tmpcurBeisu = box.get(hkBeisuNum) ?? 8.0;
     curBeisu = tmpcurBeisu.obs;
     ssLogggg("=====initOther curBeisu:$tmpcurBeisu");
+
+    double tmpMooon = box.get(hkMonnnn) ?? 0.0;
+    curMonnnn = tmpMooon.obs;
+    ssLogggg("=====initOther money:$tmpMooon");
   }
 }
 

@@ -114,7 +114,7 @@ class BottomView extends StatelessWidget {
                     left: 0,
                     child: GestureDetector(
                       onTap: (){
-                        MainController.to.changeBeisu(-1.0);
+                        MainController.to.onChangeBeisu(-1.0);
                       },
                       child: Image.asset(
                         Assets.img.mainMaxSub.path,
@@ -129,7 +129,7 @@ class BottomView extends StatelessWidget {
                     right: 0,
                     child:  GestureDetector(
                       onTap: (){
-                        MainController.to.changeBeisu(1.0);
+                        MainController.to.onChangeBeisu(1.0);
                       },
                       child: Image.asset(
                         Assets.img.mainMaxAdd.path,
@@ -144,7 +144,7 @@ class BottomView extends StatelessWidget {
             SizedBox(width: 2.w),
             GestureDetector(
               onTap: (){
-                MainController.to.addMaxBeisu();
+                MainController.to.onAddMaxBeisu();
               },
               child: Container(
                 width: 30.w,

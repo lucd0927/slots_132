@@ -175,7 +175,7 @@ class TopView extends StatelessWidget {
 
     // OverlaySettinnn().show();
 
-    MainController.to.curLevelExp.value = 980;
+    // MainController.to.curLevelExp.value = 980;
   }
 
   onWithddd() {
