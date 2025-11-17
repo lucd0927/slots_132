@@ -91,6 +91,10 @@ class $AssetsImgGen {
   AssetGenImage get closeSetting =>
       const AssetGenImage('assets/img/close_setting.png');
 
+  /// File path: assets/img/freewheel.png
+  AssetGenImage get freewheel =>
+      const AssetGenImage('assets/img/freewheel.png');
+
   /// File path: assets/img/gift_bg.png
   AssetGenImage get giftBg => const AssetGenImage('assets/img/gift_bg.png');
 
@@ -681,6 +685,7 @@ class $AssetsImgGen {
     btnWheel,
     closePopup,
     closeSetting,
+    freewheel,
     giftBg,
     giftBottom,
     giftCenter,

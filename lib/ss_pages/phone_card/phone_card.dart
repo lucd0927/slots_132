@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -174,19 +176,29 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                                     height: 250.h,
                                   ),
                                   Positioned(
-                                    right: 34.w,
-                                    bottom: 40.h,
+                                    right: 30.w,
+                                    bottom: 44.h,
                                     child: GetBuilder<PhoneCardController>(
                                       builder: (con) {
                                         return Material(
                                           color: Colors.transparent,
-                                          child: Text(
-                                            PhoneCardController.to.getUserName(),
-                                            style: TextStyle(
-                                              fontFamily: FontFamily.ephesis,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 30.sp,
+                                          child: Container(
+                                            width: 100.w,
+                                            height: 100.h,
+                                            color: Colors.brown.withValues(alpha: 0.0),
+                                            child: Transform.rotate(
+                                              angle: 90*pi/180,
+                                              child: Text(
+                                                PhoneCardController.to.getUserName(),
+                                                style: TextStyle(
+                                                  fontFamily: FontFamily.ephesis,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 25.sp,
+                                                  height: 1
+                                                ),
+                                                textAlign: TextAlign.end,
+                                              ),
                                             ),
                                           ),
                                         );

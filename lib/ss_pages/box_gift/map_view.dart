@@ -96,7 +96,7 @@ class _SSMapViewState extends State<SSMapView> {
     _rightC = _controllers.addAndGet();
     _lineC = _controllers.addAndGet();
     init().then((_) {
-      Future.delayed(Duration(milliseconds: 300),(){
+      Future.delayed(Duration(milliseconds: 0),(){
         scrollTo(jumpIndex);
       });
     });
@@ -169,10 +169,13 @@ class _SSMapViewState extends State<SSMapView> {
   scrollTo(int index) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       double offset = index * (_itemH + _bottomDistance);
-      _controllers.animateTo(
+      // _controllers.animateTo(
+      //   offset,
+      //   curve: Curves.easeInOut,
+      //   duration: Duration(milliseconds: 500),
+      // );
+      _controllers.jumpTo(
         offset,
-        curve: Curves.easeInOut,
-        duration: Duration(milliseconds: 500),
       );
     });
   }

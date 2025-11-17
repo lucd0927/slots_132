@@ -17,7 +17,7 @@ class WheController extends GetxController {
   static WheController get to => Get.find();
 
   var box = SSHive.box;
-  static const int initWheNum = 5;
+  static const int initWheNum = 50;
   static const String hhWheNum = "zioualsknfg";
 
   var curWheNum = initWheNum.obs;

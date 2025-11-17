@@ -180,11 +180,11 @@ class TopView extends StatelessWidget {
   onMenu() async {
     // OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
-    // OverlayWow().show(money: 100);
+    OverlayWow().show(money: 100);
     // OverlayMegawin().show(money: 100);
     // OverlaySettinnn().show();
     // OverlayJackpotGrand().show(money: 200);
-    OverlayJackpotMajor().show(money: 200);
+    // OverlayJackpotMajor().show(money: 200);
     // OverlayJackpotMini().show(money: 200);
 
     // MainController.to.curLevelExp.value = 980;
