@@ -245,6 +245,7 @@ class PhoneCardController extends GetxController {
 
   void setUserName(String name) {
     box.put(hkUserName, name);
+    update();
   }
 
   String getUserName() {

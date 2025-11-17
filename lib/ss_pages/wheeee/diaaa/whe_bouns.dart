@@ -22,12 +22,12 @@ class _WheBounsState extends State<WheBouns> {
           Column(
             children: [
               SizedBox(height: 70.h),
-              Image.asset(
-                Assets.img.wheelTitleCongrats.path,
-                width: 333.w,
-                height: 165.w,
-                fit: BoxFit.fill,
-              ),
+              // Image.asset(
+              //   Assets.img.wheelTitleCongrats.path,
+              //   width: 333.w,
+              //   height: 165.w,
+              //   fit: BoxFit.fill,
+              // ),
               Spacer(),
               Container(
                 width: double.infinity,

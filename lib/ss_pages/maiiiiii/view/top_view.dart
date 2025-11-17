@@ -7,6 +7,7 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -172,8 +173,8 @@ class TopView extends StatelessWidget {
 
   onMenu() async {
 
-
-    OverlaySettinnn().show();
+    OverlaySuperwin().show(money: 100);
+    // OverlaySettinnn().show();
 
     // MainController.to.curLevelExp.value = 980;
   }

@@ -70,12 +70,13 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                     width: 314.h,
                     height: 314.h,
                     child: Stack(
+                      clipBehavior: Clip.none,
                       children: [
                         Positioned(
-                          left: 0,
-                          right: 0,
-                          top: -20.h,
-                          bottom: 20.h,
+                          left: -80.w,
+                          right: -80.w,
+                          top: -80.h,
+                          bottom: -80.h,
                           child: SSRotateWidget(
                             child: Image.asset(
                               Assets.img.phoneCardXuanguang.path,
@@ -95,12 +96,12 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                             child: Stack(
                               clipBehavior: Clip.none,
                               children: [
-                                Image.asset(
-                                  Assets.img.phoneCardTopBg.path,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  fit: BoxFit.fill,
-                                ),
+                                // Image.asset(
+                                //   Assets.img.phoneCardTopBg.path,
+                                //   width: double.infinity,
+                                //   height: double.infinity,
+                                //   fit: BoxFit.fill,
+                                // ),
                                 Positioned(
                                   left: 0,
                                   right: 0,
@@ -129,7 +130,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                                 Positioned(
                                   left: 0,
                                   right: 0,
-                                  top: 20.h,
+                                  top: 28.h,
                                   child: Center(
                                     child: SSTxtGraBorder(
                                       text: "A Grand Prize for You.",
@@ -161,14 +162,38 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                         Positioned(
                           left: 0,
                           right: 0,
-                          top: 40.h,
+                          top: 10.h,
                           child: Center(
                             child: Hero(
                               tag: "Phoneeee",
-                              child: Image.asset(
-                                Assets.img.phoneCardPhone.path,
-                                width: 164.h,
-                                height: 164.h,
+                              child: Stack(
+                                children: [
+                                  Image.asset(
+                                    Assets.img.phoneCardPhone.path,
+                                    width: 250.h,
+                                    height: 250.h,
+                                  ),
+                                  Positioned(
+                                    right: 34.w,
+                                    bottom: 40.h,
+                                    child: GetBuilder<PhoneCardController>(
+                                      builder: (con) {
+                                        return Material(
+                                          color: Colors.transparent,
+                                          child: Text(
+                                            PhoneCardController.to.getUserName(),
+                                            style: TextStyle(
+                                              fontFamily: FontFamily.ephesis,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 30.sp,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -183,13 +208,13 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
             Positioned(
               left: 0,
               right: 0,
-              top: 290.h,
+              top: 330.h,
               child: Center(
                 child: Column(
                   children: [
                     Container(
-                      width: 338.h,
-                      height: 357.h,
+                      width: 300.h,
+                      height: 308.h,
                       child: Stack(
                         children: [
                           Image.asset(
@@ -201,10 +226,10 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                           Positioned.fill(
                             child: Column(
                               children: [
-                                SizedBox(height: 16.h),
+                                SizedBox(height: 10.h),
                                 SSTxtGraBorder(
                                   text: "9 pieces = Your signed phone.",
-                                  fontSize: 20.sp,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 SizedBox(height: 16.h),
@@ -261,7 +286,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
     List data = PhoneCardController.to.getCardIndexList();
     int length = data.length;
     int tmpIndex = collectIndex;
-    if(collectIndex >= length) {
+    if (collectIndex >= length) {
       tmpIndex = length - 1;
     }
 
@@ -293,7 +318,6 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
       }
     }
 
-
     ssLogggg("===nextIndex:$nextIndex==collectIndex:$collectIndex==");
     double scale2 = 1;
     double scale = 1;
@@ -301,178 +325,172 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
       duration: Duration(milliseconds: 500),
       opacity: showA ? 1.0 : 0.5,
       // offset:showA? Offset.zero:Offset(0, 1),
-      child: SizedBox(
-        width: 286.h*scale2,
-        height: 284.h*scale2,
-        child: FittedBox(
-          child: Container(
-            width: 286.h,
-            height: 284.h,
-            color: Colors.teal.withValues(alpha: 0),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 0) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img1,
-                        width: 96.h*scale,
-                        height: 96.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-                Positioned(
-                  left: 75.h,
-                  top: 0,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 1) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img2,
-                        width: 140.h*scale,
-                        height: 96.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-                Positioned(
-                  right: 0.h,
-                  top: 0,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 2) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img3,
-                        width: 92.h*scale,
-                        height: 96.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-
-                Positioned(
-                  left: 0.h,
-                  top: 96.h,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 3) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img4,
-                        width: 96.h*scale,
-                        height: 114.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-
-                Positioned(
-                  left: 74.8.h,
-                  top: 73.h,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 4) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img5,
-                        width: 140.h*scale,
-                        height: 137.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-
-                Positioned(
-                  right: 0.h,
-                  top: 96.h,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 5) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img6,
-                        width: 93.h*scale,
-                        height: 115.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-
-                Positioned(
-                  left: 0.h,
-                  bottom: 0.h,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 6) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img7,
-                        width: 96.h*scale,
-                        height: 95.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-
-                Positioned(
-                  left: 75.h,
-                  bottom: 0.h,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 7) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img8,
-                        width: 140.h*scale,
-                        height: 96.h*scale,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-                Positioned(
-                  right: 0.h,
-                  bottom: 0.h,
-                  child: Builder(
-                    builder: (context) {
-                      if(nextIndex == 8) {
-                        overlayPhoneCard.targetContext = context;
-                      }
-                      return Image.asset(
-                        img9,
-                        width: 92.h*scale,
-                        height: 96.h,
-                        fit: BoxFit.fill,
-                      );
-                    }
-                  ),
-                ),
-              ],
+      child: Container(
+        width: 247.h,
+        height: 247.h,
+        color: Colors.teal.withValues(alpha: 0),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              left: 0,
+              top: 0,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 0) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img1,
+                    width: 84.h * scale,
+                    height: 84.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
             ),
-          ),
+            Positioned(
+              left: 65.h,
+              top: 0,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 1) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img2,
+                    width: 121.h * scale,
+                    height: 83.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+            Positioned(
+              right: 0.h,
+              top: 0,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 2) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img3,
+                    width: 80.h * scale,
+                    height: 83.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+
+            Positioned(
+              left: 0.h,
+              top: 84.h,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 3) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img4,
+                    width: 83.h * scale,
+                    height: 99.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+
+            Positioned(
+              left: 65.h,
+              top: 64.h,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 4) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img5,
+                    width: 121.h * scale,
+                    height: 119.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+
+            Positioned(
+              right: 0.h,
+              top: 84.h,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 5) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img6,
+                    width: 80.h * scale,
+                    height: 99.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+
+            Positioned(
+              left: 0.h,
+              bottom: 0.h,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 6) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img7,
+                    width: 83.h * scale,
+                    height: 83.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+
+            Positioned(
+              left: 65.h,
+              bottom: 0.h,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 7) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img8,
+                    width: 121.h * scale,
+                    height: 83.h * scale,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+            Positioned(
+              right: 0.h,
+              bottom: 0.h,
+              child: Builder(
+                builder: (context) {
+                  if (nextIndex == 8) {
+                    overlayPhoneCard.targetContext = context;
+                  }
+                  return Image.asset(
+                    img9,
+                    width: 80.h * scale,
+                    height: 83.h,
+                    fit: BoxFit.fill,
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

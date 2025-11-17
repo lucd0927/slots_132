@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/grey_widget.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -17,7 +19,7 @@ class BottomView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return contentWidget();
+    // return contentWidget();
     return Obx(() {
       return contentWidget();
     });
@@ -50,11 +52,43 @@ class BottomView extends StatelessWidget {
             right: 0,
             bottom: 80.h,
             child: Center(
-              child: Container(width: 165.h, height: 26.h,child: Stack(
-                children: [
-                  Image.asset(Assets.img.mainMoneyChange.path,width: double.infinity,height: double.infinity,fit: BoxFit.fill,)
-                ],
-              ),),
+              child: Container(
+                width: 165.h,
+                height: 26.h,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      Assets.img.mainMoneyChange.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 2.h,
+                      bottom: 0,
+                      child: Center(
+                        child: Container(
+                          color: Colors.teal.withValues(alpha: 0),
+                          child: SSAniiiiCount(
+                            fractionDigits: 2,
+                            value: MainController.to.curSpinMoney.value,
+                            textStyle: TextStyle(
+                              fontSize: 20.sp,
+                              height: 1,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff6AFF00),
+                            ),
+                            prefix: "${SSCountry.curGuojiaFuhao()}",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
@@ -89,6 +123,11 @@ class BottomView extends StatelessWidget {
 
   addMoneyWidget() {
     return Obx(() {
+      double curBeisu = MainController.to.curBeisu.value;
+
+      bool hasMin = curBeisu == MainController.minBet;
+      bool hasMax = curBeisu == MainController.maxBet;
+
       return Container(
         width: 100.w,
         height: 40.h,
@@ -124,31 +163,47 @@ class BottomView extends StatelessWidget {
                     top: 0,
                     bottom: 0,
                     left: 0,
-                    child: GestureDetector(
-                      onTap: () {
-                        MainController.to.onChangeBeisu(-1.0);
-                      },
-                      child: Image.asset(
-                        Assets.img.mainMaxSub.path,
-                        width: 18.w,
-                        height: 31.w,
-                      ),
-                    ),
+                    child: hasMin
+                        ? GreyWidget(
+                            child: Image.asset(
+                              Assets.img.mainMaxSub.path,
+                              width: 18.w,
+                              height: 31.w,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              MainController.to.onChangeBeisu(-1.0);
+                            },
+                            child: Image.asset(
+                              Assets.img.mainMaxSub.path,
+                              width: 18.w,
+                              height: 31.w,
+                            ),
+                          ),
                   ),
                   Positioned(
                     top: 0,
                     bottom: 0,
                     right: 0,
-                    child: GestureDetector(
-                      onTap: () {
-                        MainController.to.onChangeBeisu(1.0);
-                      },
-                      child: Image.asset(
-                        Assets.img.mainMaxAdd.path,
-                        width: 18.w,
-                        height: 31.w,
-                      ),
-                    ),
+                    child: hasMax
+                        ? GreyWidget(
+                            child: Image.asset(
+                              Assets.img.mainMaxAdd.path,
+                              width: 18.w,
+                              height: 31.w,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              MainController.to.onChangeBeisu(1.0);
+                            },
+                            child: Image.asset(
+                              Assets.img.mainMaxAdd.path,
+                              width: 18.w,
+                              height: 31.w,
+                            ),
+                          ),
                   ),
                 ],
               ),
@@ -162,28 +217,53 @@ class BottomView extends StatelessWidget {
                 width: 30.w,
                 height: 30.h,
                 color: Colors.red.withValues(alpha: 0),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      Assets.img.mainBottomMax.path,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.fill,
-                    ),
-                    Positioned.fill(
-                      child: Center(
-                        child: SSTxtBorder(
-                          text: "MAX\nBET",
-                          fontSize: 10.w,
-                          fontWeight: FontWeight.w700,
-                          fontColor: Colors.white,
-                          foreground: Color(0xffFF6200),
-                          height: 1,
+                child: hasMax
+                    ? GreyWidget(
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              Assets.img.mainBottomMax.path,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.fill,
+                            ),
+                            Positioned.fill(
+                              child: Center(
+                                child: SSTxtBorder(
+                                  text: "MAX\nBET",
+                                  fontSize: 10.w,
+                                  fontWeight: FontWeight.w700,
+                                  fontColor: Colors.white,
+                                  foreground: Color(0xffFF6200),
+                                  height: 1,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
+                      )
+                    : Stack(
+                        children: [
+                          Image.asset(
+                            Assets.img.mainBottomMax.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+                          Positioned.fill(
+                            child: Center(
+                              child: SSTxtBorder(
+                                text: "MAX\nBET",
+                                fontSize: 10.w,
+                                fontWeight: FontWeight.w700,
+                                fontColor: Colors.white,
+                                foreground: Color(0xffFF6200),
+                                height: 1,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
               ),
             ),
           ],
@@ -193,55 +273,66 @@ class BottomView extends StatelessWidget {
   }
 
   Widget spinWidget() {
-    return GestureDetector(
-      onTap: () {
-        MainController.to.onStartRoller();
-      },
-      child: Container(
-        width: 125.h,
-        height: 60.h,
-        color: Colors.red.withValues(alpha: 0),
-        child: Stack(
-          children: [
-            Image.asset(
-              Assets.img.btnSpin.path,
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.fill,
-            ),
-            Positioned.fill(
-              bottom: 5.h,
-              child: Container(
-                color: Colors.white.withValues(alpha: 0.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 2.h),
-                    SSTxtGraBorder(
-                      text: "SPIN",
-                      fontSize: 28.sp,
+    Widget child = Container(
+      width: 125.h,
+      height: 60.h,
+      color: Colors.red.withValues(alpha: 0),
+      child: Stack(
+        children: [
+          Image.asset(
+            Assets.img.btnSpin.path,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.fill,
+          ),
+          Positioned.fill(
+            bottom: 5.h,
+            child: Container(
+              color: Colors.white.withValues(alpha: 0.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 2.h),
+
+                  // SSTxtGraBorder(
+                  //   text: "SPIN",
+                  //   fontSize: 28.sp,
+                  //   fontFamily: FontFamily.rubik,
+                  //   fontWeight: FontWeight.w700,
+                  //   strokeColor: Color(0xff174726),
+                  // ),
+                  Image.asset(
+                    Assets.img.btnTxtSpin.path,
+                    width: 72.h,
+                    height: 25.h,
+                    fit: BoxFit.contain,
+                  ),
+
+                  AutoSizeText(
+                    "HOLD FOR AUTO",
+                    style: TextStyle(
+                      fontSize: 10.sp,
                       fontFamily: FontFamily.rubik,
                       fontWeight: FontWeight.w700,
-                      strokeColor: Color(0xff174726),
+                      color: Color(0xff2B4735),
                     ),
-
-                    AutoSizeText(
-                      "HOLD FOR AUTO",
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        fontFamily: FontFamily.rubik,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff2B4735),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+
+    return MainController.to.hasScrollerEnd.value
+        ? GreyWidget(child: child)
+        : GestureDetector(
+            onTap: () {
+              MainController.to.onStartRoller();
+            },
+            child: child,
+          );
   }
 
   Widget wheelWidget() {

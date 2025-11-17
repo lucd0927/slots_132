@@ -387,6 +387,22 @@ class $AssetsImgGen {
   AssetGenImage get phoneSuip =>
       const AssetGenImage('assets/img/phone_suip.png');
 
+  /// File path: assets/img/popup_beisu.png
+  AssetGenImage get popupBeisu =>
+      const AssetGenImage('assets/img/popup_beisu.png');
+
+  /// File path: assets/img/popup_moneybg.png
+  AssetGenImage get popupMoneybg =>
+      const AssetGenImage('assets/img/popup_moneybg.png');
+
+  /// File path: assets/img/popup_txt_superwin.png
+  AssetGenImage get popupTxtSuperwin =>
+      const AssetGenImage('assets/img/popup_txt_superwin.png');
+
+  /// File path: assets/img/popup_zhiz.png
+  AssetGenImage get popupZhiz =>
+      const AssetGenImage('assets/img/popup_zhiz.png');
+
   /// File path: assets/img/setti_audio.png
   AssetGenImage get settiAudio =>
       const AssetGenImage('assets/img/setti_audio.png');
@@ -685,6 +701,10 @@ class $AssetsImgGen {
     phonePopupJindu2Star,
     phonePopupJindu2Time,
     phoneSuip,
+    popupBeisu,
+    popupMoneybg,
+    popupTxtSuperwin,
+    popupZhiz,
     settiAudio,
     settiBg,
     settiMusic,

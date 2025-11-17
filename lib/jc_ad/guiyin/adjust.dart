@@ -8,15 +8,15 @@ import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 
-class JcAdjust {
-  static const String TGA = "JcAdjust";
-  static final JcAdjust _instance = JcAdjust._();
+class SSAdjust {
+  static const String TGA = "SSAdjust";
+  static final SSAdjust _instance = SSAdjust._();
 
-  factory JcAdjust() {
+  factory SSAdjust() {
     return _instance;
   }
 
-  JcAdjust._();
+  SSAdjust._();
 
   AdjustConfig? adjustConfig() => _config;
 

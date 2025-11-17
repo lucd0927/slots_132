@@ -573,6 +573,11 @@ class MainController extends GetxController {
     cunt = 0;
     hasScrollerEnd.value = true;
     result = Completer();
+
+    double tpmBeisu = -curBeisu.value;
+    curSpinMoney.value = tpmBeisu;
+    onAddMoney(tpmBeisu, onEnd: () {}, showMoneyAnimated: false);
+
     await _roller(firstRoller, 0);
     await _roller(secondRoller, 1);
     await _roller(thirdRoller, 2);
@@ -604,7 +609,7 @@ class MainController extends GetxController {
     _resetRoller(fourthRoller, 3);
     _resetRoller(fiveRoller, 4);
 
-    hasScrollerEnd.value = false;
+
 
     onAddExp(100);
     double tmpAddMoney = 0.0;
@@ -616,19 +621,23 @@ class MainController extends GetxController {
       int count = data.values.first.length;
       double tmpPay = SSPayTable.payBeishu(category, count);
 
-      double tmpPayyy = beisu/lines*tmpPay;
+      double tmpPayyy = beisu / lines * tmpPay;
       ssLogggg("==onStartRoller==end=tmpPayyy:$tmpPayyy");
-      tmpAddMoney = tmpAddMoney+ tmpPayyy;
+      tmpAddMoney = tmpAddMoney + tmpPayyy;
       payBeisu.add(tmpPay);
     }
-    onAddMoney(tmpAddMoney);
-
+    hasScrollerEnd.value = false;
+    curSpinMoney.value = tmpAddMoney;
+    onAddMoney(tmpAddMoney, onEnd: () {
+      // curSpinMoney.value = 0.0;
+    }, showMoneyAnimated: true);
+    //
 
     ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
     ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
-    ssLogggg("==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney");
-
-
+    ssLogggg(
+      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
+    );
   }
 
   _changeChild(GlobalKey<RollerListState> key, int index) {
@@ -693,10 +702,13 @@ class MainController extends GetxController {
   static const String hkLevelExp = "9151iuwriyhi";
   static const String hkBeisuNum = "fa3323werfgdsg";
   static const String hkMonnnn = "54ewqr2g45sd4g5";
+  static const double minBet = 8.0;
+  static const double maxBet = 10.0;
 
   // 经验值
   var curLevelExp = 0.obs;
   var curBeisu = 8.0.obs;
+  var curSpinMoney = 0.0.obs;
 
   // key: 经验值
   // value： 等级范围
@@ -767,10 +779,13 @@ class MainController extends GetxController {
     return tmpLevel;
   }
 
-
-
-  onAddMoney(double money) {
-    if(money==0){
+  onAddMoney(
+    double money, {
+    VoidCallback? onEnd,
+    required bool showMoneyAnimated,
+  }) {
+    if (money == 0) {
+      onEnd?.call();
       return;
     }
 
@@ -778,7 +793,12 @@ class MainController extends GetxController {
     tmpCurMmmm = tmpCurMmmm + money;
     box.put(hkMonnnn, tmpCurMmmm);
     curMonnnn.value = tmpCurMmmm;
-    overlayMainTopMoney.showWithSize(childSize: Size(32.w, 32.w));
+    if (money > 0) {
+      overlayMainTopMoney.showWithSize(
+        childSize: Size(32.w, 32.w),
+        onEnd: onEnd,
+      );
+    }
   }
 
   onAddExp(int exp) {
@@ -826,37 +846,3 @@ class MainController extends GetxController {
     ssLogggg("=====initOther money:$tmpMooon");
   }
 }
-
-// class CustomBounceCurve extends Curve {
-//   double stage1 = 0.2;
-//   double stage2 = 0.62;
-//   double stage3 = 1;
-//   double stage4 = 0.9;
-//
-//   double lerpDouble(double a, double b, double t) {
-//     return a + (b - a) * t;
-//   }
-//
-//   @override
-//   double transform(double t) {
-//     // 先向上弹一点（负值），再加速，减速，结束再弹一点
-//     // 强化的起始反向弹
-//     const double undershoot = -0.8; // 往上弹得更多（调大）
-//     const double overshoot = 1.12; // 结束向下弹一点（可以调大）
-//
-//     if (t < stage1) {
-//       // 起始上弹 → 回到 0
-//       return lerpDouble(undershoot, 0, t / stage1);
-//     } else if (t < stage2) {
-//       // 加速 → 超过 1.0
-//       return lerpDouble(0, t, t / stage2);
-//     } else if (t < stage3) {
-//       // 从 overshoot 回到接近终点
-//       // return t;
-//       return lerpDouble(stage2, stage3, t / stage3);
-//     } else {
-//       // 最终收敛到 1.0
-//       return lerpDouble(stage3, 1.0, t);
-//     }
-//   }
-// }

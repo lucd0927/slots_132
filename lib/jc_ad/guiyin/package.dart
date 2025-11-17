@@ -286,7 +286,7 @@ class SSABChange {
       sfChushiAF = true;
 
       if (hasAdjust) {
-        await JcAdjust().initSdk("d1x71jap6eio");
+        await SSAdjust().initSdk("dxxu9j7r8phc");
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";
         if (asdkasfdhka.isEmpty) {
