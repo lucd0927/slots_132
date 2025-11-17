@@ -7,7 +7,13 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/ss_common/diallll/overlay_bigwin.dart';
+import 'package:slots_132/ss_common/diallll/overlay_jackpot_grand.dart';
+import 'package:slots_132/ss_common/diallll/overlay_jackpot_major.dart';
+import 'package:slots_132/ss_common/diallll/overlay_jackpot_mini.dart';
+import 'package:slots_132/ss_common/diallll/overlay_megawin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
+import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -18,7 +24,7 @@ class TopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx((){
+    return Obx(() {
       return topWidget();
     });
   }
@@ -172,9 +178,14 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-
-    OverlaySuperwin().show(money: 100);
+    // OverlaySuperwin().show(money: 100);
+    // OverlayBigwin().show(money: 100);
+    // OverlayWow().show(money: 100);
+    // OverlayMegawin().show(money: 100);
     // OverlaySettinnn().show();
+    // OverlayJackpotGrand().show(money: 200);
+    OverlayJackpotMajor().show(money: 200);
+    // OverlayJackpotMini().show(money: 200);
 
     // MainController.to.curLevelExp.value = 980;
   }

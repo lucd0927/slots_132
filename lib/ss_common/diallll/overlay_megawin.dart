@@ -18,7 +18,7 @@ import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class OverlaySuperwin {
+class OverlayMegawin {
   ///是否真正显示
   bool get hasShow => _isShowing;
   bool _isShowing = false;
@@ -29,7 +29,7 @@ class OverlaySuperwin {
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
-        return SuperwinWidget(
+        return MegawinWidget(
           onBtn: (double money) {
             close();
           },
@@ -48,17 +48,17 @@ class OverlaySuperwin {
   }
 }
 
-class SuperwinWidget extends StatefulWidget {
-  const SuperwinWidget({super.key, required this.onBtn, required this.money});
+class MegawinWidget extends StatefulWidget {
+  const MegawinWidget({super.key, required this.onBtn, required this.money});
 
   final double money;
   final ValueChanged<double> onBtn;
 
   @override
-  State<SuperwinWidget> createState() => _SuperwinWidgetState();
+  State<MegawinWidget> createState() => _MegawinWidgetState();
 }
 
-class _SuperwinWidgetState extends State<SuperwinWidget> {
+class _MegawinWidgetState extends State<MegawinWidget> {
   bool positive = bgMusic.hasOn;
   bool positive2 = btnAudio.hasOn;
   var green = Color(0xFF45CC0D);
@@ -122,7 +122,7 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       ),
                       SSAScale(
                         child: Image.asset(
-                          Assets.img.popupTxtSuperwin.path,
+                          Assets.img.popupTxtMegawin.path,
                           width: 251.h,
                           height: 171.h,
                         ),
@@ -136,33 +136,39 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       children: [
                         Center(
                           child: Image.asset(
-                            Assets.img.popupMoneybgSuper.path,
+                            Assets.img.popupMoneybgMega.path,
                             width: 350.w,
                             height: double.infinity,
                           ),
                         ),
-                        Center(
-                          child: SSTxtGraBorder(
-                            text:
-                            "${SSCountry.curGuojiaFuhao()}${widget.money}",
-                            fontSize: 42.sp,
-                            fontFamily: FontFamily.alkatra,
-                            height: 1,
-                            fontWeight: FontWeight.w700,
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xff0FFF63),
-                                Color(0xffA4F00D),
-                                Color(0xffD0FF00),
-                                Color(0xff00FF1E),
-                                // Color(0xff0FFF63),
-                              ],
-                              end: Alignment.bottomCenter,
-                              begin: Alignment.topCenter,
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          top: 4.h,
+                          bottom: 0,
+                          child: Center(
+                            child: SSTxtGraBorder(
+                              text:
+                              "${SSCountry.curGuojiaFuhao()}${widget.money}",
+                              fontSize: 42.sp,
+                              fontFamily: FontFamily.alkatra,
+                              height: 1,
+                              fontWeight: FontWeight.w700,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xff0FFF63),
+                                  Color(0xffA4F00D),
+                                  Color(0xffD0FF00),
+                                  Color(0xff00FF1E),
+                                  // Color(0xff0FFF63),
+                                ],
+                                end: Alignment.bottomCenter,
+                                begin: Alignment.topCenter,
+                              ),
+                              strokeColor: Color(0xff0C402B),
+                              strokeWidth: 3.w,
+                              // fontColor: Color(0xff6AFF00),
                             ),
-                            strokeColor: Color(0xff0C402B),
-                            strokeWidth: 3.w,
-                            // fontColor: Color(0xff6AFF00),
                           ),
                         ),
                       ],

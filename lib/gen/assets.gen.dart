@@ -267,6 +267,10 @@ class $AssetsImgGen {
   AssetGenImage get moneyLock =>
       const AssetGenImage('assets/img/money_lock.png');
 
+  /// File path: assets/img/money_popup.png
+  AssetGenImage get moneyPopup =>
+      const AssetGenImage('assets/img/money_popup.png');
+
   /// File path: assets/img/phone_card_bg.png
   AssetGenImage get phoneCardBg =>
       const AssetGenImage('assets/img/phone_card_bg.png');
@@ -391,13 +395,61 @@ class $AssetsImgGen {
   AssetGenImage get popupBeisu =>
       const AssetGenImage('assets/img/popup_beisu.png');
 
-  /// File path: assets/img/popup_moneybg.png
-  AssetGenImage get popupMoneybg =>
-      const AssetGenImage('assets/img/popup_moneybg.png');
+  /// File path: assets/img/popup_jackpot1.png
+  AssetGenImage get popupJackpot1 =>
+      const AssetGenImage('assets/img/popup_jackpot1.png');
+
+  /// File path: assets/img/popup_jackpot2.png
+  AssetGenImage get popupJackpot2 =>
+      const AssetGenImage('assets/img/popup_jackpot2.png');
+
+  /// File path: assets/img/popup_jackpot3.png
+  AssetGenImage get popupJackpot3 =>
+      const AssetGenImage('assets/img/popup_jackpot3.png');
+
+  /// File path: assets/img/popup_jackpot_bg.png
+  AssetGenImage get popupJackpotBg =>
+      const AssetGenImage('assets/img/popup_jackpot_bg.png');
+
+  /// File path: assets/img/popup_jackpot_grand.png
+  AssetGenImage get popupJackpotGrand =>
+      const AssetGenImage('assets/img/popup_jackpot_grand.png');
+
+  /// File path: assets/img/popup_jackpot_major.png
+  AssetGenImage get popupJackpotMajor =>
+      const AssetGenImage('assets/img/popup_jackpot_major.png');
+
+  /// File path: assets/img/popup_jackpot_mini.png
+  AssetGenImage get popupJackpotMini =>
+      const AssetGenImage('assets/img/popup_jackpot_mini.png');
+
+  /// File path: assets/img/popup_moneybg_big.png
+  AssetGenImage get popupMoneybgBig =>
+      const AssetGenImage('assets/img/popup_moneybg_big.png');
+
+  /// File path: assets/img/popup_moneybg_mega.png
+  AssetGenImage get popupMoneybgMega =>
+      const AssetGenImage('assets/img/popup_moneybg_mega.png');
+
+  /// File path: assets/img/popup_moneybg_super.png
+  AssetGenImage get popupMoneybgSuper =>
+      const AssetGenImage('assets/img/popup_moneybg_super.png');
+
+  /// File path: assets/img/popup_txt_bigwin.png
+  AssetGenImage get popupTxtBigwin =>
+      const AssetGenImage('assets/img/popup_txt_bigwin.png');
+
+  /// File path: assets/img/popup_txt_megawin.png
+  AssetGenImage get popupTxtMegawin =>
+      const AssetGenImage('assets/img/popup_txt_megawin.png');
 
   /// File path: assets/img/popup_txt_superwin.png
   AssetGenImage get popupTxtSuperwin =>
       const AssetGenImage('assets/img/popup_txt_superwin.png');
+
+  /// File path: assets/img/popup_txt_wow.png
+  AssetGenImage get popupTxtWow =>
+      const AssetGenImage('assets/img/popup_txt_wow.png');
 
   /// File path: assets/img/popup_zhiz.png
   AssetGenImage get popupZhiz =>
@@ -610,6 +662,10 @@ class $AssetsImgGen {
   AssetGenImage get xuanguang =>
       const AssetGenImage('assets/img/xuanguang.png');
 
+  /// File path: assets/img/xuanguang2.png
+  AssetGenImage get xuanguang2 =>
+      const AssetGenImage('assets/img/xuanguang2.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     avatarBg,
@@ -671,6 +727,7 @@ class $AssetsImgGen {
     money,
     moneyGift,
     moneyLock,
+    moneyPopup,
     phoneCardBg,
     phoneCardBottomBg,
     phoneCardCard1,
@@ -702,8 +759,20 @@ class $AssetsImgGen {
     phonePopupJindu2Time,
     phoneSuip,
     popupBeisu,
-    popupMoneybg,
+    popupJackpot1,
+    popupJackpot2,
+    popupJackpot3,
+    popupJackpotBg,
+    popupJackpotGrand,
+    popupJackpotMajor,
+    popupJackpotMini,
+    popupMoneybgBig,
+    popupMoneybgMega,
+    popupMoneybgSuper,
+    popupTxtBigwin,
+    popupTxtMegawin,
     popupTxtSuperwin,
+    popupTxtWow,
     popupZhiz,
     settiAudio,
     settiBg,
@@ -758,6 +827,7 @@ class $AssetsImgGen {
     withddVip,
     withddWarn,
     xuanguang,
+    xuanguang2,
   ];
 }
 
