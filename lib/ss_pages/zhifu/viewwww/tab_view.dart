@@ -140,7 +140,7 @@ class _SSTabViewState extends State<SSTabView> {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
     String des = "90% of new users cash out on Day 1.";
     String money =
-        "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value}";
+        "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value.toStringAsFixed(2)}";
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [

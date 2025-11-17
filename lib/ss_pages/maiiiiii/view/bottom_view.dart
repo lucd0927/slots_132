@@ -45,6 +45,18 @@ class BottomView extends StatelessWidget {
               children: [topProgressWidget(), slotsMachine(), bottomView()],
             ),
           ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 80.h,
+            child: Center(
+              child: Container(width: 165.h, height: 26.h,child: Stack(
+                children: [
+                  Image.asset(Assets.img.mainMoneyChange.path,width: double.infinity,height: double.infinity,fit: BoxFit.fill,)
+                ],
+              ),),
+            ),
+          ),
         ],
       ),
     );
@@ -76,7 +88,7 @@ class BottomView extends StatelessWidget {
   }
 
   addMoneyWidget() {
-    return Obx((){
+    return Obx(() {
       return Container(
         width: 100.w,
         height: 40.h,
@@ -113,7 +125,7 @@ class BottomView extends StatelessWidget {
                     bottom: 0,
                     left: 0,
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         MainController.to.onChangeBeisu(-1.0);
                       },
                       child: Image.asset(
@@ -127,8 +139,8 @@ class BottomView extends StatelessWidget {
                     top: 0,
                     bottom: 0,
                     right: 0,
-                    child:  GestureDetector(
-                      onTap: (){
+                    child: GestureDetector(
+                      onTap: () {
                         MainController.to.onChangeBeisu(1.0);
                       },
                       child: Image.asset(
@@ -143,7 +155,7 @@ class BottomView extends StatelessWidget {
             ),
             SizedBox(width: 2.w),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 MainController.to.onAddMaxBeisu();
               },
               child: Container(
@@ -270,7 +282,7 @@ class BottomView extends StatelessWidget {
     );
   }
 
-  onWheel(){
+  onWheel() {
     Get.toNamed(SSRouttttt.wheeee);
   }
 

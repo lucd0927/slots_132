@@ -63,7 +63,7 @@ class _TabBalanceState extends State<TabBalance> {
               alignment: Alignment.centerLeft,
               child: Text(
                 WithdddController.to.showBalance.value
-                    ? "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value}"
+                    ? "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value.toStringAsFixed(2)}"
                     : '••••',
                 style: TextStyle(
                   fontSize: 36.sp,

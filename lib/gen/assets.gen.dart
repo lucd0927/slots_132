@@ -217,6 +217,10 @@ class $AssetsImgGen {
   /// File path: assets/img/main_mini.png
   AssetGenImage get mainMini => const AssetGenImage('assets/img/main_mini.png');
 
+  /// File path: assets/img/main_money_change.png
+  AssetGenImage get mainMoneyChange =>
+      const AssetGenImage('assets/img/main_money_change.png');
+
   /// File path: assets/img/main_phone.png
   AssetGenImage get mainPhone =>
       const AssetGenImage('assets/img/main_phone.png');
@@ -638,6 +642,7 @@ class $AssetsImgGen {
     mainMaxAdd,
     mainMaxSub,
     mainMini,
+    mainMoneyChange,
     mainPhone,
     mainShengdaolaoren,
     mainSlotsDetail,
