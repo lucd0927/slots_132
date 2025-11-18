@@ -75,9 +75,10 @@ class _SettingWidgetState extends State<SettingWidget> {
         duration: animD,
         color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
         child: Center(
-          child: AnimatedSlide(
+          child: AnimatedScale(
             duration: animD,
-            offset: showAnimated ? Offset.zero : Offset(0, 1),
+            // offset: showAnimated ? Offset.zero : Offset(0, 1),
+            scale: showAnimated?1.0:0.8,
             child: Container(
               width: 323.w,
               height: 370.h,

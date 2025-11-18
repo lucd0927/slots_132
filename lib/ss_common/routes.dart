@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:slots_132/ss_pages/box_gift/box_gift.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card.dart';
 import 'package:slots_132/ss_pages/splasssss/kaiping.dart';
@@ -22,6 +23,7 @@ class SSRouttttt {
   static const historyyyy = "/Historyyyy";
   static const aichat = "/aichat";
   static const phoneCardPage = "/PhoneCardPage";
+  static const dailyBonus = "/adfgdsfgsdfg";
 
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
@@ -32,5 +34,6 @@ class SSRouttttt {
       GetPage(name: historyyyy, page: () =>  Historyyyy(),transition: Transition.cupertinoDialog),
       GetPage(name: aichat, page: () =>  AiChat(),transition: Transition.cupertinoDialog),
       GetPage(name: phoneCardPage, page: () =>  PhoneCardPage(),transition: Transition.cupertinoDialog),
+      // GetPage(name: dailyBonus, page: () =>  DailyBonus(),transition: Transition.cupertinoDialog),
   ];
 }

@@ -18,6 +18,19 @@ class WheBouns extends StatefulWidget {
 }
 
 class _WheBounsState extends State<WheBouns> {
+  bool showBack = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(milliseconds: 250), () {
+      setState(() {
+        showBack = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget child = Container(
@@ -29,11 +42,15 @@ class _WheBounsState extends State<WheBouns> {
           Column(
             children: [
               SizedBox(height: 70.h),
-              // Image.asset(
-              //   Assets.img.wheelTitleCongrats.path,
-              //   width: 333.w,
-              //   height: 165.w,
-              //   fit: BoxFit.fill,
+              // AnimatedOpacity(
+              //   duration: Duration(milliseconds: 100),
+              //   opacity: showBack ? 1.0 : 0,
+              //   child: Image.asset(
+              //     Assets.img.wheelTitleCongrats.path,
+              //     width: 333.w,
+              //     height: 165.w,
+              //     fit: BoxFit.fill,
+              //   ),
               // ),
               Spacer(),
               Container(
@@ -112,7 +129,12 @@ class _WheBounsState extends State<WheBouns> {
                                           ),
                                         ),
                                       ),
-                                      SSTxtBorder(text: "Wheel Bonus",fontSize: 14.sp,strokeWidth: 2.w,foreground: Color(0xff331C74),),
+                                      SSTxtBorder(
+                                        text: "Wheel Bonus",
+                                        fontSize: 14.sp,
+                                        strokeWidth: 2.w,
+                                        foreground: Color(0xff331C74),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -148,7 +170,7 @@ class _WheBounsState extends State<WheBouns> {
                                 child: Image.asset(
                                   Assets.img.money.path,
                                   width: 65.h,
-                                  height: 50.h,
+                                  height: 50.h * 0.8,
                                 ),
                               ),
                               SSTxtGraBorder(
@@ -185,13 +207,17 @@ class _WheBounsState extends State<WheBouns> {
             left: 20.w,
             child: GestureDetector(
               onTap: () {
-                Navigator.pop(context);
+                onclickClaim();
               },
-              child: Image.asset(
-                Assets.img.btnBack.path,
-                width: 42.w,
-                height: 27.w,
-                fit: BoxFit.contain,
+              child: AnimatedOpacity(
+                duration: Duration(milliseconds: 10),
+                opacity: showBack ? 1.0 : 0,
+                child: Image.asset(
+                  Assets.img.btnBack.path,
+                  width: 42.w,
+                  height: 27.w,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),
@@ -235,6 +261,13 @@ class _WheBounsState extends State<WheBouns> {
     );
   }
 
-  void onclickClaim() {
+  onclickClaim() async {
+    setState(() {
+      showBack = false;
+    });
+    await Future.delayed(Duration(milliseconds: 150));
+    if (mounted) {
+      Navigator.maybePop(context);
+    }
   }
 }

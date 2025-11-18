@@ -1,3 +1,4 @@
+import 'package:animated_background/animated_background.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
+import 'dart:math';
 
 class BottomView extends StatelessWidget {
   const BottomView({super.key});
@@ -63,7 +65,16 @@ class BottomView extends StatelessWidget {
                       height: double.infinity,
                       fit: BoxFit.fill,
                     ),
-
+                    Positioned(
+                      left: 2.w,
+                      right: 2.w,
+                      top: 2.h,
+                      bottom: 2.h,
+                      child: ClipRRect(
+                        borderRadius: BorderRadiusGeometry.circular(26.h),
+                        child: StarFieldBackground(),
+                      ),
+                    ),
                     Positioned(
                       left: 0,
                       right: 0,
@@ -446,6 +457,42 @@ class BottomView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class StarFieldBackground extends StatefulWidget {
+  const StarFieldBackground({super.key});
+
+  @override
+  _StarFieldBackgroundState createState() => _StarFieldBackgroundState();
+}
+
+class _StarFieldBackgroundState extends State<StarFieldBackground>
+    with TickerProviderStateMixin {
+  @override
+  Widget build(BuildContext context) {
+    // return AnimatedBackground(
+    //   behaviour: RandomParticleBehaviour(
+    //     options: ParticleOptions(
+    //       baseColor: Colors.white,
+    //       spawnOpacity: 0.0,
+    //       opacityChangeRate: 0.25,
+    //       minOpacity: 0.1,
+    //       maxOpacity: 0.4,
+    //       particleCount: 200,
+    //       spawnMinSpeed: 10.0,
+    //       spawnMaxSpeed: 50.0,
+    //     ),
+    //   ),
+    //   vsync: this,
+    //   child: Container(),
+    // );
+
+    return AnimatedBackground(
+      behaviour: SpaceBehaviour(backgroundColor: Colors.transparent),
+      vsync: this,
+      child: Container(), // 你的内容放这里
     );
   }
 }

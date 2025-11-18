@@ -50,7 +50,7 @@ class _SSMapViewState extends State<SSMapView> {
     8: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
-      img: Assets.img.mainPhone.path,
+      img: Assets.img.phoneSuip.path,
     ),
     5: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,

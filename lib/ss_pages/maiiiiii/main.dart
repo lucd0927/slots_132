@@ -58,16 +58,18 @@ class _MainState extends State<Main> {
       height: ScreenUtil().screenHeight,
       child: Stack(
         children: [
+
           Image.asset(
             Assets.img.mainBg.path,
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.fill,
           ),
-          Positioned.fill(
-            top: 400.h,
-            child:SSContetti(),
-          ),
+          StarFieldBackground(),
+          // Positioned.fill(
+          //   top: 400.h,
+          //   child:SSContetti(),
+          // ),
           Column(
             children: [
               TopView(),

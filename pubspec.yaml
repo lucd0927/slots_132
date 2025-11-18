@@ -93,7 +93,9 @@ dependencies:
   flutter_chat_core: ^2.0.0
   flutter_chat_ui: ^2.0.0
   uuid: ^4.5.2
+  #百分比进度条
   percent_indicator: ^4.2.5
+  animated_background: ^2.0.0
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:

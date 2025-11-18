@@ -87,9 +87,61 @@ class $AssetsImgGen {
   AssetGenImage get closePopup =>
       const AssetGenImage('assets/img/close_popup.png');
 
+  /// File path: assets/img/close_popup2.png
+  AssetGenImage get closePopup2 =>
+      const AssetGenImage('assets/img/close_popup2.png');
+
   /// File path: assets/img/close_setting.png
   AssetGenImage get closeSetting =>
       const AssetGenImage('assets/img/close_setting.png');
+
+  /// File path: assets/img/daily_bonus_7.png
+  AssetGenImage get dailyBonus7 =>
+      const AssetGenImage('assets/img/daily_bonus_7.png');
+
+  /// File path: assets/img/daily_bonus_bg.png
+  AssetGenImage get dailyBonusBg =>
+      const AssetGenImage('assets/img/daily_bonus_bg.png');
+
+  /// File path: assets/img/daily_bonus_bottom_day_bg.png
+  AssetGenImage get dailyBonusBottomDayBg =>
+      const AssetGenImage('assets/img/daily_bonus_bottom_day_bg.png');
+
+  /// File path: assets/img/daily_bonus_day_bg.png
+  AssetGenImage get dailyBonusDayBg =>
+      const AssetGenImage('assets/img/daily_bonus_day_bg.png');
+
+  /// File path: assets/img/daily_bonus_gift17.png
+  AssetGenImage get dailyBonusGift17 =>
+      const AssetGenImage('assets/img/daily_bonus_gift17.png');
+
+  /// File path: assets/img/daily_bonus_gift22.png
+  AssetGenImage get dailyBonusGift22 =>
+      const AssetGenImage('assets/img/daily_bonus_gift22.png');
+
+  /// File path: assets/img/daily_bonus_gift30.png
+  AssetGenImage get dailyBonusGift30 =>
+      const AssetGenImage('assets/img/daily_bonus_gift30.png');
+
+  /// File path: assets/img/daily_bonus_gift7.png
+  AssetGenImage get dailyBonusGift7 =>
+      const AssetGenImage('assets/img/daily_bonus_gift7.png');
+
+  /// File path: assets/img/daily_bonus_giftday.png
+  AssetGenImage get dailyBonusGiftday =>
+      const AssetGenImage('assets/img/daily_bonus_giftday.png');
+
+  /// File path: assets/img/daily_bonus_ok.png
+  AssetGenImage get dailyBonusOk =>
+      const AssetGenImage('assets/img/daily_bonus_ok.png');
+
+  /// File path: assets/img/daily_bonus_top_reward.png
+  AssetGenImage get dailyBonusTopReward =>
+      const AssetGenImage('assets/img/daily_bonus_top_reward.png');
+
+  /// File path: assets/img/daily_bonus_topbg.png
+  AssetGenImage get dailyBonusTopbg =>
+      const AssetGenImage('assets/img/daily_bonus_topbg.png');
 
   /// File path: assets/img/freewheel.png
   AssetGenImage get freewheel =>
@@ -684,7 +736,20 @@ class $AssetsImgGen {
     btnTxtSpin,
     btnWheel,
     closePopup,
+    closePopup2,
     closeSetting,
+    dailyBonus7,
+    dailyBonusBg,
+    dailyBonusBottomDayBg,
+    dailyBonusDayBg,
+    dailyBonusGift17,
+    dailyBonusGift22,
+    dailyBonusGift30,
+    dailyBonusGift7,
+    dailyBonusGiftday,
+    dailyBonusOk,
+    dailyBonusTopReward,
+    dailyBonusTopbg,
     freewheel,
     giftBg,
     giftBottom,

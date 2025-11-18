@@ -15,6 +15,7 @@ import 'package:slots_132/ss_common/diallll/overlay_megawin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
@@ -178,11 +179,17 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
+    // OverlaySettinnn().show();
+
+    OverlayDailyBonus().show();
+
+
+
     // OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
-    OverlayWow().show(money: 100);
+    // OverlayWow().show(money: 100);
     // OverlayMegawin().show(money: 100);
-    // OverlaySettinnn().show();
+
     // OverlayJackpotGrand().show(money: 200);
     // OverlayJackpotMajor().show(money: 200);
     // OverlayJackpotMini().show(money: 200);
