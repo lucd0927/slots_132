@@ -112,7 +112,7 @@ class _WheBounsState extends State<WheBouns> {
                                           ),
                                         ),
                                       ),
-                                      SSTxtBorder(text: "Wheel Bonus"),
+                                      SSTxtBorder(text: "Wheel Bonus",fontSize: 14.sp,strokeWidth: 2.w,foreground: Color(0xff331C74),),
                                     ],
                                   ),
                                 ),
@@ -165,6 +165,7 @@ class _WheBounsState extends State<WheBouns> {
                                     : "",
                                 fontSize: 24.sp,
                                 fontWeight: FontWeight.w700,
+                                strokeColor: Color(0xffEE101E),
                               ),
                             ],
                           ),
@@ -224,16 +225,6 @@ class _WheBounsState extends State<WheBouns> {
                     fontWeight: FontWeight.w700,
                     fontSize: 24.sp,
                     fontFamily: FontFamily.alkatra,
-                  ),
-                  Builder(
-                    builder: (context) {
-
-                      return Image.asset(
-                        Assets.img.phoneSuip.path,
-                        width: 34.w,
-                        height: 24,
-                      );
-                    },
                   ),
                 ],
               ),
