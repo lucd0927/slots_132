@@ -557,7 +557,6 @@ class DailyBonusBottomTime extends StatefulWidget {
 class _DailyBonusBottomTimeState extends State<DailyBonusBottomTime> {
   Timer? _timer;
 
-  var box = SSHive.box;
 
   int maxSeconds = 60 * 60;
   String text = "";

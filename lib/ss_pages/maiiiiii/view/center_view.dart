@@ -8,6 +8,7 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -72,7 +73,7 @@ class CenterView extends StatelessWidget {
                           children: [
                             Positioned(
                               left: 16.w,
-                              top: 30.h,
+                              top: 60.h,
                               // child: AnimatedCrossFade(
                               //   firstChild: leftWidget(),
                               //   secondChild: SizedBox(
@@ -89,7 +90,7 @@ class CenterView extends StatelessWidget {
                             ),
                             Positioned(
                               right: 0,
-                              top: 10.h,
+                              top: 40.h,
                               // child: AnimatedCrossFade(
                               //   firstChild: rightWidget(),
                               //   secondChild: SizedBox(
@@ -103,6 +104,13 @@ class CenterView extends StatelessWidget {
                               //   duration: Duration(milliseconds: 200),
                               // ),
                               child: rightWidget(),
+                            ),
+
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: 4.h,
+                              child: Center(child: centerCollectStarWidget()),
                             ),
                           ],
                         ),
@@ -153,6 +161,62 @@ class CenterView extends StatelessWidget {
           );
         });
       },
+    );
+  }
+
+  centerCollectStarWidget() {
+    return GestureDetector(
+      onTap: (){
+        _onBoxGift();
+      },
+      child: Container(
+        width: 280.h,
+        height: 32.h,
+        color: Colors.black.withValues(alpha: 0),
+        child: Stack(
+          children: [
+            Image.asset(
+              Assets.img.mainCollect.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 3.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SSTxtGraBorder(
+                    text: "COLLECT 32",
+                    fontSize: 20.sp,
+                    strokeColor: Color(0xffD83507),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4.sp),
+                    child: Image.asset(Assets.img.slots.slotsH1.path,width: 22.h,height: 22.h,),
+                  ),
+                  SSTxtGraBorder(
+                    text: "TO",
+                    fontSize: 20.sp,
+                    strokeColor: Color(0xffD83507),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4.sp),
+                    child: Image.asset(Assets.img.phonePopupJindu2Star.path,width: 22.h,height: 22.h,),
+                  ),
+                  SSTxtGraBorder(
+                    text: "WIN",
+                    fontSize: 20.sp,
+                    strokeColor: Color(0xffD83507),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -298,7 +362,7 @@ class CenterView extends StatelessWidget {
                   left: -4.w,
                   right: -4.w,
                   bottom: 0,
-                  child: Center(child: SSTxtGraBorder(text: "10:10:00")),
+                  child: Center(child: HomeBoxTime()),
                 ),
               ],
             ),
@@ -311,7 +375,7 @@ class CenterView extends StatelessWidget {
             ssLogggg("=mainPhone==");
             onPhoneClick();
           },
-          child: Obx((){
+          child: Obx(() {
             int card = PhoneCardController.to.collectCardNum.value;
             return Container(
               width: 58.h,
@@ -338,7 +402,11 @@ class CenterView extends StatelessWidget {
                     bottom: 0,
                     child: Center(
                       child: SSTxtGraBorder(
-                        text: "$card/${PhoneCardController.to.durations.length}",
+                        text:
+                            "$card/${PhoneCardController.to.durations.length}",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        strokeColor: Color(0xff30120A),
                       ),
                     ),
                   ),
@@ -586,5 +654,93 @@ class _FreeSpinState extends State<FreeSpin> {
     );
 
     return child;
+  }
+}
+
+class HomeBoxTime extends StatefulWidget {
+  const HomeBoxTime({super.key});
+
+  @override
+  State<HomeBoxTime> createState() => _HomeBoxTimeState();
+}
+
+class _HomeBoxTimeState extends State<HomeBoxTime> {
+  static const hkTime = "4aef6hfhj69";
+  Timer? _timer;
+  var box = SSHive.box;
+  int maxSeconds = 60 * 60 * 8;
+  String text = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _initTimer();
+  }
+
+  _initTimer() {
+    int mill = DateTime.now().millisecondsSinceEpoch;
+    var tmpData = box.get(hkTime) ?? {"count": 0, "time": mill};
+    int time = tmpData['time'];
+    saveTime(time);
+    // 过了多少时间
+    int diff = mill - time;
+    // 剩下多少时间
+    int shengyu = ((maxSeconds * 1000 - diff) / 1000).toInt();
+    text = formatDuration(shengyu);
+
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      int tick = timer.tick;
+      int maxCount = shengyu;
+      int seconds = shengyu - tick;
+      if (tick > maxCount) {
+        setState(() {
+          text = formatDuration(seconds);
+        });
+        _timer?.cancel();
+      }
+      if (mounted) {
+        setState(() {
+          text = formatDuration(seconds);
+        });
+      }
+    });
+  }
+
+  saveTime(int time) {
+    box.put(hkTime, {"time": time});
+  }
+
+  String formatDuration(int seconds) {
+    if (seconds <= 0) {
+      return "";
+    }
+
+    Duration duration = Duration(seconds: seconds);
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+
+    String hours = twoDigits(duration.inHours);
+    String minutes = twoDigits(duration.inMinutes.remainder(60));
+    String secs = twoDigits(duration.inSeconds.remainder(60));
+
+    return '$hours:$minutes:$secs';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SSTxtGraBorder(
+      text: text,
+      fontWeight: FontWeight.w400,
+      fontSize: 14.sp,
+      strokeColor: Color(0xff30120A),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _timer?.cancel();
   }
 }
