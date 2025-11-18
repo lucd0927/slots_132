@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 
@@ -104,6 +106,11 @@ class _SettingWidgetState extends State<SettingWidget> {
                         buildCenterWidget(),
                         SizedBox(height: 24.h),
                         bottomWidget(),
+                        SizedBox(height: 4.h),
+                        Container(
+                          height: 40.h,
+                          child: DailyBonusBottomTime(),
+                        )
                       ],
                     ),
                   ),
@@ -186,7 +193,7 @@ class _SettingWidgetState extends State<SettingWidget> {
     bool hasGet = false;
     if (continueDays > day) {
       hasGet = true;
-    }else if(continueDays == day){
+    } else if (continueDays == day) {
       hasGet = true;
     }
 
@@ -472,11 +479,10 @@ class _SettingWidgetState extends State<SettingWidget> {
   }
 
   topGiftDay({required String icon, required int day}) {
-
     int tmpWeeks = DailyBonusController.to.continueLoginWeeks.value;
     int tmpDays = DailyBonusController.to.continueLoginDays.value;
 
-    int tmpCurDay = tmpDays+tmpWeeks*7;
+    int tmpCurDay = tmpDays + tmpWeeks * 7;
 
     bool hasGet = tmpCurDay >= day;
 
@@ -535,10 +541,89 @@ class _SettingWidgetState extends State<SettingWidget> {
                 ),
               ),
             ),
-
-
         ],
       ),
     );
+  }
+}
+
+class DailyBonusBottomTime extends StatefulWidget {
+  const DailyBonusBottomTime({super.key});
+
+  @override
+  State<DailyBonusBottomTime> createState() => _DailyBonusBottomTimeState();
+}
+
+class _DailyBonusBottomTimeState extends State<DailyBonusBottomTime> {
+  Timer? _timer;
+
+  var box = SSHive.box;
+
+  int maxSeconds = 60 * 60;
+  String text = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final now = DateTime.now();
+    final endOfDay = DateTime(now.year, now.month, now.day, 23, 59, 59);
+    final remaining = endOfDay.difference(now);
+
+    text = formatDuration(remaining);
+    _initTimer();
+  }
+
+  _initTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      final now = DateTime.now();
+      final endOfDay = DateTime(now.year, now.month, now.day, 23, 59, 59);
+      final remaining = endOfDay.difference(now);
+
+      if (remaining.isNegative) {
+        ssLogggg("🛑 倒计时结束！");
+        timer.cancel();
+      } else {
+        setState(() {
+          text = formatDuration(remaining);
+        });
+        // ggPrint("⏳ 剩余时间：${text}");
+      }
+    });
+  }
+
+  String formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final hours = twoDigits(duration.inHours);
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    return "$hours:$minutes:$seconds";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text.rich(
+      TextSpan(
+        text: "Next reward available in ",
+        children: [
+          TextSpan(
+            text: text,
+            style: TextStyle(color: Color(0xff5CEDB1)),
+          ),
+        ],
+      ),
+      style: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w500,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _timer?.cancel();
   }
 }
