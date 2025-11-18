@@ -65,7 +65,7 @@ class _SSMapViewState extends State<SSMapView> {
     9: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
-      img: Assets.img.mainPhone.path,
+      img: Assets.img.phoneSuip.path,
     ),
     4: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.spin,
@@ -80,7 +80,7 @@ class _SSMapViewState extends State<SSMapView> {
     10: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
-      img: Assets.img.mainPhone.path,
+      img: Assets.img.phoneSuip.path,
     ),
   };
   int jumpIndex = 0;

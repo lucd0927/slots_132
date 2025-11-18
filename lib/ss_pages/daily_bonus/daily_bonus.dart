@@ -5,11 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 
 class OverlayDailyBonus {
   ///是否真正显示
@@ -57,6 +59,7 @@ class _SettingWidgetState extends State<SettingWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    Get.put(DailyBonusController());
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
@@ -67,100 +70,106 @@ class _SettingWidgetState extends State<SettingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: AnimatedContainer(
-        duration: animD,
-        color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.blueAccent.withValues(alpha: 0.0),
-          child: Stack(
-            children: [
-              Image.asset(
-                Assets.img.dailyBonusBg.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              AnimatedScale(
-                duration: animD,
-                // offset: showAnimated ? Offset.zero : Offset(0, 1),
-                scale: showAnimated ? 1.0 : 0.8,
-                child: Container(
+    return Obx(() {
+      return Material(
+        color: Colors.transparent,
+        child: AnimatedContainer(
+          duration: animD,
+          color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.blueAccent.withValues(alpha: 0.0),
+            child: Stack(
+              children: [
+                Image.asset(
+                  Assets.img.dailyBonusBg.path,
                   width: double.infinity,
                   height: double.infinity,
-                  color: Colors.blueAccent.withValues(alpha: 0.0),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 50.h),
-                      topWidget(),
-                      SizedBox(height: 24.h),
-                      Wrap(
-                        spacing: 10.w,
-                        runSpacing: 12.h,
-                        children: [
-                          centerItemDayView(
-                            day: 1,
-                            gift: GiftRewardModel(
-                              rewardModelType: EnumGiftRewardModel.cash,
-                              num: 50,
-                              img: Assets.img.moneyGift.path,
-                            ),
-                          ),
-                          centerItemDayView(
-                            day: 2,
-                            gift: GiftRewardModel(
-                              rewardModelType: EnumGiftRewardModel.cash,
-                              num: 75,
-                              img: Assets.img.moneyGift.path,
-                            ),
-                          ),
-                          centerItemDayView(
-                            day: 3,
-                            gift: GiftRewardModel(
-                              rewardModelType: EnumGiftRewardModel.spin,
-                              num: 50,
-                              img: Assets.img.btnTxtSpin.path,
-                            ),
-                          ),
-                          centerItemDayView(
-                            day: 4,
-                            gift: GiftRewardModel(
-                              rewardModelType: EnumGiftRewardModel.cash,
-                              num: 100,
-                              img: Assets.img.moneyGift.path,
-                            ),
-                          ),
-                          centerItemDayView(
-                            day: 5,
-                            gift: GiftRewardModel(
-                              rewardModelType: EnumGiftRewardModel.xp,
-                              num: 2,
-                              img: Assets.img.giftXpUnlock.path,
-                            ),
-                          ),
-                          centerItemDayView(
-                            day: 6,
-                            gift: GiftRewardModel(
-                              rewardModelType: EnumGiftRewardModel.iphoneCard,
-                              num: 1,
-                              img: Assets.img.phoneSuip.path,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 24.h),
-                      bottomWidget(),
-                    ],
+                  fit: BoxFit.fill,
+                ),
+                AnimatedScale(
+                  duration: animD,
+                  // offset: showAnimated ? Offset.zero : Offset(0, 1),
+                  scale: showAnimated ? 1.0 : 0.8,
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    color: Colors.blueAccent.withValues(alpha: 0.0),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 50.h),
+                        topWidget(),
+                        SizedBox(height: 24.h),
+                        buildCenterWidget(),
+                        SizedBox(height: 24.h),
+                        bottomWidget(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+      );
+    });
+  }
+
+  Widget buildCenterWidget() {
+    return Wrap(
+      spacing: 10.w,
+      runSpacing: 12.h,
+      children: [
+        centerItemDayView(
+          day: 1,
+          gift: GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.cash,
+            num: 50,
+            img: Assets.img.moneyGift.path,
+          ),
+        ),
+        centerItemDayView(
+          day: 2,
+          gift: GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.cash,
+            num: 75,
+            img: Assets.img.moneyGift.path,
+          ),
+        ),
+        centerItemDayView(
+          day: 3,
+          gift: GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.spin,
+            num: 50,
+            img: Assets.img.btnTxtSpin.path,
+          ),
+        ),
+        centerItemDayView(
+          day: 4,
+          gift: GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.cash,
+            num: 100,
+            img: Assets.img.moneyGift.path,
+          ),
+        ),
+        centerItemDayView(
+          day: 5,
+          gift: GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.xp,
+            num: 2,
+            img: Assets.img.giftXpUnlock.path,
+          ),
+        ),
+        centerItemDayView(
+          day: 6,
+          gift: GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.iphoneCard,
+            num: 1,
+            img: Assets.img.phoneSuip.path,
+          ),
+        ),
+      ],
     );
   }
 
@@ -169,9 +178,18 @@ class _SettingWidgetState extends State<SettingWidget> {
     String money = "+${gift.num.toStringAsFixed(0)}";
     if (gift.rewardModelType == EnumGiftRewardModel.cash) {
       money = "+${SSCountry.curGuojiaFuhao()}${gift.num.toStringAsFixed(0)}";
-    }else if (gift.rewardModelType == EnumGiftRewardModel.xp) {
+    } else if (gift.rewardModelType == EnumGiftRewardModel.xp) {
       money = "x${gift.num.toStringAsFixed(0)}";
     }
+
+    int continueDays = DailyBonusController.to.continueLoginDays.value;
+    bool hasGet = false;
+    if (continueDays > day) {
+      hasGet = true;
+    }else if(continueDays == day){
+      hasGet = true;
+    }
+
     return Container(
       width: 159.w,
       height: 91.h,
@@ -219,6 +237,22 @@ class _SettingWidgetState extends State<SettingWidget> {
               ),
             ],
           ),
+
+          if (hasGet)
+            Container(
+              width: 159.w,
+              height: 91.h,
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.2),
+              ),
+              child: Center(
+                child: Image.asset(
+                  Assets.img.dailyBonusOk.path,
+                  width: 54.h,
+                  height: 54.h,
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -247,15 +281,23 @@ class _SettingWidgetState extends State<SettingWidget> {
               color: Colors.teal.withValues(alpha: 0.0),
               child: Column(
                 children: [
-                  SizedBox(height: 4.h,),
-                  SSTxtBorder(text: "Day 7",fontSize: 16.sp,fontWeight: FontWeight.w700,),
-                  SizedBox(height: 26.h,),
-                  SSTxtGraBorder(text: "REWARD x2",fontSize: 20.sp,fontWeight: FontWeight.w700,strokeColor: Color(0xff460000),),
-
+                  SizedBox(height: 4.h),
+                  SSTxtBorder(
+                    text: "Day 7",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  SizedBox(height: 26.h),
+                  SSTxtGraBorder(
+                    text: "REWARD x2",
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                    strokeColor: Color(0xff460000),
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -284,10 +326,10 @@ class _SettingWidgetState extends State<SettingWidget> {
   }
 
   topWidget() {
-    int curLianxuDay = 4;
+    int curLianxuDay = DailyBonusController.to.continueLoginDays.value;
     int allDay = 30;
     double progress = curLianxuDay / allDay;
-    progress = 0.5;
+    // progress = 0.5;
     return Container(
       width: 345.h,
       height: 210.h,
@@ -315,7 +357,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                     child: SSProjjjj(
                       height: 13.h,
                       innerHeight: 10.h,
-                      width: 296.h,
+                      width: 294.h,
                       progress: progress,
                       gradientColors: [
                         Color(0xffFFD70F),
@@ -430,37 +472,71 @@ class _SettingWidgetState extends State<SettingWidget> {
   }
 
   topGiftDay({required String icon, required int day}) {
+
+    int tmpWeeks = DailyBonusController.to.continueLoginWeeks.value;
+    int tmpDays = DailyBonusController.to.continueLoginDays.value;
+
+    int tmpCurDay = tmpDays+tmpWeeks*7;
+
+    bool hasGet = tmpCurDay >= day;
+
+    // hasGet = true;
     return Container(
       width: 50.h,
       height: 70.h,
       color: Colors.teal.withValues(alpha: 0.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+      child: Stack(
         children: [
-          Image.asset(icon, width: 44.h, height: 44.h, fit: BoxFit.contain),
-          // SizedBox(height: 4.h),
-          Container(
-            width: 22.h,
-            height: 22.h,
-            child: Stack(
-              children: [
-                Image.asset(
-                  Assets.img.dailyBonusGiftday.path,
-                  width: double.infinity,
-                  height: double.infinity,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Image.asset(icon, width: 44.h, height: 44.h, fit: BoxFit.contain),
+              // SizedBox(height: 4.h),
+              Container(
+                width: 22.h,
+                height: 22.h,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      Assets.img.dailyBonusGiftday.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                    ),
+                    Center(
+                      child: SSTxtBorder(
+                        text: "$day",
+                        fontSize: 9.sp,
+                        strokeWidth: 0.5.w,
+                        foreground: Color(0xff8A2F2F),
+                        height: 1,
+                      ),
+                    ),
+                  ],
                 ),
-                Center(
-                  child: SSTxtBorder(
-                    text: "$day",
-                    fontSize: 9.sp,
-                    strokeWidth: 0.5.w,
-                    foreground: Color(0xff8A2F2F),
-                    height: 1,
+              ),
+            ],
+          ),
+          if (hasGet)
+            Positioned(
+              right: 8.w,
+              top: 4.h,
+              child: Container(
+                width: 20.w,
+                height: 20.h,
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.0),
+                ),
+                child: Center(
+                  child: Image.asset(
+                    Assets.img.dailyBonusOk.path,
+                    width: 20.w,
+                    height: 20.h,
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+
+
         ],
       ),
     );

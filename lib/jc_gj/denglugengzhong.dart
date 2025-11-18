@@ -128,7 +128,7 @@ class SSDlTracking {
   //  连续登录时间
   static const String hLianxuLoginTime = "zbcjvhjysdf";
   /// 检查是否连续登录，并更新计数
-  static  checkLoginStreak()  {
+  static checkLoginStreak()  {
 
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);

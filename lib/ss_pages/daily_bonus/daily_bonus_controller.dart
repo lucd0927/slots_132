@@ -1,0 +1,78 @@
+import 'package:get/get.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
+
+class DailyBonusController extends GetxController {
+  static DailyBonusController get to => Get.find();
+
+  var continueLoginDays = 1.obs;
+  var continueLoginWeeks = 0.obs;
+  var box = SSHive.box;
+  static const int _maxStreak = 7; // 连续7天后重置
+  // 连续登录天数
+  static const String hLianxuLoginDay = "212iouoijsadf";
+
+  // 连续登录多少周
+  static const String hLianxuLoginZhouqi = "5dfgwrhs21";
+
+  //  连续登录时间
+  static const String hLianxuLoginTime = "asd54asdf45ad";
+
+  /// 检查是否连续登录，并更新计数
+  checkLoginStreak() {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    final lastMillis = box.get(hLianxuLoginTime);
+    final lastDate = lastMillis != null
+        ? DateTime.fromMillisecondsSinceEpoch(lastMillis)
+        : null;
+
+    int streak = box.get(hLianxuLoginDay) ?? 0;
+
+    if (lastDate == null) {
+      // 首次登录
+      streak = 1;
+    } else {
+      final lastDay = DateTime(lastDate.year, lastDate.month, lastDate.day);
+      final diff = today.difference(lastDay).inDays;
+
+      if (diff == 1) {
+        streak += 1; // 连续登录 +1
+        if (streak > _maxStreak) {
+          streak = 1; // 达到7天后重置
+          int value = continueLoginWeeks.value;
+          setWeeks(value);
+        }
+      } else if (diff > 1) {
+        streak = 1; // 中断重置
+        setWeeks(0);
+      } else {
+        // diff == 0 => 今天已登录，不变
+      }
+    }
+
+    // 存储数据
+    box.put(hLianxuLoginDay, streak);
+    box.put(hLianxuLoginTime, today.millisecondsSinceEpoch);
+
+    return streak;
+  }
+
+  setWeeks(int week) {
+    int value = week;
+    value = value + 1;
+    box.put(hLianxuLoginZhouqi, value);
+  }
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    int days = checkLoginStreak();
+
+    continueLoginDays = days.obs;
+
+    int weeks = box.get(hLianxuLoginZhouqi) ?? 0;
+    continueLoginWeeks = weeks.obs;
+  }
+}

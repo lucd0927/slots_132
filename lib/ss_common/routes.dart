@@ -1,11 +1,10 @@
 
 
 import 'package:get/get.dart';
-import 'package:slots_132/ss_pages/box_gift/box_gift.dart';
-import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card.dart';
 import 'package:slots_132/ss_pages/splasssss/kaiping.dart';
+import 'package:slots_132/ss_pages/star_gift/star_gift.dart';
 import 'package:slots_132/ss_pages/wheeee/wheeee.dart';
 import 'package:slots_132/ss_pages/zhifu/chat/ai_chat.dart';
 import 'package:slots_132/ss_pages/zhifu/history/history.dart';
@@ -28,7 +27,7 @@ class SSRouttttt {
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
       GetPage(name: main, page: () =>  Main()),
-      GetPage(name: boxGift, page: () =>  BoxGift(),transition: Transition.cupertinoDialog),
+      GetPage(name: boxGift, page: () =>  StarGift(),transition: Transition.cupertinoDialog),
       GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.cupertinoDialog),
       GetPage(name: withdrawwwww, page: () =>  Withdrawwwww(),transition: Transition.cupertinoDialog),
       GetPage(name: historyyyy, page: () =>  Historyyyy(),transition: Transition.cupertinoDialog),

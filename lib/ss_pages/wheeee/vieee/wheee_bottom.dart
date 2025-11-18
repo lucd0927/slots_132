@@ -16,7 +16,7 @@ class WheeeBottom extends StatefulWidget {
 }
 
 class _WheeeBottomState extends State<WheeeBottom> {
-  var box = SSHive.box;
+  // var box = SSHive.box;
 
 
 

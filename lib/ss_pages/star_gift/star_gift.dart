@@ -3,17 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
-import 'package:slots_132/ss_pages/box_gift/map_view.dart';
+import 'package:slots_132/ss_pages/star_gift/map_view.dart';
 
 
-class BoxGift extends StatefulWidget {
-  const BoxGift({super.key});
+class StarGift extends StatefulWidget {
+  const StarGift({super.key});
 
   @override
-  State<BoxGift> createState() => _BoxGiftState();
+  State<StarGift> createState() => _StarGiftState();
 }
 
-class _BoxGiftState extends State<BoxGift> {
+class _StarGiftState extends State<StarGift> {
   @override
   Widget build(BuildContext context) {
 

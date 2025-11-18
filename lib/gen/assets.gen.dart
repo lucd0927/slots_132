@@ -50,6 +50,10 @@ class $AssetsImgGen {
   AssetGenImage get avatarBottom =>
       const AssetGenImage('assets/img/avatar_bottom.png');
 
+  /// File path: assets/img/box_gift_money.png
+  AssetGenImage get boxGiftMoney =>
+      const AssetGenImage('assets/img/box_gift_money.png');
+
   /// File path: assets/img/btn_back.png
   AssetGenImage get btnBack => const AssetGenImage('assets/img/btn_back.png');
 
@@ -726,6 +730,7 @@ class $AssetsImgGen {
   List<AssetGenImage> get values => [
     avatarBg,
     avatarBottom,
+    boxGiftMoney,
     btnBack,
     btnGiftLock,
     btnGiftUnlcok,
