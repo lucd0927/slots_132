@@ -6,25 +6,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_pages/lucky_slots/lucky_slots_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
 
-
-class SSSlotMachine extends StatefulWidget {
-  const SSSlotMachine({super.key});
+class SSSlotMachineLucky extends StatefulWidget {
+  const SSSlotMachineLucky({super.key});
 
   @override
-  State<SSSlotMachine> createState() => SSSlotMachineState();
+  State<SSSlotMachineLucky> createState() => SSSlotMachineLuckyState();
 }
 
-class SSSlotMachineState extends State<SSSlotMachine> {
-  final firstRoller = MainController.to.firstRoller;
-  final secondRoller = MainController.to.secondRoller;
-  final thirdRoller = MainController.to.thirdRoller;
-  final fourthRoller = MainController.to.fourthRoller;
-  final fiveRoller = MainController.to.fiveRoller;
+class SSSlotMachineLuckyState extends State<SSSlotMachineLucky> {
+  final firstRoller = LuckySlotsController.to.firstRoller;
+  final secondRoller = LuckySlotsController.to.secondRoller;
+  final thirdRoller = LuckySlotsController.to.thirdRoller;
+  final fourthRoller = LuckySlotsController.to.fourthRoller;
+
   int? first;
   int? second;
   int? third;
@@ -33,9 +35,9 @@ class SSSlotMachineState extends State<SSSlotMachine> {
 
   double slotsH = 200.h;
   double slotsW = 330.w;
-  final double slotsItemW = 64.w;
+  double slotsItemW = 64.w;
 
-  double get slotsItemH => 64.h;
+  double slotsItemH = 64.h;
 
   @override
   void initState() {
@@ -54,8 +56,11 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       builder: (context, c) {
         slotsH = c.maxHeight;
         slotsW = c.maxWidth;
+        // ssLogggg("==slot machine build=slotsH:$slotsH=slotsW:$slotsW");
         return Obx(() {
           bool show = MainController.to.showFreeSpin.value;
+          slotsItemW = slotsW / 4;
+          slotsItemH = slotsH / 3;
           return Container(
             width: double.infinity,
             height: slotsH,
@@ -70,23 +75,9 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                       rollerWidget(key: secondRoller, column: 1),
                       rollerWidget(key: thirdRoller, column: 2),
                       rollerWidget(key: fourthRoller, column: 3),
-                      rollerWidget(key: fiveRoller, column: 4),
                     ],
                   ),
                 ),
-
-                // if(MainController.to.showFreeSpin.value)   Center(
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       _rollerForground(0),
-                //       _rollerForground(1),
-                //       _rollerForground(2),
-                //       _rollerForground(3),
-                //       _rollerForground(4),
-                //     ],
-                //   ),
-                // ),
               ],
             ),
           );
@@ -95,8 +86,6 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     );
   }
 
-
-
   rollerWidget({required Key key, required int column}) {
     return RollerList(
       items: getSlots(column),
@@ -104,7 +93,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       scrollType: ScrollType.goesOnlyTop,
       width: slotsItemW,
       height: slotsItemH,
-      initialIndex:MainController.to.initRollerIndex(column),
+      initialIndex: MainController.to.initRollerIndex(column),
       enabled: false,
       // dividerThickness: 8,
       key: key,
@@ -122,7 +111,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     double height = slotsItemH;
     List<Widget> result = [];
 
-    List<String> imgs = MainController.to.rollerImgs[column];
+    List<String> imgs = LuckySlotsController.to.rollerData[column];
     int length = imgs.length;
     var data = MainController.to.winCurZuobiao;
     for (int i = 0; i < length; i++) {
@@ -130,8 +119,6 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       double imgSubD = 0.w;
       double dd2 = 0.w;
 
-      bool showWin =
-          data.contains(iiii) && MainController.to.showWinLines.value;
       String category = imgs[i];
       if (!category.contains(MainController.slotNumWild)) {
         imgSubD = 8.w;
@@ -139,12 +126,12 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       }
       Widget tmpC = Container(
         color: Colors.blueAccent.withValues(alpha: 0.0),
-        child: Image.asset(
-          MainController.kName_vImgName[category]!,
-          width: width - imgSubD,
-          height: height - imgSubD,
+
+        child: SSTxtGraBorder(
+          text: category,
+          fontSize: 40.sp,
+          strokeColor: Color(0xffEE101E),
         ),
-        // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
       Widget child = Container(
         width: width - dd2,
@@ -158,28 +145,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           width: width,
           height: height,
           color: Colors.green.withValues(alpha: 0),
-          child: Stack(
-            children: [
-              Center(child:showWin?SSAScale(child: child): child),
-              if (showWin)
-                Center(
-                  child: ZoMonoCromeBorder(
-                    trackBorderColor: Colors.yellow,
-                    cornerRadius: 4.w,
-                    animationDuration: Duration(milliseconds: 800),
-                    borderStyle: ZoMonoCromeBorderStyle.stroke,
-                    borderWidth: 4.w,
-                    child: Container(
-                      width: width-4.w,
-                      height: height-4.w,
-                      // decoration: BoxDecoration(
-                      //   border: Border.all(color: Colors.black, width: 3.w),
-                      // ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+          child: Stack(children: [child]),
         ),
       );
     }

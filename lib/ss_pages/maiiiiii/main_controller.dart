@@ -8,11 +8,11 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
+import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/roller_list/roller_list.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 
 import '../../jc_gj/log.dart';

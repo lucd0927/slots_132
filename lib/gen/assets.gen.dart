@@ -284,6 +284,14 @@ class $AssetsImgGen {
   AssetGenImage get giftXpUnlock =>
       const AssetGenImage('assets/img/gift_xp_unlock.png');
 
+  /// File path: assets/img/lucky_slots_slots.png
+  AssetGenImage get luckySlotsSlots =>
+      const AssetGenImage('assets/img/lucky_slots_slots.png');
+
+  /// File path: assets/img/lucky_slots_title.png
+  AssetGenImage get luckySlotsTitle =>
+      const AssetGenImage('assets/img/lucky_slots_title.png');
+
   /// File path: assets/img/main_addmoney.png
   AssetGenImage get mainAddmoney =>
       const AssetGenImage('assets/img/main_addmoney.png');
@@ -862,6 +870,8 @@ class $AssetsImgGen {
     giftUnlockRb,
     giftXpLock,
     giftXpUnlock,
+    luckySlotsSlots,
+    luckySlotsTitle,
     mainAddmoney,
     mainBg,
     mainBonusBg,
