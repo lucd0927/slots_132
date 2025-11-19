@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_gj/num_e.dart';
 
 class BonusGameController extends GetxController {
   static BonusGameController get to => Get.find();
@@ -36,8 +39,9 @@ class BonusGameController extends GetxController {
   var clickIndex = <int>{}.obs;
 
   var find3SameCard = "".obs;
+  var cardMoney = <double>[].obs;
 
-  var categoryCount = <String,int>{}.obs;
+  var categoryCount = <String, int>{}.obs;
 
   addClickIndex(int index) {
     clickIndex.add(index);
@@ -80,7 +84,6 @@ class BonusGameController extends GetxController {
     ssLogggg("======findTripleWithScatter:$data count:$count");
     categoryCount.value = count;
     if (data.isNotEmpty) {
-
       if (data.contains(card_grand)) {
         return card_grand;
       } else if (data.contains(card_major)) {
@@ -103,6 +106,13 @@ class BonusGameController extends GetxController {
     super.onInit();
 
     initData();
+
+    cardMoney.add(_cardMonnn());
+  }
+
+  double _cardMonnn() {
+    double randomDouble = 10 + Random().nextDouble() * (50 - 10);
+    return randomDouble.toAsFixedFloor(2);
   }
 
   void initData() {

@@ -137,25 +137,19 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
     );
   }
 
-  Widget jackpotItemBottomSelect({
-    required String cardCategory
-}){
-    int count =
-        BonusGameController.to.categoryCount[cardCategory] ??
-            0;
+  Widget jackpotItemBottomSelect({required String cardCategory}) {
+    int count = BonusGameController.to.categoryCount[cardCategory] ?? 0;
     List<Widget> itemDdd = [];
     for (int i = 0; i < 3; i++) {
       String icon = Assets.img.bonusGameNoSelect.path;
       if (i < count) {
-        if(cardCategory == BonusGameController.card_grand){
+        if (cardCategory == BonusGameController.card_grand) {
           icon = Assets.img.bonusGameGrandSelect.path;
-        }else  if(cardCategory == BonusGameController.card_major){
+        } else if (cardCategory == BonusGameController.card_major) {
           icon = Assets.img.bonusGameMajorSelect.path;
-        }else  if(cardCategory == BonusGameController.card_mini){
+        } else if (cardCategory == BonusGameController.card_mini) {
           icon = Assets.img.bonusGameMiniSelect.path;
         }
-
-
       }
       // icon = Assets.img.bonusGameGrandSelect.path;
 
@@ -190,8 +184,9 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
     String symbol = SSCountry.curGuojiaFuhao();
     String grandMoney = "${symbol}${MainController.jacktopGrand}";
 
-
-    Widget bottomW = jackpotItemBottomSelect(cardCategory: BonusGameController.card_grand);
+    Widget bottomW = jackpotItemBottomSelect(
+      cardCategory: BonusGameController.card_grand,
+    );
 
     return Container(
       width: 180.h,
@@ -245,7 +240,9 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
   jackpotItemMajor() {
     String symbol = SSCountry.curGuojiaFuhao();
     String grandMoney = "${symbol}${MainController.jacktopMajor}";
-    Widget bottomW = jackpotItemBottomSelect(cardCategory: BonusGameController.card_major);
+    Widget bottomW = jackpotItemBottomSelect(
+      cardCategory: BonusGameController.card_major,
+    );
     return Container(
       width: 150.h,
       height: 67.h,
@@ -296,8 +293,10 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
 
   jackpotItemMini() {
     String symbol = SSCountry.curGuojiaFuhao();
-    String grandMoney = "${symbol}${MainController.jacktopMini}";
-    Widget bottomW = jackpotItemBottomSelect(cardCategory: BonusGameController.card_mini);
+    String grandMoney = "$symbol${MainController.jacktopMini}";
+    Widget bottomW = jackpotItemBottomSelect(
+      cardCategory: BonusGameController.card_mini,
+    );
     return Container(
       width: 150.h,
       height: 67.h,
@@ -449,6 +448,38 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
       fit: BoxFit.fill,
     );
 
+    if (category == BonusGameController.card_cash) {
+      double money = BonusGameController.to.cardMoney[0];
+      child = Stack(
+        children: [
+          child,
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 10.h,
+            child: Center(
+              child: SSTxtGraBorder(
+                text: "${SSCountry.curGuojiaFuhao()}$money",
+                // fontFamily: FontFamily.rubik,
+                gradient: LinearGradient(
+                  end: Alignment.bottomCenter,
+                  begin: Alignment.topCenter,
+                  colors: [
+                    Color(0xff0FFF63),
+                    Color(0xffA4F00D),
+                    Color(0xffD0FF00),
+                    Color(0xff00FF1E),
+                  ],
+                ),
+                fontSize: 18.sp,
+                strokeColor: Color(0xff0C402B),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
     return Container(
       width: itemWidth,
       height: itemHeight,
@@ -456,17 +487,19 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
       child: Stack(
         children: [
           showAnimScale
-              ? SSAScale(child: child)
+              ? SSAScale(milliseconds: 800, child: child)
               : FlipCard(
                   onFlipEnd: () {
                     BonusGameController.to.addClickIndex(index);
                   },
-                  front: Image.asset(
-                    Assets.img.bonusGameCardBack.path,
-                    width: double.infinity,
-                    height: double.infinity,
-                    fit: BoxFit.fill,
-                  ),
+                  front: contain
+                      ? child
+                      : Image.asset(
+                          Assets.img.bonusGameCardBack.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
                   back: child,
                 ),
         ],
