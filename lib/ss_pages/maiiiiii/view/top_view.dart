@@ -20,6 +20,7 @@ import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
@@ -183,11 +184,12 @@ class TopView extends StatelessWidget {
 
   onMenu() async {
     // OverlaySettinnn().show();
+    OverlayPaytable().show(money: 1);
 
     // OverlayDailyBonus().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
-    OverlayFreeSpins().show(money: 10);
+    // OverlayFreeSpins().show(money: 10);
 
 
 
