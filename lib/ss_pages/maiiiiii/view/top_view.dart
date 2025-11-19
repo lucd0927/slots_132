@@ -15,6 +15,7 @@ import 'package:slots_132/ss_common/diallll/overlay_megawin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -181,7 +182,8 @@ class TopView extends StatelessWidget {
   onMenu() async {
     // OverlaySettinnn().show();
 
-    OverlayDailyBonus().show();
+    // OverlayDailyBonus().show();
+    OverlayBonusGame().show();
 
 
 

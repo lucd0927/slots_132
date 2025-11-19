@@ -65,7 +65,7 @@ class _MainState extends State<Main> {
             height: double.infinity,
             fit: BoxFit.fill,
           ),
-          StarFieldBackground(),
+
           // Positioned.fill(
           //   top: 400.h,
           //   child:SSContetti(),
@@ -76,14 +76,15 @@ class _MainState extends State<Main> {
               AvatarRow(),
               Expanded(child: CenterView()),
               BottomView(),
-              SizedBox(
+              Container(
                 width: double.infinity,
                 height: ScreenUtil().bottomBarHeight,
-                // decoration: BoxDecoration(color: Color(0xffEAECF6)),
+                // decoration: BoxDecoration(color: Colors.black),
+                // child:   ClipRRect(child: StarFieldBackground()),
+
               ),
             ],
           ),
-
 
 
 

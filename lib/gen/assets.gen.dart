@@ -50,9 +50,81 @@ class $AssetsImgGen {
   AssetGenImage get avatarBottom =>
       const AssetGenImage('assets/img/avatar_bottom.png');
 
-  /// File path: assets/img/box_gift_money.png
-  AssetGenImage get boxGiftMoney =>
-      const AssetGenImage('assets/img/box_gift_money.png');
+  /// File path: assets/img/bonus_game_bg.png
+  AssetGenImage get bonusGameBg =>
+      const AssetGenImage('assets/img/bonus_game_bg.png');
+
+  /// File path: assets/img/bonus_game_card_back.png
+  AssetGenImage get bonusGameCardBack =>
+      const AssetGenImage('assets/img/bonus_game_card_back.png');
+
+  /// File path: assets/img/bonus_game_card_grand.png
+  AssetGenImage get bonusGameCardGrand =>
+      const AssetGenImage('assets/img/bonus_game_card_grand.png');
+
+  /// File path: assets/img/bonus_game_card_major.png
+  AssetGenImage get bonusGameCardMajor =>
+      const AssetGenImage('assets/img/bonus_game_card_major.png');
+
+  /// File path: assets/img/bonus_game_card_mini.png
+  AssetGenImage get bonusGameCardMini =>
+      const AssetGenImage('assets/img/bonus_game_card_mini.png');
+
+  /// File path: assets/img/bonus_game_card_money.png
+  AssetGenImage get bonusGameCardMoney =>
+      const AssetGenImage('assets/img/bonus_game_card_money.png');
+
+  /// File path: assets/img/bonus_game_card_scatter.png
+  AssetGenImage get bonusGameCardScatter =>
+      const AssetGenImage('assets/img/bonus_game_card_scatter.png');
+
+  /// File path: assets/img/bonus_game_grand.png
+  AssetGenImage get bonusGameGrand =>
+      const AssetGenImage('assets/img/bonus_game_grand.png');
+
+  /// File path: assets/img/bonus_game_grand_select.png
+  AssetGenImage get bonusGameGrandSelect =>
+      const AssetGenImage('assets/img/bonus_game_grand_select.png');
+
+  /// File path: assets/img/bonus_game_jackpot_select_bg.png
+  AssetGenImage get bonusGameJackpotSelectBg =>
+      const AssetGenImage('assets/img/bonus_game_jackpot_select_bg.png');
+
+  /// File path: assets/img/bonus_game_lucky.png
+  AssetGenImage get bonusGameLucky =>
+      const AssetGenImage('assets/img/bonus_game_lucky.png');
+
+  /// File path: assets/img/bonus_game_major.png
+  AssetGenImage get bonusGameMajor =>
+      const AssetGenImage('assets/img/bonus_game_major.png');
+
+  /// File path: assets/img/bonus_game_major_select.png
+  AssetGenImage get bonusGameMajorSelect =>
+      const AssetGenImage('assets/img/bonus_game_major_select.png');
+
+  /// File path: assets/img/bonus_game_mini.png
+  AssetGenImage get bonusGameMini =>
+      const AssetGenImage('assets/img/bonus_game_mini.png');
+
+  /// File path: assets/img/bonus_game_mini_select.png
+  AssetGenImage get bonusGameMiniSelect =>
+      const AssetGenImage('assets/img/bonus_game_mini_select.png');
+
+  /// File path: assets/img/bonus_game_no_select.png
+  AssetGenImage get bonusGameNoSelect =>
+      const AssetGenImage('assets/img/bonus_game_no_select.png');
+
+  /// File path: assets/img/box_gift_bg.png
+  AssetGenImage get boxGiftBg =>
+      const AssetGenImage('assets/img/box_gift_bg.png');
+
+  /// File path: assets/img/box_gift_box1.png
+  AssetGenImage get boxGiftBox1 =>
+      const AssetGenImage('assets/img/box_gift_box1.png');
+
+  /// File path: assets/img/box_gift_box2.png
+  AssetGenImage get boxGiftBox2 =>
+      const AssetGenImage('assets/img/box_gift_box2.png');
 
   /// File path: assets/img/btn_back.png
   AssetGenImage get btnBack => const AssetGenImage('assets/img/btn_back.png');
@@ -730,7 +802,25 @@ class $AssetsImgGen {
   List<AssetGenImage> get values => [
     avatarBg,
     avatarBottom,
-    boxGiftMoney,
+    bonusGameBg,
+    bonusGameCardBack,
+    bonusGameCardGrand,
+    bonusGameCardMajor,
+    bonusGameCardMini,
+    bonusGameCardMoney,
+    bonusGameCardScatter,
+    bonusGameGrand,
+    bonusGameGrandSelect,
+    bonusGameJackpotSelectBg,
+    bonusGameLucky,
+    bonusGameMajor,
+    bonusGameMajorSelect,
+    bonusGameMini,
+    bonusGameMiniSelect,
+    bonusGameNoSelect,
+    boxGiftBg,
+    boxGiftBox1,
+    boxGiftBox2,
     btnBack,
     btnGiftLock,
     btnGiftUnlcok,

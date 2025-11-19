@@ -33,8 +33,9 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   int? fourth;
   int? five;
 
-  double slotsH = 250.h;
-  final double slotsItemW = 64.h;
+  double slotsH = 200.h;
+  double slotsW = 330.w;
+  final double slotsItemW = 64.w;
 
   double get slotsItemH => 64.h;
 
@@ -54,12 +55,13 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     return LayoutBuilder(
       builder: (context, c) {
         slotsH = c.maxHeight;
+        slotsW = c.maxWidth;
         return Obx(() {
           bool show = MainController.to.showFreeSpin.value;
           return Container(
             width: double.infinity,
             height: slotsH,
-            color: Colors.blueAccent.withValues(alpha: 0.0),
+
             child: Stack(
               children: [
                 Center(
@@ -95,24 +97,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     );
   }
 
-  _rollerForground(int index) {
-    int iiii = index + 1 + 0 * 5;
-    int iiii2 = index + 1 + (1) * 5;
-    int iiii3 = index + 1 + (2) * 5;
 
-    var data = MainController.to.winCurZuobiao;
-    return Container(
-      width: slotsItemW,
-      height: slotsItemW * 3,
-      child: DefaultTextStyle(
-        style: TextStyle(color: Colors.blueAccent.withValues(alpha: 1)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [Text("$iiii"), Text("$iiii2"), Text("$iiii3")],
-        ),
-      ),
-    );
-  }
 
   rollerWidget({required Key key, required int column}) {
     return RollerList(

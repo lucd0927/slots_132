@@ -85,7 +85,7 @@ class _StarGiftState extends State<StarGift> {
               left: 20.w,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.maybePop(context);
                 },
                 child: Image.asset(
                   Assets.img.btnBack.path,

@@ -694,6 +694,9 @@ class MainController extends GetxController {
 
   static const int maxLevel = 32;
   static const double minWithdddMoney = 1000;
+  static const double jacktopGrand = 128.0;
+  static const double jacktopMajor = 80.0;
+  static const double jacktopMini = 48.0;
 
   String get minWithdddMoneyWithCountry {
     return "${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}";

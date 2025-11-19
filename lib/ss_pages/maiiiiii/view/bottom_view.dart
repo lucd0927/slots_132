@@ -46,7 +46,11 @@ class BottomView extends StatelessWidget {
             top: 0.h,
             bottom: 0.h,
             child: Column(
-              children: [topProgressWidget(), slotsMachine(), bottomView()],
+              children: [
+                topProgressWidget(),
+                SizedBox(height: 20.h),
+                slotsMachine(),
+              ],
             ),
           ),
           Positioned(
@@ -102,6 +106,8 @@ class BottomView extends StatelessWidget {
               ),
             ),
           ),
+
+          Positioned(left: 0, right: 0, bottom: 0, child: bottomView()),
         ],
       ),
     );
@@ -390,9 +396,14 @@ class BottomView extends StatelessWidget {
 
   Container slotsMachine() {
     return Container(
-      width: double.infinity,
-      color: Colors.green.withValues(alpha: 0.0),
-      height: 250.h,
+      width: 334.w,
+      height: 200.h,
+      decoration: BoxDecoration(
+        color: Color(0xff340606).withValues(alpha: 0.7),
+        border: Border.all(color: Color(0xffA43334),width: 1.w),
+        borderRadius: BorderRadius.circular(12.w),
+      ),
+
       child: SSSlotMachine(key: MainController.to.slotMachineKey),
     );
   }
