@@ -8,6 +8,7 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_common/diallll/overlay_bigwin.dart';
+import 'package:slots_132/ss_common/diallll/overlay_free_spins.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_grand.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_major.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_mini.dart';
@@ -185,7 +186,8 @@ class TopView extends StatelessWidget {
 
     // OverlayDailyBonus().show();
     // OverlayBonusGame().show();
-    overlayLuckySlots.show();
+    // overlayLuckySlots.show();
+    OverlayFreeSpins().show(money: 10);
 
 
 

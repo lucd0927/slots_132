@@ -129,6 +129,10 @@ class $AssetsImgGen {
   /// File path: assets/img/btn_back.png
   AssetGenImage get btnBack => const AssetGenImage('assets/img/btn_back.png');
 
+  /// File path: assets/img/btn_free_spins.png
+  AssetGenImage get btnFreeSpins =>
+      const AssetGenImage('assets/img/btn_free_spins.png');
+
   /// File path: assets/img/btn_gift_lock.png
   AssetGenImage get btnGiftLock =>
       const AssetGenImage('assets/img/btn_gift_lock.png');
@@ -219,6 +223,14 @@ class $AssetsImgGen {
   AssetGenImage get dailyBonusTopbg =>
       const AssetGenImage('assets/img/daily_bonus_topbg.png');
 
+  /// File path: assets/img/free_spines_count.png
+  AssetGenImage get freeSpinesCount =>
+      const AssetGenImage('assets/img/free_spines_count.png');
+
+  /// File path: assets/img/free_spins.png
+  AssetGenImage get freeSpins =>
+      const AssetGenImage('assets/img/free_spins.png');
+
   /// File path: assets/img/freewheel.png
   AssetGenImage get freewheel =>
       const AssetGenImage('assets/img/freewheel.png');
@@ -283,6 +295,34 @@ class $AssetsImgGen {
   /// File path: assets/img/gift_xp_unlock.png
   AssetGenImage get giftXpUnlock =>
       const AssetGenImage('assets/img/gift_xp_unlock.png');
+
+  /// File path: assets/img/highlights.png
+  AssetGenImage get highlights =>
+      const AssetGenImage('assets/img/highlights.png');
+
+  /// File path: assets/img/highlights_card1.png
+  AssetGenImage get highlightsCard1 =>
+      const AssetGenImage('assets/img/highlights_card1.png');
+
+  /// File path: assets/img/highlights_card2.png
+  AssetGenImage get highlightsCard2 =>
+      const AssetGenImage('assets/img/highlights_card2.png');
+
+  /// File path: assets/img/highlights_card22.png
+  AssetGenImage get highlightsCard22 =>
+      const AssetGenImage('assets/img/highlights_card22.png');
+
+  /// File path: assets/img/highlights_card3.png
+  AssetGenImage get highlightsCard3 =>
+      const AssetGenImage('assets/img/highlights_card3.png');
+
+  /// File path: assets/img/highlights_left.png
+  AssetGenImage get highlightsLeft =>
+      const AssetGenImage('assets/img/highlights_left.png');
+
+  /// File path: assets/img/highlights_right.png
+  AssetGenImage get highlightsRight =>
+      const AssetGenImage('assets/img/highlights_right.png');
 
   /// File path: assets/img/lucky_slots_slots.png
   AssetGenImage get luckySlotsSlots =>
@@ -830,6 +870,7 @@ class $AssetsImgGen {
     boxGiftBox1,
     boxGiftBox2,
     btnBack,
+    btnFreeSpins,
     btnGiftLock,
     btnGiftUnlcok,
     btnPhoneClick,
@@ -853,6 +894,8 @@ class $AssetsImgGen {
     dailyBonusOk,
     dailyBonusTopReward,
     dailyBonusTopbg,
+    freeSpinesCount,
+    freeSpins,
     freewheel,
     giftBg,
     giftBottom,
@@ -870,6 +913,13 @@ class $AssetsImgGen {
     giftUnlockRb,
     giftXpLock,
     giftXpUnlock,
+    highlights,
+    highlightsCard1,
+    highlightsCard2,
+    highlightsCard22,
+    highlightsCard3,
+    highlightsLeft,
+    highlightsRight,
     luckySlotsSlots,
     luckySlotsTitle,
     mainAddmoney,
