@@ -35,6 +35,12 @@ class $AssetsDonghuaGen {
 
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
+
+  /// Directory path: assets/donghua/test
+  $AssetsDonghuaTestGen get test => const $AssetsDonghuaTestGen();
+
+  /// Directory path: assets/donghua/yanhua
+  $AssetsDonghuaYanhuaGen get yanhua => const $AssetsDonghuaYanhuaGen();
 }
 
 class $AssetsImgGen {
@@ -1071,6 +1077,40 @@ class $AssetsDonghuaSdlrGen {
 
   /// List of all assets
   List<dynamic> get values => [sdlrAtlas, sdlrPng, skeleton];
+}
+
+class $AssetsDonghuaTestGen {
+  const $AssetsDonghuaTestGen();
+
+  /// File path: assets/donghua/test/skeleton.json
+  String get skeleton => 'assets/donghua/test/skeleton.json';
+
+  /// File path: assets/donghua/test/tanchuang.atlas
+  String get tanchuangAtlas => 'assets/donghua/test/tanchuang.atlas';
+
+  /// File path: assets/donghua/test/tanchuang.png
+  AssetGenImage get tanchuangPng =>
+      const AssetGenImage('assets/donghua/test/tanchuang.png');
+
+  /// List of all assets
+  List<dynamic> get values => [skeleton, tanchuangAtlas, tanchuangPng];
+}
+
+class $AssetsDonghuaYanhuaGen {
+  const $AssetsDonghuaYanhuaGen();
+
+  /// File path: assets/donghua/yanhua/fly_poker.atlas
+  String get flyPokerAtlas => 'assets/donghua/yanhua/fly_poker.atlas';
+
+  /// File path: assets/donghua/yanhua/fly_poker.json
+  String get flyPokerJson => 'assets/donghua/yanhua/fly_poker.json';
+
+  /// File path: assets/donghua/yanhua/fly_poker.png
+  AssetGenImage get flyPokerPng =>
+      const AssetGenImage('assets/donghua/yanhua/fly_poker.png');
+
+  /// List of all assets
+  List<dynamic> get values => [flyPokerAtlas, flyPokerJson, flyPokerPng];
 }
 
 class $AssetsImgAvatarGen {

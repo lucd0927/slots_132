@@ -37,7 +37,6 @@ dependencies:
   webview_flutter: ^4.13.0
 
 #  lottie: ^3.3.1
-  spine_flutter: ^4.2.36
   appsflyer_sdk: ^6.17.7
   hive_ce_flutter: ^2.3.3
   auto_size_text_plus: ^3.0.2
@@ -96,6 +95,7 @@ dependencies:
   #百分比进度条
   percent_indicator: ^4.2.5
   animated_background: ^2.0.0
+  spine_flutter: ^4.3.1
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:
@@ -126,6 +126,8 @@ flutter:
     - assets/img/avatar/
     - assets/img/slots/
     - assets/donghua/sdlr/
+    - assets/donghua/yanhua/
+    - assets/donghua/test/
     - assets/audddd/
   #   - images/a_dot_ham.jpeg
 

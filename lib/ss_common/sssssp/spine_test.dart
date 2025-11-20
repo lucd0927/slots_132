@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
-class SpineShengdaolaoren extends StatefulWidget {
-  const SpineShengdaolaoren({super.key});
+class SSSpineTest extends StatefulWidget {
+  const SSSpineTest({super.key});
 
   @override
-  State<SpineShengdaolaoren> createState() => _SpineShengdaolaorenState();
+  State<SSSpineTest> createState() => _SSSpineTestState();
 }
 
-class _SpineShengdaolaorenState extends State<SpineShengdaolaoren> {
+class _SSSpineTestState extends State<SSSpineTest> {
   bool showA = false;
 
   @override
@@ -45,8 +45,8 @@ class _SpineShengdaolaorenState extends State<SpineShengdaolaoren> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.sdlr.sdlrAtlas,
-      Assets.donghua.sdlr.skeleton,
+      Assets.donghua.test.tanchuangAtlas,
+      Assets.donghua.test.skeleton,
       controller,
       sizedByBounds: true,
     );
