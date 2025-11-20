@@ -7,6 +7,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OverlaySettinnn {
@@ -105,7 +106,10 @@ class _SettingWidgetState extends State<SettingWidget> {
                         SizedBox(height: 20.h),
                         _audddWidget(),
                         SizedBox(height: 20.h),
-                        _btnWidgetItem(txt: "PAYTABLE", onTap: () {}),
+                        _btnWidgetItem(txt: "PAYTABLE", onTap: () {
+                          onClose();
+                          OverlayPaytable().show(money: 1);
+                        }),
                         SizedBox(height: 10.h),
                         _btnWidgetItem(txt: "Privacy Policy", onTap: () {
                           Uri uri = Uri.parse("uri");
@@ -263,10 +267,10 @@ class _SettingWidgetState extends State<SettingWidget> {
 
   onClose() async {
     ssLogggg("======Setting close");
-    setState(() {
-      showAnimated = false;
-    });
-    await Future.delayed(animD);
+    // setState(() {
+    //   showAnimated = false;
+    // });
+    // await Future.delayed(animD);
     widget.onClose();
   }
 

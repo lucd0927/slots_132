@@ -183,8 +183,8 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-    // OverlaySettinnn().show();
-    OverlayPaytable().show(money: 1);
+    OverlaySettinnn().show();
+
 
     // OverlayDailyBonus().show();
     // OverlayBonusGame().show();

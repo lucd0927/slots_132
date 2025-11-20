@@ -119,13 +119,38 @@ class _PaytableWidgetState extends State<PaytableWidget> {
                           top: 80.w,
                           bottom: 0,
                           child: Center(
-                            child: PageView(
-                              controller: controller,
-                              physics: NeverScrollableScrollPhysics(),
-                              onPageChanged: (index) {
-                                print("当前是第 $index 页");
-                              },
-                              children: [page1(), page2(), page3()],
+                            child: Stack(
+                              children: [
+                                PageView(
+                                  controller: controller,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  onPageChanged: (index) {
+                                    print("当前是第 $index 页");
+                                  },
+                                  children: [page1(), page2(), page3()],
+                                ),
+
+                                Positioned(
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 40.h,
+                                  child: Center(
+                                    child: Container(
+                                      width: 100.w,
+                                      height: 20.h,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          indicate(0),
+                                          indicate(1),
+                                          indicate(2),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -193,13 +218,25 @@ class _PaytableWidgetState extends State<PaytableWidget> {
     );
   }
 
+  indicate(int index) {
+    bool hasSelect = index == curIndex;
+    return Container(
+      width: 14.h,
+      height: 14.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14.h),
+        border: Border.all(color: Color(0xffD93E3E), width: 1.w),
+        color: hasSelect ? Color(0xffFFF93F) : Color(0xff3F1A1A),
+      ),
+    );
+  }
 
   closeWidget() {
     return Positioned(
-      top: 0.h,
+      top: 58.h,
       right: 0.w,
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           onClose(1);
         },
         child: Image.asset(
