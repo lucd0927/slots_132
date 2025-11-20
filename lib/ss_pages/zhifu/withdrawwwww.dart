@@ -32,7 +32,7 @@ class _WithdrawwwwwState extends State<Withdrawwwww> {
     return Obx(() {
       return Scaffold(
         backgroundColor: WithdddController.to.bgColor(),
-        extendBody: true,
+        // extendBody: true,
         body: DefaultTextStyle(
           style: TextStyle(
             fontFamily: FontFamily.rubik,

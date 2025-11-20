@@ -8,6 +8,7 @@ import 'package:slots_132/ss_pages/star_gift/star_gift.dart';
 import 'package:slots_132/ss_pages/wheeee/wheeee.dart';
 import 'package:slots_132/ss_pages/zhifu/chat/ai_chat.dart';
 import 'package:slots_132/ss_pages/zhifu/history/history.dart';
+import 'package:slots_132/ss_pages/zhifu/withddd_complete_paytaber.dart';
 import 'package:slots_132/ss_pages/zhifu/withdrawwwww.dart';
 
 class SSRouttttt {
@@ -23,6 +24,7 @@ class SSRouttttt {
   static const aichat = "/aichat";
   static const phoneCardPage = "/PhoneCardPage";
   static const dailyBonus = "/adfgdsfgsdfg";
+  static const withdddCompletePaytaber = "/WithdddCompletePaytaber";
 
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
@@ -33,6 +35,6 @@ class SSRouttttt {
       GetPage(name: historyyyy, page: () =>  Historyyyy(),transition: Transition.cupertinoDialog),
       GetPage(name: aichat, page: () =>  AiChat(),transition: Transition.cupertinoDialog),
       GetPage(name: phoneCardPage, page: () =>  PhoneCardPage(),transition: Transition.cupertinoDialog),
-      // GetPage(name: dailyBonus, page: () =>  DailyBonus(),transition: Transition.cupertinoDialog),
+      GetPage(name: withdddCompletePaytaber, page: () =>  WithdddCompletePaytaber(),transition: Transition.cupertinoDialog),
   ];
 }

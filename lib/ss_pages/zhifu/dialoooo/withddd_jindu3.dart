@@ -223,7 +223,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                   width: 230.h,
                                   height: 42.h,
                                   decoration: BoxDecoration(
-                                    color: Color(0xff164CFF),
+                                    color: Color(0xff31C520),
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   child: Center(

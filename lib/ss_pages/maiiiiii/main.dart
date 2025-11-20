@@ -8,16 +8,12 @@ import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/contetti.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/newton.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
-import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
@@ -31,7 +27,8 @@ class Main extends StatefulWidget {
   State<Main> createState() => _MainState();
 }
 
-class _MainState extends State<Main> with AutomaticKeepAliveClientMixin{
+class _MainState extends State<Main>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     // TODO: implement initState
@@ -41,16 +38,20 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin{
     Get.put(WithdddController());
     Get.put(SSChatController());
     Get.put(PhoneCardController());
+
+
     // bgMusic.play();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: mainView(),
-    );
+    super.build(context);
+    return Scaffold(resizeToAvoidBottomInset: false, body: mainView());
   }
+
+
+
+
 
   Widget mainView() {
     return SizedBox(
@@ -58,7 +59,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin{
       height: ScreenUtil().screenHeight,
       child: Stack(
         children: [
-
           Image.asset(
             Assets.img.mainBg.path,
             width: double.infinity,
@@ -80,15 +80,12 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin{
               Container(
                 width: double.infinity,
                 height: ScreenUtil().bottomBarHeight,
+
                 // decoration: BoxDecoration(color: Colors.black),
                 // child:   ClipRRect(child: StarFieldBackground()),
-
               ),
             ],
           ),
-
-
-
         ],
       ),
     );
@@ -97,9 +94,4 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin{
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
-
-
-
-
-
 }

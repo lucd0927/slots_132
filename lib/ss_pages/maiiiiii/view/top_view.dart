@@ -23,6 +23,10 @@ import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_one_last_check.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu1.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu2.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_rank.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class TopView extends StatelessWidget {
@@ -178,6 +182,7 @@ class TopView extends StatelessWidget {
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.fill,
+                  gaplessPlayback: true,
                 ),
               ),
             ),
@@ -194,7 +199,11 @@ class TopView extends StatelessWidget {
     // OverlayCommonGet().show(money: 1);
 
 
-    OverlayDailyBonus().show();
+    // OverlayDailyBonus().show();
+    // OverlayRank().show();
+    // OverlayOneLastCheck().show();
+    // OverlayWithddOnelastcheckJindu1().show();
+    OverlayOneLastCheckJindu2().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);

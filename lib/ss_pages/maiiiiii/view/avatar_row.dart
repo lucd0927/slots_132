@@ -105,7 +105,7 @@ class _AvatarRowState extends State<AvatarRow> {
             top: 0,
             right: 0,
             child: Center(
-              child: Image.asset(img, width: width, height: width),
+              child: Image.asset(img, width: width, height: width,gaplessPlayback: true,),
             ),
           ),
           Positioned(
@@ -117,6 +117,7 @@ class _AvatarRowState extends State<AvatarRow> {
                 Assets.img.avatarBg.path,
                 width: width,
                 height: width,
+                gaplessPlayback: true,
               ),
             ),
           ),
@@ -137,6 +138,7 @@ class _AvatarRowState extends State<AvatarRow> {
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.fill,
+                      gaplessPlayback: true,
                     ),
                   ),
                   Positioned.fill(

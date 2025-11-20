@@ -457,6 +457,22 @@ class $AssetsImgGen {
   AssetGenImage get moneyPopup =>
       const AssetGenImage('assets/img/money_popup.png');
 
+  /// File path: assets/img/one_last_check.png
+  AssetGenImage get oneLastCheck =>
+      const AssetGenImage('assets/img/one_last_check.png');
+
+  /// File path: assets/img/one_last_check_king.png
+  AssetGenImage get oneLastCheckKing =>
+      const AssetGenImage('assets/img/one_last_check_king.png');
+
+  /// File path: assets/img/one_last_check_ok.png
+  AssetGenImage get oneLastCheckOk =>
+      const AssetGenImage('assets/img/one_last_check_ok.png');
+
+  /// File path: assets/img/one_last_check_over.png
+  AssetGenImage get oneLastCheckOver =>
+      const AssetGenImage('assets/img/one_last_check_over.png');
+
   /// File path: assets/img/phone_card_bg.png
   AssetGenImage get phoneCardBg =>
       const AssetGenImage('assets/img/phone_card_bg.png');
@@ -844,6 +860,34 @@ class $AssetsImgGen {
   AssetGenImage get withddWarn =>
       const AssetGenImage('assets/img/withdd_warn.png');
 
+  /// File path: assets/img/withdraw_rank_bank.png
+  AssetGenImage get withdrawRankBank =>
+      const AssetGenImage('assets/img/withdraw_rank_bank.png');
+
+  /// File path: assets/img/withdraw_rank_bg.png
+  AssetGenImage get withdrawRankBg =>
+      const AssetGenImage('assets/img/withdraw_rank_bg.png');
+
+  /// File path: assets/img/withdraw_rank_card.png
+  AssetGenImage get withdrawRankCard =>
+      const AssetGenImage('assets/img/withdraw_rank_card.png');
+
+  /// File path: assets/img/withdraw_rank_jindu1.png
+  AssetGenImage get withdrawRankJindu1 =>
+      const AssetGenImage('assets/img/withdraw_rank_jindu1.png');
+
+  /// File path: assets/img/withdraw_rank_jindu2.png
+  AssetGenImage get withdrawRankJindu2 =>
+      const AssetGenImage('assets/img/withdraw_rank_jindu2.png');
+
+  /// File path: assets/img/withdraw_rank_money.png
+  AssetGenImage get withdrawRankMoney =>
+      const AssetGenImage('assets/img/withdraw_rank_money.png');
+
+  /// File path: assets/img/withdraw_rank_select.png
+  AssetGenImage get withdrawRankSelect =>
+      const AssetGenImage('assets/img/withdraw_rank_select.png');
+
   /// File path: assets/img/xuanguang.png
   AssetGenImage get xuanguang =>
       const AssetGenImage('assets/img/xuanguang.png');
@@ -959,6 +1003,10 @@ class $AssetsImgGen {
     moneyGift,
     moneyLock,
     moneyPopup,
+    oneLastCheck,
+    oneLastCheckKing,
+    oneLastCheckOk,
+    oneLastCheckOver,
     phoneCardBg,
     phoneCardBottomBg,
     phoneCardCard1,
@@ -1057,6 +1105,13 @@ class $AssetsImgGen {
     withddTime,
     withddVip,
     withddWarn,
+    withdrawRankBank,
+    withdrawRankBg,
+    withdrawRankCard,
+    withdrawRankJindu1,
+    withdrawRankJindu2,
+    withdrawRankMoney,
+    withdrawRankSelect,
     xuanguang,
     xuanguang2,
   ];
