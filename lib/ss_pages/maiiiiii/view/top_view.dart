@@ -18,6 +18,7 @@ import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
+import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -194,6 +195,7 @@ class TopView extends StatelessWidget {
 
   onMenu() async {
     // OverlaySettinnn().show();
+    OverlayBoxgift().show();
 
 
     // OverlayCommonGet().show(money: 1);
@@ -203,7 +205,7 @@ class TopView extends StatelessWidget {
     // OverlayRank().show();
     // OverlayOneLastCheck().show();
     // OverlayWithddOnelastcheckJindu1().show();
-    OverlayOneLastCheckJindu2().show();
+    // OverlayOneLastCheckJindu2().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);

@@ -36,6 +36,9 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
 
+  /// Directory path: assets/donghua/superwin
+  $AssetsDonghuaSuperwinGen get superwin => const $AssetsDonghuaSuperwinGen();
+
   /// Directory path: assets/donghua/test
   $AssetsDonghuaTestGen get test => const $AssetsDonghuaTestGen();
 
@@ -1132,6 +1135,23 @@ class $AssetsDonghuaSdlrGen {
 
   /// List of all assets
   List<dynamic> get values => [sdlrAtlas, sdlrPng, skeleton];
+}
+
+class $AssetsDonghuaSuperwinGen {
+  const $AssetsDonghuaSuperwinGen();
+
+  /// File path: assets/donghua/superwin/jiesuan01.atlas
+  String get jiesuan01Atlas => 'assets/donghua/superwin/jiesuan01.atlas';
+
+  /// File path: assets/donghua/superwin/jiesuan01.png
+  AssetGenImage get jiesuan01Png =>
+      const AssetGenImage('assets/donghua/superwin/jiesuan01.png');
+
+  /// File path: assets/donghua/superwin/skeleton.json
+  String get skeleton => 'assets/donghua/superwin/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [jiesuan01Atlas, jiesuan01Png, skeleton];
 }
 
 class $AssetsDonghuaTestGen {

@@ -24,7 +24,7 @@ class OverlayBoxgift {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money}) {
+  void show() {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -33,7 +33,7 @@ class OverlayBoxgift {
           onBtn: (double money) {
             close();
           },
-          money: money,
+          money: 1,
         );
       },
     );
@@ -67,6 +67,9 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
+  bool showSecondPage = false;
+  bool showSecondPageOpenGift = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -75,6 +78,21 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         showAnimated = true;
+      });
+
+      Future.delayed(Duration(milliseconds: 300), () {
+        if (mounted) {
+          setState(() {
+            showSecondPage = true;
+          });
+          Future.delayed(Duration(milliseconds: 1000), () {
+            if (mounted) {
+              setState(() {
+                showSecondPageOpenGift = true;
+              });
+            }
+          });
+        }
       });
     });
   }
@@ -94,99 +112,183 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               width: double.infinity,
               height: double.infinity,
 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Stack(
                 children: [
-                  SizedBox(height: 10.h),
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Positioned(
-                        left: -80.w,
-                        right: -80.w,
-                        top: -90.h,
-
-                        child: Center(
-                          child: Container(
-                            width: 380.h,
-                            height: 380.h,
-                            child: SSRotateWidget(
-                              child: Image.asset(
-                                Assets.img.phoneCardXuanguang.path,
-                                width: double.infinity,
-                                height: double.infinity,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SSAScale(
-                        child: Image.asset(
-                          Assets.img.popupTxtBigwin.path,
-                          width: 251.h,
-                          height: 171.h,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 60.h,
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Image.asset(
-                            Assets.img.popupMoneybgBig.path,
-                            width: 350.w,
-                            height: double.infinity,
-                          ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: 4.h,
-                          bottom: 0,
-                          child: Center(
-                            child: SSTxtGraBorder(
-                              text:
-                              "${SSCountry.curGuojiaFuhao()}${widget.money}",
-                              fontSize: 42.sp,
-                              fontFamily: FontFamily.alkatra,
-                              height: 1,
-                              fontWeight: FontWeight.w700,
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xff0FFF63),
-                                  Color(0xffA4F00D),
-                                  Color(0xffD0FF00),
-                                  Color(0xff00FF1E),
-                                  // Color(0xff0FFF63),
-                                ],
-                                end: Alignment.bottomCenter,
-                                begin: Alignment.topCenter,
-                              ),
-                              strokeColor: Color(0xff0C402B),
-                              strokeWidth: 3.w,
-                              // fontColor: Color(0xff6AFF00),
-                            ),
-                          ),
-                        ),
-                      ],
+                  Positioned.fill(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Expanded(child: centerWidget())],
                     ),
                   ),
-                  SizedBox(height: 10.h),
-                  BtnBeisuWidget(
-                    onBtn: (v) {
-                      ssLogggg("=====beisu:$v");
-                      double money = widget.money * v;
-                      onClose(money);
-                    },
+
+                  Positioned(
+                    top: 50.h,
+                    left: 20.w,
+                    child: GestureDetector(
+                      onTap: () {
+                        onClose(1);
+                      },
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            Assets.img.btnBack.path,
+                            width: 42.w,
+                            height: 27.w,
+                            fit: BoxFit.contain,
+                          ),
+                          SizedBox(width: 8.w),
+                          SSTxtGraBorder(
+                            text: "The Elves Are at Work!",
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                            strokeColor: Color(0xff30120A),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 30.h),
                 ],
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  centerWidget() {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      // color: Colors.white,
+
+      // child: AnimatedBuilder(animation: animation, builder: builder),
+      child: AnimatedCrossFade(
+        firstChild: firstPage(),
+        secondChild: secondPage(),
+        crossFadeState: showSecondPage
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
+        secondCurve: Curves.linear,
+        duration: Duration(milliseconds: 200),
+      ),
+    );
+  }
+
+  firstPage() {
+    return Center(
+      child: Container(width: 360.w, height: 400.h, color: Colors.teal),
+    );
+  }
+
+  secondPage() {
+    return Center(
+      child: showSecondPageOpenGift?secondPage2():secondPage1(),
+    );
+  }
+  
+  secondPage1(){
+    return Container(
+      width: 324.w,
+      height: 370.h,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Image.asset(
+            Assets.img.boxGiftBg.path,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.fill,
+          ),
+          Column(
+
+            children: [
+              SizedBox(height: 100.h,),
+              SSTxtGraBorder(
+                text: "Your Elf Gift Has Arrived!",
+                fontWeight: FontWeight.w500,
+                fontSize: 18.sp,
+                strokeColor: Color(0xff30120A),
+              ),
+              SizedBox(height: 20.h,),
+              Image.asset(
+                Assets.img.boxGiftBox1.path,
+                width: 164.w,
+                height: 146.h,
+              ),
+              SizedBox(height: 20.h,),
+              SSTxtGraBorder(
+                text: "Open Your Gift!",
+                fontWeight: FontWeight.w500,
+                fontSize: 18.sp,
+                strokeColor: Color(0xff30120A),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+  
+  secondPage2(){
+    return Container(
+      width: 324.w,
+      height: 370.h,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Image.asset(
+            Assets.img.boxGiftBg.path,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.fill,
+          ),
+          Column(
+
+            children: [
+              SizedBox(height: 100.h,),
+              SSTxtGraBorder(
+                text: "Your Elf Gift Has Arrived!",
+                fontWeight: FontWeight.w500,
+                fontSize: 18.sp,
+                strokeColor: Color(0xff30120A),
+              ),
+              SizedBox(height: 20.h,),
+              Image.asset(
+                Assets.img.boxGiftBox2.path,
+                width: 164.w,
+                height: 146.h,
+              ),
+              SizedBox(height: 20.h,),
+              SSTxtGraBorder(
+                text: "Open Your Gift!",
+                fontWeight: FontWeight.w500,
+                fontSize: 18.sp,
+                strokeColor: Color(0xff30120A),
+              ),
+            ],
+          ),
+
+
+          closeWidget()
+        ],
+      ),
+    );
+  }
+
+  closeWidget() {
+    return Positioned(
+      top: 30.h,
+      right: 0.w,
+      child: GestureDetector(
+        onTap: () {
+          onClose(1);
+        },
+        child: Image.asset(
+          Assets.img.closePopup2.path,
+          width: 40.h,
+          height: 40.h,
+          // fit: BoxFit.fill,
         ),
       ),
     );
