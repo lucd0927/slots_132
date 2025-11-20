@@ -39,6 +39,7 @@ class BottomView extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.fill,
+            gaplessPlayback: true,
           ),
           Positioned(
             left: 0,
@@ -68,6 +69,7 @@ class BottomView extends StatelessWidget {
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.fill,
+                      gaplessPlayback: true,
                     ),
                     Positioned(
                       left: 2.w,
@@ -186,6 +188,7 @@ class BottomView extends StatelessWidget {
                               Assets.img.mainMaxSub.path,
                               width: 18.w,
                               height: 31.w,
+                              gaplessPlayback: true,
                             ),
                           )
                         : GestureDetector(
@@ -196,6 +199,7 @@ class BottomView extends StatelessWidget {
                               Assets.img.mainMaxSub.path,
                               width: 18.w,
                               height: 31.w,
+                              gaplessPlayback: true,
                             ),
                           ),
                   ),
@@ -209,6 +213,7 @@ class BottomView extends StatelessWidget {
                               Assets.img.mainMaxAdd.path,
                               width: 18.w,
                               height: 31.w,
+                              gaplessPlayback: true,
                             ),
                           )
                         : GestureDetector(
@@ -219,6 +224,7 @@ class BottomView extends StatelessWidget {
                               Assets.img.mainMaxAdd.path,
                               width: 18.w,
                               height: 31.w,
+                              gaplessPlayback: true,
                             ),
                           ),
                   ),
@@ -243,6 +249,7 @@ class BottomView extends StatelessWidget {
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.fill,
+                              gaplessPlayback: true,
                             ),
                             Positioned.fill(
                               child: Center(
@@ -266,6 +273,7 @@ class BottomView extends StatelessWidget {
                             width: double.infinity,
                             height: double.infinity,
                             fit: BoxFit.fill,
+                            gaplessPlayback: true,
                           ),
                           Positioned.fill(
                             child: Center(
@@ -301,6 +309,7 @@ class BottomView extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.fill,
+            gaplessPlayback: true,
           ),
           Positioned.fill(
             bottom: 5.h,
@@ -323,6 +332,7 @@ class BottomView extends StatelessWidget {
                     width: 72.h,
                     height: 25.h,
                     fit: BoxFit.contain,
+                    gaplessPlayback: true,
                   ),
 
                   AutoSizeText(
@@ -369,6 +379,7 @@ class BottomView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
             ),
             Positioned(
@@ -425,6 +436,7 @@ class BottomView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
               Center(
                 child: Row(
@@ -451,6 +463,7 @@ class BottomView extends StatelessWidget {
                   width: 82.w,
                   height: 71.w,
                   fit: BoxFit.fill,
+                  gaplessPlayback: true,
                 ),
               ),
 
@@ -462,6 +475,7 @@ class BottomView extends StatelessWidget {
                   width: 89.w,
                   height: 83.w,
                   fit: BoxFit.fill,
+                  gaplessPlayback: true,
                 ),
               ),
             ],

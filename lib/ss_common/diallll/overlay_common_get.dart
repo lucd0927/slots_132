@@ -31,6 +31,7 @@ class OverlayCommonGet {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
+      // opaque: true,
       builder: (context) {
         return CommonGetWidget(
           onBtn: (double money) {
@@ -111,18 +112,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    Positioned(
-                      bottom: 200.h,
-                      // bottom: 20,
-                      // top: 0,
-                      child: IgnorePointer(
-                        child: Container(
-                          width: ScreenUtil().screenWidth,
-                          height: ScreenUtil().screenHeight,
-                          child: SSSpineTest(),
-                        ),
-                      ),
-                    ),
                     Column(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -138,9 +127,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             ),
                             borderRadius: BorderRadius.circular(16.w),
                           ),
-                          child: Column(children: [
-
-                          ],),
+                          child: Column(children: []),
                         ),
                         SizedBox(height: 120.h),
                         Container(
@@ -157,6 +144,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         ),
                       ],
                     ),
+
                     // Positioned(
                     //   bottom: 200.h,
                     //   // bottom: 20,
@@ -169,8 +157,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                     //     ),
                     //   ),
                     // ),
-
-
                   ],
                 ),
               ),

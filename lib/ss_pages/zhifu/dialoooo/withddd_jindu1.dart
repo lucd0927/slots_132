@@ -91,10 +91,10 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
         duration: animD,
         color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
         child: Center(
-          child: AnimatedSlide(
+          child: AnimatedScale(
             duration: animD,
-            // scale: showAnimated ? 1.0 : 0.8,
-            offset: showAnimated ? Offset.zero : Offset(0, 1),
+            scale: showAnimated ? 1.0 : 0.8,
+            // offset: showAnimated ? Offset.zero : Offset(0, 1),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -47,6 +47,7 @@ class TopView extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.fill,
+            gaplessPlayback: true,
           ),
 
           Positioned(
@@ -80,6 +81,7 @@ class TopView extends StatelessWidget {
                             width: 30.h,
                             height: 28.h,
                             fit: BoxFit.fill,
+                            gaplessPlayback: true,
                           );
                           overlayMainTopMoney.targetContext = context;
                           return child;
@@ -109,6 +111,7 @@ class TopView extends StatelessWidget {
                     WithdddController.to.currentPaymentIconSelected(),
                     width: double.infinity,
                     height: double.infinity,
+                    gaplessPlayback: true,
                   ),
                 ),
               ),
@@ -144,6 +147,7 @@ class TopView extends StatelessWidget {
                         width: 30.h,
                         height: 28.h,
                         fit: BoxFit.fill,
+                        gaplessPlayback: true,
                       ),
                     ),
                   ),
@@ -187,10 +191,10 @@ class TopView extends StatelessWidget {
     // OverlaySettinnn().show();
 
 
-    OverlayCommonGet().show(money: 1);
+    // OverlayCommonGet().show(money: 1);
 
 
-    // OverlayDailyBonus().show();
+    OverlayDailyBonus().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);

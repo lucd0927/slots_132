@@ -143,6 +143,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           MainController.kName_vImgName[category]!,
           width: width - imgSubD,
           height: height - imgSubD,
+          gaplessPlayback: true,
         ),
         // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );

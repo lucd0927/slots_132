@@ -48,7 +48,7 @@ class _SSSpineTestState extends State<SSSpineTest> {
       Assets.donghua.test.tanchuangAtlas,
       Assets.donghua.test.skeleton,
       controller,
-      sizedByBounds: true,
+      // sizedByBounds: true,
     );
   }
 }

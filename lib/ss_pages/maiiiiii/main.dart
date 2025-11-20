@@ -31,7 +31,7 @@ class Main extends StatefulWidget {
   State<Main> createState() => _MainState();
 }
 
-class _MainState extends State<Main> {
+class _MainState extends State<Main> with AutomaticKeepAliveClientMixin{
   @override
   void initState() {
     // TODO: implement initState
@@ -64,6 +64,7 @@ class _MainState extends State<Main> {
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.fill,
+            gaplessPlayback: true,
           ),
 
           // Positioned.fill(
@@ -92,6 +93,10 @@ class _MainState extends State<Main> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
 
 

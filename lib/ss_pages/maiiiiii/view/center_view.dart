@@ -42,19 +42,19 @@ class CenterView extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                Positioned(
-                  left: 20.w,
-                  top: 40.h,
-                  right: 20.w,
-                  child: Container(
-                    key: ValueKey("SpineShengdaolaoren"),
-                    width: 10.w,
-                    height: 250.h,
-                    child: const SpineShengdaolaoren(
-                      key: ValueKey("ooeirtjtjkl"),
-                    ),
-                  ),
-                ),
+                // Positioned(
+                //   left: 20.w,
+                //   top: 40.h,
+                //   right: 20.w,
+                //   child: Container(
+                //     key: ValueKey("SpineShengdaolaoren"),
+                //     width: 10.w,
+                //     height: 250.h,
+                //     child: const SpineShengdaolaoren(
+                //       key: ValueKey("ooeirtjtjkl"),
+                //     ),
+                //   ),
+                // ),
 
                 Positioned.fill(
                   child: TweenAnimationBuilder<double>(
@@ -180,6 +180,7 @@ class CenterView extends StatelessWidget {
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
+              gaplessPlayback: true,
             ),
             Positioned(
               left: 0,
@@ -195,7 +196,7 @@ class CenterView extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4.sp),
-                    child: Image.asset(Assets.img.slots.slotsH1.path,width: 22.h,height: 22.h,),
+                    child: Image.asset(Assets.img.slots.slotsH1.path,width: 22.h,height: 22.h,gaplessPlayback: true,),
                   ),
                   SSTxtGraBorder(
                     text: "TO",
@@ -204,7 +205,7 @@ class CenterView extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4.sp),
-                    child: Image.asset(Assets.img.phonePopupJindu2Star.path,width: 22.h,height: 22.h,),
+                    child: Image.asset(Assets.img.phonePopupJindu2Star.path,width: 22.h,height: 22.h,gaplessPlayback: true,),
                   ),
                   SSTxtGraBorder(
                     text: "WIN",
@@ -238,6 +239,7 @@ class CenterView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
               Positioned(
                 top: 20.h,
@@ -270,6 +272,7 @@ class CenterView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
               Positioned(
                 top: 20.h,
@@ -302,6 +305,7 @@ class CenterView extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
               Positioned(
                 top: 20.h,
@@ -356,6 +360,7 @@ class CenterView extends StatelessWidget {
                     Assets.img.mainBox.path,
                     width: 58.h,
                     height: 58.h,
+                    gaplessPlayback: true,
                   ),
                 ),
                 Positioned(
@@ -393,6 +398,7 @@ class CenterView extends StatelessWidget {
                         Assets.img.mainPhone.path,
                         width: 58.h,
                         height: 58.h,
+                        gaplessPlayback: true,
                       ),
                     ),
                   ),
