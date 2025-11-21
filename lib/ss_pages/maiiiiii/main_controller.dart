@@ -193,6 +193,7 @@ class MainController extends GetxController {
     List<String> preReel4 = rollerImgs[3];
     List<String> preReel5 = rollerImgs[4];
     ssLogggg("rollerImgs before:$rollerImgs");
+    // 中奖放到最后的第几个位置
     int start = preReel1.length - winReel2.length;
     int end = preReel1.length;
     // 获取原来最后的中奖3个图案
@@ -201,7 +202,7 @@ class MainController extends GetxController {
     List<String> preWinReel3 = preReel3.sublist(start, end);
     List<String> preWinReel4 = preReel4.sublist(start, end);
     List<String> preWinReel5 = preReel5.sublist(start, end);
-
+    // 不是第一次加载
     if (!hasFirstInit) {
       int end = preWinReel1.length;
       preReel1.setRange(0, end, preWinReel1);
@@ -487,6 +488,7 @@ class MainController extends GetxController {
       for (var values in winLines.values) {
         // 筛选当前数组中最长的数组，可以是多个一样长的数组线路
         List tmpDddd = findAllLongestLists(values);
+        // ssLogggg("rollerImgs 中奖 winLines:$tmpDddd");
         for (var ddddaaa in tmpDddd) {
           // 是否再给的中奖线路上
           bool container = containsPrefix(paylines, ddddaaa);
@@ -494,21 +496,34 @@ class MainController extends GetxController {
             if (ddddaaa is List<int>) {
               Map<String, List<int>> tmp = {};
               String key = "";
-              for (var zuobiao in ddddaaa) {
+              int count = 0;
+              int allLenght = ddddaaa.length;
+              for (int i = 0; i < allLenght; i++) {
+                var zuobiao = ddddaaa[i];
                 winNextZuobiao.add(zuobiao);
                 bool result = kZuobiao_vCategory.containsKey(zuobiao);
                 if (result) {
                   var value = kZuobiao_vCategory[zuobiao] ?? "";
+                  ssLogggg("=====win lines last=key:$value");
                   if (value.isNotEmpty &&
-                      !value.contains(slotNumWild) &&
+
+                      value != slotNumKEY &&
                       value != slotNumSCATTER) {
-                    key = value;
+                    if(value.contains(slotNumWild)){
+                      count = count+1;
+                    }else{
+                      key = value;
+                    }
+
                   }
                 }
               }
+              if(count == allLenght && key.isEmpty){
+                key = slotNumWild;
+              }
               tmp[key] = ddddaaa;
               winNextCategoryLines.add(tmp);
-              ssLogggg("=====win lines last=下次中奖线路:$ddddaaa");
+              ssLogggg("=====win lines last=下次中奖线路:$ddddaaa key:$key count:$count allLength:$allLenght");
             }
           }
         }
