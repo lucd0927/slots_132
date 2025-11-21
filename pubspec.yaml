@@ -129,6 +129,10 @@ flutter:
     - assets/donghua/yanhua/
     - assets/donghua/test/
     - assets/donghua/superwin/
+    - assets/donghua/wow/
+    - assets/donghua/bigwin/
+    - assets/donghua/megawin/
+    - assets/donghua/money/
     - assets/audddd/
   #   - images/a_dot_ham.jpeg
 

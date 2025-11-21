@@ -1,0 +1,17 @@
+jiesuan04.png
+size:1309,516
+filter:Linear,Linear
+pma:true
+scale:0.5
+Ellipse 507-2
+bounds:1130,302,11,11
+offsets:1,1,13,13
+Mask group
+bounds:1130,335,179,177
+offsets:4,0,188,195
+rotate:90
+Star 1
+bounds:1130,315,16,18
+offsets:3,2,22,22
+组1
+bounds:2,2,1126,512

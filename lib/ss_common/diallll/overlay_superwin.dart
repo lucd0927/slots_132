@@ -15,6 +15,7 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_superwin.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -99,7 +100,7 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                 children: [
                   Column(
                     children: [
-                      SizedBox(height: 80.h,),
+                      SizedBox(height: 80.h),
                       Container(
                         width: 375.w,
                         height: 400.h,
@@ -107,6 +108,7 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       ),
                     ],
                   ),
+
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -161,6 +163,38 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       ),
                       SizedBox(height: 30.h),
                     ],
+                  ),
+
+                  // Positioned(
+                  //   left: -100.w,
+                  //   right: -100.w,
+                  //   top: -800.h,
+                  //   bottom: 0,
+                  //   child: IgnorePointer(
+                  //     child: Container(
+                  //       width: double.infinity,
+                  //       height: 1500.h,
+                  //       color: Colors.yellow.withValues(alpha: 0.0),
+                  //       child: SSSpineMoney(),
+                  //     ),
+                  //   ),
+                  // ),
+
+                  Positioned(
+                    left: -0.w,
+                    right: -0.w,
+                    top: -100.h,
+                    // bottom: 0,
+                    child: IgnorePointer(
+                      child: Center(
+                        child: Container(
+                          width: ScreenUtil().screenWidth,
+                          height: ScreenUtil().screenHeight,
+                          color: Colors.yellow.withValues(alpha: 0.2),
+                          child: SSSpineMoney(),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

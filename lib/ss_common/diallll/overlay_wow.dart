@@ -15,6 +15,7 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/sssssp/spine_wow.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -94,119 +95,202 @@ class _WowWidgetState extends State<WowWidget> {
               width: double.infinity,
               height: double.infinity,
 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Stack(
                 children: [
-                  SizedBox(height: 10.h),
-                  Image.asset(
-                    Assets.img.popupTxtWow.path,
-                    width: 199.h,
-                    height: 137.h,
+                  Column(
+                    children: [
+                      SizedBox(height: 80.h,),
+                      Container(
+                        width: 375.w,
+                        height: 400.h,
+                        child: SSSpineWow(),
+                      ),
+                    ],
                   ),
-                  Container(
-                    // width: 375.h,
-                    // height: 375.h,
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        // Image.asset(
-                        //   Assets.img.xuanguang2.path,
-                        //   width: double.infinity,
-                        //   height: double.infinity,
-                        // ),
-                        Positioned(
-                          left: -80.w,
-                          right: -80.w,
-                          top: -90.h,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 410.h),
 
-                          child: Center(
-                            child: Container(
-                              width: 375.h,
-                              height: 375.h,
-                              child: SSRotateWidget(
-                                child: Image.asset(
-                                  Assets.img.xuanguang2.path,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                ),
+                      Container(
+                        width: double.infinity,
+                        height: 60.h,
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Image.asset(
+                                Assets.img.popupMoneybgSuper.path,
+                                width: 350.w,
+                                height: double.infinity,
                               ),
                             ),
-                          ),
-                        ),
-                        Center(
-                          child: SSAScale(
-                            child: Image.asset(
-                              Assets.img.moneyPopup.path,
-                              width: 199.h,
-                              height: 137.h,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: -20.h,
-                          child: Container(
-                            width: double.infinity,
-                            height: 60.h,
-                            child: Stack(
-                              children: [
-                                // Center(
-                                //   child: Image.asset(
-                                //     Assets.img.popupMoneybgSuper.path,
-                                //     width: 350.w,
-                                //     height: double.infinity,
-                                //   ),
-                                // ),
-                                Positioned(
-                                  left: 0,
-                                  right: 0,
-                                  top: 4.h,
-                                  bottom: 0,
-                                  child: Center(
-                                    child: SSTxtGraBorder(
-                                      text:
-                                      "${SSCountry.curGuojiaFuhao()}${widget.money}",
-                                      fontSize: 42.sp,
-                                      fontFamily: FontFamily.alkatra,
-                                      height: 1,
-                                      fontWeight: FontWeight.w700,
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0xff0FFF63),
-                                          Color(0xffA4F00D),
-                                          Color(0xffD0FF00),
-                                          Color(0xff00FF1E),
-                                          // Color(0xff0FFF63),
-                                        ],
-                                        end: Alignment.bottomCenter,
-                                        begin: Alignment.topCenter,
-                                      ),
-                                      strokeColor: Color(0xff0C402B),
-                                      strokeWidth: 3.w,
-                                      // fontColor: Color(0xff6AFF00),
-                                    ),
-                                  ),
+                            Center(
+                              child: SSTxtGraBorder(
+                                text:
+                                "${SSCountry.curGuojiaFuhao()}${widget.money}",
+                                fontSize: 42.sp,
+                                fontFamily: FontFamily.alkatra,
+                                height: 1,
+                                fontWeight: FontWeight.w700,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xff0FFF63),
+                                    Color(0xffA4F00D),
+                                    Color(0xffD0FF00),
+                                    Color(0xff00FF1E),
+                                    // Color(0xff0FFF63),
+                                  ],
+                                  end: Alignment.bottomCenter,
+                                  begin: Alignment.topCenter,
                                 ),
-                              ],
+                                strokeColor: Color(0xff0C402B),
+                                strokeWidth: 3.w,
+                                // fontColor: Color(0xff6AFF00),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 10.h),
+                      BtnBeisuWidget(
+                        onBtn: (v) {
+                          ssLogggg("=====beisu:$v");
+                          double money = widget.money * v;
+                          onClose(money);
+                        },
+                      ),
+                      SizedBox(height: 30.h),
+                    ],
                   ),
-
-                  SizedBox(height: 10.h),
-                  BtnBeisuWidget(
-                    onBtn: (v) {
-                      ssLogggg("=====beisu:$v");
-                      double money = widget.money * v;
-                      onClose(money);
-                    },
-                  ),
-                  SizedBox(height: 30.h),
                 ],
               ),
+
+              // child: Stack(
+              //   children: [
+              //     Column(
+              //       children: [
+              //         SizedBox(height: 80.h,),
+              //         Container(
+              //           width: 375.w,
+              //           height: 400.h,
+              //           child: SSSpineWow(),
+              //         ),
+              //       ],
+              //     ),
+              //
+              //     Column(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         SizedBox(height: 200.h),
+              //         // Image.asset(
+              //         //   Assets.img.popupTxtWow.path,
+              //         //   width: 199.h,
+              //         //   height: 137.h,
+              //         // ),
+              //         Container(
+              //           // width: 375.h,
+              //           // height: 375.h,
+              //           child: Stack(
+              //             clipBehavior: Clip.none,
+              //             children: [
+              //               // Image.asset(
+              //               //   Assets.img.xuanguang2.path,
+              //               //   width: double.infinity,
+              //               //   height: double.infinity,
+              //               // ),
+              //               // Positioned(
+              //               //   left: -80.w,
+              //               //   right: -80.w,
+              //               //   top: -90.h,
+              //               //
+              //               //   child: Center(
+              //               //     child: Container(
+              //               //       width: 400.h,
+              //               //       height: 375.h,
+              //               //       child: SSRotateWidget(
+              //               //         child: Image.asset(
+              //               //           Assets.img.xuanguang2.path,
+              //               //           width: double.infinity,
+              //               //           height: double.infinity,
+              //               //         ),
+              //               //       ),
+              //               //     ),
+              //               //   ),
+              //               // ),
+              //               // Center(
+              //               //   child: Image.asset(
+              //               //     Assets.img.moneyPopup.path,
+              //               //     width: 199.h,
+              //               //     height: 137.h,
+              //               //   ),
+              //               // ),
+              //               Positioned(
+              //                 left: 0,
+              //                 right: 0,
+              //                 // bottom: -20.h,
+              //                 child: Container(
+              //                   width: double.infinity,
+              //                   height: 60.h,
+              //                   child: Stack(
+              //                     children: [
+              //                       // Center(
+              //                       //   child: Image.asset(
+              //                       //     Assets.img.popupMoneybgSuper.path,
+              //                       //     width: 350.w,
+              //                       //     height: double.infinity,
+              //                       //   ),
+              //                       // ),
+              //                       Positioned(
+              //                         left: 0,
+              //                         right: 0,
+              //                         top: 4.h,
+              //                         bottom: 0,
+              //                         child: Center(
+              //                           child: SSTxtGraBorder(
+              //                             text:
+              //                             "${SSCountry.curGuojiaFuhao()}${widget.money}",
+              //                             fontSize: 42.sp,
+              //                             fontFamily: FontFamily.alkatra,
+              //                             height: 1,
+              //                             fontWeight: FontWeight.w700,
+              //                             gradient: LinearGradient(
+              //                               colors: [
+              //                                 Color(0xff0FFF63),
+              //                                 Color(0xffA4F00D),
+              //                                 Color(0xffD0FF00),
+              //                                 Color(0xff00FF1E),
+              //                                 // Color(0xff0FFF63),
+              //                               ],
+              //                               end: Alignment.bottomCenter,
+              //                               begin: Alignment.topCenter,
+              //                             ),
+              //                             strokeColor: Color(0xff0C402B),
+              //                             strokeWidth: 3.w,
+              //                             // fontColor: Color(0xff6AFF00),
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ],
+              //                   ),
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //
+              //         SizedBox(height: 10.h),
+              //         BtnBeisuWidget(
+              //           onBtn: (v) {
+              //             ssLogggg("=====beisu:$v");
+              //             double money = widget.money * v;
+              //             onClose(money);
+              //           },
+              //         ),
+              //         SizedBox(height: 30.h),
+              //       ],
+              //     ),
+              //   ],
+              // ),
             ),
           ),
         ),

@@ -32,16 +32,18 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        setState(() {
-          showA = true;
-        });
-        if (PhoneCardController.to.getUserName().isEmpty) {
-          Future.delayed(Duration(milliseconds: 250), () {
-            OverlayPhoneInputName().show();
+      Future.delayed(Duration(milliseconds: 100), () {
+        if (mounted) {
+          setState(() {
+            showA = true;
           });
+          if (PhoneCardController.to.getUserName().isEmpty) {
+            Future.delayed(Duration(milliseconds: 250), () {
+              OverlayPhoneInputName().show();
+            });
+          }
         }
-      }
+      });
     });
   }
 
@@ -185,17 +187,21 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                                           child: Container(
                                             width: 100.w,
                                             height: 100.h,
-                                            color: Colors.brown.withValues(alpha: 0.0),
+                                            color: Colors.brown.withValues(
+                                              alpha: 0.0,
+                                            ),
                                             child: Transform.rotate(
-                                              angle: 90*pi/180,
+                                              angle: 90 * pi / 180,
                                               child: Text(
-                                                PhoneCardController.to.getUserName(),
+                                                PhoneCardController.to
+                                                    .getUserName(),
                                                 style: TextStyle(
-                                                  fontFamily: FontFamily.ephesis,
+                                                  fontFamily:
+                                                      FontFamily.ephesis,
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 25.sp,
-                                                  height: 1
+                                                  height: 1,
                                                 ),
                                                 textAlign: TextAlign.end,
                                               ),
@@ -334,9 +340,10 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
     double scale2 = 1;
     double scale = 1;
     return AnimatedOpacity(
-      duration: Duration(milliseconds: 500),
-      opacity: showA ? 1.0 : 0.5,
-      // offset:showA? Offset.zero:Offset(0, 1),
+      duration: Duration(milliseconds: 300),
+      // scale: showA ? 1.0 : 0.9,
+      opacity: showA ? 1.0 : 0.9,
+      // offset: showA ? Offset.zero : Offset(1, 0),
       child: Container(
         width: 247.h,
         height: 247.h,

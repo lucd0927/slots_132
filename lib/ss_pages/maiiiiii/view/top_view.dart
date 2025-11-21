@@ -21,6 +21,7 @@ import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
+import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_exp.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -195,7 +196,7 @@ class TopView extends StatelessWidget {
 
   onMenu() async {
     // OverlaySettinnn().show();
-    OverlayBoxgift().show();
+    // OverlayBoxgift().show();
 
 
     // OverlayCommonGet().show(money: 1);
@@ -212,7 +213,7 @@ class TopView extends StatelessWidget {
 
 
 
-    // OverlaySuperwin().show(money: 100);
+    OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
     // OverlayWow().show(money: 100);
     // OverlayMegawin().show(money: 100);
@@ -281,35 +282,38 @@ class TopView extends StatelessWidget {
 
   topXp() {
     int level = MainController.to.level();
-    return Container(
-      width: 100.w,
-      height: 26.h,
-      padding: EdgeInsets.only(left: 22.w),
-      decoration: BoxDecoration(
-        // color: Colors.teal.withValues(alpha: 0.5),
-        // borderRadius: BorderRadius.circular(30.h),
-        // gradient: LinearGradient(
-        //   colors: [
-        //     Color(0xff540406),
-        //     Color(0xff3C0302),
-        //     Color(0xff360100),
-        //     Color(0xff560000),
-        //   ],
-        // ),
-        // border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
-      ),
-      child: Center(
-        child: SSAniiiiCount(
-          duration: Duration(milliseconds: 500),
-          fractionDigits: 0,
-          prefix: "LV.",
-          value: level,
-          // pass in a value like 2014
-          textStyle: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: Color(0xffFFFFFF),
-            fontSize: 14.sp,
-            // height: 1.1,
+    return GestureDetector(
+      onTap: onExp,
+      child: Container(
+        width: 100.w,
+        height: 26.h,
+        padding: EdgeInsets.only(left: 22.w),
+        decoration: BoxDecoration(
+          color: Colors.teal.withValues(alpha: 0.0),
+          // borderRadius: BorderRadius.circular(30.h),
+          // gradient: LinearGradient(
+          //   colors: [
+          //     Color(0xff540406),
+          //     Color(0xff3C0302),
+          //     Color(0xff360100),
+          //     Color(0xff560000),
+          //   ],
+          // ),
+          // border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
+        ),
+        child: Center(
+          child: SSAniiiiCount(
+            duration: Duration(milliseconds: 500),
+            fractionDigits: 0,
+            prefix: "LV.",
+            value: level,
+            // pass in a value like 2014
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: Color(0xffFFFFFF),
+              fontSize: 14.sp,
+              // height: 1.1,
+            ),
           ),
         ),
       ),
@@ -340,5 +344,9 @@ class TopView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onExp() {
+    OverlayExp().show();
   }
 }

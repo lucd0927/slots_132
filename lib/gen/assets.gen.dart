@@ -33,6 +33,15 @@ class $AssetsAuddddGen {
 class $AssetsDonghuaGen {
   const $AssetsDonghuaGen();
 
+  /// Directory path: assets/donghua/bigwin
+  $AssetsDonghuaBigwinGen get bigwin => const $AssetsDonghuaBigwinGen();
+
+  /// Directory path: assets/donghua/megawin
+  $AssetsDonghuaMegawinGen get megawin => const $AssetsDonghuaMegawinGen();
+
+  /// Directory path: assets/donghua/money
+  $AssetsDonghuaMoneyGen get money => const $AssetsDonghuaMoneyGen();
+
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
 
@@ -41,6 +50,9 @@ class $AssetsDonghuaGen {
 
   /// Directory path: assets/donghua/test
   $AssetsDonghuaTestGen get test => const $AssetsDonghuaTestGen();
+
+  /// Directory path: assets/donghua/wow
+  $AssetsDonghuaWowGen get wow => const $AssetsDonghuaWowGen();
 
   /// Directory path: assets/donghua/yanhua
   $AssetsDonghuaYanhuaGen get yanhua => const $AssetsDonghuaYanhuaGen();
@@ -231,6 +243,9 @@ class $AssetsImgGen {
   /// File path: assets/img/daily_bonus_topbg.png
   AssetGenImage get dailyBonusTopbg =>
       const AssetGenImage('assets/img/daily_bonus_topbg.png');
+
+  /// File path: assets/img/exp.png
+  AssetGenImage get exp => const AssetGenImage('assets/img/exp.png');
 
   /// File path: assets/img/free_spines_count.png
   AssetGenImage get freeSpinesCount =>
@@ -600,6 +615,18 @@ class $AssetsImgGen {
   AssetGenImage get popupBeisu =>
       const AssetGenImage('assets/img/popup_beisu.png');
 
+  /// File path: assets/img/popup_get_phone_spice.png
+  AssetGenImage get popupGetPhoneSpice =>
+      const AssetGenImage('assets/img/popup_get_phone_spice.png');
+
+  /// File path: assets/img/popup_get_phonemoney.png
+  AssetGenImage get popupGetPhonemoney =>
+      const AssetGenImage('assets/img/popup_get_phonemoney.png');
+
+  /// File path: assets/img/popup_get_xpmoney.png
+  AssetGenImage get popupGetXpmoney =>
+      const AssetGenImage('assets/img/popup_get_xpmoney.png');
+
   /// File path: assets/img/popup_jackpot1.png
   AssetGenImage get popupJackpot1 =>
       const AssetGenImage('assets/img/popup_jackpot1.png');
@@ -947,6 +974,7 @@ class $AssetsImgGen {
     dailyBonusOk,
     dailyBonusTopReward,
     dailyBonusTopbg,
+    exp,
     freeSpinesCount,
     freeSpins,
     freewheel,
@@ -1041,6 +1069,9 @@ class $AssetsImgGen {
     phonePopupJindu2Time,
     phoneSuip,
     popupBeisu,
+    popupGetPhoneSpice,
+    popupGetPhonemoney,
+    popupGetXpmoney,
     popupJackpot1,
     popupJackpot2,
     popupJackpot3,
@@ -1120,6 +1151,57 @@ class $AssetsImgGen {
   ];
 }
 
+class $AssetsDonghuaBigwinGen {
+  const $AssetsDonghuaBigwinGen();
+
+  /// File path: assets/donghua/bigwin/jiesuan02.atlas
+  String get jiesuan02Atlas => 'assets/donghua/bigwin/jiesuan02.atlas';
+
+  /// File path: assets/donghua/bigwin/jiesuan02.png
+  AssetGenImage get jiesuan02Png =>
+      const AssetGenImage('assets/donghua/bigwin/jiesuan02.png');
+
+  /// File path: assets/donghua/bigwin/skeleton.json
+  String get skeleton => 'assets/donghua/bigwin/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [jiesuan02Atlas, jiesuan02Png, skeleton];
+}
+
+class $AssetsDonghuaMegawinGen {
+  const $AssetsDonghuaMegawinGen();
+
+  /// File path: assets/donghua/megawin/jiesuan03.atlas
+  String get jiesuan03Atlas => 'assets/donghua/megawin/jiesuan03.atlas';
+
+  /// File path: assets/donghua/megawin/jiesuan03.png
+  AssetGenImage get jiesuan03Png =>
+      const AssetGenImage('assets/donghua/megawin/jiesuan03.png');
+
+  /// File path: assets/donghua/megawin/skeleton.json
+  String get skeleton => 'assets/donghua/megawin/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [jiesuan03Atlas, jiesuan03Png, skeleton];
+}
+
+class $AssetsDonghuaMoneyGen {
+  const $AssetsDonghuaMoneyGen();
+
+  /// File path: assets/donghua/money/fly_poker.atlas
+  String get flyPokerAtlas => 'assets/donghua/money/fly_poker.atlas';
+
+  /// File path: assets/donghua/money/fly_poker.json
+  String get flyPokerJson => 'assets/donghua/money/fly_poker.json';
+
+  /// File path: assets/donghua/money/fly_poker.png
+  AssetGenImage get flyPokerPng =>
+      const AssetGenImage('assets/donghua/money/fly_poker.png');
+
+  /// List of all assets
+  List<dynamic> get values => [flyPokerAtlas, flyPokerJson, flyPokerPng];
+}
+
 class $AssetsDonghuaSdlrGen {
   const $AssetsDonghuaSdlrGen();
 
@@ -1169,6 +1251,23 @@ class $AssetsDonghuaTestGen {
 
   /// List of all assets
   List<dynamic> get values => [skeleton, tanchuangAtlas, tanchuangPng];
+}
+
+class $AssetsDonghuaWowGen {
+  const $AssetsDonghuaWowGen();
+
+  /// File path: assets/donghua/wow/jiesuan04.atlas
+  String get jiesuan04Atlas => 'assets/donghua/wow/jiesuan04.atlas';
+
+  /// File path: assets/donghua/wow/jiesuan04.png
+  AssetGenImage get jiesuan04Png =>
+      const AssetGenImage('assets/donghua/wow/jiesuan04.png');
+
+  /// File path: assets/donghua/wow/skeleton.json
+  String get skeleton => 'assets/donghua/wow/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [jiesuan04Atlas, jiesuan04Png, skeleton];
 }
 
 class $AssetsDonghuaYanhuaGen {

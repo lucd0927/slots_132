@@ -340,7 +340,7 @@ class _VipPartnerState extends State<VipPartner> {
                     width: 30.w,
                     height: 30.w,
                   ),
-                  SizedBox(width: 4.w),
+                  SizedBox(width: 2.w),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -385,7 +385,7 @@ class _VipPartnerState extends State<VipPartner> {
                       "Level ${MainController.to.level()}/${MainController.maxLevel}",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 24.sp,
+                        fontSize: 22.sp,
                         color: Color(0xff222317),
                         height: 1,
                       ),

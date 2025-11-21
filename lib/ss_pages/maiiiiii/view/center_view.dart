@@ -11,6 +11,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
+import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
@@ -167,7 +168,7 @@ class CenterView extends StatelessWidget {
   centerCollectStarWidget() {
     return GestureDetector(
       onTap: (){
-        _onBoxGift();
+        _onStarGift();
       },
       child: Container(
         width: 280.h,
@@ -332,8 +333,13 @@ class CenterView extends StatelessWidget {
     );
   }
 
-  _onBoxGift() {
+  _onStarGift() {
     Get.toNamed(SSRouttttt.boxGift);
+  }
+
+  _onBoxGift(){
+    ssLogggg("=_onBoxGift==");
+    OverlayBoxgift().show();
   }
 
   Column leftWidget() {
@@ -341,7 +347,7 @@ class CenterView extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            ssLogggg("=mainBox==");
+
             _onBoxGift();
           },
           child: Container(
