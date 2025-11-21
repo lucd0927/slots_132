@@ -98,6 +98,22 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
 
               child: Stack(
                 children: [
+                  Positioned(
+                    left: -0.w,
+                    right: -0.w,
+                    top: -0.h,
+                    bottom: 0,
+                    child: IgnorePointer(
+                      child: Center(
+                        child: Container(
+                          width: ScreenUtil().screenWidth,
+                          height: ScreenUtil().screenHeight,
+                          color: Colors.yellow.withValues(alpha: 0.0),
+                          child: SSSpineMoney(),
+                        ),
+                      ),
+                    ),
+                  ),
                   Column(
                     children: [
                       SizedBox(height: 80.h),
@@ -180,22 +196,7 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                   //   ),
                   // ),
 
-                  Positioned(
-                    left: -0.w,
-                    right: -0.w,
-                    top: -0.h,
-                    bottom: 0,
-                    child: IgnorePointer(
-                      child: Center(
-                        child: Container(
-                          width: ScreenUtil().screenWidth,
-                          height: ScreenUtil().screenHeight,
-                          color: Colors.yellow.withValues(alpha: 0.2),
-                          child: SSSpineMoney(),
-                        ),
-                      ),
-                    ),
-                  ),
+
                 ],
               ),
             ),

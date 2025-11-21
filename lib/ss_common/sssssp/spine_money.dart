@@ -38,15 +38,15 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
         // Set the default mixing time between animations
         controller.animationState.data.defaultMix = 0.2;
         // Set the portal animation on track 0
-        controller.animationState.setAnimation(0, "show", true);
+        controller.animationState.setAnimation(0, "animation", true);
         // Queue the run animation after the portal animation
         // controller.animationState.addAnimationByName(0, "run", true, 0);
       },
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.money.flyPokerAtlas,
-      Assets.donghua.money.flyPokerJson,
+      Assets.donghua.money.skeletonAtlas,
+      Assets.donghua.money.skeletonJson,
       controller,
       sizedByBounds: true,
     );

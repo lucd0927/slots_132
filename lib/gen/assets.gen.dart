@@ -1189,18 +1189,18 @@ class $AssetsDonghuaMegawinGen {
 class $AssetsDonghuaMoneyGen {
   const $AssetsDonghuaMoneyGen();
 
-  /// File path: assets/donghua/money/fly_poker.atlas
-  String get flyPokerAtlas => 'assets/donghua/money/fly_poker.atlas';
+  /// File path: assets/donghua/money/skeleton.atlas
+  String get skeletonAtlas => 'assets/donghua/money/skeleton.atlas';
 
-  /// File path: assets/donghua/money/fly_poker.json
-  String get flyPokerJson => 'assets/donghua/money/fly_poker.json';
+  /// File path: assets/donghua/money/skeleton.json
+  String get skeletonJson => 'assets/donghua/money/skeleton.json';
 
-  /// File path: assets/donghua/money/fly_poker.png
-  AssetGenImage get flyPokerPng =>
-      const AssetGenImage('assets/donghua/money/fly_poker.png');
+  /// File path: assets/donghua/money/skeleton.png
+  AssetGenImage get skeletonPng =>
+      const AssetGenImage('assets/donghua/money/skeleton.png');
 
   /// List of all assets
-  List<dynamic> get values => [flyPokerAtlas, flyPokerJson, flyPokerPng];
+  List<dynamic> get values => [skeletonAtlas, skeletonJson, skeletonPng];
 }
 
 class $AssetsDonghuaSdlrGen {

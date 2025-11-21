@@ -19,6 +19,8 @@ import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'glow_border/glow_border.dart';
 
+GlobalKey centerJinglingGlobalKey = GlobalKey();
+
 class CenterView extends StatelessWidget {
   const CenterView({super.key});
 
@@ -56,7 +58,6 @@ class CenterView extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-
                 Positioned.fill(
                   child: TweenAnimationBuilder<double>(
                     duration: const Duration(milliseconds: 300),
@@ -167,7 +168,7 @@ class CenterView extends StatelessWidget {
 
   centerCollectStarWidget() {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         _onStarGift();
       },
       child: Container(
@@ -197,7 +198,13 @@ class CenterView extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4.sp),
-                    child: Image.asset(Assets.img.slots.slotsH1.path,width: 22.h,height: 22.h,gaplessPlayback: true,),
+                    child: Image.asset(
+                      key: centerJinglingGlobalKey,
+                      Assets.img.slots.slotsH1.path,
+                      width: 22.h,
+                      height: 22.h,
+                      gaplessPlayback: true,
+                    ),
                   ),
                   SSTxtGraBorder(
                     text: "TO",
@@ -206,7 +213,12 @@ class CenterView extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4.sp),
-                    child: Image.asset(Assets.img.phonePopupJindu2Star.path,width: 22.h,height: 22.h,gaplessPlayback: true,),
+                    child: Image.asset(
+                      Assets.img.phonePopupJindu2Star.path,
+                      width: 22.h,
+                      height: 22.h,
+                      gaplessPlayback: true,
+                    ),
                   ),
                   SSTxtGraBorder(
                     text: "WIN",
@@ -337,7 +349,7 @@ class CenterView extends StatelessWidget {
     Get.toNamed(SSRouttttt.boxGift);
   }
 
-  _onBoxGift(){
+  _onBoxGift() {
     ssLogggg("=_onBoxGift==");
     OverlayBoxgift().show();
   }
@@ -347,7 +359,6 @@ class CenterView extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-
             _onBoxGift();
           },
           child: Container(
