@@ -230,7 +230,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                           fontColor: Color(0xffFFFF29),
                           foreground: Color(0xffDB1717),
                         ),
-                        SizedBox(width: 50.w),
+                        SizedBox(width: 10.w),
                       ],
                     ),
                   if (showMoney)
@@ -249,13 +249,13 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                           fontColor: Color(0xffFFFF29),
                           foreground: Color(0xffDB1717),
                         ),
-                        SizedBox(width: 50.w),
+                        SizedBox(width: 10.w),
                       ],
                     ),
                   SSTxtGraBorder(
                     text:
                         "+${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
-                    fontSize: 24.sp,
+                    fontSize: 20.sp,
                     fontFamily: FontFamily.alkatra,
                     height: 1,
                     fontWeight: FontWeight.w500,

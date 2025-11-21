@@ -609,8 +609,6 @@ class MainController extends GetxController {
     _resetRoller(fourthRoller, 3);
     _resetRoller(fiveRoller, 4);
 
-
-
     onAddExp(100);
     double tmpAddMoney = 0.0;
     List<double> payBeisu = [];
@@ -628,9 +626,13 @@ class MainController extends GetxController {
     }
     hasScrollerEnd.value = false;
     curSpinMoney.value = tmpAddMoney;
-    onAddMoney(tmpAddMoney, onEnd: () {
-      // curSpinMoney.value = 0.0;
-    }, showMoneyAnimated: true);
+    onAddMoney(
+      tmpAddMoney,
+      onEnd: () {
+        // curSpinMoney.value = 0.0;
+      },
+      showMoneyAnimated: true,
+    );
     //
 
     ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
@@ -705,13 +707,20 @@ class MainController extends GetxController {
   static const String hkLevelExp = "9151iuwriyhi";
   static const String hkBeisuNum = "fa3323werfgdsg";
   static const String hkMonnnn = "54ewqr2g45sd4g5";
+  static const String hkCollectStar = "dfgs656ytiu232wq";
   static const double minBet = 8.0;
   static const double maxBet = 10.0;
 
   // 经验值
   var curLevelExp = 0.obs;
+
+  // 当前倍数
   var curBeisu = 8.0.obs;
+
+  // 转spin的时候消耗或者获取的money
   var curSpinMoney = 0.0.obs;
+
+  var curCollectStar = 0.obs;
 
   // key: 经验值
   // value： 等级范围
@@ -835,6 +844,17 @@ class MainController extends GetxController {
     ssLogggg("=====addMaxBeisu curBeisu:10.0");
   }
 
+  onAddCollectStar(int star) {
+    int tmpExp = curCollectStar.value;
+
+    tmpExp = tmpExp + star;
+
+    box.put(hkCollectStar, tmpExp);
+
+    curCollectStar.value = tmpExp;
+    ssLogggg("======onAddCollectStar:$tmpExp=");
+  }
+
   initOther() {
     int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;
     curLevelExp = tmpCurLevelExp.obs;
@@ -847,5 +867,9 @@ class MainController extends GetxController {
     double tmpMooon = box.get(hkMonnnn) ?? 0.0;
     curMonnnn = tmpMooon.obs;
     ssLogggg("=====initOther money:$tmpMooon");
+
+    int tmpCollectStar = box.get(hkCollectStar) ?? 0;
+    curCollectStar = tmpCollectStar.obs;
+    ssLogggg("=====initOther tmpCollectStar:$tmpCollectStar");
   }
 }

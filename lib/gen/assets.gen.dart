@@ -274,6 +274,10 @@ class $AssetsImgGen {
   AssetGenImage get giftCenterTxtBg =>
       const AssetGenImage('assets/img/gift_center_txt_bg.png');
 
+  /// File path: assets/img/gift_freespins.png
+  AssetGenImage get giftFreespins =>
+      const AssetGenImage('assets/img/gift_freespins.png');
+
   /// File path: assets/img/gift_item_lock.png
   AssetGenImage get giftItemLock =>
       const AssetGenImage('assets/img/gift_item_lock.png');
@@ -300,9 +304,6 @@ class $AssetsImgGen {
   /// File path: assets/img/gift_lock_rb.png
   AssetGenImage get giftLockRb =>
       const AssetGenImage('assets/img/gift_lock_rb.png');
-
-  /// File path: assets/img/gift_top.png
-  AssetGenImage get giftTop => const AssetGenImage('assets/img/gift_top.png');
 
   /// File path: assets/img/gift_unlock_lb.png
   AssetGenImage get giftUnlockLb =>
@@ -982,6 +983,7 @@ class $AssetsImgGen {
     giftBottom,
     giftCenter,
     giftCenterTxtBg,
+    giftFreespins,
     giftItemLock,
     giftItemLockBg,
     giftItemUmlock,
@@ -989,7 +991,6 @@ class $AssetsImgGen {
     giftLock,
     giftLockLb,
     giftLockRb,
-    giftTop,
     giftUnlockLb,
     giftUnlockRb,
     giftXpLock,

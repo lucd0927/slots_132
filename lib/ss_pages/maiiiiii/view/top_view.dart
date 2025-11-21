@@ -195,11 +195,11 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
     // OverlayBoxgift().show();
 
 
-    OverlayCommonGet().show(money: 1,exp: 0,phoneSpice: 1);
+    // OverlayCommonGet().show(money: 100,exp: 10,phoneSpice: 1);
 
 
     // OverlayDailyBonus().show();
