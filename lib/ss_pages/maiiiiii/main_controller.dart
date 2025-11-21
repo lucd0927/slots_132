@@ -83,8 +83,6 @@ class MainController extends GetxController {
   List<List<String>> rollerImgs = [
     [
       slotNumWild,
-      // slotNumWild,
-      // slotNumWild,
       slotNumH1,
       slotNumH2,
       slotNumH3,
@@ -167,7 +165,7 @@ class MainController extends GetxController {
   Map<int, String> _recordWinZuobiaoCategory(List<String> keys, int column) {
     Map<int, String> tmp = {};
     int length = keys.length;
-    ssLogggg("=_recordZuobiao==length:$length==keys:$keys");
+    // ssLogggg("=_recordZuobiao==length:$length==keys:$keys");
     for (int i = 0; i < length; i++) {
       int value = 1 + column + i * slotsColumn;
       String key = "${keys[i]}";
@@ -481,6 +479,8 @@ class MainController extends GetxController {
     kZuobiao_vCategory.addAll(kZuobiao_vCategory4);
     kZuobiao_vCategory.addAll(kZuobiao_vCategory5);
     ssLogggg("rollerImgs zuobiao_category:$kZuobiao_vCategory");
+    kZuobiao_vCategory_next = kZuobiao_vCategory;
+
     var paylines = SSPaylines.paylines();
     winNextZuobiao = {};
     winNextCategoryLines = [];
@@ -498,38 +498,49 @@ class MainController extends GetxController {
               String key = "";
               int count = 0;
               int allLenght = ddddaaa.length;
+              ssLogggg("=====win lines last=zuobiao:$ddddaaa ");
+              Set<int> tmpWinNextZuobiao = {};
               for (int i = 0; i < allLenght; i++) {
                 var zuobiao = ddddaaa[i];
-                winNextZuobiao.add(zuobiao);
                 bool result = kZuobiao_vCategory.containsKey(zuobiao);
                 if (result) {
                   var value = kZuobiao_vCategory[zuobiao] ?? "";
-                  ssLogggg("=====win lines last=key:$value");
-                  if (value.isNotEmpty &&
+                  ssLogggg("=====win lines last=zuobiao:$zuobiao key:$value");
 
-                      value != slotNumKEY &&
-                      value != slotNumSCATTER) {
-                    if(value.contains(slotNumWild)){
-                      count = count+1;
-                    }else{
+                  if (value.isEmpty ||
+                      value == slotNumKEY ||
+                      value == slotNumSCATTER) {
+                    tmpWinNextZuobiao = {};
+                    break;
+                  }else{
+                    tmpWinNextZuobiao.add(zuobiao);
+                    if (value.contains(slotNumWild)) {
+                      count = count + 1;
+                    } else {
                       key = value;
                     }
-
                   }
+
+
                 }
               }
-              if(count == allLenght && key.isEmpty){
+              winNextZuobiao.addAll(tmpWinNextZuobiao);
+              if (count == allLenght && key.isEmpty) {
                 key = slotNumWild;
               }
-              tmp[key] = ddddaaa;
-              winNextCategoryLines.add(tmp);
-              ssLogggg("=====win lines last=下次中奖线路:$ddddaaa key:$key count:$count allLength:$allLenght");
+              if (key.isNotEmpty) {
+                tmp[key] = ddddaaa;
+                winNextCategoryLines.add(tmp);
+              }
+
+              // ssLogggg("=====win lines last=下次中奖线路:$ddddaaa key:$key count:$count allLength:$allLenght",);
             }
           }
         }
       }
     }
     ssLogggg("=====win lines last=winNextCategoryLines:$winNextCategoryLines");
+    ssLogggg("=====win lines last=winNextZuobiao:$winNextZuobiao");
   }
 
   // 找出二维数组中最长的数组
@@ -567,6 +578,7 @@ class MainController extends GetxController {
 
   // 当前中奖的类型对应的坐标
   List<Map<String, List<int>>> winCurCategoryLines = [];
+  Map<int, String> kZuobiao_vCategory_cur = {};
 
   // 下一次中奖的坐标
   Set<int> winNextZuobiao = {};
@@ -574,6 +586,8 @@ class MainController extends GetxController {
   // 下一次中奖的类型对应的坐标
   List<Map<String, List<int>>> winNextCategoryLines = [];
 
+  // 下一次类型对应的坐标
+  Map<int, String> kZuobiao_vCategory_next = {};
   Completer<int>? result;
   int cunt = 0;
 
@@ -610,6 +624,11 @@ class MainController extends GetxController {
     for (var v in winNextCategoryLines) {
       winCurCategoryLines.add(v);
     }
+    kZuobiao_vCategory_cur = {};
+    kZuobiao_vCategory_next.forEach((key, value) {
+      kZuobiao_vCategory_cur[key] = value;
+    });
+
     initRoller5();
 
     _changeChild(firstRoller, 0);
@@ -623,7 +642,7 @@ class MainController extends GetxController {
     _resetRoller(thirdRoller, 2);
     _resetRoller(fourthRoller, 3);
     _resetRoller(fiveRoller, 4);
-
+    // 添加经验
     onAddExp(100);
     double tmpAddMoney = 0.0;
     List<double> payBeisu = [];
@@ -639,12 +658,13 @@ class MainController extends GetxController {
       tmpAddMoney = tmpAddMoney + tmpPayyy;
       payBeisu.add(tmpPay);
     }
-    hasScrollerEnd.value = false;
+
     curSpinMoney.value = tmpAddMoney;
     onAddMoney(
       tmpAddMoney,
       onEnd: () {
         // curSpinMoney.value = 0.0;
+        hasScrollerEnd.value = false;
       },
       showMoneyAnimated: true,
     );

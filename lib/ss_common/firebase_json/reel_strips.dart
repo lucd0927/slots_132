@@ -160,7 +160,7 @@ class SSReelStrips {
       reel1s.add(img1);
       reel1s.add(img2);
       reel1s.add(img3);
-      // reel1s = [ MainController.slotNumWild1,img2, img3];
+      reel1s = [ MainController.slotNumKEY,img2, img3];
 
     }
 
