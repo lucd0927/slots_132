@@ -199,7 +199,7 @@ class TopView extends StatelessWidget {
     // OverlayBoxgift().show();
 
 
-    // OverlayCommonGet().show(money: 1);
+    OverlayCommonGet().show(money: 1,exp: 0,phoneSpice: 1);
 
 
     // OverlayDailyBonus().show();
@@ -213,7 +213,7 @@ class TopView extends StatelessWidget {
 
 
 
-    OverlaySuperwin().show(money: 100);
+    // OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
     // OverlayWow().show(money: 100);
     // OverlayMegawin().show(money: 100);

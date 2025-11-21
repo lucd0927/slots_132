@@ -183,8 +183,8 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                   Positioned(
                     left: -0.w,
                     right: -0.w,
-                    top: -100.h,
-                    // bottom: 0,
+                    top: -0.h,
+                    bottom: 0,
                     child: IgnorePointer(
                       child: Center(
                         child: Container(
