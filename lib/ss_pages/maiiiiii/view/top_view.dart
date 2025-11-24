@@ -7,6 +7,7 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/overlay_bigwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/diallll/overlay_free_spins.dart';
@@ -195,7 +196,8 @@ class TopView extends StatelessWidget {
   }
 
   onMenu() async {
-    OverlaySettinnn().show();
+    ssLogggg("====onMenu");
+    // OverlaySettinnn().show();
     // OverlayBoxgift().show();
 
 
@@ -213,7 +215,7 @@ class TopView extends StatelessWidget {
 
 
 
-    // OverlaySuperwin().show(money: 100);
+    OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
     // OverlayWow().show(money: 100);
     // OverlayMegawin().show(money: 100);

@@ -8,7 +8,9 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 class SSMapView extends StatefulWidget {
   const SSMapView({super.key});
@@ -112,7 +114,7 @@ class _SSMapViewState extends State<SSMapView> {
       loopMaxN = loopMaxN + v;
     }
     // 获取女精灵总数量
-    int curGirlJinglingN = 80;
+    int curGirlJinglingN = MainController.to.curCollectStar.value;
     // 获取当前最大的循环数,向下取整
     int floor = (curGirlJinglingN / loopMaxN).floor();
     int loopNum = jumpToNextStar.length;
@@ -485,8 +487,16 @@ class _ItemWidgetState extends State<ItemWidget> {
 
       setState(() {
         int index = widget.index;
-        double money = 0;
+        double money = widget.model.money;
         setIndexJson(index: index, hasClick: true, money: money);
+        OverlayCommonGet().show(
+          money: money,
+          exp: 0,
+          phoneSpice: 0,
+          onClose: () {
+
+          },
+        );
       });
     }else{
       ssTushi(text: "Please collect star");

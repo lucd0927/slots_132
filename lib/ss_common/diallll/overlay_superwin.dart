@@ -101,13 +101,15 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                   Positioned(
                     left: -0.w,
                     right: -0.w,
-                    top: -0.h,
-                    bottom: 0,
+                    top: 0.h,
+                    bottom: -0.h,
                     child: IgnorePointer(
                       child: Center(
                         child: Container(
                           width: ScreenUtil().screenWidth,
                           height: ScreenUtil().screenHeight,
+                          // width: 375.w,
+                          // height: 812.h,
                           color: Colors.yellow.withValues(alpha: 0.0),
                           child: SSSpineMoney(),
                         ),
@@ -181,20 +183,6 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                     ],
                   ),
 
-                  // Positioned(
-                  //   left: -100.w,
-                  //   right: -100.w,
-                  //   top: -800.h,
-                  //   bottom: 0,
-                  //   child: IgnorePointer(
-                  //     child: Container(
-                  //       width: double.infinity,
-                  //       height: 1500.h,
-                  //       color: Colors.yellow.withValues(alpha: 0.0),
-                  //       child: SSSpineMoney(),
-                  //     ),
-                  //   ),
-                  // ),
 
 
                 ],

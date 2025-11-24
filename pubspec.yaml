@@ -36,7 +36,6 @@ dependencies:
   connectivity_plus: ^6.1.5
   webview_flutter: ^4.13.0
 
-#  lottie: ^3.3.1
   appsflyer_sdk: ^6.17.7
   hive_ce_flutter: ^2.3.3
   auto_size_text_plus: ^3.0.2
@@ -96,6 +95,7 @@ dependencies:
   percent_indicator: ^4.2.5
   animated_background: ^2.0.0
   spine_flutter: ^4.3.1
+  lottie: ^3.3.2
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:
@@ -127,13 +127,16 @@ flutter:
     - assets/img/slots/
     - assets/donghua/sdlr/
     - assets/donghua/yanhua/
-    - assets/donghua/test/
+    - assets/donghua/lottie_money/
+    - assets/donghua/lottie_money/images/
     - assets/donghua/superwin/
     - assets/donghua/wow/
     - assets/donghua/bigwin/
     - assets/donghua/megawin/
     - assets/donghua/money/
     - assets/audddd/
+    - assets/lottt/bian/
+    - assets/lottt/bian/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

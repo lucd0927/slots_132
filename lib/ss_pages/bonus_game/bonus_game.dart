@@ -490,7 +490,12 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
               ? SSAScale(milliseconds: 800, child: child)
               : FlipCard(
                   onFlipEnd: () {
-                    BonusGameController.to.addClickIndex(index);
+                    BonusGameController.to.addClickIndex(
+                      index,
+                      onOnClose: () {
+                        onClose();
+                      },
+                    );
                   },
                   front: contain
                       ? child

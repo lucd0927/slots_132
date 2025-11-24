@@ -411,7 +411,7 @@ class BottomView extends StatelessWidget {
       height: 200.h,
       decoration: BoxDecoration(
         color: Color(0xff340606).withValues(alpha: 0.7),
-        border: Border.all(color: Color(0xffA43334),width: 1.w),
+        border: Border.all(color: Color(0xffA43334), width: 1.w),
         borderRadius: BorderRadius.circular(12.w),
       ),
 
@@ -420,6 +420,7 @@ class BottomView extends StatelessWidget {
   }
 
   Container topProgressWidget() {
+    double progress = MainController.to.progressBonusGame();
     return Container(
       width: double.infinity,
       color: Colors.yellow.withValues(alpha: 0.0),
@@ -446,7 +447,7 @@ class BottomView extends StatelessWidget {
                       height: 16.h,
                       innerHeight: 12.h,
                       width: 180.w,
-                      progress: 0.5,
+                      progress: progress,
                       gradientColors: [Color(0xff59FF69), Color(0xff118C25)],
                       bgColor: Color(0xff0D0D0D).withValues(alpha: 0.6),
                       text: "",
@@ -470,12 +471,32 @@ class BottomView extends StatelessWidget {
               Positioned(
                 top: -10.h,
                 right: -30.w,
-                child: Image.asset(
-                  Assets.img.mainBounsGame.path,
+                child: Container(
                   width: 89.w,
                   height: 83.w,
-                  fit: BoxFit.fill,
-                  gaplessPlayback: true,
+
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          // key: MainController.to.keyBonusGame,
+                          Assets.img.mainBounsGame.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                          gaplessPlayback: true,
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          width: double.infinity,
+                          height: double.infinity,
+                          key: MainController.to.keyBonusGame,
+                          color: Colors.blueAccent.withValues(alpha: 0.0),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

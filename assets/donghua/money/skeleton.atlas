@@ -1,418 +1,257 @@
 skeleton.png
-size:2032,1996
-filter:Linear,Linear
-pma:true
-scale:0.37
-money_00000
-bounds:2,1993,1,1
-money_00001
-bounds:25,1985,9,17
-offsets:0,197,139,300
-rotate:90
-money_00002
-bounds:5,1986,8,18
-offsets:0,196,139,300
-rotate:90
-money_00003
-bounds:44,1890,118,104
-offsets:0,196,139,300
-money_00004
-bounds:164,1889,118,105
-offsets:0,195,139,300
-money_00005
-bounds:284,1888,118,106
-offsets:0,194,139,300
-money_00006
-bounds:404,1887,139,107
-offsets:0,193,139,300
-money_00007
-bounds:545,1886,139,108
-offsets:0,192,139,300
-money_00008
-bounds:686,1885,139,109
-offsets:0,191,139,300
-money_00009
-bounds:827,1884,139,110
-offsets:0,190,139,300
-money_00010
-bounds:968,1883,139,111
-offsets:0,189,139,300
-money_00011
-bounds:1109,1883,139,111
-offsets:0,188,139,300
-money_00012
-bounds:1250,1883,139,111
-offsets:0,186,139,300
-money_00013
-bounds:1391,1883,139,111
-offsets:0,185,139,300
-money_00014
-bounds:1532,1877,139,117
-offsets:0,183,139,300
-money_00015
-bounds:1673,1875,139,119
-offsets:0,181,139,300
-money_00016
-bounds:1814,1874,139,120
-offsets:0,180,139,300
-money_00017
-bounds:2,1766,139,122
-offsets:0,178,139,300
-money_00018
-bounds:284,1761,139,124
-offsets:0,176,139,300
-money_00019
-bounds:566,1757,139,126
-offsets:0,174,139,300
-money_00020
-bounds:848,1752,139,129
-offsets:0,171,139,300
-money_00021
-bounds:1130,1750,139,131
-offsets:0,169,139,300
-money_00022
-bounds:1412,1742,139,133
-offsets:0,167,139,300
-money_00023
-bounds:1694,1736,139,136
-offsets:0,164,139,300
-money_00024
-bounds:2,1625,139,139
-offsets:0,161,139,300
-money_00025
-bounds:143,1765,139,122
-offsets:0,178,139,300
-money_00026
-bounds:425,1760,139,124
-offsets:0,176,139,300
-money_00027
-bounds:707,1756,139,126
-offsets:0,174,139,300
-money_00028
-bounds:989,1752,139,129
-offsets:0,171,139,300
-money_00029
-bounds:1271,1750,139,131
-offsets:0,169,139,300
-money_00030
-bounds:1553,1740,139,133
-offsets:0,167,139,300
-money_00031
-bounds:1835,1736,139,136
-offsets:0,164,139,300
-money_00032
-bounds:143,1624,139,139
-offsets:0,161,139,300
-money_00033
-bounds:284,1619,139,143
-offsets:0,157,139,300
-rotate:90
-money_00034
-bounds:429,1616,139,147
-offsets:0,153,139,300
-rotate:90
-money_00035
-bounds:578,1615,139,151
-offsets:0,149,139,300
-rotate:90
-money_00036
-bounds:731,1611,139,155
-offsets:0,145,139,300
-rotate:90
-money_00037
-bounds:888,1611,139,159
-offsets:0,141,139,300
-rotate:90
-money_00038
-bounds:1049,1609,139,164
-offsets:0,136,139,300
-rotate:90
-money_00039
-bounds:1215,1609,139,169
-offsets:0,131,139,300
-rotate:90
-money_00040
-bounds:1386,1599,139,173
-offsets:0,127,139,300
-rotate:90
-money_00041
-bounds:1561,1595,139,178
-offsets:0,122,139,300
-rotate:90
-money_00042
-bounds:1741,1595,139,183
-offsets:0,117,139,300
-rotate:90
-money_00043
-bounds:2,1483,139,188
-offsets:0,112,139,300
-rotate:90
-money_00044
-bounds:192,1478,139,193
-offsets:0,107,139,300
-rotate:90
-money_00045
-bounds:387,1474,139,199
-offsets:0,101,139,300
-rotate:90
-money_00046
-bounds:588,1470,139,204
-offsets:0,96,139,300
-rotate:90
-money_00047
-bounds:794,1470,139,210
-offsets:0,90,139,300
-rotate:90
-money_00048
-bounds:1006,1468,139,215
-offsets:0,85,139,300
-rotate:90
-money_00049
-bounds:1223,1458,139,221
-offsets:0,79,139,300
-rotate:90
-money_00050
-bounds:1446,1454,139,213
-offsets:0,87,139,300
-rotate:90
-money_00051
-bounds:1661,1454,139,220
-offsets:0,80,139,300
-rotate:90
-money_00052
-bounds:1883,1366,139,227
-offsets:0,73,139,300
-money_00053
-bounds:2,1337,139,234
-offsets:0,66,139,300
-rotate:90
-money_00054
-bounds:238,1333,139,242
-offsets:0,58,139,300
-rotate:90
-money_00055
-bounds:482,1329,139,249
-offsets:0,51,139,300
-rotate:90
-money_00056
-bounds:733,1329,139,256
-offsets:0,44,139,300
-rotate:90
-money_00057
-bounds:991,1317,139,264
-offsets:0,36,139,300
-rotate:90
-money_00058
-bounds:1257,1313,139,272
-offsets:0,28,139,300
-rotate:90
-money_00059
-bounds:1531,1313,139,279
-offsets:0,21,139,300
-rotate:90
-money_00060
-bounds:2,1192,139,287
-offsets:0,13,139,300
-rotate:90
-money_00061
-bounds:291,1188,139,295
-offsets:0,5,139,300
-rotate:90
-money_00062
-bounds:588,1188,139,300
-rotate:90
-money_00063
-bounds:890,1176,139,261
-offsets:0,39,139,300
-rotate:90
-money_00064
-bounds:1153,1172,139,266
-offsets:0,34,139,300
-rotate:90
-money_00065
-bounds:1421,1172,139,272
-offsets:0,28,139,300
-rotate:90
-money_00066
-bounds:1695,1172,139,277
-offsets:0,23,139,300
-rotate:90
-money_00067
-bounds:2,1051,139,283
-offsets:0,17,139,300
-rotate:90
-money_00068
-bounds:287,1047,139,291
-offsets:0,9,139,300
-rotate:90
-money_00069
-bounds:580,1047,139,299
-offsets:0,1,139,300
-rotate:90
-money_00070
-bounds:1152,1031,139,300
-rotate:90
-money_00071
-bounds:1454,1031,139,300
-rotate:90
-money_00072
-bounds:280,906,139,300
-rotate:90
-money_00073
-bounds:881,1035,139,269
-offsets:0,31,139,300
-rotate:90
-money_00074
-bounds:2,910,139,276
-offsets:0,24,139,300
-rotate:90
-money_00075
-bounds:582,906,139,283
-offsets:0,17,139,300
-rotate:90
-money_00076
-bounds:1149,890,139,291
-offsets:0,9,139,300
-rotate:90
-money_00077
-bounds:1442,890,139,298
-offsets:0,2,139,300
-rotate:90
-money_00078
-bounds:2,765,139,300
-rotate:90
-money_00079
-bounds:304,765,139,290
-offsets:0,10,139,300
-rotate:90
-money_00080
-bounds:596,753,139,299
-offsets:0,1,139,300
-rotate:90
-money_00081
-bounds:897,749,139,300
-rotate:90
-money_00082
-bounds:1199,749,139,300
-rotate:90
-money_00083
-bounds:1501,749,139,299
-offsets:0,1,139,300
-rotate:90
-money_00084
-bounds:2,624,139,300
-rotate:90
-money_00085
-bounds:587,612,139,300
-rotate:90
-money_00086
-bounds:889,608,139,300
-rotate:90
-money_00087
-bounds:1756,1031,139,274
-offsets:0,26,139,300
-rotate:90
-money_00088
-bounds:867,894,139,280
-offsets:0,20,139,300
-rotate:90
-money_00089
-bounds:1742,890,139,286
-offsets:0,14,139,300
-rotate:90
-money_00090
-bounds:1191,608,139,292
-offsets:0,8,139,300
-rotate:90
-money_00091
-bounds:1485,608,139,298
-offsets:0,2,139,300
-rotate:90
-money_00092
-bounds:2,483,139,300
-rotate:90
-money_00093
-bounds:304,471,139,300
-rotate:90
-money_00094
-bounds:606,467,139,300
-rotate:90
-money_00095
-bounds:304,624,139,281
-offsets:0,19,139,300
-rotate:90
-money_00096
-bounds:1802,598,139,290
-offsets:0,10,139,300
-money_00097
-bounds:908,467,139,292
-offsets:0,8,139,300
-rotate:90
-money_00098
-bounds:1202,467,139,300
-rotate:90
-money_00099
-bounds:2,342,139,300
-rotate:90
-money_00100
-bounds:304,330,139,300
-rotate:90
-money_00101
-bounds:606,326,139,300
-rotate:90
-money_00102
-bounds:908,326,139,300
-rotate:90
-money_00103
-bounds:1504,467,139,293
-offsets:0,7,139,300
-rotate:90
-money_00104
-bounds:1210,326,139,299
-offsets:0,1,139,300
-rotate:90
-money_00105
-bounds:1511,326,139,300
-rotate:90
-money_00106
-bounds:2,201,139,300
-rotate:90
-money_00107
-bounds:304,189,139,300
-rotate:90
-money_00108
-bounds:606,185,139,300
-rotate:90
-money_00109
-bounds:908,185,139,296
-offsets:0,4,139,300
-rotate:90
-money_00110
-bounds:1206,185,139,300
-rotate:90
-money_00111
-bounds:1508,185,139,300
-rotate:90
-money_00112
-bounds:2,60,139,300
-rotate:90
-money_00113
-bounds:304,48,139,300
-rotate:90
-money_00114
-bounds:606,44,139,300
-rotate:90
-money_00115
-bounds:908,44,139,300
-rotate:90
-money_00116
-bounds:1813,304,139,292
-offsets:0,8,139,300
-money_00117
-bounds:1210,44,139,300
-rotate:90
-money_00118
-bounds:1512,44,139,300
-rotate:90
-money_00119
-bounds:1814,2,139,300
+	size: 2025, 1921
+	filter: Linear, Linear
+	pma: true
+	scale: 0.3
+fly_poker-show_00
+	bounds: 1310, 1215, 1, 1
+fly_poker-show_01
+	bounds: 592, 1008, 225, 37
+	offsets: 0, 262, 225, 487
+	rotate: 90
+fly_poker-show_02
+	bounds: 1544, 1470, 225, 47
+	offsets: 0, 299, 225, 487
+fly_poker-show_03
+	bounds: 1771, 1434, 225, 84
+	offsets: 0, 331, 225, 487
+fly_poker-show_04
+	bounds: 1317, 1448, 225, 42
+	offsets: 0, 384, 225, 487
+fly_poker-show_05
+	bounds: 1544, 1386, 225, 82
+	offsets: 0, 374, 225, 487
+fly_poker-show_06
+	bounds: 1771, 1264, 225, 168
+	offsets: 0, 315, 225, 487
+fly_poker-show_07
+	bounds: 650, 1271, 225, 194
+	offsets: 0, 292, 225, 487
+fly_poker-show_08
+	bounds: 877, 1255, 225, 212
+	offsets: 0, 275, 225, 487
+fly_poker-show_09
+	bounds: 650, 1053, 225, 216
+	offsets: 0, 271, 225, 487
+fly_poker-show_10
+	bounds: 877, 1041, 225, 212
+	offsets: 0, 275, 225, 487
+fly_poker-show_11
+	bounds: 864, 838, 225, 201
+	offsets: 0, 286, 225, 487
+fly_poker-show_12
+	bounds: 1156, 684, 225, 152
+	offsets: 0, 291, 225, 487
+	rotate: 90
+fly_poker-show_13
+	bounds: 1310, 621, 225, 175
+	offsets: 0, 305, 225, 487
+fly_poker-show_14
+	bounds: 1750, 593, 225, 166
+	offsets: 0, 310, 225, 487
+fly_poker-show_15
+	bounds: 1074, 407, 225, 162
+	offsets: 0, 311, 225, 487
+	rotate: 90
+fly_poker-show_16
+	bounds: 1463, 343, 225, 112
+	offsets: 0, 362, 225, 487
+fly_poker-show_17
+	bounds: 1917, 376, 215, 101
+	offsets: 9, 377, 225, 487
+	rotate: 90
+fly_poker-show_18
+	bounds: 1182, 190, 215, 107
+	offsets: 0, 374, 225, 487
+	rotate: 90
+fly_poker-show_19
+	bounds: 1651, 205, 213, 117
+	offsets: 0, 370, 225, 487
+fly_poker-show_20
+	bounds: 1156, 647, 90, 35
+	offsets: 0, 452, 225, 487
+fly_poker-show_21
+	bounds: 1055, 216, 189, 125
+	offsets: 10, 362, 225, 487
+	rotate: 90
+fly_poker-show_22
+	bounds: 1690, 324, 225, 129
+	offsets: 0, 358, 225, 487
+fly_poker-show_23
+	bounds: 1690, 455, 225, 136
+	offsets: 0, 351, 225, 487
+fly_poker-show_24
+	bounds: 1436, 199, 213, 142
+	offsets: 12, 345, 225, 487
+fly_poker-show_25
+	bounds: 986, 2, 212, 145
+	offsets: 13, 342, 225, 487
+	rotate: 90
+fly_poker-show_26
+	bounds: 838, 2, 212, 146
+	offsets: 13, 340, 225, 487
+	rotate: 90
+fly_poker-show_27
+	bounds: 1291, 201, 225, 143
+	offsets: 0, 338, 225, 487
+	rotate: 90
+fly_poker-show_28
+	bounds: 1463, 457, 225, 155
+	offsets: 0, 317, 225, 487
+fly_poker-show_29
+	bounds: 1238, 428, 223, 191
+	offsets: 2, 296, 225, 487
+fly_poker-show_30
+	bounds: 838, 216, 215, 212
+	offsets: 10, 275, 225, 487
+fly_poker-show_31
+	bounds: 1767, 1050, 212, 233
+	offsets: 13, 254, 225, 487
+	rotate: 90
+fly_poker-show_32
+	bounds: 1104, 1218, 207, 250
+	offsets: 13, 237, 225, 487
+fly_poker-show_33
+	bounds: 1533, 798, 215, 266
+	offsets: 0, 221, 225, 487
+fly_poker-show_34
+	bounds: 1750, 761, 215, 287
+	offsets: 0, 200, 225, 487
+fly_poker-show_35
+	bounds: 1313, 1136, 225, 310
+	offsets: 0, 177, 225, 487
+fly_poker-show_36
+	bounds: 1540, 1066, 225, 318
+	offsets: 0, 168, 225, 487
+fly_poker-show_37
+	bounds: 1310, 798, 221, 336
+	offsets: 4, 151, 225, 487
+fly_poker-show_38
+	bounds: 213, 20, 212, 359
+	offsets: 13, 128, 225, 487
+fly_poker-show_39
+	bounds: 218, 804, 202, 375
+	offsets: 13, 108, 225, 487
+	rotate: 90
+fly_poker-show_40
+	bounds: 214, 381, 202, 382
+	offsets: 13, 88, 225, 487
+	rotate: 90
+fly_poker-show_41
+	bounds: 1771, 1520, 225, 399
+	offsets: 0, 67, 225, 487
+fly_poker-show_42
+	bounds: 220, 1235, 212, 409
+	offsets: 13, 51, 225, 487
+	rotate: 90
+fly_poker-show_43
+	bounds: 877, 1469, 221, 450
+	offsets: 0, 37, 225, 487
+fly_poker-show_44
+	bounds: 220, 1449, 215, 470
+	offsets: 0, 17, 225, 487
+fly_poker-show_45
+	bounds: 2, 956, 214, 474
+	offsets: 0, 0, 225, 487
+fly_poker-show_46
+	bounds: 1100, 1470, 215, 449
+	offsets: 0, 38, 225, 487
+fly_poker-show_47
+	bounds: 437, 1449, 211, 470
+	offsets: 4, 17, 225, 487
+fly_poker-show_48
+	bounds: 2, 1432, 216, 487
+	offsets: 9, 0, 225, 487
+fly_poker-show_49
+	bounds: 2, 481, 210, 473
+	offsets: 15, 4, 225, 487
+fly_poker-show_50
+	bounds: 2, 18, 209, 461
+	offsets: 16, 3, 225, 487
+fly_poker-show_51
+	bounds: 650, 1467, 225, 452
+	offsets: 0, 0, 225, 487
+fly_poker-show_52
+	bounds: 1317, 1492, 225, 427
+	offsets: 0, 0, 225, 487
+fly_poker-show_53
+	bounds: 1544, 1519, 225, 400
+	offsets: 0, 0, 225, 487
+fly_poker-show_54
+	bounds: 218, 1008, 225, 372
+	offsets: 0, 13, 225, 487
+	rotate: 90
+fly_poker-show_55
+	bounds: 214, 585, 217, 371
+	offsets: 1, 0, 225, 487
+	rotate: 90
+fly_poker-show_56
+	bounds: 427, 24, 207, 355
+	offsets: 4, 0, 225, 487
+fly_poker-show_57
+	bounds: 1104, 911, 204, 305
+	offsets: 7, 35, 225, 487
+fly_poker-show_58
+	bounds: 636, 80, 200, 306
+	offsets: 10, 17, 225, 487
+fly_poker-show_59
+	bounds: 854, 634, 202, 300
+	offsets: 7, 4, 225, 487
+	rotate: 90
+fly_poker-show_60
+	bounds: 598, 388, 202, 286
+	offsets: 8, 0, 225, 487
+fly_poker-show_61
+	bounds: 802, 430, 202, 270
+	offsets: 5, 3, 225, 487
+	rotate: 90
+fly_poker-show_62
+	bounds: 595, 676, 192, 257
+	offsets: 8, 0, 225, 487
+	rotate: 90
+fly_poker-show_63
+	bounds: 631, 870, 181, 231
+	offsets: 18, 0, 225, 487
+	rotate: 90
+fly_poker-show_64
+	bounds: 1537, 614, 182, 211
+	offsets: 16, 0, 225, 487
+	rotate: 90
+fly_poker-show_65
+	bounds: 1411, 16, 181, 196
+	offsets: 15, 0, 225, 487
+	rotate: 90
+fly_poker-show_66
+	bounds: 1609, 15, 182, 177
+	offsets: 9, 3, 225, 487
+	rotate: 90
+fly_poker-show_67
+	bounds: 1133, 2, 186, 165
+	offsets: 0, 0, 225, 487
+	rotate: 90
+fly_poker-show_68
+	bounds: 1866, 213, 157, 109
+	offsets: 4, 40, 225, 487
+fly_poker-show_69
+	bounds: 1300, 41, 158, 109
+	offsets: 6, 20, 225, 487
+	rotate: 90
+fly_poker-show_70
+	bounds: 1788, 44, 159, 108
+	offsets: 1, 1, 225, 487
+	rotate: 90
+fly_poker-show_71
+	bounds: 1898, 54, 157, 85
+	offsets: 0, 7, 225, 487
+	rotate: 90
+fly_poker-show_72
+	bounds: 636, 3, 159, 75
+	offsets: 0, 0, 225, 487
+fly_poker-show_73
+	bounds: 1998, 1785, 134, 25
+	offsets: 25, 0, 225, 487
+	rotate: 90
+fly_poker-show_74
+	bounds: 1533, 1124, 10, 5
+	offsets: 142, 0, 225, 487
+	rotate: 90

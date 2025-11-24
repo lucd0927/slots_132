@@ -301,43 +301,51 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
     ).chain(CurveTween(curve: Curves.easeInOut));
     // ssLogggg("===size:${widget.startSize}==widget.endSize:${widget.endSize}");
     return Stack(
-      children: _items.map((item) {
-        return AnimatedBuilder(
-          animation: item.animation,
-          builder: (_, __) {
-            final t = item.animation.value;
-            final pos = positionTween.evaluate(item.controller);
-            final size = sizeTween.evaluate(item.controller);
-            // ssLogggg("===size:$size==");
-            // final dx = lerpDouble(widget.start.dx, widget.end.dx, item.controller.value)!;
-            // final dy = _calcY(
-            //   item.controller.value,
-            //   widget.start.dy,
-            //   widget.end.dy,
-            //   widget.arcHeight,
-            // );
+      children: [
+        ..._items.map((item) {
+          return AnimatedBuilder(
+            animation: item.animation,
+            builder: (_, __) {
+              final t = item.animation.value;
+              final pos = positionTween.evaluate(item.controller);
+              final size = sizeTween.evaluate(item.controller);
+              // ssLogggg("===size:$size==");
+              // final dx = lerpDouble(widget.start.dx, widget.end.dx, item.controller.value)!;
+              // final dy = _calcY(
+              //   item.controller.value,
+              //   widget.start.dy,
+              //   widget.end.dy,
+              //   widget.arcHeight,
+              // );
 
-            final dx = t.dx;
-            final dy = t.dy;
+              final dx = t.dx;
+              final dy = t.dy;
 
-            // 处理大小插值
-            double width = size.width;
-            double height = size.height;
+              // 处理大小插值
+              double width = size.width;
+              double height = size.height;
 
-            Widget child = item.widget;
-            if (widget.startSize != null && widget.endSize != null) {
-              child = Container(
-                width: width,
-                height: height,
-                color: Colors.teal.withValues(alpha: 0.0),
-                child: FittedBox(fit:BoxFit.contain, child: item.widget),
-              );
-            }
+              Widget child = item.widget;
+              if (widget.startSize != null && widget.endSize != null) {
+                child = Container(
+                  width: width,
+                  height: height,
+                  color: Colors.teal.withValues(alpha: 0.0),
+                  child: FittedBox(fit: BoxFit.contain, child: item.widget),
+                );
+              }
 
-            return Positioned(left: dx, top: dy, child: child);
-          },
-        );
-      }).toList(),
+              return Positioned(left: dx, top: dy, child: child);
+            },
+          );
+        }).toList(),
+        if (widget.children.length > 0)
+          Positioned(
+            child: widget.children[0],
+            left: widget.end.dx,
+            top: widget.end.dy,
+          ),
+      ],
     );
   }
 }

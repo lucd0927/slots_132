@@ -14,6 +14,7 @@ import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
+import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 
@@ -29,8 +30,32 @@ class MainController extends GetxController {
     initOther();
   }
 
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    ssLogggg("=======kZuobiao_vWidgetContex onReady:$kZuobiao_vWidgetContext");
+    recordZuobiaoPosition();
+    ssLogggg(
+      "=======kZuobiao_vWidgetContextOffset onReady:$kZuobiao_vWidgetContextOffset",
+    );
+  }
+
+  recordZuobiaoPosition() {
+    kZuobiao_vWidgetContext.forEach((int zuobiao, BuildContext context) {
+      RenderBox targetBox = context.findRenderObject() as RenderBox;
+      var targetLocation = targetBox.localToGlobal(Offset.zero);
+      kZuobiao_vWidgetContextOffset[zuobiao] = targetLocation;
+    });
+  }
+
+  // 显示free spins
   var showFreeSpin = false.obs;
+
+  // 显示中奖路
   var showWinLines = false.obs;
+
+  // 滚动是否结束
   var hasScrollerEnd = false.obs;
 
   final firstRoller = GlobalKey<RollerListState>();
@@ -39,6 +64,8 @@ class MainController extends GetxController {
   final fourthRoller = GlobalKey<RollerListState>();
   final fiveRoller = GlobalKey<RollerListState>();
   final slotMachineKey = GlobalKey<SSSlotMachineState>();
+  final keyCenterJinling = GlobalKey();
+  final keyBonusGame = GlobalKey();
 
   static const String slotNumWild = "WILD";
   static const String slotNumWild1 = "WILD1";
@@ -66,7 +93,7 @@ class MainController extends GetxController {
     slotNumKEY,
     slotNumSCATTER,
   ];
-  static final Map<String, String> kName_vImgName = {
+  static final Map<String, String> kCategoryName_vImgName = {
     slotNumWild: Assets.img.slots.slotsWild1.path,
     slotNumWild1: Assets.img.slots.slotsWild1.path,
     slotNumWild2: Assets.img.slots.slotsWild2.path,
@@ -514,7 +541,7 @@ class MainController extends GetxController {
                       value == slotNumSCATTER) {
                     tmpWinNextZuobiao = {};
                     break;
-                  }else{
+                  } else {
                     tmpWinNextZuobiao.add(zuobiao);
                     if (value.contains(slotNumWild)) {
                       count = count + 1;
@@ -522,8 +549,6 @@ class MainController extends GetxController {
                       key = value;
                     }
                   }
-
-
                 }
               }
               winNextZuobiao.addAll(tmpWinNextZuobiao);
@@ -580,6 +605,17 @@ class MainController extends GetxController {
 
   // 当前中奖的类型对应的坐标
   List<Map<String, List<int>>> winCurCategoryLines = [];
+
+  // key:坐标 value:种类 [    slotNumWild,
+  //     slotNumH1,
+  //     slotNumH2,
+  //     slotNumH3,
+  //     slotNumM1,
+  //     slotNumM2,
+  //     slotNumL1,
+  //     slotNumL2,
+  //     slotNumKEY,
+  //     slotNumSCATTER,]
   Map<int, String> kZuobiao_vCategory_cur = {};
 
   // 下一次中奖的坐标
@@ -598,7 +634,9 @@ class MainController extends GetxController {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
     }
+
     ssLogggg("==onStartRoller==start=");
+    kZuobiao_vWidgetContext = {};
     showFreeSpin.value = false;
     showWinLines.value = false;
     cunt = 0;
@@ -662,14 +700,80 @@ class MainController extends GetxController {
     }
 
     curSpinMoney.value = tmpAddMoney;
+
+    ssLogggg("====winCurZuobiao:$winCurZuobiao");
+    ssLogggg(
+      "====kZuobiao_vWidgetContextOffset:$kZuobiao_vWidgetContextOffset",
+    );
+    bool containerslotNumH1 = false;
+    int starCount = 0;
+    kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
+      Offset? startPosition = kZuobiao_vWidgetContextOffset[zuobiao];
+      String img = kCategoryName_vImgName[value] ?? "";
+      if (value == slotNumH1) {
+        if (startPosition != null) {
+          // slotNumH1
+          img = Assets.img.slots.slotsH1.path;
+          Widget heroChild = Image.asset(img);
+          containerslotNumH1 = true;
+          starCount++;
+          OverlayFly2TargetKey().showWithSize(
+            childSize: Size(64.w, 64.w),
+            targetContext: keyCenterJinling.currentContext!,
+            topLeftOffset: startPosition,
+            heroChild: heroChild,
+          );
+        }
+      }
+    });
+    if (containerslotNumH1) {
+      onAddCollectStar(starCount);
+      await Future.delayed(Duration(milliseconds: 1000), () {});
+    }
+    bool containerslotNumKEY = false;
+    int bonusGameCount = 0;
+    kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
+      Offset? startPosition = kZuobiao_vWidgetContextOffset[zuobiao];
+      String img = kCategoryName_vImgName[value] ?? "";
+
+      if (value == slotNumKEY) {
+        if (startPosition != null) {
+          img = Assets.img.mainBounsGame.path;
+          // img = Assets.img.slots.slotsH1.path;
+          Widget heroChild = Image.asset(img);
+          containerslotNumKEY = true;
+          bonusGameCount++;
+
+          OverlayFly2TargetKey().showWithSize(
+            childSize: Size(64.w, 64.w),
+            targetContext: keyBonusGame.currentContext!,
+            topLeftOffset: startPosition,
+            heroChild: heroChild,
+          );
+        }
+      }
+    });
+
+    if (containerslotNumKEY) {
+      onAddBonusGameCount(bonusGameCount);
+      await Future.delayed(Duration(milliseconds: 1200), () {});
+    }
+    DateTime curTime = DateTime.now();
+    ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
     onAddMoney(
       tmpAddMoney,
-      onEnd: () {
-        // curSpinMoney.value = 0.0;
+      onEnd: () async{
+        await Future.delayed(Duration(milliseconds: 500), () {});
+        DateTime curTime2 = DateTime.now();
+        ssLogggg("==onStartRoller==end=curTime2:${curTime2.millisecondsSinceEpoch-curTime.millisecondsSinceEpoch}");
         hasScrollerEnd.value = false;
 
-        OverlayHeroFly().show(targetKey: centerJinglingGlobalKey);
+        int tmpBonusGameCount = curBonusGameCount.value;
+        if (tmpBonusGameCount >= maxBonusGameCount) {
+          OverlayBonusGame().show();
 
+          resetToZeroBonusGameCount();
+        }
       },
       showMoneyAnimated: true,
     );
@@ -728,6 +832,32 @@ class MainController extends GetxController {
     await Future.delayed(Duration(milliseconds: 30));
   }
 
+  // BuildContext? keyWidgetZuobiao_1;
+  // BuildContext? keyWidgetZuobiao_2;
+  // BuildContext? keyWidgetZuobiao_3;
+  // BuildContext? keyWidgetZuobiao_4;
+  // BuildContext? keyWidgetZuobiao_5;
+  // BuildContext? keyWidgetZuobiao_6;
+  // BuildContext? keyWidgetZuobiao_7;
+  // BuildContext? keyWidgetZuobiao_8;
+  // BuildContext? keyWidgetZuobiao_9;
+  // BuildContext? keyWidgetZuobiao_10;
+  // BuildContext? keyWidgetZuobiao_11;
+  // BuildContext? keyWidgetZuobiao_12;
+  // BuildContext? keyWidgetZuobiao_13;
+  // BuildContext? keyWidgetZuobiao_14;
+  // BuildContext? keyWidgetZuobiao_15;
+  // BuildContext? keyWidgetZuobiao_16;
+
+  Map<int, BuildContext> kZuobiao_vWidgetContext = {};
+
+  // 坐标对应的位置
+  Map<int, Offset> kZuobiao_vWidgetContextOffset = {};
+
+  setContext(BuildContext context, int index) {
+    kZuobiao_vWidgetContext[index] = context;
+  }
+
   /// ****************************************************************************************************************
   /// 除去slot machine的逻辑
 
@@ -735,6 +865,8 @@ class MainController extends GetxController {
   var curMonnnn = 0.0.obs;
 
   static const int maxLevel = 32;
+  static const int maxStarCount = 32;
+  static const int maxBonusGameCount = 10;
   static const double minWithdddMoney = 1000;
   static const double jacktopGrand = 128.0;
   static const double jacktopMajor = 80.0;
@@ -748,8 +880,11 @@ class MainController extends GetxController {
   static const String hkBeisuNum = "fa3323werfgdsg";
   static const String hkMonnnn = "54ewqr2g45sd4g5";
   static const String hkCollectStar = "dfgs656ytiu232wq";
+  static const String hkBonusGameCount = "87sdghkjszdfght33";
   static const double minBet = 8.0;
   static const double maxBet = 10.0;
+
+  var curBonusGameCount = 0.obs;
 
   // 经验值
   var curLevelExp = 0.obs;
@@ -850,6 +985,8 @@ class MainController extends GetxController {
         childSize: Size(32.w, 32.w),
         onEnd: onEnd,
       );
+    }else{
+      onEnd?.call();
     }
   }
 
@@ -885,14 +1022,32 @@ class MainController extends GetxController {
   }
 
   onAddCollectStar(int star) {
-    int tmpExp = curCollectStar.value;
+    int tmpCount = curCollectStar.value;
+    tmpCount = tmpCount + star;
+    box.put(hkCollectStar, tmpCount);
+    curCollectStar.value = tmpCount;
+    ssLogggg("======onAddCollectStar:$tmpCount=");
+  }
 
-    tmpExp = tmpExp + star;
+  onAddBonusGameCount(int star) {
+    int tmpCount = curBonusGameCount.value;
+    tmpCount = tmpCount + star;
+    box.put(hkBonusGameCount, tmpCount);
+    curBonusGameCount.value = tmpCount;
+    ssLogggg("======onAddCollectStar:$tmpCount=");
+  }
 
-    box.put(hkCollectStar, tmpExp);
+  resetToZeroBonusGameCount() {
+    int tmpCount = 0;
+    box.put(hkBonusGameCount, tmpCount);
+    curBonusGameCount.value = tmpCount;
+    ssLogggg("======resetToZeroBonusGameCount:$tmpCount=");
+  }
 
-    curCollectStar.value = tmpExp;
-    ssLogggg("======onAddCollectStar:$tmpExp=");
+  double progressBonusGame() {
+    int tmpCount = curBonusGameCount.value;
+    double progress = tmpCount / maxBonusGameCount;
+    return progress;
   }
 
   initOther() {
@@ -911,5 +1066,9 @@ class MainController extends GetxController {
     int tmpCollectStar = box.get(hkCollectStar) ?? 0;
     curCollectStar = tmpCollectStar.obs;
     ssLogggg("=====initOther tmpCollectStar:$tmpCollectStar");
+
+    int tmphkBonusGameCount = box.get(hkBonusGameCount) ?? 0;
+    curBonusGameCount = tmphkBonusGameCount.obs;
+    ssLogggg("=====initOther curBonusGameCount:$curBonusGameCount");
   }
 }

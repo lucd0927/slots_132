@@ -29,7 +29,8 @@ class OverlayCommonGet {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({double? money, int? exp, int? phoneSpice}) {
+  void show(
+      {double? money, int? exp, int? phoneSpice, required VoidCallback onClose}) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -38,6 +39,7 @@ class OverlayCommonGet {
         return CommonGetWidget(
           onBtn: (double money) {
             close();
+            onClose();
           },
           money: money ?? 0.0,
           exp: exp ?? 0,
@@ -94,9 +96,9 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
         showAnimated = true;
       });
 
-      _timer = Timer(Duration(milliseconds: 2000), () {
+      _timer = Timer(Duration(milliseconds: 3000), () {
         _timer?.cancel();
-        // onClose(1);
+        onClose(1);
       });
     });
   }
@@ -124,6 +126,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
+
                     Column(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -133,24 +136,24 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         centerWww(),
                       ],
                     ),
-
-                    //
-                    // Positioned(
-                    //   left: -0.w,
-                    //   right: -0.w,
-                    //   top: -0.h,
-                    //   bottom: 0,
-                    //   child: IgnorePointer(
-                    //     child: Center(
-                    //       child: Container(
-                    //         width: ScreenUtil().screenWidth,
-                    //         height: ScreenUtil().screenHeight,
-                    //         color: Colors.green.withValues(alpha: 0.2),
-                    //         child: SSSpineMoney(),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+                    Positioned(
+                      left: -0.w,
+                      right: -0.w,
+                      top: 0.h,
+                      bottom: -0.h,
+                      child: IgnorePointer(
+                        child: Center(
+                          child: Container(
+                            width: ScreenUtil().screenWidth,
+                            height: ScreenUtil().screenHeight,
+                            // width: 375.w,
+                            // height: 812.h,
+                            color: Colors.yellow.withValues(alpha: 0.0),
+                            child: SSSpineMoney(),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -166,6 +169,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     bool showExp = widget.exp > 0;
     bool showPhone = widget.phoneSpice > 0;
     String img = Assets.img.moneyGift.path;
+
     if (showExp && showPhone) {
       img = Assets.img.phoneCardXuanguang.path;
     } else if (showExp) {
@@ -173,6 +177,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     } else if (showPhone) {
       img = Assets.img.popupGetPhonemoney.path;
     }
+    ssLogggg("=====showExp:$showExp showPhone:$showPhone img:$img");
     return Container(
       width: 260.w,
       height: 190.h,
@@ -233,7 +238,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         SizedBox(width: 10.w),
                       ],
                     ),
-                  if (showMoney)
+                  if (showPhone)
                     Row(
                       children: [
                         Image.asset(
@@ -254,7 +259,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                     ),
                   SSTxtGraBorder(
                     text:
-                        "+${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
+                    "+${SSCountry.curGuojiaFuhao()}${widget.money
+                        .toStringAsFixed(2)}",
                     fontSize: 20.sp,
                     fontFamily: FontFamily.alkatra,
                     height: 1,
@@ -278,6 +284,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               ),
             ],
           ),
+
         ],
       ),
     );
@@ -311,7 +318,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SizedBox(width: 8.w),
               SSTxtGraBorder(
                 text:
-                    "${SSCountry.curGuojiaFuhao()}${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
+                "${SSCountry.curGuojiaFuhao()}${MainController.to.curMonnnn
+                    .value.toStringAsFixed(2)}",
                 fontSize: 16.sp,
                 // fontFamily: FontFamily.alkatra,
                 height: 1,
@@ -350,7 +358,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SizedBox(width: 8.w),
               SSTxtGraBorder(
                 text:
-                    "${MainController.to.curLevelExp.value.toStringAsFixed(0)}",
+                "${MainController.to.curLevelExp.value.toStringAsFixed(0)}",
                 fontSize: 16.sp,
                 // fontFamily: FontFamily.alkatra,
                 height: 1,

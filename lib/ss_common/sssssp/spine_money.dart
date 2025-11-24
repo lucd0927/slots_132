@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
 import '../../gen/assets.gen.dart';
@@ -17,17 +18,18 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        setState(() {
-          showA = true;
-        });
-      }
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   if (mounted) {
+    //     setState(() {
+    //       showA = true;
+    //     });
+    //   }
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
+    return Lottie.asset(Assets.donghua.lottieMoney.data, repeat: true,);
     if (!showA) {
       return const SizedBox();
     }
@@ -48,7 +50,8 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
       Assets.donghua.money.skeletonAtlas,
       Assets.donghua.money.skeletonJson,
       controller,
-      sizedByBounds: true,
+      fit: BoxFit.contain,
+      // sizedByBounds: true,
     );
   }
 }

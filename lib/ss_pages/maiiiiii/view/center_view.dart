@@ -19,7 +19,7 @@ import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'glow_border/glow_border.dart';
 
-GlobalKey centerJinglingGlobalKey = GlobalKey();
+
 
 class CenterView extends StatelessWidget {
   const CenterView({super.key});
@@ -45,19 +45,19 @@ class CenterView extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                // Positioned(
-                //   left: 20.w,
-                //   top: 40.h,
-                //   right: 20.w,
-                //   child: Container(
-                //     key: ValueKey("SpineShengdaolaoren"),
-                //     width: 10.w,
-                //     height: 250.h,
-                //     child: const SpineShengdaolaoren(
-                //       key: ValueKey("ooeirtjtjkl"),
-                //     ),
-                //   ),
-                // ),
+                Positioned(
+                  left: 20.w,
+                  top: 40.h,
+                  right: 20.w,
+                  child: Container(
+                    key: ValueKey("SpineShengdaolaoren"),
+                    // width: 10.w,
+                    height: 250.h,
+                    child: const SpineShengdaolaoren(
+                      key: ValueKey("ooeirtjtjkl"),
+                    ),
+                  ),
+                ),
                 Positioned.fill(
                   child: TweenAnimationBuilder<double>(
                     duration: const Duration(milliseconds: 300),
@@ -199,7 +199,7 @@ class CenterView extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4.sp),
                     child: Image.asset(
-                      key: centerJinglingGlobalKey,
+                      key: MainController.to.keyCenterJinling,
                       Assets.img.slots.slotsH1.path,
                       width: 22.h,
                       height: 22.h,

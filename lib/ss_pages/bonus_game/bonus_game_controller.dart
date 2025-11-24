@@ -1,9 +1,15 @@
 import 'dart:math';
+import 'dart:ui';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/num_e.dart';
+import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+
+import '../../jc_gj/jc_widget/animated_source2target.dart';
 
 class BonusGameController extends GetxController {
   static BonusGameController get to => Get.find();
@@ -43,18 +49,50 @@ class BonusGameController extends GetxController {
 
   var categoryCount = <String, int>{}.obs;
 
-  addClickIndex(int index) {
+  addClickIndex(int index,{
+    required VoidCallback onOnClose,
+  }) {
     clickIndex.add(index);
     ssLogggg("=====clickIndex:$clickIndex data:$data");
+    String category = data[index];
+    if (category == card_cash) {
+      overlayMainTopMoney.showWithSize(
+        childSize: Size(32.w, 32.w),
+        onEnd: () {},
+      );
+    }
+    double money = 0;
     List<String> newData = [];
     for (var value in clickIndex) {
       String category = data[value];
+      if(category == card_cash){
+        money = cardMoney[0];
+      }
       newData.add(category);
     }
     var res = findTripleWithScatter(newData);
     if (res != null) {
+      onOnClose();
       find3SameCard.value = res;
+      double tmpmoney = 0;
+      if (res == card_grand) {
+        tmpmoney = MainController.jacktopGrand;
+      } else if (res == card_major) {
+        tmpmoney = MainController.jacktopMajor;
+      } else if (res == card_mini) {
+        tmpmoney = MainController.jacktopMini;
+      }
+      money = tmpmoney + money;
+      OverlayCommonGet().show(
+        money: money,
+        exp: 0,
+        phoneSpice: 0,
+        onClose: () {
+
+        },
+      );
     }
+
     ssLogggg("=====result:$res");
   }
 
