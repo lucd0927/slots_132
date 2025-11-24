@@ -137,6 +137,8 @@ flutter:
     - assets/audddd/
     - assets/lottt/bian/
     - assets/lottt/bian/images/
+    - assets/lottt/bian2/
+    - assets/lottt/bian2/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

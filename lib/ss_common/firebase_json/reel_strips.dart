@@ -14,32 +14,32 @@ class SSReelStrips {
   {
   "reel_strips": {
   "Reel1": [
-  "M1", "M1", "WILD", "M2", "M2", "WILD", "H1", "M1", "M1", "KEY",
-  "M2", "M2", "WILD", "L1", "M1", "M1", "H2", "M2", "M2", "WILD",
-  "M1", "M1", "WILD", "M2", "M2", "H3", "M1", "M1", "KEY", "M2",
-  "M2", "WILD", "L2", "M1", "M1", "WILD", "M2", "M2", "H1", "M1",
-  "M1", "WILD", "M2", "M2", "KEY", "M1", "M1", "WILD", "M2", "M2"
+  "M1", "M1", "WILD", "WILD", "WILD", "WILD", "WILD", "M1", "M1", "KEY",
+  "M2", "M2", "WILD", "WILD", "WILD", "WILD", "WILD", "M2", "M2", "WILD",
+  "M1", "M1", "WILD", "WILD", "WILD", "WILD", "WILD", "M1", "KEY", "M2",
+  "M2", "WILD", "L2", "WILD", "M1", "WILD", "WILD", "M2", "H1", "M1",
+  "M1", "WILD", "M2", "WILD", "KEY", "M1", "M1", "WILD", "M2", "M2"
   ],
   "Reel2": [
-  "M1", "M1", "WILD", "M2", "M2", "WILD", "H2", "M1", "M1", "KEY",
-  "M2", "M2", "WILD", "L2", "M1", "M1", "H3", "M2", "M2", "WILD",
-  "M1", "M1", "WILD", "M2", "M2", "H1", "M1", "M1", "KEY", "M2",
-  "M2", "WILD", "L1", "M1", "M1", "WILD", "M2", "M2", "H2", "M1",
-  "M1", "WILD", "M2", "M2", "KEY", "M1", "M1", "WILD", "M2", "M2"
+  "M1", "M1", "WILD", "WILD", "WILD", "WILD", "WILD", "WILD", "M1", "KEY",
+  "M2", "M2", "WILD", "WILD", "WILD", "WILD", "WILD", "WILD", "M2", "WILD",
+  "M1", "M1", "WILD", "WILD", "WILD", "WILD", "WILD", "WILD", "KEY", "M2",
+  "M2", "WILD", "L1", "WILD", "M1", "WILD", "WILD", "WILD", "H2", "M1",
+  "M1", "WILD", "M2", "WILD", "KEY", "M1", "M1", "WILD", "M2", "M2"
   ],
   "Reel3": [
-  "WILD", "M1", "M1", "M2", "M2", "WILD", "H3", "M1", "M1", "KEY",
-  "WILD", "M2", "M2", "L1", "M1", "M1", "H1", "M2", "M2", "WILD",
-  "WILD", "M1", "M1", "M2", "M2", "H2", "M1", "M1", "KEY", "M2",
-  "WILD", "M2", "L2", "M1", "M1", "WILD", "M2", "M2", "H3", "M1",
-  "WILD", "M1", "M2", "M2", "KEY", "M1", "M1", "WILD", "M2", "M2"
+  "WILD", "M1", "M1", "WILD", "M2", "WILD", "H3", "M1", "M1", "KEY",
+  "WILD", "M2", "M2", "WILD", "WILD", "WILD", "WILD", "WILD", "M2", "WILD",
+  "WILD", "M1", "M1", "WILD", "WILD", "WILD", "WILD", "WILD", "KEY", "M2",
+  "WILD", "M2", "L2", "WILD", "WILD", "WILD", "WILD", "WILD", "H3", "M1",
+  "WILD", "M1", "M2", "WILD", "KEY", "M1", "M1", "WILD", "M2", "M2"
   ],
   "Reel4": [
-  "M1", "KEY", "M2", "WILD", "H1", "L1", "M1", "M1", "H2", "M2",
-  "M2", "WILD", "KEY", "M1", "L2", "H3", "M2", "WILD", "M1", "M1",
-  "KEY", "M2", "M2", "WILD", "H1", "L1", "M1", "KEY", "H2", "M2",
-  "WILD", "M1", "L2", "H3", "M2", "WILD", "M1", "M1", "KEY", "M2",
-  "M2", "WILD", "H1", "L1", "M1", "KEY", "H2", "M2", "WILD", "M1"
+  "M1", "KEY", "M2", "WILD", "WILD", "L1", "M1", "M1", "H2", "M2",
+  "M2", "WILD", "KEY", "M1", "WILD", "H3", "WILD", "WILD", "M1", "M1",
+  "KEY", "M2", "M2", "WILD", "WILD", "L1", "WILD", "KEY", "H2", "M2",
+  "WILD", "WILD", "WILD", "WILD", "WILD", "WILD", "M1", "M1", "KEY", "M2",
+  "M2", "WILD", "H1", "L1", "WILD", "KEY", "H2", "M2", "WILD", "M1"
   ],
   "Reel5": [
   "H1", "M1", "KEY", "M2", "L1", "WILD", "H2", "M1", "KEY", "M2",
@@ -160,7 +160,10 @@ class SSReelStrips {
       reel1s.add(img1);
       reel1s.add(img2);
       reel1s.add(img3);
-      // reel1s = [ MainController.slotNumKEY,img2, img3];
+      // reel1s = [ MainController.slotNumWild1,img2, img3];
+      // reel1s = [ MainController.slotNumWild1,MainController.slotNumWild2, img3];
+      // reel1s = [ img1,MainController.slotNumWild1,MainController.slotNumWild2, ];
+      // reel1s = [ MainController.slotNumWild1,MainController.slotNumWild2, MainController.slotNumWild3];
 
     }
 
