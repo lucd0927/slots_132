@@ -13,7 +13,9 @@ class OverlayWithddBuzu {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show() {
+  void show({
+    required VoidCallback onClose,
+}) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -21,6 +23,7 @@ class OverlayWithddBuzu {
         return WithdddBuzu(
           onClose: () {
             close();
+            onClose();
           },
         );
       },

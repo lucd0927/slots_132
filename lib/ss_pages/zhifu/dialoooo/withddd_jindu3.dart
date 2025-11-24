@@ -62,7 +62,6 @@ class _WithddJindu3State extends State<WithddJindu3> {
       setState(() {
         showAnimated = true;
       });
-
     });
   }
 
@@ -77,7 +76,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
           child: AnimatedScale(
             duration: animD,
             // offset: showAnimated ? Offset.zero : Offset(0, 1),
-            scale:  showAnimated ?1.0:0.8,
+            scale: showAnimated ? 1.0 : 0.8,
             // curve: Curves.linearToEaseOut,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -191,10 +190,12 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                       ),
                                       child: Text.rich(
                                         TextSpan(
-                                          text: "1",
+                                          text:
+                                              "${WithdddController.to.curSpinLiuceng1.value}",
                                           children: [
                                             TextSpan(
-                                              text: "/20",
+                                              text:
+                                                  "/${WithdddController.to.maxSpinCountWithWithdraw()}",
                                               style: TextStyle(
                                                 color: Color(0xff2E313A),
                                               ),
@@ -265,12 +266,11 @@ class _WithddJindu3State extends State<WithddJindu3> {
 
   onClose() async {
     ssLogggg("======Setting close");
-    if(mounted){
+    if (mounted) {
       // setState(() {
       //   showAnimated = false;
       // });
       // await Future.delayed(animD);
-
     }
     widget.onClose();
   }

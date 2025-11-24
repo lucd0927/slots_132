@@ -178,7 +178,8 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                                 text: "Spin",
                                 children: [
                                   TextSpan(
-                                    text: " 15 ",
+                                    text:
+                                        " ${WithdddController.to.spinWithLiuceng3()} ",
                                     style: TextStyle(color: Color(0xff164CFF)),
                                   ),
                                   TextSpan(

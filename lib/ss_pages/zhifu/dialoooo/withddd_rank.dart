@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu2.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_one_last_check.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class OverlayRank {
@@ -169,25 +170,32 @@ class _RankWidgetState extends State<RankWidget> {
                               ),
                             ),
                             SizedBox(height: 4.h),
-                            Text.rich(
-                              TextSpan(
-                                text: "99",
-                                children: [
+                            GetBuilder<WithdddController>(
+                              builder: (controller) {
+                                return Text.rich(
                                   TextSpan(
-                                    text: "/199",
-                                    style: TextStyle(color: Color(0xff242731)),
+                                    text: "${WithdddController.to.curRank()}",
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            "/${WithdddController.to.allRank()}",
+                                        style: TextStyle(
+                                          color: Color(0xff242731),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 24.sp,
-                                color: Color(0xff164CFF),
-                              ),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 24.sp,
+                                    color: Color(0xff164CFF),
+                                  ),
+                                );
+                              },
                             ),
                             SizedBox(height: 8.h),
                             Text.rich(
-                              TextSpan(text: "Estimated Wait: ~2-3 Hours"),
+                              TextSpan(text: "Estimated Wait: 2-3 Hours"),
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12.sp,
@@ -199,9 +207,7 @@ class _RankWidgetState extends State<RankWidget> {
                       ),
                       SizedBox(height: 40.h),
                       GestureDetector(
-                        onTap: () {
-                          onClose();
-                        },
+                        onTap: onBoostRank,
                         child: Container(
                           width: 230.h,
                           height: 42.h,
@@ -210,15 +216,29 @@ class _RankWidgetState extends State<RankWidget> {
                             color: Color(0xff31C520),
                             borderRadius: BorderRadius.circular(100),
                           ),
-                          child: Center(
-                            child: Text(
-                              "Boost to #1 Instantly!",
-                              style: TextStyle(
-                                color: Color(0xffffffff),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w800,
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Boost to #1 Instantly!",
+                                  style: TextStyle(
+                                    color: Color(0xffffffff),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Positioned(
+                                top: -10.h,
+                                right: 0,
+                                child: Image.asset(
+                                  Assets.img.video.path,
+                                  width: 28.h,
+                                  height: 28.h,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -240,6 +260,18 @@ class _RankWidgetState extends State<RankWidget> {
         ),
       ),
     );
+  }
+
+  onBoostRank() async {
+    // onClose();
+
+    int curRank = WithdddController.to.savePaimingData();
+
+    if (curRank == 1) {
+      onClose();
+      WithdddController.to.saveLiuceng2();
+      OverlayOneLastCheck().show();
+    }
   }
 
   onClose() async {

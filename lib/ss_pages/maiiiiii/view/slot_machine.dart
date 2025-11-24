@@ -247,15 +247,15 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                       Positioned(
                         left: -30.w,
                         right: -30.w,
-                        top: -80.h,
-                        bottom: -80.h,
+                        top: -30.h,
+                        bottom: -30.h,
                         child: Container(
                           width: double.infinity,
                           height: double.infinity,
                           color: Colors.blueAccent.withValues(alpha: 0.0),
                           child: Center(
                             child: Lottie.asset(
-                              Assets.lottt.bian.data,
+                              Assets.lottt.bian3.data,
                               animate: true,
                               repeat: true,
                               width: double.infinity,

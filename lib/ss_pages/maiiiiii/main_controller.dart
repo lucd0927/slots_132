@@ -17,6 +17,9 @@ import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
+import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 import '../../jc_gj/log.dart';
 
@@ -762,17 +765,40 @@ class MainController extends GetxController {
     ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
     onAddMoney(
       tmpAddMoney,
-      onEnd: () async{
+      onEnd: () async {
         await Future.delayed(Duration(milliseconds: 500), () {});
         DateTime curTime2 = DateTime.now();
-        ssLogggg("==onStartRoller==end=curTime2:${curTime2.millisecondsSinceEpoch-curTime.millisecondsSinceEpoch}");
+        ssLogggg(
+          "==onStartRoller==end=curTime2:${curTime2.millisecondsSinceEpoch - curTime.millisecondsSinceEpoch}",
+        );
         hasScrollerEnd.value = false;
+
+        bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
+        if (hasSaveCardddd) {
+          bool hasLiucheng1 = WithdddController.to.curLiucheng1SpinsOver.value;
+          bool hasLiucheng2 = WithdddController.to.curLiucheng2PaimingOver.value;
+
+          if(!hasLiucheng1){
+            WithdddController.to.addSpinWithLiuceng1(1);
+          }else if(hasLiucheng2){
+            WithdddController.to.addSpinWithLiuceng3(1);
+          }
+
+
+        }
 
         int tmpBonusGameCount = curBonusGameCount.value;
         if (tmpBonusGameCount >= maxBonusGameCount) {
           OverlayBonusGame().show();
-
           resetToZeroBonusGameCount();
+        } else {
+          double minWithdd = minWithdddMoney;
+          if (minWithdd <= curMonnnn.value) {
+            bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
+            if (!hasSaveCardddd) {
+              OverlayJindu1().show();
+            }
+          }
         }
       },
       showMoneyAnimated: true,
@@ -867,7 +893,7 @@ class MainController extends GetxController {
   static const int maxLevel = 32;
   static const int maxStarCount = 32;
   static const int maxBonusGameCount = 10;
-  static const double minWithdddMoney = 1000;
+  static const double minWithdddMoney = 100;
   static const double jacktopGrand = 128.0;
   static const double jacktopMajor = 80.0;
   static const double jacktopMini = 48.0;
@@ -985,7 +1011,7 @@ class MainController extends GetxController {
         childSize: Size(32.w, 32.w),
         onEnd: onEnd,
       );
-    }else{
+    } else {
       onEnd?.call();
     }
   }

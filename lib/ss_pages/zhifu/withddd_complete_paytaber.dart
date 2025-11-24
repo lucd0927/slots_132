@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 class WithdddCompletePaytaber extends StatefulWidget {
   const WithdddCompletePaytaber({super.key});
@@ -119,7 +120,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                         text: "Lv ",
                         children: [
                           TextSpan(
-                            text: "45",
+                            text: "${MainController.to.level()}",
                             style: TextStyle(color: Color(0xff3325FF)),
                           ),
                           TextSpan(text: "/100"),
@@ -155,7 +156,9 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                     ),
                     SizedBox(height: 40.h),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.maybePop(context);
+                      },
                       child: Container(
                         width: 230.h,
                         height: 42.h,

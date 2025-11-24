@@ -24,8 +24,6 @@ class Withdrawwwww extends StatefulWidget {
 }
 
 class _WithdrawwwwwState extends State<Withdrawwwww> {
-  bool showBalance = true;
-  String selectedMethod = 'paypal';
 
   @override
   Widget build(BuildContext context) {

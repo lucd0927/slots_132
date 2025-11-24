@@ -24,7 +24,13 @@ class _SSTabViewState extends State<SSTabView> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(children: [itemWithdrawwww(), itemProgressss(), itemVip()]),
+      child: Column(
+        children: [
+          itemProgressss(money: MainController.minWithdddMoney),
+          itemProgressss(money: 5000),
+          itemVip(),
+        ],
+      ),
     );
   }
 
@@ -53,7 +59,7 @@ class _SSTabViewState extends State<SSTabView> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                moenyWidget(),
+                moenyWidget(money: 1000),
                 SizedBox(height: 4.h),
                 Text(
                   des,
@@ -96,7 +102,7 @@ class _SSTabViewState extends State<SSTabView> {
     );
   }
 
-  itemProgressss() {
+  itemProgressss({required double money}) {
     String des = "199 successful cash outs today! Only 10 spots left";
     return Container(
       width: double.infinity,
@@ -115,10 +121,10 @@ class _SSTabViewState extends State<SSTabView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              moenyWidget(),
+              moenyWidget(money: money),
               SizedBox(height: 4.h),
               Spacer(),
-              progressWidget(),
+              progressWidget(money: money),
             ],
           ),
           SizedBox(height: 4.h),
@@ -136,18 +142,18 @@ class _SSTabViewState extends State<SSTabView> {
     );
   }
 
-  Widget moenyWidget() {
+  Widget moenyWidget({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
     String des = "90% of new users cash out on Day 1.";
-    String money =
-        "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value.toStringAsFixed(2)}";
+    String strmoney =
+        "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(0)}";
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Image.asset(selectedIcon, width: 30.h, height: 30.h),
         SizedBox(width: 12.w),
         Text(
-          money,
+          strmoney,
           style: TextStyle(
             fontSize: 24.sp,
             fontWeight: FontWeight.w600,
@@ -158,8 +164,11 @@ class _SSTabViewState extends State<SSTabView> {
     );
   }
 
-  Widget progressWidget() {
-    String moneyT = "${SSCountry.curGuojiaFuhao()}3899.7/5000.00";
+  Widget progressWidget({required double money}) {
+    double curMmm = MainController.to.curMonnnn.value;
+    String moneyT =
+        "${SSCountry.curGuojiaFuhao()}${curMmm.toStringAsFixed(2)}/${money.toStringAsFixed(0)}";
+    double pro = curMmm / money;
     return Container(
       width: 128.w,
       // height: 16.h,
@@ -177,7 +186,7 @@ class _SSTabViewState extends State<SSTabView> {
             height: 16.h,
             innerHeight: 14.h,
             width: 128.w,
-            progress: 0.2,
+            progress: pro,
             gradientColors: [Color(0xff36F6B6), Color(0xff36F6B6)],
             bgColor: Color(0xff232428),
             text: "",

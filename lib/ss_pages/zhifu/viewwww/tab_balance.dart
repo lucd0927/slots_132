@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/activate_my_status.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
@@ -138,11 +139,14 @@ class _TabBalanceState extends State<TabBalance> {
   }
 
   void onAdd() {
-
     // OverlayWithddBuzu().show();
-    OverlayJindu1().show();
-
+    // OverlayJindu1().show();
+    Navigator.maybePop(context);
   }
 
-  void onWithdraw() {}
+  void onWithdraw() {
+
+    ssLogggg("===onWithdraw==");
+    WithdddController.to.onWithdraw(money: MainController.minWithdddMoney);
+  }
 }
