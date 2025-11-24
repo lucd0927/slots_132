@@ -149,24 +149,29 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    Center(
-                      child: showWin
-                          ? Positioned(
-                              left: -50.w,
-                              right: -50.w,
-                              top: -50.h,
-                              bottom: -50.h,
-                              child: Lottie.asset(
-                                Assets.lottt.bian.data,
-                                animate: true,
-                                repeat: true,
-                                width: double.infinity,
-                                height: double.infinity,
-                                // fit: BoxFit.fill,
+                    showWin
+                        ? Positioned(
+                            left: -30.w,
+                            right: -30.w,
+                            top: -30.h,
+                            bottom: -30.h,
+                            child: Container(
+                              width: double.infinity,
+                              height: double.infinity,
+                              color: Colors.blueAccent.withValues(alpha: 0.0),
+                              child: Center(
+                                child: Lottie.asset(
+                                  Assets.lottt.bian.data,
+                                  animate: true,
+                                  repeat: true,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  fit: BoxFit.fill,
+                                ),
                               ),
-                            )
-                          : child,
-                    ),
+                            ),
+                          )
+                        : Center(child: child),
                   ],
                 ),
               );

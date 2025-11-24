@@ -98,7 +98,7 @@ class _SSMapViewState extends State<SSMapView> {
     _rightC = _controllers.addAndGet();
     _lineC = _controllers.addAndGet();
     init().then((_) {
-      Future.delayed(Duration(milliseconds: 0),(){
+      Future.delayed(Duration(milliseconds: 0), () {
         scrollTo(jumpIndex);
       });
     });
@@ -176,9 +176,7 @@ class _SSMapViewState extends State<SSMapView> {
       //   curve: Curves.easeInOut,
       //   duration: Duration(milliseconds: 500),
       // );
-      _controllers.jumpTo(
-        offset,
-      );
+      _controllers.jumpTo(offset);
     });
   }
 
@@ -474,12 +472,11 @@ class _ItemWidgetState extends State<ItemWidget> {
   double bottomDistance = _bottomDistance;
 
   onClick() {
-
     bool hasUnlock = widget.model.hasUnlock;
     ssLogggg("==onClick==hasUnlock:$hasUnlock=");
-    if(hasUnlock){
+    if (hasUnlock) {
       bool hasClick11 = sfIndexClick(widget.index);
-      if(hasClick11){
+      if (hasClick11) {
         ssLogggg("==onClick==hasUnlock:$hasUnlock=hasClick:$hasClick11");
         ssTushi(text: "you had collected");
         return;
@@ -493,24 +490,18 @@ class _ItemWidgetState extends State<ItemWidget> {
           money: money,
           exp: 0,
           phoneSpice: 0,
-          onClose: () {
-
-          },
+          onClose: () {},
         );
       });
-    }else{
+    } else {
       ssTushi(text: "Please collect star");
     }
-
-
-
   }
 
   btnWidget({required bool hasUnlock}) {
-
     bool hasClick = sfIndexClick(widget.index);
-    if(hasUnlock){
-      if(hasClick){
+    if (hasUnlock) {
+      if (hasClick) {
         hasUnlock = false;
       }
     }

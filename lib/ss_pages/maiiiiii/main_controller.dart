@@ -810,7 +810,7 @@ class MainController extends GetxController {
     int random = allImgs - 2;
     int time = 800 + index * 100;
     if (index == 4) {
-      time = 1250;
+      time = 1100;
     }
     ssLogggg("=======time:$time");
     key.currentState

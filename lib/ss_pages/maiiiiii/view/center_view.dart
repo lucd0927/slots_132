@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -18,8 +19,6 @@ import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'glow_border/glow_border.dart';
-
-
 
 class CenterView extends StatelessWidget {
   const CenterView({super.key});
@@ -235,9 +234,9 @@ class CenterView extends StatelessWidget {
   }
 
   Column rightWidget() {
-    int grandN = 2000;
-    int majorN = 1000;
-    int miniN = 500;
+    double grandN = MainController.jacktopGrand;
+    double majorN = MainController.jacktopMajor;
+    double miniN = MainController.jacktopMini;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -265,9 +264,11 @@ class CenterView extends StatelessWidget {
                   height: double.infinity,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "${SSCountry.curGuojiaFuhao()}$grandN",
+                      text:
+                          "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
+                      fontFamily: FontFamily.alkatra,
                     ),
                   ),
                 ),
@@ -298,9 +299,11 @@ class CenterView extends StatelessWidget {
                   height: double.infinity,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "${SSCountry.curGuojiaFuhao()}$majorN",
+                      text:
+                          "${SSCountry.curGuojiaFuhao()}${majorN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
+                      fontFamily: FontFamily.alkatra,
                     ),
                   ),
                 ),
@@ -331,9 +334,11 @@ class CenterView extends StatelessWidget {
                   height: double.infinity,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "${SSCountry.curGuojiaFuhao()}$miniN",
+                      text:
+                          "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
+                      fontFamily: FontFamily.alkatra,
                     ),
                   ),
                 ),
@@ -383,7 +388,7 @@ class CenterView extends StatelessWidget {
                 Positioned(
                   left: -4.w,
                   right: -4.w,
-                  bottom: 0,
+                  bottom: 4.h,
                   child: Center(child: HomeBoxTime()),
                 ),
               ],
@@ -422,7 +427,7 @@ class CenterView extends StatelessWidget {
                   Positioned(
                     left: -10.w,
                     right: -10.w,
-                    bottom: 0,
+                    bottom: 4.h,
                     child: Center(
                       child: SSTxtGraBorder(
                         text:
@@ -430,6 +435,7 @@ class CenterView extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
                         strokeColor: Color(0xff30120A),
+                        fontFamily: FontFamily.alkatra,
                       ),
                     ),
                   ),
@@ -757,6 +763,7 @@ class _HomeBoxTimeState extends State<HomeBoxTime> {
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
       strokeColor: Color(0xff30120A),
+      fontFamily: FontFamily.alkatra,
     );
   }
 

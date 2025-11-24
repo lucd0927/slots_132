@@ -17,7 +17,12 @@ class SSAnimSource2TargetOverlay {
   BuildContext? childContext;
   BuildContext? targetContext;
 
-  void show({required Widget heroChild, int count = 10, VoidCallback? onEnd}) {
+  void show({
+    required Widget heroChild,
+    int count = 10,
+    VoidCallback? onEnd,
+    bool showTargetWidget = false,
+  }) {
     try {
       _overlay = null;
       if (childContext == null) {
@@ -51,6 +56,7 @@ class SSAnimSource2TargetOverlay {
           startSize,
           endSize,
           onEnd,
+          showTargetWidget,
         );
       }
     } catch (e) {
@@ -65,6 +71,7 @@ class SSAnimSource2TargetOverlay {
     Size startSize,
     Size endSize,
     VoidCallback? onEnd,
+    bool showTargetWidget,
   ) {
     _overlay = OverlayEntry(
       builder: (context) {
@@ -85,6 +92,7 @@ class SSAnimSource2TargetOverlay {
                   onEnd();
                 }
               },
+              showTargetWidget: showTargetWidget,
               children: children,
             ),
           ),
@@ -101,6 +109,7 @@ class SSAnimSource2TargetOverlay {
     int count = 10,
     VoidCallback? onEnd,
     Offset? topLeftOffset,
+    bool showTargetWidget = false,
   }) {
     // if (_isShowing) return;
     _overlay = null;
@@ -145,6 +154,7 @@ class SSAnimSource2TargetOverlay {
         startSize,
         endSize,
         onEnd,
+        showTargetWidget,
       );
     }
   }
@@ -168,6 +178,7 @@ class Source2FlyTarget extends StatefulWidget {
   final VoidCallback? onFinish;
   final Size startSize; // 初始大小
   final Size endSize; // 最终大小
+  final bool showTargetWidget;
 
   const Source2FlyTarget({
     super.key,
@@ -180,6 +191,7 @@ class Source2FlyTarget extends StatefulWidget {
     required this.startSize,
     required this.endSize,
     this.onFinish,
+    required this.showTargetWidget,
   });
 
   @override
@@ -338,12 +350,12 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
               return Positioned(left: dx, top: dy, child: child);
             },
           );
-        }).toList(),
-        if (widget.children.length > 0)
+        }),
+        if (widget.showTargetWidget && widget.children.length > 0)
           Positioned(
-            child: widget.children[0],
             left: widget.end.dx,
             top: widget.end.dy,
+            child: widget.children[0],
           ),
       ],
     );
