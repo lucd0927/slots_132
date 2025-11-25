@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -34,7 +35,14 @@ class _SSSplassssState extends State<SSSplassss> {
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
 
-
+      AssetLottie(Assets.lottt.superwin.data).load();
+      AssetLottie(Assets.lottt.megawin.data).load();
+      AssetLottie(Assets.lottt.wow.data).load();
+      AssetLottie(Assets.lottt.bigwin.data).load();
+      AssetLottie(Assets.lottt.bian.data).load();
+      AssetLottie(Assets.lottt.bian2.data).load();
+      AssetLottie(Assets.lottt.bian3.data).load();
+      AssetLottie(Assets.donghua.lottieMoney.data).load();
 
 
       //

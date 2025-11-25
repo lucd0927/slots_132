@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_megawin.dart';
+import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -97,15 +98,43 @@ class _MegawinWidgetState extends State<MegawinWidget> {
 
               child: Stack(
                 children: [
-                  Column(
-                    children: [
-                      SizedBox(height: 80.h,),
-                      Container(
-                        width: 375.w,
-                        height: 400.h,
-                        child: SSSpineMegawin(),
+                  // Column(
+                  //   children: [
+                  //     SizedBox(height: 80.h,),
+                  //     Container(
+                  //       width: 375.w,
+                  //       height: 400.h,
+                  //       child: SSSpineMegawin(),
+                  //     ),
+                  //   ],
+                  // ),
+                  Positioned(
+                    left: -0.w,
+                    right: -0.w,
+                    top: 0.h,
+                    bottom: -0.h,
+                    child: IgnorePointer(
+                      child: Center(
+                        child: Container(
+                          width: ScreenUtil().screenWidth,
+                          height: ScreenUtil().screenHeight,
+                          // width: 375.w,
+                          // height: 812.h,
+                          color: Colors.yellow.withValues(alpha: 0.0),
+                          child: SSSpineMoney(),
+                        ),
                       ),
-                    ],
+                    ),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: -80.h,
+                    child: Container(
+                      width: 375.w,
+                      height: 812.h,
+                      child: SSSpineMegawin(),
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,

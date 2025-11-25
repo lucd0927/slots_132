@@ -55,7 +55,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
         slotsH = c.maxHeight;
         slotsW = c.maxWidth;
         return Obx(() {
-          bool show = MainController.to.showFreeSpin.value;
+          bool show = MainController.to.curShowFreeSpin.value;
 
           return Container(
             width: double.infinity,

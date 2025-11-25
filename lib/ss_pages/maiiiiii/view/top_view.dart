@@ -199,7 +199,16 @@ class TopView extends StatelessWidget {
     ssLogggg("====onMenu");
     // OverlaySettinnn().show();
     // OverlayBoxgift().show();
-
+    // OverlayLuckySlots().show(
+    //   onClose: (v) {
+    //     overlayMainTopMoney.showWithSize(
+    //       childSize: Size(32.w, 32.w),
+    //       onEnd: () {
+    //
+    //       },
+    //     );
+    //   },
+    // );
 
     // OverlayCommonGet().show(money: 100,exp: 10,phoneSpice: 1);
 
@@ -215,9 +224,9 @@ class TopView extends StatelessWidget {
 
 
 
-    OverlaySuperwin().show(money: 100);
-    // OverlayBigwin().show(money: 100);
-    // OverlayWow().show(money: 100);
+    // OverlaySuperwin().show(money: 100);
+    OverlayBigwin().show(money: 100);
+    // OverlayWow().show(money: 100, onClose: (value) {  });
     // OverlayMegawin().show(money: 100);
 
     // OverlayJackpotGrand().show(money: 200);

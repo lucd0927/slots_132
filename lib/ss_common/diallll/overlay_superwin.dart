@@ -116,15 +116,15 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      SizedBox(height: 80.h),
-                      Container(
-                        width: 375.w,
-                        height: 400.h,
-                        child: SSSpineSuperwin(),
-                      ),
-                    ],
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: -80.h,
+                    child: Container(
+                      width: 375.w,
+                      height: 812.h,
+                      child: SSSpineSuperwin(),
+                    ),
                   ),
 
                   Column(
@@ -182,9 +182,6 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       SizedBox(height: 30.h),
                     ],
                   ),
-
-
-
                 ],
               ),
             ),

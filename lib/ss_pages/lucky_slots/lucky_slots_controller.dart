@@ -97,7 +97,9 @@ class LuckySlotsController extends GetxController {
   int cunt = 0;
   var hasScrollerEnd = false.obs;
 
-  onStartRoller() async {
+  onStartRoller({
+    required ValueChanged onClose,
+}) async {
     if (hasScrollerEnd.value) {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
@@ -116,7 +118,6 @@ class LuckySlotsController extends GetxController {
     ssLogggg("==onStartRoller==end=cunt:$cunt");
 
     hasScrollerEnd.value = false;
-    await Future.delayed(Duration(milliseconds: 3000));
-    overlayLuckySlots.close();
+    onClose(money.value);
   }
 }

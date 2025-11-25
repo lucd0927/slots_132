@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
@@ -62,7 +64,7 @@ class CenterView extends StatelessWidget {
                     duration: const Duration(milliseconds: 300),
                     tween: Tween(
                       begin: 0.0,
-                      end: MainController.to.showFreeSpin.value ? 0 : 1.0,
+                      end: MainController.to.curShowFreeSpin.value ? 0 : 1.0,
                     ),
                     curve: Curves.linear,
                     builder: (context, value, child) {
@@ -76,7 +78,7 @@ class CenterView extends StatelessWidget {
                               firstChild: leftWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
                               crossFadeState:
-                                  MainController.to.showFreeSpin.value
+                                  MainController.to.curShowFreeSpin.value
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
                               duration: Duration(milliseconds: 200),
@@ -90,7 +92,7 @@ class CenterView extends StatelessWidget {
                               firstChild: rightWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
                               crossFadeState:
-                                  MainController.to.showFreeSpin.value
+                                  MainController.to.curShowFreeSpin.value
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
                               duration: Duration(milliseconds: 200),
@@ -102,7 +104,11 @@ class CenterView extends StatelessWidget {
                             left: 0,
                             right: 0,
                             top: 4.h,
-                            child: Center(child: MainController.to.showFreeSpin.value?const SizedBox(): centerCollectStarWidget()),
+                            child: Center(
+                              child: MainController.to.curShowFreeSpin.value
+                                  ? const SizedBox()
+                                  : centerCollectStarWidget(),
+                            ),
                             // child: Center(
                             //   child: AnimatedCrossFade(
                             //     firstChild: Container(
@@ -184,14 +190,14 @@ class CenterView extends StatelessWidget {
                     duration: const Duration(milliseconds: 300),
                     tween: Tween(
                       begin: 0.0,
-                      end: MainController.to.showFreeSpin.value ? 1.0 : 0,
+                      end: MainController.to.curShowFreeSpin.value ? 1.0 : 0,
                     ),
                     curve: Curves.linear,
                     builder: (context, value, child) {
                       return Transform.translate(
                         offset: Offset(0, maxH * (1 - value)),
                         // offset: Offset(maxW * (1 - value), 0),
-                        child: FreeSpin(key: ValueKey("fffff"),),
+                        child: FreeSpin(key: MainController.to.keyFreeSpin),
                       );
                     },
                   ),
@@ -517,10 +523,10 @@ class FreeSpin extends StatefulWidget {
   const FreeSpin({super.key});
 
   @override
-  State<FreeSpin> createState() => _FreeSpinState();
+  State<FreeSpin> createState() => FreeSpinState();
 }
 
-class _FreeSpinState extends State<FreeSpin> {
+class FreeSpinState extends State<FreeSpin> {
   int select = -1;
   double scale = 1.5;
   Timer? timer;
@@ -535,12 +541,6 @@ class _FreeSpinState extends State<FreeSpin> {
     // TODO: implement initState
     super.initState();
     ssLogggg("====free spin=initState");
-    Future.delayed(Duration(milliseconds: 300),(){
-      if(mounted && MainController.to.showFreeSpin.value){
-        onStar();
-      }
-    });
-
   }
 
   @override
@@ -555,22 +555,49 @@ class _FreeSpinState extends State<FreeSpin> {
     firstH = 40.h;
     secondH = 90.h;
     thirdH = 120.h;
+    fourthH = 90.h;
+    fiveH = 40.h;
   }
 
-  onStar() {
-    ssLogggg("====free spin=");
+  onStar({required ValueChanged<EnumGiftRewardModel> onEnd}) {
+
     timer?.cancel();
-    timer = Timer.periodic(Duration(milliseconds: 50), (v) {
+    List<int> randoms = [40, 41, 43, 44];
+    int tickkk1 = randoms[Random().nextInt(randoms.length)];
+    ssLogggg("====free spin=tickkk1:$tickkk1");
+    timer = Timer.periodic(Duration(milliseconds: 60), (v) {
       int tmpT = v.tick;
 
-      if (tmpT > 50) {
-        v.cancel();
+      if (tmpT == tickkk1) {
+        EnumGiftRewardModel tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
         setState(() {
-          secondH = 70.h;
+          if (tmpT == 40) {
+            select = 0;
+            firstH = 30.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+          } else if (tmpT == 41) {
+            select = 1;
+            secondH = 70.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+          } else if (tmpT == 42) {
+            select = 2;
+            thirdH = 110.h;
+          } else if (tmpT == 43) {
+            select = 3;
+            fourthH = 70.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+          } else if (tmpT == 44) {
+            select = 4;
+            fiveH = 30.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+          }
         });
-        Future.delayed(Duration(milliseconds: 5000), () {
+
+        v.cancel();
+        Future.delayed(Duration(milliseconds: 1000), () {
           setState(() {
             reset();
+            onEnd(tmpEnumGiftRewardModel);
           });
         });
       } else {
@@ -601,7 +628,7 @@ class _FreeSpinState extends State<FreeSpin> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return GestureDetector(
-          onTap: onStar,
+          // onTap: onStar,
           child: Container(
             width: double.infinity,
             // height: double.infinity,

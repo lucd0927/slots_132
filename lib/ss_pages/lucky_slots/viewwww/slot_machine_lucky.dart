@@ -58,7 +58,7 @@ class SSSlotMachineLuckyState extends State<SSSlotMachineLucky> {
         slotsW = c.maxWidth;
         // ssLogggg("==slot machine build=slotsH:$slotsH=slotsW:$slotsW");
         return Obx(() {
-          bool show = MainController.to.showFreeSpin.value;
+          bool show = MainController.to.curShowFreeSpin.value;
           slotsItemW = slotsW / 4;
           slotsItemH = slotsH / 3;
           return Container(

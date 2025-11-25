@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
@@ -27,6 +28,8 @@ class _SSSpineSuperwinState extends State<SSSpineSuperwin> {
 
   @override
   Widget build(BuildContext context) {
+    return Lottie.asset(Assets.lottt.superwin.data, repeat: true,frameBuilder: (_, child, __) => child,);
+
     if (!showA) {
       return const SizedBox();
     }

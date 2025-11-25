@@ -298,6 +298,8 @@ class BottomView extends StatelessWidget {
   }
 
   Widget spinWidget() {
+    bool showFree = MainController.to.curShowFreeSpin.value;
+
     Widget child = Container(
       width: 125.h,
       height: 60.h,
@@ -315,47 +317,81 @@ class BottomView extends StatelessWidget {
             bottom: 5.h,
             child: Container(
               color: Colors.white.withValues(alpha: 0.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 2.h),
+              child: showFree
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // SizedBox(height: 2.h),
 
-                  // SSTxtGraBorder(
-                  //   text: "SPIN",
-                  //   fontSize: 28.sp,
-                  //   fontFamily: FontFamily.rubik,
-                  //   fontWeight: FontWeight.w700,
-                  //   strokeColor: Color(0xff174726),
-                  // ),
-                  Image.asset(
-                    Assets.img.btnTxtSpin.path,
-                    width: 72.h,
-                    height: 25.h,
-                    fit: BoxFit.contain,
-                    gaplessPlayback: true,
-                  ),
+                        // SSTxtBorder(
+                        //   text: "${MainController.to.curFreeSpinCount.value}",
+                        //   fontSize: 24.sp,
+                        //   fontFamily: FontFamily.fraunces,
+                        //   fontWeight: FontWeight.w700,
+                        //   height: 1,
+                        //   // strokeColor: Color(0xff174726),
+                        // ),
+                        SSAniiiiCount(value: MainController.to.curFreeSpinCount.value,textStyle: TextStyle(
+                          fontSize: 24.sp,
+                          fontFamily: FontFamily.fraunces,
+                          fontWeight: FontWeight.w700,
+                          height: 1,
+                          color: Colors.white,
+                        ),),
 
-                  AutoSizeText(
-                    "HOLD FOR AUTO",
-                    style: TextStyle(
-                      fontSize: 10.sp,
-                      fontFamily: FontFamily.rubik,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xff2B4735),
+                        Image.asset(
+                          Assets.img.btnTxtFreeSpin.path,
+                          width: 110.h,
+                          height: 25.h,
+                          fit: BoxFit.contain,
+                          gaplessPlayback: true,
+                        ),
+                      ],
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 2.h),
+
+                        // SSTxtGraBorder(
+                        //   text: "SPIN",
+                        //   fontSize: 28.sp,
+                        //   fontFamily: FontFamily.rubik,
+                        //   fontWeight: FontWeight.w700,
+                        //   strokeColor: Color(0xff174726),
+                        // ),
+                        Image.asset(
+                          Assets.img.btnTxtSpin.path,
+                          width: 72.h,
+                          height: 25.h,
+                          fit: BoxFit.contain,
+                          gaplessPlayback: true,
+                        ),
+
+                        AutoSizeText(
+                          "HOLD FOR AUTO",
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontFamily: FontFamily.rubik,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff2B4735),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
             ),
           ),
         ],
       ),
     );
 
-    return MainController.to.hasScrollerEnd.value
+    return MainController.to.hasScrollerEnd.value && !showFree
         ? GreyWidget(child: child)
         : GestureDetector(
             onTap: () {
+              if(showFree){
+                return;
+              }
               MainController.to.onStartRoller();
             },
             child: child,

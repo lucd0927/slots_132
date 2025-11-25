@@ -11,10 +11,14 @@ import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/diallll/overlay_free_spins.dart';
+import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
+import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
@@ -31,7 +35,6 @@ class MainController extends GetxController {
     super.onInit();
     initOther();
     initRoller5(hasFirstInit: true);
-
   }
 
   @override
@@ -54,7 +57,8 @@ class MainController extends GetxController {
   }
 
   // 显示free spins
-  var showFreeSpin = false.obs;
+  var curShowFreeSpin = false.obs;
+  var curFreeSpinCount = 0.obs;
 
   // 显示中奖路
   var showWinLines = false.obs;
@@ -71,6 +75,7 @@ class MainController extends GetxController {
   final keyCenterJinling = GlobalKey();
   final keyBonusGame = GlobalKey();
   final keyPhoneSpice = GlobalKey();
+  final keyFreeSpin = GlobalKey<FreeSpinState>();
 
   static const String slotNumWild = "WILD";
   static const String slotNumWild1 = "WILD1";
@@ -224,7 +229,7 @@ class MainController extends GetxController {
 
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
-    int length =defaultImgName.length;
+    int length = defaultImgName.length;
     if (tmpSpinCount == 1) {
       winReel1
         ..clear()
@@ -246,39 +251,78 @@ class MainController extends GetxController {
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
     } else if (tmpSpinCount == 5) {
-
       var imgCategories = [
-        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], slotNumSCATTER,]..shuffle(),
-        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], slotNumSCATTER,]..shuffle(),
-        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)],]..shuffle(),
-        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)],]..shuffle(),
-        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], slotNumSCATTER,]..shuffle(),
+        [
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+          slotNumSCATTER,
+        ]..shuffle(),
+        [
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+          slotNumSCATTER,
+        ]..shuffle(),
+        [
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+        ]..shuffle(),
+        [
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+        ]..shuffle(),
+        [
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+          slotNumSCATTER,
+        ]..shuffle(),
       ]..shuffle();
-      winReel1..clear()..addAll(imgCategories[0]);
-      winReel2..clear()..addAll(imgCategories[1]);
-      winReel3..clear()..addAll(imgCategories[2]);
-      winReel4..clear()..addAll(imgCategories[3]);
-      winReel5..clear()..addAll(imgCategories[4]);
-
-    }else if (tmpSpinCount == 9) {
+      winReel1
+        ..clear()
+        ..addAll(imgCategories[0]);
+      winReel2
+        ..clear()
+        ..addAll(imgCategories[1]);
+      winReel3
+        ..clear()
+        ..addAll(imgCategories[2]);
+      winReel4
+        ..clear()
+        ..addAll(imgCategories[3]);
+      winReel5
+        ..clear()
+        ..addAll(imgCategories[4]);
+    } else if (tmpSpinCount == 9) {
       int tmpBonusGameCount = curBonusGameCount.value;
       int shengyuCount = maxBonusGameCount - tmpBonusGameCount;
-      ssLogggg("===shengyuCount:$shengyuCount=tmpBonusGameCount:$tmpBonusGameCount=");
+      ssLogggg(
+        "===shengyuCount:$shengyuCount=tmpBonusGameCount:$tmpBonusGameCount=",
+      );
       List<String> imgCategories = [];
-      for(int i = 0;i < 16;i++){
-        if(i <shengyuCount){
+      for (int i = 0; i < 16; i++) {
+        if (i < shengyuCount) {
           imgCategories.add(slotNumKEY);
-        }else{
+        } else {
           imgCategories.add(defaultImgName[Random().nextInt(length)]);
         }
       }
       imgCategories.shuffle();
-      winReel1..clear()..addAll(imgCategories.sublist(0,3));
-      winReel2..clear()..addAll(imgCategories.sublist(3,6));
-      winReel3..clear()..addAll(imgCategories.sublist(6,9));
-      winReel4..clear()..addAll(imgCategories.sublist(9,12));
-      winReel5..clear()..addAll(imgCategories.sublist(12,15));
-
+      winReel1
+        ..clear()
+        ..addAll(imgCategories.sublist(0, 3));
+      winReel2
+        ..clear()
+        ..addAll(imgCategories.sublist(3, 6));
+      winReel3
+        ..clear()
+        ..addAll(imgCategories.sublist(6, 9));
+      winReel4
+        ..clear()
+        ..addAll(imgCategories.sublist(9, 12));
+      winReel5
+        ..clear()
+        ..addAll(imgCategories.sublist(12, 15));
     }
   }
 
@@ -722,7 +766,7 @@ class MainController extends GetxController {
     onAddSpin(1);
     ssLogggg("==onStartRoller==start=");
     kZuobiao_vWidgetContext = {};
-    showFreeSpin.value = false;
+    curShowFreeSpin.value = false;
     showWinLines.value = false;
     cunt = 0;
     hasScrollerEnd.value = true;
@@ -788,7 +832,7 @@ class MainController extends GetxController {
     curSpinMoney.value = tmpAddMoney;
 
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
-    ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur",);
+    ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
     bool containerslotNumH1 = false;
     int starCount = 0;
     kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
@@ -873,12 +917,18 @@ class MainController extends GetxController {
         await Future.delayed(Duration(milliseconds: 500), () {});
         DateTime curTime2 = DateTime.now();
 
-        hasScrollerEnd.value = false;
-
-        int slotNumSCATTERLength = kZuobiao_vCategory_cur.values.where((e)=>e==slotNumSCATTER).length;
+        int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
+            .where((e) => e == slotNumSCATTER)
+            .length;
         slotNumSCATTERLength = 3;
-        if(slotNumSCATTERLength >= 3){
-          showFreeSpin.value = true;
+        if (slotNumSCATTERLength >= 3) {
+          curShowFreeSpin.value = true;
+          OverlayFreeSpins().show(
+            money: 0,
+            onClose: (value) {
+              onFreeSpin();
+            },
+          );
         }
         ssLogggg(
           "==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=end=curTime2:${curTime2.millisecondsSinceEpoch - curTime.millisecondsSinceEpoch}",
@@ -1200,6 +1250,53 @@ class MainController extends GetxController {
     double progress = tmpCount / maxBonusGameCount;
     return progress;
   }
+
+  onFreeSpin() {
+    int tmpCount = curFreeSpinCount.value;
+
+    tmpCount = tmpCount - 1;
+    if (tmpCount >= 0) {
+      curFreeSpinCount.value = tmpCount;
+    } else {
+      curFreeSpinCount.value = 0;
+      hasScrollerEnd.value = false;
+      curShowFreeSpin.value = false;
+      return;
+    }
+    keyFreeSpin.currentState?.onStar(
+      onEnd: (EnumGiftRewardModel tmpEnumGiftRewardModel) {
+        if (tmpEnumGiftRewardModel == EnumGiftRewardModel.cash) {
+          double money = Random().nextDouble() * 20 + 10;
+
+          OverlayWow().show(
+            money: money,
+            onClose: (v) {
+              overlayMainTopMoney.showWithSize(
+                childSize: Size(32.w, 32.w),
+                onEnd: () {
+                  onFreeSpin();
+                },
+              );
+            },
+          );
+        } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.spin) {
+          OverlayLuckySlots().show(
+            onClose: (v) {
+              overlayMainTopMoney.showWithSize(
+                childSize: Size(32.w, 32.w),
+                onEnd: () {
+                  onFreeSpin();
+                },
+              );
+            },
+          );
+        }
+      },
+    );
+  }
+
+
+
 
   initOther() {
     int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;

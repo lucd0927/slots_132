@@ -24,7 +24,7 @@ class OverlayFreeSpins {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money}) {
+  void show({required double money, required ValueChanged onClose}) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -32,8 +32,9 @@ class OverlayFreeSpins {
         return FreeSpinsWidget(
           onBtn: (double money) {
             close();
+            onClose(null);
           },
-          money: money,
+          money: 0,
         );
       },
     );
@@ -66,6 +67,9 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
+
+  int baseCount = 5;
+  int addSpinCount = 4;
 
   @override
   void initState() {
@@ -162,7 +166,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                           ),
                                           Center(
                                             child: SSTxtGraBorder(
-                                              text: "10",
+                                              text: "$baseCount",
                                               fontSize: 48.sp,
                                               strokeColor: Color(0xffEE101E),
                                               fontWeight: FontWeight.w700,
@@ -214,7 +218,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             SSTxtBorder(
-                                              text: "Free +10",
+                                              text: "Free +$addSpinCount",
                                               fontWeight: FontWeight.w700,
                                               fontSize: 24.sp,
                                               fontFamily: FontFamily.alkatra,
@@ -244,7 +248,8 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                   ),
                   SizedBox(height: 10.h),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
+                      MainController.to.curFreeSpinCount.value = baseCount;
                       onClose(1);
                     },
                     child: SSTxtBorder(
@@ -276,6 +281,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   }
 
   void onclickClaim() {
+    MainController.to.curFreeSpinCount.value = baseCount + addSpinCount;
     onClose(1);
   }
 }
