@@ -66,6 +66,65 @@ class CenterView extends StatelessWidget {
                     ),
                     curve: Curves.linear,
                     builder: (context, value, child) {
+                      return Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            left: 16.w,
+                            top: 60.h,
+                            child: AnimatedCrossFade(
+                              firstChild: leftWidget(),
+                              secondChild: SizedBox(width: 58.h, height: 64.h),
+                              crossFadeState:
+                                  MainController.to.showFreeSpin.value
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
+                              duration: Duration(milliseconds: 200),
+                            ),
+                            // child: leftWidget(),
+                          ),
+                          Positioned(
+                            right: 0,
+                            top: 40.h,
+                            child: AnimatedCrossFade(
+                              firstChild: rightWidget(),
+                              secondChild: SizedBox(width: 58.h, height: 64.h),
+                              crossFadeState:
+                                  MainController.to.showFreeSpin.value
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
+                              duration: Duration(milliseconds: 200),
+                            ),
+                            // child: rightWidget(),
+                          ),
+
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 4.h,
+                            child: Center(child: MainController.to.showFreeSpin.value?const SizedBox(): centerCollectStarWidget()),
+                            // child: Center(
+                            //   child: AnimatedCrossFade(
+                            //     firstChild: Container(
+                            //       width: 280.h,
+                            //       height: 30.h,
+                            //       child:centerCollectStarWidget(),
+                            //     ),
+                            //     secondChild: SizedBox(
+                            //       width: 58.h,
+                            //       height: 2.h,
+                            //     ),
+                            //     crossFadeState:
+                            //         MainController.to.showFreeSpin.value
+                            //         ? CrossFadeState.showSecond
+                            //         : CrossFadeState.showFirst,
+                            //     duration: Duration(milliseconds: 200),
+                            //   ),
+                            // ),
+                          ),
+                        ],
+                      );
+
                       return Transform.translate(
                         // offset: Offset(maxW*(1-value), maxH*(1-value)),
                         offset: Offset(-maxW * (1 - value), 0),
@@ -130,9 +189,9 @@ class CenterView extends StatelessWidget {
                     curve: Curves.linear,
                     builder: (context, value, child) {
                       return Transform.translate(
-                        // offset: Offset(maxW*(1-value), maxH*(1-value)),
-                        offset: Offset(maxW * (1 - value), 0),
-                        child: FreeSpin(),
+                        offset: Offset(0, maxH * (1 - value)),
+                        // offset: Offset(maxW * (1 - value), 0),
+                        child: FreeSpin(key: ValueKey("fffff"),),
                       );
                     },
                   ),
@@ -417,6 +476,7 @@ class CenterView extends StatelessWidget {
                     child: Hero(
                       tag: "Phoneeee",
                       child: Image.asset(
+                        key: MainController.to.keyPhoneSpice,
                         Assets.img.mainPhone.path,
                         width: 58.h,
                         height: 58.h,
@@ -474,6 +534,13 @@ class _FreeSpinState extends State<FreeSpin> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    ssLogggg("====free spin=initState");
+    Future.delayed(Duration(milliseconds: 300),(){
+      if(mounted && MainController.to.showFreeSpin.value){
+        onStar();
+      }
+    });
+
   }
 
   @override

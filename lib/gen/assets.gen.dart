@@ -1377,6 +1377,10 @@ class $AssetsImgSlotsGen {
   AssetGenImage get slotsM2 =>
       const AssetGenImage('assets/img/slots/slots_m2.png');
 
+  /// File path: assets/img/slots/slots_phone_spice.png
+  AssetGenImage get slotsPhoneSpice =>
+      const AssetGenImage('assets/img/slots/slots_phone_spice.png');
+
   /// File path: assets/img/slots/slots_scatter.png
   AssetGenImage get slotsScatter =>
       const AssetGenImage('assets/img/slots/slots_scatter.png');
@@ -1403,6 +1407,7 @@ class $AssetsImgSlotsGen {
     slotsL2,
     slotsM1,
     slotsM2,
+    slotsPhoneSpice,
     slotsScatter,
     slotsWild1,
     slotsWild2,

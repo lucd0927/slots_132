@@ -29,8 +29,9 @@ class MainController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initRoller5(hasFirstInit: true);
     initOther();
+    initRoller5(hasFirstInit: true);
+
   }
 
   @override
@@ -69,6 +70,7 @@ class MainController extends GetxController {
   final slotMachineKey = GlobalKey<SSSlotMachineState>();
   final keyCenterJinling = GlobalKey();
   final keyBonusGame = GlobalKey();
+  final keyPhoneSpice = GlobalKey();
 
   static const String slotNumWild = "WILD";
   static const String slotNumWild1 = "WILD1";
@@ -83,6 +85,7 @@ class MainController extends GetxController {
   static const String slotNumL2 = "L2";
   static const String slotNumKEY = "KEY";
   static const String slotNumSCATTER = "SCATTER";
+  static const String slotNumPhoneSpice = "PhoneSpice";
 
   static const defaultImgName = [
     slotNumWild,
@@ -95,6 +98,7 @@ class MainController extends GetxController {
     slotNumL2,
     slotNumKEY,
     slotNumSCATTER,
+    // slotNumPhoneSpice,
   ];
   static final Map<String, String> kCategoryName_vImgName = {
     slotNumWild: Assets.img.slots.slotsWild1.path,
@@ -110,6 +114,7 @@ class MainController extends GetxController {
     slotNumL2: Assets.img.slots.slotsL2.path,
     slotNumKEY: Assets.img.slots.slotsKey.path,
     slotNumSCATTER: Assets.img.slots.slotsScatter.path,
+    slotNumPhoneSpice: Assets.img.slots.slotsPhoneSpice.path,
   };
 
   List<List<String>> rollerImgs = [
@@ -208,6 +213,75 @@ class MainController extends GetxController {
     return tmp;
   }
 
+  _resetColumnWinReel({
+    required List<String> winReel1,
+    required List<String> winReel2,
+    required List<String> winReel3,
+    required List<String> winReel4,
+    required List<String> winReel5,
+  }) {
+    int tmpSpinCount1 = curSpinCount.value;
+
+    int tmpSpinCount = tmpSpinCount1 % 15;
+    ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
+    int length =defaultImgName.length;
+    if (tmpSpinCount == 1) {
+      winReel1
+        ..clear()
+        ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
+      winReel2
+        ..clear()
+        ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
+      winReel3
+        ..clear()
+        ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
+      winReel4
+        ..clear()
+        ..addAll([slotNumH1, slotNumH1, slotNumH1]);
+      winReel5
+        ..clear()
+        ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
+    } else if (tmpSpinCount == 2) {
+      winReel5 = winReel5
+        ..clear()
+        ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
+    } else if (tmpSpinCount == 5) {
+
+      var imgCategories = [
+        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], slotNumSCATTER,]..shuffle(),
+        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], slotNumSCATTER,]..shuffle(),
+        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)],]..shuffle(),
+        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)],]..shuffle(),
+        [defaultImgName[Random().nextInt(length)], defaultImgName[Random().nextInt(length)], slotNumSCATTER,]..shuffle(),
+      ]..shuffle();
+      winReel1..clear()..addAll(imgCategories[0]);
+      winReel2..clear()..addAll(imgCategories[1]);
+      winReel3..clear()..addAll(imgCategories[2]);
+      winReel4..clear()..addAll(imgCategories[3]);
+      winReel5..clear()..addAll(imgCategories[4]);
+
+    }else if (tmpSpinCount == 9) {
+      int tmpBonusGameCount = curBonusGameCount.value;
+      int shengyuCount = maxBonusGameCount - tmpBonusGameCount;
+      ssLogggg("===shengyuCount:$shengyuCount=tmpBonusGameCount:$tmpBonusGameCount=");
+      List<String> imgCategories = [];
+      for(int i = 0;i < 16;i++){
+        if(i <shengyuCount){
+          imgCategories.add(slotNumKEY);
+        }else{
+          imgCategories.add(defaultImgName[Random().nextInt(length)]);
+        }
+      }
+      imgCategories.shuffle();
+      winReel1..clear()..addAll(imgCategories.sublist(0,3));
+      winReel2..clear()..addAll(imgCategories.sublist(3,6));
+      winReel3..clear()..addAll(imgCategories.sublist(6,9));
+      winReel4..clear()..addAll(imgCategories.sublist(9,12));
+      winReel5..clear()..addAll(imgCategories.sublist(12,15));
+
+    }
+  }
+
   initRoller5({bool hasFirstInit = false}) {
     // 中奖图案
     List<String> winReel1 = SSReelStrips.reel1ImgName();
@@ -215,7 +289,15 @@ class MainController extends GetxController {
     List<String> winReel3 = SSReelStrips.reel3ImgName();
     List<String> winReel4 = SSReelStrips.reel4ImgName();
     List<String> winReel5 = SSReelStrips.reel5ImgName();
-
+    ssLogggg("rollerImgs win:$winReel1");
+    _resetColumnWinReel(
+      winReel1: winReel1,
+      winReel2: winReel2,
+      winReel3: winReel3,
+      winReel4: winReel4,
+      winReel5: winReel5,
+    );
+    ssLogggg("rollerImgs win2:$winReel1");
     // 原来的图案
     List<String> preReel1 = rollerImgs[0];
     List<String> preReel2 = rollerImgs[1];
@@ -637,7 +719,7 @@ class MainController extends GetxController {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
     }
-
+    onAddSpin(1);
     ssLogggg("==onStartRoller==start=");
     kZuobiao_vWidgetContext = {};
     showFreeSpin.value = false;
@@ -687,6 +769,7 @@ class MainController extends GetxController {
     _resetRoller(fiveRoller, 4);
     // 添加经验
     onAddExp(100);
+
     double tmpAddMoney = 0.0;
     List<double> payBeisu = [];
     int lines = SSPayTable.lines();
@@ -705,9 +788,7 @@ class MainController extends GetxController {
     curSpinMoney.value = tmpAddMoney;
 
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
-    ssLogggg(
-      "====kZuobiao_vWidgetContextOffset:$kZuobiao_vWidgetContextOffset",
-    );
+    ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur",);
     bool containerslotNumH1 = false;
     int starCount = 0;
     kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
@@ -761,6 +842,29 @@ class MainController extends GetxController {
       onAddBonusGameCount(bonusGameCount);
       await Future.delayed(Duration(milliseconds: 1200), () {});
     }
+
+    kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
+      Offset? startPosition = kZuobiao_vWidgetContextOffset[zuobiao];
+      String img = kCategoryName_vImgName[value] ?? "";
+
+      if (value == slotNumPhoneSpice) {
+        if (startPosition != null) {
+          img = Assets.img.phoneSuip.path;
+          // img = Assets.img.slots.slotsH1.path;
+          Widget heroChild = Image.asset(img);
+          containerslotNumKEY = true;
+          bonusGameCount++;
+
+          OverlayFly2TargetKey().showWithSize(
+            childSize: Size(80.w, 80.w),
+            targetContext: keyPhoneSpice.currentContext!,
+            topLeftOffset: startPosition,
+            heroChild: heroChild,
+          );
+        }
+      }
+    });
+
     DateTime curTime = DateTime.now();
     ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
     onAddMoney(
@@ -768,23 +872,28 @@ class MainController extends GetxController {
       onEnd: () async {
         await Future.delayed(Duration(milliseconds: 500), () {});
         DateTime curTime2 = DateTime.now();
-        ssLogggg(
-          "==onStartRoller==end=curTime2:${curTime2.millisecondsSinceEpoch - curTime.millisecondsSinceEpoch}",
-        );
+
         hasScrollerEnd.value = false;
 
+        int slotNumSCATTERLength = kZuobiao_vCategory_cur.values.where((e)=>e==slotNumSCATTER).length;
+        slotNumSCATTERLength = 3;
+        if(slotNumSCATTERLength >= 3){
+          showFreeSpin.value = true;
+        }
+        ssLogggg(
+          "==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=end=curTime2:${curTime2.millisecondsSinceEpoch - curTime.millisecondsSinceEpoch}",
+        );
         bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
         if (hasSaveCardddd) {
           bool hasLiucheng1 = WithdddController.to.curLiucheng1SpinsOver.value;
-          bool hasLiucheng2 = WithdddController.to.curLiucheng2PaimingOver.value;
+          bool hasLiucheng2 =
+              WithdddController.to.curLiucheng2PaimingOver.value;
 
-          if(!hasLiucheng1){
+          if (!hasLiucheng1) {
             WithdddController.to.addSpinWithLiuceng1(1);
-          }else if(hasLiucheng2){
+          } else if (hasLiucheng2) {
             WithdddController.to.addSpinWithLiuceng3(1);
           }
-
-
         }
 
         int tmpBonusGameCount = curBonusGameCount.value;
@@ -893,7 +1002,7 @@ class MainController extends GetxController {
   static const int maxLevel = 32;
   static const int maxStarCount = 32;
   static const int maxBonusGameCount = 10;
-  static const double minWithdddMoney = 100;
+  static const double minWithdddMoney = 1000;
   static const double jacktopGrand = 128.0;
   static const double jacktopMajor = 80.0;
   static const double jacktopMini = 48.0;
@@ -907,6 +1016,7 @@ class MainController extends GetxController {
   static const String hkMonnnn = "54ewqr2g45sd4g5";
   static const String hkCollectStar = "dfgs656ytiu232wq";
   static const String hkBonusGameCount = "87sdghkjszdfght33";
+  static const String hkcurSpinCount = "hkcurSpinCountaaa";
   static const double minBet = 8.0;
   static const double maxBet = 10.0;
 
@@ -921,7 +1031,11 @@ class MainController extends GetxController {
   // 转spin的时候消耗或者获取的money
   var curSpinMoney = 0.0.obs;
 
+  // 当前收集的星星
   var curCollectStar = 0.obs;
+
+  // 转动spin的次数
+  var curSpinCount = 0.obs;
 
   // key: 经验值
   // value： 等级范围
@@ -1027,6 +1141,17 @@ class MainController extends GetxController {
     ssLogggg("======tmpExp:$tmpExp=");
   }
 
+  onAddSpin(int exp) {
+    int tmppp = curSpinCount.value;
+
+    tmppp = tmppp + exp;
+
+    box.put(hkcurSpinCount, tmppp);
+
+    curSpinCount.value = tmppp;
+    ssLogggg("======onAddSpin:$tmppp=");
+  }
+
   onChangeBeisu(double addNum) {
     double beisu = curBeisu.value + addNum * 1.0;
     if (beisu < 8.0) {
@@ -1096,5 +1221,9 @@ class MainController extends GetxController {
     int tmphkBonusGameCount = box.get(hkBonusGameCount) ?? 0;
     curBonusGameCount = tmphkBonusGameCount.obs;
     ssLogggg("=====initOther curBonusGameCount:$curBonusGameCount");
+
+    int tmpcurSpinCount = box.get(hkcurSpinCount) ?? 1;
+    curSpinCount = tmpcurSpinCount.obs;
+    ssLogggg("=====initOther tmpcurSpinCount:$tmpcurSpinCount");
   }
 }
