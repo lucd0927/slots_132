@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
 class SSSpineSuperwin extends StatefulWidget {
@@ -28,6 +29,11 @@ class _SSSpineSuperwinState extends State<SSSpineSuperwin> {
 
   @override
   Widget build(BuildContext context) {
+    var data = MainController.composition(EnumLottieType.superwin);
+    if(data != null){
+      return Lottie(composition: data,);
+    }
+
     return Lottie.asset(Assets.lottt.superwin.data, repeat: true,frameBuilder: (_, child, __) => child,);
 
     if (!showA) {

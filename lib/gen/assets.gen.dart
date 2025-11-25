@@ -1193,6 +1193,18 @@ class $AssetsLotttGen {
   /// Directory path: assets/lottt/bigwin
   $AssetsLotttBigwinGen get bigwin => const $AssetsLotttBigwinGen();
 
+  /// Directory path: assets/lottt/jackpot_grand
+  $AssetsLotttJackpotGrandGen get jackpotGrand =>
+      const $AssetsLotttJackpotGrandGen();
+
+  /// Directory path: assets/lottt/jackpot_major
+  $AssetsLotttJackpotMajorGen get jackpotMajor =>
+      const $AssetsLotttJackpotMajorGen();
+
+  /// Directory path: assets/lottt/jackpot_mini
+  $AssetsLotttJackpotMiniGen get jackpotMini =>
+      const $AssetsLotttJackpotMiniGen();
+
   /// Directory path: assets/lottt/megawin
   $AssetsLotttMegawinGen get megawin => const $AssetsLotttMegawinGen();
 
@@ -1204,6 +1216,12 @@ class $AssetsLotttGen {
 
   /// Directory path: assets/lottt/sg3
   $AssetsLotttSg3Gen get sg3 => const $AssetsLotttSg3Gen();
+
+  /// Directory path: assets/lottt/slotsl1
+  $AssetsLotttSlotsl1Gen get slotsl1 => const $AssetsLotttSlotsl1Gen();
+
+  /// Directory path: assets/lottt/slotsl2
+  $AssetsLotttSlotsl2Gen get slotsl2 => const $AssetsLotttSlotsl2Gen();
 
   /// Directory path: assets/lottt/superwin
   $AssetsLotttSuperwinGen get superwin => const $AssetsLotttSuperwinGen();
@@ -1513,6 +1531,48 @@ class $AssetsLotttBigwinGen {
   List<String> get values => [data];
 }
 
+class $AssetsLotttJackpotGrandGen {
+  const $AssetsLotttJackpotGrandGen();
+
+  /// File path: assets/lottt/jackpot_grand/data.json
+  String get data => 'assets/lottt/jackpot_grand/data.json';
+
+  /// Directory path: assets/lottt/jackpot_grand/images
+  $AssetsLotttJackpotGrandImagesGen get images =>
+      const $AssetsLotttJackpotGrandImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttJackpotMajorGen {
+  const $AssetsLotttJackpotMajorGen();
+
+  /// File path: assets/lottt/jackpot_major/data.json
+  String get data => 'assets/lottt/jackpot_major/data.json';
+
+  /// Directory path: assets/lottt/jackpot_major/images
+  $AssetsLotttJackpotMajorImagesGen get images =>
+      const $AssetsLotttJackpotMajorImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttJackpotMiniGen {
+  const $AssetsLotttJackpotMiniGen();
+
+  /// File path: assets/lottt/jackpot_mini/data.json
+  String get data => 'assets/lottt/jackpot_mini/data.json';
+
+  /// Directory path: assets/lottt/jackpot_mini/images
+  $AssetsLotttJackpotMiniImagesGen get images =>
+      const $AssetsLotttJackpotMiniImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
 class $AssetsLotttMegawinGen {
   const $AssetsLotttMegawinGen();
 
@@ -1561,6 +1621,34 @@ class $AssetsLotttSg3Gen {
 
   /// Directory path: assets/lottt/sg3/images
   $AssetsLotttSg3ImagesGen get images => const $AssetsLotttSg3ImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttSlotsl1Gen {
+  const $AssetsLotttSlotsl1Gen();
+
+  /// File path: assets/lottt/slotsl1/data.json
+  String get data => 'assets/lottt/slotsl1/data.json';
+
+  /// Directory path: assets/lottt/slotsl1/images
+  $AssetsLotttSlotsl1ImagesGen get images =>
+      const $AssetsLotttSlotsl1ImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttSlotsl2Gen {
+  const $AssetsLotttSlotsl2Gen();
+
+  /// File path: assets/lottt/slotsl2/data.json
+  String get data => 'assets/lottt/slotsl2/data.json';
+
+  /// Directory path: assets/lottt/slotsl2/images
+  $AssetsLotttSlotsl2ImagesGen get images =>
+      const $AssetsLotttSlotsl2ImagesGen();
 
   /// List of all assets
   List<String> get values => [data];
@@ -3358,6 +3446,930 @@ class $AssetsLotttBigwinImagesGen {
   ];
 }
 
+class $AssetsLotttJackpotGrandImagesGen {
+  const $AssetsLotttJackpotGrandImagesGen();
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_0.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_1.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_10.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_11.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_12.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_13.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_14.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_15.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_16.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_17.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_18.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_19.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_2.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_20.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_21.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_22.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_23.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_24.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_25.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_26.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_27.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_28.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_29.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_3.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_30.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_31.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_32.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_33.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_34.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_35.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_36.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_37.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_38.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_39.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_4.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_40.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_41.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_42.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_43.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_44.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_45.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_46.png
+  AssetGenImage get seq046 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_46.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_47.png
+  AssetGenImage get seq047 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_47.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_48.png
+  AssetGenImage get seq048 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_48.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_49.png
+  AssetGenImage get seq049 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_49.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_5.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_50.png
+  AssetGenImage get seq050 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_50.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_51.png
+  AssetGenImage get seq051 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_51.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_52.png
+  AssetGenImage get seq052 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_52.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_53.png
+  AssetGenImage get seq053 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_53.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_54.png
+  AssetGenImage get seq054 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_54.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_55.png
+  AssetGenImage get seq055 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_55.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_56.png
+  AssetGenImage get seq056 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_56.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_57.png
+  AssetGenImage get seq057 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_57.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_58.png
+  AssetGenImage get seq058 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_58.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_59.png
+  AssetGenImage get seq059 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_59.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_6.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_7.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_8.png');
+
+  /// File path: assets/lottt/jackpot_grand/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/jackpot_grand/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq046,
+    seq047,
+    seq048,
+    seq049,
+    seq05,
+    seq050,
+    seq051,
+    seq052,
+    seq053,
+    seq054,
+    seq055,
+    seq056,
+    seq057,
+    seq058,
+    seq059,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttJackpotMajorImagesGen {
+  const $AssetsLotttJackpotMajorImagesGen();
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_0.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_1.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_10.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_11.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_12.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_13.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_14.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_15.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_16.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_17.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_18.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_19.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_2.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_20.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_21.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_22.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_23.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_24.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_25.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_26.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_27.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_28.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_29.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_3.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_30.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_31.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_32.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_33.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_34.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_35.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_36.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_37.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_38.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_39.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_4.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_40.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_41.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_42.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_43.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_44.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_45.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_46.png
+  AssetGenImage get seq046 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_46.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_47.png
+  AssetGenImage get seq047 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_47.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_48.png
+  AssetGenImage get seq048 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_48.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_49.png
+  AssetGenImage get seq049 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_49.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_5.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_50.png
+  AssetGenImage get seq050 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_50.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_51.png
+  AssetGenImage get seq051 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_51.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_52.png
+  AssetGenImage get seq052 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_52.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_53.png
+  AssetGenImage get seq053 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_53.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_54.png
+  AssetGenImage get seq054 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_54.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_55.png
+  AssetGenImage get seq055 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_55.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_56.png
+  AssetGenImage get seq056 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_56.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_57.png
+  AssetGenImage get seq057 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_57.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_58.png
+  AssetGenImage get seq058 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_58.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_59.png
+  AssetGenImage get seq059 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_59.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_6.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_7.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_8.png');
+
+  /// File path: assets/lottt/jackpot_major/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/jackpot_major/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq046,
+    seq047,
+    seq048,
+    seq049,
+    seq05,
+    seq050,
+    seq051,
+    seq052,
+    seq053,
+    seq054,
+    seq055,
+    seq056,
+    seq057,
+    seq058,
+    seq059,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttJackpotMiniImagesGen {
+  const $AssetsLotttJackpotMiniImagesGen();
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_0.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_1.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_10.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_11.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_12.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_13.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_14.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_15.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_16.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_17.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_18.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_19.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_2.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_20.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_21.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_22.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_23.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_24.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_25.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_26.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_27.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_28.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_29.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_3.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_30.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_31.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_32.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_33.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_34.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_35.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_36.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_37.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_38.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_39.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_4.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_40.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_41.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_42.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_43.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_44.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_45.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_46.png
+  AssetGenImage get seq046 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_46.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_47.png
+  AssetGenImage get seq047 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_47.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_48.png
+  AssetGenImage get seq048 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_48.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_49.png
+  AssetGenImage get seq049 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_49.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_5.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_50.png
+  AssetGenImage get seq050 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_50.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_51.png
+  AssetGenImage get seq051 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_51.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_52.png
+  AssetGenImage get seq052 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_52.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_53.png
+  AssetGenImage get seq053 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_53.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_54.png
+  AssetGenImage get seq054 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_54.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_55.png
+  AssetGenImage get seq055 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_55.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_56.png
+  AssetGenImage get seq056 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_56.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_57.png
+  AssetGenImage get seq057 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_57.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_58.png
+  AssetGenImage get seq058 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_58.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_59.png
+  AssetGenImage get seq059 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_59.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_6.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_7.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_8.png');
+
+  /// File path: assets/lottt/jackpot_mini/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/jackpot_mini/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq046,
+    seq047,
+    seq048,
+    seq049,
+    seq05,
+    seq050,
+    seq051,
+    seq052,
+    seq053,
+    seq054,
+    seq055,
+    seq056,
+    seq057,
+    seq058,
+    seq059,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
 class $AssetsLotttMegawinImagesGen {
   const $AssetsLotttMegawinImagesGen();
 
@@ -4283,6 +5295,622 @@ class $AssetsLotttSg3ImagesGen {
     seq03,
     seq04,
     seq05,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttSlotsl1ImagesGen {
+  const $AssetsLotttSlotsl1ImagesGen();
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_0.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_1.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_10.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_11.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_12.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_13.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_14.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_15.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_16.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_17.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_18.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_19.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_2.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_20.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_21.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_22.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_23.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_24.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_25.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_26.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_27.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_28.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_29.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_3.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_30.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_31.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_32.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_33.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_34.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_35.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_36.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_37.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_38.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_39.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_4.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_40.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_41.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_42.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_43.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_44.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_45.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_46.png
+  AssetGenImage get seq046 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_46.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_47.png
+  AssetGenImage get seq047 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_47.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_48.png
+  AssetGenImage get seq048 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_48.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_49.png
+  AssetGenImage get seq049 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_49.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_5.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_50.png
+  AssetGenImage get seq050 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_50.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_51.png
+  AssetGenImage get seq051 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_51.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_52.png
+  AssetGenImage get seq052 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_52.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_53.png
+  AssetGenImage get seq053 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_53.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_54.png
+  AssetGenImage get seq054 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_54.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_55.png
+  AssetGenImage get seq055 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_55.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_56.png
+  AssetGenImage get seq056 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_56.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_57.png
+  AssetGenImage get seq057 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_57.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_58.png
+  AssetGenImage get seq058 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_58.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_59.png
+  AssetGenImage get seq059 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_59.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_6.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_7.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_8.png');
+
+  /// File path: assets/lottt/slotsl1/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/slotsl1/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq046,
+    seq047,
+    seq048,
+    seq049,
+    seq05,
+    seq050,
+    seq051,
+    seq052,
+    seq053,
+    seq054,
+    seq055,
+    seq056,
+    seq057,
+    seq058,
+    seq059,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttSlotsl2ImagesGen {
+  const $AssetsLotttSlotsl2ImagesGen();
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_0.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_1.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_10.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_11.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_12.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_13.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_14.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_15.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_16.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_17.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_18.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_19.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_2.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_20.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_21.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_22.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_23.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_24.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_25.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_26.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_27.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_28.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_29.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_3.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_30.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_31.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_32.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_33.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_34.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_35.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_36.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_37.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_38.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_39.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_4.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_40.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_41.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_42.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_43.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_44.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_45.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_46.png
+  AssetGenImage get seq046 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_46.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_47.png
+  AssetGenImage get seq047 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_47.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_48.png
+  AssetGenImage get seq048 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_48.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_49.png
+  AssetGenImage get seq049 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_49.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_5.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_50.png
+  AssetGenImage get seq050 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_50.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_51.png
+  AssetGenImage get seq051 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_51.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_52.png
+  AssetGenImage get seq052 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_52.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_53.png
+  AssetGenImage get seq053 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_53.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_54.png
+  AssetGenImage get seq054 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_54.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_55.png
+  AssetGenImage get seq055 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_55.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_56.png
+  AssetGenImage get seq056 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_56.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_57.png
+  AssetGenImage get seq057 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_57.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_58.png
+  AssetGenImage get seq058 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_58.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_59.png
+  AssetGenImage get seq059 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_59.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_6.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_7.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_8.png');
+
+  /// File path: assets/lottt/slotsl2/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/slotsl2/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq046,
+    seq047,
+    seq048,
+    seq049,
+    seq05,
+    seq050,
+    seq051,
+    seq052,
+    seq053,
+    seq054,
+    seq055,
+    seq056,
+    seq057,
+    seq058,
+    seq059,
     seq06,
     seq07,
     seq08,

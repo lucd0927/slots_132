@@ -38,7 +38,7 @@ class _MainState extends State<Main>
     Get.put(WithdddController());
     Get.put(SSChatController());
     Get.put(PhoneCardController());
-
+    MainController.initLottieComposition();
 
     // bgMusic.play();
   }

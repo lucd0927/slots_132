@@ -15,6 +15,9 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/sssssp/spine_jackpotGrand.dart';
+import 'package:slots_132/ss_common/sssssp/spine_jackpotMini.dart';
+import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,17 +27,23 @@ class OverlayJackpotMini {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money}) {
+  void show({
+    required double money,
+    required ValueChanged onBtn,
+    required ValueChanged onBtn2,
+  }) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
-        return JackpotMiniWidget(
+        return _JackpotWidgetMini(
           onBtn: (double money) {
             close();
+            onBtn(money);
           },
           onBtn2: (double money) {
             close();
+            onBtn2(money);
           },
           money: money,
         );
@@ -51,8 +60,8 @@ class OverlayJackpotMini {
   }
 }
 
-class JackpotMiniWidget extends StatefulWidget {
-  const JackpotMiniWidget({
+class _JackpotWidgetMini extends StatefulWidget {
+  const _JackpotWidgetMini({
     super.key,
     required this.onBtn,
     required this.money,
@@ -64,10 +73,10 @@ class JackpotMiniWidget extends StatefulWidget {
   final ValueChanged<double> onBtn2;
 
   @override
-  State<JackpotMiniWidget> createState() => _JackpotMiniWidgetState();
+  State<_JackpotWidgetMini> createState() => _JackpotWidgetMiniState();
 }
 
-class _JackpotMiniWidgetState extends State<JackpotMiniWidget> {
+class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
   bool positive = bgMusic.hasOn;
   bool positive2 = btnAudio.hasOn;
   var green = Color(0xFF45CC0D);
@@ -103,99 +112,134 @@ class _JackpotMiniWidgetState extends State<JackpotMiniWidget> {
               width: double.infinity,
               height: double.infinity,
 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  SizedBox(height: 10.h),
-                  Container(
-                    width: 350.h,
-                    height: 240.h,
-                    child: Stack(
-                      alignment: Alignment.topCenter,
-                      children: [
-                        Image.asset(
-                          Assets.img.popupJackpotBg.path,
-                          width: double.infinity,
-                          height: double.infinity,
-                          fit: BoxFit.fill,
+                  Positioned(
+                    left: -0.w,
+                    right: -0.w,
+                    top: 0.h,
+                    bottom: -0.h,
+                    child: IgnorePointer(
+                      child: Center(
+                        child: Container(
+                          width: ScreenUtil().screenWidth,
+                          height: ScreenUtil().screenHeight,
+                          // width: 375.w,
+                          // height: 812.h,
+                          color: Colors.yellow.withValues(alpha: 0.0),
+                          child: SSSpineMoney(),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: -80.h,
+                    child: Container(
+                      width: ScreenUtil().screenWidth,
+                      height: ScreenUtil().screenHeight,
+
+                      child: SSSpineJackpotMini(),
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 10.h),
+                      Container(
+                        width: 350.h,
+                        height: 240.h,
+                        // // child: Stack(
+                        // //   alignment: Alignment.topCenter,
+                        // //   children: [
+                        // //     Image.asset(
+                        // //       Assets.img.popupJackpotBg.path,
+                        // //       width: double.infinity,
+                        // //       height: double.infinity,
+                        // //       fit: BoxFit.fill,
+                        // //     ),
+                        // //     Column(
+                        // //       mainAxisAlignment: MainAxisAlignment.center,
+                        // //       children: [
+                        // //         SSAScale(
+                        // //           child: Image.asset(
+                        // //             Assets.img.popupJackpotGrand.path,
+                        // //             width: 267.h,
+                        // //             height: 91.h,
+                        // //           ),
+                        // //         ),
+                        // //         // SSAScale(
+                        // //         //   child: Image.asset(
+                        // //         //     Assets.img.popupJackpotGrand.path,
+                        // //         //     width: 267.h,
+                        // //         //     height: 91.h,
+                        // //         //   ),
+                        // //         // ),
+                        // //         // SSAScale(
+                        // //         //   child: Image.asset(
+                        // //         //     Assets.img.popupJackpot1.path,
+                        // //         //     width: 334.h,
+                        // //         //     height: 174.h,
+                        // //         //   ),
+                        // //         // ),
+                        // //       ],
+                        // //     ),
+                        // //   ],
+                        // // ),
+                        // child: SSSpineJackpotGrand(),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 60.h,
+                        child: Stack(
                           children: [
-                            SSAScale(
+                            Center(
                               child: Image.asset(
-                                Assets.img.popupJackpotMini.path,
-                                width: 267.h,
-                                height: 91.h,
+                                Assets.img.popupMoneybgSuper.path,
+                                width: 350.w,
+                                height: double.infinity,
                               ),
                             ),
-                            // SSAScale(
-                            //   child: Image.asset(
-                            //     Assets.img.popupJackpotGrand.path,
-                            //     width: 267.h,
-                            //     height: 91.h,
-                            //   ),
-                            // ),
-                            // SSAScale(
-                            //   child: Image.asset(
-                            //     Assets.img.popupJackpot1.path,
-                            //     width: 334.h,
-                            //     height: 174.h,
-                            //   ),
-                            // ),
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: 4.h,
+                              bottom: 0,
+                              child: Center(
+                                child: SSTxtGraBorder(
+                                  text:
+                                  "${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
+                                  fontSize: 42.sp,
+                                  fontFamily: FontFamily.alkatra,
+                                  height: 1,
+                                  fontWeight: FontWeight.w700,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xff0FFF63),
+                                      Color(0xffA4F00D),
+                                      Color(0xffD0FF00),
+                                      Color(0xff00FF1E),
+                                      // Color(0xff0FFF63),
+                                    ],
+                                    end: Alignment.bottomCenter,
+                                    begin: Alignment.topCenter,
+                                  ),
+                                  strokeColor: Color(0xff0C402B),
+                                  strokeWidth: 3.w,
+                                  // fontColor: Color(0xff6AFF00),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 40.h),
+                      btn(),
+                      SizedBox(height: 30.h),
+                    ],
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 60.h,
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Image.asset(
-                            Assets.img.popupMoneybgSuper.path,
-                            width: 350.w,
-                            height: double.infinity,
-                          ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: 4.h,
-                          bottom: 0,
-                          child: Center(
-                            child: SSTxtGraBorder(
-                              text:
-                                  "${SSCountry.curGuojiaFuhao()}${widget.money}",
-                              fontSize: 42.sp,
-                              fontFamily: FontFamily.alkatra,
-                              height: 1,
-                              fontWeight: FontWeight.w700,
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xff0FFF63),
-                                  Color(0xffA4F00D),
-                                  Color(0xffD0FF00),
-                                  Color(0xff00FF1E),
-                                  // Color(0xff0FFF63),
-                                ],
-                                end: Alignment.bottomCenter,
-                                begin: Alignment.topCenter,
-                              ),
-                              strokeColor: Color(0xff0C402B),
-                              strokeWidth: 3.w,
-                              // fontColor: Color(0xff6AFF00),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.h),
-                  btn(),
-                  SizedBox(height: 30.h),
                 ],
               ),
             ),

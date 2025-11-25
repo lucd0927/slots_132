@@ -5,14 +5,21 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/diallll/overlay_bigwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_free_spins.dart';
 import 'package:slots_132/ss_common/diallll/overlay_free_spins_over.dart';
+import 'package:slots_132/ss_common/diallll/overlay_jackpot_grand.dart';
+import 'package:slots_132/ss_common/diallll/overlay_jackpot_major.dart';
+import 'package:slots_132/ss_common/diallll/overlay_jackpot_mini.dart';
+import 'package:slots_132/ss_common/diallll/overlay_megawin.dart';
+import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
@@ -66,6 +73,8 @@ class MainController extends GetxController {
 
   // 滚动是否结束
   var hasScrollerEnd = false.obs;
+
+  var jackpotType = EnumJackpot.unknow.obs;
 
   final firstRoller = GlobalKey<RollerListState>();
   final secondRoller = GlobalKey<RollerListState>();
@@ -230,6 +239,8 @@ class MainController extends GetxController {
 
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
+    // tmpSpinCount = 12;
+
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
       winReel1
@@ -324,6 +335,33 @@ class MainController extends GetxController {
       winReel5
         ..clear()
         ..addAll(imgCategories.sublist(12, 15));
+    } else if (tmpSpinCount == 12) {
+      var imgCategories = [
+        [slotNumWild1, slotNumWild2, slotNumWild3],
+        [slotNumWild1, slotNumWild2, slotNumWild3],
+        [slotNumWild1, slotNumWild2, slotNumWild3],
+        [
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+          defaultImgName[Random().nextInt(length)],
+        ]..shuffle(),
+        [slotNumWild1, slotNumWild2, slotNumWild3],
+      ]..shuffle();
+      winReel1
+        ..clear()
+        ..addAll(imgCategories[0]);
+      winReel2
+        ..clear()
+        ..addAll(imgCategories[1]);
+      winReel3
+        ..clear()
+        ..addAll(imgCategories[2]);
+      winReel4
+        ..clear()
+        ..addAll(imgCategories[3]);
+      winReel5
+        ..clear()
+        ..addAll(imgCategories[4]);
     }
   }
 
@@ -912,6 +950,128 @@ class MainController extends GetxController {
 
     DateTime curTime = DateTime.now();
     ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
+
+    bool showJackpot = false;
+    int jackpotCount = 0;
+    bool zuobiao1 = kZuobiao_vCategory_cur[1]?.contains(slotNumWild) ?? false;
+    bool zuobiao6 = kZuobiao_vCategory_cur[6]?.contains(slotNumWild) ?? false;
+    bool zuobiao11 = kZuobiao_vCategory_cur[11]?.contains(slotNumWild) ?? false;
+    bool column1 = zuobiao1 && zuobiao6 && zuobiao11;
+    if (column1) {
+      jackpotCount++;
+    }
+
+    bool zuobiao2 = kZuobiao_vCategory_cur[2]?.contains(slotNumWild) ?? false;
+    bool zuobiao7 = kZuobiao_vCategory_cur[7]?.contains(slotNumWild) ?? false;
+    bool zuobiao12 = kZuobiao_vCategory_cur[12]?.contains(slotNumWild) ?? false;
+    bool column2 = zuobiao2 && zuobiao7 && zuobiao12;
+    if (column2) {
+      jackpotCount++;
+    }
+    bool zuobiao3 = kZuobiao_vCategory_cur[3]?.contains(slotNumWild) ?? false;
+    bool zuobiao8 = kZuobiao_vCategory_cur[8]?.contains(slotNumWild) ?? false;
+    bool zuobiao13 = kZuobiao_vCategory_cur[13]?.contains(slotNumWild) ?? false;
+    bool column3 = zuobiao3 && zuobiao8 && zuobiao13;
+    if (column3) {
+      jackpotCount++;
+    }
+    bool zuobiao4 = kZuobiao_vCategory_cur[4]?.contains(slotNumWild) ?? false;
+    bool zuobiao9 = kZuobiao_vCategory_cur[9]?.contains(slotNumWild) ?? false;
+    bool zuobiao14 = kZuobiao_vCategory_cur[14]?.contains(slotNumWild) ?? false;
+    bool column4 = zuobiao4 && zuobiao9 && zuobiao14;
+    if (column4) {
+      jackpotCount++;
+    }
+    bool zuobiao5 = kZuobiao_vCategory_cur[5]?.contains(slotNumWild) ?? false;
+    bool zuobiao10 = kZuobiao_vCategory_cur[10]?.contains(slotNumWild) ?? false;
+    bool zuobiao15 = kZuobiao_vCategory_cur[15]?.contains(slotNumWild) ?? false;
+    bool column5 = zuobiao5 && zuobiao10 && zuobiao15;
+    if (column5) {
+      jackpotCount++;
+    }
+    ssLogggg("======jackpotCount:$jackpotCount");
+    // jackpotCount = 2;
+
+    if (jackpotCount == 2) {
+      OverlayJackpotMini().show(
+        money: jacktopMini+tmpAddMoney,
+        onBtn: (value) {
+          _rollerEnd(tmpAddMoney: value);
+        },
+        onBtn2: (value) {
+          _rollerEnd(tmpAddMoney: value);
+        },
+      );
+    } else if (jackpotCount == 3 || jackpotCount == 4) {
+      OverlayJackpotMajor().show(
+        money: jacktopMajor+tmpAddMoney,
+        onBtn: (value) {
+          _rollerEnd(tmpAddMoney: value);
+        },
+        onBtn2: (value) {
+          _rollerEnd(tmpAddMoney: value);
+        },
+      );
+    } else if (jackpotCount == 5) {
+      OverlayJackpotGrand().show(
+        money: jacktopGrand+tmpAddMoney,
+        onBtn: (value) {
+          _rollerEnd(tmpAddMoney: value);
+        },
+        onBtn2: (value) {
+          _rollerEnd(tmpAddMoney: value);
+        },
+      );
+    } else {
+      double tmpBeisu = curBeisu.value;
+
+      double addBeisu = tmpAddMoney / tmpBeisu;
+
+      if (addBeisu >= 4) {
+        OverlaySuperwin().show(
+          money: tmpAddMoney,
+          onBtn: (money) {
+            _rollerEnd(tmpAddMoney: money);
+          },
+          onBtn2: (money) {
+            _rollerEnd(tmpAddMoney: money);
+          },
+        );
+      } else if (addBeisu >= 3) {
+        OverlayMegawin().show(
+          money: tmpAddMoney,
+          onBtn: (money) {
+            _rollerEnd(tmpAddMoney: money);
+          },
+          onBtn2: (money) {
+            _rollerEnd(tmpAddMoney: money);
+          },
+        );
+      } else if (addBeisu >= 2) {
+        OverlayBigwin().show(
+          money: tmpAddMoney,
+          onBtn: (money) {
+            _rollerEnd(tmpAddMoney: money);
+          },
+          onBtn2: (money) {
+            _rollerEnd(tmpAddMoney: money);
+          },
+        );
+      } else {
+        _rollerEnd(tmpAddMoney: tmpAddMoney);
+      }
+    }
+
+    //
+
+    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
+    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
+    ssLogggg(
+      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
+    );
+  }
+
+  _rollerEnd({required double tmpAddMoney}) {
     onAddMoney(
       tmpAddMoney,
       onEnd: () async {
@@ -921,7 +1081,7 @@ class MainController extends GetxController {
         int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
             .where((e) => e == slotNumSCATTER)
             .length;
-        slotNumSCATTERLength = 3;
+        // slotNumSCATTERLength = 3;
         if (slotNumSCATTERLength >= 3) {
           curShowFreeSpin.value = true;
           OverlayFreeSpins().show(
@@ -933,9 +1093,7 @@ class MainController extends GetxController {
         } else {
           hasScrollerEnd.value = false;
         }
-        ssLogggg(
-          "==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=end=curTime2:${curTime2.millisecondsSinceEpoch - curTime.millisecondsSinceEpoch}",
-        );
+        ssLogggg("==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=");
         bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
         if (hasSaveCardddd) {
           bool hasLiucheng1 = WithdddController.to.curLiucheng1SpinsOver.value;
@@ -964,13 +1122,6 @@ class MainController extends GetxController {
         }
       },
       showMoneyAnimated: true,
-    );
-    //
-
-    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
-    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
-    ssLogggg(
-      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
     );
   }
 
@@ -1255,11 +1406,11 @@ class MainController extends GetxController {
   }
 
   int _curFreeSpinCount = -1;
-  double _curFreeSpinMoney  = 0;
+  double _curFreeSpinMoney = 0;
 
-  resetFreeSpinStatus(){
+  resetFreeSpinStatus() {
     _curFreeSpinCount = -1;
-    _curFreeSpinMoney  = 0;
+    _curFreeSpinMoney = 0;
     curFreeSpinCount.value = 0;
     hasScrollerEnd.value = false;
     curShowFreeSpin.value = false;
@@ -1267,16 +1418,19 @@ class MainController extends GetxController {
 
   onFreeSpin() {
     int tmpCount = curFreeSpinCount.value;
-    if(_curFreeSpinCount == -1){
+    if (_curFreeSpinCount == -1) {
       _curFreeSpinCount = tmpCount;
-      _curFreeSpinMoney  = 0;
+      _curFreeSpinMoney = 0;
     }
     tmpCount = tmpCount - 1;
     if (tmpCount >= 0) {
       curFreeSpinCount.value = tmpCount;
     } else {
-
-      OverlayFreeSpinsOver().show(money: _curFreeSpinMoney, onClose: (v) {}, spinCount: _curFreeSpinCount);
+      OverlayFreeSpinsOver().show(
+        money: _curFreeSpinMoney,
+        onClose: (v) {},
+        spinCount: _curFreeSpinCount,
+      );
       resetFreeSpinStatus();
       return;
     }
@@ -1287,28 +1441,38 @@ class MainController extends GetxController {
 
           OverlayWow().show(
             money: money,
-            onClose: (v) {
-
-              onAddMoney(money, showMoneyAnimated: true,onEnd: (){
-                _curFreeSpinMoney = _curFreeSpinMoney + money;
-                onFreeSpin();
-              });
-
-              // overlayMainTopMoney.showWithSize(
-              //   childSize: Size(32.w, 32.w),
-              //   onEnd: () {
-              //
-              //   },
-              // );
+            onBtn: (v) {
+              onAddMoney(
+                money,
+                showMoneyAnimated: true,
+                onEnd: () {
+                  _curFreeSpinMoney = _curFreeSpinMoney + money;
+                  onFreeSpin();
+                },
+              );
+            },
+            onBtn2: (money) {
+              onAddMoney(
+                money,
+                showMoneyAnimated: true,
+                onEnd: () {
+                  _curFreeSpinMoney = _curFreeSpinMoney + money;
+                  onFreeSpin();
+                },
+              );
             },
           );
         } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.spin) {
           OverlayLuckySlots().show(
             onClose: (money) {
-              onAddMoney(money, showMoneyAnimated: true,onEnd: (){
-                _curFreeSpinMoney = _curFreeSpinMoney + money;
-                onFreeSpin();
-              });
+              onAddMoney(
+                money,
+                showMoneyAnimated: true,
+                onEnd: () {
+                  _curFreeSpinMoney = _curFreeSpinMoney + money;
+                  onFreeSpin();
+                },
+              );
               // overlayMainTopMoney.showWithSize(
               //   childSize: Size(32.w, 32.w),
               //   onEnd: () {
@@ -1347,4 +1511,82 @@ class MainController extends GetxController {
     curSpinCount = tmpcurSpinCount.obs;
     ssLogggg("=====initOther tmpcurSpinCount:$tmpcurSpinCount");
   }
+
+  static Map<EnumLottieType, LottieComposition>
+  _kLottieType_vLottieComposition = {};
+
+  static initLottieComposition() async {
+    AssetLottie(Assets.lottt.superwin.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.superwin] = result;
+    });
+
+    AssetLottie(Assets.lottt.megawin.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.megawin] = result;
+    });
+    AssetLottie(Assets.lottt.wow.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.wow] = result;
+    });
+    AssetLottie(Assets.lottt.bigwin.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.bigwin] = result;
+    });
+    AssetLottie(Assets.lottt.bian.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.bian] = result;
+    });
+    AssetLottie(Assets.lottt.bian2.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.bian2] = result;
+    });
+    AssetLottie(Assets.lottt.bian3.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.bian3] = result;
+    });
+
+    // AssetLottie(Assets.lottt.jackpotGrand.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.jackpotGrand] = result;
+    // });
+    // AssetLottie(Assets.lottt.jackpotMajor.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.jackpotMajor] = result;
+    // });
+    // AssetLottie(Assets.lottt.jackpotMini.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.jackpotMini] = result;
+    // });
+
+    AssetLottie(Assets.donghua.lottieMoney.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.money] = result;
+    });
+  }
+
+  static LottieComposition? composition(EnumLottieType type) {
+    LottieComposition? tmp = _kLottieType_vLottieComposition[type];
+    if (tmp == null) {}
+
+    return tmp;
+  }
+}
+
+enum EnumLottieType {
+  jackpotGrand("jackpotGrand"),
+  jackpotMajor("jackpotMajor"),
+  jackpotMini("jackpotMini"),
+  bian3("bian3"),
+  bian2("bian2"),
+  bian("bian"),
+  bigwin("bigwin"),
+  wow("wow"),
+  superwin("superwin"),
+  megawin("megawin"),
+  money("money");
+
+  final String name;
+
+  const EnumLottieType(this.name);
+}
+
+enum EnumJackpot {
+  unknow("unknow"),
+  grand("grand"),
+  major("major"),
+  mini("mini");
+
+  final String name;
+
+  const EnumJackpot(this.name);
 }

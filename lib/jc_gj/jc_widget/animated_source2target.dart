@@ -351,7 +351,7 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
             },
           );
         }),
-        if (widget.showTargetWidget && widget.children.length > 0)
+        if (widget.showTargetWidget && widget.children.isNotEmpty)
           Positioned(
             left: widget.end.dx,
             top: widget.end.dy,

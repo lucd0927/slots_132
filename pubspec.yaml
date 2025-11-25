@@ -155,6 +155,19 @@ flutter:
     - assets/lottt/sg2/images/
     - assets/lottt/sg3/
     - assets/lottt/sg3/images/
+    - assets/lottt/slotsl1/
+    - assets/lottt/slotsl1/images/
+    - assets/lottt/slotsl2/
+    - assets/lottt/slotsl2/images/
+    - assets/lottt/slotsl2/
+    - assets/lottt/slotsl2/images/
+    - assets/lottt/jackpot_grand/
+    - assets/lottt/jackpot_grand/images/
+    - assets/lottt/jackpot_mini/
+    - assets/lottt/jackpot_mini/images/
+    - assets/lottt/jackpot_major/
+    - assets/lottt/jackpot_major/images/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

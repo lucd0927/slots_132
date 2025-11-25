@@ -14,6 +14,7 @@ import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 double scale = 2;
 
@@ -35,14 +36,6 @@ class _SSSplassssState extends State<SSSplassss> {
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
 
-      AssetLottie(Assets.lottt.superwin.data).load();
-      AssetLottie(Assets.lottt.megawin.data).load();
-      AssetLottie(Assets.lottt.wow.data).load();
-      AssetLottie(Assets.lottt.bigwin.data).load();
-      AssetLottie(Assets.lottt.bian.data).load();
-      AssetLottie(Assets.lottt.bian2.data).load();
-      AssetLottie(Assets.lottt.bian3.data).load();
-      AssetLottie(Assets.donghua.lottieMoney.data).load();
 
 
       //

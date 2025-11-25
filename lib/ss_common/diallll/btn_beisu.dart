@@ -8,9 +8,10 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 class BtnBeisuWidget extends StatefulWidget {
-  const BtnBeisuWidget({super.key, required this.onBtn});
+  const BtnBeisuWidget({super.key, required this.onBtn, required this.onBtn2});
 
   final ValueChanged<double> onBtn;
+  final ValueChanged<double> onBtn2;
 
   @override
   State<BtnBeisuWidget> createState() => _BtnBeisuWidgetState();
@@ -26,101 +27,118 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
   }
 
   bottomBeisuBtn() {
-    return Container(
-      width: 218.h,
-      height: 108.h,
-      color: Colors.teal.withValues(alpha: 0),
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Column(
+    return Column(
+      children: [
+        Container(
+          width: 218.h,
+          height: 108.h,
+          color: Colors.teal.withValues(alpha: 0),
+          child: Stack(
+            alignment: Alignment.topCenter,
             children: [
-              SizedBox(height: 10.h),
-              Image.asset(
-                Assets.img.popupBeisu.path,
-                width: 148.h,
-                height: 59.h,
-                fit: BoxFit.fill,
+              Column(
+                children: [
+                  SizedBox(height: 10.h),
+                  Image.asset(
+                    Assets.img.popupBeisu.path,
+                    width: 148.h,
+                    height: 59.h,
+                    fit: BoxFit.fill,
+                  ),
+                ],
               ),
-            ],
-          ),
 
-          Positioned(
-            left: 0,
-            right: 0,
-            top: 24.h,
-            // bottom: 0.h,
-            child: Center(
-              child: PendulumAnimation(
-                gudingBeisu: showGudingBeisu,
-                onAngle: (double value) {
-                  showGudingBeisuAngle = value;
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 24.h,
+                // bottom: 0.h,
+                child: Center(
+                  child: PendulumAnimation(
+                    gudingBeisu: showGudingBeisu,
+                    onAngle: (double value) {
+                      showGudingBeisuAngle = value;
 
-                  // ssLogggg("=====showGudingBeisuAngle:$showGudingBeisuAngle");
-                },
-                gudingBeisuAngle: showGudingBeisuAngle,
-                child: Image.asset(
-                  Assets.img.popupZhiz.path,
-                  width: 31.h,
-                  height: 110.h,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-
-          Positioned(
-            top: 62.h,
-            right: 0,
-            left: 0,
-            child: Center(
-              child: GestureDetector(
-                onTap: onBtn,
-                child: Container(
-                  width: 218.h,
-                  height: 55.h,
-                  color: Colors.brown.withValues(alpha: 0),
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Image.asset(
-                        Assets.img.btnWheel.path,
-                        width: double.infinity,
-                        height: double.infinity,
-                      ),
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        bottom: 4.h,
-                        child: Center(
-                          child: SSTxtBorder(
-                            text: "Collect",
-                            fontSize: 24.sp,
-                            fontFamily: FontFamily.alkatra,
-                            fontWeight: FontWeight.w700,
-                            foreground: Color(0xff1C5700),
-                          ),
-                        ),
-                      ),
-
-                      Positioned(
-                        top: -10.h,
-                        right: 0,
-                        child: Image.asset(
-                          Assets.img.video.path,
-                          width: 28.h,
-                          height: 28.h,
-                        ),
-                      ),
-                    ],
+                      // ssLogggg("=====showGudingBeisuAngle:$showGudingBeisuAngle");
+                    },
+                    gudingBeisuAngle: showGudingBeisuAngle,
+                    child: Image.asset(
+                      Assets.img.popupZhiz.path,
+                      width: 31.h,
+                      height: 110.h,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
-            ),
+
+              Positioned(
+                top: 62.h,
+                right: 0,
+                left: 0,
+                child: Center(
+                  child: GestureDetector(
+                    onTap: onBtn,
+                    child: Container(
+                      width: 218.h,
+                      height: 55.h,
+                      color: Colors.brown.withValues(alpha: 0),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Image.asset(
+                            Assets.img.btnWheel.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 4.h,
+                            child: Center(
+                              child: SSTxtBorder(
+                                text: "Collect",
+                                fontSize: 24.sp,
+                                fontFamily: FontFamily.alkatra,
+                                fontWeight: FontWeight.w700,
+                                foreground: Color(0xff1C5700),
+                              ),
+                            ),
+                          ),
+
+                          Positioned(
+                            top: -10.h,
+                            right: 0,
+                            child: Image.asset(
+                              Assets.img.video.path,
+                              width: 28.h,
+                              height: 28.h,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        SizedBox(height: 20.h),
+        GestureDetector(
+          onTap: () {
+            widget.onBtn2(0.1);
+          },
+          child: SSTxtBorder(
+            text: "Claim 10%",
+            fontSize: 16.sp,
+            fontFamily: FontFamily.alkatra,
+            fontWeight: FontWeight.w700,
+            foreground: Color(0xff1C5700),
+          ),
+        ),
+      ],
     );
   }
 

@@ -211,7 +211,7 @@ class TopView extends StatelessWidget {
     //   },
     // );
 
-    OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
+    // OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
 
     // OverlayCommonGet().show(money: 100,exp: 10,phoneSpice: 1);
 
@@ -232,7 +232,7 @@ class TopView extends StatelessWidget {
     // OverlayWow().show(money: 100, onClose: (value) {  });
     // OverlayMegawin().show(money: 100);
 
-    // OverlayJackpotGrand().show(money: 200);
+    OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
     // OverlayJackpotMajor().show(money: 200);
     // OverlayJackpotMini().show(money: 200);
 

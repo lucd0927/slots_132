@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
 class SSSpineBigwin extends StatefulWidget {
@@ -28,6 +29,10 @@ class _SSSpineBigwinState extends State<SSSpineBigwin> {
 
   @override
   Widget build(BuildContext context) {
+    var data = MainController.composition(EnumLottieType.bigwin);
+    if(data != null){
+      return Lottie(composition: data,);
+    }
     return Lottie.asset(Assets.lottt.bigwin.data, repeat: true,);
     if (!showA) {
       return const SizedBox();

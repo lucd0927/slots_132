@@ -9,6 +9,9 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/sssssp/spine_border.dart';
+import 'package:slots_132/ss_common/sssssp/spine_border2.dart';
+import 'package:slots_132/ss_common/sssssp/spine_border3.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
 
@@ -161,25 +164,18 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                             child: Stack(
                               children: [
                                 Center(
-                                  child: Lottie.asset(
-                                    Assets.lottt.bian.data,
-                                    animate: true,
-                                    repeat: true,
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.fill,
-                                  ),
+                                  child: SSSpineBorder(),
                                 ),
-                                Center(
-                                  child: Lottie.asset(
-                                    Assets.lottt.sg1.data,
-                                    animate: true,
-                                    repeat: true,
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
+                                // Center(
+                                //   child: Lottie.asset(
+                                //     Assets.lottt.sg1.data,
+                                //     animate: true,
+                                //     repeat: true,
+                                //     width: double.infinity,
+                                //     height: double.infinity,
+                                //     fit: BoxFit.fill,
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
@@ -268,14 +264,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                           height: double.infinity,
                           color: Colors.blueAccent.withValues(alpha: 0.0),
                           child: Center(
-                            child: Lottie.asset(
-                              Assets.lottt.bian3.data,
-                              animate: true,
-                              repeat: true,
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.fill,
-                            ),
+                            child: SSSpineBorder3(),
                           ),
                         ),
                       ),
@@ -307,14 +296,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                           height: double.infinity,
                           color: Colors.blueAccent.withValues(alpha: 0.0),
                           child: Center(
-                            child: Lottie.asset(
-                              Assets.lottt.bian2.data,
-                              animate: true,
-                              repeat: true,
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.fill,
-                            ),
+                            child: SSSpineBorder2(),
                           ),
                         ),
                       ),
@@ -348,14 +330,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         height: double.infinity,
                         color: Colors.blueAccent.withValues(alpha: 0.0),
                         child: Center(
-                          child: Lottie.asset(
-                            Assets.lottt.bian.data,
-                            animate: true,
-                            repeat: true,
-                            width: double.infinity,
-                            height: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
+                          child: SSSpineBorder(),
                         ),
                       ),
                     ),
@@ -395,14 +370,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         height: double.infinity,
                         color: Colors.blueAccent.withValues(alpha: 0.0),
                         child: Center(
-                          child: Lottie.asset(
-                            Assets.lottt.bian2.data,
-                            animate: true,
-                            repeat: true,
-                            width: double.infinity,
-                            height: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
+                          child:SSSpineBorder2(),
                         ),
                       ),
                     ),
@@ -435,14 +403,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         height: double.infinity,
                         color: Colors.blueAccent.withValues(alpha: 0.0),
                         child: Center(
-                          child: Lottie.asset(
-                            Assets.lottt.bian.data,
-                            animate: true,
-                            repeat: true,
-                            width: double.infinity,
-                            height: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
+                          child: SSSpineBorder(),
                         ),
                       ),
                     ),

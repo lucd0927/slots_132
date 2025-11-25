@@ -26,7 +26,11 @@ class OverlaySuperwin {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money}) {
+  void show({
+    required double money,
+    required ValueChanged onBtn,
+    required ValueChanged onBtn2,
+  }) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -34,8 +38,13 @@ class OverlaySuperwin {
         return SuperwinWidget(
           onBtn: (double money) {
             close();
+            onBtn(money);
           },
           money: money,
+          onBtn2: (double money) {
+            close();
+            onBtn2(money);
+          },
         );
       },
     );
@@ -51,10 +60,16 @@ class OverlaySuperwin {
 }
 
 class SuperwinWidget extends StatefulWidget {
-  const SuperwinWidget({super.key, required this.onBtn, required this.money});
+  const SuperwinWidget({
+    super.key,
+    required this.onBtn,
+    required this.money,
+    required this.onBtn2,
+  });
 
   final double money;
   final ValueChanged<double> onBtn;
+  final ValueChanged<double> onBtn2;
 
   @override
   State<SuperwinWidget> createState() => _SuperwinWidgetState();
@@ -147,7 +162,7 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                             Center(
                               child: SSTxtGraBorder(
                                 text:
-                                    "${SSCountry.curGuojiaFuhao()}${widget.money}",
+                                    "${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
                                 fontSize: 42.sp,
                                 fontFamily: FontFamily.alkatra,
                                 height: 1,
@@ -176,7 +191,11 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                         onBtn: (v) {
                           ssLogggg("=====beisu:$v");
                           double money = widget.money * v;
-                          onClose(money);
+                          widget.onBtn(money);
+                        },
+                        onBtn2: (double value) {
+                          double money = widget.money * value;
+                          widget.onBtn2(money);
                         },
                       ),
                       SizedBox(height: 30.h),

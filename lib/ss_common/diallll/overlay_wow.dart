@@ -26,7 +26,11 @@ class OverlayWow {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money, required ValueChanged onClose}) {
+  void show({
+    required double money,
+    required ValueChanged onBtn,
+    required ValueChanged onBtn2,
+  }) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -34,9 +38,13 @@ class OverlayWow {
         return WowWidget(
           onBtn: (double money) {
             close();
-            onClose(money);
+            onBtn(money);
           },
           money: money,
+          onBtn2: (double money) {
+            close();
+            onBtn2(money);
+          },
         );
       },
     );
@@ -52,10 +60,16 @@ class OverlayWow {
 }
 
 class WowWidget extends StatefulWidget {
-  const WowWidget({super.key, required this.onBtn, required this.money});
+  const WowWidget({
+    super.key,
+    required this.onBtn,
+    required this.money,
+    required this.onBtn2,
+  });
 
   final double money;
   final ValueChanged<double> onBtn;
+  final ValueChanged<double> onBtn2;
 
   @override
   State<WowWidget> createState() => _WowWidgetState();
@@ -186,7 +200,11 @@ class _WowWidgetState extends State<WowWidget> {
                         onBtn: (v) {
                           ssLogggg("=====beisu:$v");
                           double money = widget.money * v;
-                          onClose(money);
+                          widget.onBtn(money);
+                        },
+                        onBtn2: (double value) {
+                          double money = widget.money * value;
+                          widget.onBtn2(money);
                         },
                       ),
                       SizedBox(height: 30.h),
@@ -328,13 +346,13 @@ class _WowWidgetState extends State<WowWidget> {
     );
   }
 
-  onClose(double money) async {
-    ssLogggg("====== close money:$money");
-    setState(() {
-      showAnimated = false;
-      startScale = 1.0;
-    });
-    // await Future.delayed(animD);
-    widget.onBtn(money);
-  }
+  // onClose(double money) async {
+  //   ssLogggg("====== close money:$money");
+  //   setState(() {
+  //     showAnimated = false;
+  //     startScale = 1.0;
+  //   });
+  //   // await Future.delayed(animD);
+  //   widget.onBtn(money);
+  // }
 }
