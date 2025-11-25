@@ -126,16 +126,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 80.h),
-                        topWwww(),
-                        SizedBox(height: 120.h),
-                        centerWww(),
-                      ],
-                    ),
                     Positioned(
                       left: -0.w,
                       right: -0.w,
@@ -154,6 +144,16 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         ),
                       ),
                     ),
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 80.h),
+                        topWwww(),
+                        SizedBox(height: 120.h),
+                        centerWww(),
+                      ],
+                    ),
+
                   ],
                 ),
               ),

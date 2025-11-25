@@ -11,6 +11,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/overlay_bigwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/diallll/overlay_free_spins.dart';
+import 'package:slots_132/ss_common/diallll/overlay_free_spins_over.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_grand.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_major.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_mini.dart';
@@ -210,6 +211,8 @@ class TopView extends StatelessWidget {
     //   },
     // );
 
+    OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
+
     // OverlayCommonGet().show(money: 100,exp: 10,phoneSpice: 1);
 
 
@@ -225,7 +228,7 @@ class TopView extends StatelessWidget {
 
 
     // OverlaySuperwin().show(money: 100);
-    OverlayBigwin().show(money: 100);
+    // OverlayBigwin().show(money: 100);
     // OverlayWow().show(money: 100, onClose: (value) {  });
     // OverlayMegawin().show(money: 100);
 

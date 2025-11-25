@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/overlay_free_spins.dart';
+import 'package:slots_132/ss_common/diallll/overlay_free_spins_over.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
@@ -230,7 +231,7 @@ class MainController extends GetxController {
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     int length = defaultImgName.length;
-    if (tmpSpinCount == 1) {
+    if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
       winReel1
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
@@ -246,7 +247,7 @@ class MainController extends GetxController {
       winReel5
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
-    } else if (tmpSpinCount == 2) {
+    } else if (tmpSpinCount == 2 && tmpSpinCount1 == 2) {
       winReel5 = winReel5
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
@@ -929,6 +930,8 @@ class MainController extends GetxController {
               onFreeSpin();
             },
           );
+        } else {
+          hasScrollerEnd.value = false;
         }
         ssLogggg(
           "==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=end=curTime2:${curTime2.millisecondsSinceEpoch - curTime.millisecondsSinceEpoch}",
@@ -1251,16 +1254,30 @@ class MainController extends GetxController {
     return progress;
   }
 
+  int _curFreeSpinCount = -1;
+  double _curFreeSpinMoney  = 0;
+
+  resetFreeSpinStatus(){
+    _curFreeSpinCount = -1;
+    _curFreeSpinMoney  = 0;
+    curFreeSpinCount.value = 0;
+    hasScrollerEnd.value = false;
+    curShowFreeSpin.value = false;
+  }
+
   onFreeSpin() {
     int tmpCount = curFreeSpinCount.value;
-
+    if(_curFreeSpinCount == -1){
+      _curFreeSpinCount = tmpCount;
+      _curFreeSpinMoney  = 0;
+    }
     tmpCount = tmpCount - 1;
     if (tmpCount >= 0) {
       curFreeSpinCount.value = tmpCount;
     } else {
-      curFreeSpinCount.value = 0;
-      hasScrollerEnd.value = false;
-      curShowFreeSpin.value = false;
+
+      OverlayFreeSpinsOver().show(money: _curFreeSpinMoney, onClose: (v) {}, spinCount: _curFreeSpinCount);
+      resetFreeSpinStatus();
       return;
     }
     keyFreeSpin.currentState?.onStar(
@@ -1271,32 +1288,39 @@ class MainController extends GetxController {
           OverlayWow().show(
             money: money,
             onClose: (v) {
-              overlayMainTopMoney.showWithSize(
-                childSize: Size(32.w, 32.w),
-                onEnd: () {
-                  onFreeSpin();
-                },
-              );
+
+              onAddMoney(money, showMoneyAnimated: true,onEnd: (){
+                _curFreeSpinMoney = _curFreeSpinMoney + money;
+                onFreeSpin();
+              });
+
+              // overlayMainTopMoney.showWithSize(
+              //   childSize: Size(32.w, 32.w),
+              //   onEnd: () {
+              //
+              //   },
+              // );
             },
           );
         } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.spin) {
           OverlayLuckySlots().show(
-            onClose: (v) {
-              overlayMainTopMoney.showWithSize(
-                childSize: Size(32.w, 32.w),
-                onEnd: () {
-                  onFreeSpin();
-                },
-              );
+            onClose: (money) {
+              onAddMoney(money, showMoneyAnimated: true,onEnd: (){
+                _curFreeSpinMoney = _curFreeSpinMoney + money;
+                onFreeSpin();
+              });
+              // overlayMainTopMoney.showWithSize(
+              //   childSize: Size(32.w, 32.w),
+              //   onEnd: () {
+              //     onFreeSpin();
+              //   },
+              // );
             },
           );
         }
       },
     );
   }
-
-
-
 
   initOther() {
     int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;

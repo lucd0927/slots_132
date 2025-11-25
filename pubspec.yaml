@@ -149,6 +149,12 @@ flutter:
     - assets/lottt/wow/images/
     - assets/lottt/megawin/
     - assets/lottt/megawin/images/
+    - assets/lottt/sg1/
+    - assets/lottt/sg1/images/
+    - assets/lottt/sg2/
+    - assets/lottt/sg2/images/
+    - assets/lottt/sg3/
+    - assets/lottt/sg3/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

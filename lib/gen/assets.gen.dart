@@ -252,6 +252,14 @@ class $AssetsImgGen {
   /// File path: assets/img/exp.png
   AssetGenImage get exp => const AssetGenImage('assets/img/exp.png');
 
+  /// File path: assets/img/free_spin_over_bg.png
+  AssetGenImage get freeSpinOverBg =>
+      const AssetGenImage('assets/img/free_spin_over_bg.png');
+
+  /// File path: assets/img/free_spin_over_num.png
+  AssetGenImage get freeSpinOverNum =>
+      const AssetGenImage('assets/img/free_spin_over_num.png');
+
   /// File path: assets/img/free_spines_count.png
   AssetGenImage get freeSpinesCount =>
       const AssetGenImage('assets/img/free_spines_count.png');
@@ -990,6 +998,8 @@ class $AssetsImgGen {
     dailyBonusTopReward,
     dailyBonusTopbg,
     exp,
+    freeSpinOverBg,
+    freeSpinOverNum,
     freeSpinesCount,
     freeSpins,
     freewheel,
@@ -1185,6 +1195,15 @@ class $AssetsLotttGen {
 
   /// Directory path: assets/lottt/megawin
   $AssetsLotttMegawinGen get megawin => const $AssetsLotttMegawinGen();
+
+  /// Directory path: assets/lottt/sg1
+  $AssetsLotttSg1Gen get sg1 => const $AssetsLotttSg1Gen();
+
+  /// Directory path: assets/lottt/sg2
+  $AssetsLotttSg2Gen get sg2 => const $AssetsLotttSg2Gen();
+
+  /// Directory path: assets/lottt/sg3
+  $AssetsLotttSg3Gen get sg3 => const $AssetsLotttSg3Gen();
 
   /// Directory path: assets/lottt/superwin
   $AssetsLotttSuperwinGen get superwin => const $AssetsLotttSuperwinGen();
@@ -1503,6 +1522,45 @@ class $AssetsLotttMegawinGen {
   /// Directory path: assets/lottt/megawin/images
   $AssetsLotttMegawinImagesGen get images =>
       const $AssetsLotttMegawinImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttSg1Gen {
+  const $AssetsLotttSg1Gen();
+
+  /// File path: assets/lottt/sg1/data.json
+  String get data => 'assets/lottt/sg1/data.json';
+
+  /// Directory path: assets/lottt/sg1/images
+  $AssetsLotttSg1ImagesGen get images => const $AssetsLotttSg1ImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttSg2Gen {
+  const $AssetsLotttSg2Gen();
+
+  /// File path: assets/lottt/sg2/data.json
+  String get data => 'assets/lottt/sg2/data.json';
+
+  /// Directory path: assets/lottt/sg2/images
+  $AssetsLotttSg2ImagesGen get images => const $AssetsLotttSg2ImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttSg3Gen {
+  const $AssetsLotttSg3Gen();
+
+  /// File path: assets/lottt/sg3/data.json
+  String get data => 'assets/lottt/sg3/data.json';
+
+  /// Directory path: assets/lottt/sg3/images
+  $AssetsLotttSg3ImagesGen get images => const $AssetsLotttSg3ImagesGen();
 
   /// List of all assets
   List<String> get values => [data];
@@ -3754,6 +3812,480 @@ class $AssetsLotttMegawinImagesGen {
     seq087,
     seq088,
     seq089,
+    seq09,
+  ];
+}
+
+class $AssetsLotttSg1ImagesGen {
+  const $AssetsLotttSg1ImagesGen();
+
+  /// File path: assets/lottt/sg1/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_0.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_1.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_10.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_11.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_12.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_13.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_14.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_15.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_16.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_17.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_18.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_19.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_2.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_20.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_21.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_22.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_23.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_24.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_25.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_26.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_27.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_28.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_29.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_3.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_4.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_5.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_6.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_7.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_8.png');
+
+  /// File path: assets/lottt/sg1/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/sg1/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq04,
+    seq05,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttSg2ImagesGen {
+  const $AssetsLotttSg2ImagesGen();
+
+  /// File path: assets/lottt/sg2/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_0.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_1.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_10.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_11.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_12.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_13.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_14.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_15.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_16.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_17.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_18.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_19.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_2.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_20.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_21.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_22.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_23.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_24.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_25.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_26.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_27.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_28.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_29.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_3.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_4.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_5.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_6.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_7.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_8.png');
+
+  /// File path: assets/lottt/sg2/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/sg2/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq04,
+    seq05,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttSg3ImagesGen {
+  const $AssetsLotttSg3ImagesGen();
+
+  /// File path: assets/lottt/sg3/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_0.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_1.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_10.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_11.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_12.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_13.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_14.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_15.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_16.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_17.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_18.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_19.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_2.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_20.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_21.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_22.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_23.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_24.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_25.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_26.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_27.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_28.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_29.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_3.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_4.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_5.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_6.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_7.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_8.png');
+
+  /// File path: assets/lottt/sg3/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/sg3/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq04,
+    seq05,
+    seq06,
+    seq07,
+    seq08,
     seq09,
   ];
 }

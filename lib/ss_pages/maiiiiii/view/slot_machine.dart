@@ -158,15 +158,29 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                             width: double.infinity,
                             height: double.infinity,
                             color: Colors.blueAccent.withValues(alpha: 0.0),
-                            child: Center(
-                              child: Lottie.asset(
-                                Assets.lottt.bian.data,
-                                animate: true,
-                                repeat: true,
-                                width: double.infinity,
-                                height: double.infinity,
-                                fit: BoxFit.fill,
-                              ),
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: Lottie.asset(
+                                    Assets.lottt.bian.data,
+                                    animate: true,
+                                    repeat: true,
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Center(
+                                  child: Lottie.asset(
+                                    Assets.lottt.sg1.data,
+                                    animate: true,
+                                    repeat: true,
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         )
