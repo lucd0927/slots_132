@@ -75,8 +75,8 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
 
   content() {
     return Container(
-      width: 678.w,
-      height: 771.h,
+      width: 678.w/2,
+      height: 771.h/2,
       decoration: BoxDecoration(
         color: Color(0xff992D2E),
         borderRadius: BorderRadius.circular(16.w),
@@ -89,7 +89,7 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
               Container(
                 width: double.infinity,
                 // color: Colors.amber,
-                height: 60.h,
+                height: 30.h,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -98,7 +98,7 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
-                        fontSize: 42.sp,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ],
@@ -120,8 +120,8 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                   //   color: Color(0xffffffff),
                   // ),
                   child: Container(
-                    width: 40.h,
-                    height: 40.h,
+                    width: 40.h/2,
+                    height: 40.h/2,
                     color: Color(0xffffffff),
                   ),
                 ),
@@ -131,8 +131,8 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
           Expanded(
             child: Center(
               child: Container(
-                width: 640.w,
-                height: 660.h,
+                width: 640.w/2,
+                height: 660.h/2,
                 decoration: BoxDecoration(
                   color: Color(0xffFBFBFF),
                   borderRadius: BorderRadius.circular(16.w),
@@ -140,12 +140,12 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 150.h),
+                    SizedBox(height: 150.h/2),
                     Stack(
                       children: [
                         Container(
-                          width: 288.h,
-                          height: 232.h,
+                          width: 288.h/2,
+                          height: 232.h/2,
                           color: Color(0xffffffff),
                         ),
                         // Image.asset(
@@ -165,8 +165,8 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                             widget.onBtn();
                           },
                           child: Container(
-                            width: 353.w,
-                            height: 80.h,
+                            width: 353.w/2,
+                            height: 80.h/2,
                             decoration: BoxDecoration(
                               color: Color(0xffF85823),
                               borderRadius: BorderRadius.circular(16.w),
@@ -182,7 +182,7 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                                     "Try Again",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 42.sp,
+                                      fontSize: 16.sp,
                                       // foreground: Color(0xffD0871E),
                                       color: Color(0xffffffff),
                                     ),
