@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+import 'dart:math' ;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +15,8 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
+import 'package:slots_132/ss_common/sssssp/spine_sdlr_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -30,8 +32,44 @@ class OverlayBoxgift {
     _overlay = OverlayEntry(
       builder: (context) {
         return BoxgiftWidget(
-          onBtn: (double money) {
+          onBtn: (double money) async{
             close();
+            double tmpMmm = Random().nextDouble()*50+25;
+            List<String> types = ["10spin","15spin","20spin","100xp","150xp","200xp","1phoneSpice"];
+
+            int a = Random().nextInt(types.length);
+            String tmpType = types[a];
+            int exp = 0;
+            int phoneSpice = 0;
+            if(tmpType.contains("spin")){
+              List data = [10,15,20];
+              int free = data[Random().nextInt(data.length)];
+              OverlayCommonGet().show(
+                money: tmpMmm,
+                exp: exp,
+                phoneSpice: phoneSpice,
+                onClose: () {},
+              );
+
+              await Future.delayed(Duration(milliseconds: 2500));
+              MainController.to.curShowFreeSpin.value = true;
+              MainController.to.curFreeSpinCount.value = free;
+              MainController.to.onFreeSpin();
+
+            }else if(tmpType.contains("xp")){
+              List data = [100,150,200];
+              exp = data[Random().nextInt(data.length)];
+            }else if(tmpType.contains("phoneSpice")){
+              phoneSpice = 1;
+            }
+
+            OverlayCommonGet().show(
+              money: tmpMmm,
+              exp: exp,
+              phoneSpice: phoneSpice,
+              onClose: () {},
+            );
+
           },
           money: 1,
         );
@@ -85,11 +123,16 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
           setState(() {
             showSecondPage = true;
           });
-          Future.delayed(Duration(milliseconds: 1000), () {
+          Future.delayed(Duration(milliseconds: 2500), () {
             if (mounted) {
               setState(() {
                 showSecondPageOpenGift = true;
               });
+
+              Future.delayed(Duration(milliseconds: 500), () {
+                onClose(20);
+              });
+
             }
           });
         }
@@ -160,9 +203,12 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
+
       // color: Colors.white,
 
       // child: AnimatedBuilder(animation: animation, builder: builder),
+
+      // child: firstPage(),
       child: AnimatedCrossFade(
         firstChild: firstPage(),
         secondChild: secondPage(),
@@ -170,24 +216,27 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             ? CrossFadeState.showSecond
             : CrossFadeState.showFirst,
         secondCurve: Curves.linear,
-        duration: Duration(milliseconds: 200),
+        duration: Duration(milliseconds: 2000),
       ),
     );
   }
 
   firstPage() {
     return Center(
-      child: Container(width: 360.w, height: 400.h, color: Colors.teal),
+      child: Container(
+        width: ScreenUtil().screenWidth,
+        height: ScreenUtil().screenHeight,
+        // color: Colors.teal,
+        child: SpineShengdaolaorenSlots(),
+      ),
     );
   }
 
   secondPage() {
-    return Center(
-      child: showSecondPageOpenGift?secondPage2():secondPage1(),
-    );
+    return Center(child: secondPage1());
   }
-  
-  secondPage1(){
+
+  secondPage1() {
     return Container(
       width: 324.w,
       height: 370.h,
@@ -200,23 +249,37 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             height: double.infinity,
             fit: BoxFit.fill,
           ),
-          Column(
+          if (showSecondPageOpenGift)
+            Positioned(
+              top: 20.h,
 
+              child: SSRotateWidget(
+                child: Image.asset(
+                  Assets.img.phoneCardXuanguang.path,
+                  width: 324.w,
+                  height: 370.h,
+                ),
+              ),
+            ),
+
+          Column(
             children: [
-              SizedBox(height: 100.h,),
+              SizedBox(height: 100.h),
               SSTxtGraBorder(
                 text: "Your Elf Gift Has Arrived!",
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
                 strokeColor: Color(0xff30120A),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(height: 20.h),
               Image.asset(
-                Assets.img.boxGiftBox1.path,
+                showSecondPageOpenGift
+                    ? Assets.img.boxGiftBox2.path
+                    : Assets.img.boxGiftBox1.path,
                 width: 164.w,
                 height: 146.h,
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(height: 20.h),
               SSTxtGraBorder(
                 text: "Open Your Gift!",
                 fontWeight: FontWeight.w500,
@@ -225,12 +288,14 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               ),
             ],
           ),
+
+          if (showSecondPageOpenGift) closeWidget(),
         ],
       ),
     );
   }
-  
-  secondPage2(){
+
+  secondPage2() {
     return Container(
       width: 324.w,
       height: 370.h,
@@ -244,22 +309,21 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             fit: BoxFit.fill,
           ),
           Column(
-
             children: [
-              SizedBox(height: 100.h,),
+              SizedBox(height: 100.h),
               SSTxtGraBorder(
                 text: "Your Elf Gift Has Arrived!",
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
                 strokeColor: Color(0xff30120A),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(height: 20.h),
               Image.asset(
                 Assets.img.boxGiftBox2.path,
                 width: 164.w,
                 height: 146.h,
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(height: 20.h),
               SSTxtGraBorder(
                 text: "Open Your Gift!",
                 fontWeight: FontWeight.w500,
@@ -269,8 +333,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             ],
           ),
 
-
-          closeWidget()
+          closeWidget(),
         ],
       ),
     );

@@ -29,11 +29,11 @@ class _SSSpineJackpotGrandState extends State<SSSpineJackpotGrand> {
 
   @override
   Widget build(BuildContext context) {
-    var data = MainController.composition(EnumLottieType.jackpotGrand);
-    if(data != null){
-      return Lottie(composition: data,);
-    }
-    return Lottie.asset(Assets.lottt.jackpotGrand.data, repeat: true,frameBuilder: (_, child, __) => child,);
+    // var data = MainController.composition(EnumLottieType.jackpotGrand);
+    // if(data != null){
+    //   return Lottie(composition: data,);
+    // }
+    // return Lottie.asset(Assets.lottt.jackpotGrand.data, repeat: true,frameBuilder: (_, child, __) => child,);
     if (!showA) {
       return const SizedBox();
     }
@@ -52,8 +52,8 @@ class _SSSpineJackpotGrandState extends State<SSSpineJackpotGrand> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.bigwin.jiesuan02Atlas,
-      Assets.donghua.bigwin.skeleton,
+      Assets.donghua.jackpotGrand.skeletonsAtlas,
+      Assets.donghua.jackpotGrand.skeleton,
       controller,
       sizedByBounds: true,
     );

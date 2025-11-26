@@ -199,6 +199,8 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     // OverlaySettinnn().show();
+
+
     // OverlayBoxgift().show();
     // OverlayLuckySlots().show(
     //   onClose: (v) {
@@ -232,9 +234,9 @@ class TopView extends StatelessWidget {
     // OverlayWow().show(money: 100, onClose: (value) {  });
     // OverlayMegawin().show(money: 100);
 
-    OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
-    // OverlayJackpotMajor().show(money: 200);
-    // OverlayJackpotMini().show(money: 200);
+    // OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
+    // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
+    OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
 
     // MainController.to.curLevelExp.value = 980;
   }

@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotGrand.dart';
+import 'package:slots_132/ss_common/sssssp/spine_jackpotMajor.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -140,7 +141,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                       width: ScreenUtil().screenWidth,
                       height: ScreenUtil().screenHeight,
 
-                      child: SSSpineJackpotGrand(),
+                      child: SSSpineJackpotMajor(),
                     ),
                   ),
                   Column(

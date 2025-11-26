@@ -1,29 +1,29 @@
 {
 "skeleton": {
-	"hash": "TXOFd3D8lpY",
+	"hash": "IbSSmy4ehGs",
 	"spine": "4.3.39-beta",
-	"x": -200,
-	"y": -400,
-	"width": 400,
-	"height": 800,
-	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/wenzijiesuan03/Group 1000005363",
+	"x": -128,
+	"y": -392,
+	"width": 256,
+	"height": 784,
+	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/sdlr",
 	"audio": null
 },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
-	{ "name": "C132-Spine-out_00000", "bone": "root", "attachment": "C132-Spine-out_" }
+	{ "name": "Group 1000005363_00000", "bone": "root", "attachment": "Group 1000005363_" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"C132-Spine-out_00000": {
-				"C132-Spine-out_": {
-					"width": 400,
-					"height": 800,
-					"sequence": { "count": 300, "start": 0, "digits": 5 }
+			"Group 1000005363_00000": {
+				"Group 1000005363_": {
+					"width": 256,
+					"height": 784,
+					"sequence": { "count": 120, "start": 0, "digits": 5 }
 				}
 			}
 		}
@@ -33,11 +33,11 @@
 	"animation": {
 		"attachments": {
 			"default": {
-				"C132-Spine-out_00000": {
-					"C132-Spine-out_": {
+				"Group 1000005363_00000": {
+					"Group 1000005363_": {
 						"sequence": [
-							{ "mode": "loop", "delay": 0.016666668 },
-							{ "time": 9.966667, "mode": "loop", "index": 298 }
+							{ "mode": "loop", "delay": 0.033333335 },
+							{ "time": 2, "mode": "loop", "delay": 0.016666668 }
 						]
 					}
 				}

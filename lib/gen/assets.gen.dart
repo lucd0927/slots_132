@@ -36,6 +36,18 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/bigwin
   $AssetsDonghuaBigwinGen get bigwin => const $AssetsDonghuaBigwinGen();
 
+  /// Directory path: assets/donghua/jackpot_grand
+  $AssetsDonghuaJackpotGrandGen get jackpotGrand =>
+      const $AssetsDonghuaJackpotGrandGen();
+
+  /// Directory path: assets/donghua/jackpot_major
+  $AssetsDonghuaJackpotMajorGen get jackpotMajor =>
+      const $AssetsDonghuaJackpotMajorGen();
+
+  /// Directory path: assets/donghua/jackpot_mini
+  $AssetsDonghuaJackpotMiniGen get jackpotMini =>
+      const $AssetsDonghuaJackpotMiniGen();
+
   /// Directory path: assets/donghua/lottie_money
   $AssetsDonghuaLottieMoneyGen get lottieMoney =>
       const $AssetsDonghuaLottieMoneyGen();
@@ -48,6 +60,10 @@ class $AssetsDonghuaGen {
 
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
+
+  /// Directory path: assets/donghua/slots_sdlr
+  $AssetsDonghuaSlotsSdlrGen get slotsSdlr =>
+      const $AssetsDonghuaSlotsSdlrGen();
 
   /// Directory path: assets/donghua/superwin
   $AssetsDonghuaSuperwinGen get superwin => const $AssetsDonghuaSuperwinGen();
@@ -1257,6 +1273,129 @@ class $AssetsDonghuaBigwinGen {
   List<dynamic> get values => [jiesuan02Atlas, jiesuan02Png, skeleton];
 }
 
+class $AssetsDonghuaJackpotGrandGen {
+  const $AssetsDonghuaJackpotGrandGen();
+
+  /// File path: assets/donghua/jackpot_grand/skeleton.json
+  String get skeleton => 'assets/donghua/jackpot_grand/skeleton.json';
+
+  /// File path: assets/donghua/jackpot_grand/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/jackpot_grand/skeletons.atlas';
+
+  /// File path: assets/donghua/jackpot_grand/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/jackpot_grand/skeletons.png');
+
+  /// File path: assets/donghua/jackpot_grand/skeletons_2.png
+  AssetGenImage get skeletons2 =>
+      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_2.png');
+
+  /// File path: assets/donghua/jackpot_grand/skeletons_3.png
+  AssetGenImage get skeletons3 =>
+      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_3.png');
+
+  /// File path: assets/donghua/jackpot_grand/skeletons_4.png
+  AssetGenImage get skeletons4 =>
+      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_4.png');
+
+  /// File path: assets/donghua/jackpot_grand/skeletons_5.png
+  AssetGenImage get skeletons5 =>
+      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_5.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    skeleton,
+    skeletonsAtlas,
+    skeletonsPng,
+    skeletons2,
+    skeletons3,
+    skeletons4,
+    skeletons5,
+  ];
+}
+
+class $AssetsDonghuaJackpotMajorGen {
+  const $AssetsDonghuaJackpotMajorGen();
+
+  /// File path: assets/donghua/jackpot_major/skeleton.json
+  String get skeleton => 'assets/donghua/jackpot_major/skeleton.json';
+
+  /// File path: assets/donghua/jackpot_major/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/jackpot_major/skeletons.atlas';
+
+  /// File path: assets/donghua/jackpot_major/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/jackpot_major/skeletons.png');
+
+  /// File path: assets/donghua/jackpot_major/skeletons_2.png
+  AssetGenImage get skeletons2 =>
+      const AssetGenImage('assets/donghua/jackpot_major/skeletons_2.png');
+
+  /// File path: assets/donghua/jackpot_major/skeletons_3.png
+  AssetGenImage get skeletons3 =>
+      const AssetGenImage('assets/donghua/jackpot_major/skeletons_3.png');
+
+  /// File path: assets/donghua/jackpot_major/skeletons_4.png
+  AssetGenImage get skeletons4 =>
+      const AssetGenImage('assets/donghua/jackpot_major/skeletons_4.png');
+
+  /// File path: assets/donghua/jackpot_major/skeletons_5.png
+  AssetGenImage get skeletons5 =>
+      const AssetGenImage('assets/donghua/jackpot_major/skeletons_5.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    skeleton,
+    skeletonsAtlas,
+    skeletonsPng,
+    skeletons2,
+    skeletons3,
+    skeletons4,
+    skeletons5,
+  ];
+}
+
+class $AssetsDonghuaJackpotMiniGen {
+  const $AssetsDonghuaJackpotMiniGen();
+
+  /// File path: assets/donghua/jackpot_mini/skeleton.json
+  String get skeleton => 'assets/donghua/jackpot_mini/skeleton.json';
+
+  /// File path: assets/donghua/jackpot_mini/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/jackpot_mini/skeletons.atlas';
+
+  /// File path: assets/donghua/jackpot_mini/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/jackpot_mini/skeletons.png');
+
+  /// File path: assets/donghua/jackpot_mini/skeletons_2.png
+  AssetGenImage get skeletons2 =>
+      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_2.png');
+
+  /// File path: assets/donghua/jackpot_mini/skeletons_3.png
+  AssetGenImage get skeletons3 =>
+      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_3.png');
+
+  /// File path: assets/donghua/jackpot_mini/skeletons_4.png
+  AssetGenImage get skeletons4 =>
+      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_4.png');
+
+  /// File path: assets/donghua/jackpot_mini/skeletons_5.png
+  AssetGenImage get skeletons5 =>
+      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_5.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    skeleton,
+    skeletonsAtlas,
+    skeletonsPng,
+    skeletons2,
+    skeletons3,
+    skeletons4,
+    skeletons5,
+  ];
+}
+
 class $AssetsDonghuaLottieMoneyGen {
   const $AssetsDonghuaLottieMoneyGen();
 
@@ -1320,6 +1459,62 @@ class $AssetsDonghuaSdlrGen {
 
   /// List of all assets
   List<dynamic> get values => [sdlrAtlas, sdlrPng, skeleton];
+}
+
+class $AssetsDonghuaSlotsSdlrGen {
+  const $AssetsDonghuaSlotsSdlrGen();
+
+  /// File path: assets/donghua/slots_sdlr/skeleton.json
+  String get skeleton => 'assets/donghua/slots_sdlr/skeleton.json';
+
+  /// File path: assets/donghua/slots_sdlr/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/slots_sdlr/skeletons.atlas';
+
+  /// File path: assets/donghua/slots_sdlr/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_2.png
+  AssetGenImage get skeletons2 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_2.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_3.png
+  AssetGenImage get skeletons3 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_3.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_4.png
+  AssetGenImage get skeletons4 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_4.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_5.png
+  AssetGenImage get skeletons5 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_5.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_6.png
+  AssetGenImage get skeletons6 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_6.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_7.png
+  AssetGenImage get skeletons7 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_7.png');
+
+  /// File path: assets/donghua/slots_sdlr/skeletons_8.png
+  AssetGenImage get skeletons8 =>
+      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_8.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    skeleton,
+    skeletonsAtlas,
+    skeletonsPng,
+    skeletons2,
+    skeletons3,
+    skeletons4,
+    skeletons5,
+    skeletons6,
+    skeletons7,
+    skeletons8,
+  ];
 }
 
 class $AssetsDonghuaSuperwinGen {

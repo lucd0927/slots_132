@@ -134,6 +134,10 @@ flutter:
     - assets/donghua/bigwin/
     - assets/donghua/megawin/
     - assets/donghua/money/
+    - assets/donghua/jackpot_grand/
+    - assets/donghua/jackpot_major/
+    - assets/donghua/jackpot_mini/
+    - assets/donghua/slots_sdlr/
     - assets/audddd/
     - assets/lottt/bian/
     - assets/lottt/bian/images/

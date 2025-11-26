@@ -55,7 +55,7 @@ class LuckySlotsController extends GetxController {
   }
 
   double _cardMonnn() {
-    double randomDouble = 10 + Random().nextDouble() * (100 - 10);
+    double randomDouble = 10 + Random().nextDouble() * (30 - 10);
     return randomDouble.toAsFixedFloor(1);
   }
 
