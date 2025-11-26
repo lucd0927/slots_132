@@ -227,15 +227,18 @@ class _ControlledWheelState extends State<ControlledWheel>
 
   _onSpin() async {
     int time = WheController.to.curWheNum.value;
+    WheController.to.showOneMore.value = false;
     if (time <= 0) {
       widget.onEnd(null);
       return;
     }
-
-    int current = Random().nextInt(16);
-    int target = Random().nextInt(16);
+    WheController.to.subWheNum();
+    int current = Random().nextInt(8);
+    int target = Random().nextInt(8);
     current = 0;
-    target = 6;
+    if(target == 4){
+      target = 0;
+    }
     ssLogggg("=_onSpin==current:$current=target:$target=");
     await spinTo(current, target);
     GiftRewardModel tmpGiftRewardModel =
@@ -246,43 +249,44 @@ class _ControlledWheelState extends State<ControlledWheel>
 
   Map<int, GiftRewardModel> vIndex_vReward = {
     0: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphoneCard,
-      num: 1,
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
       img: Assets.img.phoneSuip.path,
     ),
     1: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 150,
-      img: Assets.img.phoneSuip.path,
-    ),
-    2: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
-      img: Assets.img.phoneSuip.path,
-    ),
-    3: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
-      img: Assets.img.phoneSuip.path,
-    ),
-    4: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
-      img: Assets.img.phoneSuip.path,
-    ),
-    5: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.spin,
       num: 10,
       img: Assets.img.phoneSuip.path,
     ),
-    6: GiftRewardModel(
+    2: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 150,
       img: Assets.img.phoneSuip.path,
     ),
+    3: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 2,
+      img: Assets.img.phoneSuip.path,
+    ),
+    4: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.phoneSuip.path,
+    ),
+
+    5: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 150,
+      img: Assets.img.phoneSuip.path,
+    ),
+    6: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
+      img: Assets.img.phoneSuip.path,
+    ),
     7: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 500,
+      num: 50,
       img: Assets.img.phoneSuip.path,
     ),
   };

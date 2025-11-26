@@ -1,0 +1,48 @@
+{
+"skeleton": {
+	"hash": "TXOFd3D8lpY",
+	"spine": "4.3.39-beta",
+	"x": -200,
+	"y": -400,
+	"width": 400,
+	"height": 800,
+	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/wenzijiesuan03/Group 1000005363",
+	"audio": null
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "C132-Spine-out_00000", "bone": "root", "attachment": "C132-Spine-out_" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"C132-Spine-out_00000": {
+				"C132-Spine-out_": {
+					"width": 400,
+					"height": 800,
+					"sequence": { "count": 300, "start": 0, "digits": 5 }
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"C132-Spine-out_00000": {
+					"C132-Spine-out_": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.016666668 },
+							{ "time": 9.966667, "mode": "loop", "index": 298 }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

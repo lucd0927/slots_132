@@ -189,6 +189,10 @@ class $AssetsImgGen {
   /// File path: assets/img/btn_wheel.png
   AssetGenImage get btnWheel => const AssetGenImage('assets/img/btn_wheel.png');
 
+  /// File path: assets/img/btn_wheel_one_more.png
+  AssetGenImage get btnWheelOneMore =>
+      const AssetGenImage('assets/img/btn_wheel_one_more.png');
+
   /// File path: assets/img/close_popup.png
   AssetGenImage get closePopup =>
       const AssetGenImage('assets/img/close_popup.png');
@@ -827,6 +831,10 @@ class $AssetsImgGen {
   AssetGenImage get wheelTitleCongrats =>
       const AssetGenImage('assets/img/wheel_title_congrats.png');
 
+  /// File path: assets/img/wheel_title_freespin.png
+  AssetGenImage get wheelTitleFreespin =>
+      const AssetGenImage('assets/img/wheel_title_freespin.png');
+
   /// File path: assets/img/wheel_zp.png
   AssetGenImage get wheelZp => const AssetGenImage('assets/img/wheel_zp.png');
 
@@ -982,6 +990,7 @@ class $AssetsImgGen {
     btnTxtFreeSpin,
     btnTxtSpin,
     btnWheel,
+    btnWheelOneMore,
     closePopup,
     closePopup2,
     closeSetting,
@@ -1144,6 +1153,7 @@ class $AssetsImgGen {
     wheelTimeBg,
     wheelTitle,
     wheelTitleCongrats,
+    wheelTitleFreespin,
     wheelZp,
     wheelZpBottomBg,
     wheelZpBottomMoneyBg,

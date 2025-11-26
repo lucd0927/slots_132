@@ -857,6 +857,7 @@ class MainController extends GetxController {
     List<double> payBeisu = [];
     int lines = SSPayTable.lines();
     double beisu = curBeisu.value;
+    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
     for (var data in winCurCategoryLines) {
       String category = data.keys.first;
       int count = data.values.first.length;
@@ -868,7 +869,7 @@ class MainController extends GetxController {
       payBeisu.add(tmpPay);
     }
 
-    curSpinMoney.value = tmpAddMoney;
+
 
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
@@ -925,7 +926,7 @@ class MainController extends GetxController {
       onAddBonusGameCount(bonusGameCount);
       await Future.delayed(Duration(milliseconds: 1200), () {});
     }
-
+    bool containerslotNumPhoneSpice = false;
     kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
       Offset? startPosition = kZuobiao_vWidgetContextOffset[zuobiao];
       String img = kCategoryName_vImgName[value] ?? "";
@@ -937,7 +938,7 @@ class MainController extends GetxController {
           Widget heroChild = Image.asset(img);
           containerslotNumKEY = true;
           bonusGameCount++;
-
+          containerslotNumPhoneSpice = true;
           OverlayFly2TargetKey().showWithSize(
             childSize: Size(80.w, 80.w),
             targetContext: keyPhoneSpice.currentContext!,
@@ -947,7 +948,9 @@ class MainController extends GetxController {
         }
       }
     });
-
+    if (containerslotNumPhoneSpice) {
+      await Future.delayed(Duration(milliseconds: 1200), () {});
+    }
     DateTime curTime = DateTime.now();
     ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
 
@@ -993,8 +996,9 @@ class MainController extends GetxController {
     // jackpotCount = 2;
 
     if (jackpotCount == 2) {
+      curSpinMoney.value = jacktopMini;
       OverlayJackpotMini().show(
-        money: jacktopMini+tmpAddMoney,
+        money: jacktopMini ,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
         },
@@ -1003,8 +1007,9 @@ class MainController extends GetxController {
         },
       );
     } else if (jackpotCount == 3 || jackpotCount == 4) {
+      curSpinMoney.value = jacktopMajor;
       OverlayJackpotMajor().show(
-        money: jacktopMajor+tmpAddMoney,
+        money: jacktopMajor ,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
         },
@@ -1013,8 +1018,9 @@ class MainController extends GetxController {
         },
       );
     } else if (jackpotCount == 5) {
+      curSpinMoney.value = jacktopGrand;
       OverlayJackpotGrand().show(
-        money: jacktopGrand+tmpAddMoney,
+        money: jacktopGrand ,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
         },
@@ -1023,6 +1029,7 @@ class MainController extends GetxController {
         },
       );
     } else {
+      curSpinMoney.value = tmpAddMoney;
       double tmpBeisu = curBeisu.value;
 
       double addBeisu = tmpAddMoney / tmpBeisu;
@@ -1083,10 +1090,12 @@ class MainController extends GetxController {
             .length;
         // slotNumSCATTERLength = 3;
         if (slotNumSCATTERLength >= 3) {
-          curShowFreeSpin.value = true;
+
           OverlayFreeSpins().show(
             money: 0,
-            onClose: (value) {
+            onClose: (value)async {
+              curShowFreeSpin.value = true;
+              await Future.delayed(Duration(milliseconds: 200));
               onFreeSpin();
             },
           );
@@ -1285,6 +1294,30 @@ class MainController extends GetxController {
     return pro;
   }
 
+  int levelExp() {
+    int tmpLevel = 1;
+    int tmpLevelExp = curLevelExp.value;
+    // curLevelExp = 2900;
+
+    // 1-5
+    if (tmpLevelExp <= level1_5) {
+      return stage1_5Exp;
+    }
+    // 6-15
+    else if (tmpLevelExp <= level1_15) {
+      int tmpExp = tmpLevelExp - level1_5;
+
+      return stage6_15Exp;
+    }
+    // 16 - infinity
+    else {
+      return stage16_1MaxExp;
+    }
+
+    ssLogggg("=====Level:$tmpLevel curLevelExp:$tmpLevelExp");
+    return tmpLevel;
+  }
+
   int level() {
     int tmpLevel = 1;
     int tmpLevelExp = curLevelExp.value;
@@ -1428,10 +1461,12 @@ class MainController extends GetxController {
     } else {
       OverlayFreeSpinsOver().show(
         money: _curFreeSpinMoney,
-        onClose: (v) {},
+        onClose: (v) {
+          resetFreeSpinStatus();
+        },
         spinCount: _curFreeSpinCount,
       );
-      resetFreeSpinStatus();
+
       return;
     }
     keyFreeSpin.currentState?.onStar(
@@ -1516,19 +1551,19 @@ class MainController extends GetxController {
   _kLottieType_vLottieComposition = {};
 
   static initLottieComposition() async {
-    AssetLottie(Assets.lottt.superwin.data).load().then((result) {
-      _kLottieType_vLottieComposition[EnumLottieType.superwin] = result;
-    });
+    // AssetLottie(Assets.lottt.superwin.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.superwin] = result;
+    // });
 
-    AssetLottie(Assets.lottt.megawin.data).load().then((result) {
-      _kLottieType_vLottieComposition[EnumLottieType.megawin] = result;
-    });
-    AssetLottie(Assets.lottt.wow.data).load().then((result) {
-      _kLottieType_vLottieComposition[EnumLottieType.wow] = result;
-    });
-    AssetLottie(Assets.lottt.bigwin.data).load().then((result) {
-      _kLottieType_vLottieComposition[EnumLottieType.bigwin] = result;
-    });
+    // AssetLottie(Assets.lottt.megawin.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.megawin] = result;
+    // });
+    // AssetLottie(Assets.lottt.wow.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.wow] = result;
+    // });
+    // AssetLottie(Assets.lottt.bigwin.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.bigwin] = result;
+    // });
     AssetLottie(Assets.lottt.bian.data).load().then((result) {
       _kLottieType_vLottieComposition[EnumLottieType.bian] = result;
     });

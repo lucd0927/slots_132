@@ -96,7 +96,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
         showAnimated = true;
       });
 
-      _timer = Timer(Duration(milliseconds: 3000), () {
+      _timer = Timer(Duration(milliseconds: 2000), () {
         _timer?.cancel();
         onClose(1);
       });
@@ -169,7 +169,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     bool showExp = widget.exp > 0;
     bool showPhone = widget.phoneSpice > 0;
     String img = Assets.img.moneyGift.path;
-
+    // showExp = true;
     if (showExp && showPhone) {
       img = Assets.img.phoneCardXuanguang.path;
     } else if (showExp) {
@@ -179,8 +179,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     }
     ssLogggg("=====showExp:$showExp showPhone:$showPhone img:$img");
     return Container(
-      width: 260.w,
-      height: 190.h,
+      width: 270.w,
+      height: 200.h,
       decoration: BoxDecoration(
         color: Color(0xff000000).withValues(alpha: 0.5),
         border: Border.all(color: Color(0xffFFDD00), width: 2.w),
@@ -209,78 +209,91 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SSTxtBorder(
                 text: "Get Cash",
                 fontWeight: FontWeight.w700,
-                fontSize: 16.sp,
+                fontSize: 20.sp,
                 fontColor: Color(0xffFFFF29),
                 foreground: Color(0xffDB1717),
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 16.h),
               Image.asset(img, width: 200.w, height: 80.h),
-              SizedBox(height: 10.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (showExp)
-                    Row(
-                      children: [
-                        Image.asset(
-                          Assets.img.mainTopXp.path,
-                          width: 36.w,
-                          height: 34.h,
+              SizedBox(height: 16.h),
+              Container(
+                color: Colors.blueAccent.withValues(alpha: 0),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (showExp)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              Assets.img.mainTopXp.path,
+                              width: 36.w,
+                              height: 34.h,
+                            ),
+                            SizedBox(width: 4.w),
+                            SSTxtBorder(
+                              text: "+${widget.exp}",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20.sp,
+                              fontColor: Color(0xffFFFF29),
+                              foreground: Color(0xffDB1717),
+                            ),
+                            SizedBox(width: 10.w),
+                          ],
                         ),
-                        SizedBox(width: 4.w),
-                        SSTxtBorder(
-                          text: "+${widget.exp}",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20.sp,
-                          fontColor: Color(0xffFFFF29),
-                          foreground: Color(0xffDB1717),
+                      if (showPhone)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              Assets.img.popupGetPhoneSpice.path,
+                              width: 36.w,
+                              height: 34.h,
+                            ),
+                            SizedBox(width: 4.w),
+                            SSTxtBorder(
+                              text: "+${widget.phoneSpice}",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20.sp,
+                              fontColor: Color(0xffFFFF29),
+                              foreground: Color(0xffDB1717),
+                            ),
+                            SizedBox(width: 10.w),
+                          ],
                         ),
-                        SizedBox(width: 10.w),
-                      ],
-                    ),
-                  if (showPhone)
-                    Row(
-                      children: [
-                        Image.asset(
-                          Assets.img.popupGetPhoneSpice.path,
-                          width: 36.w,
-                          height: 34.h,
-                        ),
-                        SizedBox(width: 4.w),
-                        SSTxtBorder(
-                          text: "+${widget.phoneSpice}",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20.sp,
-                          fontColor: Color(0xffFFFF29),
-                          foreground: Color(0xffDB1717),
-                        ),
-                        SizedBox(width: 10.w),
-                      ],
-                    ),
-                  SSTxtGraBorder(
-                    text:
-                    "+${SSCountry.curGuojiaFuhao()}${widget.money
-                        .toStringAsFixed(2)}",
-                    fontSize: 20.sp,
-                    fontFamily: FontFamily.alkatra,
-                    height: 1,
-                    fontWeight: FontWeight.w500,
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xff0FFF63),
-                        Color(0xffA4F00D),
-                        Color(0xffD0FF00),
-                        Color(0xff00FF1E),
-                        // Color(0xff0FFF63),
-                      ],
-                      end: Alignment.bottomCenter,
-                      begin: Alignment.topCenter,
-                    ),
-                    strokeColor: Color(0xff0C402B),
-                    strokeWidth: 3.w,
-                    // fontColor: Color(0xff6AFF00),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 2.h,),
+                          SSTxtGraBorder(
+                            text:
+                            "+${SSCountry.curGuojiaFuhao()}${widget.money
+                                .toStringAsFixed(2)}",
+                            fontSize: 20.sp,
+                            fontFamily: FontFamily.alkatra,
+                            height: 1.2,
+                            fontWeight: FontWeight.w500,
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xff0FFF63),
+                                Color(0xffA4F00D),
+                                Color(0xffD0FF00),
+                                Color(0xff00FF1E),
+                                // Color(0xff0FFF63),
+                              ],
+                              end: Alignment.bottomCenter,
+                              begin: Alignment.topCenter,
+                            ),
+                            strokeColor: Color(0xff0C402B),
+                            strokeWidth: 3.w,
+                            // fontColor: Color(0xff6AFF00),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ],
           ),

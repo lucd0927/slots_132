@@ -187,7 +187,7 @@ class CenterView extends StatelessWidget {
 
                 Positioned.fill(
                   child: TweenAnimationBuilder<double>(
-                    duration: const Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 400),
                     tween: Tween(
                       begin: 0.0,
                       end: MainController.to.curShowFreeSpin.value ? 1.0 : 0,
@@ -536,6 +536,8 @@ class FreeSpinState extends State<FreeSpin> {
   double fourthH = 90.w;
   double fiveH = 40.w;
 
+  bool hasQianjin = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -557,10 +559,10 @@ class FreeSpinState extends State<FreeSpin> {
     thirdH = 120.h;
     fourthH = 90.h;
     fiveH = 40.h;
+    hasQianjin = true;
   }
 
   onStar({required ValueChanged<EnumGiftRewardModel> onEnd}) {
-
     timer?.cancel();
     List<int> randoms = [40, 41, 43, 44];
     int tickkk1 = randoms[Random().nextInt(randoms.length)];
@@ -602,19 +604,33 @@ class FreeSpinState extends State<FreeSpin> {
         });
       } else {
         setState(() {
-          if (select == -1) {
-            select = 0;
-          } else if (select == 0) {
-            select = 1;
-          } else if (select == 1) {
-            select = 2;
-          } else if (select == 2) {
-            select = 3;
-          } else if (select == 3) {
-            select = 4;
-          } else {
-            select = -1;
+          if(hasQianjin){
+            select++;
+            if(select >4 ){
+              hasQianjin =false;
+            }
+          }else{
+            select--;
+            if(select < 0){
+              hasQianjin = true;
+            }
           }
+
+
+          //
+          // if (select == -1) {
+          //   select = 0;
+          // } else if (select == 0) {
+          //   select = 1;
+          // } else if (select == 1) {
+          //   select = 2;
+          // } else if (select == 2) {
+          //   select = 3;
+          // } else if (select == 3) {
+          //   select = 4;
+          // } else {
+          //   select = -1;
+          // }
         });
       }
     });

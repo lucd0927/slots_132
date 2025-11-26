@@ -13,9 +13,9 @@ class SSPayTable {
   static Map<String, dynamic> local =
   {
     "paytable": {
-      "WILD_x5": 70,
-      "WILD_x4": 35,
-      "WILD_x3": 18,
+      // "WILD_x5": 70,
+      // "WILD_x4": 35,
+      // "WILD_x3": 18,
       "H1_x5": 70,
       "H1_x4": 35,
       "H1_x3": 18,

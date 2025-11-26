@@ -119,7 +119,7 @@ class _WheBounsState extends State<WheBouns> {
                                                           .giftRewardModel
                                                           .rewardModelType ==
                                                       EnumGiftRewardModel.xp
-                                                ? "+${widget.giftRewardModel.num}"
+                                                ? "x${widget.giftRewardModel.num}"
                                                 : "",
                                             style: TextStyle(
                                               fontSize: 15.sp,
@@ -168,7 +168,20 @@ class _WheBounsState extends State<WheBouns> {
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                                 child: Image.asset(
-                                  Assets.img.money.path,
+                                  widget.giftRewardModel.rewardModelType ==
+                                          EnumGiftRewardModel.cash
+                                      ? Assets.img.money.path
+                                      : widget
+                                                .giftRewardModel
+                                                .rewardModelType ==
+                                            EnumGiftRewardModel.iphoneCard
+                                      ? Assets.img.popupGetPhoneSpice.path
+                                      : widget
+                                                .giftRewardModel
+                                                .rewardModelType ==
+                                            EnumGiftRewardModel.xp
+                                      ? Assets.img.mainTopXp.path
+                                      : Assets.img.money.path,
                                   width: 65.h,
                                   height: 50.h * 0.8,
                                 ),
@@ -183,7 +196,7 @@ class _WheBounsState extends State<WheBouns> {
                                     ? "+${widget.giftRewardModel.num}"
                                     : widget.giftRewardModel.rewardModelType ==
                                           EnumGiftRewardModel.xp
-                                    ? "+${widget.giftRewardModel.num}"
+                                    ? "x${widget.giftRewardModel.num}"
                                     : "",
                                 fontSize: 24.sp,
                                 fontWeight: FontWeight.w700,
@@ -207,7 +220,7 @@ class _WheBounsState extends State<WheBouns> {
             left: 20.w,
             child: GestureDetector(
               onTap: () {
-                onclickClaim();
+                onclickClaim(false);
               },
               child: AnimatedOpacity(
                 duration: Duration(milliseconds: 10),
@@ -230,11 +243,14 @@ class _WheBounsState extends State<WheBouns> {
 
   btn() {
     return GestureDetector(
-      onTap: onclickClaim,
+      onTap: () {
+        onclickClaim(true);
+      },
       child: Container(
         width: 285.h,
         height: 58.h,
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
             Image.asset(
               Assets.img.btnWheel.path,
@@ -255,19 +271,29 @@ class _WheBounsState extends State<WheBouns> {
                 ],
               ),
             ),
+
+            Positioned(
+              top: -10.h,
+              right: 0,
+              child: Image.asset(
+                Assets.img.video.path,
+                width: 28.h,
+                height: 28.h,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  onclickClaim() async {
+  onclickClaim(bool clickVideo) async {
     setState(() {
       showBack = false;
     });
     await Future.delayed(Duration(milliseconds: 150));
     if (mounted) {
-      Navigator.maybePop(context);
+      Navigator.maybePop(context,clickVideo);
     }
   }
 }

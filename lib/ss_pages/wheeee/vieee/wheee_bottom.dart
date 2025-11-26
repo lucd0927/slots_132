@@ -7,6 +7,7 @@ import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 
 class WheeeBottom extends StatefulWidget {
   const WheeeBottom({super.key});
@@ -83,31 +84,31 @@ class _WheeeBottomState extends State<WheeeBottom> {
                       alignment: Alignment.centerLeft,
                       children: [
                         Positioned(
-                          child: dayItem(today: 1, money: 1),
+                          child: dayItem(today: 1, money: WheController.beisu[0]),
                           left: 0,
                         ),
                         Positioned(
-                          child: dayItem(today: 2, money: 1.2),
+                          child: dayItem(today: 2, money: WheController.beisu[1]),
                           left: distance,
                         ),
                         Positioned(
-                          child: dayItem(today: 3, money: 1.4),
+                          child: dayItem(today: 3, money: WheController.beisu[2]),
                           left: distance * 2,
                         ),
                         Positioned(
-                          child: dayItem(today: 4, money: 1.8),
+                          child: dayItem(today: 4, money: WheController.beisu[3]),
                           left: distance * 3,
                         ),
                         Positioned(
-                          child: dayItem(today: 5, money: 2.2),
+                          child: dayItem(today: 5, money: WheController.beisu[4]),
                           left: distance * 4,
                         ),
                         Positioned(
-                          child: dayItem(today: 6, money: 2.6),
+                          child: dayItem(today: 6, money: WheController.beisu[5]),
                           left: distance * 5,
                         ),
                         Positioned(
-                          child: dayItem(today: 7, money: 3.0),
+                          child: dayItem(today: 7, money:WheController.beisu[6]),
                           left: distance * 6,
                         ),
                       ],
