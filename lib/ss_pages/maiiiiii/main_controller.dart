@@ -1554,7 +1554,6 @@ class MainController extends GetxController {
     // AssetLottie(Assets.lottt.superwin.data).load().then((result) {
     //   _kLottieType_vLottieComposition[EnumLottieType.superwin] = result;
     // });
-
     // AssetLottie(Assets.lottt.megawin.data).load().then((result) {
     //   _kLottieType_vLottieComposition[EnumLottieType.megawin] = result;
     // });
@@ -1567,9 +1566,9 @@ class MainController extends GetxController {
     AssetLottie(Assets.lottt.bian.data).load().then((result) {
       _kLottieType_vLottieComposition[EnumLottieType.bian] = result;
     });
-    AssetLottie(Assets.lottt.bian2.data).load().then((result) {
-      _kLottieType_vLottieComposition[EnumLottieType.bian2] = result;
-    });
+    // AssetLottie(Assets.lottt.bian2.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.bian2] = result;
+    // });
     AssetLottie(Assets.lottt.bian3.data).load().then((result) {
       _kLottieType_vLottieComposition[EnumLottieType.bian3] = result;
     });
@@ -1598,6 +1597,7 @@ class MainController extends GetxController {
 }
 
 enum EnumLottieType {
+  piaoqian("piaoqian"),
   jackpotGrand("jackpotGrand"),
   jackpotMajor("jackpotMajor"),
   jackpotMini("jackpotMini"),

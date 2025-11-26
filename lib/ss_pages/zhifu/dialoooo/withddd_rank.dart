@@ -8,6 +8,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -174,8 +175,18 @@ class _RankWidgetState extends State<RankWidget> {
                               builder: (controller) {
                                 return Text.rich(
                                   TextSpan(
-                                    text: "${WithdddController.to.curRank()}",
+                                    text: "",
                                     children: [
+                                      WidgetSpan(
+                                        child: SSAniiiiCount(
+                                          value: WithdddController.to.curRank(),
+                                        ),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 24.sp,
+                                          color: Color(0xff164CFF),
+                                        ),
+                                      ),
                                       TextSpan(
                                         text:
                                             "/${WithdddController.to.allRank()}",

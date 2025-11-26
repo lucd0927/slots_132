@@ -33,7 +33,7 @@ class _SSSpineWowState extends State<SSSpineWow> {
     if(data != null){
       return Lottie(composition: data,);
     }
-    return Lottie.asset(Assets.lottt.wow.data, repeat: true,);
+    return Lottie.asset(Assets.lottt.wow.data, repeat: true,frameBuilder: (_, child, __) => child,);
 
     if (!showA) {
       return const SizedBox();

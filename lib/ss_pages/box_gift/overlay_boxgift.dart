@@ -38,6 +38,7 @@ class OverlayBoxgift {
             List<String> types = ["10spin","15spin","20spin","100xp","150xp","200xp","1phoneSpice"];
 
             int a = Random().nextInt(types.length);
+            a = 1;
             String tmpType = types[a];
             int exp = 0;
             int phoneSpice = 0;
@@ -46,15 +47,18 @@ class OverlayBoxgift {
               int free = data[Random().nextInt(data.length)];
               OverlayCommonGet().show(
                 money: tmpMmm,
-                exp: exp,
-                phoneSpice: phoneSpice,
-                onClose: () {},
+                freespins: free,
+                onClose: () async{
+                  await Future.delayed(Duration(milliseconds: 300));
+                  MainController.to.curShowFreeSpin.value = true;
+                  MainController.to.curFreeSpinCount.value = free;
+                  MainController.to.onFreeSpin();
+                },
               );
 
-              await Future.delayed(Duration(milliseconds: 2500));
-              MainController.to.curShowFreeSpin.value = true;
-              MainController.to.curFreeSpinCount.value = free;
-              MainController.to.onFreeSpin();
+              return;
+
+
 
             }else if(tmpType.contains("xp")){
               List data = [100,150,200];

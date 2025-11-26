@@ -29,8 +29,13 @@ class OverlayCommonGet {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show(
-      {double? money, int? exp, int? phoneSpice, required VoidCallback onClose}) {
+  void show({
+    double? money,
+    int? exp,
+    int? phoneSpice,
+    int? freespins,
+    required VoidCallback onClose,
+  }) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -44,6 +49,7 @@ class OverlayCommonGet {
           money: money ?? 0.0,
           exp: exp ?? 0,
           phoneSpice: phoneSpice ?? 0,
+          freespins: freespins ?? 0,
         );
       },
     );
@@ -65,11 +71,13 @@ class CommonGetWidget extends StatefulWidget {
     required this.money,
     required this.exp,
     required this.phoneSpice,
+    required this.freespins,
   });
 
   final double money;
   final int exp;
   final int phoneSpice;
+  final int freespins;
   final ValueChanged<double> onBtn;
 
   @override
@@ -153,7 +161,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         centerWww(),
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -168,6 +175,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     bool showMoney = widget.money > 0;
     bool showExp = widget.exp > 0;
     bool showPhone = widget.phoneSpice > 0;
+    bool freespins = widget.freespins > 0;
     String img = Assets.img.moneyGift.path;
     // showExp = true;
     if (showExp && showPhone) {
@@ -176,6 +184,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
       img = Assets.img.popupGetXpmoney.path;
     } else if (showPhone) {
       img = Assets.img.popupGetPhonemoney.path;
+    } else if (freespins) {
+      img = Assets.img.popupGetFreespinmoney.path;
     }
     ssLogggg("=====showExp:$showExp showPhone:$showPhone img:$img");
     return Container(
@@ -262,14 +272,33 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             SizedBox(width: 10.w),
                           ],
                         ),
+                      if (freespins)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              Assets.img.popupGetFreespinmoneyS.path,
+                              width: 36.w,
+                              height: 34.h,
+                            ),
+                            SizedBox(width: 4.w),
+                            SSTxtBorder(
+                              text: "+${widget.freespins}",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20.sp,
+                              fontColor: Color(0xffFFFF29),
+                              foreground: Color(0xffDB1717),
+                            ),
+                            SizedBox(width: 10.w),
+                          ],
+                        ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(height: 2.h,),
+                          SizedBox(height: 2.h),
                           SSTxtGraBorder(
                             text:
-                            "+${SSCountry.curGuojiaFuhao()}${widget.money
-                                .toStringAsFixed(2)}",
+                                "+${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
                             fontSize: 20.sp,
                             fontFamily: FontFamily.alkatra,
                             height: 1.2,
@@ -297,7 +326,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               ),
             ],
           ),
-
         ],
       ),
     );
@@ -331,8 +359,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SizedBox(width: 8.w),
               SSTxtGraBorder(
                 text:
-                "${SSCountry.curGuojiaFuhao()}${MainController.to.curMonnnn
-                    .value.toStringAsFixed(2)}",
+                    "${SSCountry.curGuojiaFuhao()}${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
                 fontSize: 16.sp,
                 // fontFamily: FontFamily.alkatra,
                 height: 1,
@@ -371,7 +398,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SizedBox(width: 8.w),
               SSTxtGraBorder(
                 text:
-                "${MainController.to.curLevelExp.value.toStringAsFixed(0)}",
+                    "${MainController.to.curLevelExp.value.toStringAsFixed(0)}",
                 fontSize: 16.sp,
                 // fontFamily: FontFamily.alkatra,
                 height: 1,

@@ -1,115 +1,46 @@
 {
 "skeleton": {
-	"hash": "dGivm5R0iAc",
+	"hash": "StLrF5xPOXA",
 	"spine": "4.3.39-beta",
-	"x": -960,
-	"y": -960,
-	"width": 1920,
-	"height": 1920,
-	"images": "../全部GIF图片帧 (1)/",
-	"audio": "./audio"
+	"x": -408,
+	"y": -605,
+	"width": 816,
+	"height": 1210,
+	"images": "C:/Users/Administrator/Desktop/C132-Spine/zjm-sdlr/out",
+	"audio": null
 },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
-	{ "name": "frame_1", "bone": "root", "attachment": "1" }
+	{ "name": "frame_001", "bone": "root", "attachment": "frame_" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"frame_1": {
-				"1": { "width": 1920, "height": 1920 },
-				"6": { "width": 1920, "height": 1920 },
-				"11": { "width": 1920, "height": 1920 },
-				"16": { "width": 1920, "height": 1920 },
-				"21": { "width": 1920, "height": 1920 },
-				"26": { "width": 1920, "height": 1920 },
-				"31": { "width": 1920, "height": 1920 },
-				"36": { "width": 1920, "height": 1920 },
-				"41": { "width": 1920, "height": 1920 },
-				"46": { "width": 1920, "height": 1920 },
-				"61": { "width": 1920, "height": 1920 },
-				"66": { "width": 1920, "height": 1920 },
-				"76": { "width": 1920, "height": 1920 },
-				"81": { "width": 1920, "height": 1920 },
-				"86": { "width": 1920, "height": 1920 },
-				"91": { "width": 1920, "height": 1920 },
-				"96": { "width": 1920, "height": 1920 },
-				"101": { "width": 1920, "height": 1920 },
-				"106": { "width": 1920, "height": 1920 },
-				"111": { "width": 1920, "height": 1920 },
-				"116": { "width": 1920, "height": 1920 },
-				"121": { "width": 1920, "height": 1920 },
-				"126": { "width": 1920, "height": 1920 },
-				"131": { "width": 1920, "height": 1920 },
-				"136": { "width": 1920, "height": 1920 },
-				"141": { "width": 1920, "height": 1920 },
-				"146": { "width": 1920, "height": 1920 },
-				"151": { "width": 1920, "height": 1920 },
-				"156": { "width": 1920, "height": 1920 },
-				"161": { "width": 1920, "height": 1920 },
-				"166": { "width": 1920, "height": 1920 },
-				"171": { "width": 1920, "height": 1920 },
-				"176": { "width": 1920, "height": 1920 },
-				"181": { "width": 1920, "height": 1920 },
-				"186": { "width": 1920, "height": 1920 },
-				"216": { "width": 1920, "height": 1920 },
-				"221": { "width": 1920, "height": 1920 },
-				"226": { "width": 1920, "height": 1920 },
-				"231": { "width": 1920, "height": 1920 },
-				"236": { "width": 1920, "height": 1920 },
-				"241": { "width": 1920, "height": 1920 }
+			"frame_001": {
+				"frame_": {
+					"width": 816,
+					"height": 1210,
+					"sequence": { "count": 36, "digits": 3 }
+				}
 			}
 		}
 	}
 ],
 "animations": {
 	"animation": {
-		"slots": {
-			"frame_1": {
-				"attachment": [
-					{ "time": 0.0667, "name": "6" },
-					{ "time": 0.1333, "name": "11" },
-					{ "time": 0.2, "name": "16" },
-					{ "time": 0.2667, "name": "21" },
-					{ "time": 0.3333, "name": "26" },
-					{ "time": 0.4, "name": "31" },
-					{ "time": 0.4667, "name": "36" },
-					{ "time": 0.5333, "name": "41" },
-					{ "time": 0.6, "name": "46" },
-					{ "time": 0.6667, "name": "61" },
-					{ "time": 0.7333, "name": "66" },
-					{ "time": 0.8, "name": "76" },
-					{ "time": 0.8667, "name": "81" },
-					{ "time": 0.9333, "name": "86" },
-					{ "time": 1, "name": "91" },
-					{ "time": 1.0667, "name": "96" },
-					{ "time": 1.1333, "name": "101" },
-					{ "time": 1.2, "name": "106" },
-					{ "time": 1.2667, "name": "111" },
-					{ "time": 1.3333, "name": "116" },
-					{ "time": 1.4, "name": "126" },
-					{ "time": 1.4667, "name": "131" },
-					{ "time": 1.5333, "name": "136" },
-					{ "time": 1.6, "name": "141" },
-					{ "time": 1.6667, "name": "146" },
-					{ "time": 1.7333, "name": "151" },
-					{ "time": 1.8, "name": "156" },
-					{ "time": 1.8667, "name": "161" },
-					{ "time": 1.9333, "name": "166" },
-					{ "time": 2, "name": "171" },
-					{ "time": 2.0667, "name": "176" },
-					{ "time": 2.1333, "name": "181" },
-					{ "time": 2.2, "name": "186" },
-					{ "time": 2.2667, "name": "216" },
-					{ "time": 2.3333, "name": "221" },
-					{ "time": 2.4, "name": "226" },
-					{ "time": 2.4667, "name": "231" },
-					{ "time": 2.5333, "name": "236" },
-					{ "time": 2.6, "name": "241" }
-				]
+		"attachments": {
+			"default": {
+				"frame_001": {
+					"frame_": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.041666668 },
+							{ "time": 1.5000001, "mode": "loop", "index": 14, "delay": 0.083333336 }
+						]
+					}
+				}
 			}
 		}
 	}

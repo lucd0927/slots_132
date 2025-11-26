@@ -129,8 +129,9 @@ class SSSlotMachineLuckyState extends State<SSSlotMachineLucky> {
 
         child: SSTxtGraBorder(
           text: category,
-          fontSize: 40.sp,
+          fontSize: 44.sp,
           strokeColor: Color(0xffEE101E),
+          strokeWidth: 2.w,
         ),
       );
       Widget child = Container(

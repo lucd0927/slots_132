@@ -138,6 +138,7 @@ flutter:
     - assets/donghua/jackpot_major/
     - assets/donghua/jackpot_mini/
     - assets/donghua/slots_sdlr/
+    - assets/donghua/piaoqian/
     - assets/audddd/
     - assets/lottt/bian/
     - assets/lottt/bian/images/
@@ -171,6 +172,8 @@ flutter:
     - assets/lottt/jackpot_mini/images/
     - assets/lottt/jackpot_major/
     - assets/lottt/jackpot_major/images/
+    - assets/lottt/piaoqian/
+    - assets/lottt/piaoqian/images/
 
   #   - images/a_dot_ham.jpeg
 

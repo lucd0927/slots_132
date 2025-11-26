@@ -9,7 +9,7 @@ class SSRotateWidget extends StatefulWidget {
   const SSRotateWidget({
     super.key,
     required this.child,
-    this.duration = const Duration(seconds: 2),
+    this.duration = const Duration(milliseconds: 1500),
     this.clockwise = true,
     this.autoPlay = true,
   });

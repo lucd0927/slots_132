@@ -143,7 +143,7 @@ class PhoneCardController extends GetxController {
       heroChild: cardHeroWidget(),
       onEnd: () {
         showSelectImage.value = true;
-        // OverlayPhoneSpinToPieces().show();
+        OverlayPhoneSpinToPieces().show();
       },
     );
 

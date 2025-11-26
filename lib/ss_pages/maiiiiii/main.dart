@@ -9,6 +9,7 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
@@ -54,41 +55,55 @@ class _MainState extends State<Main>
 
 
   Widget mainView() {
-    return SizedBox(
-      width: ScreenUtil().screenWidth,
-      height: ScreenUtil().screenHeight,
-      child: Stack(
-        children: [
-          Image.asset(
-            Assets.img.mainBg.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-            gaplessPlayback: true,
-          ),
+    return Obx((){
+      bool showFreeSpin = MainController.to.curShowFreeSpin.value;
 
-          // Positioned.fill(
-          //   top: 400.h,
-          //   child:SSContetti(),
-          // ),
-          Column(
-            children: [
-              TopView(),
-              AvatarRow(),
-              Expanded(child: CenterView()),
-              BottomView(),
-              Container(
-                width: double.infinity,
-                height: ScreenUtil().bottomBarHeight,
+      return SizedBox(
+        width: ScreenUtil().screenWidth,
+        height: ScreenUtil().screenHeight,
+        child: Stack(
+          children: [
+            Image.asset(
+              Assets.img.mainBg.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+              gaplessPlayback: true,
+            ),
+            Positioned.fill(
+              top: 0.h,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child:SSSpinePiaoqian(),
+            ),
+            Column(
+              children: [
+                TopView(),
+                AvatarRow(),
+                Expanded(child: CenterView()),
+                BottomView(),
+                Container(
+                  width: double.infinity,
+                  height: ScreenUtil().bottomBarHeight,
 
-                // decoration: BoxDecoration(color: Colors.black),
-                // child:   ClipRRect(child: StarFieldBackground()),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+                  // decoration: BoxDecoration(color: Colors.black),
+                  // child:   ClipRRect(child: StarFieldBackground()),
+                ),
+              ],
+            ),
+
+            if(showFreeSpin) Container(
+              width: ScreenUtil().screenWidth,
+              height: ScreenUtil().screenHeight,
+              color: Colors.transparent,
+            ),
+
+
+          ],
+        ),
+      );
+    });
   }
 
   @override

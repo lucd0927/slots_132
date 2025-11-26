@@ -34,7 +34,7 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
     if(data != null){
       return Lottie(composition: data,);
     }
-    return Lottie.asset(Assets.donghua.lottieMoney.data, repeat: true,);
+    return Lottie.asset(Assets.donghua.lottieMoney.data, repeat: true,frameBuilder: (_, child, __) => child,);
     if (!showA) {
       return const SizedBox();
     }

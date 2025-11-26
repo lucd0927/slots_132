@@ -33,7 +33,7 @@ class _SSSpineMegawinState extends State<SSSpineMegawin> {
     if(data != null){
       return Lottie(composition: data,);
     }
-    return Lottie.asset(Assets.lottt.megawin.data, repeat: true,);
+    return Lottie.asset(Assets.lottt.megawin.data, repeat: true,frameBuilder: (_, child, __) => child,);
     if (!showA) {
       return const SizedBox();
     }

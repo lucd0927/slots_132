@@ -45,7 +45,7 @@ class _SpineShengdaolaorenSlotsState extends State<SpineShengdaolaorenSlots> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.slotsSdlr.skeletonsAtlas,
+      Assets.donghua.slotsSdlr.sdlrAtlas,
       Assets.donghua.slotsSdlr.skeleton,
       controller,
       sizedByBounds: true,

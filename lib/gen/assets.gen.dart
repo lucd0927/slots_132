@@ -58,6 +58,9 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/money
   $AssetsDonghuaMoneyGen get money => const $AssetsDonghuaMoneyGen();
 
+  /// Directory path: assets/donghua/piaoqian
+  $AssetsDonghuaPiaoqianGen get piaoqian => const $AssetsDonghuaPiaoqianGen();
+
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
 
@@ -657,6 +660,14 @@ class $AssetsImgGen {
   AssetGenImage get popupBeisu =>
       const AssetGenImage('assets/img/popup_beisu.png');
 
+  /// File path: assets/img/popup_get_freespinmoney.png
+  AssetGenImage get popupGetFreespinmoney =>
+      const AssetGenImage('assets/img/popup_get_freespinmoney.png');
+
+  /// File path: assets/img/popup_get_freespinmoney_s.png
+  AssetGenImage get popupGetFreespinmoneyS =>
+      const AssetGenImage('assets/img/popup_get_freespinmoney_s.png');
+
   /// File path: assets/img/popup_get_phone_spice.png
   AssetGenImage get popupGetPhoneSpice =>
       const AssetGenImage('assets/img/popup_get_phone_spice.png');
@@ -1121,6 +1132,8 @@ class $AssetsImgGen {
     phonePopupJindu2Time,
     phoneSuip,
     popupBeisu,
+    popupGetFreespinmoney,
+    popupGetFreespinmoneyS,
     popupGetPhoneSpice,
     popupGetPhonemoney,
     popupGetXpmoney,
@@ -1233,6 +1246,9 @@ class $AssetsLotttGen {
 
   /// Directory path: assets/lottt/megawin
   $AssetsLotttMegawinGen get megawin => const $AssetsLotttMegawinGen();
+
+  /// Directory path: assets/lottt/piaoqian
+  $AssetsLotttPiaoqianGen get piaoqian => const $AssetsLotttPiaoqianGen();
 
   /// Directory path: assets/lottt/sg1
   $AssetsLotttSg1Gen get sg1 => const $AssetsLotttSg1Gen();
@@ -1444,77 +1460,55 @@ class $AssetsDonghuaMoneyGen {
   List<dynamic> get values => [skeletonAtlas, skeletonJson, skeletonPng];
 }
 
+class $AssetsDonghuaPiaoqianGen {
+  const $AssetsDonghuaPiaoqianGen();
+
+  /// File path: assets/donghua/piaoqian/skeleton.json
+  String get skeleton => 'assets/donghua/piaoqian/skeleton.json';
+
+  /// File path: assets/donghua/piaoqian/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/piaoqian/skeletons.atlas';
+
+  /// File path: assets/donghua/piaoqian/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/piaoqian/skeletons.png');
+
+  /// List of all assets
+  List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
+}
+
 class $AssetsDonghuaSdlrGen {
   const $AssetsDonghuaSdlrGen();
-
-  /// File path: assets/donghua/sdlr/sdlr.atlas
-  String get sdlrAtlas => 'assets/donghua/sdlr/sdlr.atlas';
-
-  /// File path: assets/donghua/sdlr/sdlr.png
-  AssetGenImage get sdlrPng =>
-      const AssetGenImage('assets/donghua/sdlr/sdlr.png');
 
   /// File path: assets/donghua/sdlr/skeleton.json
   String get skeleton => 'assets/donghua/sdlr/skeleton.json';
 
+  /// File path: assets/donghua/sdlr/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/sdlr/skeletons.atlas';
+
+  /// File path: assets/donghua/sdlr/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/sdlr/skeletons.png');
+
   /// List of all assets
-  List<dynamic> get values => [sdlrAtlas, sdlrPng, skeleton];
+  List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
 }
 
 class $AssetsDonghuaSlotsSdlrGen {
   const $AssetsDonghuaSlotsSdlrGen();
 
+  /// File path: assets/donghua/slots_sdlr/sdlr.atlas
+  String get sdlrAtlas => 'assets/donghua/slots_sdlr/sdlr.atlas';
+
+  /// File path: assets/donghua/slots_sdlr/sdlr.png
+  AssetGenImage get sdlrPng =>
+      const AssetGenImage('assets/donghua/slots_sdlr/sdlr.png');
+
   /// File path: assets/donghua/slots_sdlr/skeleton.json
   String get skeleton => 'assets/donghua/slots_sdlr/skeleton.json';
 
-  /// File path: assets/donghua/slots_sdlr/skeletons.atlas
-  String get skeletonsAtlas => 'assets/donghua/slots_sdlr/skeletons.atlas';
-
-  /// File path: assets/donghua/slots_sdlr/skeletons.png
-  AssetGenImage get skeletonsPng =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_2.png
-  AssetGenImage get skeletons2 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_2.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_3.png
-  AssetGenImage get skeletons3 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_3.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_4.png
-  AssetGenImage get skeletons4 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_4.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_5.png
-  AssetGenImage get skeletons5 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_5.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_6.png
-  AssetGenImage get skeletons6 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_6.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_7.png
-  AssetGenImage get skeletons7 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_7.png');
-
-  /// File path: assets/donghua/slots_sdlr/skeletons_8.png
-  AssetGenImage get skeletons8 =>
-      const AssetGenImage('assets/donghua/slots_sdlr/skeletons_8.png');
-
   /// List of all assets
-  List<dynamic> get values => [
-    skeleton,
-    skeletonsAtlas,
-    skeletonsPng,
-    skeletons2,
-    skeletons3,
-    skeletons4,
-    skeletons5,
-    skeletons6,
-    skeletons7,
-    skeletons8,
-  ];
+  List<dynamic> get values => [sdlrAtlas, sdlrPng, skeleton];
 }
 
 class $AssetsDonghuaSuperwinGen {
@@ -1787,6 +1781,20 @@ class $AssetsLotttMegawinGen {
   /// Directory path: assets/lottt/megawin/images
   $AssetsLotttMegawinImagesGen get images =>
       const $AssetsLotttMegawinImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttPiaoqianGen {
+  const $AssetsLotttPiaoqianGen();
+
+  /// File path: assets/lottt/piaoqian/data.json
+  String get data => 'assets/lottt/piaoqian/data.json';
+
+  /// Directory path: assets/lottt/piaoqian/images
+  $AssetsLotttPiaoqianImagesGen get images =>
+      const $AssetsLotttPiaoqianImagesGen();
 
   /// List of all assets
   List<String> get values => [data];
@@ -4937,6 +4945,464 @@ class $AssetsLotttMegawinImagesGen {
   /// File path: assets/lottt/megawin/images/seq_0_9.png
   AssetGenImage get seq09 =>
       const AssetGenImage('assets/lottt/megawin/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq046,
+    seq047,
+    seq048,
+    seq049,
+    seq05,
+    seq050,
+    seq051,
+    seq052,
+    seq053,
+    seq054,
+    seq055,
+    seq056,
+    seq057,
+    seq058,
+    seq059,
+    seq06,
+    seq060,
+    seq061,
+    seq062,
+    seq063,
+    seq064,
+    seq065,
+    seq066,
+    seq067,
+    seq068,
+    seq069,
+    seq07,
+    seq070,
+    seq071,
+    seq072,
+    seq073,
+    seq074,
+    seq075,
+    seq076,
+    seq077,
+    seq078,
+    seq079,
+    seq08,
+    seq080,
+    seq081,
+    seq082,
+    seq083,
+    seq084,
+    seq085,
+    seq086,
+    seq087,
+    seq088,
+    seq089,
+    seq09,
+  ];
+}
+
+class $AssetsLotttPiaoqianImagesGen {
+  const $AssetsLotttPiaoqianImagesGen();
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_0.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_1.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_10.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_11.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_12.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_13.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_14.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_15.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_16.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_17.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_18.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_19.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_2.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_20.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_21.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_22.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_23.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_24.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_25.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_26.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_27.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_28.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_29.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_3.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_30.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_31.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_32.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_33.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_34.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_35.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_36.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_37.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_38.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_39.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_4.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_40.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_41.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_42.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_43.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_44.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_45.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_46.png
+  AssetGenImage get seq046 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_46.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_47.png
+  AssetGenImage get seq047 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_47.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_48.png
+  AssetGenImage get seq048 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_48.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_49.png
+  AssetGenImage get seq049 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_49.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_5.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_50.png
+  AssetGenImage get seq050 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_50.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_51.png
+  AssetGenImage get seq051 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_51.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_52.png
+  AssetGenImage get seq052 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_52.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_53.png
+  AssetGenImage get seq053 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_53.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_54.png
+  AssetGenImage get seq054 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_54.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_55.png
+  AssetGenImage get seq055 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_55.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_56.png
+  AssetGenImage get seq056 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_56.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_57.png
+  AssetGenImage get seq057 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_57.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_58.png
+  AssetGenImage get seq058 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_58.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_59.png
+  AssetGenImage get seq059 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_59.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_6.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_60.png
+  AssetGenImage get seq060 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_60.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_61.png
+  AssetGenImage get seq061 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_61.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_62.png
+  AssetGenImage get seq062 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_62.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_63.png
+  AssetGenImage get seq063 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_63.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_64.png
+  AssetGenImage get seq064 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_64.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_65.png
+  AssetGenImage get seq065 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_65.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_66.png
+  AssetGenImage get seq066 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_66.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_67.png
+  AssetGenImage get seq067 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_67.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_68.png
+  AssetGenImage get seq068 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_68.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_69.png
+  AssetGenImage get seq069 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_69.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_7.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_70.png
+  AssetGenImage get seq070 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_70.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_71.png
+  AssetGenImage get seq071 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_71.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_72.png
+  AssetGenImage get seq072 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_72.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_73.png
+  AssetGenImage get seq073 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_73.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_74.png
+  AssetGenImage get seq074 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_74.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_75.png
+  AssetGenImage get seq075 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_75.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_76.png
+  AssetGenImage get seq076 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_76.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_77.png
+  AssetGenImage get seq077 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_77.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_78.png
+  AssetGenImage get seq078 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_78.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_79.png
+  AssetGenImage get seq079 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_79.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_8.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_80.png
+  AssetGenImage get seq080 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_80.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_81.png
+  AssetGenImage get seq081 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_81.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_82.png
+  AssetGenImage get seq082 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_82.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_83.png
+  AssetGenImage get seq083 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_83.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_84.png
+  AssetGenImage get seq084 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_84.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_85.png
+  AssetGenImage get seq085 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_85.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_86.png
+  AssetGenImage get seq086 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_86.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_87.png
+  AssetGenImage get seq087 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_87.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_88.png
+  AssetGenImage get seq088 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_88.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_89.png
+  AssetGenImage get seq089 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_89.png');
+
+  /// File path: assets/lottt/piaoqian/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/piaoqian/images/seq_0_9.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [

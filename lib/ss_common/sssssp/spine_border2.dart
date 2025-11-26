@@ -33,7 +33,7 @@ class _SSSpineBorder2State extends State<SSSpineBorder2> {
     if(data != null){
       return Lottie(composition: data,);
     }
-    return Lottie.asset(Assets.lottt.bian2.data, repeat: true,);
+    return Lottie.asset(Assets.lottt.bian2.data, repeat: true,frameBuilder: (_, child, __) => child,);
     if (!showA) {
       return const SizedBox();
     }
