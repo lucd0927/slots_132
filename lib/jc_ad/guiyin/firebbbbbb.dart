@@ -20,14 +20,16 @@ class PBFireBbbbbb {
 
   final update = StreamController<bool>.broadcast();
 
-  String by({required String name}) =>
-      FirebaseRemoteConfig.instance.getString(name);
+  String by({required String name}){
+    try{
+      return FirebaseRemoteConfig.instance.getString(name);
+    }catch(e){
+      return "";
+    }
+  }
 
   Future<void> initFirebase() async {
-    // auto patch 904
-    // if (Platform.isAndroid) {
-    //   return;
-    // }
+
     try {
       ssLogggg("==PBFireBbbbbb==initFirebase====");
       FirebaseApp firebaseApp = await Firebase.initializeApp();

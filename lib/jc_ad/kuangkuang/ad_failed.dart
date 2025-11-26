@@ -74,8 +74,8 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
 
   content() {
     return Container(
-      width: 678.w,
-      height: 771.h,
+      width: 340.w,
+      height: 390.h,
       decoration: BoxDecoration(
         color: Color(0xff992D2E),
         borderRadius: BorderRadius.circular(16.w),
@@ -97,7 +97,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
-                        fontSize: 42.sp,
+                        fontSize: 24.sp,
                       ),
                     ),
                   ],
@@ -105,7 +105,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
               ),
               Positioned(
                 top: 0,
-                right: 40.w,
+                right: 20.w,
                 bottom: 0,
                 child: GestureDetector(
                   onTap: () {
@@ -113,8 +113,8 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                     widget.onClose();
                   },
                   child: Container(
-                    width: 40.h,
-                    height: 40.h,
+                    width: 20.h,
+                    height: 20.h,
                     color: Colors.cyan,
                   ),
                   // child: Image.asset(
@@ -130,8 +130,8 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
           Expanded(
             child: Center(
               child: Container(
-                width: 640.w,
-                height: 660.h,
+                width: 320.w,
+                height: 330.h,
                 decoration: BoxDecoration(
                   color: Color(0xffFBFBFF),
                   borderRadius: BorderRadius.circular(16.w),
@@ -139,7 +139,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 150.h),
+                    SizedBox(height: 75.h),
                     Stack(
                       children: [
                         // Image.asset(
@@ -149,8 +149,8 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                         //   fit: BoxFit.contain,
                         // ),
                         Container(
-                          width: 288.h,
-                          height: 288.h,
+                          width: 144.h,
+                          height: 144.h,
                           color: Colors.cyan,
                         ),
                       ],
@@ -164,8 +164,8 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                             widget.onBtn();
                           },
                           child: Container(
-                            width: 353.w,
-                            height: 80.h,
+                            width: 180.w,
+                            height: 40.h,
                             decoration: BoxDecoration(
                               color: Color(0xffF85823),
                               borderRadius: BorderRadius.circular(16.w),
@@ -181,7 +181,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                                     "Try Again",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 42.sp,
+                                      fontSize: 16.sp,
                                       // foreground: Color(0xffD0871E),
                                       color: Color(0xffffffff),
                                     ),

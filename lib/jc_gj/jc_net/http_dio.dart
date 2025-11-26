@@ -168,51 +168,54 @@ class SSHttpDio {
     // var channel = await FlutterTbaInfo.instance.getc();
     var client_ts = mill;
 
-    Map<String, Object> drainage = {
-      "guide": distinct_id,
-      // "reave": "",
-      // "zambia": "",
+    Map<String, Object> prance = {
+      "beggar": client_ts,
+      "hijack": app_version,
+      // "ransack": "",
+      "lamarck": gaid,
+      "washy": idfa,
+      "cubby": android_id,
+      "tribunal": bundle_id
     };
 
-    Map<String, Object> delphine = {
-      "wingspan": app_version,
-      "swede": android_id,
-      // "conley":battery_left,
-      // "grandma": uid,
-      "warmup": idfa,
-      "poesy": os_version,
-      "stitch": network_type,
-      // "pat": zone_offset,
-      // "flathead": zone_offset,
+    Map<String, Object> fabian = {
+
+      // "hoofmark": null,
+      // "mitosis": null,
+      // "berry": 0,
+      // "gloat": "gp",
+      "saracen": os_version,
+      "dodd": system_language,
+      "migrant": device_model,
+      "cab": idfv
     };
 
-    Map<String, Object> sundown = {
-      // "thickish": null,
-      "silk": brand,
-      "tenney": manufacturer,
-      "pith": client_ts,
-      "cyanide": operator,
-      "bound": log_id,
-      // "gold":channel,
-      // "testes": type,
-      // "holstein": device_model,
-      "ribosome": device_model,
-      "dungeon": os_country,
+    Map<String, Object> rouge = {
+      // "stylish": null,
+      // "brooklyn": null,
+      // "rca": "reprise",
+      "quietus": manufacturer,
+      // "wildlife": "myroom",
+      // "nucleant": cpu_name,
+      "leek": distinct_id,
+      "ganglion": operator,
+      "mafioso": Platform.isAndroid?"gunshot":"slit",
+      // "hardtop": "1.2.3.4",
+      "nag": log_id,
+      // "carboy": "1.2.4",
+      "snap": brand,
+      // "pigment": uid,
+      "tacoma": os_country,
+      // "original": "",
+      // "tanager": "",
+      "retinal":network_type
     };
-    Map<String, Object> jill = {
-      "recital": system_language,
-      "haploidy": gaid,
-      "foote": bundle_id,
-      "prowess": idfv,
-      // "persuade": "",
-      // "bock": "",
-      "u": Platform.isAndroid ? "teddy" : "goof",
-    };
+
     Map<String, Object> dataJson = {
-      "drainage": drainage,
-      "delphine": delphine,
-      "sundown": sundown,
-      "jill": jill,
+      "prance": prance,
+      "fabian": fabian,
+      "rouge": rouge,
+
     };
     return dataJson;
   }
@@ -278,22 +281,22 @@ class SSHttpDio {
     var referrer_url = tbaMap['referrer_url'];
 
     Map<String, Object> bismuth = {
-      "ares": build,
-      "nj": referrer_url,
-      "husky": install_version,
-      "testicle": user_agent,
-      "babcock": lat,
-      "gus": referrer_click_timestamp_seconds,
-      "plant": install_begin_timestamp_seconds,
-      "pelt": referrer_click_timestamp_server_seconds,
-      "progeny": install_begin_timestamp_server_seconds,
-      "augusta": install_first_seconds,
-      "hasty": last_update_seconds,
-      "egress": google_play_instant,
+      "led": build,
+      "patti": referrer_url,
+      "retinal": install_version,
+      "anaphora": user_agent,
+      "boucher": lat,
+      "abstain": referrer_click_timestamp_seconds,
+      "attach": install_begin_timestamp_seconds,
+      "deforest": referrer_click_timestamp_server_seconds,
+      "popular": install_begin_timestamp_server_seconds,
+      "guiana": install_first_seconds,
+      "range": last_update_seconds,
+      // "egress": google_play_instant,
     };
 
-    dataJson['kudo'] = bismuth;
-    // dataJson.addAll(bismuth);
+    dataJson['must'] = "saguaro";
+    dataJson.addAll(bismuth);
     final Uri _url = Uri.parse(SSHuanjing.instance.bUuuu());
 
     // Dio dio = Dio(
@@ -316,7 +319,7 @@ class SSHttpDio {
   session() async {
     var dataJson = await baseData();
     var sessionJson = dataJson;
-    sessionJson['jonas'] = "whitman";
+    sessionJson['must'] = "guard";
     // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // var bundle_id = await FlutterTbaInfo.instance.getBundleId();
     // _dio.options.headers['nebulae'] = distinct_id;
@@ -353,35 +356,35 @@ class SSHttpDio {
     String ad_pos_id = adPosId;
     String ad_rit_id = "";
     String ad_format = format;
-    Map<String, Object> stuntJson = {
-      "mosaic": ad_pre_ecpm,
-      "clear": currency,
-      "bromley": ad_network,
-      "nbc": ad_source_client,
-      "free": ad_code_id,
-      "hotelman": ad_pos_id,
-      "pedagogy": ad_rit_id,
-      "fool": "",
-      "slate": ad_format,
-      "acetone": "",
+    // Map<String, Object> stuntJson = {
+    //   "mosaic": ad_pre_ecpm,
+    //   "clear": currency,
+    //   "bromley": ad_network,
+    //   "nbc": ad_source_client,
+    //   "free": ad_code_id,
+    //   "hotelman": ad_pos_id,
+    //   "pedagogy": ad_rit_id,
+    //   "fool": "",
+    //   "slate": ad_format,
+    //   "acetone": "",
+    //
+    //   "margery": "",
+    //   "cheek": "",
+    // };
 
-      "margery": "",
-      "cheek": "",
-    };
-
-    adJson['brian'] = ad_pre_ecpm;
-    adJson['fruehauf'] = currency;
-    adJson['aurora'] = ad_network;
-    adJson['abbot'] = ad_source_client;
-    adJson['marco'] = ad_code_id;
-    adJson['hanukkah'] = ad_pos_id;
-    adJson['grayson'] = ad_rit_id;
+    adJson['kindred'] = ad_pre_ecpm;
+    adJson['amputate'] = currency;
+    adJson['amity'] = ad_network;
+    adJson['votary'] = ad_source_client;
+    adJson['lise'] = ad_code_id;
+    adJson['bellman'] = ad_pos_id;
+    adJson['putdown'] = ad_rit_id;
     // adJson['genera'] = "";
-    adJson['mandrake'] = ad_format;
-    adJson['lineage'] = precision_type;
-    adJson['tropic'] = "";
-    adJson['tadpole'] = "";
-    adJson['jonas'] = "occident";
+    adJson['scene'] = ad_format;
+    adJson['kodak'] = precision_type;
+    adJson['semi'] = "";
+    adJson['pegboard'] = "";
+    adJson['ephraim'] = "";
     // adJson[''] = ;
 
     // adJson.addAll(stuntJson);
@@ -408,7 +411,7 @@ class SSHttpDio {
     // return;
     var dataJson = await baseData();
     // ggPrint("dataJaon:${dataJson is Map}");
-    dataJson["jonas"] = moistValue;
+    dataJson["must"] = moistValue;
     var json = {};
     if (veinKey?.isNotEmpty ?? false) {
       // auto patch 864

@@ -26,7 +26,7 @@ class SSApplovinMax {
   }) async {
     // _cacheAdsData = cacheAdsData;
 
-    String asdfasfdmaxkey = SSBaseUuuu.decrypt(encodeKey,117);
+    String asdfasfdmaxkey = SSBaseUuuu.decrypt(encodeKey,132);
     ssLogggg("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
     MaxConfiguration? configuration = await AppLovinMAX.initialize(asdfasfdmaxkey);
@@ -37,7 +37,8 @@ class SSApplovinMax {
       ssLogggg(
         '=======GGMaxAdsNew initMax Initialized in ${configuration.toString()}',
       );
-
+      AppLovinMAX.setHasUserConsent(true);
+      AppLovinMAX.setDoNotSell(false);
       // Optionally preload widget-based banner and MREC ads. Comment out if preloading isn't needed.
       initInterstitialAds(interstitialListener);
       initializeRewardedAd(rewardedAdListener);

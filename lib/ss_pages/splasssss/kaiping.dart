@@ -171,7 +171,7 @@ class _SplashProgressState extends State<SplashProgress> {
   double startTime = 0.0;
   late Timer _timer;
   final Duration _delayTime = Duration(milliseconds: _oneTime);
-  double _allTime = 1000;
+  double _allTime = 5000;
   static const int _oneTime = 100;
   bool canGoToMain = true;
   Timer? _delayTimer;
@@ -212,7 +212,7 @@ class _SplashProgressState extends State<SplashProgress> {
     int time = DateTime.now().millisecondsSinceEpoch;
     ssLogggg("==SSABChange().init start====");
     // // // 5 ab包逻辑
-    // bool result = await SSABChange().init();
+    bool result = await SSABChange().init();
     // int time2 = DateTime.now().millisecondsSinceEpoch;
     // ssLogggg(
     //   "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",

@@ -748,10 +748,10 @@ class SSCommonAds {
       _loadFailReason = AdLoadFailReason.uninitialized;
     }
     ssLogggg("====init==initTopon");
-    await InitManger.initTopon(
-      atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
-      atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
-    );
+    // await InitManger.initTopon(
+    //   atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
+    //   atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
+    // );
     // InitManger.setLogEnabled();
     ssLogggg("====init==end");
     _scheme =

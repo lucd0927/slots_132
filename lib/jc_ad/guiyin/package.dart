@@ -243,8 +243,12 @@ class SSABChange {
   Future<bool> init() async {
     initCompleter = Completer<bool>();
     var box = SSHive.box;
-    var packageName = box.get(kHivePackage) ?? packageA;
-    // packageName = packageB;
+    var packageName = box.get(kHivePackage)??packageA;
+
+    if(Platform.isAndroid){
+      packageName = packageB;
+    }
+
 
     _name = packageName;
     ssLogggg("$TGA=package==init:$packageName==");

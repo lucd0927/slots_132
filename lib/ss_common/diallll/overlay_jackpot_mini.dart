@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -37,8 +38,10 @@ class OverlayJackpotMini {
     _overlay = OverlayEntry(
       builder: (context) {
         return _JackpotWidgetMini(
-          onBtn: (double money) {
+          onBtn: (double money) async{
             close();
+            await SSCommonAds().showRewardAd(adPosId: "test");
+
             onBtn(money);
           },
           onBtn2: (double money) {

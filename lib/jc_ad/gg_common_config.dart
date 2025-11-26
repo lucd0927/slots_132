@@ -56,7 +56,7 @@ enum EnumAdsType {
 
 class GGCommonJson {
   // 哪种方案 A 老方案 B 新方案
-  static const String k_which_scheme = "cdyun_switch";
+  static const String k_which_scheme = "eyomt_switch";
   static const bool scheme_A = false;
   static const bool scheme_B = true;
 
@@ -69,14 +69,14 @@ class GGCommonJson {
   // static const String k_rv_two_name = "glgns_rv_two";
 
   // 广告id
-  static const String k_ads_id = "lhewiloc";
+  static const String k_ads_id = "ldhjempw";
 
   // 广告平台 max topon
-  static const String k_platfrom = "vvmmyknm";
+  static const String k_platfrom = "eoqcdsxf";
 
   // 广告类型 【interstitial为插屏类型，native为原生类型，reward为激励视频类型】
-  static const String k_ad_type = "jpburjoz";
-  static const String k_time_out = "nohbmlex";
+  static const String k_ad_type = "fwjysnic";
+  static const String k_time_out = "hvmcyweh";
 
 
   static const String k_ecpm = "ecpm";
@@ -84,7 +84,7 @@ class GGCommonJson {
   // 广告过期时间
 
   static const String maxkeyEncode =
-      "OCI/Dx0bMCUBPgQNOT4nOTQZIwchDCQTOkcjDSIvIgEjDSomDyEiNio4EhovOUIeIT47AUwBRjgqOhI8L0dBGzctJy0NIxFMGhIkMAVCQ0RDISITRjY=";
+      "ydPO/uzqwdTwz/X8yM/WyMXo0vbQ/dXiy7bS/NPe0/DS/NvX/tDTx9vJ4+veyLPv0M/K8L3wt8nby+PN3raw6sbc1tz80uC96+PVwfSzsrWy0NPit8c=";
 
   // max 平台
   static final String ad_platfrom_max = EnumAdsPlatform.max.name;
@@ -101,33 +101,33 @@ class GGCommonJson {
   static Map<String, dynamic> changeLocal(Map<String, dynamic> online) {
     Map<String, dynamic> newLocal = {};
 
-    newLocal['doubqzaq'] = online['mbmrjbys'];
-    newLocal['ddixmpdd'] = online['ddixmpdd'];
+    newLocal['oxocbdkw'] = online['oxocbdkw'];
+    newLocal['rywjknyu'] = online['rywjknyu'];
     newLocal[k_which_scheme] = online[k_which_scheme];
-    newLocal[k_out_int] = online['cdyun_int'];
+    newLocal[k_out_int] = online['eyomt_int'];
 
-    newLocal[k_out_rv] = online['cdyun_rv'];
+    newLocal[k_out_rv] = online['eyomt_rv'];
     return newLocal;
   }
 
-  static var localB = {
-    "doubqzaq": 100,
-    "ddixmpdd": 100,
-    "cdyun_switch": true,
-    "cdyun_int": [
+  static var localB ={
+    "oxocbdkw": 100,
+    "rywjknyu": 100,
+    "eyomt_switch": false,
+    "eyomt_int": [
       {
-        "lhewiloc": "60354d12187f2a18",
-        "vvmmyknm": "max",
-        "jpburjoz": "interstitial",
-        "nohbmlex": 3000
+        "ldhjempw": "cf6ef230700c5753",
+        "eoqcdsxf": "max",
+        "fwjysnic": "interstitial",
+        "hvmcyweh": 3000
       }
     ],
-    "cdyun_rv": [
+    "eyomt_rv": [
       {
-        "lhewiloc": "c2a563b0c30d67c5",
-        "vvmmyknm": "max",
-        "jpburjoz": "reward",
-        "nohbmlex": 3000
+        "ldhjempw": "ecd48d326f269413",
+        "eoqcdsxf": "max",
+        "fwjysnic": "reward",
+        "hvmcyweh": 3000
       }
     ]
   };

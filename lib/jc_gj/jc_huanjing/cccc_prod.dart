@@ -7,15 +7,13 @@ class SSHuanjingProd implements SSHuanjing{
   @override
   String bUuuu() {
     // TODO: implement baseUrl
-    return "";
+    return "https://fourfold.clausslotswealth.com/kermit/cavalry/trolley";
   }
 
   @override
   String tbaUuuuu() {
-// auto patch 793
-    // TODO: implement cloakUrl
-// auto patch 79
-    return "";
+
+    return "https://impel.clausslotswealth.com/rowdy/latch";
   }
 
 }    
