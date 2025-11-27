@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -104,6 +105,26 @@ class _SSTabViewState extends State<SSTabView> {
 
   itemProgressss({required double money}) {
     String des = "199 successful cash outs today! Only 10 spots left";
+    String jinduTxt = "";
+    if (money == 1000) {
+      int day = SSDlTracking.qidongduoshaoDay();
+      des = "90% of new users cash out on Day 1.";
+      if (day > 1) {
+        des = "80% of  users cash out today.";
+      }
+      if (WithdddController.to.hasSaveCardId()) {
+        jinduTxt = "Progress...";
+      }
+      if (!WithdddController.to.curLiucheng1SpinsOver.value) {
+        des =
+            "You got this—finish the stage fee-free, trust us, cash out instantly! 💸";
+      } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
+        des = "You're next in line—cash out lightning-fast! 💸";
+      } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
+        des = "Quick security check! Spin %s times to get your cash.";
+      }
+    }
+
     return Container(
       width: double.infinity,
       height: 100.h,
@@ -113,28 +134,45 @@ class _SSTabViewState extends State<SSTabView> {
         borderRadius: BorderRadius.circular(8.w),
         color: Color(0xffffffff),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
         children: [
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              moenyWidget(money: money),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  moenyWidget(money: money),
+                  SizedBox(height: 4.h),
+                  Spacer(),
+                  progressWidget(money: money),
+                ],
+              ),
               SizedBox(height: 4.h),
-              Spacer(),
-              progressWidget(money: money),
+              Text(
+                des,
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                  color: Color(0xff9BA3B0),
+                ),
+              ),
             ],
           ),
-          SizedBox(height: 4.h),
-          Text(
-            des,
-            style: TextStyle(
-              fontSize: 10.sp,
-              fontWeight: FontWeight.w600,
-              height: 1,
-              color: Color(0xff9BA3B0),
+
+          Positioned(
+            top: 5.h,
+            right: 5.w,
+            child: Text(
+              jinduTxt,
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: Colors.red,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ],

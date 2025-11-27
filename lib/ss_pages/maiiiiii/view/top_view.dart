@@ -27,6 +27,9 @@ import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_exp.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_one_last_check.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu2.dart';
@@ -61,45 +64,7 @@ class TopView extends StatelessWidget {
           Positioned(
             top: 48.h,
             left: 28.w,
-            child: Container(
-              width: 100.w,
-              height: 30.h,
-              decoration: BoxDecoration(
-                color: Colors.teal.withValues(alpha: 0.0),
-              ),
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Positioned(
-                    left: 0.w,
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: Center(child: topMoney()),
-                  ),
-                  Positioned(
-                    top: 0,
-                    bottom: 0,
-                    left: -8.w,
-                    child: Center(
-                      child: Builder(
-                        builder: (context) {
-                          Widget child = Image.asset(
-                            Assets.img.money.path,
-                            width: 30.h,
-                            height: 28.h,
-                            fit: BoxFit.fill,
-                            gaplessPlayback: true,
-                          );
-                          overlayMainTopMoney.targetContext = context;
-                          return child;
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: TopMoneyWidget(),
           ),
 
           Positioned(
@@ -195,10 +160,15 @@ class TopView extends StatelessWidget {
       ),
     );
   }
-
+  onWithddd() {
+    Get.toNamed(SSRouttttt.withdrawwwww);
+  }
   onMenu() async {
     ssLogggg("====onMenu");
     // OverlaySettinnn().show();
+    // OverlayWithddCardPaypal().show();
+    // OverlayWithddCardCashapp().show();
+    OverlayWithddCardBank().show();
 
 
     // OverlayBoxgift().show();
@@ -231,70 +201,19 @@ class TopView extends StatelessWidget {
 
     // OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
-    // OverlayWow().show(money: 100, onClose: (value) {  });
+    // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  });
     // OverlayMegawin().show(money: 100);
 
     // OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
     // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
-    OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
+    // OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
 
     // MainController.to.curLevelExp.value = 980;
   }
 
-  onWithddd() {
-    Get.toNamed(SSRouttttt.withdrawwwww);
-  }
 
-  topMoney() {
-    double money = MainController.to.curMonnnn.value;
-    // money = 30510.1;
-    String suffix = "";
-    if (money >= 1000000) {
-      money = money / 1000000;
-      suffix = "M";
-    } else if (money >= 1000) {
-      money = money / 1000;
-      suffix = "k";
-    }
-    return GestureDetector(
-      onTap: onWithddd,
-      child: Container(
-        width: 100.w,
-        height: 24.h,
-        padding: EdgeInsets.only(left: 12.w),
-        decoration: BoxDecoration(
-          color: Colors.teal.withValues(alpha: 0.5),
-          borderRadius: BorderRadius.circular(30.h),
-          gradient: LinearGradient(
-            colors: [
-              Color(0xff540406),
-              Color(0xff3C0302),
-              Color(0xff360100),
-              Color(0xff560000),
-            ],
-          ),
-          border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
-        ),
-        child: Center(
-          child: SSAniiiiCount(
-            duration: Duration(milliseconds: 800),
-            fractionDigits: 2,
-            // wholeDigits: 2,
-            prefix: SSCountry.curGuojiaFuhao(),
-            suffix: suffix,
-            value: money,
-            textStyle: TextStyle(
-              fontWeight: FontWeight.w700,
-              color: Color(0xff6AFF00),
-              fontSize: 16.sp,
-              height: 1,
-              fontFamily: FontFamily.rubik,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+
+
 
   topXp() {
     int level = MainController.to.level();
@@ -364,5 +283,116 @@ class TopView extends StatelessWidget {
 
   void onExp() {
     OverlayExp().show();
+  }
+}
+
+
+class TopMoneyWidget extends StatefulWidget {
+  const TopMoneyWidget({super.key});
+
+  @override
+  State<TopMoneyWidget> createState() => _TopMoneyWidgetState();
+}
+
+class _TopMoneyWidgetState extends State<TopMoneyWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Obx((){
+
+      return Container(
+        width: 100.w,
+        height: 30.h,
+        decoration: BoxDecoration(
+          color: Colors.teal.withValues(alpha: 0.0),
+        ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              left: 0.w,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              child: Center(child: topMoney()),
+            ),
+            Positioned(
+              top: 0,
+              bottom: 0,
+              left: -8.w,
+              child: Center(
+                child: Builder(
+                  builder: (context) {
+                    Widget child = Image.asset(
+                      Assets.img.money.path,
+                      width: 30.h,
+                      height: 28.h,
+                      fit: BoxFit.fill,
+                      gaplessPlayback: true,
+                    );
+                    overlayMainTopMoney.targetContext = context;
+                    return child;
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+      return  topMoney();
+    });
+  }
+  onWithddd() {
+    Get.toNamed(SSRouttttt.withdrawwwww);
+  }
+  topMoney() {
+    double money = MainController.to.curMonnnn.value;
+    // money = 30510.1;
+    String suffix = "";
+    if (money >= 1000000) {
+      money = money / 1000000;
+      suffix = "M";
+    } else if (money >= 1000) {
+      money = money / 1000;
+      suffix = "k";
+    }
+    return GestureDetector(
+      onTap: onWithddd,
+      child: Container(
+        width: 100.w,
+        height: 24.h,
+        padding: EdgeInsets.only(left: 12.w),
+        decoration: BoxDecoration(
+          color: Colors.teal.withValues(alpha: 0.5),
+          borderRadius: BorderRadius.circular(30.h),
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff540406),
+              Color(0xff3C0302),
+              Color(0xff360100),
+              Color(0xff560000),
+            ],
+          ),
+          border: Border.all(color: Color(0xffAA3A3D), width: 1.w),
+        ),
+        child: Center(
+          child: SSAniiiiCount(
+            duration: Duration(milliseconds: 800),
+            fractionDigits: 2,
+            // wholeDigits: 2,
+            prefix: SSCountry.curGuojiaFuhao(),
+            suffix: suffix,
+            value: money,
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: Color(0xff6AFF00),
+              fontSize: 16.sp,
+              height: 1,
+              fontFamily: FontFamily.rubik,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

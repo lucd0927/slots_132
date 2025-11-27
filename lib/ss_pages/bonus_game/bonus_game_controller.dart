@@ -88,7 +88,7 @@ class BonusGameController extends GetxController {
         exp: 0,
         phoneSpice: 0,
         onClose: () {
-
+          MainController.to.onAddMoney(money, showMoneyAnimated: true);
         },
       );
     }

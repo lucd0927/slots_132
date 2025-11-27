@@ -13,7 +13,7 @@ import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu2.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
-class OverlayWithddCardCashapp {
+class OverlayWithddCardBank {
   ///是否真正显示
   bool get hasShow => _isShowing;
   bool _isShowing = false;
@@ -24,7 +24,7 @@ class OverlayWithddCardCashapp {
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
-        return _WithddPaypalWidget(
+        return _WithddBankWidget(
           onClose: () {
             close();
           },
@@ -42,24 +42,32 @@ class OverlayWithddCardCashapp {
   }
 }
 
-class _WithddPaypalWidget extends StatefulWidget {
-  const _WithddPaypalWidget({super.key, required this.onClose});
+class _WithddBankWidget extends StatefulWidget {
+  const _WithddBankWidget({super.key, required this.onClose});
 
   final VoidCallback onClose;
 
   @override
-  State<_WithddPaypalWidget> createState() => _WithddPaypalWidgetState();
+  State<_WithddBankWidget> createState() => _WithddBankWidgetState();
 }
 
-class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
+class _WithddBankWidgetState extends State<_WithddBankWidget>
     with WidgetsBindingObserver {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 250);
   Timer? _timer;
 
   final FocusNode focusNode = FocusNode();
-  final TextEditingController textEditingController = TextEditingController();
   late VoidCallback focusListener;
+
+  final FocusNode focusNode2 = FocusNode();
+  late VoidCallback focusListener2;
+
+  final FocusNode focusNode3 = FocusNode();
+  late VoidCallback focusListener3;
+
+  final FocusNode focusNode4 = FocusNode();
+  late VoidCallback focusListener4;
 
   @override
   void initState() {
@@ -76,16 +84,31 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
       // });
     });
     focusListener = () {
-      _listener();
+      _listener(focusNode);
+    };
+    focusListener2 = () {
+      _listener(focusNode2);
+    };
+    focusListener3 = () {
+      _listener(focusNode3);
+    };
+    focusListener4 = () {
+      _listener(focusNode4);
     };
 
     focusNode.addListener(focusListener);
+    focusNode2.addListener(focusListener2);
+    focusNode3.addListener(focusListener3);
+    focusNode4.addListener(focusListener4);
   }
 
   double topHeight = 0.h;
-  String name = "";
+  String cardNumber = "";
+  String year = "";
+  String cvc = "";
+  String zipcode = "";
 
-  _listener() {
+  _listener(FocusNode focusNode) {
     ssLogggg("==focusListeners:${focusNode.hasFocus}==");
     if (mounted) {
       setState(() {
@@ -100,213 +123,373 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: AnimatedContainer(
-        duration: animD,
-        color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
-        child: Center(
-          child: AnimatedScale(
-            duration: animD,
-            scale: showAnimated ? 1.0 : 0.8,
-            // offset: showAnimated ? Offset.zero : Offset(0, 1),
-            // curve: Curves.linearToEaseOut,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 324.w,
-                  height: 400.h,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 1.0),
-                    borderRadius: BorderRadius.circular(12.h),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 12.h),
-                      Image.asset(
-                        Assets.img.withddCashapp.path,
-                        width: 179.h,
-                        height: 68.h,
-                      ),
-
-                      SizedBox(height: 12.h),
-
-                      Text(
-                        "Transfer to Cash App",
-                        style: TextStyle(
-                          color: Color(0xff252525),
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 4.h),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Text(
-                          "Instant deposit. No fees.",
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).unfocus();
+      },
+      child: Material(
+        color: Colors.transparent,
+        child: AnimatedContainer(
+          duration: animD,
+          color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
+          child: Center(
+            child: AnimatedScale(
+              duration: animD,
+              scale: showAnimated ? 1.0 : 0.8,
+              // offset: showAnimated ? Offset.zero : Offset(0, 1),
+              // curve: Curves.linearToEaseOut,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 324.w,
+                    height: 500.h,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 1.0),
+                      borderRadius: BorderRadius.circular(12.h),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 12.h),
+                        Text(
+                          "Instant Transfer",
                           style: TextStyle(
-                            color: Color(0xff7E8E9B),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(height: 20.h),
-                      Container(
-                        width: 285.w,
-                        height: 48.h,
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        decoration: BoxDecoration(
-                          color: Color(0xffEDF0F7),
-                          borderRadius: BorderRadius.circular(8.w),
-                          border: Border.all(
-                            color: Color(0xffBCB9D2),
-                            width: 0.5.w,
+                            color: Color(0xff252525),
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                        child: Row(
+                        Image.asset(
+                          Assets.img.cardVisa.path,
+                          width: 201.h,
+                          height: 130.h,
+                        ),
+
+                        SizedBox(height: 12.h),
+
+                        inputCardNumberWidget(),
+                        SizedBox(height: 8.h),
+                        inputCardYearCvcWidget(),
+                        SizedBox(height: 8.h),
+                        inputCardZipCodeWidget(),
+
+                        SizedBox(height: 20.h),
+                        GestureDetector(
+                          onTap: onWithdrawwww,
+                          child: Container(
+                            width: 230.h,
+                            height: 42.h,
+                            decoration: BoxDecoration(
+                              color: Color(0xff33303A),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Cash out ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
+                                style: TextStyle(
+                                  color: Color(0xffffffff),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 12.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Icon(
+                              Icons.lock_outlined,
+                              color: Color(0xff7E8E9B),
+                              size: 20.h,
+                            ),
+                            SizedBox(width: 2.w),
                             Text(
-                              "TOTAL",
+                              "Encrypted & Secure",
                               style: TextStyle(
                                 color: Color(0xff7E8E9B),
                                 fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Spacer(),
-                            SSAniiiiCount(
-                              value: MainController.to.curMonnnn.value
-                                  .toAsFixedFloor(2),
-                              prefix: SSCountry.curGuojiaFuhao(),
-                              textStyle: TextStyle(
-                                color: Color(0xff252525),
-                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
                         ),
-                      ),
-                      SizedBox(height: 8.h),
-                      inputWidget(),
-
-                      SizedBox(height: 40.h),
-                      GestureDetector(
-                        onTap: onWithdrawwww,
-                        child: Container(
-                          width: 230.h,
-                          height: 42.h,
-                          decoration: BoxDecoration(
-                            color: Color(0xff31C520),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Cash out ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
-                              style: TextStyle(
-                                color: Color(0xffffffff),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 12.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.lock_outlined,color: Color(0xff7E8E9B),size: 20.h,),
-                          SizedBox(width: 2.w,),
-                          Text(
-                            "Encrypted & Secure",
-                            style: TextStyle(
-                              color: Color(0xff7E8E9B),
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 40.h),
-                GestureDetector(
-                  onTap: onClose,
-                  child: Image.asset(
-                    Assets.img.closePopup.path,
-                    width: 30.h,
-                    height: 30.h,
+                  SizedBox(height: 40.h),
+                  GestureDetector(
+                    onTap: onClose,
+                    child: Image.asset(
+                      Assets.img.closePopup.path,
+                      width: 30.h,
+                      height: 30.h,
+                    ),
                   ),
-                ),
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 250),
-                  height: topHeight,
-                ),
-              ],
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: 250),
+                    height: topHeight,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
-
+  bool isNumeric(String str) {
+    final numericRegex = RegExp(r'^\d+$');
+    return numericRegex.hasMatch(str);
+  }
   void onWithdrawwww() {
-
-    if(name.isEmpty){
-      ssTushi(text: "Please enter a valid card number.");
+    if (!isNumeric(cardNumber) || cvc.isEmpty || year.isEmpty || zipcode.isEmpty) {
+      ssTushi(text: "Please complete all required information.");
       return;
     }
 
-    WithdddController.to.saveCardId(name);
+    WithdddController.to.saveCardId(cardNumber);
 
     onClose();
-
-
-
   }
 
-  inputWidget() {
+  inputCardNumberWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "CARD NUMBER",
+          style: TextStyle(
+            color: Color(0xff252525),
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Container(
+          width: 285.w,
+          height: 48.h,
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          decoration: BoxDecoration(
+            color: Color(0xffEDF0F7),
+            borderRadius: BorderRadius.circular(8.w),
+            border: Border.all(color: Color(0xffEAEBEF), width: 1.w),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.credit_card, color: Color(0xff6B7280)),
+              SizedBox(width: 8.w),
+              Expanded(
+                child: Center(
+                  child: TextField(
+                    focusNode: focusNode,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff6B7280),
+                    ),
+                    decoration: InputDecoration.collapsed(
+                      hintText: "0000 0000 0000 0000",
+                      hintStyle: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6B7280),
+                      ),
+                    ),
+                    keyboardType: TextInputType.text,
+                    onChanged: (text) {
+                      ssLogggg("===input text:$text===");
+                      cardNumber = text;
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  inputCardYearCvcWidget() {
     return Container(
       width: 285.w,
-      height: 48.h,
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      decoration: BoxDecoration(
-        color: Color(0xffEDF0F7),
-        borderRadius: BorderRadius.circular(8.w),
-        border: Border.all(color: Color(0xffEAEBEF), width: 1.w),
+      // height: 48.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "EXPIRY",
+                style: TextStyle(
+                  color: Color(0xff252525),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Container(
+                width: 126.w,
+                height: 48.h,
+                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                decoration: BoxDecoration(
+                  color: Color(0xffEDF0F7),
+                  borderRadius: BorderRadius.circular(8.w),
+                  border: Border.all(color: Color(0xffEAEBEF), width: 1.w),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.credit_card, color: Color(0xff6B7280)),
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: Center(
+                        child: TextField(
+                          focusNode: focusNode2,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff6B7280),
+                          ),
+                          decoration: InputDecoration.collapsed(
+                            hintText: "MM/YY",
+                            hintStyle: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff6B7280),
+                            ),
+                          ),
+                          keyboardType: TextInputType.text,
+                          onChanged: (text) {
+                            ssLogggg("===input text:$text===");
+                            year = text;
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "CVC",
+                style: TextStyle(
+                  color: Color(0xff252525),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Container(
+                width: 126.w,
+                height: 48.h,
+                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                decoration: BoxDecoration(
+                  color: Color(0xffEDF0F7),
+                  borderRadius: BorderRadius.circular(8.w),
+                  border: Border.all(color: Color(0xffEAEBEF), width: 1.w),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.lock_outlined, color: Color(0xff6B7280)),
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: Center(
+                        child: TextField(
+                          focusNode: focusNode3,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff6B7280),
+                          ),
+                          decoration: InputDecoration.collapsed(
+                            hintText: "123",
+                            hintStyle: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff6B7280),
+                            ),
+                          ),
+                          keyboardType: TextInputType.text,
+                          onChanged: (text) {
+                            ssLogggg("===input text:$text===");
+                            cvc = text;
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-      child: Center(
-        child: TextField(
-          controller: textEditingController,
-          focusNode: focusNode,
-          textAlign: TextAlign.start,
+    );
+  }
+
+  inputCardZipCodeWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "BILLING ZIP CODE",
           style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-            color: Color(0xffffffff),
+            color: Color(0xff252525),
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w600,
           ),
-          decoration: InputDecoration.collapsed(
-            hintText: "\$Cashtag,phone,or email",
-            hintStyle: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: Color(0xff6B7280),
-            ),
-          ),
-          keyboardType: TextInputType.text,
-          onChanged: (text) {
-            ssLogggg("===input text:$text===");
-            name = text;
-          },
         ),
-      ),
+        Container(
+          width: 285.w,
+          height: 48.h,
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          decoration: BoxDecoration(
+            color: Color(0xffEDF0F7),
+            borderRadius: BorderRadius.circular(8.w),
+            border: Border.all(color: Color(0xffEAEBEF), width: 1.w),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.add_card, color: Color(0xff6B7280)),
+              SizedBox(width: 8.w),
+              Expanded(
+                child: Center(
+                  child: TextField(
+                    focusNode: focusNode4,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff6B7280),
+                    ),
+                    decoration: InputDecoration.collapsed(
+                      hintText: "e.g. 10001",
+                      hintStyle: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6B7280),
+                      ),
+                    ),
+                    keyboardType: TextInputType.text,
+                    onChanged: (text) {
+                      ssLogggg("===input text:$text===");
+                      zipcode = text;
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -328,10 +511,11 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
     final bottomInset = WidgetsBinding.instance.window.viewInsets.bottom;
     if (bottomInset > 0 && _keyboardHeight == 0) {
       print('🧭 键盘弹起');
-      focusNode.requestFocus();
+      // focusNode.requestFocus();
     } else if (bottomInset == 0 && _keyboardHeight > 0) {
       print('🎯 键盘收起');
-      focusNode.unfocus();
+      // focusNode.unfocus();
+      FocusScope.of(context).unfocus();
     }
     _keyboardHeight = bottomInset;
     ssLogggg("===_keyboardHeight:$_keyboardHeight===");
@@ -342,7 +526,6 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
     WidgetsBinding.instance.removeObserver(this);
     focusNode.removeListener(focusListener);
     focusNode.dispose();
-    textEditingController.dispose();
     super.dispose();
   }
 }

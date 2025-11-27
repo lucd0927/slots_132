@@ -13,7 +13,7 @@ import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu2.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
-class OverlayWithddCardPaypal {
+class OverlayWithddCardCashapp {
   ///是否真正显示
   bool get hasShow => _isShowing;
   bool _isShowing = false;
@@ -116,7 +116,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
               children: [
                 Container(
                   width: 324.w,
-                  height: 434.h,
+                  height: 400.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(12.h),
@@ -126,7 +126,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                     children: [
                       SizedBox(height: 12.h),
                       Image.asset(
-                        Assets.img.withddPaypal2.path,
+                        Assets.img.withddCashapp.path,
                         width: 179.h,
                         height: 68.h,
                       ),
@@ -134,7 +134,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       SizedBox(height: 12.h),
 
                       Text(
-                        "Withdraw funds",
+                        "Transfer to Cash App",
                         style: TextStyle(
                           color: Color(0xff252525),
                           fontSize: 20.sp,
@@ -145,7 +145,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Text(
-                          "Transfer funds instantly to your PayPal account.",
+                          "Instant deposit. No fees.",
                           style: TextStyle(
                             color: Color(0xff7E8E9B),
                             fontSize: 14.sp,
@@ -170,7 +170,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                         child: Row(
                           children: [
                             Text(
-                              "Withdrawal Amount",
+                              "TOTAL",
                               style: TextStyle(
                                 color: Color(0xff7E8E9B),
                                 fontSize: 14.sp,
@@ -207,7 +207,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                           ),
                           child: Center(
                             child: Text(
-                              "Withdraw ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}",
+                              "Cash out ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -221,15 +221,14 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          GestureDetector(
-                            onTap: onWithdrawwww,
-                            child: Text(
-                              "Cancel",
-                              style: TextStyle(
-                                color: Color(0xff7E8E9B),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          Icon(Icons.lock_outlined,color: Color(0xff7E8E9B),size: 20.h,),
+                          SizedBox(width: 2.w,),
+                          Text(
+                            "Encrypted & Secure",
+                            style: TextStyle(
+                              color: Color(0xff7E8E9B),
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
@@ -237,8 +236,15 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                     ],
                   ),
                 ),
-
                 SizedBox(height: 40.h),
+                GestureDetector(
+                  onTap: onClose,
+                  child: Image.asset(
+                    Assets.img.closePopup.path,
+                    width: 30.h,
+                    height: 30.h,
+                  ),
+                ),
                 AnimatedContainer(
                   duration: Duration(milliseconds: 250),
                   height: topHeight,
@@ -284,10 +290,10 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,
-            color: Color(0xffffffff),
+            color: Color(0xff000000),
           ),
           decoration: InputDecoration.collapsed(
-            hintText: "PayPal email or mobile number",
+            hintText: "\$Cashtag,phone,or email",
             hintStyle: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,

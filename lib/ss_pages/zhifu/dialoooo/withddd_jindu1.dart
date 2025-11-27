@@ -25,7 +25,7 @@ class OverlayJindu1 {
         return WithdddJindu1(
           onClose: () {
             close();
-            WithdddController.to.saveCardId("asdfasfasd");
+
 
             OverlayWithddJindu2().show();
 

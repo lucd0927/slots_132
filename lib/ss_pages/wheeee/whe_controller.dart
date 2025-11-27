@@ -24,7 +24,8 @@ class WheController extends GetxController {
 
   var curWheNum = initWheNum.obs;
   var wheelEnd = false.obs;
-  static List<double> beisu = [1.0,1.2,1.4,1.8,2.2,2.6,3.0];
+  static List<double> beisu = [1.0, 1.2, 1.4, 1.8, 2.2, 2.6, 3.0];
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -101,16 +102,19 @@ class WheController extends GetxController {
       int phoneSpice = 0;
       double tmpBeisu = 1.0;
       int allLenght = beisu.length;
-      if(curToday > allLenght){
+      if (curToday > allLenght) {
         curToday = 0;
-      }else{
-        tmpBeisu = beisu[curToday-1];
+      } else {
+        tmpBeisu = beisu[curToday - 1];
       }
       if (rewardModelType == EnumGiftRewardModel.cash) {
         money = giftRewardModel.num * tmpBeisu;
       } else if (rewardModelType == EnumGiftRewardModel.xp) {
-        exp = giftRewardModel.num * MainController.to.levelExp()*tmpBeisu.toInt();
-      }else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
+        exp =
+            giftRewardModel.num *
+            MainController.to.levelExp() *
+            tmpBeisu.toInt();
+      } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
         phoneSpice = giftRewardModel.num;
       }
 
@@ -118,7 +122,9 @@ class WheController extends GetxController {
         money: money,
         exp: exp,
         phoneSpice: phoneSpice,
-        onClose: () {},
+        onClose: () {
+          MainController.to.onAddMoney(money, showMoneyAnimated: true,showTargetWidget: true);
+        },
       );
     } else {}
   }

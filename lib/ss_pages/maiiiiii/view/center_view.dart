@@ -9,6 +9,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
@@ -420,58 +421,31 @@ class CenterView extends StatelessWidget {
   }
 
   _onBoxGift() {
-    ssLogggg("=_onBoxGift==");
-    OverlayBoxgift().show();
+    int time = HomeBoxTimeState().shengyuTime();
+    bool showTime = MainController.to.showBoxTime.value;
+    ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
+
+    if (time > 0) {
+      ssTushi(text: "Please wait!");
+    }else{
+      OverlayBoxgift().show();
+    }
   }
 
-  Column leftWidget() {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            _onBoxGift();
-          },
-          child: Container(
-            width: 58.h,
-            height: 64.h,
-            // clipBehavior: Clip.none,
-            color: Colors.red.withValues(alpha: 0),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                ShiningEffect(
-                  shineColor: Colors.white,
-                  opacity: 0.5,
-                  duration: const Duration(seconds: 2),
-                  child: Image.asset(
-                    Assets.img.mainBox.path,
-                    width: 58.h,
-                    height: 58.h,
-                    gaplessPlayback: true,
-                  ),
-                ),
-                Positioned(
-                  left: -4.w,
-                  right: -4.w,
-                  bottom: 4.h,
-                  child: Center(child: HomeBoxTime()),
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(height: 20.h),
-
-        GestureDetector(
-          onTap: () {
-            ssLogggg("=mainPhone==");
-            onPhoneClick();
-          },
-          child: Obx(() {
-            int card = PhoneCardController.to.collectCardNum.value;
-            return Container(
+  Widget leftWidget() {
+    return Obx((){
+      bool showTime = MainController.to.showBoxTime.value;
+      return Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              _onBoxGift();
+            },
+            child: Container(
               width: 58.h,
               height: 64.h,
+              // clipBehavior: Clip.none,
+              color: Colors.red.withValues(alpha: 0),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -479,39 +453,78 @@ class CenterView extends StatelessWidget {
                     shineColor: Colors.white,
                     opacity: 0.5,
                     duration: const Duration(seconds: 2),
-                    child: Hero(
-                      tag: "Phoneeee",
-                      child: Image.asset(
-                        key: MainController.to.keyPhoneSpice,
-                        Assets.img.mainPhone.path,
-                        width: 58.h,
-                        height: 58.h,
-                        gaplessPlayback: true,
-                      ),
+                    child: Image.asset(
+                      Assets.img.mainBox.path,
+                      width: 58.h,
+                      height: 58.h,
+                      gaplessPlayback: true,
                     ),
                   ),
                   Positioned(
-                    left: -10.w,
-                    right: -10.w,
+                    left: -4.w,
+                    right: -4.w,
                     bottom: 4.h,
-                    child: Center(
-                      child: SSTxtGraBorder(
-                        text:
-                            "$card/${PhoneCardController.to.durations.length}",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
-                        strokeColor: Color(0xff30120A),
-                        fontFamily: FontFamily.alkatra,
-                      ),
-                    ),
+                    child: Center(child:showTime? HomeBoxTime():const SizedBox()),
                   ),
                 ],
               ),
-            );
-          }),
-        ),
-      ],
-    );
+            ),
+          ),
+          SizedBox(height: 20.h),
+
+          GestureDetector(
+            onTap: () {
+              ssLogggg("=mainPhone==");
+              onPhoneClick();
+            },
+            child: Obx(() {
+              int card = PhoneCardController.to.collectCardNum.value;
+              return Container(
+                width: 58.h,
+                height: 64.h,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    ShiningEffect(
+                      shineColor: Colors.white,
+                      opacity: 0.5,
+                      duration: const Duration(seconds: 2),
+                      child: Hero(
+                        tag: "Phoneeee",
+                        child: Image.asset(
+                          key: MainController.to.keyPhoneSpice,
+                          Assets.img.mainPhone.path,
+                          width: 58.h,
+                          height: 58.h,
+                          gaplessPlayback: true,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: -10.w,
+                      right: -10.w,
+                      bottom: 4.h,
+                      child: Center(
+                        child: SSTxtGraBorder(
+                          text:
+                          "$card/${PhoneCardController.to.durations.length}",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          strokeColor: Color(0xff30120A),
+                          fontFamily: FontFamily.alkatra,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+          ),
+        ],
+      );
+    });
+
+
   }
 
   onPhoneClick() {
@@ -604,18 +617,17 @@ class FreeSpinState extends State<FreeSpin> {
         });
       } else {
         setState(() {
-          if(hasQianjin){
+          if (hasQianjin) {
             select++;
-            if(select >4 ){
-              hasQianjin =false;
+            if (select > 4) {
+              hasQianjin = false;
             }
-          }else{
+          } else {
             select--;
-            if(select < 0){
+            if (select < 0) {
               hasQianjin = true;
             }
           }
-
 
           //
           // if (select == -1) {
@@ -800,14 +812,15 @@ class HomeBoxTime extends StatefulWidget {
   const HomeBoxTime({super.key});
 
   @override
-  State<HomeBoxTime> createState() => _HomeBoxTimeState();
+  State<HomeBoxTime> createState() => HomeBoxTimeState();
 }
 
-class _HomeBoxTimeState extends State<HomeBoxTime> {
-  static const hkTime = "4aef6hfhj69";
+class HomeBoxTimeState extends State<HomeBoxTime> {
+  static const hkTime = "4aef6hfh2j69";
   Timer? _timer;
   var box = SSHive.box;
-  int maxSeconds = 60 * 60 * 8;
+  // int maxSeconds = 60 * 60 * 8;
+  int maxSeconds = 60*2 ;
   String text = "";
 
   @override
@@ -818,7 +831,7 @@ class _HomeBoxTimeState extends State<HomeBoxTime> {
     _initTimer();
   }
 
-  _initTimer() {
+  int shengyuTime() {
     int mill = DateTime.now().millisecondsSinceEpoch;
     var tmpData = box.get(hkTime) ?? {"count": 0, "time": mill};
     int time = tmpData['time'];
@@ -827,16 +840,32 @@ class _HomeBoxTimeState extends State<HomeBoxTime> {
     int diff = mill - time;
     // 剩下多少时间
     int shengyu = ((maxSeconds * 1000 - diff) / 1000).toInt();
-    text = formatDuration(shengyu);
+    if(shengyu <=0 ){
+      shengyu = 0;
+    }
+    return shengyu;
+  }
 
+  resetTime(){
+    int mill = DateTime.now().millisecondsSinceEpoch;
+    saveTime(mill);
+    ssLogggg("====== cresetTime:$mill");
+  }
+
+  _initTimer() {
+    int shengyu = shengyuTime();
+    ssLogggg("====_initTimer=shengyu:$shengyu");
+    text = formatDuration(shengyu);
+    _timer?.cancel();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       int tick = timer.tick;
-      int maxCount = shengyu;
-      int seconds = shengyu - tick;
-      if (tick > maxCount) {
+      int  shengyu = shengyuTime();
+      int seconds = shengyu;
+      if (shengyu <= 0) {
         setState(() {
           text = formatDuration(seconds);
         });
+        MainController.to.showBoxTime.value = false;
         _timer?.cancel();
       }
       if (mounted) {

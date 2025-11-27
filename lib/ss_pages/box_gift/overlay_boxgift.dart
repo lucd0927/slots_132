@@ -18,6 +18,7 @@ import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OverlayBoxgift {
@@ -38,7 +39,7 @@ class OverlayBoxgift {
             List<String> types = ["10spin","15spin","20spin","100xp","150xp","200xp","1phoneSpice"];
 
             int a = Random().nextInt(types.length);
-            a = 1;
+            // a = 5;
             String tmpType = types[a];
             int exp = 0;
             int phoneSpice = 0;
@@ -226,12 +227,16 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
   }
 
   firstPage() {
-    return Center(
-      child: Container(
-        width: ScreenUtil().screenWidth,
-        height: ScreenUtil().screenHeight,
-        // color: Colors.teal,
-        child: SpineShengdaolaorenSlots(),
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      child: Center(
+        child: Container(
+          width: ScreenUtil().screenWidth,
+          height:600.h,
+          // color: Colors.teal,
+          child: SpineShengdaolaorenSlots(),
+        ),
       ),
     );
   }
@@ -367,6 +372,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       showAnimated = false;
       startScale = 1.0;
     });
+    HomeBoxTimeState().resetTime();
     // await Future.delayed(animD);
     widget.onBtn(money);
   }

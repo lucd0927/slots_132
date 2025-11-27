@@ -173,34 +173,38 @@ class _RankWidgetState extends State<RankWidget> {
                             SizedBox(height: 4.h),
                             GetBuilder<WithdddController>(
                               builder: (controller) {
-                                return Text.rich(
-                                  TextSpan(
-                                    text: "",
-                                    children: [
-                                      WidgetSpan(
-                                        child: SSAniiiiCount(
-                                          value: WithdddController.to.curRank(),
-                                        ),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 24.sp,
-                                          color: Color(0xff164CFF),
-                                        ),
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SSAniiiiCount(
+                                      value: WithdddController.to.curRank(),
+                                      textStyle: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 24.sp,
+                                        color: Color(0xff164CFF),
                                       ),
+                                    ),
+
+                                    Text.rich(
                                       TextSpan(
-                                        text:
-                                            "/${WithdddController.to.allRank()}",
-                                        style: TextStyle(
-                                          color: Color(0xff242731),
-                                        ),
+                                        text: "",
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                "/${WithdddController.to.allRank()}",
+                                            style: TextStyle(
+                                              color: Color(0xff242731),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24.sp,
-                                    color: Color(0xff164CFF),
-                                  ),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 24.sp,
+                                        color: Color(0xff164CFF),
+                                      ),
+                                    ),
+                                  ],
                                 );
                               },
                             ),

@@ -212,6 +212,9 @@ class $AssetsImgGen {
   AssetGenImage get btnWheelOneMore =>
       const AssetGenImage('assets/img/btn_wheel_one_more.png');
 
+  /// File path: assets/img/card_visa.png
+  AssetGenImage get cardVisa => const AssetGenImage('assets/img/card_visa.png');
+
   /// File path: assets/img/close_popup.png
   AssetGenImage get closePopup =>
       const AssetGenImage('assets/img/close_popup.png');
@@ -1018,6 +1021,7 @@ class $AssetsImgGen {
     btnTxtSpin,
     btnWheel,
     btnWheelOneMore,
+    cardVisa,
     closePopup,
     closePopup2,
     closeSetting,

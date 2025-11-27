@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
 
 SSAnimSource2TargetOverlay overlayMainTopMoney = SSAnimSource2TargetOverlay();
 SSAnimSource2TargetOverlay overlayPhoneCard = SSAnimSource2TargetOverlay();
@@ -314,6 +315,12 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
     // ssLogggg("===size:${widget.startSize}==widget.endSize:${widget.endSize}");
     return Stack(
       children: [
+        if (widget.showTargetWidget && widget.children.isNotEmpty)
+          Positioned(
+            left: widget.end.dx-widget.endSize.width/2,
+            top: widget.end.dy-widget.endSize.height/2,
+            child:TopMoneyWidget(),
+          ),
         ..._items.map((item) {
           return AnimatedBuilder(
             animation: item.animation,
@@ -351,12 +358,7 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
             },
           );
         }),
-        if (widget.showTargetWidget && widget.children.isNotEmpty)
-          Positioned(
-            left: widget.end.dx,
-            top: widget.end.dy,
-            child: widget.children[0],
-          ),
+
       ],
     );
   }

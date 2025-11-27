@@ -5,12 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_gj/num_e.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu2.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
-class OverlayWithddOnelastcheckJindu1 {
+class OverlayWithddCardPaypal {
   ///是否真正显示
   bool get hasShow => _isShowing;
   bool _isShowing = false;
@@ -21,10 +25,9 @@ class OverlayWithddOnelastcheckJindu1 {
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
-        return WithddOnelastcheckJindu1Widget(
+        return _WithddPaypalWidget(
           onClose: () {
             close();
-            OverlayOneLastCheckJindu2().show();
           },
         );
       },
@@ -40,35 +43,60 @@ class OverlayWithddOnelastcheckJindu1 {
   }
 }
 
-class WithddOnelastcheckJindu1Widget extends StatefulWidget {
-  const WithddOnelastcheckJindu1Widget({super.key, required this.onClose});
+class _WithddPaypalWidget extends StatefulWidget {
+  const _WithddPaypalWidget({super.key, required this.onClose});
 
   final VoidCallback onClose;
 
   @override
-  State<WithddOnelastcheckJindu1Widget> createState() =>
-      _WithddOnelastcheckJindu1WidgetState();
+  State<_WithddPaypalWidget> createState() => _WithddPaypalWidgetState();
 }
 
-class _WithddOnelastcheckJindu1WidgetState
-    extends State<WithddOnelastcheckJindu1Widget> {
+class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
+    with WidgetsBindingObserver {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 250);
   Timer? _timer;
+
+  final FocusNode focusNode = FocusNode();
+  final TextEditingController textEditingController = TextEditingController();
+  late VoidCallback focusListener;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         showAnimated = true;
       });
-      _timer = Timer(Duration(milliseconds: 5000), () {
-
-        onClose();
-      });
+      // _timer = Timer(Duration(milliseconds: 5000), () {
+      //
+      //   onClose();
+      // });
     });
+    focusListener = () {
+      _listener();
+    };
+
+    focusNode.addListener(focusListener);
+  }
+
+  double topHeight = 0.h;
+  String name = "";
+
+  _listener() {
+    ssLogggg("==focusListeners:${focusNode.hasFocus}==");
+    if (mounted) {
+      setState(() {
+        if (focusNode.hasFocus) {
+          topHeight = 150.h;
+        } else {
+          topHeight = 0.h;
+        }
+      });
+    }
   }
 
   @override
@@ -98,84 +126,79 @@ class _WithddOnelastcheckJindu1WidgetState
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(height: 12.h),
-                      Text(
-                        "Ka-Ching!",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16.sp,
-                          color: Color(0xff000000),
-                        ),
-                      ),
-                      SizedBox(height: 30.h),
                       Image.asset(
-                        Assets.img.oneLastCheckOk.path,
+                        Assets.img.withddPaypal2.path,
                         width: 179.h,
-                        height: 148.h,
+                        height: 68.h,
                       ),
 
-                      SizedBox(height: 20.h),
-                      jinduWidget(),
+                      SizedBox(height: 12.h),
 
-                      SizedBox(height: 20.h),
-
+                      Text(
+                        "Withdraw funds",
+                        style: TextStyle(
+                          color: Color(0xff252525),
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 4.h),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: Text.rich(
-                          TextSpan(
-                            text: "Your",
-                            children: [
-                              TextSpan(
-                                text: " \$50.00 ",
-                                style: TextStyle(color: Color(0xff20B029)),
-                              ),
-                              TextSpan(
-                                text:
-                                    "has been sent! It should be in your account now",
-                                style: TextStyle(color: Color(0xff242731)),
-                              ),
-                            ],
-                          ),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Text(
+                          "Transfer funds instantly to your PayPal account.",
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.sp,
-                            color: Color(0xff2E313A),
+                            color: Color(0xff7E8E9B),
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(height: 2.h),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: Text.rich(
-                          TextSpan(
-                            text: "You're a ",
-                            children: [
-                              TextSpan(
-                                text: " Cashout King!",
-                                style: TextStyle(color: Color(0xffEF3D2D)),
-                              ),
-                              WidgetSpan(
-                                child: Image.asset(
-                                  Assets.img.oneLastCheckKing.path,
-                                  width: 31.w,
-                                  height: 20.sp,
-                                ),
-                              ),
-                            ],
+                      SizedBox(height: 20.h),
+                      Container(
+                        width: 285.w,
+                        height: 48.h,
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        decoration: BoxDecoration(
+                          color: Color(0xffEDF0F7),
+                          borderRadius: BorderRadius.circular(8.w),
+                          border: Border.all(
+                            color: Color(0xffBCB9D2),
+                            width: 0.5.w,
                           ),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            color: Color(0xff242731),
-                          ),
-                          textAlign: TextAlign.center,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Withdrawal Amount",
+                              style: TextStyle(
+                                color: Color(0xff7E8E9B),
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Spacer(),
+                            SSAniiiiCount(
+                              value: MainController.to.curMonnnn.value
+                                  .toAsFixedFloor(2),
+                              prefix: SSCountry.curGuojiaFuhao(),
+                              textStyle: TextStyle(
+                                color: Color(0xff252525),
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 8.h),
+                      inputWidget(),
+
+                      SizedBox(height: 40.h),
                       GestureDetector(
-                        onTap: () {
-                          onClose();
-                        },
+                        onTap: onWithdrawwww,
                         child: Container(
                           width: 230.h,
                           height: 42.h,
@@ -185,7 +208,7 @@ class _WithddOnelastcheckJindu1WidgetState
                           ),
                           child: Center(
                             child: Text(
-                              "Spin for Your Next Payout!",
+                              "Withdraw ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -195,16 +218,19 @@ class _WithddOnelastcheckJindu1WidgetState
                           ),
                         ),
                       ),
-                      SizedBox(height: 5.h),
+                      SizedBox(height: 12.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "( Auto-closes in 5s )",
-                            style: TextStyle(
-                              color: Color(0xff7E8E9B),
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
+                          GestureDetector(
+                            onTap: onClose,
+                            child: Text(
+                              "Cancel",
+                              style: TextStyle(
+                                color: Color(0xff7E8E9B),
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ],
@@ -214,14 +240,10 @@ class _WithddOnelastcheckJindu1WidgetState
                 ),
 
                 SizedBox(height: 40.h),
-                // GestureDetector(
-                //   onTap: onClose,
-                //   child: Image.asset(
-                //     Assets.img.closePopup.path,
-                //     width: 30.h,
-                //     height: 30.h,
-                //   ),
-                // ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 250),
+                  height: topHeight,
+                ),
               ],
             ),
           ),
@@ -230,79 +252,55 @@ class _WithddOnelastcheckJindu1WidgetState
     );
   }
 
-  jinduWidget() {
-    double scale = 1.3;
-    Widget bgItem = Image.asset(
-      Assets.img.txBuzuJindu2.path,
-      width: 30.w * scale,
-      height: 14.w * scale,
-    );
-    Widget bgItemS = Image.asset(
-      Assets.img.txBuzuJindu.path,
-      width: 30.w * scale,
-      height: 14.w * scale,
-    );
+  void onWithdrawwww() {
 
+    if(name.isEmpty){
+      ssTushi(text: "Please enter a valid card number.");
+      return;
+    }
+
+    WithdddController.to.saveCardId(name);
+    OverlayJindu1().show();
+    onClose();
+
+
+
+  }
+
+  inputWidget() {
     return Container(
-      width: 250.w,
-      height: 40.h,
-      decoration: BoxDecoration(color: Colors.teal.withValues(alpha: 0.0)),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Center(
-            child: Row(children: [bgItem, bgItem, bgItem, bgItem, bgItem]),
+      width: 285.w,
+      height: 48.h,
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      decoration: BoxDecoration(
+        color: Color(0xffEDF0F7),
+        borderRadius: BorderRadius.circular(8.w),
+        border: Border.all(color: Color(0xffEAEBEF), width: 1.w),
+      ),
+      child: Center(
+        child: TextField(
+          controller: textEditingController,
+          focusNode: focusNode,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+            color: Color(0xff000000),
           ),
-          Center(child: Row(children: [bgItemS, bgItemS, bgItemS])),
-          Positioned(
-            right: 0,
-            top: 0,
-            bottom: 0,
-            child: Center(
-              child: Container(
-                width: 63.w,
-                height: 28.w,
-                color: Colors.teal.withValues(alpha: 0),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      Assets.img.txBuzuPay.path,
-                      width: 63.w,
-                      height: 28.w,
-                      fit: BoxFit.fill,
-                    ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              WithdddController.to.currentPaymentIconSelected(),
-                              width: 46.w,
-                              height: 18.w,
-                            ),
-                            Text(
-                              MainController.to.minWithdddMoneyWithCountry,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 8.sp,
-                                color: Color(0xff000000),
-                                height: 1,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+          decoration: InputDecoration.collapsed(
+            hintText: "PayPal email or mobile number",
+            hintStyle: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Color(0xff6B7280),
             ),
           ),
-        ],
+          keyboardType: TextInputType.text,
+          onChanged: (text) {
+            ssLogggg("===input text:$text===");
+            name = text;
+          },
+        ),
       ),
     );
   }
@@ -315,5 +313,31 @@ class _WithddOnelastcheckJindu1WidgetState
     // });
     // await Future.delayed(animD);
     widget.onClose();
+  }
+
+  double _keyboardHeight = 0;
+
+  @override
+  void didChangeMetrics() {
+    // 获取键盘高度
+    final bottomInset = WidgetsBinding.instance.window.viewInsets.bottom;
+    if (bottomInset > 0 && _keyboardHeight == 0) {
+      print('🧭 键盘弹起');
+      focusNode.requestFocus();
+    } else if (bottomInset == 0 && _keyboardHeight > 0) {
+      print('🎯 键盘收起');
+      focusNode.unfocus();
+    }
+    _keyboardHeight = bottomInset;
+    ssLogggg("===_keyboardHeight:$_keyboardHeight===");
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    focusNode.removeListener(focusListener);
+    focusNode.dispose();
+    textEditingController.dispose();
+    super.dispose();
   }
 }

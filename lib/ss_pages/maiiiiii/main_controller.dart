@@ -29,6 +29,9 @@ import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
@@ -869,8 +872,6 @@ class MainController extends GetxController {
       payBeisu.add(tmpPay);
     }
 
-
-
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
     bool containerslotNumH1 = false;
@@ -998,7 +999,7 @@ class MainController extends GetxController {
     if (jackpotCount == 2) {
       curSpinMoney.value = jacktopMini;
       OverlayJackpotMini().show(
-        money: jacktopMini ,
+        money: jacktopMini,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
         },
@@ -1009,7 +1010,7 @@ class MainController extends GetxController {
     } else if (jackpotCount == 3 || jackpotCount == 4) {
       curSpinMoney.value = jacktopMajor;
       OverlayJackpotMajor().show(
-        money: jacktopMajor ,
+        money: jacktopMajor,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
         },
@@ -1020,7 +1021,7 @@ class MainController extends GetxController {
     } else if (jackpotCount == 5) {
       curSpinMoney.value = jacktopGrand;
       OverlayJackpotGrand().show(
-        money: jacktopGrand ,
+        money: jacktopGrand,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
         },
@@ -1090,10 +1091,9 @@ class MainController extends GetxController {
             .length;
         // slotNumSCATTERLength = 3;
         if (slotNumSCATTERLength >= 3) {
-
           OverlayFreeSpins().show(
             money: 0,
-            onClose: (value)async {
+            onClose: (value) async {
               curShowFreeSpin.value = true;
               await Future.delayed(Duration(milliseconds: 200));
               onFreeSpin();
@@ -1125,7 +1125,17 @@ class MainController extends GetxController {
           if (minWithdd <= curMonnnn.value) {
             bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
             if (!hasSaveCardddd) {
-              OverlayJindu1().show();
+              String payType = WithdddController.to.selectedPaymentBank.value;
+
+              if (payType == EnumSSPaymentMethod.bank.name) {
+                OverlayWithddCardBank().show();
+              } else if (payType == EnumSSPaymentMethod.paypal.name) {
+                OverlayWithddCardPaypal().show();
+              } else if (payType == EnumSSPaymentMethod.cashApp.name) {
+                OverlayWithddCardCashapp().show();
+              }
+
+              // OverlayJindu1().show();
             }
           }
         }
@@ -1250,6 +1260,8 @@ class MainController extends GetxController {
   // 转动spin的次数
   var curSpinCount = 0.obs;
 
+  var showBoxTime = true.obs;
+
   // key: 经验值
   // value： 等级范围
   Map<int, List<int>> kExp_vLevels = {
@@ -1347,6 +1359,7 @@ class MainController extends GetxController {
     double money, {
     VoidCallback? onEnd,
     required bool showMoneyAnimated,
+    bool showTargetWidget = false,
   }) {
     if (money == 0) {
       onEnd?.call();
@@ -1361,6 +1374,7 @@ class MainController extends GetxController {
       overlayMainTopMoney.showWithSize(
         childSize: Size(32.w, 32.w),
         onEnd: onEnd,
+        showTargetWidget: showTargetWidget,
       );
     } else {
       onEnd?.call();

@@ -15,6 +15,7 @@ import 'package:slots_132/ss_common/sssssp/spine_border3.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 
 class SSSlotMachine extends StatefulWidget {
   const SSSlotMachine({super.key});
@@ -255,6 +256,12 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
+                      Container(
+                        width: ScreenUtil().screenWidth,
+                        height: ScreenUtil().screenHeight,
+                        // color: Colors.teal,
+                        child: SpineShengdaolaorenSlots(),
+                      ),
                       Positioned(
                         left: -30.w,
                         right: -30.w,
@@ -270,12 +277,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         ),
                       ),
 
-                      Container(
-                        width: ScreenUtil().screenWidth,
-                        height: ScreenUtil().screenHeight,
-                        // color: Colors.teal,
-                        child: SpineShengdaolaorenSlots(),
-                      )
+
                     ],
                   ),
                 ),
@@ -523,6 +525,17 @@ class SSSlotMachineState extends State<SSSlotMachine> {
         ),
         // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
+
+      // tmpC =  Stack(children: [
+      //   tmpC,
+      //   ShiningEffect(
+      //     shineColor: Colors.yellow,
+      //     opacity: 1,
+      //     duration: const Duration(seconds: 2),
+      //     child: tmpC,
+      //   ),
+      // ],);
+
       Widget child = Container(
         width: width - dd2,
         height: height - dd2,
