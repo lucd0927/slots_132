@@ -10,6 +10,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/wheeee/diaaa/whe_bouns.dart';
 
@@ -22,7 +23,7 @@ class WheController extends GetxController {
   static WheController get to => Get.find();
 
   var box = SSHive.box;
-  static const int initWheNum = 50;
+  static const int initWheNum = 5;
   static const String hhWheNum = "zioualsknfg";
 
   var curWheNum = initWheNum.obs;
@@ -40,7 +41,7 @@ class WheController extends GetxController {
         tmpWheNum = initWheNum;
       }
     }
-
+    tmpWheNum = 5;
     curWheNum = tmpWheNum.obs;
     // box.put(hhWheNum, curWheNum);
   }
@@ -71,9 +72,10 @@ class WheController extends GetxController {
 
 
   onSpinSub(dynamic value) {
-    ssLogggg("====onSpinSub==");
     int tmpN = curWheNum.value;
-    if (tmpN < 0) {
+    ssLogggg("====onSpinSub==tmpN:$tmpN value:$value");
+    if (tmpN < 0 || value==null) {
+      OverlayDailyBonus().show();
       return;
     }
     wheelEnd.value = true;
@@ -88,9 +90,10 @@ class WheController extends GetxController {
     if (rewardModelType == EnumGiftRewardModel.spin) {
       showOneMore.value = true;
       addWheNum();
+      SSEventReporttttt.wheel_more_pop();
       return;
     }
-
+    SSEventReporttttt.wheel_gift_pop();
     var data = await showModalBottomSheet(
       isScrollControlled: true,
       enableDrag: false,
@@ -104,6 +107,7 @@ class WheController extends GetxController {
     int curToday = SSDlTracking.lianxuLoginDay();
     ssLogggg("=======click btn:$data curToday:$curToday");
     if (data == true) {
+      SSEventReporttttt.wheel_gift_pop_claim();
       double money = 0;
       int exp = 0;
       int phoneSpice = 0;
@@ -134,6 +138,8 @@ class WheController extends GetxController {
           MainController.to.onAddMoney(money, showMoneyAnimated: true,showTargetWidget: true);
         },
       );
-    } else {}
+    } else {
+      SSEventReporttttt.wheel_gift_pop_close();
+    }
   }
 }

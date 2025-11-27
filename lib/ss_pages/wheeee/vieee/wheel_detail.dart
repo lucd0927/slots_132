@@ -8,11 +8,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/event_bus.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_common/ss_event_bus.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 
 class SSWheelDetail extends StatefulWidget {
@@ -69,7 +71,7 @@ class ControlledWheel extends StatefulWidget {
 }
 
 class _ControlledWheelState extends State<ControlledWheel>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin,SSEventBusMix {
   late AnimationController _controller;
   late Animation<double> _animation;
   double _startAngle = 0.0;
@@ -82,6 +84,11 @@ class _ControlledWheelState extends State<ControlledWheel>
       duration: const Duration(milliseconds: 1200),
     );
     _animation = AlwaysStoppedAnimation(0);
+
+    register<WheelEvent>((WheelEvent event){
+      _onSpin();
+    });
+
   }
 
   spinTo(int fromIndex, int toIndex) async {
@@ -245,7 +252,7 @@ class _ControlledWheelState extends State<ControlledWheel>
     if (target == 4) {
       target = 0;
     }
-    target = 1;
+    // target = 1;
     ssLogggg("=_onSpin==current:$current=target2:$target=");
     await spinTo(current, target);
     GiftRewardModel tmpGiftRewardModel =

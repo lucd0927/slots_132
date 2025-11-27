@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/event_bus.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/shiimmer_img.dart';
+import 'package:slots_132/ss_common/ss_event_bus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/wheeee/vieee/wheee_bottom.dart';
@@ -19,7 +22,6 @@ class Wheeee extends StatefulWidget {
 }
 
 class _WheeeeState extends State<Wheeee> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -91,16 +93,17 @@ class _WheeeeState extends State<Wheeee> {
               ),
               if (WheController.to.showOneMore.value)
                 Positioned.fill(
-                  child: Column(children: [Spacer(), onMoreWidget()]),
+                  child: GestureDetector(
+                    onTap: onTapSpin,
+                    child: Column(children: [Spacer(), onMoreWidget()]),
+                  ),
                 ),
 
               Positioned(
                 top: 50.h,
                 left: 20.w,
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
+                  onTap: onClose,
                   child: Image.asset(
                     Assets.img.btnBack.path,
                     width: 42.w,
@@ -114,6 +117,13 @@ class _WheeeeState extends State<Wheeee> {
         ),
       );
     });
+  }
+
+  onClose() {
+    if (WheController.to.showOneMore.value) {
+      SSEventReporttttt.wheel_more_pop_close();
+    }
+    Navigator.pop(context);
   }
 
   onMoreWidget() {
@@ -196,5 +206,10 @@ class _WheeeeState extends State<Wheeee> {
         ],
       ),
     );
+  }
+
+  onTapSpin() async {
+    SSEventReporttttt.wheel_more_pop_tap();
+    SSEventBus.fire(WheelEvent());
   }
 }

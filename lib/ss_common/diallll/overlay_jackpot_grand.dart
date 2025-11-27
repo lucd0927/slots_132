@@ -5,8 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -27,21 +29,25 @@ class OverlayJackpotGrand {
   OverlayEntry? _overlay;
 
   void show({
+    required EnumGetScene scene,
     required double money,
     required ValueChanged onBtn,
     required ValueChanged onBtn2,
   }) {
     // if (_isShowing) return;
+    SSEventReporttttt.jackpot_pop(pop_type: "grand", pop_from: scene.name);
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
         return _JackpotWidgetGrand(
           onBtn: (double money) {
             close();
+            SSEventReporttttt.jackpot_pop_claim_all(pop_type: "grand", pop_from: scene.name);
             onBtn(money);
           },
           onBtn2: (double money) {
             close();
+            SSEventReporttttt.jackpot_pop_claim_10(pop_type: "grand", pop_from: scene.name);
             onBtn2(money);
           },
           money: money,

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -71,6 +72,8 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
         showAnimated = true;
       });
     });
+
+    SSEventReporttttt.bonus_page();
   }
 
   @override

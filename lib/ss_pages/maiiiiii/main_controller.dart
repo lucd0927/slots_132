@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
@@ -1003,6 +1004,7 @@ class MainController extends GetxController {
     if (jackpotCount == 2) {
       curSpinMoney.value = jacktopMini;
       OverlayJackpotMini().show(
+        scene: EnumGetScene.spin,
         money: jacktopMini,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
@@ -1014,6 +1016,7 @@ class MainController extends GetxController {
     } else if (jackpotCount == 3 || jackpotCount == 4) {
       curSpinMoney.value = jacktopMajor;
       OverlayJackpotMajor().show(
+        scene: EnumGetScene.spin,
         money: jacktopMajor,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
@@ -1025,6 +1028,7 @@ class MainController extends GetxController {
     } else if (jackpotCount == 5) {
       curSpinMoney.value = jacktopGrand;
       OverlayJackpotGrand().show(
+        scene: EnumGetScene.spin,
         money: jacktopGrand,
         onBtn: (value) {
           _rollerEnd(tmpAddMoney: value);
@@ -1041,6 +1045,7 @@ class MainController extends GetxController {
 
       if (addBeisu >= 4) {
         OverlaySuperwin().show(
+          scene: EnumGetScene.spin,
           money: tmpAddMoney,
           onBtn: (money) {
             _rollerEnd(tmpAddMoney: money);
@@ -1051,6 +1056,7 @@ class MainController extends GetxController {
         );
       } else if (addBeisu >= 3) {
         OverlayMegawin().show(
+          scene: EnumGetScene.spin,
           money: tmpAddMoney,
           onBtn: (money) {
             _rollerEnd(tmpAddMoney: money);
@@ -1068,6 +1074,7 @@ class MainController extends GetxController {
           onBtn2: (money) {
             _rollerEnd(tmpAddMoney: money);
           },
+          scene: EnumGetScene.spin,
         );
       } else {
         _rollerEnd(tmpAddMoney: tmpAddMoney);
@@ -1101,6 +1108,7 @@ class MainController extends GetxController {
               curShowFreeSpin.value = true;
               SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
+              SSEventReporttttt.free_spin_add_chance();
               onFreeSpin();
             },
           );
@@ -1495,8 +1503,9 @@ class MainController extends GetxController {
       onEnd: (EnumGiftRewardModel tmpEnumGiftRewardModel) {
         if (tmpEnumGiftRewardModel == EnumGiftRewardModel.cash) {
           double money = Random().nextDouble() * 20 + 10;
-
+          SSEventReporttttt.free_spin_cash();
           OverlayWow().show(
+            scene: EnumGetScene.spin,
             money: money,
             onBtn: (v) {
               onAddMoney(
@@ -1620,11 +1629,9 @@ class MainController extends GetxController {
         // controller.animationState.addAnimationByName(0, "run", true, 0);
       },
     );
-
   }
 
   static SpineWidgetController? spineControllerMajor;
-
 
   static LottieComposition? composition(EnumLottieType type) {
     LottieComposition? tmp = _kLottieType_vLottieComposition[type];

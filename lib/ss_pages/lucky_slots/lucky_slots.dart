@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
@@ -75,6 +76,8 @@ class _LuckySlotsWidgetState extends State<LuckySlotsWidget> {
         );
       });
     });
+
+    SSEventReporttttt.free_spin_single_slots();
   }
 
   @override

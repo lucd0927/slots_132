@@ -5,8 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -27,22 +29,25 @@ class OverlayWow {
   OverlayEntry? _overlay;
 
   void show({
+    required EnumGetScene scene,
     required double money,
     required ValueChanged onBtn,
     required ValueChanged onBtn2,
   }) {
-    // if (_isShowing) return;
+    SSEventReporttttt.cash_pop(pop_type: "wow", pop_from: scene.name);
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
         return WowWidget(
           onBtn: (double money) {
             close();
+            SSEventReporttttt.cash_pop_collect(pop_type: "wow", pop_from: scene.name);
             onBtn(money);
           },
           money: money,
           onBtn2: (double money) {
             close();
+            SSEventReporttttt.cash_pop_close(pop_type: "wow", pop_from: scene.name);
             onBtn2(money);
           },
         );

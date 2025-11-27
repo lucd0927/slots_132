@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
@@ -24,6 +25,7 @@ class OverlayDailyBonus {
   void show() {
     // if (_isShowing) return;
     _overlay = null;
+    SSEventReporttttt.sign_page();
     _overlay = OverlayEntry(
       builder: (context) {
         return SettingWidget(
@@ -328,7 +330,7 @@ class _SettingWidgetState extends State<SettingWidget> {
 
   onClose() async {
     ssLogggg("====== close");
-
+    SSEventReporttttt.sign_page_close();
     widget.onClose();
   }
 

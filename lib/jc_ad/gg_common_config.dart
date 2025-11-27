@@ -20,16 +20,12 @@ class GGCommonAdsListener {
 
 enum EnumGetScene {
   // daily_treasure(name: "daily treasure"),
-  quiz(name: "quiz"),
-  quizGuide(name: "quizGuide"),
-  wheel(name: "wheel"),
-  // water(name: "water"),
-  // open_launch(name: "open_launch"), // 开屏
-  // try_again(name: "try_again"), // 开屏
-  appleCash(name: "appleCash"),
-  moneyCash(name: "moneyCash"),
-  unknow(name: "unknow"),
-  skip_wait(name: "skip_wait");
+
+  spin(name:"spin"),
+  bonus(name:"bonus"),
+  single_slots(name:"single_slots"),
+
+  unknow(name: "unknow");
 
   const EnumGetScene({required this.name});
 

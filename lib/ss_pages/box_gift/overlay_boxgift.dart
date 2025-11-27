@@ -54,6 +54,7 @@ class OverlayBoxgift {
                   await Future.delayed(Duration(milliseconds: 300));
                   MainController.to.curShowFreeSpin.value = true;
                   MainController.to.curFreeSpinCount.value = free;
+                  SSEventReporttttt.free_spin_add_chance();
                   MainController.to.onFreeSpin();
                 },
               );
