@@ -105,17 +105,17 @@ class SSHttpDio {
       // _dio.options.headers['content-type'] = "application/json";
       // _dio.options.headers['Content-Encoding'] = "gzip";
       var jsonData =  {
-        "foote": bundle_id,
-        "u": Platform.isIOS ? "goof" : "teddy",
-        "wingspan": app_version,
-        "guide": distinct_id,
-        "pith": client_ts,
-        "ribosome": device_model,
-        "poesy": os_version,
-        "persuade": idfv,
-        "haploidy": gaid,
-        "swede": android_id,
-        "warmup": idfa,
+        "tribunal": bundle_id,
+        "mafioso": Platform.isIOS ? "slit" : "gunshot",
+        "hijack": app_version,
+        "leek": distinct_id,
+        "beggar": client_ts,
+        "migrant": device_model,
+        "saracen": os_version,
+        "cab": idfv,
+        "lamarck": gaid,
+        "cubby": android_id,
+        "washy": idfa,
       };
       Response? data = await post(
         "",

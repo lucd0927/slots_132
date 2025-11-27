@@ -236,10 +236,12 @@ class _ControlledWheelState extends State<ControlledWheel>
     int current = Random().nextInt(8);
     int target = Random().nextInt(8);
     current = 0;
+    ssLogggg("=_onSpin==current:$current=target:$target=");
     if(target == 4){
       target = 0;
     }
-    ssLogggg("=_onSpin==current:$current=target:$target=");
+    target =1;
+    ssLogggg("=_onSpin==current:$current=target2:$target=");
     await spinTo(current, target);
     GiftRewardModel tmpGiftRewardModel =
         vIndex_vReward[target] ?? vIndex_vReward[2]!;

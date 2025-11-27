@@ -15,6 +15,7 @@ import 'package:slots_132/ss_common/sssssp/spine_border3.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/glow_border/glow_border.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 
 class SSSlotMachine extends StatefulWidget {
@@ -165,9 +166,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                             color: Colors.blueAccent.withValues(alpha: 0.0),
                             child: Stack(
                               children: [
-                                Center(
-                                  child: SSSpineBorder(),
-                                ),
+                                Center(child: SSSpineBorder()),
                                 // Center(
                                 //   child: Lottie.asset(
                                 //     Assets.lottt.sg1.data,
@@ -271,13 +270,9 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                           width: double.infinity,
                           height: double.infinity,
                           color: Colors.blueAccent.withValues(alpha: 0.0),
-                          child: Center(
-                            child: SSSpineBorder3(),
-                          ),
+                          child: Center(child: SSSpineBorder3()),
                         ),
                       ),
-
-
                     ],
                   ),
                 ),
@@ -305,9 +300,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                           width: double.infinity,
                           height: double.infinity,
                           color: Colors.blueAccent.withValues(alpha: 0.0),
-                          child: Center(
-                            child: SSSpineBorder2(),
-                          ),
+                          child: Center(child: SSSpineBorder2()),
                         ),
                       ),
                     ],
@@ -339,9 +332,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         width: double.infinity,
                         height: double.infinity,
                         color: Colors.blueAccent.withValues(alpha: 0.0),
-                        child: Center(
-                          child: SSSpineBorder(),
-                        ),
+                        child: Center(child: SSSpineBorder()),
                       ),
                     ),
                   ],
@@ -379,12 +370,9 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         width: double.infinity,
                         height: double.infinity,
                         color: Colors.blueAccent.withValues(alpha: 0.0),
-                        child: Center(
-                          child:SSSpineBorder2(),
-                        ),
+                        child: Center(child: SSSpineBorder2()),
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -413,9 +401,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         width: double.infinity,
                         height: double.infinity,
                         color: Colors.blueAccent.withValues(alpha: 0.0),
-                        child: Center(
-                          child: SSSpineBorder(),
-                        ),
+                        child: Center(child: SSSpineBorder()),
                       ),
                     ),
                   ],
@@ -426,7 +412,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
         );
         result2.add(child);
       }
-    } else if (hasSlotWild2 && showWin2){
+    } else if (hasSlotWild2 && showWin2) {
       result2.add(child);
 
       result2.add(child);
@@ -470,7 +456,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       );
     }
 
-      return result2;
+    return result2;
   }
 
   rollerWidget({required Key key, required int column}) {
@@ -551,7 +537,25 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           child: Stack(
             children: [
               Center(
-                child: showWin && !hasSlotWild ? SSAScale(child: child) : child,
+                child: showWin && !hasSlotWild
+                    ? SSAScale(
+                        child: Shimmer(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.transparent,
+                              Colors.yellow.withValues(alpha: 0.1),
+                              Colors.yellow.withValues(alpha: 0.5),
+                              Colors.yellow.withValues(alpha: 0.1),
+                              Colors.transparent,
+                            ],
+                            stops: [0, 0.45, 0.5, 0.55, 1],
+                            end : Alignment.topRight,
+                            begin: Alignment.bottomLeft,
+                          ),
+                          child: child,
+                        ),
+                      )
+                    : child,
               ),
               // if (showWin)
               //   Center(

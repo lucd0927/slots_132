@@ -2,8 +2,9 @@
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
+import 'package:slots_132/jc_gj/log.dart';
 
-class PBMaiDian {
+class SSEventReporttttt {
   //ad_code_id/ad_format/ad_platform
   static ad_request({
     required String ad_code_id,
@@ -123,8 +124,10 @@ class PBMaiDian {
   }
 
   static install() {
+
     if (SSDlTracking.qiduoCishu() == 1) {
       Future.delayed(Duration(milliseconds: 2000), () {
+
         SSHttpDio().buryPoint(moistValue: "install");
         SSHttpDio().install();
       });

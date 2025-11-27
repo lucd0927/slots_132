@@ -72,9 +72,9 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
         duration: animD,
         color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
         child: Center(
-          child: AnimatedSlide(
+          child:  AnimatedScale(
             duration: animD,
-            offset: showAnimated ? Offset.zero : Offset(0, 1),
+            scale: showAnimated ? 1.0 : 0.8,
             // curve: Curves.linearToEaseOut,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

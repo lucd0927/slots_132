@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
@@ -35,6 +36,7 @@ import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
+import 'package:spine_flutter/spine_widget.dart';
 
 import '../../jc_gj/log.dart';
 
@@ -805,6 +807,8 @@ class MainController extends GetxController {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
     }
+    SSEventReporttttt.home_page_spin();
+
     onAddSpin(1);
     ssLogggg("==onStartRoller==start=");
     kZuobiao_vWidgetContext = {};
@@ -1095,6 +1099,7 @@ class MainController extends GetxController {
             money: 0,
             onClose: (value) async {
               curShowFreeSpin.value = true;
+              SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
               onFreeSpin();
             },
@@ -1126,7 +1131,7 @@ class MainController extends GetxController {
             bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
             if (!hasSaveCardddd) {
               String payType = WithdddController.to.selectedPaymentBank.value;
-
+              await Future.delayed(Duration(milliseconds: 200));
               if (payType == EnumSSPaymentMethod.bank.name) {
                 OverlayWithddCardBank().show();
               } else if (payType == EnumSSPaymentMethod.paypal.name) {
@@ -1461,6 +1466,8 @@ class MainController extends GetxController {
     curFreeSpinCount.value = 0;
     hasScrollerEnd.value = false;
     curShowFreeSpin.value = false;
+
+    SSEventReporttttt.home_page(source_from: "NORMAL");
   }
 
   onFreeSpin() {
@@ -1600,7 +1607,23 @@ class MainController extends GetxController {
     AssetLottie(Assets.donghua.lottieMoney.data).load().then((result) {
       _kLottieType_vLottieComposition[EnumLottieType.money] = result;
     });
+
+    spineControllerMajor = SpineWidgetController(
+      onInitialized: (controller) {
+        // Set the default mixing time between animations
+
+        controller.animationState.data.defaultMix = 0.2;
+        // Set the portal animation on track 0
+        controller.animationState.setAnimation(0, "animation", true);
+        // Queue the run animation after the portal animation
+        // controller.animationState.addAnimationByName(0, "run", true, 0);
+      },
+    );
+
   }
+
+  static SpineWidgetController? spineControllerMajor;
+
 
   static LottieComposition? composition(EnumLottieType type) {
     LottieComposition? tmp = _kLottieType_vLottieComposition[type];

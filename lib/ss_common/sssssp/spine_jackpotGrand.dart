@@ -39,7 +39,7 @@ class _SSSpineJackpotGrandState extends State<SSSpineJackpotGrand> {
     }
 
     reportLeaks();
-    final controller = SpineWidgetController(
+    final controller = MainController.spineControllerMajor??= SpineWidgetController(
       onInitialized: (controller) {
         // Set the default mixing time between animations
 

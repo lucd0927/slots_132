@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:newton_particles/newton_particles.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
@@ -40,6 +41,12 @@ class _MainState extends State<Main>
     Get.put(SSChatController());
     Get.put(PhoneCardController());
     MainController.initLottieComposition();
+
+
+    SSEventReporttttt.install();
+    SSEventReporttttt.session();
+    SSEventReporttttt.launch_page();
+    SSEventReporttttt.home_page(source_from: "NORMAL");
 
     // bgMusic.play();
   }

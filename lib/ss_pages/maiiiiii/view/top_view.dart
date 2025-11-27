@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
@@ -61,11 +62,7 @@ class TopView extends StatelessWidget {
             gaplessPlayback: true,
           ),
 
-          Positioned(
-            top: 48.h,
-            left: 28.w,
-            child: TopMoneyWidget(),
-          ),
+          Positioned(top: 48.h, left: 28.w, child: TopMoneyWidget(showOverlayMoney: true,)),
 
           Positioned(
             top: 44.h,
@@ -160,16 +157,18 @@ class TopView extends StatelessWidget {
       ),
     );
   }
+
   onWithddd() {
+    SSEventReporttttt.home_page_cash_out();
     Get.toNamed(SSRouttttt.withdrawwwww);
   }
+
   onMenu() async {
     ssLogggg("====onMenu");
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
     // OverlayWithddCardPaypal().show();
     // OverlayWithddCardCashapp().show();
-    OverlayWithddCardBank().show();
-
+    // OverlayWithddCardBank().show();
 
     // OverlayBoxgift().show();
     // OverlayLuckySlots().show(
@@ -187,7 +186,6 @@ class TopView extends StatelessWidget {
 
     // OverlayCommonGet().show(money: 100,exp: 10,phoneSpice: 1);
 
-
     // OverlayDailyBonus().show();
     // OverlayRank().show();
     // OverlayOneLastCheck().show();
@@ -196,8 +194,6 @@ class TopView extends StatelessWidget {
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);
-
-
 
     // OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
@@ -210,10 +206,6 @@ class TopView extends StatelessWidget {
 
     // MainController.to.curLevelExp.value = 980;
   }
-
-
-
-
 
   topXp() {
     int level = MainController.to.level();
@@ -286,9 +278,10 @@ class TopView extends StatelessWidget {
   }
 }
 
-
 class TopMoneyWidget extends StatefulWidget {
-  const TopMoneyWidget({super.key});
+  const TopMoneyWidget({super.key, required this.showOverlayMoney});
+
+  final bool showOverlayMoney;
 
   @override
   State<TopMoneyWidget> createState() => _TopMoneyWidgetState();
@@ -297,14 +290,11 @@ class TopMoneyWidget extends StatefulWidget {
 class _TopMoneyWidgetState extends State<TopMoneyWidget> {
   @override
   Widget build(BuildContext context) {
-    return Obx((){
-
+    return Obx(() {
       return Container(
         width: 100.w,
         height: 30.h,
-        decoration: BoxDecoration(
-          color: Colors.teal.withValues(alpha: 0.0),
-        ),
+        decoration: BoxDecoration(color: Colors.teal.withValues(alpha: 0.0)),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
@@ -329,7 +319,9 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
                       fit: BoxFit.fill,
                       gaplessPlayback: true,
                     );
-                    overlayMainTopMoney.targetContext = context;
+                    if (widget.showOverlayMoney) {
+                      overlayMainTopMoney.targetContext = context;
+                    }
                     return child;
                   },
                 ),
@@ -339,12 +331,15 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
         ),
       );
 
-      return  topMoney();
+      return topMoney();
     });
   }
+
   onWithddd() {
+    SSEventReporttttt.home_page_cash_out();
     Get.toNamed(SSRouttttt.withdrawwwww);
   }
+
   topMoney() {
     double money = MainController.to.curMonnnn.value;
     // money = 30510.1;

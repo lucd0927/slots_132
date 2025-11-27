@@ -19,7 +19,7 @@ class WheController extends GetxController {
   static WheController get to => Get.find();
 
   var box = SSHive.box;
-  static const int initWheNum = 10;
+  static const int initWheNum = 50;
   static const String hhWheNum = "zioualsknfg";
 
   var curWheNum = initWheNum.obs;
@@ -39,6 +39,7 @@ class WheController extends GetxController {
     }
 
     curWheNum = tmpWheNum.obs;
+    // box.put(hhWheNum, curWheNum);
   }
 
   subWheNum() {
@@ -117,12 +118,13 @@ class WheController extends GetxController {
       } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
         phoneSpice = giftRewardModel.num;
       }
-
+      ssLogggg("=======rewardModelType:$rewardModelType money:$money exp:$exp");
       OverlayCommonGet().show(
         money: money,
         exp: exp,
         phoneSpice: phoneSpice,
         onClose: () {
+          ssLogggg("=======OverlayCommonGet: close$rewardModelType money:$money exp:$exp");
           MainController.to.onAddMoney(money, showMoneyAnimated: true,showTargetWidget: true);
         },
       );

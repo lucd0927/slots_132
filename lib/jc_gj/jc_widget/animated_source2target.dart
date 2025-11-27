@@ -114,7 +114,7 @@ class SSAnimSource2TargetOverlay {
   }) {
     // if (_isShowing) return;
     _overlay = null;
-
+    ssLogggg("=======showWithSize==targetContext:$targetContext");
     if (targetContext == null) {
       return;
     }
@@ -317,9 +317,9 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
       children: [
         if (widget.showTargetWidget && widget.children.isNotEmpty)
           Positioned(
-            left: widget.end.dx-widget.endSize.width/2,
-            top: widget.end.dy-widget.endSize.height/2,
-            child:TopMoneyWidget(),
+            left: widget.end.dx +6.w,
+            top: widget.end.dy+1.h,
+            child:TopMoneyWidget(showOverlayMoney: false,),
           ),
         ..._items.map((item) {
           return AnimatedBuilder(

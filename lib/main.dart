@@ -8,6 +8,8 @@ import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc_env.dart';
 import 'package:slots_132/jc_gj/jc_net/http_checccc.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
@@ -38,6 +40,9 @@ main() async {
     // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
   ]);
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,);
+
+  SSHuanjing.initEvn(SSHuanjingEnv.dev);
+
   PaintingBinding.instance.imageCache.maximumSize = 2000;
   PaintingBinding.instance.imageCache.maximumSizeBytes = 1024 * 1024 * 300; // 300MB
   SSDlTracking.init();

@@ -133,23 +133,23 @@ class GGCommonJson {
   };
 
   static var localTest = {
-    "doubqzaq": 100,
-    "ddixmpdd": 100,
-    "cdyun_switch": false,
-    "cdyun_int": [
+    "oxocbdkw": 100,
+    "rywjknyu": 100,
+    "eyomt_switch": false,
+    "eyomt_int": [
       {
-        "lhewiloc": "ded49148b371f12b",
-        "vvmmyknm": "max",
-        "jpburjoz": "interstitial",
-        "nohbmlex": 3000
+        "ldhjempw": "67323d496e8d7453",
+        "eoqcdsxf": "max",
+        "fwjysnic": "interstitial",
+        "hvmcyweh": 3000
       }
     ],
-    "cdyun_rv": [
+    "eyomt_rv": [
       {
-        "lhewiloc": "510f20dab8d95ad5",
-        "vvmmyknm": "max",
-        "jpburjoz": "reward",
-        "nohbmlex": 3000
+        "ldhjempw": "b00e3491297ec4d0",
+        "eoqcdsxf": "max",
+        "fwjysnic": "reward",
+        "hvmcyweh": 3000
       }
     ]
   };
@@ -177,5 +177,5 @@ class GGCommonJson {
     ]
   };
 
-  static var local =SSHuanjing.hasDevvvvv()?localTopon: localB;
+  static var local =SSHuanjing.hasDevvvvv()?localTest: localB;
 }

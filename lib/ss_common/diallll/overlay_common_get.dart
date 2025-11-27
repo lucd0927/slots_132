@@ -44,6 +44,7 @@ class OverlayCommonGet {
         return CommonGetWidget(
           onBtn: (double money) {
             close();
+            ssLogggg("=====CommonGetWidget=close");
             onClose();
           },
           money: money ?? 0.0,

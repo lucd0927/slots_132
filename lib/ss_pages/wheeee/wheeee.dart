@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/wheeee/vieee/wheee_bottom.dart';
 import 'package:slots_132/ss_pages/wheeee/vieee/wheel_detail.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
@@ -43,16 +46,30 @@ class _WheeeeState extends State<Wheeee> {
                   children: [
                     SizedBox(height: 70.h),
 
-                    Image.asset(
-                      WheController.to.showOneMore.value
-                          ? Assets.img.wheelTitleFreespin.path
-                          : hasOver
-                          ? Assets.img.wheelTitleCongrats.path
-                          : Assets.img.wheelTitle.path,
-                      width: 333.w,
-                      height: 165.w,
-                      fit: BoxFit.fill,
-                      gaplessPlayback: true,
+                    Shimmer(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.transparent,
+                          Colors.white.withValues(alpha: 0.1),
+                          Colors.white.withValues(alpha: 0.5),
+                          Colors.white.withValues(alpha: 0.1),
+                          Colors.transparent,
+                        ],
+                        stops: [0, 0.44, 0.5, 0.54, 1],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      child: Image.asset(
+                        WheController.to.showOneMore.value
+                            ? Assets.img.wheelTitleFreespin.path
+                            : hasOver
+                            ? Assets.img.wheelTitleCongrats.path
+                            : Assets.img.wheelTitle.path,
+                        width: 333.w,
+                        height: 165.w,
+                        fit: BoxFit.fill,
+                        gaplessPlayback: true,
+                      ),
                     ),
                     SSWheelDetail(
                       onEnd: (value) {
@@ -95,37 +112,77 @@ class _WheeeeState extends State<Wheeee> {
       color: Colors.blueAccent.withValues(alpha: 0.0),
       child: Column(
         children: [
-          SSTxtBorder(
-            text: "Tap to Spin",
-            fontColor: Color(0xffFFF700),
-            fontSize: 40.sp,
-            foreground: Color(0xffE63737),
-            strokeWidth: 2.w,
+          SSAScale(
+            child: Shimmer(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  Colors.white.withValues(alpha: 0.5),
+                  Colors.white.withValues(alpha: 0.8),
+                  Colors.white.withValues(alpha: 0.5),
+                  Colors.transparent,
+                ],
+                stops: [0, 0.4, 0.5, 0.6, 1],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              child: SSTxtBorder(
+                text: "Tap to Spin",
+                fontColor: Color(0xffFFF700),
+                fontSize: 40.sp,
+                foreground: Color(0xffE63737),
+                strokeWidth: 2.w,
+              ),
+            ),
           ),
           SizedBox(height: 50.h),
           Container(
             width: 365.w,
             height: 63.h,
             child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                Image.asset(
-                  Assets.img.btnWheelOneMore.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(63.h),
+                  child: ShiningEffect(
+                    shineColor: Colors.white,
+                    opacity: 0.5,
+                    duration: const Duration(seconds: 2),
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Image.asset(
+                          Assets.img.btnWheelOneMore.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+                        Center(
+                          child: SSTxtBorder(
+                            text: "ONE MORE FREE SPIN",
+                            fontColor: Color(0xffFFF700),
+                            fontSize: 28.sp,
+                            foreground: Color(0xffE63737),
+                            strokeWidth: 2.w,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                Center(
-                  child: SSTxtBorder(
-                    text: "ONE MORE FREE SPIN",
-                    fontColor: Color(0xffFFF700),
-                    fontSize: 28.sp,
-                    foreground: Color(0xffE63737),
-                    strokeWidth: 2.w,
+                Positioned(
+                  top: -10.h,
+                  right: 0,
+                  child: Image.asset(
+                    Assets.img.video.path,
+                    width: 28.h,
+                    height: 28.h,
                   ),
                 ),
               ],
             ),
           ),
+
           SizedBox(height: 90.h),
         ],
       ),
