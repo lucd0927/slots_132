@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -114,118 +115,122 @@ class _ControlledWheelState extends State<ControlledWheel>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) {
-            return Transform.rotate(
-              angle: _animation.value * pi / 180,
-              child: child,
-            );
-          },
-          child: Center(
-            child: Image.asset(
-              Assets.img.wheelZp.path,
-              width: 362.w,
-              height: 362.w,
-              fit: BoxFit.fill,
-              gaplessPlayback: true,
+    return GestureDetector(
+      onTap: _onSpin,
+      child: Stack(
+        children: [
+          AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Transform.rotate(
+                angle: _animation.value * pi / 180,
+                child: child,
+              );
+            },
+            child: Center(
+              child: Image.asset(
+                Assets.img.wheelZp.path,
+                width: 362.w,
+                height: 362.w,
+                fit: BoxFit.fill,
+                gaplessPlayback: true,
+              ),
             ),
           ),
-        ),
-        Positioned(
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          child: Obx(() {
-            return Center(
-              child: GestureDetector(
-                onTap: _onSpin,
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      width: 70.w,
-                      height: 90.w,
-                      color: Colors.red.withValues(alpha: 0),
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                            Assets.img.wheelZz.path,
-                            width: double.infinity,
-                            height: double.infinity,
-                            gaplessPlayback: true,
-                          ),
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            top: 20.h,
-                            bottom: 0,
-                            child: Center(
-                              child: SSTxtGraBorder(
-                                text: "SPIN",
-                                strokeColor: Color(0xffCC1420),
-                                strokeWidth: 1.w,
-                                fontSize: 24.sp,
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            child: Obx(() {
+              return Center(
+                child: GestureDetector(
+                  onTap: _onSpin,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        width: 70.w,
+                        height: 90.w,
+                        color: Colors.red.withValues(alpha: 0),
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              Assets.img.wheelZz.path,
+                              width: double.infinity,
+                              height: double.infinity,
+                              gaplessPlayback: true,
+                            ),
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: 20.h,
+                              bottom: 0,
+                              child: Center(
+                                child: SSTxtGraBorder(
+                                  text: "SPIN",
+                                  strokeColor: Color(0xffCC1420),
+                                  strokeWidth: 1.w,
+                                  fontSize: 24.sp,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      top: 20.h,
-                      child: Container(
-                        width: 24.w,
-                        height: 24.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xffFF4949),
-                          borderRadius: BorderRadius.circular(24.w),
-                          border: Border.all(
-                            color: Color(0xffffffff),
-                            width: 2.w,
-                          ),
+                          ],
                         ),
-                        child: Center(
-                          child: SSAniiiiCount(
-                            value: WheController.to.curWheNum.value,
-                            textStyle: TextStyle(
+                      ),
+                      Positioned(
+                        right: 0,
+                        top: 20.h,
+                        child: Container(
+                          width: 24.w,
+                          height: 24.w,
+                          decoration: BoxDecoration(
+                            color: Color(0xffFF4949),
+                            borderRadius: BorderRadius.circular(24.w),
+                            border: Border.all(
                               color: Color(0xffffffff),
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: FontFamily.rubik,
-                              height: 1,
+                              width: 2.w,
                             ),
                           ),
-                          // child: AutoSizeText(
-                          //   "${}",
-                          //   style: TextStyle(
-                          //     color: Color(0xffffffff),
-                          //     fontSize: 20.sp,
-                          //     fontWeight: FontWeight.w700,
-                          //     fontFamily: FontFamily.rubik,
-                          //   ),
-                          //   minFontSize: 7.w,
-                          //   stepGranularity: 7.w,
-                          //   maxLines: 1,
-                          // ),
+                          child: Center(
+                            child: SSAniiiiCount(
+                              value: WheController.to.curWheNum.value,
+                              textStyle: TextStyle(
+                                color: Color(0xffffffff),
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: FontFamily.rubik,
+                                height: 1,
+                              ),
+                            ),
+                            // child: AutoSizeText(
+                            //   "${}",
+                            //   style: TextStyle(
+                            //     color: Color(0xffffffff),
+                            //     fontSize: 20.sp,
+                            //     fontWeight: FontWeight.w700,
+                            //     fontFamily: FontFamily.rubik,
+                            //   ),
+                            //   minFontSize: 7.w,
+                            //   stepGranularity: 7.w,
+                            //   maxLines: 1,
+                            // ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
-        ),
-      ],
+              );
+            }),
+          ),
+        ],
+      ),
     );
   }
 
   _onSpin() async {
+    SSEventReporttttt.wheel_page_spin();
     int time = WheController.to.curWheNum.value;
     WheController.to.showOneMore.value = false;
     if (time <= 0) {
@@ -237,10 +242,10 @@ class _ControlledWheelState extends State<ControlledWheel>
     int target = Random().nextInt(8);
     current = 0;
     ssLogggg("=_onSpin==current:$current=target:$target=");
-    if(target == 4){
+    if (target == 4) {
       target = 0;
     }
-    target =1;
+    target = 1;
     ssLogggg("=_onSpin==current:$current=target2:$target=");
     await spinTo(current, target);
     GiftRewardModel tmpGiftRewardModel =

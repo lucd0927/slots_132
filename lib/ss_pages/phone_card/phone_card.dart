@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -30,7 +31,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    SSEventReporttttt.phone_page();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(milliseconds: 100), () {
         if (mounted) {

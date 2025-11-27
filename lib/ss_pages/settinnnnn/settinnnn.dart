@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
@@ -109,11 +110,13 @@ class _SettingWidgetState extends State<SettingWidget> {
                         SizedBox(height: 20.h),
                         _btnWidgetItem(txt: "PAYTABLE", onTap: () {
                           onClose();
+                          SSEventReporttttt.setting_page_paytable();
                           OverlayPaytable().show(money: 1);
                         }),
                         SizedBox(height: 10.h),
                         _btnWidgetItem(txt: "Privacy Policy", onTap: () {
                           Uri uri = Uri.parse("uri");
+                          SSEventReporttttt.setting_page_privacy();
                           _laUuuu(uri);
                         }),
                         SizedBox(height: 10.h),
@@ -121,6 +124,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                           onTap: (){
                             // _launEeeee();
                             onClose();
+                            SSEventReporttttt.setting_page_contact_us();
                             Get.toNamed(SSRouttttt.aichat);
 
                           },

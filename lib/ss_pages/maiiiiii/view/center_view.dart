@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
@@ -417,7 +418,8 @@ class CenterView extends StatelessWidget {
   }
 
   _onStarGift() {
-    Get.toNamed(SSRouttttt.boxGift);
+    SSEventReporttttt.home_page_star();
+    Get.toNamed(SSRouttttt.starGift);
   }
 
   _onBoxGift() {
@@ -428,6 +430,7 @@ class CenterView extends StatelessWidget {
     if (time > 0) {
       ssTushi(text: "Please wait!");
     }else{
+      SSEventReporttttt.home_page_gift();
       OverlayBoxgift().show();
     }
   }
@@ -528,6 +531,7 @@ class CenterView extends StatelessWidget {
   }
 
   onPhoneClick() {
+    SSEventReporttttt.home_page_phone();
     Get.toNamed(SSRouttttt.phoneCardPage);
   }
 }

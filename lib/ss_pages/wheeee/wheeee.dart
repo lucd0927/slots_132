@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
@@ -18,6 +19,14 @@ class Wheeee extends StatefulWidget {
 }
 
 class _WheeeeState extends State<Wheeee> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SSEventReporttttt.wheel_page();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {

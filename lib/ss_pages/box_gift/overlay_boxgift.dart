@@ -7,6 +7,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -117,7 +118,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    SSEventReporttttt.elve_page();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         showAnimated = true;
@@ -130,6 +131,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
           });
           Future.delayed(Duration(milliseconds: 2500), () {
             if (mounted) {
+              SSEventReporttttt.elve_page_open();
               setState(() {
                 showSecondPageOpenGift = true;
               });

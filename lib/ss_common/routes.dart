@@ -14,7 +14,7 @@ import 'package:slots_132/ss_pages/zhifu/withdrawwwww.dart';
 class SSRouttttt {
   static const splash = "/asdfadfdsfg";
   static const main = "/shdfghgkjk";
-  static const boxGift = "/sdkfgkldsjl";
+  static const starGift = "/sdkfgkldsjl";
   static const test = "/tyukitkghlk";
 
   static const wheeee = "/aishdoiudfgio";
@@ -29,7 +29,7 @@ class SSRouttttt {
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
       GetPage(name: main, page: () =>  Main()),
-      GetPage(name: boxGift, page: () =>  StarGift(),transition: Transition.cupertinoDialog),
+      GetPage(name: starGift, page: () =>  StarGift(),transition: Transition.cupertinoDialog),
       GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.cupertinoDialog),
       GetPage(name: withdrawwwww, page: () =>  Withdrawwwww(),transition: Transition.cupertinoDialog),
       GetPage(name: historyyyy, page: () =>  Historyyyy(),transition: Transition.cupertinoDialog),

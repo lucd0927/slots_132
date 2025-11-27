@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
@@ -19,6 +20,7 @@ class OverlayPhoneInputName {
   OverlayEntry? _overlay;
 
   void show() {
+    SSEventReporttttt.phone_input_name_pop();
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -27,6 +29,7 @@ class OverlayPhoneInputName {
           onClose: (v) {
             close();
             if (v != null && v.toString().isNotEmpty) {
+              SSEventReporttttt.phone_input_name_pop_claim();
               PhoneCardController.to.setUserName(v.toString());
             }
           },

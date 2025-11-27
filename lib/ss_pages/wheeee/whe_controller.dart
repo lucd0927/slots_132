@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
@@ -63,6 +66,9 @@ class WheController extends GetxController {
     curWheNum.value = tmpN;
     box.put(hhWheNum, tmpN);
   }
+
+
+
 
   onSpinSub(dynamic value) {
     ssLogggg("====onSpinSub==");

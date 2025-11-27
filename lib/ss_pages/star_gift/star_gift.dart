@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/ss_pages/star_gift/map_view.dart';
 
@@ -14,6 +15,14 @@ class StarGift extends StatefulWidget {
 }
 
 class _StarGiftState extends State<StarGift> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SSEventReporttttt.map_page();
+  }
+
   @override
   Widget build(BuildContext context) {
 

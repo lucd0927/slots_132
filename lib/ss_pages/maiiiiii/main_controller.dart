@@ -1425,6 +1425,7 @@ class MainController extends GetxController {
   onAddMaxBeisu() {
     box.put(hkBeisuNum, 10.0);
     curBeisu.value = 10.0;
+    SSEventReporttttt.home_page_bet();
     ssLogggg("=====addMaxBeisu curBeisu:10.0");
   }
 

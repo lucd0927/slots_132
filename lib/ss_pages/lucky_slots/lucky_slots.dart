@@ -123,7 +123,7 @@ class _LuckySlotsWidgetState extends State<LuckySlotsWidget> {
                                 fontColor: Color(0xffFFEA00),
                               ),
                               SSTxtBorder(
-                                text: "\$99.9",
+                                text: " \$99.9",
                                 fontSize: 24.sp,
                                 fontColor: Color(0xff00FF1E),
                               ),

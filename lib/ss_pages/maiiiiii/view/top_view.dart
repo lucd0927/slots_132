@@ -165,6 +165,9 @@ class TopView extends StatelessWidget {
 
   onMenu() async {
     ssLogggg("====onMenu");
+    SSEventReporttttt.home_page_menu();
+
+
     OverlaySettinnn().show();
     // OverlayWithddCardPaypal().show();
     // OverlayWithddCardCashapp().show();
@@ -274,6 +277,7 @@ class TopView extends StatelessWidget {
   }
 
   void onExp() {
+    SSEventReporttttt.home_page_exp();
     OverlayExp().show();
   }
 }

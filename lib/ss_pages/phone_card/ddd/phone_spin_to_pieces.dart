@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
@@ -26,6 +27,7 @@ class OverlayPhoneSpinToPieces {
         return PhoneSpinToPieces(
           onClose: (v) {
             close();
+            SSEventReporttttt.phone_piece_spin();
             Navigator.maybePop(Get.context!);
           },
         );

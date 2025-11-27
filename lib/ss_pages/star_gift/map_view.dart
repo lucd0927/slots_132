@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
@@ -149,6 +150,7 @@ class _SSMapViewState extends State<SSMapView> {
         img: img,
         money: money,
         hasUnlock: hasUnlock,
+        giftRewardModel: tmpGiftRewardModel,
       );
       Widget item = ItemWidget(model: boxGiftModel, index: i);
       bool hasEven = i.isEven;
@@ -475,6 +477,7 @@ class _ItemWidgetState extends State<ItemWidget> {
     bool hasUnlock = widget.model.hasUnlock;
     ssLogggg("==onClick==hasUnlock:$hasUnlock=");
     if (hasUnlock) {
+      SSEventReporttttt.map_page_collect();
       bool hasClick11 = sfIndexClick(widget.index);
       if (hasClick11) {
         ssLogggg("==onClick==hasUnlock:$hasUnlock=hasClick:$hasClick11");
@@ -486,10 +489,24 @@ class _ItemWidgetState extends State<ItemWidget> {
         int index = widget.index;
         double money = widget.model.money;
         setIndexJson(index: index, hasClick: true, money: money);
+        GiftRewardModel? giftRewardModel = widget.model.giftRewardModel;
+        EnumGiftRewardModel? rewardModelType =
+            widget.model.giftRewardModel?.rewardModelType;
+        int exp = 0;
+        int phoneSpice = 0;
+        if (giftRewardModel != null && rewardModelType != null) {
+          if (rewardModelType == EnumGiftRewardModel.cash) {
+            money = giftRewardModel.num * 1.0;
+          } else if (rewardModelType == EnumGiftRewardModel.xp) {
+            exp = giftRewardModel.num;
+          } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
+            phoneSpice = giftRewardModel.num;
+          }
+        }
         OverlayCommonGet().show(
           money: money,
-          exp: 0,
-          phoneSpice: 0,
+          exp: exp,
+          phoneSpice: phoneSpice,
           onClose: () {},
         );
       });
@@ -645,9 +662,11 @@ class BoxGiftModel {
   final double money;
   final bool hasUnlock;
   final bool hasClickCollect;
+  final GiftRewardModel? giftRewardModel;
 
   BoxGiftModel({
     required this.img,
+    required this.giftRewardModel,
     this.showAdImg = true,
     this.hasClickCollect = true,
     required this.money,
