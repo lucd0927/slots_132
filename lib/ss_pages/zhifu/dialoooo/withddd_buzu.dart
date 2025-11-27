@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
@@ -16,6 +17,7 @@ class OverlayWithddBuzu {
   void show({
     required VoidCallback onClose,
 }) {
+    SSEventReporttttt.insufficient_pop();
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -132,6 +134,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                 
                             GestureDetector(
                               onTap: () {
+                                SSEventReporttttt.insufficient_pop_spin();
                                 onClose();
                               },
                               child: Container(
@@ -182,7 +185,10 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                 
                 SizedBox(height: 40.h),
                 GestureDetector(
-                    onTap: onClose,
+                    onTap: (){
+                      SSEventReporttttt.insufficient_pop_close();
+                      onClose();
+                    },
                     child: Image.asset(Assets.img.closePopup.path,width: 30.h,height: 30.h,))
                 
               ],

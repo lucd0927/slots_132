@@ -8,6 +8,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -22,6 +23,7 @@ class OverlayOneLastCheck {
 
   void show() {
     // if (_isShowing) return;
+    SSEventReporttttt.verfication_pop();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
@@ -201,6 +203,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                       SizedBox(height: 16.h),
                       GestureDetector(
                         onTap: () {
+                          SSEventReporttttt.verfication_start();
                           onClose();
                         },
                         child: Container(
@@ -228,7 +231,10 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                 ),
                 SizedBox(height: 40.h),
                 GestureDetector(
-                  onTap: onClose,
+                  onTap: (){
+                    SSEventReporttttt.verfication_close();
+                    onClose();
+                  },
                   child: Image.asset(
                     Assets.img.closePopup.path,
                     width: 30.h,

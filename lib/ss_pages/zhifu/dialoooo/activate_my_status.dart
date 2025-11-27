@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
@@ -20,6 +21,7 @@ class OverlayActivateMyStatus {
 
   void show() {
     // if (_isShowing) return;
+    SSEventReporttttt.vip_partner_become_pop();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {

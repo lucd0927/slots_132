@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -16,6 +17,7 @@ class OverlayWithddJindu3 {
 
   void show() {
     // if (_isShowing) return;
+    SSEventReporttttt.cover_pop();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
@@ -218,6 +220,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
 
                               GestureDetector(
                                 onTap: () {
+                                  SSEventReporttttt.cover_pop_spin();
                                   onClose();
                                 },
                                 child: Container(

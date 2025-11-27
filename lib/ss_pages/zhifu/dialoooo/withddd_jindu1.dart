@@ -6,6 +6,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu2.dart';
@@ -18,6 +19,7 @@ class OverlayJindu1 {
   OverlayEntry? _overlay;
 
   void show() {
+    SSEventReporttttt.sending_money_pop();
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(

@@ -7,6 +7,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -482,6 +483,8 @@ class _VipPartnerState extends State<VipPartner> {
 
   void onGetChange() {
     if (canclick()) {
+      SSEventReporttttt.vip_partner_click();
+
       OverlayActivateMyStatus().show();
     }
   }

@@ -8,6 +8,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
@@ -24,6 +25,7 @@ class OverlayRank {
 
   void show() {
     // if (_isShowing) return;
+    SSEventReporttttt.rank_pop();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {
@@ -279,7 +281,7 @@ class _RankWidgetState extends State<RankWidget> {
 
   onBoostRank() async {
     // onClose();
-
+    SSEventReporttttt.rank_pop_boost();
     int curRank = WithdddController.to.savePaimingData();
 
     if (curRank == 1) {

@@ -5,6 +5,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/ss_pages/zhifu/history/history_c.dart';
 
 class Historyyyy extends StatefulWidget {
@@ -20,6 +21,7 @@ class _HistoryyyyState extends State<Historyyyy> {
   @override
   void initState() {
     super.initState();
+    SSEventReporttttt.transaction_history_page();
   }
 
   @override

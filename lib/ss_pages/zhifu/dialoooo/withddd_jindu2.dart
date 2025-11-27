@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
@@ -15,6 +16,7 @@ class OverlayWithddJindu2 {
   OverlayEntry? _overlay;
 
   void show() {
+    SSEventReporttttt.transaction_fee_pop();
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(

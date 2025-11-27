@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
 import 'package:slots_132/ss_common/routes.dart';
@@ -24,6 +25,15 @@ class Withdrawwwww extends StatefulWidget {
 }
 
 class _WithdrawwwwwState extends State<Withdrawwwww> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SSEventReporttttt.cash_out_page();
+  }
+
 
   @override
   Widget build(BuildContext context) {
