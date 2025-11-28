@@ -331,7 +331,7 @@ class CenterView extends StatelessWidget {
                 ShiningEffect(
                   shineColor: Colors.yellow,
                   opacity: 1,
-                  angle: 0.2,
+                  angle: 2.5,
                   // duration: Duration(seconds: 2),
                   child: Image.asset(
                     Assets.img.mainGrand.path,
@@ -373,7 +373,7 @@ class CenterView extends StatelessWidget {
               ShiningEffect(
                 shineColor: Colors.yellow,
                 opacity: 1,
-                angle: 0.2,
+                angle: 2.5,
                 child: Image.asset(
                   Assets.img.mainMajor.path,
                   width: double.infinity,
@@ -413,7 +413,7 @@ class CenterView extends StatelessWidget {
               ShiningEffect(
                 shineColor: Colors.yellow,
                 opacity: 1,
-                angle: 0.2,
+                angle: 2.5,
                 child: Image.asset(
                   Assets.img.mainMini.path,
                   width: double.infinity,
@@ -487,8 +487,10 @@ class CenterView extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(58.h),
                     child: ShiningEffect(
-                      shineColor: Colors.white,
+                      shineColor: Colors.yellow,
                       opacity: 1,
+                      angle: 1.8,
+                      // topLeft: false,
                       duration: const Duration(seconds: 2),
                       child: Image.asset(
                         Assets.img.mainBox.path,
@@ -526,8 +528,9 @@ class CenterView extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(58.h),
                       child: ShiningEffect(
-                        shineColor: Colors.white,
+                        shineColor: Colors.yellow,
                         opacity: 1,
+                        angle: 1.8,
                         duration: const Duration(seconds: 2),
                         child: Hero(
                           tag: "Phoneeee",

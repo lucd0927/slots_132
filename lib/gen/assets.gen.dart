@@ -33,18 +33,6 @@ class $AssetsAuddddGen {
 class $AssetsDonghuaGen {
   const $AssetsDonghuaGen();
 
-  /// Directory path: assets/donghua/jackpot_grand
-  $AssetsDonghuaJackpotGrandGen get jackpotGrand =>
-      const $AssetsDonghuaJackpotGrandGen();
-
-  /// Directory path: assets/donghua/jackpot_major
-  $AssetsDonghuaJackpotMajorGen get jackpotMajor =>
-      const $AssetsDonghuaJackpotMajorGen();
-
-  /// Directory path: assets/donghua/jackpot_mini
-  $AssetsDonghuaJackpotMiniGen get jackpotMini =>
-      const $AssetsDonghuaJackpotMiniGen();
-
   /// Directory path: assets/donghua/lottie_money
   $AssetsDonghuaLottieMoneyGen get lottieMoney =>
       const $AssetsDonghuaLottieMoneyGen();
@@ -752,6 +740,33 @@ class $AssetsImgGen {
   /// Directory path: assets/img/slots
   $AssetsImgSlotsGen get slots => const $AssetsImgSlotsGen();
 
+  /// File path: assets/img/splash_bg.png
+  AssetGenImage get splashBg => const AssetGenImage('assets/img/splash_bg.png');
+
+  /// File path: assets/img/splash_scatter.png
+  AssetGenImage get splashScatter =>
+      const AssetGenImage('assets/img/splash_scatter.png');
+
+  /// File path: assets/img/splash_title.png
+  AssetGenImage get splashTitle =>
+      const AssetGenImage('assets/img/splash_title.png');
+
+  /// File path: assets/img/splash_txt_345.png
+  AssetGenImage get splashTxt345 =>
+      const AssetGenImage('assets/img/splash_txt_345.png');
+
+  /// File path: assets/img/splash_txt_except.png
+  AssetGenImage get splashTxtExcept =>
+      const AssetGenImage('assets/img/splash_txt_except.png');
+
+  /// File path: assets/img/splash_txt_replace.png
+  AssetGenImage get splashTxtReplace =>
+      const AssetGenImage('assets/img/splash_txt_replace.png');
+
+  /// File path: assets/img/splash_wild.png
+  AssetGenImage get splashWild =>
+      const AssetGenImage('assets/img/splash_wild.png');
+
   /// File path: assets/img/t_cashapp.png
   AssetGenImage get tCashapp => const AssetGenImage('assets/img/t_cashapp.png');
 
@@ -1163,6 +1178,13 @@ class $AssetsImgGen {
     settiBg,
     settiMusic,
     slot1,
+    splashBg,
+    splashScatter,
+    splashTitle,
+    splashTxt345,
+    splashTxtExcept,
+    splashTxtReplace,
+    splashWild,
     tCashapp,
     tongzBg,
     tongzCashpayment,
@@ -1259,129 +1281,6 @@ class $AssetsMyaGen {
   $AssetsMyaWowGen get wow => const $AssetsMyaWowGen();
 }
 
-class $AssetsDonghuaJackpotGrandGen {
-  const $AssetsDonghuaJackpotGrandGen();
-
-  /// File path: assets/donghua/jackpot_grand/skeleton.json
-  String get skeleton => 'assets/donghua/jackpot_grand/skeleton.json';
-
-  /// File path: assets/donghua/jackpot_grand/skeletons.atlas
-  String get skeletonsAtlas => 'assets/donghua/jackpot_grand/skeletons.atlas';
-
-  /// File path: assets/donghua/jackpot_grand/skeletons.png
-  AssetGenImage get skeletonsPng =>
-      const AssetGenImage('assets/donghua/jackpot_grand/skeletons.png');
-
-  /// File path: assets/donghua/jackpot_grand/skeletons_2.png
-  AssetGenImage get skeletons2 =>
-      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_2.png');
-
-  /// File path: assets/donghua/jackpot_grand/skeletons_3.png
-  AssetGenImage get skeletons3 =>
-      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_3.png');
-
-  /// File path: assets/donghua/jackpot_grand/skeletons_4.png
-  AssetGenImage get skeletons4 =>
-      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_4.png');
-
-  /// File path: assets/donghua/jackpot_grand/skeletons_5.png
-  AssetGenImage get skeletons5 =>
-      const AssetGenImage('assets/donghua/jackpot_grand/skeletons_5.png');
-
-  /// List of all assets
-  List<dynamic> get values => [
-    skeleton,
-    skeletonsAtlas,
-    skeletonsPng,
-    skeletons2,
-    skeletons3,
-    skeletons4,
-    skeletons5,
-  ];
-}
-
-class $AssetsDonghuaJackpotMajorGen {
-  const $AssetsDonghuaJackpotMajorGen();
-
-  /// File path: assets/donghua/jackpot_major/skeleton.json
-  String get skeleton => 'assets/donghua/jackpot_major/skeleton.json';
-
-  /// File path: assets/donghua/jackpot_major/skeletons.atlas
-  String get skeletonsAtlas => 'assets/donghua/jackpot_major/skeletons.atlas';
-
-  /// File path: assets/donghua/jackpot_major/skeletons.png
-  AssetGenImage get skeletonsPng =>
-      const AssetGenImage('assets/donghua/jackpot_major/skeletons.png');
-
-  /// File path: assets/donghua/jackpot_major/skeletons_2.png
-  AssetGenImage get skeletons2 =>
-      const AssetGenImage('assets/donghua/jackpot_major/skeletons_2.png');
-
-  /// File path: assets/donghua/jackpot_major/skeletons_3.png
-  AssetGenImage get skeletons3 =>
-      const AssetGenImage('assets/donghua/jackpot_major/skeletons_3.png');
-
-  /// File path: assets/donghua/jackpot_major/skeletons_4.png
-  AssetGenImage get skeletons4 =>
-      const AssetGenImage('assets/donghua/jackpot_major/skeletons_4.png');
-
-  /// File path: assets/donghua/jackpot_major/skeletons_5.png
-  AssetGenImage get skeletons5 =>
-      const AssetGenImage('assets/donghua/jackpot_major/skeletons_5.png');
-
-  /// List of all assets
-  List<dynamic> get values => [
-    skeleton,
-    skeletonsAtlas,
-    skeletonsPng,
-    skeletons2,
-    skeletons3,
-    skeletons4,
-    skeletons5,
-  ];
-}
-
-class $AssetsDonghuaJackpotMiniGen {
-  const $AssetsDonghuaJackpotMiniGen();
-
-  /// File path: assets/donghua/jackpot_mini/skeleton.json
-  String get skeleton => 'assets/donghua/jackpot_mini/skeleton.json';
-
-  /// File path: assets/donghua/jackpot_mini/skeletons.atlas
-  String get skeletonsAtlas => 'assets/donghua/jackpot_mini/skeletons.atlas';
-
-  /// File path: assets/donghua/jackpot_mini/skeletons.png
-  AssetGenImage get skeletonsPng =>
-      const AssetGenImage('assets/donghua/jackpot_mini/skeletons.png');
-
-  /// File path: assets/donghua/jackpot_mini/skeletons_2.png
-  AssetGenImage get skeletons2 =>
-      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_2.png');
-
-  /// File path: assets/donghua/jackpot_mini/skeletons_3.png
-  AssetGenImage get skeletons3 =>
-      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_3.png');
-
-  /// File path: assets/donghua/jackpot_mini/skeletons_4.png
-  AssetGenImage get skeletons4 =>
-      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_4.png');
-
-  /// File path: assets/donghua/jackpot_mini/skeletons_5.png
-  AssetGenImage get skeletons5 =>
-      const AssetGenImage('assets/donghua/jackpot_mini/skeletons_5.png');
-
-  /// List of all assets
-  List<dynamic> get values => [
-    skeleton,
-    skeletonsAtlas,
-    skeletonsPng,
-    skeletons2,
-    skeletons3,
-    skeletons4,
-    skeletons5,
-  ];
-}
-
 class $AssetsDonghuaLottieMoneyGen {
   const $AssetsDonghuaLottieMoneyGen();
 
@@ -1416,37 +1315,22 @@ class $AssetsDonghuaMoneyGen {
 class $AssetsDonghuaPiaoqianGen {
   const $AssetsDonghuaPiaoqianGen();
 
+  /// File path: assets/donghua/piaoqian/2.atlas
+  String get a2Atlas => 'assets/donghua/piaoqian/2.atlas';
+
+  /// File path: assets/donghua/piaoqian/2.png
+  AssetGenImage get a2Png =>
+      const AssetGenImage('assets/donghua/piaoqian/2.png');
+
+  /// File path: assets/donghua/piaoqian/2_2.png
+  AssetGenImage get a22 =>
+      const AssetGenImage('assets/donghua/piaoqian/2_2.png');
+
   /// File path: assets/donghua/piaoqian/skeleton.json
   String get skeleton => 'assets/donghua/piaoqian/skeleton.json';
 
-  /// File path: assets/donghua/piaoqian/skeletons.atlas
-  String get skeletonsAtlas => 'assets/donghua/piaoqian/skeletons.atlas';
-
-  /// File path: assets/donghua/piaoqian/skeletons.png
-  AssetGenImage get skeletonsPng =>
-      const AssetGenImage('assets/donghua/piaoqian/skeletons.png');
-
-  /// File path: assets/donghua/piaoqian/skeletons_2.png
-  AssetGenImage get skeletons2 =>
-      const AssetGenImage('assets/donghua/piaoqian/skeletons_2.png');
-
-  /// File path: assets/donghua/piaoqian/skeletons_3.png
-  AssetGenImage get skeletons3 =>
-      const AssetGenImage('assets/donghua/piaoqian/skeletons_3.png');
-
-  /// File path: assets/donghua/piaoqian/skeletons_4.png
-  AssetGenImage get skeletons4 =>
-      const AssetGenImage('assets/donghua/piaoqian/skeletons_4.png');
-
   /// List of all assets
-  List<dynamic> get values => [
-    skeleton,
-    skeletonsAtlas,
-    skeletonsPng,
-    skeletons2,
-    skeletons3,
-    skeletons4,
-  ];
+  List<dynamic> get values => [a2Atlas, a2Png, a22, skeleton];
 }
 
 class $AssetsDonghuaSdlrGen {
@@ -1700,8 +1584,36 @@ class $AssetsMyaJackpotGen {
   AssetGenImage get jackpotBg =>
       const AssetGenImage('assets/mya/jackpot/jackpot_bg.png');
 
+  /// File path: assets/mya/jackpot/jackpot_bg2.png
+  AssetGenImage get jackpotBg2 =>
+      const AssetGenImage('assets/mya/jackpot/jackpot_bg2.png');
+
+  /// File path: assets/mya/jackpot/major.png
+  AssetGenImage get major =>
+      const AssetGenImage('assets/mya/jackpot/major.png');
+
+  /// File path: assets/mya/jackpot/major_j.png
+  AssetGenImage get majorJ =>
+      const AssetGenImage('assets/mya/jackpot/major_j.png');
+
+  /// File path: assets/mya/jackpot/mini.png
+  AssetGenImage get mini => const AssetGenImage('assets/mya/jackpot/mini.png');
+
+  /// File path: assets/mya/jackpot/mini_j.png
+  AssetGenImage get miniJ =>
+      const AssetGenImage('assets/mya/jackpot/mini_j.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [grand, grandJ, jackpotBg];
+  List<AssetGenImage> get values => [
+    grand,
+    grandJ,
+    jackpotBg,
+    jackpotBg2,
+    major,
+    majorJ,
+    mini,
+    miniJ,
+  ];
 }
 
 class $AssetsMyaMegawinGen {

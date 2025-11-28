@@ -126,7 +126,6 @@ class _MegawinWidgetState extends State<MegawinWidget> {
 
               child: Stack(
                 children: [
-                  //
                   Positioned(
                     left: -0.w,
                     right: -0.w,

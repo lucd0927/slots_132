@@ -535,7 +535,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                         child:  ShiningEffect(
                           shineColor: Colors.yellow,
                           opacity: 1,
-                          // angle: 0.2,
+                          angle: 1.8,
                           child: child,
                         ),
                       )

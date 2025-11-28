@@ -57,7 +57,7 @@ class _SSSpinePiaoqianState extends State<SSSpinePiaoqian> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.piaoqian.skeletonsAtlas,
+      Assets.donghua.piaoqian.a2Atlas,
       Assets.donghua.piaoqian.skeleton,
       controller,
       sizedByBounds: true,

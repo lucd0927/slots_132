@@ -122,16 +122,7 @@ class _BigwinWidgetState extends State<BigwinWidget> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  // Column(
-                  //   children: [
-                  //     SizedBox(height: 80.h,),
-                  //     Container(
-                  //       width: 375.w,
-                  //       height: 400.h,
-                  //       child: SSSpineBigwin(),
-                  //     ),
-                  //   ],
-                  // ),
+
                   Positioned(
                     left: -0.w,
                     right: -0.w,

@@ -1,14 +1,14 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/animated_win/animated_jackpot_grand.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 
-class SSAnimatedJackpotGrand extends StatefulWidget {
-  const SSAnimatedJackpotGrand({
+class SSAnimatedJackpotMini extends StatefulWidget {
+  const SSAnimatedJackpotMini({
     super.key,
     this.duration = const Duration(milliseconds: 2000),
   });
@@ -16,10 +16,10 @@ class SSAnimatedJackpotGrand extends StatefulWidget {
   final Duration duration;
 
   @override
-  State<SSAnimatedJackpotGrand> createState() => _SSAnimatedJackpotGrandState();
+  State<SSAnimatedJackpotMini> createState() => _SSAnimatedJackpotMiniState();
 }
 
-class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
+class _SSAnimatedJackpotMiniState extends State<SSAnimatedJackpotMini>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
@@ -132,7 +132,7 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
                         opacity: 1,
                         angle: -0.9,
                         topLeft: false,
-                        child: Image.asset(Assets.mya.jackpot.grand.path),
+                        child: Image.asset(Assets.mya.jackpot.mini.path),
                         // child: Image.asset(Assets.mya.superwin.supers.path),
                       ),
                     ),
@@ -154,7 +154,7 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
                         duration: Duration(milliseconds: 2000),
                         angle: -0.7,
                         topLeft: false,
-                        child: Image.asset(Assets.mya.jackpot.grandJ.path),
+                        child: Image.asset(Assets.mya.jackpot.miniJ.path),
                       ),
                     ),
                   ),
@@ -200,67 +200,5 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
     ]).animate(controller);
 
     controller.repeat();
-  }
-}
-
-
-
-class JackpotBorder extends StatefulWidget {
-  const JackpotBorder({super.key});
-
-  @override
-  State<JackpotBorder> createState() => _JackpotBorderState();
-}
-
-class _JackpotBorderState extends State<JackpotBorder> {
-  String icon = Assets.img.wheelZpF.path;
-  bool showFirst = false;
-  late Timer timer;
-  int curIndex = 0;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    timer = Timer.periodic(Duration(milliseconds: 200), (t) {
-      setState(() {
-        showFirst = !showFirst;
-        if (showFirst) {
-          curIndex = 1;
-        } else {
-          curIndex = 0;
-        }
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return IndexedStack(
-      index: curIndex,
-      children: [
-        Image.asset(
-          Assets.mya.jackpot.jackpotBg.path,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-          gaplessPlayback: true,
-        ),
-        Image.asset(
-          Assets.mya.jackpot.jackpotBg2.path,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-          gaplessPlayback: true,
-        ),
-      ],
-    );
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    timer.cancel();
   }
 }

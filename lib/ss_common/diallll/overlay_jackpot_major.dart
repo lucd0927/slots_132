@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/animated_win/animated_jackpot_major.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotGrand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotMajor.dart';
@@ -121,24 +122,16 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  // Positioned(
-                  //   left: -0.w,
-                  //   right: -0.w,
-                  //   top: 0.h,
-                  //   bottom: -0.h,
-                  //   child: IgnorePointer(
-                  //     child: Center(
-                  //       child: Container(
-                  //         width: ScreenUtil().screenWidth,
-                  //         height: ScreenUtil().screenHeight,
-                  //         // width: 375.w,
-                  //         // height: 812.h,
-                  //         color: Colors.yellow.withValues(alpha: 0.0),
-                  //         child: SSSpineMoney(),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  Positioned.fill(
+                    top: -200.h,
+                    left: 0.w,
+
+                    child:Container(
+                        width: ScreenUtil().screenWidth,
+                        height: ScreenUtil().screenHeight,
+                        child: SSSpineMoney()),
+                  ),
+
                   Positioned(
                     left: 0,
                     right: 0,
@@ -147,7 +140,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                       width: ScreenUtil().screenWidth,
                       height: ScreenUtil().screenHeight,
 
-                      child: SSSpineJackpotMajor(),
+                      child: Center(child: SSAnimatedJackpotMajor()),
                     ),
                   ),
                   Column(

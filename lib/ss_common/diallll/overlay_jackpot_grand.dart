@@ -20,6 +20,7 @@ import 'package:slots_132/ss_common/animated_win/animated_jackpot_grand.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotGrand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
+import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -145,6 +146,17 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                       ),
                     ),
                   ),
+
+                  // Positioned.fill(
+                  //   top: -200.h,
+                  //   left: 0.w,
+                  //
+                  //   child:Container(
+                  //       width: ScreenUtil().screenWidth,
+                  //       height: ScreenUtil().screenHeight,
+                  //       child: SSSpineMoney()),
+                  // ),
+
                   Positioned(
                     left: 0,
                     right: 0,

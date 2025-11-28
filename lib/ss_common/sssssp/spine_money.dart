@@ -19,22 +19,22 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   if (mounted) {
-    //     setState(() {
-    //       showA = true;
-    //     });
-    //   }
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          showA = true;
+        });
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    var data = MainController.composition(EnumLottieType.money);
-    if(data != null){
-      return Lottie(composition: data,);
-    }
-    return Lottie.asset(Assets.donghua.lottieMoney.data, repeat: true,frameBuilder: (_, child, __) => child,);
+    // var data = MainController.composition(EnumLottieType.money);
+    // if(data != null){
+    //   return Lottie(composition: data,);
+    // }
+    // return Lottie.asset(Assets.donghua.lottieMoney.data, repeat: true,frameBuilder: (_, child, __) => child,);
     if (!showA) {
       return const SizedBox();
     }
@@ -52,12 +52,10 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.
-      donghua.money.skeletonAtlas,
-      Assets.donghua.money.skeletonJson,
+      Assets.donghua.piaoqian.a2Atlas,
+      Assets.donghua.piaoqian.skeleton,
       controller,
-      fit: BoxFit.contain,
-      // sizedByBounds: true,
+      sizedByBounds: true,
     );
   }
 }

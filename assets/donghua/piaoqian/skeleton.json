@@ -1,13 +1,13 @@
 {
 "skeleton": {
-	"hash": "dURRzRIQ3o8",
+	"hash": "mYzLjZvJGiA",
 	"spine": "4.3.39-beta",
-	"x": -188.04504,
-	"y": -406.25143,
-	"width": 376.0901,
-	"height": 812.50287,
-	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/tanchuangpq",
-	"audio": null
+	"x": -187.5,
+	"y": -406,
+	"width": 375,
+	"height": 812,
+	"images": "../../tset/新建文件夹/",
+	"audio": "./audio"
 },
 "bones": [
 	{ "name": "root" }
@@ -21,10 +21,9 @@
 		"attachments": {
 			"00000": {
 				"0": {
-					"rotation": 0.076942444,
 					"width": 375,
 					"height": 812,
-					"sequence": { "count": 90, "start": 0, "digits": 4 }
+					"sequence": { "count": 120, "start": 0, "digits": 4 }
 				}
 			}
 		}
@@ -37,8 +36,8 @@
 				"00000": {
 					"0": {
 						"sequence": [
-							{ "mode": "loop", "delay": 0.033333335 },
-							{ "time": 3.0000002, "mode": "loop", "index": 36 }
+							{ "mode": "loop", "delay": 0.016666668 },
+							{ "time": 4, "mode": "loop", "index": 48, "delay": 0.083333336 }
 						]
 					}
 				}
