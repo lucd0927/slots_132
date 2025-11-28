@@ -9,12 +9,15 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shiny_striped_progress_bar/shiny_striped_progress_bar.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 
 double scale = 2;
 
@@ -35,9 +38,6 @@ class _SSSplassssState extends State<SSSplassss> {
 
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-
-
-
       //
       AssetImage assetImage = AssetImage(Assets.img.mainWheel.path);
       precacheImage(assetImage, context);
@@ -91,64 +91,104 @@ class _SSSplassssState extends State<SSSplassss> {
         color: Colors.white,
         child: Stack(
           children: [
-            // Image.asset(
-            //   Assets.ttt.zhuyeBg.path,
-            //   width: double.infinity,
-            //   height: double.infinity,
-            //   fit: BoxFit.fill,
-            // ),
-            Container(
+            Image.asset(
+              Assets.img.splashBg.path,
               width: double.infinity,
               height: double.infinity,
-              color: Colors.green,
+              fit: BoxFit.fill,
             ),
+            // Container(
+            //   width: double.infinity,
+            //   height: double.infinity,
+            //   color: Colors.green,
+            // ),
             Positioned(
               left: 0,
               right: 0,
-              top: 144.h,
-              child: Center(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: 205.w,
-                      height: 229.w,
-                      // child: Image.asset(
-                      //   Assets.ttt.splshLogo.path,
-                      //   width: double.infinity,
-                      //   height: double.infinity,
-                      //   fit: BoxFit.contain,
-                      // ),
-                      child: Container(
+              top: 30.h,
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 254.h,
+                    height: 165.h,
+                    child: ShiningEffect(
+                      duration: Duration(milliseconds: 5000),
+                      shineColor: Color(0xffffffff),
+                      opacity: 1,
+                      angle: -0.9,
+                      topLeft: false,
+                      child: Image.asset(
+                        Assets.img.splashTitle.path,
                         width: double.infinity,
                         height: double.infinity,
-                        color: Colors.green,
+                        fit: BoxFit.contain,
                       ),
                     ),
-                    // SizedBox(height: 30.h),
-                  ],
-                ),
+                    // child: Container(
+                    //   width: double.infinity,
+                    //   height: double.infinity,
+                    //   color: Colors.green,
+                    // ),
+                  ),
+                  SizedBox(height: 230.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset(
+                            Assets.img.splashWild.path,
+                            width: 151.h,
+                            height: 151.h,
+                          ),
+                          Image.asset(
+                            Assets.img.splashTxtExcept.path,
+                            width: 158.h,
+                            height: 58.h,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            Assets.img.splashScatter.path,
+                            width: 151.h,
+                            height: 151.h,
+                          ),
+                          Image.asset(
+                            Assets.img.splashTxt345.path,
+                            width: 158.h,
+                            height: 58.h,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  // SizedBox(height: 30.h),
+                ],
               ),
             ),
 
             Positioned(
               left: 0,
               right: 0,
-              top: 320.h * scale,
+              top: 680.h,
               child: Center(
                 child: Column(
                   children: [
                     SplashProgress(),
-                    SizedBox(height: 30.h),
-                    SizedBox(
-                      width: 462.w,
-                      height: 36.h,
-                      // child: Image.asset(
-                      //   Assets.imgB.splashDes.path,
-                      //   width: double.infinity,
-                      //   height: double.infinity,
-                      //   fit: BoxFit.contain,
-                      // ),
-                    ),
+                    // SizedBox(height: 30.h),
+                    // SizedBox(
+                    //   width: 462.w,
+                    //   height: 36.h,
+                    //   // child: Image.asset(
+                    //   //   Assets.imgB.splashDes.path,
+                    //   //   width: double.infinity,
+                    //   //   height: double.infinity,
+                    //   //   fit: BoxFit.contain,
+                    //   // ),
+                    // ),
                   ],
                 ),
               ),
@@ -234,6 +274,7 @@ class _SplashProgressState extends State<SplashProgress> {
     // JCShijianBaogao.session();
     // JCShijianBaogao.install();
     // JCShijianBaogao.launch_page(kv: JCTzIossssss.clickTz ? "push" : "icon");
+
     Get.offNamed(SSRouttttt.main);
   }
 
@@ -252,7 +293,7 @@ class _SplashProgressState extends State<SplashProgress> {
         SizedBox(
           width: 325.w,
           height: 15.w,
-          child: AnimatedGradientProgressBar(
+          child: AnimatedGradientProgressBar2(
             value: startTime, // 表示 60%
             gradientColors: [
               Color(0xffEFFF04),
@@ -317,6 +358,65 @@ class AnimatedGradientProgressBar extends StatelessWidget {
                   ),
                   border: Border.all(color: Color(0xff421614), width: 2.w),
                   borderRadius: BorderRadius.circular(height),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class AnimatedGradientProgressBar2 extends StatelessWidget {
+  final BorderRadius borderRadius;
+  final double value; // 当前进度 0.0 ~ 1.0
+  final double height;
+  final Duration duration;
+  final List<Color> gradientColors;
+
+  const AnimatedGradientProgressBar2({
+    super.key,
+    required this.value,
+    this.height = 8.0,
+    this.duration = const Duration(milliseconds: 100),
+    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+    this.gradientColors = const [Colors.blue, Colors.purple],
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(begin: 0.0, end: value.clamp(0.0, 1.0)),
+      duration: duration,
+      curve: Curves.linear,
+      builder: (context, animatedValue, child) {
+        return ClipRRect(
+          borderRadius: borderRadius,
+          child: Container(
+            height: height,
+            decoration: BoxDecoration(color: Color(0xff691904)),
+            child: FractionallySizedBox(
+              alignment: Alignment.centerLeft,
+              widthFactor: animatedValue,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: gradientColors,
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  border: Border.all(color: Color(0xffFDA560), width: 2.w),
+                  borderRadius: BorderRadius.circular(height),
+                ),
+                child: ShinyStripedProgressBar(
+                  targetProgress: 1,
+                  // height: 15.w,
+                  duration: Duration(microseconds: 100),
+                  progressColor: Color(0xff2EA610),
+                  borderRadius: BorderRadius.all(Radius.circular(15.w)),
+                  stripeAngle: StripeAngle.angle45,
+                  stripeColor: Color(0xff44EA3E),
                 ),
               ),
             ),

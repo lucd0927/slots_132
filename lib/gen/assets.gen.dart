@@ -759,10 +759,6 @@ class $AssetsImgGen {
   AssetGenImage get splashTxtExcept =>
       const AssetGenImage('assets/img/splash_txt_except.png');
 
-  /// File path: assets/img/splash_txt_replace.png
-  AssetGenImage get splashTxtReplace =>
-      const AssetGenImage('assets/img/splash_txt_replace.png');
-
   /// File path: assets/img/splash_wild.png
   AssetGenImage get splashWild =>
       const AssetGenImage('assets/img/splash_wild.png');
@@ -1183,7 +1179,6 @@ class $AssetsImgGen {
     splashTitle,
     splashTxt345,
     splashTxtExcept,
-    splashTxtReplace,
     splashWild,
     tCashapp,
     tongzBg,

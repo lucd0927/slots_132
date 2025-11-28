@@ -96,6 +96,7 @@ dependencies:
   animated_background: ^2.0.0
   spine_flutter: ^4.3.1
   lottie: ^3.3.2
+  shiny_striped_progress_bar: ^1.1.0
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:
@@ -129,14 +130,6 @@ flutter:
     - assets/donghua/yanhua/
     - assets/donghua/lottie_money/
     - assets/donghua/lottie_money/images/
-    - assets/donghua/superwin/
-    - assets/donghua/wow/
-    - assets/donghua/bigwin/
-    - assets/donghua/big_win/
-    - assets/donghua/maga_win/
-    - assets/donghua/super_win/
-    - assets/donghua/wow_win/
-    - assets/donghua/megawin/
     - assets/donghua/money/
     - assets/donghua/jackpot_grand/
     - assets/donghua/jackpot_major/

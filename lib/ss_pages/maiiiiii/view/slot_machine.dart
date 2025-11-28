@@ -255,12 +255,12 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      // Container(
-                      //   width: ScreenUtil().screenWidth,
-                      //   height: ScreenUtil().screenHeight,
-                      //   // color: Colors.teal,
-                      //   child: SpineShengdaolaorenSlots(),
-                      // ),
+                      Container(
+                        width: ScreenUtil().screenWidth,
+                        height: ScreenUtil().screenHeight,
+                        // color: Colors.teal,
+                        child: SpineShengdaolaorenSlots(),
+                      ),
                       Positioned(
                         left: -30.w,
                         right: -30.w,

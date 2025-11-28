@@ -1294,6 +1294,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  shiny_striped_progress_bar:
+    dependency: "direct main"
+    description:
+      name: shiny_striped_progress_bar
+      sha256: "006127c98c7481a1c15ea1edb3f264a5c2241cad97f7a99a0e0b3d8d76a118d9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
