@@ -34,49 +34,8 @@ class _SSSpineBorder2State extends State<SSSpineBorder2> {
       return Lottie(composition: data,);
     }
     return Lottie.asset(Assets.lottt.bian2.data, repeat: true,frameBuilder: (_, child, __) => child,);
-    if (!showA) {
-      return const SizedBox();
-    }
 
-    reportLeaks();
-    final controller = SpineWidgetController(
-      onInitialized: (controller) {
-        // Set the default mixing time between animations
-
-        controller.animationState.data.defaultMix = 0.2;
-        // Set the portal animation on track 0
-        controller.animationState.setAnimation(0, "animation", true);
-        // Queue the run animation after the portal animation
-        // controller.animationState.addAnimationByName(0, "run", true, 0);
-      },
-    );
-
-    return SpineWidget.fromAsset(
-      Assets.donghua.bigwin.jiesuan02Atlas,
-      Assets.donghua.bigwin.skeleton,
-      controller,
-      sizedByBounds: true,
-    );
   }
 }
 
-//
-// class SpineShengdaolaoren extends StatelessWidget {
-//   const SpineShengdaolaoren({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//
-//     reportLeaks();
-//     final controller = SpineWidgetController(onInitialized: (controller) {
-//       // Set the default mixing time between animations
-//       controller.animationState.getData().setDefaultMix(0.2);
-//       // Set the portal animation on track 0
-//       controller.animationState.setAnimationByName(0, "animation", true);
-//       // Queue the run animation after the portal animation
-//       // controller.animationState.addAnimationByName(0, "run", true, 0);
-//     });
-//
-//     return SpineWidget.fromAsset(Assets.donghua.sdlr.sdlrAtlas, Assets.donghua.sdlr.skeleton, controller,sizedByBounds: true,);
-//   }
-// }
+

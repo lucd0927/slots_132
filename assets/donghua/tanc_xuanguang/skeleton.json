@@ -1,0 +1,48 @@
+{
+"skeleton": {
+	"hash": "AC41NH6LR6E",
+	"spine": "4.3.39-beta",
+	"x": -375,
+	"y": -812,
+	"width": 750,
+	"height": 1624,
+	"images": "C:/Users/Administrator/Desktop/132-test-bj/images",
+	"audio": null
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "seq_0_0", "bone": "root", "attachment": "seq_0_" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"seq_0_0": {
+				"seq_0_": {
+					"width": 750,
+					"height": 1624,
+					"sequence": { "count": 90, "start": 0, "digits": 1 }
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"seq_0_0": {
+					"seq_0_": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.033333335 },
+							{ "time": 3.0000002, "mode": "loop" }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,192 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
+
+class SSAnimatedWinMega extends StatefulWidget {
+  const SSAnimatedWinMega({
+    super.key,
+    this.duration = const Duration(milliseconds: 2000),
+  });
+
+  final Duration duration;
+
+  @override
+  State<SSAnimatedWinMega> createState() => _SSAnimatedWinMegaState();
+}
+
+class _SSAnimatedWinMegaState extends State<SSAnimatedWinMega>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+
+  // 方便判断时间区间
+  bool get isTogetherTime => controller.value >= 0.5 && controller.value <= 0.6;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
+    // animation = CurvedAnimation(parent: controller, curve: Curves.linear);
+    // animation = Tween<double>(begin: 0, end: 1).animate(controller,);
+  }
+
+  double jieduan1 = 0.25;
+  double jieduan2 = 0.4;
+  double jieduan3 = 0.8;
+  double jieduan4 = 1;
+
+  /// t 范围 0.0 - 1.0
+  double scaleTop(double t) {
+    if (t < jieduan1) {
+      /// 0.0 - 1.0s 上放大，下缩小
+      double p = t / jieduan1; // 0~1
+      return lerp(1, 1.2, p); // 可自定义放大幅度
+    } else if (t < jieduan2) {
+      /// 1.0 - 1.2s 上缩小，下放大
+      double p = (t - jieduan1) / (jieduan2 - jieduan1); // 0~1
+      return lerp(1.2, 1, p);
+    } else if (t < jieduan3) {
+      /// 1.2s - 1.5s 一起放大
+      double p = (t - jieduan2) / (jieduan3 -jieduan2);
+      return lerp(1.0, 1.2, p);
+    } else if (t <= jieduan4) {
+      /// 1.5s - 2.0s 一起缩小 回到 1
+      double p = (t - jieduan3) / (jieduan4- jieduan3);
+      return lerp(1.2, 1.0, p);
+    }
+    return 1.0;
+  }
+
+  double scaleBottom(double t) {
+    if (t < jieduan1) {
+      /// 0.0 - 1.0s 上放大，下缩小
+      double p = t / jieduan1; // 0~1
+      return lerp(1, 0.8, p); // 可自定义放大幅度
+    } else if (t < jieduan2) {
+      /// 1.0 - 1.2s 上缩小，下放大
+      double p = (t - jieduan1) / (jieduan2 - jieduan1); // 0~1
+      return lerp(0.8, 1, p);
+    } else if (t < jieduan3) {
+      /// 1.2s - 1.5s 一起放大
+      double p = (t - jieduan2) / (jieduan3 -jieduan2);
+      return lerp(1.0, 1.2, p);
+    } else if (t <= jieduan4) {
+      /// 1.5s - 2.0s 一起缩小 回到 1
+      double p = (t - jieduan3) / (jieduan4- jieduan3);
+      return lerp(1.2, 1.0, p);
+    }
+    return 1.0;
+  }
+
+  double lerp(double a, double b, double t) => a + (b - a) * t;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (_, __) {
+        double t = controller.value; // 0~1
+        double topS = scaleTop(t);
+        double botS = scaleBottom(t);
+
+        var t1 = topS;
+        var t2 = botS;
+        // t1 =1;
+        // t2 =1;
+
+
+
+        return Stack(
+          alignment: Alignment.topCenter,
+          children: [
+
+
+            Container(
+              width: 300.h * t1,
+              height: 90.h * t1,
+              child: Center(
+                child: FittedBox(
+                  child: ShiningEffect(
+                    shineColor: Color(0xfffff200),
+                    opacity: 1,
+                    angle: -0.9,
+                    topLeft: false,
+                    // child: Image.asset(Assets.mya.bigwin.big.path),
+                    child: Image.asset(Assets.mya.megawin.mega.path),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 76.h+t1*10.h,
+              child: Container(
+                width: 300.h * t2,
+                height: 80.h * t2,
+                child: Center(
+                  child: FittedBox(
+                    child: ShiningEffect(
+                      shineColor: Color(0xfffff200),
+                      opacity: 1,
+                      duration: Duration(milliseconds: 2000),
+                      angle: -0.7,
+                      topLeft: false,
+                      child: Image.asset(Assets.mya.megawin.win.path),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _startAllAnimations() {
+    final controller = AnimationController(
+      vsync: this,
+      duration: widget.duration,
+    );
+    // final animation = CurvedAnimation(parent: controller, curve: Curves.linear);
+    // late Animation<double> animation;
+    // 多段动画
+    var animation = TweenSequence<double>([
+      // 第一段：从 start -> middle
+      // TweenSequenceItem(
+      //   tween: Tween<double>(
+      //     begin: 0.8,
+      //     end: 0.9,
+      //   ).chain(CurveTween(curve: Curves.linear)),
+      //   weight: 2, // 权重决定时长比例
+      // ),
+      // // 第二段：停留在 middle
+      // TweenSequenceItem(
+      //   tween: ConstantTween(0.9),
+      //   weight: 7, // 停留时长
+      // ),
+      // 第三段：middle -> end
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 0.4,
+          end: 1,
+        ).chain(CurveTween(curve: Curves.linear)),
+        weight: 6,
+      ),
+    ]).animate(controller);
+
+    controller.repeat();
+  }
+}

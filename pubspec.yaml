@@ -132,6 +132,10 @@ flutter:
     - assets/donghua/superwin/
     - assets/donghua/wow/
     - assets/donghua/bigwin/
+    - assets/donghua/big_win/
+    - assets/donghua/maga_win/
+    - assets/donghua/super_win/
+    - assets/donghua/wow_win/
     - assets/donghua/megawin/
     - assets/donghua/money/
     - assets/donghua/jackpot_grand/
@@ -139,6 +143,7 @@ flutter:
     - assets/donghua/jackpot_mini/
     - assets/donghua/slots_sdlr/
     - assets/donghua/piaoqian/
+    - assets/donghua/tanc_xuanguang/
     - assets/audddd/
     - assets/lottt/bian/
     - assets/lottt/bian/images/
@@ -146,34 +151,39 @@ flutter:
     - assets/lottt/bian2/images/
     - assets/lottt/bian3/
     - assets/lottt/bian3/images/
-    - assets/lottt/superwin/
-    - assets/lottt/superwin/images/
-    - assets/lottt/bigwin/
-    - assets/lottt/bigwin/images/
-    - assets/lottt/wow/
-    - assets/lottt/wow/images/
-    - assets/lottt/megawin/
-    - assets/lottt/megawin/images/
-    - assets/lottt/sg1/
-    - assets/lottt/sg1/images/
-    - assets/lottt/sg2/
-    - assets/lottt/sg2/images/
-    - assets/lottt/sg3/
-    - assets/lottt/sg3/images/
-    - assets/lottt/slotsl1/
-    - assets/lottt/slotsl1/images/
-    - assets/lottt/slotsl2/
-    - assets/lottt/slotsl2/images/
-    - assets/lottt/slotsl2/
-    - assets/lottt/slotsl2/images/
-    - assets/lottt/jackpot_grand/
-    - assets/lottt/jackpot_grand/images/
-    - assets/lottt/jackpot_mini/
-    - assets/lottt/jackpot_mini/images/
-    - assets/lottt/jackpot_major/
-    - assets/lottt/jackpot_major/images/
-    - assets/lottt/piaoqian/
-    - assets/lottt/piaoqian/images/
+    - assets/mya/bigwin/
+    - assets/mya/megawin/
+    - assets/mya/superwin/
+    - assets/mya/wow/
+    - assets/mya/jackpot/
+#    - assets/lottt/superwin/
+#    - assets/lottt/superwin/images/
+#    - assets/lottt/bigwin/
+#    - assets/lottt/bigwin/images/
+#    - assets/lottt/wow/
+#    - assets/lottt/wow/images/
+#    - assets/lottt/megawin/
+#    - assets/lottt/megawin/images/
+#    - assets/lottt/sg1/
+#    - assets/lottt/sg1/images/
+#    - assets/lottt/sg2/
+#    - assets/lottt/sg2/images/
+#    - assets/lottt/sg3/
+#    - assets/lottt/sg3/images/
+#    - assets/lottt/slotsl1/
+#    - assets/lottt/slotsl1/images/
+#    - assets/lottt/slotsl2/
+#    - assets/lottt/slotsl2/images/
+#    - assets/lottt/slotsl2/
+#    - assets/lottt/slotsl2/images/
+#    - assets/lottt/jackpot_grand/
+#    - assets/lottt/jackpot_grand/images/
+#    - assets/lottt/jackpot_mini/
+#    - assets/lottt/jackpot_mini/images/
+#    - assets/lottt/jackpot_major/
+#    - assets/lottt/jackpot_major/images/
+#    - assets/lottt/piaoqian/
+#    - assets/lottt/piaoqian/images/
 
   #   - images/a_dot_ham.jpeg
 

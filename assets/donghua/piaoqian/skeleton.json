@@ -1,29 +1,30 @@
 {
 "skeleton": {
-	"hash": "C4dAyTFXjuU",
+	"hash": "dURRzRIQ3o8",
 	"spine": "4.3.39-beta",
-	"x": -375,
-	"y": -812,
-	"width": 750,
-	"height": 1624,
-	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/bjpq/合成 1",
+	"x": -188.04504,
+	"y": -406.25143,
+	"width": 376.0901,
+	"height": 812.50287,
+	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/tanchuangpq",
 	"audio": null
 },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
-	{ "name": "合成 1_00000", "bone": "root", "attachment": "合成 1_" }
+	{ "name": "00000", "bone": "root", "attachment": "0" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"合成 1_00000": {
-				"合成 1_": {
-					"width": 750,
-					"height": 1624,
-					"sequence": { "count": 90, "start": 0, "digits": 5 }
+			"00000": {
+				"0": {
+					"rotation": 0.076942444,
+					"width": 375,
+					"height": 812,
+					"sequence": { "count": 90, "start": 0, "digits": 4 }
 				}
 			}
 		}
@@ -33,11 +34,11 @@
 	"animation": {
 		"attachments": {
 			"default": {
-				"合成 1_00000": {
-					"合成 1_": {
+				"00000": {
+					"0": {
 						"sequence": [
 							{ "mode": "loop", "delay": 0.033333335 },
-							{ "time": 3.0000002, "mode": "loop" }
+							{ "time": 3.0000002, "mode": "loop", "index": 36 }
 						]
 					}
 				}

@@ -29,15 +29,15 @@ class _SSSpinePiaoqianState extends State<SSSpinePiaoqian> {
 
   @override
   Widget build(BuildContext context) {
-    var data = MainController.composition(EnumLottieType.piaoqian);
-    if (data != null) {
-      return Lottie(composition: data);
-    }
-    return Lottie.asset(
-      Assets.lottt.piaoqian.data,
-      repeat: true,
-      frameBuilder: (_, child, __) => child,
-    );
+    // var data = MainController.composition(EnumLottieType.piaoqian);
+    // if (data != null) {
+    //   return Lottie(composition: data);
+    // }
+    // return Lottie.asset(
+    //   Assets.lottt.piaoqian.data,
+    //   repeat: true,
+    //   frameBuilder: (_, child, __) => child,
+    // );
 
     if (!showA) {
       return const SizedBox();

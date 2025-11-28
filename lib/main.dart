@@ -132,11 +132,11 @@ void lcChange() {
           ssLogggg("===前后切换加载=GGCommonAds().showInterstitialAd==");
 
           if (SSABChange.isPackageB()) {
-            SSCommonAds().showInterstitialAd(
-              adPosId: SSAdsPosId.test,
-              ignored_hasDisplayAd: false,
-              canTryAgain: false,
-            );
+            // SSCommonAds().showInterstitialAd(
+            //   adPosId: SSAdsPosId.test,
+            //   ignored_hasDisplayAd: false,
+            //   canTryAgain: false,
+            // );
           }
         }
       }

@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
@@ -78,11 +79,13 @@ class _MainState extends State<Main>
               gaplessPlayback: true,
             ),
             Positioned.fill(
-              top: 0.h,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child:SSSpinePiaoqian(),
+              top: -200.h,
+              left: 0.w,
+
+              child:Container(
+                  width: ScreenUtil().screenWidth,
+                  height: ScreenUtil().screenHeight,
+                  child: SSSpinePiaoqian()),
             ),
             Column(
               children: [
@@ -105,6 +108,8 @@ class _MainState extends State<Main>
               height: ScreenUtil().screenHeight,
               color: Colors.transparent,
             ),
+
+
 
 
           ],

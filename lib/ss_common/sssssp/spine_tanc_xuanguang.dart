@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
-import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
-class SSSpineJackpotGrand extends StatefulWidget {
-  const SSSpineJackpotGrand({super.key});
+class SpineTancXuanguang extends StatefulWidget {
+  const SpineTancXuanguang({super.key});
 
   @override
-  State<SSSpineJackpotGrand> createState() => _SSSpineJackpotGrandState();
+  State<SpineTancXuanguang> createState() => _SpineTancXuanguangState();
 }
 
-class _SSSpineJackpotGrandState extends State<SSSpineJackpotGrand> {
+class _SpineTancXuanguangState extends State<SpineTancXuanguang> {
   bool showA = false;
 
   @override
@@ -29,11 +27,6 @@ class _SSSpineJackpotGrandState extends State<SSSpineJackpotGrand> {
 
   @override
   Widget build(BuildContext context) {
-    // var data = MainController.composition(EnumLottieType.jackpotGrand);
-    // if(data != null){
-    //   return Lottie(composition: data,);
-    // }
-    // return Lottie.asset(Assets.lottt.jackpotGrand.data, repeat: true,frameBuilder: (_, child, __) => child,);
     if (!showA) {
       return const SizedBox();
     }
@@ -52,8 +45,8 @@ class _SSSpineJackpotGrandState extends State<SSSpineJackpotGrand> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.jackpotGrand.skeletonsAtlas,
-      Assets.donghua.jackpotGrand.skeleton,
+      Assets.donghua.tancXuanguang.skeletonsAtlas,
+      Assets.donghua.tancXuanguang.skeleton,
       controller,
       sizedByBounds: true,
     );

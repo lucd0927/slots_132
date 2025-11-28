@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/animated_win/animated_jackpot_grand.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotGrand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
@@ -42,12 +43,18 @@ class OverlayJackpotGrand {
         return _JackpotWidgetGrand(
           onBtn: (double money) {
             close();
-            SSEventReporttttt.jackpot_pop_claim_all(pop_type: "grand", pop_from: scene.name);
+            SSEventReporttttt.jackpot_pop_claim_all(
+              pop_type: "grand",
+              pop_from: scene.name,
+            );
             onBtn(money);
           },
           onBtn2: (double money) {
             close();
-            SSEventReporttttt.jackpot_pop_claim_10(pop_type: "grand", pop_from: scene.name);
+            SSEventReporttttt.jackpot_pop_claim_10(
+              pop_type: "grand",
+              pop_from: scene.name,
+            );
             onBtn2(money);
           },
           money: money,
@@ -146,7 +153,7 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                       width: ScreenUtil().screenWidth,
                       height: ScreenUtil().screenHeight,
 
-                      child: SSSpineJackpotGrand(),
+                      child: Center(child: SSAnimatedJackpotGrand()),
                     ),
                   ),
                   Column(

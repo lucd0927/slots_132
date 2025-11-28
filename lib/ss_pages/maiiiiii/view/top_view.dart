@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -168,7 +169,7 @@ class TopView extends StatelessWidget {
     SSEventReporttttt.home_page_menu();
 
 
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
     // OverlayWithddCardPaypal().show();
     // OverlayWithddCardCashapp().show();
     // OverlayWithddCardBank().show();
@@ -200,12 +201,14 @@ class TopView extends StatelessWidget {
 
     // OverlaySuperwin().show(money: 100);
     // OverlayBigwin().show(money: 100);
-    // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  });
-    // OverlayMegawin().show(money: 100);
+    // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlaySuperwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 
-    // OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
-    // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
-    // OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  });
+    OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  }, scene: EnumGetScene.spin);
+    // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 
     // MainController.to.curLevelExp.value = 980;
   }

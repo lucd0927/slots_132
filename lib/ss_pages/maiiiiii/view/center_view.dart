@@ -308,39 +308,61 @@ class CenterView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Container(
-          width: 120.w,
-          height: 62.w,
-          child: Stack(
-            children: [
-              Image.asset(
-                Assets.img.mainGrand.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-                gaplessPlayback: true,
-              ),
-              Positioned(
-                top: 20.h,
-                bottom: 18.h,
-                left: 16.w,
-                right: 0,
-                child: Container(
-                  color: Colors.blueAccent.withValues(alpha: 0.0),
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Center(
-                    child: SSTxtBorder(
-                      text:
-                          "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
-                      fontColor: Color(0xff6AFF00),
-                      fontSize: 16.sp,
-                      fontFamily: FontFamily.alkatra,
+        SizedBox(
+
+          child: Container(
+            width: 120.w,
+            height: 62.w,
+            child: Stack(
+              children: [
+                // Shimmer(
+                //   gradient: LinearGradient(
+                //     colors: [
+                //       Colors.transparent,
+                //       Colors.yellow.withValues(alpha: 0.1),
+                //       Colors.yellow.withValues(alpha: 1),
+                //       Colors.yellow.withValues(alpha: 0.1),
+                //       Colors.transparent,
+                //     ],
+                //     stops: [0, 0.44, 0.5, 0.54, 1],
+                //     begin: Alignment.topLeft,
+                //     end: Alignment.bottomRight,
+                //   ),
+                ShiningEffect(
+                  shineColor: Colors.yellow,
+                  opacity: 1,
+                  angle: 0.2,
+                  // duration: Duration(seconds: 2),
+                  child: Image.asset(
+                    Assets.img.mainGrand.path,
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.fill,
+                    gaplessPlayback: true,
+                  ),
+                ),
+                Positioned(
+                  top: 20.h,
+                  bottom: 18.h,
+                  left: 16.w,
+                  right: 0,
+                  child: Container(
+                    color: Colors.blueAccent.withValues(alpha: 0.0),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Center(
+                      child: SSTxtBorder(
+                        text:
+                            "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
+                        fontColor: Color(0xff6AFF00),
+                        fontSize: 16.sp,
+                        fontFamily: FontFamily.alkatra,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Container(
@@ -348,12 +370,17 @@ class CenterView extends StatelessWidget {
           height: 62.w,
           child: Stack(
             children: [
-              Image.asset(
-                Assets.img.mainMajor.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-                gaplessPlayback: true,
+              ShiningEffect(
+                shineColor: Colors.yellow,
+                opacity: 1,
+                angle: 0.2,
+                child: Image.asset(
+                  Assets.img.mainMajor.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                  gaplessPlayback: true,
+                ),
               ),
               Positioned(
                 top: 20.h,
@@ -383,12 +410,17 @@ class CenterView extends StatelessWidget {
           height: 62.w,
           child: Stack(
             children: [
-              Image.asset(
-                Assets.img.mainMini.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-                gaplessPlayback: true,
+              ShiningEffect(
+                shineColor: Colors.yellow,
+                opacity: 1,
+                angle: 0.2,
+                child: Image.asset(
+                  Assets.img.mainMini.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                  gaplessPlayback: true,
+                ),
               ),
               Positioned(
                 top: 20.h,
@@ -452,15 +484,18 @@ class CenterView extends StatelessWidget {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  ShiningEffect(
-                    shineColor: Colors.white,
-                    opacity: 0.5,
-                    duration: const Duration(seconds: 2),
-                    child: Image.asset(
-                      Assets.img.mainBox.path,
-                      width: 58.h,
-                      height: 58.h,
-                      gaplessPlayback: true,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(58.h),
+                    child: ShiningEffect(
+                      shineColor: Colors.white,
+                      opacity: 1,
+                      duration: const Duration(seconds: 2),
+                      child: Image.asset(
+                        Assets.img.mainBox.path,
+                        width: 58.h,
+                        height: 58.h,
+                        gaplessPlayback: true,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -488,18 +523,21 @@ class CenterView extends StatelessWidget {
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    ShiningEffect(
-                      shineColor: Colors.white,
-                      opacity: 0.5,
-                      duration: const Duration(seconds: 2),
-                      child: Hero(
-                        tag: "Phoneeee",
-                        child: Image.asset(
-                          key: MainController.to.keyPhoneSpice,
-                          Assets.img.mainPhone.path,
-                          width: 58.h,
-                          height: 58.h,
-                          gaplessPlayback: true,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(58.h),
+                      child: ShiningEffect(
+                        shineColor: Colors.white,
+                        opacity: 1,
+                        duration: const Duration(seconds: 2),
+                        child: Hero(
+                          tag: "Phoneeee",
+                          child: Image.asset(
+                            key: MainController.to.keyPhoneSpice,
+                            Assets.img.mainPhone.path,
+                            width: 58.h,
+                            height: 58.h,
+                            gaplessPlayback: true,
+                          ),
                         ),
                       ),
                     ),

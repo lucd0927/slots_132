@@ -1038,56 +1038,78 @@ class MainController extends GetxController {
         },
       );
     } else {
-      curSpinMoney.value = tmpAddMoney;
-      double tmpBeisu = curBeisu.value;
-
-      double addBeisu = tmpAddMoney / tmpBeisu;
-
-      if (addBeisu >= 4) {
-        OverlaySuperwin().show(
-          scene: EnumGetScene.spin,
-          money: tmpAddMoney,
-          onBtn: (money) {
-            _rollerEnd(tmpAddMoney: money);
-          },
-          onBtn2: (money) {
-            _rollerEnd(tmpAddMoney: money);
-          },
-        );
-      } else if (addBeisu >= 3) {
-        OverlayMegawin().show(
-          scene: EnumGetScene.spin,
-          money: tmpAddMoney,
-          onBtn: (money) {
-            _rollerEnd(tmpAddMoney: money);
-          },
-          onBtn2: (money) {
-            _rollerEnd(tmpAddMoney: money);
-          },
-        );
-      } else if (addBeisu >= 2) {
-        OverlayBigwin().show(
-          money: tmpAddMoney,
-          onBtn: (money) {
-            _rollerEnd(tmpAddMoney: money);
-          },
-          onBtn2: (money) {
-            _rollerEnd(tmpAddMoney: money);
-          },
-          scene: EnumGetScene.spin,
-        );
-      } else {
-        _rollerEnd(tmpAddMoney: tmpAddMoney);
-      }
+      _onWinPopup(
+        scene: EnumGetScene.spin,
+        tmpAddMoney: tmpAddMoney,
+        onBtn: (money) {
+          _rollerEnd(tmpAddMoney: money);
+        },
+        onBtn2: (money) {
+          _rollerEnd(tmpAddMoney: money);
+        },
+        onNotBtn: (money){
+          _rollerEnd(tmpAddMoney: money);
+        }
+      );
     }
-
-    //
 
     ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
     ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
     ssLogggg(
       "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
     );
+  }
+
+  // super win/ mega win/ mini win
+  _onWinPopup({
+    required double tmpAddMoney,
+    required ValueChanged onBtn,
+    required ValueChanged onBtn2,
+    required ValueChanged? onNotBtn,
+    required EnumGetScene scene,
+  }) {
+    curSpinMoney.value = tmpAddMoney;
+    double tmpBeisu = curBeisu.value;
+
+    double addBeisu = tmpAddMoney / tmpBeisu;
+
+    if (addBeisu >= 4) {
+      OverlaySuperwin().show(
+        scene:scene,
+        money: tmpAddMoney,
+        onBtn: (money) {
+          onBtn(money);
+        },
+        onBtn2: (money) {
+          onBtn2(money);
+        },
+      );
+    } else if (addBeisu >= 3) {
+      OverlayMegawin().show(
+        scene:scene,
+        money: tmpAddMoney,
+        onBtn: (money) {
+          onBtn(money);
+        },
+        onBtn2: (money) {
+          onBtn2(money);
+        },
+      );
+    } else if (addBeisu >= 2) {
+      OverlayBigwin().show(
+        scene:scene,
+        money: tmpAddMoney,
+        onBtn: (money) {
+          onBtn(money);
+        },
+        onBtn2: (money) {
+          onBtn2(money);
+        },
+
+      );
+    } else {
+      onNotBtn?.call(tmpAddMoney);
+    }
   }
 
   _rollerEnd({required double tmpAddMoney}) {
@@ -1535,8 +1557,24 @@ class MainController extends GetxController {
                 money,
                 showMoneyAnimated: true,
                 onEnd: () {
-                  _curFreeSpinMoney = _curFreeSpinMoney + money;
-                  onFreeSpin();
+                  _onWinPopup(
+                      scene: EnumGetScene.single_slots,
+                      tmpAddMoney: money,
+                      onBtn: (money) {
+                        _curFreeSpinMoney = _curFreeSpinMoney + money;
+                        onFreeSpin();
+                      },
+                      onBtn2: (money) {
+                        _curFreeSpinMoney = _curFreeSpinMoney + money;
+                        onFreeSpin();
+                      },
+                      onNotBtn: (money){
+                        _curFreeSpinMoney = _curFreeSpinMoney + money;
+                        onFreeSpin();
+                      }
+                  );
+
+
                 },
               );
               // overlayMainTopMoney.showWithSize(
@@ -1618,20 +1656,20 @@ class MainController extends GetxController {
       _kLottieType_vLottieComposition[EnumLottieType.money] = result;
     });
 
-    spineControllerMajor = SpineWidgetController(
-      onInitialized: (controller) {
-        // Set the default mixing time between animations
-
-        controller.animationState.data.defaultMix = 0.2;
-        // Set the portal animation on track 0
-        controller.animationState.setAnimation(0, "animation", true);
-        // Queue the run animation after the portal animation
-        // controller.animationState.addAnimationByName(0, "run", true, 0);
-      },
-    );
+    // spineControllerMajor = SpineWidgetController(
+    //   onInitialized: (controller) {
+    //     // Set the default mixing time between animations
+    //
+    //     controller.animationState.data.defaultMix = 0.2;
+    //     // Set the portal animation on track 0
+    //     controller.animationState.setAnimation(0, "animation", true);
+    //     // Queue the run animation after the portal animation
+    //     // controller.animationState.addAnimationByName(0, "run", true, 0);
+    //   },
+    // );
   }
 
-  static SpineWidgetController? spineControllerMajor;
+  // static SpineWidgetController? spineControllerMajor;
 
   static LottieComposition? composition(EnumLottieType type) {
     LottieComposition? tmp = _kLottieType_vLottieComposition[type];

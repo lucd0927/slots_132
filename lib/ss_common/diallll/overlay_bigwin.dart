@@ -16,9 +16,11 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/animated_win/animated_win_big.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_bigwin.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -118,6 +120,7 @@ class _BigwinWidgetState extends State<BigwinWidget> {
               height: double.infinity,
 
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   // Column(
                   //   children: [
@@ -150,13 +153,33 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                   Positioned(
                     left: 0,
                     right: 0,
-                    top: -80.h,
+                    top: -90.h,
                     child: Container(
                       width: 375.w,
                       height: 812.h,
-                      child: SSSpineBigwin(),
+                      child: SpineTancXuanguang(),
                     ),
                   ),
+
+
+                  Positioned.fill(
+                      top: 210.h,
+                      child: SSAnimatedWinBig()),
+
+                  // Positioned(
+                  //   left: 0,
+                  //   right: 0,
+                  //   top: 80.h,
+                  //   child: Center(
+                  //     child: Container(
+                  //       width: 200,
+                  //       height: 812.h*0.5,
+                  //       // clipBehavior: Clip.none,
+                  //       // color: Colors.white,
+                  //       child: SSSpineBigwin(),
+                  //     ),
+                  //   ),
+                  // ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -216,6 +239,9 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                       SizedBox(height: 30.h),
                     ],
                   ),
+
+
+
                 ],
               ),
             ),

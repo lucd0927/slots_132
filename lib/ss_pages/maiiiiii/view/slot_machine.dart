@@ -255,12 +255,12 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Container(
-                        width: ScreenUtil().screenWidth,
-                        height: ScreenUtil().screenHeight,
-                        // color: Colors.teal,
-                        child: SpineShengdaolaorenSlots(),
-                      ),
+                      // Container(
+                      //   width: ScreenUtil().screenWidth,
+                      //   height: ScreenUtil().screenHeight,
+                      //   // color: Colors.teal,
+                      //   child: SpineShengdaolaorenSlots(),
+                      // ),
                       Positioned(
                         left: -30.w,
                         right: -30.w,
@@ -437,14 +437,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                       height: double.infinity,
                       color: Colors.blueAccent.withValues(alpha: 0.0),
                       child: Center(
-                        child: Lottie.asset(
-                          Assets.lottt.bian.data,
-                          animate: true,
-                          repeat: true,
-                          width: double.infinity,
-                          height: double.infinity,
-                          fit: BoxFit.fill,
-                        ),
+                        child: SSSpineBorder(),
                       ),
                     ),
                   ),
@@ -539,19 +532,10 @@ class SSSlotMachineState extends State<SSSlotMachine> {
               Center(
                 child: showWin && !hasSlotWild
                     ? SSAScale(
-                        child: Shimmer(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.transparent,
-                              Colors.yellow.withValues(alpha: 0.1),
-                              Colors.yellow.withValues(alpha: 0.5),
-                              Colors.yellow.withValues(alpha: 0.1),
-                              Colors.transparent,
-                            ],
-                            stops: [0, 0.45, 0.5, 0.55, 1],
-                            end : Alignment.topRight,
-                            begin: Alignment.bottomLeft,
-                          ),
+                        child:  ShiningEffect(
+                          shineColor: Colors.yellow,
+                          opacity: 1,
+                          // angle: 0.2,
                           child: child,
                         ),
                       )

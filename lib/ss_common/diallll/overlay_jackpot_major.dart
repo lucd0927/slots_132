@@ -121,24 +121,24 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Positioned(
-                    left: -0.w,
-                    right: -0.w,
-                    top: 0.h,
-                    bottom: -0.h,
-                    child: IgnorePointer(
-                      child: Center(
-                        child: Container(
-                          width: ScreenUtil().screenWidth,
-                          height: ScreenUtil().screenHeight,
-                          // width: 375.w,
-                          // height: 812.h,
-                          color: Colors.yellow.withValues(alpha: 0.0),
-                          child: SSSpineMoney(),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   left: -0.w,
+                  //   right: -0.w,
+                  //   top: 0.h,
+                  //   bottom: -0.h,
+                  //   child: IgnorePointer(
+                  //     child: Center(
+                  //       child: Container(
+                  //         width: ScreenUtil().screenWidth,
+                  //         height: ScreenUtil().screenHeight,
+                  //         // width: 375.w,
+                  //         // height: 812.h,
+                  //         color: Colors.yellow.withValues(alpha: 0.0),
+                  //         child: SSSpineMoney(),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Positioned(
                     left: 0,
                     right: 0,
@@ -157,44 +157,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                       Container(
                         width: 350.h,
                         height: 240.h,
-                        // // child: Stack(
-                        // //   alignment: Alignment.topCenter,
-                        // //   children: [
-                        // //     Image.asset(
-                        // //       Assets.img.popupJackpotBg.path,
-                        // //       width: double.infinity,
-                        // //       height: double.infinity,
-                        // //       fit: BoxFit.fill,
-                        // //     ),
-                        // //     Column(
-                        // //       mainAxisAlignment: MainAxisAlignment.center,
-                        // //       children: [
-                        // //         SSAScale(
-                        // //           child: Image.asset(
-                        // //             Assets.img.popupJackpotGrand.path,
-                        // //             width: 267.h,
-                        // //             height: 91.h,
-                        // //           ),
-                        // //         ),
-                        // //         // SSAScale(
-                        // //         //   child: Image.asset(
-                        // //         //     Assets.img.popupJackpotGrand.path,
-                        // //         //     width: 267.h,
-                        // //         //     height: 91.h,
-                        // //         //   ),
-                        // //         // ),
-                        // //         // SSAScale(
-                        // //         //   child: Image.asset(
-                        // //         //     Assets.img.popupJackpot1.path,
-                        // //         //     width: 334.h,
-                        // //         //     height: 174.h,
-                        // //         //   ),
-                        // //         // ),
-                        // //       ],
-                        // //     ),
-                        // //   ],
-                        // // ),
-                        // child: SSSpineJackpotGrand(),
+
                       ),
                       Container(
                         width: double.infinity,

@@ -52,7 +52,8 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.money.skeletonAtlas,
+      Assets.
+      donghua.money.skeletonAtlas,
       Assets.donghua.money.skeletonJson,
       controller,
       fit: BoxFit.contain,

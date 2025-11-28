@@ -265,10 +265,17 @@ class _ShimmerFilter extends RenderProxyBox {
         rect = Rect.fromLTWH(dx - width, dy, 3 * width, height);
       }
       layer ??= ShaderMaskLayer();
+      final shader = _gradient.createShader(rect);
+      // final Matrix4 m = Matrix4.identity()
+      //   ..translate(rect.width / 2, rect.height / 2)
+      //   ..rotateZ(0.7)   // <-- 加旋转角度
+      //   ..translate(-rect.width / 2, -rect.height / 2);
+
       layer!
-        ..shader = _gradient.createShader(rect)
+        ..shader = shader
         ..maskRect = offset & size
         ..blendMode = BlendMode.srcATop;
+        // ..applyTransform(layer, m);
       context.pushLayer(layer!, super.paint, offset);
     } else {
       layer = null;

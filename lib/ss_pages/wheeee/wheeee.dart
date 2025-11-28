@@ -62,7 +62,7 @@ class _WheeeeState extends State<Wheeee> {
                         colors: [
                           Colors.transparent,
                           Colors.white.withValues(alpha: 0.1),
-                          Colors.white.withValues(alpha: 0.5),
+                          Colors.white.withValues(alpha: 1),
                           Colors.white.withValues(alpha: 0.1),
                           Colors.transparent,
                         ],

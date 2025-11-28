@@ -16,9 +16,11 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/animated_win/animated_win_super.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_superwin.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -136,16 +138,32 @@ class _SuperwinWidgetState extends State<SuperwinWidget> {
                       ),
                     ),
                   ),
+                  // Positioned(
+                  //   left: 0,
+                  //   right: 0,
+                  //   top: -80.h,
+                  //   child: Container(
+                  //     width: 375.w,
+                  //     height: 812.h,
+                  //     child: SSSpineSuperwin(),
+                  //   ),
+                  // ),
                   Positioned(
                     left: 0,
                     right: 0,
-                    top: -80.h,
+                    top: -90.h,
                     child: Container(
                       width: 375.w,
                       height: 812.h,
-                      child: SSSpineSuperwin(),
+                      child: SpineTancXuanguang(),
                     ),
                   ),
+
+
+                  Positioned.fill(
+                      top: 210.h,
+                      child: SSAnimatedWinSuper()),
+
 
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,

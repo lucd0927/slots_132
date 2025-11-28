@@ -16,8 +16,10 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/animated_win/animated_win_wow.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_common/sssssp/spine_wow.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -41,13 +43,19 @@ class OverlayWow {
         return WowWidget(
           onBtn: (double money) {
             close();
-            SSEventReporttttt.cash_pop_collect(pop_type: "wow", pop_from: scene.name);
+            SSEventReporttttt.cash_pop_collect(
+              pop_type: "wow",
+              pop_from: scene.name,
+            );
             onBtn(money);
           },
           money: money,
           onBtn2: (double money) {
             close();
-            SSEventReporttttt.cash_pop_close(pop_type: "wow", pop_from: scene.name);
+            SSEventReporttttt.cash_pop_close(
+              pop_type: "wow",
+              pop_from: scene.name,
+            );
             onBtn2(money);
           },
         );
@@ -149,13 +157,15 @@ class _WowWidgetState extends State<WowWidget> {
                   Positioned(
                     left: 0,
                     right: 0,
-                    top: -80.h,
+                    top: -90.h,
                     child: Container(
                       width: 375.w,
                       height: 812.h,
-                      child: SSSpineWow(),
+                      child: SpineTancXuanguang(),
                     ),
                   ),
+
+                  Positioned.fill(top: 255.h, child: SSAnimatedWinWow()),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
