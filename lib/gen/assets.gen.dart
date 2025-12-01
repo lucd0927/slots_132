@@ -743,6 +743,14 @@ class $AssetsImgGen {
   /// File path: assets/img/splash_bg.png
   AssetGenImage get splashBg => const AssetGenImage('assets/img/splash_bg.png');
 
+  /// File path: assets/img/splash_jindu.png
+  AssetGenImage get splashJindu =>
+      const AssetGenImage('assets/img/splash_jindu.png');
+
+  /// File path: assets/img/splash_jindu2.png
+  AssetGenImage get splashJindu2 =>
+      const AssetGenImage('assets/img/splash_jindu2.png');
+
   /// File path: assets/img/splash_scatter.png
   AssetGenImage get splashScatter =>
       const AssetGenImage('assets/img/splash_scatter.png');
@@ -1175,6 +1183,8 @@ class $AssetsImgGen {
     settiMusic,
     slot1,
     splashBg,
+    splashJindu,
+    splashJindu2,
     splashScatter,
     splashTitle,
     splashTxt345,

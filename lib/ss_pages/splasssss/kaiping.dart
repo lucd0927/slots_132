@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive_ce_flutter/adapters.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shiny_striped_progress_bar/shiny_striped_progress_bar.dart';
 import 'package:slots_132/gen/assets.gen.dart';
@@ -211,7 +212,7 @@ class _SplashProgressState extends State<SplashProgress> {
   double startTime = 0.0;
   late Timer _timer;
   final Duration _delayTime = Duration(milliseconds: _oneTime);
-  double _allTime = 5000;
+  double _allTime = 10000;
   static const int _oneTime = 100;
   bool canGoToMain = true;
   Timer? _delayTimer;
@@ -243,8 +244,7 @@ class _SplashProgressState extends State<SplashProgress> {
           });
         }
       });
-      // abInit();
-      aaabbbbChushi();
+      // aaabbbbChushi();
     });
   }
 
@@ -289,20 +289,47 @@ class _SplashProgressState extends State<SplashProgress> {
           fontSize: 20.sp,
           fontColor: Color(0xffF9F7ED),
         ),
-        SizedBox(height: 15.h),
-        SizedBox(
+        // SizedBox(height: 15.h),
+        Container(
           width: 325.w,
-          height: 15.w,
-          child: AnimatedGradientProgressBar2(
-            value: startTime, // 表示 60%
-            gradientColors: [
-              Color(0xffEFFF04),
-              Color(0xffF9B821),
-              Color(0xffF7AA0C),
-              Color(0xffFBD107),
+          height: 48.h,
+          // decoration: BoxDecoration(
+          //   color: Color(0xff1B1652),
+          //   border: Border.all(color: Color(0xff5CD3F4), width: 1.w),
+          //   borderRadius: BorderRadius.circular(50),
+          // ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.centerLeft,
+            children: [
+              SizedBox(
+                width: 325.w,
+                height: 15.w,
+                child: AnimatedGradientProgressBar2(
+                  value: startTime, // 表示 60%
+                  gradientColors: [
+                    Color(0xffEFFF04),
+                    Color(0xffF9B821),
+                    Color(0xffF7AA0C),
+                    Color(0xffFBD107),
+                  ],
+                  height: 15.w,
+                  borderRadius: BorderRadius.circular(30.w),
+                ),
+              ),
+
+              AnimatedPositioned(
+                duration: Duration(milliseconds: 100),
+                top: -20.h,
+                bottom: -20.h,
+                left: 325.w * startTime - 32.w * (1 - 0),
+                child: Image.asset(
+                  Assets.img.splashJindu.path,
+                  width: 72.w * 1,
+                  height: 48.h * 1,
+                ),
+              ),
             ],
-            height: 15.w,
-            borderRadius: BorderRadius.circular(30.w),
           ),
         ),
       ],
@@ -349,16 +376,20 @@ class AnimatedGradientProgressBar extends StatelessWidget {
             child: FractionallySizedBox(
               alignment: Alignment.centerLeft,
               widthFactor: animatedValue,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: gradientColors,
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: gradientColors,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      border: Border.all(color: Color(0xff421614), width: 2.w),
+                      borderRadius: BorderRadius.circular(height),
+                    ),
                   ),
-                  border: Border.all(color: Color(0xff421614), width: 2.w),
-                  borderRadius: BorderRadius.circular(height),
-                ),
+                ],
               ),
             ),
           ),
@@ -395,29 +426,64 @@ class AnimatedGradientProgressBar2 extends StatelessWidget {
           borderRadius: borderRadius,
           child: Container(
             height: height,
-            decoration: BoxDecoration(color: Color(0xff691904)),
+            decoration: BoxDecoration(
+              color: Color(0xff1B1652),
+              border: Border.all(color: Color(0xff5CD3F4), width: 1.w),
+              borderRadius: BorderRadius.circular(height),
+            ),
             child: FractionallySizedBox(
               alignment: Alignment.centerLeft,
               widthFactor: animatedValue,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: gradientColors,
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    // decoration: BoxDecoration(
+                    //   gradient: LinearGradient(
+                    //     colors: gradientColors,
+                    //     begin: Alignment.topCenter,
+                    //     end: Alignment.bottomCenter,
+                    //   ),
+                    //   border: Border.all(color: Color(0xff5CD3F4), width: 0.w),
+                    //   borderRadius: BorderRadius.circular(height),
+                    // ),
+                    child: ShinyStripedProgressBar(
+                      targetProgress: 1,
+                      // height: 15.w,
+                      duration: Duration(microseconds: 100),
+                      progressColor: Color(0xff29BE00),
+                      borderRadius: BorderRadius.all(Radius.circular(15.w)),
+                      stripeAngle: StripeAngle.angle45,
+                      stripeColor: Color(0xff79DD35),
+                    ),
                   ),
-                  border: Border.all(color: Color(0xffFDA560), width: 2.w),
-                  borderRadius: BorderRadius.circular(height),
-                ),
-                child: ShinyStripedProgressBar(
-                  targetProgress: 1,
-                  // height: 15.w,
-                  duration: Duration(microseconds: 100),
-                  progressColor: Color(0xff2EA610),
-                  borderRadius: BorderRadius.all(Radius.circular(15.w)),
-                  stripeAngle: StripeAngle.angle45,
-                  stripeColor: Color(0xff44EA3E),
-                ),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          // Color(0xffffffff).withValues(alpha: 0.3),
+                          Color(0xffffffff).withValues(alpha: 0.4),
+                          Color(0xffffffff).withValues(alpha: 0.5),
+                          Color(0xffffffff).withValues(alpha: 0.4),
+                          Color(0xffffffff).withValues(alpha: 0.2),
+                          Color(0xffffffff).withValues(alpha: 0.1),
+                          Color(0xffffffff).withValues(alpha: 0.0),
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      border: Border.all(color: Color(0xff5CD3F4), width: 0.w),
+                      borderRadius: BorderRadius.circular(height),
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.white.withValues(alpha: 0.4),
+                      //     blurRadius: 2,
+                      //     spreadRadius: 20,
+                      //   ),
+                      // ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -425,4 +491,141 @@ class AnimatedGradientProgressBar2 extends StatelessWidget {
       },
     );
   }
+}
+
+class StripeProgressBar extends StatefulWidget {
+  final double progress; // 0~1
+  final double height;
+  final Duration stripeDuration;
+
+  const StripeProgressBar({
+    super.key,
+    required this.progress,
+    this.height = 40,
+    this.stripeDuration = const Duration(seconds: 2),
+  });
+
+  @override
+  State<StripeProgressBar> createState() => _StripeProgressBarState();
+}
+
+class _StripeProgressBarState extends State<StripeProgressBar>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(vsync: this, duration: widget.stripeDuration)
+      ..repeat();
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _ctrl,
+      builder: (_, __) {
+        return CustomPaint(
+          painter: _StripePainter(
+            progress: widget.progress,
+            stripeShift: _ctrl.value,
+          ),
+          size: Size(double.infinity, widget.height),
+        );
+      },
+    );
+  }
+}
+
+class _StripePainter extends CustomPainter {
+  final double progress; // 0~1
+  final double stripeShift; // 动画偏移
+
+  _StripePainter({required this.progress, required this.stripeShift});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final radius = size.height / 2;
+    final fullRect = RRect.fromLTRBR(
+      0,
+      0,
+      size.width,
+      size.height,
+      Radius.circular(radius),
+    );
+
+    // -----------------------------
+    // 1. 绘制背景渐变
+    // -----------------------------
+    final bgPaint = Paint()
+      ..shader = LinearGradient(
+        colors: [Color(0xFFB4FF2E), Color(0xFF1EC700)],
+      ).createShader(Offset.zero & size);
+
+    canvas.drawRRect(fullRect, bgPaint);
+
+    // -----------------------------
+    // 2. Clip 进度区域
+    // -----------------------------
+    final progressWidth = size.width * progress;
+    final clipRect = RRect.fromLTRBR(
+      0,
+      0,
+      progressWidth,
+      size.height,
+      Radius.circular(radius),
+    );
+
+    canvas.save();
+    canvas.clipRRect(clipRect);
+
+    // -----------------------------
+    // 3. 绘制内部高亮渐变
+    // -----------------------------
+    final innerPaint = Paint()
+      ..shader = LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Colors.white.withOpacity(0.35),
+          Colors.transparent,
+          Colors.black.withOpacity(0.25),
+        ],
+        stops: [0, 0.5, 1],
+      ).createShader(Offset.zero & size);
+
+    canvas.drawRRect(fullRect, innerPaint);
+
+    // -----------------------------
+    // 4. 绘制斜向纹理（可移动）
+    // -----------------------------
+    final stripePaint = Paint()..color = Colors.white.withOpacity(0.2);
+
+    const stripeWidth = 40;
+    final shift = stripeShift * stripeWidth;
+
+    for (double x = -size.height * 2; x < size.width; x += stripeWidth) {
+      final path = Path()
+        ..moveTo(x + shift, 0)
+        ..lineTo(x + stripeWidth + shift, 0)
+        ..lineTo(x + stripeWidth - size.height + shift, size.height)
+        ..lineTo(x - size.height + shift, size.height)
+        ..close();
+
+      canvas.drawPath(path, stripePaint);
+    }
+
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant _StripePainter oldDelegate) =>
+      oldDelegate.progress != progress ||
+      oldDelegate.stripeShift != stripeShift;
 }
