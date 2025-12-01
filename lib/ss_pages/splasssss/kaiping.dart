@@ -212,7 +212,7 @@ class _SplashProgressState extends State<SplashProgress> {
   double startTime = 0.0;
   late Timer _timer;
   final Duration _delayTime = Duration(milliseconds: _oneTime);
-  double _allTime = 10000;
+  double _allTime = 3000;
   static const int _oneTime = 100;
   bool canGoToMain = true;
   Timer? _delayTimer;

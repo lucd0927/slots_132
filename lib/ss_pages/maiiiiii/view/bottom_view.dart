@@ -13,8 +13,11 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/grey_widget.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_common/sssssp/spine_wheel_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
+import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpanpq.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'dart:math';
@@ -71,6 +74,21 @@ class BottomView extends StatelessWidget {
   }
 
   Widget jishuWidget() {
+    double money = MainController.to.curSpinMoney.value;
+    var showWinLines = MainController.to.showWinLines.value;
+    bool showNum = showWinLines && money >= 0;
+    // showNum = false;
+    ssLogggg("====jishuWidget=money:$money showWinLines:$showWinLines showNum:$showNum");
+    String txt = "Good Luck";
+    if (money <= 0 ) {
+      money = 0;
+    }
+
+
+    if(showNum){
+      txt = "";
+    }
+
     return Container(
       width: 165.h,
       height: 26.h,
@@ -91,21 +109,6 @@ class BottomView extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(26.h),
               child: StarFieldBackground(),
-              // child:        Container(
-              //   color: Colors.blue,
-              //   child: Particles(
-              //     awayRadius: 150,
-              //     particles: createParticles(),
-              //     height: screenHeight,
-              //     width: screenWidth,
-              //     onTapAnimation: true,
-              //     awayAnimationDuration: const Duration(milliseconds: 100),
-              //     awayAnimationCurve: Curves.linear,
-              //     enableHover: true,
-              //     hoverRadius: 90,
-              //     connectDots: false,
-              //   ),
-              // ),
             ),
           ),
           Positioned(
@@ -116,16 +119,37 @@ class BottomView extends StatelessWidget {
             child: Center(
               child: Container(
                 color: Colors.teal.withValues(alpha: 0),
-                child: SSAniiiiCount(
-                  fractionDigits: 2,
-                  value: MainController.to.curSpinMoney.value,
-                  textStyle: TextStyle(
-                    fontSize: 20.sp,
-                    height: 1,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff6AFF00),
-                  ),
-                  prefix: "${SSCountry.curGuojiaFuhao()}",
+                child: Stack(
+                  children: [
+                    Center(
+                      child: Opacity(
+                        opacity: showNum ? 1 : 0,
+                        child: SSAniiiiCount(
+                          fractionDigits: 2,
+                          // value: MainController.to.curSpinMoney.value,
+                          value: MainController.to.curSpinMoney.value,
+                          textStyle: TextStyle(
+                            fontSize: 20.sp,
+                            height: 1,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff6AFF00),
+                          ),
+                          prefix: SSCountry.curGuojiaFuhao(),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        txt,
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          height: 1,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff6AFF00),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -432,30 +456,32 @@ class BottomView extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            // Hero(
-            //   tag: "Wheellll",
-            //   child: Image.asset(
-            //     Assets.img.mainWheel.path,
-            //     width: double.infinity,
-            //     height: double.infinity,
-            //     fit: BoxFit.fill,
-            //     gaplessPlayback: true,
-            //   ),
-            // ),
-            // Positioned(
-            //   bottom: 0,
-            //   left: -10.w,
-            //   right: -10.w,
-            //   child: Center(
-            //     child: SSTxtGraBorder(
-            //       text: "Wheel",
-            //       strokeColor: Color(0xff30120A),
-            //       fontSize: 14.sp,
-            //       fontFamily: FontFamily.alkatra,
-            //     ),
-            //   ),
-            // ),
-            const SSSpineXiaozhuanpan(key: ValueKey("bvSSSpineXiaozhuanpan")),
+
+            Hero(
+              tag: "Wheellll",
+              child: Image.asset(
+                Assets.img.mainWheel.path,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+                gaplessPlayback: true,
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: -10.w,
+              right: -10.w,
+              child: Center(
+                child: SSTxtGraBorder(
+                  text: "Wheel",
+                  strokeColor: Color(0xff30120A),
+                  fontSize: 14.sp,
+                  fontFamily: FontFamily.alkatra,
+                ),
+              ),
+            ),
+            const SSSpineWheelMoney(),
+            // const SSSpineXiaozhuanpan(),
           ],
         ),
       ),

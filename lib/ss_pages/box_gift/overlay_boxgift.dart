@@ -17,6 +17,7 @@ import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
+import 'package:slots_132/ss_common/sssssp/spine_boxgift.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
@@ -224,7 +225,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             ? CrossFadeState.showSecond
             : CrossFadeState.showFirst,
         secondCurve: Curves.linear,
-        duration: Duration(milliseconds: 2000),
+        duration: Duration(milliseconds: 5000),
       ),
     );
   }
@@ -238,7 +239,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
           width: ScreenUtil().screenWidth,
           height:600.h,
           // color: Colors.teal,
-          child: SpineShengdaolaorenSlots(),
+          child: SSSpineBoxgift(),
         ),
       ),
     );

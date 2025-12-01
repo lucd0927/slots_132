@@ -136,9 +136,11 @@ flutter:
 #    - assets/donghua/jackpot_major/
 #    - assets/donghua/jackpot_mini/
     - assets/donghua/xiaozhuanpan/
+    - assets/donghua/xiaozhuanpanbj/
     - assets/donghua/slots_sdlr/
     - assets/donghua/piaoqian/
     - assets/donghua/tanc_xuanguang/
+    - assets/donghua/sdjl/
     - assets/audddd/
     - assets/lottt/bian/
     - assets/lottt/bian/images/
@@ -146,6 +148,8 @@ flutter:
     - assets/lottt/bian2/images/
     - assets/lottt/bian3/
     - assets/lottt/bian3/images/
+    - assets/lottt/zhuanpanbj/
+    - assets/lottt/zhuanpanbj/images/
     - assets/mya/bigwin/
     - assets/mya/megawin/
     - assets/mya/superwin/
@@ -212,6 +216,9 @@ flutter:
     - family: Ephesis
       fonts:
         - asset: assets/fff/Ephesis-Regular.ttf
+    - family: GhostKidAOE_Pro
+      fonts:
+        - asset: assets/fff/GhostKidAOE_Pro.ttf
 #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

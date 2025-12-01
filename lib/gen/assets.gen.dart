@@ -36,6 +36,9 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/piaoqian
   $AssetsDonghuaPiaoqianGen get piaoqian => const $AssetsDonghuaPiaoqianGen();
 
+  /// Directory path: assets/donghua/sdjl
+  $AssetsDonghuaSdjlGen get sdjl => const $AssetsDonghuaSdjlGen();
+
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
 
@@ -50,6 +53,10 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/xiaozhuanpan
   $AssetsDonghuaXiaozhuanpanGen get xiaozhuanpan =>
       const $AssetsDonghuaXiaozhuanpanGen();
+
+  /// Directory path: assets/donghua/xiaozhuanpanbj
+  $AssetsDonghuaXiaozhuanpanbjGen get xiaozhuanpanbj =>
+      const $AssetsDonghuaXiaozhuanpanbjGen();
 }
 
 class $AssetsImgGen {
@@ -1259,6 +1266,9 @@ class $AssetsLotttGen {
 
   /// Directory path: assets/lottt/bian3
   $AssetsLotttBian3Gen get bian3 => const $AssetsLotttBian3Gen();
+
+  /// Directory path: assets/lottt/zhuanpanbj
+  $AssetsLotttZhuanpanbjGen get zhuanpanbj => const $AssetsLotttZhuanpanbjGen();
 }
 
 class $AssetsMyaGen {
@@ -1299,6 +1309,22 @@ class $AssetsDonghuaPiaoqianGen {
 
   /// List of all assets
   List<dynamic> get values => [a2Atlas, a2Png, a22, skeleton];
+}
+
+class $AssetsDonghuaSdjlGen {
+  const $AssetsDonghuaSdjlGen();
+
+  /// File path: assets/donghua/sdjl/2.atlas
+  String get a2Atlas => 'assets/donghua/sdjl/2.atlas';
+
+  /// File path: assets/donghua/sdjl/2.png
+  AssetGenImage get a2Png => const AssetGenImage('assets/donghua/sdjl/2.png');
+
+  /// File path: assets/donghua/sdjl/skeleton.json
+  String get skeleton => 'assets/donghua/sdjl/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [a2Atlas, a2Png, skeleton];
 }
 
 class $AssetsDonghuaSdlrGen {
@@ -1370,12 +1396,46 @@ class $AssetsDonghuaXiaozhuanpanGen {
   List<dynamic> get values => [skeleton, xiaozhuanpanAtlas, xiaozhuanpanPng];
 }
 
+class $AssetsDonghuaXiaozhuanpanbjGen {
+  const $AssetsDonghuaXiaozhuanpanbjGen();
+
+  /// File path: assets/donghua/xiaozhuanpanbj/skeleton.json
+  String get skeleton => 'assets/donghua/xiaozhuanpanbj/skeleton.json';
+
+  /// File path: assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.atlas
+  String get xiaozhuanpanbjAtlas =>
+      'assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.atlas';
+
+  /// File path: assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.png
+  AssetGenImage get xiaozhuanpanbjPng =>
+      const AssetGenImage('assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    skeleton,
+    xiaozhuanpanbjAtlas,
+    xiaozhuanpanbjPng,
+  ];
+}
+
 class $AssetsImgAvatarGen {
   const $AssetsImgAvatarGen();
 
   /// File path: assets/img/avatar/avatar1.png
   AssetGenImage get avatar1 =>
       const AssetGenImage('assets/img/avatar/avatar1.png');
+
+  /// File path: assets/img/avatar/avatar10.png
+  AssetGenImage get avatar10 =>
+      const AssetGenImage('assets/img/avatar/avatar10.png');
+
+  /// File path: assets/img/avatar/avatar11.png
+  AssetGenImage get avatar11 =>
+      const AssetGenImage('assets/img/avatar/avatar11.png');
+
+  /// File path: assets/img/avatar/avatar12.png
+  AssetGenImage get avatar12 =>
+      const AssetGenImage('assets/img/avatar/avatar12.png');
 
   /// File path: assets/img/avatar/avatar2.png
   AssetGenImage get avatar2 =>
@@ -1397,6 +1457,18 @@ class $AssetsImgAvatarGen {
   AssetGenImage get avatar6 =>
       const AssetGenImage('assets/img/avatar/avatar6.png');
 
+  /// File path: assets/img/avatar/avatar7.png
+  AssetGenImage get avatar7 =>
+      const AssetGenImage('assets/img/avatar/avatar7.png');
+
+  /// File path: assets/img/avatar/avatar8.png
+  AssetGenImage get avatar8 =>
+      const AssetGenImage('assets/img/avatar/avatar8.png');
+
+  /// File path: assets/img/avatar/avatar9.png
+  AssetGenImage get avatar9 =>
+      const AssetGenImage('assets/img/avatar/avatar9.png');
+
   /// File path: assets/img/avatar/avatar_d.png
   AssetGenImage get avatarD =>
       const AssetGenImage('assets/img/avatar/avatar_d.png');
@@ -1404,11 +1476,17 @@ class $AssetsImgAvatarGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     avatar1,
+    avatar10,
+    avatar11,
+    avatar12,
     avatar2,
     avatar3,
     avatar4,
     avatar5,
     avatar6,
+    avatar7,
+    avatar8,
+    avatar9,
     avatarD,
   ];
 }
@@ -1520,6 +1598,20 @@ class $AssetsLotttBian3Gen {
 
   /// Directory path: assets/lottt/bian3/images
   $AssetsLotttBian3ImagesGen get images => const $AssetsLotttBian3ImagesGen();
+
+  /// List of all assets
+  List<String> get values => [data];
+}
+
+class $AssetsLotttZhuanpanbjGen {
+  const $AssetsLotttZhuanpanbjGen();
+
+  /// File path: assets/lottt/zhuanpanbj/data.json
+  String get data => 'assets/lottt/zhuanpanbj/data.json';
+
+  /// Directory path: assets/lottt/zhuanpanbj/images
+  $AssetsLotttZhuanpanbjImagesGen get images =>
+      const $AssetsLotttZhuanpanbjImagesGen();
 
   /// List of all assets
   List<String> get values => [data];
@@ -2539,6 +2631,244 @@ class $AssetsLotttBian3ImagesGen {
     seq057,
     seq058,
     seq059,
+    seq06,
+    seq07,
+    seq08,
+    seq09,
+  ];
+}
+
+class $AssetsLotttZhuanpanbjImagesGen {
+  const $AssetsLotttZhuanpanbjImagesGen();
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_0.png
+  AssetGenImage get seq00 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_0.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_1.png
+  AssetGenImage get seq01 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_1.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_10.png
+  AssetGenImage get seq010 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_10.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_11.png
+  AssetGenImage get seq011 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_11.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_12.png
+  AssetGenImage get seq012 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_12.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_13.png
+  AssetGenImage get seq013 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_13.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_14.png
+  AssetGenImage get seq014 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_14.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_15.png
+  AssetGenImage get seq015 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_15.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_16.png
+  AssetGenImage get seq016 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_16.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_17.png
+  AssetGenImage get seq017 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_17.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_18.png
+  AssetGenImage get seq018 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_18.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_19.png
+  AssetGenImage get seq019 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_19.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_2.png
+  AssetGenImage get seq02 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_2.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_20.png
+  AssetGenImage get seq020 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_20.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_21.png
+  AssetGenImage get seq021 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_21.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_22.png
+  AssetGenImage get seq022 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_22.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_23.png
+  AssetGenImage get seq023 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_23.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_24.png
+  AssetGenImage get seq024 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_24.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_25.png
+  AssetGenImage get seq025 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_25.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_26.png
+  AssetGenImage get seq026 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_26.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_27.png
+  AssetGenImage get seq027 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_27.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_28.png
+  AssetGenImage get seq028 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_28.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_29.png
+  AssetGenImage get seq029 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_29.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_3.png
+  AssetGenImage get seq03 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_3.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_30.png
+  AssetGenImage get seq030 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_30.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_31.png
+  AssetGenImage get seq031 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_31.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_32.png
+  AssetGenImage get seq032 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_32.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_33.png
+  AssetGenImage get seq033 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_33.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_34.png
+  AssetGenImage get seq034 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_34.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_35.png
+  AssetGenImage get seq035 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_35.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_36.png
+  AssetGenImage get seq036 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_36.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_37.png
+  AssetGenImage get seq037 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_37.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_38.png
+  AssetGenImage get seq038 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_38.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_39.png
+  AssetGenImage get seq039 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_39.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_4.png
+  AssetGenImage get seq04 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_4.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_40.png
+  AssetGenImage get seq040 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_40.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_41.png
+  AssetGenImage get seq041 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_41.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_42.png
+  AssetGenImage get seq042 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_42.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_43.png
+  AssetGenImage get seq043 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_43.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_44.png
+  AssetGenImage get seq044 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_44.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_45.png
+  AssetGenImage get seq045 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_45.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_5.png
+  AssetGenImage get seq05 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_5.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_6.png
+  AssetGenImage get seq06 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_6.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_7.png
+  AssetGenImage get seq07 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_7.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_8.png
+  AssetGenImage get seq08 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_8.png');
+
+  /// File path: assets/lottt/zhuanpanbj/images/seq_0_9.png
+  AssetGenImage get seq09 =>
+      const AssetGenImage('assets/lottt/zhuanpanbj/images/seq_0_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    seq00,
+    seq01,
+    seq010,
+    seq011,
+    seq012,
+    seq013,
+    seq014,
+    seq015,
+    seq016,
+    seq017,
+    seq018,
+    seq019,
+    seq02,
+    seq020,
+    seq021,
+    seq022,
+    seq023,
+    seq024,
+    seq025,
+    seq026,
+    seq027,
+    seq028,
+    seq029,
+    seq03,
+    seq030,
+    seq031,
+    seq032,
+    seq033,
+    seq034,
+    seq035,
+    seq036,
+    seq037,
+    seq038,
+    seq039,
+    seq04,
+    seq040,
+    seq041,
+    seq042,
+    seq043,
+    seq044,
+    seq045,
+    seq05,
     seq06,
     seq07,
     seq08,

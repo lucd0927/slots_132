@@ -20,6 +20,9 @@ class FontFamily {
   /// Font family: Fraunces
   static const String fraunces = 'Fraunces';
 
+  /// Font family: GhostKidAOE_Pro
+  static const String ghostKidAOEPro = 'GhostKidAOE_Pro';
+
   /// Font family: MarkoOne
   static const String markoOne = 'MarkoOne';
 

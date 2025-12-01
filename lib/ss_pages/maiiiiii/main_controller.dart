@@ -1681,7 +1681,7 @@ class MainController extends GetxController {
 }
 
 enum EnumLottieType {
-  piaoqian("piaoqian"),
+  wheelmoney("wheelmoney"),
   jackpotGrand("jackpotGrand"),
   jackpotMajor("jackpotMajor"),
   jackpotMini("jackpotMini"),

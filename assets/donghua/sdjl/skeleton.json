@@ -1,0 +1,65 @@
+{
+"skeleton": {
+	"hash": "+h5Hm3LBQYI",
+	"spine": "4.3.39-beta",
+	"x": -606.6,
+	"y": -970.19995,
+	"width": 1213.2,
+	"height": 1940.3999,
+	"images": "../../../Downloads/selected_frames_301_1764568719099/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "root", "bone": "root", "attachment": "root" },
+	{ "name": "frame_001", "bone": "root", "attachment": "frame_" },
+	{ "name": "图层 1 拷贝 3 1", "bone": "root", "attachment": "图层 1 拷贝 3 1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"frame_001": {
+				"frame_": {
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": -0.047607422,
+					"width": 2176,
+					"height": 3840,
+					"sequence": { "count": 60, "digits": 3 }
+				}
+			},
+			"root": {
+				"root": {
+					"type": "clipping",
+					"end": "frame_001",
+					"vertexCount": 15,
+					"vertices": [ -507.46, 921.2, 506.79, 915.72, 536.9, 766.53, 565.65, 636.49, 551.96, -420.19, 530.06, -778.81, 539.64, -912.94, 348.01, -945.79, -473.24, -925.26, -517.04, -834.92, -551.26, -618.66, -551.26, 143.74, -551.26, 557.1, -540.31, 722.72, -540.31, 851.39 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"图层 1 拷贝 3 1": {
+				"图层 1 拷贝 3 1": { "scaleX": 0.9, "scaleY": 0.9, "width": 1348, "height": 2156 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"frame_001": {
+					"frame_": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.016666668 },
+							{ "time": 1, "mode": "loop" }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

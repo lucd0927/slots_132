@@ -13,6 +13,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
+import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpanpq.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
@@ -30,8 +31,7 @@ class Main extends StatefulWidget {
   State<Main> createState() => _MainState();
 }
 
-class _MainState extends State<Main>
-    with AutomaticKeepAliveClientMixin {
+class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     // TODO: implement initState
@@ -42,7 +42,6 @@ class _MainState extends State<Main>
     Get.put(SSChatController());
     Get.put(PhoneCardController());
     MainController.initLottieComposition();
-
 
     SSEventReporttttt.install();
     SSEventReporttttt.session();
@@ -58,12 +57,8 @@ class _MainState extends State<Main>
     return Scaffold(resizeToAvoidBottomInset: false, body: mainView());
   }
 
-
-
-
-
   Widget mainView() {
-    return Obx((){
+    return Obx(() {
       bool showFreeSpin = MainController.to.curShowFreeSpin.value;
 
       return SizedBox(
@@ -82,17 +77,18 @@ class _MainState extends State<Main>
               top: -200.h,
               left: 0.w,
 
-              child:Container(
-                  width: ScreenUtil().screenWidth,
-                  height: ScreenUtil().screenHeight,
-                  child: SSSpinePiaoqian()),
+              child: Container(
+                width: ScreenUtil().screenWidth,
+                height: ScreenUtil().screenHeight,
+                child: SSSpinePiaoqian(),
+              ),
             ),
             Column(
               children: [
                 TopView(),
                 AvatarRow(),
                 Expanded(child: CenterView()),
-                BottomView(key: ValueKey("mainBottomView"),),
+                BottomView(key: ValueKey("mainBottomView")),
                 Container(
                   width: double.infinity,
                   height: ScreenUtil().bottomBarHeight,
@@ -103,15 +99,26 @@ class _MainState extends State<Main>
               ],
             ),
 
-            if(showFreeSpin) Container(
-              width: ScreenUtil().screenWidth,
-              height: ScreenUtil().screenHeight,
-              color: Colors.transparent,
-            ),
+            if (showFreeSpin)
+              Container(
+                width: ScreenUtil().screenWidth,
+                height: ScreenUtil().screenHeight,
+                color: Colors.transparent,
+              ),
 
 
-
-
+            // Positioned.fill(
+            //   child: FittedBox(
+            //     child: Container(
+            //       width: ScreenUtil().screenWidth,
+            //       height: ScreenUtil().screenHeight,
+            //       // width: 311.w,
+            //       // height: 232.w,
+            //       color: Colors.yellow,
+            //       child: Center(child: SSSpineXiaozhuanpanpq()),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       );
