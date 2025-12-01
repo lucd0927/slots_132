@@ -1,4 +1,4 @@
-import 'dart:math' ;
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,23 +35,37 @@ class OverlayBoxgift {
     _overlay = OverlayEntry(
       builder: (context) {
         return BoxgiftWidget(
-          onBtn: (double money) async{
+          onBtn: (double money) async {
             close();
-            double tmpMmm = Random().nextDouble()*50+25;
-            List<String> types = ["10spin","15spin","20spin","100xp","150xp","200xp","1phoneSpice"];
+            int time = HomeBoxTimeState().shengyuTime();
+            bool showTime = MainController.to.showBoxTime.value;
+            ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
+            if(time >0 ){
+              return;
+            }
+            double tmpMmm = Random().nextDouble() * 50 + 25;
+            List<String> types = [
+              "10spin",
+              "15spin",
+              "20spin",
+              "100xp",
+              "150xp",
+              "200xp",
+              "1phoneSpice",
+            ];
 
             int a = Random().nextInt(types.length);
             // a = 5;
             String tmpType = types[a];
             int exp = 0;
             int phoneSpice = 0;
-            if(tmpType.contains("spin")){
-              List data = [10,15,20];
+            if (tmpType.contains("spin")) {
+              List data = [10, 15, 20];
               int free = data[Random().nextInt(data.length)];
               OverlayCommonGet().show(
                 money: tmpMmm,
                 freespins: free,
-                onClose: () async{
+                onClose: () async {
                   await Future.delayed(Duration(milliseconds: 300));
                   MainController.to.curShowFreeSpin.value = true;
                   MainController.to.curFreeSpinCount.value = free;
@@ -61,13 +75,10 @@ class OverlayBoxgift {
               );
 
               return;
-
-
-
-            }else if(tmpType.contains("xp")){
-              List data = [100,150,200];
+            } else if (tmpType.contains("xp")) {
+              List data = [100, 150, 200];
               exp = data[Random().nextInt(data.length)];
-            }else if(tmpType.contains("phoneSpice")){
+            } else if (tmpType.contains("phoneSpice")) {
               phoneSpice = 1;
             }
 
@@ -77,7 +88,6 @@ class OverlayBoxgift {
               phoneSpice: phoneSpice,
               onClose: () {},
             );
-
           },
           money: 1,
         );
@@ -125,8 +135,13 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       setState(() {
         showAnimated = true;
       });
-
-      Future.delayed(Duration(milliseconds: 300), () {
+      int time = HomeBoxTimeState().shengyuTime();
+      bool showTime = MainController.to.showBoxTime.value;
+      ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
+      if(time >0 ){
+        return;
+      }
+      Future.delayed(Duration(milliseconds: 5000), () {
         if (mounted) {
           setState(() {
             showSecondPage = true;
@@ -141,7 +156,6 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               Future.delayed(Duration(milliseconds: 500), () {
                 onClose(20);
               });
-
             }
           });
         }
@@ -216,17 +230,16 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       // color: Colors.white,
 
       // child: AnimatedBuilder(animation: animation, builder: builder),
-
-      // child: firstPage(),
-      child: AnimatedCrossFade(
-        firstChild: firstPage(),
-        secondChild: secondPage(),
-        crossFadeState: showSecondPage
-            ? CrossFadeState.showSecond
-            : CrossFadeState.showFirst,
-        secondCurve: Curves.linear,
-        duration: Duration(milliseconds: 5000),
-      ),
+      child: showSecondPage ? secondPage() : firstPage(),
+      // child: AnimatedCrossFade(
+      //   firstChild: firstPage(),
+      //   secondChild: secondPage(),
+      //   crossFadeState: showSecondPage
+      //       ? CrossFadeState.showSecond
+      //       : CrossFadeState.showFirst,
+      //   secondCurve: Curves.linear,
+      //   duration: Duration(milliseconds: 5000),
+      // ),
     );
   }
 
@@ -234,13 +247,64 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      child: Center(
-        child: Container(
-          width: ScreenUtil().screenWidth,
-          height:600.h,
-          // color: Colors.teal,
-          child: SSSpineBoxgift(),
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 100.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: SSTxtGraBorder(
+              text: "Your next gift from the workshop is being prepared.",
+              strokeWidth: 1.w,
+              strokeColor: Color(0xff30120A),
+              fontSize: 20.sp,
+              height: 1.3,
+              fontColor: Color(0xffEAFF00),
+              fontFamily: FontFamily.fraunces,
+            ),
+          ),
+          SizedBox(height: 30.h),
+          Center(
+            child: Container(
+              width: ScreenUtil().screenWidth,
+              height: 400.h,
+              // color: Colors.teal,
+              child: const SSSpineBoxgift(),
+            ),
+          ),
+          SizedBox(height: 30.h),
+          Container(
+            width: 281.h,
+            height: 30.h,
+            child: Stack(
+              children: [
+                Image.asset(
+                  Assets.img.phoneCardBottomBg.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SSTxtGraBorder(
+                        text: "Ready in: ",
+                        strokeWidth: 1.w,
+                        strokeColor: Color(0xff30120A),
+                        fontSize: 20.sp,
+                        fontColor: Color(0xffEAFF00),
+                        fontFamily: FontFamily.fraunces,
+                      ),
+                      HomeBoxTime(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 100.h),
+        ],
       ),
     );
   }

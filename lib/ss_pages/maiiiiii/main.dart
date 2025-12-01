@@ -73,16 +73,16 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               fit: BoxFit.fill,
               gaplessPlayback: true,
             ),
-            Positioned.fill(
-              top: -200.h,
-              left: 0.w,
-
-              child: Container(
-                width: ScreenUtil().screenWidth,
-                height: ScreenUtil().screenHeight,
-                child: SSSpinePiaoqian(),
-              ),
-            ),
+            // Positioned.fill(
+            //   top: -200.h,
+            //   left: 0.w,
+            //
+            //   child: Container(
+            //     width: ScreenUtil().screenWidth,
+            //     height: ScreenUtil().screenHeight,
+            //     child:const SSSpinePiaoqian(),
+            //   ),
+            // ),
             Column(
               children: [
                 TopView(),
@@ -114,8 +114,8 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
             //       height: ScreenUtil().screenHeight,
             //       // width: 311.w,
             //       // height: 232.w,
-            //       color: Colors.yellow,
-            //       child: Center(child: SSSpineXiaozhuanpanpq()),
+            //       // color: Colors.yellow,
+            //       child: Center(child: SSSpinePiaoqian()),
             //     ),
             //   ),
             // ),

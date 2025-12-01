@@ -39,9 +39,9 @@ class SSSlotMachineState extends State<SSSlotMachine> {
 
   double slotsH = 200.h;
   double slotsW = 330.w;
-  final double slotsItemW = 64.w;
+  final double slotsItemW = 65.w;
 
-  double get slotsItemH => 64.h;
+  double get slotsItemH => 63.h;
 
   @override
   void initState() {
@@ -81,24 +81,49 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                     ],
                   ),
                 ),
+                columnW(),
                 _rollerEndWidget(),
-                // if(MainController.to.showFreeSpin.value)   Center(
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       _rollerForground(0),
-                //       _rollerForground(1),
-                //       _rollerForground(2),
-                //       _rollerForground(3),
-                //       _rollerForground(4),
-                //     ],
-                //   ),
-                // ),
+
+
+
+
               ],
             ),
           );
         });
       },
+    );
+  }
+
+  Widget columnW(){
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(width: 64.w,),
+        Container(
+          width: 1.w,
+          height: double.infinity,
+          color: Color(0xffA43334),
+        ),
+        SizedBox(width: 64.w,),
+        Container(
+          width: 1.w,
+          height: double.infinity,
+          color: Color(0xffA43334),
+        ),
+        SizedBox(width: 64.w,),
+        Container(
+          width: 1.w,
+          height: double.infinity,
+          color: Color(0xffA43334),
+        ),
+        SizedBox(width: 64.w,),
+        Container(
+          width: 1.w,
+          height: double.infinity,
+          color: Color(0xffA43334),
+        ),
+      ],
     );
   }
 
@@ -118,7 +143,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   Widget getCenterWidget(int column) {
-    double width = slotsItemW;
+    double width = slotsItemW-1.w;
     // width = 100;
 
     double height = slotsItemH;
@@ -201,7 +226,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   List<Widget> _sdlrWinWidget(int column) {
-    double width = slotsItemW;
+    double width = slotsItemW-1.w;
     // width = 100;
 
     double height = slotsItemH;

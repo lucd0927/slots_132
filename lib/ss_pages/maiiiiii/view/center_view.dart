@@ -458,7 +458,7 @@ class CenterView extends StatelessWidget {
     int time = HomeBoxTimeState().shengyuTime();
     bool showTime = MainController.to.showBoxTime.value;
     ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
-
+    time = -9;
     if (time > 0) {
       ssTushi(text: "Please wait!");
     }else{
@@ -864,8 +864,8 @@ class HomeBoxTimeState extends State<HomeBoxTime> {
   static const hkTime = "4aef6hfh2j69";
   Timer? _timer;
   var box = SSHive.box;
-  // int maxSeconds = 60 * 60 * 8;
-  int maxSeconds = 60*2 ;
+  int maxSeconds = 60 * 60 * 8;
+  // int maxSeconds = 60*2 ;
   String text = "";
 
   @override
@@ -910,7 +910,7 @@ class HomeBoxTimeState extends State<HomeBoxTime> {
         setState(() {
           text = formatDuration(seconds);
         });
-        MainController.to.showBoxTime.value = false;
+        // MainController.to.showBoxTime.value = false;
         _timer?.cancel();
       }
       if (mounted) {

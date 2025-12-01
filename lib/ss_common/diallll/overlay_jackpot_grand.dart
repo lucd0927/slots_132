@@ -165,7 +165,7 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                       width: ScreenUtil().screenWidth,
                       height: ScreenUtil().screenHeight,
 
-                      child: Center(child: SSAnimatedJackpotGrand()),
+                      child: Center(child:const SSAnimatedJackpotGrand()),
                     ),
                   ),
                   Column(

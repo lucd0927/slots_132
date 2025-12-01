@@ -499,8 +499,8 @@ class BottomView extends StatelessWidget {
       height: 200.h,
       decoration: BoxDecoration(
         color: Color(0xff340606).withValues(alpha: 0.7),
-        border: Border.all(color: Color(0xffA43334), width: 1.w),
-        borderRadius: BorderRadius.circular(12.w),
+        border: Border.all(color: Color(0xffA43334), width: 4.w),
+        borderRadius: BorderRadius.circular(4.w),
       ),
 
       child: SSSlotMachine(key: MainController.to.slotMachineKey),
