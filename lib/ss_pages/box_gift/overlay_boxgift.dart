@@ -40,7 +40,7 @@ class OverlayBoxgift {
             int time = HomeBoxTimeState().shengyuTime();
             bool showTime = MainController.to.showBoxTime.value;
             ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
-            if(time >0 ){
+            if (time > 0) {
               return;
             }
             double tmpMmm = Random().nextDouble() * 50 + 25;
@@ -138,7 +138,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       int time = HomeBoxTimeState().shengyuTime();
       bool showTime = MainController.to.showBoxTime.value;
       ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
-      if(time >0 ){
+      if (time > 0) {
         return;
       }
       Future.delayed(Duration(milliseconds: 5000), () {
@@ -269,7 +269,10 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               width: ScreenUtil().screenWidth,
               height: 400.h,
               // color: Colors.teal,
-              child: const SSSpineBoxgift(),
+              child: Stack(children: [
+                Center(child: const SSSpineBoxgift(),),
+                Center(child: Image.asset(Assets.img.boxgiftBorder.path))
+              ],),
             ),
           ),
           SizedBox(height: 30.h),

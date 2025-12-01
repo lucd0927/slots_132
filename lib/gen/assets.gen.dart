@@ -54,9 +54,8 @@ class $AssetsDonghuaGen {
   $AssetsDonghuaXiaozhuanpanGen get xiaozhuanpan =>
       const $AssetsDonghuaXiaozhuanpanGen();
 
-  /// Directory path: assets/donghua/xiaozhuanpanbj
-  $AssetsDonghuaXiaozhuanpanbjGen get xiaozhuanpanbj =>
-      const $AssetsDonghuaXiaozhuanpanbjGen();
+  /// Directory path: assets/donghua/zjmpq
+  $AssetsDonghuaZjmpqGen get zjmpq => const $AssetsDonghuaZjmpqGen();
 }
 
 class $AssetsImgGen {
@@ -147,6 +146,10 @@ class $AssetsImgGen {
   /// File path: assets/img/box_gift_box2.png
   AssetGenImage get boxGiftBox2 =>
       const AssetGenImage('assets/img/box_gift_box2.png');
+
+  /// File path: assets/img/boxgift_border.png
+  AssetGenImage get boxgiftBorder =>
+      const AssetGenImage('assets/img/boxgift_border.png');
 
   /// File path: assets/img/btn_back.png
   AssetGenImage get btnBack => const AssetGenImage('assets/img/btn_back.png');
@@ -1032,6 +1035,7 @@ class $AssetsImgGen {
     boxGiftBg,
     boxGiftBox1,
     boxGiftBox2,
+    boxgiftBorder,
     btnBack,
     btnFreeSpins,
     btnGiftLock,
@@ -1396,25 +1400,54 @@ class $AssetsDonghuaXiaozhuanpanGen {
   List<dynamic> get values => [skeleton, xiaozhuanpanAtlas, xiaozhuanpanPng];
 }
 
-class $AssetsDonghuaXiaozhuanpanbjGen {
-  const $AssetsDonghuaXiaozhuanpanbjGen();
+class $AssetsDonghuaZjmpqGen {
+  const $AssetsDonghuaZjmpqGen();
 
-  /// File path: assets/donghua/xiaozhuanpanbj/skeleton.json
-  String get skeleton => 'assets/donghua/xiaozhuanpanbj/skeleton.json';
+  /// File path: assets/donghua/zjmpq/skeleton.json
+  String get skeleton => 'assets/donghua/zjmpq/skeleton.json';
 
-  /// File path: assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.atlas
-  String get xiaozhuanpanbjAtlas =>
-      'assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.atlas';
+  /// File path: assets/donghua/zjmpq/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/zjmpq/skeletons.atlas';
 
-  /// File path: assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.png
-  AssetGenImage get xiaozhuanpanbjPng =>
-      const AssetGenImage('assets/donghua/xiaozhuanpanbj/xiaozhuanpanbj.png');
+  /// File path: assets/donghua/zjmpq/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons.png');
+
+  /// File path: assets/donghua/zjmpq/skeletons_2.png
+  AssetGenImage get skeletons2 =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons_2.png');
+
+  /// File path: assets/donghua/zjmpq/skeletons_3.png
+  AssetGenImage get skeletons3 =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons_3.png');
+
+  /// File path: assets/donghua/zjmpq/skeletons_4.png
+  AssetGenImage get skeletons4 =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons_4.png');
+
+  /// File path: assets/donghua/zjmpq/skeletons_5.png
+  AssetGenImage get skeletons5 =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons_5.png');
+
+  /// File path: assets/donghua/zjmpq/skeletons_6.png
+  AssetGenImage get skeletons6 =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons_6.png');
+
+  /// File path: assets/donghua/zjmpq/skeletons_7.png
+  AssetGenImage get skeletons7 =>
+      const AssetGenImage('assets/donghua/zjmpq/skeletons_7.png');
 
   /// List of all assets
   List<dynamic> get values => [
     skeleton,
-    xiaozhuanpanbjAtlas,
-    xiaozhuanpanbjPng,
+    skeletonsAtlas,
+    skeletonsPng,
+    skeletons2,
+    skeletons3,
+    skeletons4,
+    skeletons5,
+    skeletons6,
+    skeletons7,
   ];
 }
 

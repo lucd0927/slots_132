@@ -301,7 +301,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             text:
                                 "+${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
                             fontSize: 20.sp,
-                            fontFamily: FontFamily.alkatra,
+                            fontFamily: FontFamily.ghostKidAOEPro,
                             height: 1.2,
                             fontWeight: FontWeight.w500,
                             gradient: LinearGradient(
@@ -443,6 +443,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 text: "${PhoneCardController.to.collectCardNum.value}",
                 fontSize: 16.sp,
                 // fontFamily: FontFamily.alkatra,
+                fontFamily: FontFamily.ghostKidAOEPro,
                 height: 1,
                 fontWeight: FontWeight.w500,
                 // gradient: LinearGradient(

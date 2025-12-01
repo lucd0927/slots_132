@@ -115,7 +115,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                   SizedBox(height: 10.h),
                   Container(
                     width: 298.w,
-                    height: 496.w,
+                    height: 333.w,
                     child: Stack(
                       clipBehavior: Clip.none,
                       alignment: Alignment.topCenter,
@@ -129,7 +129,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
 
                         Column(
                           children: [
-                            SizedBox(height: 150.w),
+                            SizedBox(height: 80.w),
                             Text(
                               "YOU WON",
                               style: TextStyle(
@@ -161,6 +161,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                         text:
                                             "${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
                                         fontSize: 32.sp,
+                                        fontFamily: FontFamily.ghostKidAOEPro,
                                         strokeColor: Color(0xff0C402B),
                                         fontWeight: FontWeight.w700,
                                         gradient: LinearGradient(
@@ -179,9 +180,9 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 4.w),
+                            SizedBox(height: 10.w),
                             Text(
-                              "IN",
+                              "IN ${widget.spinCount} FREE SPINS",
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 24.sp,
@@ -189,85 +190,81 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                 height: 1,
                               ),
                             ),
-                            Text(
-                              "${widget.spinCount}",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 40.sp,
-                                color: Color(0xffFFF8A6),
-                                height: 1.1,
-                              ),
-                            ),
-                            Text(
-                              "FREE SPINS",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 24.sp,
-                                color: Color(0xffFFF8A6),
-                                height: 1,
-                              ),
-                            ),
+                            // Text(
+                            //   "${widget.spinCount}",
+                            //   style: TextStyle(
+                            //     fontWeight: FontWeight.w700,
+                            //     fontSize: 40.sp,
+                            //     color: Color(0xffFFF8A6),
+                            //     height: 1.1,
+                            //   ),
+                            // ),
+                            // Text(
+                            //   "FREE SPINS",
+                            //   style: TextStyle(
+                            //     fontWeight: FontWeight.w700,
+                            //     fontSize: 24.sp,
+                            //     color: Color(0xffFFF8A6),
+                            //     height: 1,
+                            //   ),
+                            // ),
                           ],
                         ),
 
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0.h,
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: onclickClaim,
-                              child: Container(
-                                width: 175.h,
-                                height: 58.h,
-                                child: Stack(
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Image.asset(
-                                      Assets.img.btnFreeSpins.path,
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.fill,
-                                    ),
-                                    Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      top: 14.h,
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            SSTxtBorder(
-                                              text: "Claim",
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 24.sp,
-                                              fontFamily: FontFamily.alkatra,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
 
-                                    // Positioned(
-                                    //   right: 0,
-                                    //   top: -10.h,
-                                    //   child: Image.asset(
-                                    //     Assets.img.video.path,
-                                    //     width: 28.w,
-                                    //     height: 28.w,
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
                   SizedBox(height: 10.h),
+                  Center(
+                    child: GestureDetector(
+                      onTap: onclickClaim,
+                      child: Container(
+                        width: 175.h,
+                        height: 58.h,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Image.asset(
+                              Assets.img.btnFreeSpins.path,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.fill,
+                            ),
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: 14.h,
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.center,
+                                  children: [
+                                    SSTxtBorder(
+                                      text: "Claim",
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 24.sp,
+                                      fontFamily: FontFamily.alkatra,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            // Positioned(
+                            //   right: 0,
+                            //   top: -10.h,
+                            //   child: Image.asset(
+                            //     Assets.img.video.path,
+                            //     width: 28.w,
+                            //     height: 28.w,
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   // GestureDetector(
                   //   onTap: () {
                   //     MainController.to.curFreeSpinCount.value = baseCount;
@@ -281,7 +278,6 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                   //     fontColor: Color(0xffCCCCCC),
                   //   ),
                   // ),
-                  SizedBox(height: 150.h),
                 ],
               ),
             ),

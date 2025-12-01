@@ -10,10 +10,10 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
-import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpanpq.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
@@ -73,6 +73,18 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               fit: BoxFit.fill,
               gaplessPlayback: true,
             ),
+            Positioned.fill(
+              child: FittedBox(
+                child: Container(
+                  width: ScreenUtil().screenWidth,
+                  height: ScreenUtil().screenHeight,
+                  // width: 311.w,
+                  // height: 232.w,
+                  // color: Colors.yellow,
+                  child: Center(child: SSSpineMainCenterpq()),
+                ),
+              ),
+            ),
             // Positioned.fill(
             //   top: -200.h,
             //   left: 0.w,
@@ -107,18 +119,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               ),
 
 
-            // Positioned.fill(
-            //   child: FittedBox(
-            //     child: Container(
-            //       width: ScreenUtil().screenWidth,
-            //       height: ScreenUtil().screenHeight,
-            //       // width: 311.w,
-            //       // height: 232.w,
-            //       // color: Colors.yellow,
-            //       child: Center(child: SSSpinePiaoqian()),
-            //     ),
-            //   ),
-            // ),
+
           ],
         ),
       );

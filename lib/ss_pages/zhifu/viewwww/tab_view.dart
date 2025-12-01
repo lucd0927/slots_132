@@ -208,6 +208,11 @@ class _SSTabViewState extends State<SSTabView> {
     String moneyT =
         "${SSCountry.curGuojiaFuhao()}${curMmm.toStringAsFixed(2)}/${money.toStringAsFixed(0)}";
     double pro = curMmm / money;
+    if (pro < 0) {
+      pro = 0;
+    }
+    pro = 0.1;
+
     return Container(
       width: 128.w,
       // height: 16.h,

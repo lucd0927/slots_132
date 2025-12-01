@@ -17,7 +17,6 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_wheel_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
-import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpanpq.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'dart:math';
@@ -78,14 +77,15 @@ class BottomView extends StatelessWidget {
     var showWinLines = MainController.to.showWinLines.value;
     bool showNum = showWinLines && money >= 0;
     // showNum = false;
-    ssLogggg("====jishuWidget=money:$money showWinLines:$showWinLines showNum:$showNum");
+    ssLogggg(
+      "====jishuWidget=money:$money showWinLines:$showWinLines showNum:$showNum",
+    );
     String txt = "Good Luck";
-    if (money <= 0 ) {
+    if (money <= 0) {
       money = 0;
     }
 
-
-    if(showNum){
+    if (showNum) {
       txt = "";
     }
 
@@ -133,6 +133,7 @@ class BottomView extends StatelessWidget {
                             height: 1,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff6AFF00),
+                            fontFamily: FontFamily.ghostKidAOEPro,
                           ),
                           prefix: SSCountry.curGuojiaFuhao(),
                         ),
@@ -456,7 +457,6 @@ class BottomView extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-
             Hero(
               tag: "Wheellll",
               child: Image.asset(

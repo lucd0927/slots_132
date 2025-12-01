@@ -188,7 +188,7 @@ class _WowWidgetState extends State<WowWidget> {
                                 text:
                                     "${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
                                 fontSize: 42.sp,
-                                fontFamily: FontFamily.alkatra,
+                                fontFamily: FontFamily.ghostKidAOEPro,
                                 height: 1,
                                 fontWeight: FontWeight.w700,
                                 gradient: LinearGradient(

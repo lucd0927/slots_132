@@ -79,7 +79,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
           setState(() {
             showJindu2 = true;
           });
-          Future.delayed(Duration(milliseconds: 2000), () {
+          Future.delayed(Duration(milliseconds: 3000), () {
             onClose();
           });
         }

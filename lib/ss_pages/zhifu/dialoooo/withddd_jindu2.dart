@@ -52,7 +52,7 @@ class WithddJindu2 extends StatefulWidget {
 class _WithddJindu2State extends State<WithddJindu2> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 250);
-  Duration animD2 = Duration(milliseconds: 2000);
+  Duration animD2 = Duration(milliseconds: 5000);
 
   @override
   void initState() {

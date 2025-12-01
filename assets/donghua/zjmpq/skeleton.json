@@ -1,0 +1,48 @@
+{
+"skeleton": {
+	"hash": "KUI6Xhk/nJE",
+	"spine": "4.3.39-beta",
+	"x": -375,
+	"y": -812,
+	"width": 750,
+	"height": 1624,
+	"images": "C:/Users/Administrator/Desktop/C132-Spine-out/zjmpq",
+	"audio": null
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "00000", "bone": "root", "attachment": "0" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"00000": {
+				"0": {
+					"width": 750,
+					"height": 1624,
+					"sequence": { "count": 150, "start": 0, "digits": 4 }
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"00000": {
+					"0": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.033333335 },
+							{ "time": 5.0000005, "mode": "loop", "index": 60, "delay": 0.016666668 }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

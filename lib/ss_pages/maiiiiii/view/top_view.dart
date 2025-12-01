@@ -167,7 +167,13 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-
+    // OverlayFreeSpinsOver().show(
+    //   money: 200,
+    //   onClose: (v) {
+    //
+    //   },
+    //   spinCount: 5,
+    // );
 
     // OverlaySettinnn().show();
     // OverlayWithddCardPaypal().show();
@@ -207,7 +213,7 @@ class TopView extends StatelessWidget {
     // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 
     // OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  }, scene: EnumGetScene.spin);
-    OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 
     // MainController.to.curLevelExp.value = 980;
@@ -385,12 +391,13 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
             prefix: SSCountry.curGuojiaFuhao(),
             suffix: suffix,
             value: money,
+
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
               color: Color(0xff6AFF00),
               fontSize: 16.sp,
               height: 1,
-              fontFamily: FontFamily.rubik,
+              fontFamily: FontFamily.ghostKidAOEPro,
             ),
           ),
         ),
