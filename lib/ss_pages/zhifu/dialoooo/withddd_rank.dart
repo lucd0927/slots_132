@@ -212,7 +212,7 @@ class _RankWidgetState extends State<RankWidget> {
                             ),
                             SizedBox(height: 8.h),
                             Text.rich(
-                              TextSpan(text: "Estimated Wait: 2-3 Hours"),
+                              TextSpan(text: "Estimated Wait: 2-3 Days"),
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12.sp,

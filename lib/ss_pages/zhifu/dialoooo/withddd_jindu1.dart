@@ -117,7 +117,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
                           children: [
                             SizedBox(height: 16.h),
                             Text(
-                              "Sending Your \$50.00 Payout...",
+                              "Sending Your \$1000 Payout...",
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 16.sp,
@@ -307,7 +307,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Withdrawal Credited \$50.00",
+                          "Withdrawal Credited \$1000",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xff596775),

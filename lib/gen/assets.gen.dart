@@ -817,6 +817,10 @@ class $AssetsImgGen {
   AssetGenImage get txBuzuTips =>
       const AssetGenImage('assets/img/tx_buzu_tips.png');
 
+  /// File path: assets/img/tx_onelast_jindubank.png
+  AssetGenImage get txOnelastJindubank =>
+      const AssetGenImage('assets/img/tx_onelast_jindubank.png');
+
   /// File path: assets/img/tx_popup_bank.png
   AssetGenImage get txPopupBank =>
       const AssetGenImage('assets/img/tx_popup_bank.png');
@@ -848,6 +852,9 @@ class $AssetsImgGen {
   /// File path: assets/img/tx_popup_tips2.png
   AssetGenImage get txPopupTips2 =>
       const AssetGenImage('assets/img/tx_popup_tips2.png');
+
+  /// File path: assets/img/txlastbg.png
+  AssetGenImage get txlastbg => const AssetGenImage('assets/img/txlastbg.png');
 
   /// File path: assets/img/video.png
   AssetGenImage get video => const AssetGenImage('assets/img/video.png');
@@ -1206,6 +1213,7 @@ class $AssetsImgGen {
     txBuzuJindu2,
     txBuzuPay,
     txBuzuTips,
+    txOnelastJindubank,
     txPopupBank,
     txPopupBankJindu,
     txPopupJindu2,
@@ -1214,6 +1222,7 @@ class $AssetsImgGen {
     txPopupMore,
     txPopupSelect,
     txPopupTips2,
+    txlastbg,
     video,
     wheelBg,
     wheelCount,

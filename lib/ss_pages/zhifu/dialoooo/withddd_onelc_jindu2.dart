@@ -91,7 +91,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
               children: [
                 Container(
                   width: 324.w,
-                  height: 388.h,
+                  height: 488.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(24.h),
@@ -99,53 +99,46 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                   child: Column(
                     children: [
                       SizedBox(height: 16.h),
-                      Text(
-                        "A Giant Pile Of Cash Pops Up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16.sp,
-                          color: Color(0xff000000),
-                        ),
+
+                      Image.asset(
+                        Assets.img.txOnelastJindubank.path,
+                        width: 194.w,
+                        height: 194.h,
                       ),
-                      SizedBox(height: 4.h),
+
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Text.rich(
                           TextSpan(
-                            text: "Want Make",
+                            text: "Earn ",
                             children: [
                               TextSpan(
-                                text: " \$1,000 ",
+                                text: " \$1,000/Day ",
                                 style: TextStyle(color: Color(0xff20B029)),
                               ),
                               TextSpan(
-                                text: "a Day?",
+                                text: "Guaranteed",
                                 style: TextStyle(color: Color(0xff242731)),
                               ),
                             ],
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 15.sp,
+                            fontSize: 24.sp,
                             color: Color(0xff2E313A),
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(height: 8.h),
-                      Image.asset(
-                        Assets.img.moneyPopup.path,
-                        width: 137.w,
-                        height: 93.h,
-                      ),
 
-                      SizedBox(height: 8.h),
+
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Text.rich(
                           TextSpan(
                             text:
-                                "You're good at this. Real good.\n\nWe want You on our VIP team. Get paid \$1,000 every single day, guaranteed.\n\nThis is a ONE-TIME deal. Right now.",
+                                "You're good at this. Real good.\nWe want You on our VIP team. Get paid \$1,000 every single day, guaranteed.\nThis is a ONE-TIME deal. Right now.",
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -155,7 +148,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                         ),
                       ),
 
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 30.h),
 
                       GestureDetector(
                         onTap: () {
@@ -172,7 +165,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           ),
                           child: Center(
                             child: Text(
-                              "Yes,I want \$1,000 a day",
+                              "Accept  VIP  Invitation",
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -182,18 +175,23 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 10.h,),
+                      GestureDetector(
+                        onTap: onClose,
+                        child: Text(
+                          "No thanks, I prefer earning less",
+                          style: TextStyle(
+                            color: Color(0xff7A7A7A),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(height: 40.h),
-                GestureDetector(
-                  onTap: onClose,
-                  child: Image.asset(
-                    Assets.img.closePopup.path,
-                    width: 30.h,
-                    height: 30.h,
-                  ),
-                ),
+
               ],
             ),
           ),

@@ -200,7 +200,7 @@ class TopView extends StatelessWidget {
     // OverlayRank().show();
     // OverlayOneLastCheck().show();
     // OverlayWithddOnelastcheckJindu1().show();
-    // OverlayOneLastCheckJindu2().show();
+    OverlayOneLastCheckJindu2().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);

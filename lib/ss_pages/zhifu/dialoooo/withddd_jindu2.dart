@@ -123,7 +123,7 @@ class _WithddJindu2State extends State<WithddJindu2> {
                                 child: Text.rich(
                                   TextSpan(
                                     text:
-                                        "To complete your \$50.00 withdrawal, a \$10.00 fee is required by the ",
+                                        "To complete your \$1000 withdrawal, a \$10.00 fee is required by the ",
                                     children: [
                                       TextSpan(
                                         text: "bank.",

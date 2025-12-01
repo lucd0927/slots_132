@@ -125,7 +125,7 @@ class _WithddOnelastcheckJindu1WidgetState
                             text: "Your",
                             children: [
                               TextSpan(
-                                text: " \$50.00 ",
+                                text: " \$1000 ",
                                 style: TextStyle(color: Color(0xff20B029)),
                               ),
                               TextSpan(
