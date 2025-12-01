@@ -1,29 +1,29 @@
 {
 "skeleton": {
-	"hash": "AC41NH6LR6E",
+	"hash": "XcwMjSxpmc0",
 	"spine": "4.3.39-beta",
-	"x": -375,
-	"y": -812,
-	"width": 750,
-	"height": 1624,
-	"images": "C:/Users/Administrator/Desktop/132-test-bj/images",
+	"x": -232,
+	"y": -232,
+	"width": 464,
+	"height": 464,
+	"images": "C:/Users/Administrator/Desktop/tset/粒子特效",
 	"audio": null
 },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
-	{ "name": "seq_0_0", "bone": "root", "attachment": "seq_0_" }
+	{ "name": "001", "bone": "root", "attachment": "0" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"seq_0_0": {
-				"seq_0_": {
-					"width": 750,
-					"height": 1624,
-					"sequence": { "count": 90, "start": 0, "digits": 1 }
+			"001": {
+				"0": {
+					"width": 464,
+					"height": 464,
+					"sequence": { "count": 9, "digits": 2 }
 				}
 			}
 		}
@@ -31,13 +31,22 @@
 ],
 "animations": {
 	"animation": {
+		"bones": {
+			"root": {
+				"scale": [
+					{},
+					{ "time": 0.73333335, "x": 0.75, "y": 0.75 },
+					{ "time": 1.4666667 }
+				]
+			}
+		},
 		"attachments": {
 			"default": {
-				"seq_0_0": {
-					"seq_0_": {
+				"001": {
+					"0": {
 						"sequence": [
-							{ "mode": "loop", "delay": 0.033333335 },
-							{ "time": 3.0000002, "mode": "loop" }
+							{ "mode": "loop", "delay": 0.083333336 },
+							{ "time": 1.4666667, "mode": "loop", "index": 8 }
 						]
 					}
 				}

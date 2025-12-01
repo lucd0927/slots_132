@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:particles_flutter/particles_engine.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
@@ -13,6 +14,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/grey_widget.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'dart:math';
@@ -59,58 +61,75 @@ class BottomView extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 80.h,
+            child: Center(child: jishuWidget()),
+          ),
+
+          Positioned(left: 0, right: 0, bottom: 0, child: bottomView()),
+        ],
+      ),
+    );
+  }
+
+  Widget jishuWidget() {
+    return Container(
+      width: 165.h,
+      height: 26.h,
+      child: Stack(
+        children: [
+          Image.asset(
+            Assets.img.mainMoneyChange.path,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.fill,
+            gaplessPlayback: true,
+          ),
+          Positioned(
+            left: 2.w,
+            right: 2.w,
+            top: 2.h,
+            bottom: 2.h,
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(26.h),
+              child: StarFieldBackground(),
+              // child:        Container(
+              //   color: Colors.blue,
+              //   child: Particles(
+              //     awayRadius: 150,
+              //     particles: createParticles(),
+              //     height: screenHeight,
+              //     width: screenWidth,
+              //     onTapAnimation: true,
+              //     awayAnimationDuration: const Duration(milliseconds: 100),
+              //     awayAnimationCurve: Curves.linear,
+              //     enableHover: true,
+              //     hoverRadius: 90,
+              //     connectDots: false,
+              //   ),
+              // ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 2.h,
+            bottom: 0,
             child: Center(
               child: Container(
-                width: 165.h,
-                height: 26.h,
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      Assets.img.mainMoneyChange.path,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.fill,
-                      gaplessPlayback: true,
-                    ),
-                    Positioned(
-                      left: 2.w,
-                      right: 2.w,
-                      top: 2.h,
-                      bottom: 2.h,
-                      child: ClipRRect(
-                        borderRadius: BorderRadiusGeometry.circular(26.h),
-                        child: StarFieldBackground(),
-                      ),
-                    ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 2.h,
-                      bottom: 0,
-                      child: Center(
-                        child: Container(
-                          color: Colors.teal.withValues(alpha: 0),
-                          child: SSAniiiiCount(
-                            fractionDigits: 2,
-                            value: MainController.to.curSpinMoney.value,
-                            textStyle: TextStyle(
-                              fontSize: 20.sp,
-                              height: 1,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff6AFF00),
-                            ),
-                            prefix: "${SSCountry.curGuojiaFuhao()}",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                color: Colors.teal.withValues(alpha: 0),
+                child: SSAniiiiCount(
+                  fractionDigits: 2,
+                  value: MainController.to.curSpinMoney.value,
+                  textStyle: TextStyle(
+                    fontSize: 20.sp,
+                    height: 1,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff6AFF00),
+                  ),
+                  prefix: "${SSCountry.curGuojiaFuhao()}",
                 ),
               ),
             ),
           ),
-
-          Positioned(left: 0, right: 0, bottom: 0, child: bottomView()),
         ],
       ),
     );
@@ -332,13 +351,16 @@ class BottomView extends StatelessWidget {
                         //   height: 1,
                         //   // strokeColor: Color(0xff174726),
                         // ),
-                        SSAniiiiCount(value: MainController.to.curFreeSpinCount.value,textStyle: TextStyle(
-                          fontSize: 24.sp,
-                          fontFamily: FontFamily.fraunces,
-                          fontWeight: FontWeight.w700,
-                          height: 1,
-                          color: Colors.white,
-                        ),),
+                        SSAniiiiCount(
+                          value: MainController.to.curFreeSpinCount.value,
+                          textStyle: TextStyle(
+                            fontSize: 24.sp,
+                            fontFamily: FontFamily.fraunces,
+                            fontWeight: FontWeight.w700,
+                            height: 1,
+                            color: Colors.white,
+                          ),
+                        ),
 
                         Image.asset(
                           Assets.img.btnTxtFreeSpin.path,
@@ -390,7 +412,7 @@ class BottomView extends StatelessWidget {
         ? GreyWidget(child: child)
         : GestureDetector(
             onTap: () {
-              if(showFree){
+              if (showFree) {
                 return;
               }
               MainController.to.onStartRoller();
@@ -401,37 +423,39 @@ class BottomView extends StatelessWidget {
 
   Widget wheelWidget() {
     return GestureDetector(
+      key: ValueKey("ttttt"),
       onTap: onWheel,
       child: Container(
         width: 65.h,
         height: 72.h,
-        color: Colors.red.withValues(alpha: 0),
+        color: Colors.red.withValues(alpha: 0.0),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            Hero(
-              tag: "Wheellll",
-              child: Image.asset(
-                Assets.img.mainWheel.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-                gaplessPlayback: true,
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: -10.w,
-              right: -10.w,
-              child: Center(
-                child: SSTxtGraBorder(
-                  text: "Wheel",
-                  strokeColor: Color(0xff30120A),
-                  fontSize: 14.sp,
-                  fontFamily: FontFamily.alkatra,
-                ),
-              ),
-            ),
+            // Hero(
+            //   tag: "Wheellll",
+            //   child: Image.asset(
+            //     Assets.img.mainWheel.path,
+            //     width: double.infinity,
+            //     height: double.infinity,
+            //     fit: BoxFit.fill,
+            //     gaplessPlayback: true,
+            //   ),
+            // ),
+            // Positioned(
+            //   bottom: 0,
+            //   left: -10.w,
+            //   right: -10.w,
+            //   child: Center(
+            //     child: SSTxtGraBorder(
+            //       text: "Wheel",
+            //       strokeColor: Color(0xff30120A),
+            //       fontSize: 14.sp,
+            //       fontFamily: FontFamily.alkatra,
+            //     ),
+            //   ),
+            // ),
+            const SSSpineXiaozhuanpan(key: ValueKey("bvSSSpineXiaozhuanpan")),
           ],
         ),
       ),

@@ -29,6 +29,7 @@ main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // // 2 本地存储
+
   await Hive.initFlutter();
   await Hive.openBox(SSHive.hkBbbb);
   await Hive.openBox(SSHive.hkBoxChat);

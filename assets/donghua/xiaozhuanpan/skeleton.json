@@ -1,0 +1,48 @@
+{
+"skeleton": {
+	"hash": "DNLatRjum8Y",
+	"spine": "4.3.39-beta",
+	"x": -58,
+	"y": -50,
+	"width": 116,
+	"height": 100,
+	"images": "../../tset/转盘钞票雨/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "00000", "bone": "root", "attachment": "0" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"00000": {
+				"0": {
+					"width": 116,
+					"height": 100,
+					"sequence": { "count": 60, "start": 0, "digits": 4 }
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"00000": {
+					"0": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.033333335 },
+							{ "time": 2, "mode": "loop", "index": 24, "delay": 0.083333336 }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

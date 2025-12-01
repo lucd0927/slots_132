@@ -114,7 +114,7 @@ class LuckySlotsController extends GetxController {
     await _roller(thirdRoller, 2);
     await _roller(fourthRoller, 3);
     await result?.future;
-    await Future.delayed(Duration(milliseconds: 1200));
+    await Future.delayed(Duration(milliseconds: 800));
     ssLogggg("==onStartRoller==end=cunt:$cunt");
 
     hasScrollerEnd.value = false;

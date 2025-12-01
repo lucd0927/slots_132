@@ -97,6 +97,7 @@ dependencies:
   spine_flutter: ^4.3.1
   lottie: ^3.3.2
   shiny_striped_progress_bar: ^1.1.0
+  particles_flutter: ^1.0.1
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:
@@ -127,13 +128,14 @@ flutter:
     - assets/img/avatar/
     - assets/img/slots/
     - assets/donghua/sdlr/
-    - assets/donghua/yanhua/
-    - assets/donghua/lottie_money/
-    - assets/donghua/lottie_money/images/
-    - assets/donghua/money/
-    - assets/donghua/jackpot_grand/
-    - assets/donghua/jackpot_major/
-    - assets/donghua/jackpot_mini/
+#    - assets/donghua/yanhua/
+#    - assets/donghua/lottie_money/
+#    - assets/donghua/lottie_money/images/
+#    - assets/donghua/money/
+#    - assets/donghua/jackpot_grand/
+#    - assets/donghua/jackpot_major/
+#    - assets/donghua/jackpot_mini/
+    - assets/donghua/xiaozhuanpan/
     - assets/donghua/slots_sdlr/
     - assets/donghua/piaoqian/
     - assets/donghua/tanc_xuanguang/

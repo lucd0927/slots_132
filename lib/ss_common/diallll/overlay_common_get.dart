@@ -16,7 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
-import 'package:slots_132/ss_common/sssssp/spine_lihua.dart';
+import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_test.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';

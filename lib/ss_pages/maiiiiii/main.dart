@@ -92,7 +92,7 @@ class _MainState extends State<Main>
                 TopView(),
                 AvatarRow(),
                 Expanded(child: CenterView()),
-                BottomView(),
+                BottomView(key: ValueKey("mainBottomView"),),
                 Container(
                   width: double.infinity,
                   height: ScreenUtil().bottomBarHeight,

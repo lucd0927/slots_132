@@ -31,6 +31,7 @@ import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
+import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
@@ -956,6 +957,7 @@ class MainController extends GetxController {
     });
     if (containerslotNumPhoneSpice) {
       await Future.delayed(Duration(milliseconds: 1200), () {});
+      PhoneCardController.to.changeWhichStageIndex();
     }
     DateTime curTime = DateTime.now();
     ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
@@ -1401,17 +1403,26 @@ class MainController extends GetxController {
       return;
     }
 
-    double tmpCurMmmm = curMonnnn.value;
-    tmpCurMmmm = tmpCurMmmm + money;
-    box.put(hkMonnnn, tmpCurMmmm);
-    curMonnnn.value = tmpCurMmmm;
+
     if (money > 0) {
       overlayMainTopMoney.showWithSize(
         childSize: Size(32.w, 32.w),
-        onEnd: onEnd,
+        onEnd: (){
+          double tmpCurMmmm = curMonnnn.value;
+          tmpCurMmmm = tmpCurMmmm + money;
+          box.put(hkMonnnn, tmpCurMmmm);
+          curMonnnn.value = tmpCurMmmm;
+          ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
+          onEnd?.call();
+        },
         showTargetWidget: showTargetWidget,
       );
     } else {
+      double tmpCurMmmm = curMonnnn.value;
+      tmpCurMmmm = tmpCurMmmm + money;
+      box.put(hkMonnnn, tmpCurMmmm);
+      curMonnnn.value = tmpCurMmmm;
+      ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
       onEnd?.call();
     }
   }
@@ -1530,53 +1541,30 @@ class MainController extends GetxController {
             scene: EnumGetScene.spin,
             money: money,
             onBtn: (v) {
-              onAddMoney(
-                money,
-                showMoneyAnimated: true,
-                onEnd: () {
-                  _curFreeSpinMoney = _curFreeSpinMoney + money;
-                  onFreeSpin();
-                },
-              );
+              _onNextFreeSpin(money: money);
             },
             onBtn2: (money) {
-              onAddMoney(
-                money,
-                showMoneyAnimated: true,
-                onEnd: () {
-                  _curFreeSpinMoney = _curFreeSpinMoney + money;
-                  onFreeSpin();
-                },
-              );
+              _onNextFreeSpin(money: money);
             },
           );
         } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.spin) {
           OverlayLuckySlots().show(
             onClose: (money) {
-              onAddMoney(
-                money,
-                showMoneyAnimated: true,
-                onEnd: () {
-                  _onWinPopup(
-                      scene: EnumGetScene.single_slots,
-                      tmpAddMoney: money,
-                      onBtn: (money) {
-                        _curFreeSpinMoney = _curFreeSpinMoney + money;
-                        onFreeSpin();
-                      },
-                      onBtn2: (money) {
-                        _curFreeSpinMoney = _curFreeSpinMoney + money;
-                        onFreeSpin();
-                      },
-                      onNotBtn: (money){
-                        _curFreeSpinMoney = _curFreeSpinMoney + money;
-                        onFreeSpin();
-                      }
-                  );
 
-
-                },
+              _onWinPopup(
+                  scene: EnumGetScene.single_slots,
+                  tmpAddMoney: money,
+                  onBtn: (money) {
+                    _onNextFreeSpin(money: money);
+                  },
+                  onBtn2: (money) {
+                    _onNextFreeSpin(money: money);
+                  },
+                  onNotBtn: (money){
+                    _onNextFreeSpin(money: money);
+                  }
               );
+
               // overlayMainTopMoney.showWithSize(
               //   childSize: Size(32.w, 32.w),
               //   onEnd: () {
@@ -1586,6 +1574,19 @@ class MainController extends GetxController {
             },
           );
         }
+      },
+    );
+  }
+
+  _onNextFreeSpin({required double money}){
+    onAddMoney(
+      money,
+      showMoneyAnimated: true,
+      onEnd: () {
+        _curFreeSpinMoney = _curFreeSpinMoney + money;
+        onFreeSpin();
+
+
       },
     );
   }
@@ -1652,9 +1653,9 @@ class MainController extends GetxController {
     //   _kLottieType_vLottieComposition[EnumLottieType.jackpotMini] = result;
     // });
 
-    AssetLottie(Assets.donghua.lottieMoney.data).load().then((result) {
-      _kLottieType_vLottieComposition[EnumLottieType.money] = result;
-    });
+    // AssetLottie(Assets.donghua.lottieMoney.data).load().then((result) {
+    //   _kLottieType_vLottieComposition[EnumLottieType.money] = result;
+    // });
 
     // spineControllerMajor = SpineWidgetController(
     //   onInitialized: (controller) {
