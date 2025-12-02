@@ -1304,6 +1304,7 @@ class MainController extends GetxController {
   /// 除去slot machine的逻辑
 
   var box = SSHive.box;
+  var boxHistory = SSHive.boxHistory;
   var curMonnnn = 0.0.obs;
 
   static const int maxLevel = 32;
@@ -1439,6 +1440,52 @@ class MainController extends GetxController {
     return tmpLevel;
   }
 
+  static const String hkHistoryData = "hkHistoryData12dd";
+
+  List<GiftRewardModel> getHistory() {
+    var data = boxHistory.get(hkHistoryData) ?? [];
+    ssLogggg("=====getHistory:$data");
+
+    List<GiftRewardModel> tmpGR = [];
+    if (data is List) {
+      data.forEach((value) {
+        if (value is Map) {
+          var rewardModelType = value['rewardModelType'] ?? "";
+
+          EnumGiftRewardModel tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+          if (rewardModelType == EnumGiftRewardModel.cash.name) {
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+          } else if (rewardModelType == EnumGiftRewardModel.xp.name) {
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.xp;
+          }
+
+          var num = value['num'] ?? "";
+          var time = value['time'] ?? 0;
+          GiftRewardModel tmp = GiftRewardModel(
+            rewardModelType: tmpEnumGiftRewardModel,
+            num: num,
+            time: time,
+            img: "",
+          );
+          tmpGR.add(tmp);
+        }
+      });
+    }
+    ssLogggg("=====getHistory tmpGR:${tmpGR.length}");
+    return tmpGR.reversed.toList();
+  }
+
+  addHistory({required GiftRewardModel giftModel}) {
+    var data = boxHistory.get(hkHistoryData) ?? [];
+    if (data is List && data.length > 100) {
+      data.removeAt(0);
+    }
+    data.add(giftModel.toJson());
+    ssLogggg("=====addHistory:$data");
+
+    boxHistory.put(hkHistoryData, data);
+  }
+
   onAddMoney(
     double money, {
     VoidCallback? onEnd,
@@ -1449,6 +1496,14 @@ class MainController extends GetxController {
       onEnd?.call();
       return;
     }
+
+    addHistory(
+      giftModel: GiftRewardModel(
+        rewardModelType: EnumGiftRewardModel.cash,
+        num: money,
+        img: "",
+      ),
+    );
 
     if (money > 0) {
       overlayMainTopMoney.showWithSize(
@@ -1480,7 +1535,13 @@ class MainController extends GetxController {
     tmpExp = tmpExp + exp;
 
     box.put(hkLevelExp, tmpExp);
-
+    addHistory(
+      giftModel: GiftRewardModel(
+        rewardModelType: EnumGiftRewardModel.xp,
+        num: exp * 1.0,
+        img: "",
+      ),
+    );
     curLevelExp.value = tmpExp;
     ssLogggg("======tmpExp:$tmpExp=");
   }

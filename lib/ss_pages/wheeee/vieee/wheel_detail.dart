@@ -32,29 +32,32 @@ class _SSWheelDetailState extends State<SSWheelDetail> {
   Widget build(BuildContext context) {
     Widget child = Hero(
       tag: "Wheellll",
-      child: Container(
-        width: 375.w,
-        height: 375.w,
-        color: Colors.yellow.withValues(alpha: 0.0),
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: IgnorePointer(
-                child: SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: ZpBorder(),
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          width: 375.w,
+          height: 375.w,
+          color: Colors.yellow.withValues(alpha: 0.0),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: ZpBorder(),
+                  ),
                 ),
               ),
-            ),
-            Positioned.fill(
-              child: ControlledWheel(
-                onEnd: (value) {
-                  widget.onEnd(value);
-                },
+              Positioned.fill(
+                child: ControlledWheel(
+                  onEnd: (value) {
+                    widget.onEnd(value);
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

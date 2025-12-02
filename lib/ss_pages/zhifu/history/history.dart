@@ -2,10 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_ce_flutter/adapters.dart';
+import 'package:intl/intl.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/history/history_c.dart';
 
 class Historyyyy extends StatefulWidget {
@@ -16,12 +19,20 @@ class Historyyyy extends StatefulWidget {
 }
 
 class _HistoryyyyState extends State<Historyyyy> {
-  late List<TransactionGroup> groups;
+  late List<GiftRewardModel> groups;
+  List<Widget> children = [];
 
   @override
   void initState() {
     super.initState();
     SSEventReporttttt.transaction_history_page();
+
+    groups = MainController.to.getHistory();
+
+    for (var value in groups) {
+      Widget item = _item(value);
+      children.add(item);
+    }
   }
 
   @override
@@ -37,12 +48,7 @@ class _HistoryyyyState extends State<Historyyyy> {
             Expanded(
               child: ListView(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4),
-                children: [
-                  _item(),
-                  _item(),
-                  _item(),
-                  _item(),
-                ],
+                children: children,
               ),
             ),
           ],
@@ -88,19 +94,37 @@ class _HistoryyyyState extends State<Historyyyy> {
     );
   }
 
-  _item() {
-    String leftImg = Assets.img.withddCashappS.path;
-    String title = "Withdraw";
-    String time = "12:12:12";
-    double money = 100;
-    bool hasAdd = true;
-    String symbol = hasAdd ?"+":"-";
+  String formatTime(DateTime time) {
+    return DateFormat('yyyy-MM-dd HH:mm:ss').format(time);
+  }
+
+  _item(GiftRewardModel giftModel) {
+    String leftImg = Assets.img.moneyGift.path;
+
+    String title = "Money";
+    int dtime = giftModel.time ?? 0;
+    double money = giftModel.num;
+    bool hasAdd = money > 0;
+    String time = formatTime(DateTime.fromMillisecondsSinceEpoch(dtime));
+    EnumGiftRewardModel giftRewardModel = giftModel.rewardModelType;
+    String symbol = hasAdd ? "" : "";
+    String rightTxt = "";
+    if (giftRewardModel == EnumGiftRewardModel.cash) {
+      leftImg = Assets.img.moneyGift.path;
+      title = "Money";
+      rightTxt =
+          "$symbol ${SSCountry.curGuojiaFuhao()}${money.toStringAsFixed(2)}";
+    } else if (giftRewardModel == EnumGiftRewardModel.xp) {
+      leftImg = Assets.img.mainTopXp.path;
+      title = "Exp";
+      rightTxt = "+ ${money.toStringAsFixed(0)}";
+    }
+
     Color color = Color(0xffD03131);
     if (hasAdd) {
       color = Color(0xff3AAD47);
     }
 
-    String rightTxt = "$symbol ${SSCountry.curGuojiaFuhao()}${money.toStringAsFixed(2)}";
     return Container(
       width: double.infinity,
       height: 80.h,
@@ -126,7 +150,7 @@ class _HistoryyyyState extends State<Historyyyy> {
                   fontSize: 16.sp,
                 ),
               ),
-              SizedBox(height: 4.h,),
+              SizedBox(height: 4.h),
               Text(
                 time,
                 style: TextStyle(

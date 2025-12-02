@@ -62,7 +62,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     initNotification(showDialog: true);
     // bgMusic.play(loopMode: LoopMode.single);
 
-    Timer.periodic(Duration(seconds: 5), (timer) {
+    Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {
         SlideAcrossOverlay().show(context);
       }
@@ -172,8 +172,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                 height: ScreenUtil().screenHeight,
                 color: Colors.transparent,
               ),
-
-
           ],
         ),
       );

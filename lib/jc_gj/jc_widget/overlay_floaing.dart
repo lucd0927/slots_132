@@ -125,9 +125,10 @@ class SlideAcrossOverlay {
                                       text: id,
                                       children: [
                                         TextSpan(
-                                          text: " 1000 ",
+                                          text: " \$1000 ",
                                           style: TextStyle(
                                             color: Color(0xff48CE44),
+                                            // height: 1
                                           ),
                                         ),
                                         TextSpan(text: "for dinner"),
@@ -137,6 +138,7 @@ class SlideAcrossOverlay {
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xff8F8F8F),
+                                      // height: 1,
                                       fontFamily: FontFamily.fraunces,
                                     ),
                                   ),

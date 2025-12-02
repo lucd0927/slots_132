@@ -61,11 +61,7 @@ class HistoryController extends GetxController {
   void onInit() {
     super.onInit();
 
-    // 若使用 Hive 原生对象存储可以使用 Adapter；这里示例用字符串列表存储（兼容性好）
-    _loadFromBox();
 
-    // 自动保存：当列表变化时持久化
-    ever<List<TransactionItem>>(transactions, (_) => _saveToBox());
   }
 
   void _loadFromBox() {

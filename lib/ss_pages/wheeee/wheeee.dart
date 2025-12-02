@@ -165,7 +165,8 @@ class _WheeeeState extends State<Wheeee> {
                   borderRadius: BorderRadius.circular(63.h),
                   child: ShiningEffect(
                     shineColor: Colors.white,
-                    opacity: 0.5,
+                    opacity: 0.8,
+                    angle: 0.1,
                     duration: const Duration(seconds: 2),
                     child: Stack(
                       clipBehavior: Clip.none,

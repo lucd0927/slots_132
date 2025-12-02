@@ -68,13 +68,10 @@ class WheController extends GetxController {
     box.put(hhWheNum, tmpN);
   }
 
-
-
-
   onSpinSub(dynamic value) {
     int tmpN = curWheNum.value;
     ssLogggg("====onSpinSub==tmpN:$tmpN value:$value");
-    if (tmpN < 0 || value==null) {
+    if (tmpN < 0 || value == null) {
       OverlayDailyBonus().show(showAddMoney: false);
       return;
     }
@@ -121,12 +118,10 @@ class WheController extends GetxController {
       if (rewardModelType == EnumGiftRewardModel.cash) {
         money = giftRewardModel.num * tmpBeisu;
       } else if (rewardModelType == EnumGiftRewardModel.xp) {
-        exp =
-            giftRewardModel.num *
-            MainController.to.levelExp() *
-            tmpBeisu.toInt();
+        exp = (giftRewardModel.num * MainController.to.levelExp() * tmpBeisu)
+            .toInt();
       } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
-        phoneSpice = giftRewardModel.num;
+        phoneSpice = giftRewardModel.num.toInt();
       }
       ssLogggg("=======rewardModelType:$rewardModelType money:$money exp:$exp");
       OverlayCommonGet().show(
@@ -134,8 +129,14 @@ class WheController extends GetxController {
         exp: exp,
         phoneSpice: phoneSpice,
         onClose: () {
-          ssLogggg("=======OverlayCommonGet: close$rewardModelType money:$money exp:$exp");
-          MainController.to.onAddMoney(money, showMoneyAnimated: true,showTargetWidget: true);
+          ssLogggg(
+            "=======OverlayCommonGet: close$rewardModelType money:$money exp:$exp",
+          );
+          MainController.to.onAddMoney(
+            money,
+            showMoneyAnimated: true,
+            showTargetWidget: true,
+          );
         },
       );
     } else {

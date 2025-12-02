@@ -138,7 +138,7 @@ class _SSMapViewState extends State<SSMapView> {
       if (hasUnlock) {
         unlockMaxIndex = i;
       }
-      int num = 25;
+      double num = 25;
       String img = Assets.img.moneyGift.path;
       GiftRewardModel? tmpGiftRewardModel = kStarNum_vReward[star];
       if (tmpGiftRewardModel != null) {
@@ -498,9 +498,9 @@ class _ItemWidgetState extends State<ItemWidget> {
           if (rewardModelType == EnumGiftRewardModel.cash) {
             money = giftRewardModel.num * 1.0;
           } else if (rewardModelType == EnumGiftRewardModel.xp) {
-            exp = giftRewardModel.num;
+            exp = giftRewardModel.num.toInt();
           } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
-            phoneSpice = giftRewardModel.num;
+            phoneSpice = giftRewardModel.num.toInt();
           }
         }
         OverlayCommonGet().show(
