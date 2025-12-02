@@ -64,17 +64,15 @@ class SlideAcrossOverlay {
     if (location == EnumLocation.top) {
       top = 100.h;
     } else if (location == EnumLocation.center) {
-      top = 200.h;
+      top = 150.h;
     } else if (location == EnumLocation.center2) {
-      top = 300.h;
+      top = 200.h;
     } else if (location == EnumLocation.bottom) {
-      top = 500.h;
+      top = 250.h;
     }
-    String bank = SSCountry.hasUSA() ? "" : "";
-
-    double money = SSCountry.hasUSA()
-        ? (Random().nextInt(10) > 5 ? 1000 : 1000)
-        : (Random().nextInt(10) > 5 ? 300 : 600);
+    String icon = Random().nextInt(10) > 5
+        ? Assets.img.popupPaypal.path
+        : Assets.img.popupCashapp.path;
 
     String id = "ID${Random().nextInt(10)}***${Random().nextInt(10)} sent you ";
     _entry = OverlayEntry(
@@ -98,7 +96,7 @@ class SlideAcrossOverlay {
                         child: Stack(
                           children: [
                             Image.asset(
-                              Assets.img.popupPaypal.path,
+                              icon,
                               width: 345.h,
                               height: 70.h,
                               fit: BoxFit.fill,
@@ -116,11 +114,11 @@ class SlideAcrossOverlay {
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black,
-                                        fontFamily: FontFamily.fraunces,
-                                      height: 1
+                                      fontFamily: FontFamily.fraunces,
+                                      height: 1,
                                     ),
                                   ),
-                                  SizedBox(height: 1.h,),
+                                  SizedBox(height: 1.h),
                                   Text.rich(
                                     TextSpan(
                                       text: id,
@@ -138,7 +136,7 @@ class SlideAcrossOverlay {
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xff8F8F8F),
-                                      fontFamily: FontFamily.fraunces
+                                      fontFamily: FontFamily.fraunces,
                                     ),
                                   ),
                                 ],
