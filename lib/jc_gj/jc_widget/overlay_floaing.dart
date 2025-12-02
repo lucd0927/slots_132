@@ -49,7 +49,7 @@ class SlideAcrossOverlay {
       ),
     ]).animate(_controller);
 
-    EnumLocation location = EnumLocation.center;
+    EnumLocation location = EnumLocation.top;
     int random = Random().nextInt(4);
     if (random == 0) {
       location = EnumLocation.top;
@@ -60,6 +60,7 @@ class SlideAcrossOverlay {
     } else if (random == 3) {
       location = EnumLocation.bottom;
     }
+    location = EnumLocation.top;
     double top = 30;
     if (location == EnumLocation.top) {
       top = 100.h;

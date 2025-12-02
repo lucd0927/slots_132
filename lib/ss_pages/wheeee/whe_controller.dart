@@ -41,7 +41,7 @@ class WheController extends GetxController {
         tmpWheNum = initWheNum;
       }
     }
-    tmpWheNum = 5;
+    // tmpWheNum = 5;
     curWheNum = tmpWheNum.obs;
     // box.put(hhWheNum, curWheNum);
   }
