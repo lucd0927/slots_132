@@ -57,7 +57,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
 
     initNotification(showDialog: true);
-    // bgMusic.play();
+    bgMusic.play();
   }
 
   initNotification({required bool showDialog}) async {

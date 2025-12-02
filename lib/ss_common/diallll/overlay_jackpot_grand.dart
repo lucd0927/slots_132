@@ -91,7 +91,7 @@ class _JackpotWidgetGrand extends StatefulWidget {
 
 class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
   bool positive = bgMusic.hasOn;
-  bool positive2 = btnAudio.hasOn;
+  bool positive2 = btnJackpot.hasOn;
   var green = Color(0xFF45CC0D);
 
   bool showAnimated = false;

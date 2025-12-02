@@ -90,7 +90,7 @@ class MegawinWidget extends StatefulWidget {
 
 class _MegawinWidgetState extends State<MegawinWidget> {
   bool positive = bgMusic.hasOn;
-  bool positive2 = btnAudio.hasOn;
+  bool positive2 = btnJackpot.hasOn;
   var green = Color(0xFF45CC0D);
 
   bool showAnimated = false;

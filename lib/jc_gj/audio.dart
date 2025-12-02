@@ -10,9 +10,9 @@ SSAudio bgMusic = SSAudio(
   audioKey: SSAudio.kAudioPlayerBg,
   audioPath: "${prevVvvv}audddd/bg.mp3",
 );
-SSAudio btnAudio = SSAudio(
+SSAudio btnJackpot = SSAudio(
   audioKey: SSAudio.kAudioPlayerScratch,
-  audioPath: "${prevVvvv}audddd/scratch2.mp3",
+  audioPath: "${prevVvvv}audddd/jackpot.mp3",
 );
 
 class SSAudio {

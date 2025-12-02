@@ -84,7 +84,7 @@ class SuperwinWidget extends StatefulWidget {
 
 class _SuperwinWidgetState extends State<SuperwinWidget> {
   bool positive = bgMusic.hasOn;
-  bool positive2 = btnAudio.hasOn;
+  bool positive2 = btnJackpot.hasOn;
   var green = Color(0xFF45CC0D);
 
   bool showAnimated = false;

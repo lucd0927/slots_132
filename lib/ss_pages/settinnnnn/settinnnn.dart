@@ -52,7 +52,7 @@ class SettingWidget extends StatefulWidget {
 
 class _SettingWidgetState extends State<SettingWidget> {
   bool positive = bgMusic.hasOn;
-  bool positive2 = btnAudio.hasOn;
+  bool positive2 = btnJackpot.hasOn;
   var green = Color(0xFF45CC0D);
 
   bool showAnimated = false;
@@ -231,7 +231,7 @@ class _SettingWidgetState extends State<SettingWidget> {
     setState(() {
       positive2 = toggle;
       ssLogggg("== music=toggle:$toggle==");
-      btnAudio.setSWHasOn(positive2, showAudioPlayOrPause: false);
+      btnJackpot.setSWHasOn(positive2, showAudioPlayOrPause: false);
     });
   }
 
