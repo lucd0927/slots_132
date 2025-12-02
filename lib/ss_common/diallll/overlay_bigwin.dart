@@ -38,6 +38,7 @@ class OverlayBigwin {
   }) {
     SSEventReporttttt.cash_pop(pop_type: "big_win", pop_from: scene.name);
     // if (_isShowing) return;
+    btnMoney.play();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {

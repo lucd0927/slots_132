@@ -17,21 +17,61 @@ class $AssetsAuddddGen {
   /// File path: assets/audddd/bg.mp3
   String get bg => 'assets/audddd/bg.mp3';
 
-  /// File path: assets/audddd/coin.mp3
-  String get coin => 'assets/audddd/coin.mp3';
+  /// File path: assets/audddd/bg_freespin.mp3
+  String get bgFreespin => 'assets/audddd/bg_freespin.mp3';
 
-  /// File path: assets/audddd/scratch1.mp3
-  String get scratch1 => 'assets/audddd/scratch1.mp3';
+  /// File path: assets/audddd/bonus_game_click.mp3
+  String get bonusGameClick => 'assets/audddd/bonus_game_click.mp3';
 
-  /// File path: assets/audddd/scratch2.mp3
-  String get scratch2 => 'assets/audddd/scratch2.mp3';
+  /// File path: assets/audddd/boxgift.mp3
+  String get boxgift => 'assets/audddd/boxgift.mp3';
+
+  /// File path: assets/audddd/btn_freespin_pre.mp3
+  String get btnFreespinPre => 'assets/audddd/btn_freespin_pre.mp3';
+
+  /// File path: assets/audddd/jackpot.mp3
+  String get jackpot => 'assets/audddd/jackpot.mp3';
+
+  /// File path: assets/audddd/money.mp3
+  String get money => 'assets/audddd/money.mp3';
+
+  /// File path: assets/audddd/spin_centerindex.mp3
+  String get spinCenterindex => 'assets/audddd/spin_centerindex.mp3';
+
+  /// File path: assets/audddd/spin_click.mp3
+  String get spinClick => 'assets/audddd/spin_click.mp3';
+
+  /// File path: assets/audddd/spin_lastindex.mp3
+  String get spinLastindex => 'assets/audddd/spin_lastindex.mp3';
+
+  /// File path: assets/audddd/wheel.mp3
+  String get wheel => 'assets/audddd/wheel.mp3';
+
+  /// File path: assets/audddd/点击SPIN加速.mp3
+  String get aSPIN => 'assets/audddd/点击SPIN加速.mp3';
 
   /// List of all assets
-  List<String> get values => [bg, coin, scratch1, scratch2];
+  List<String> get values => [
+    bg,
+    bgFreespin,
+    bonusGameClick,
+    boxgift,
+    btnFreespinPre,
+    jackpot,
+    money,
+    spinCenterindex,
+    spinClick,
+    spinLastindex,
+    wheel,
+    aSPIN,
+  ];
 }
 
 class $AssetsDonghuaGen {
   const $AssetsDonghuaGen();
+
+  /// Directory path: assets/donghua/hand
+  $AssetsDonghuaHandGen get hand => const $AssetsDonghuaHandGen();
 
   /// Directory path: assets/donghua/piaoqian
   $AssetsDonghuaPiaoqianGen get piaoqian => const $AssetsDonghuaPiaoqianGen();
@@ -1301,6 +1341,23 @@ class $AssetsMyaGen {
 
   /// Directory path: assets/mya/wow
   $AssetsMyaWowGen get wow => const $AssetsMyaWowGen();
+}
+
+class $AssetsDonghuaHandGen {
+  const $AssetsDonghuaHandGen();
+
+  /// File path: assets/donghua/hand/hand.atlas
+  String get handAtlas => 'assets/donghua/hand/hand.atlas';
+
+  /// File path: assets/donghua/hand/hand.png
+  AssetGenImage get handPng =>
+      const AssetGenImage('assets/donghua/hand/hand.png');
+
+  /// File path: assets/donghua/hand/skeleton.json
+  String get skeleton => 'assets/donghua/hand/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [handAtlas, handPng, skeleton];
 }
 
 class $AssetsDonghuaPiaoqianGen {

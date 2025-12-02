@@ -39,6 +39,7 @@ class OverlayJackpotMini {
   }) {
     // if (_isShowing) return;
     SSEventReporttttt.jackpot_pop(pop_type: "mini", pop_from: scene.name);
+    btnJackpot.play();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {

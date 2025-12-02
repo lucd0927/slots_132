@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/num_e.dart';
@@ -54,7 +55,7 @@ class BonusGameController extends GetxController {
     required VoidCallback onOnClose,
   }) {
     SSEventReporttttt.bonus_page_click();
-
+    btnBonusGameClick.play();
     clickIndex.add(index);
     ssLogggg("=====clickIndex:$clickIndex data:$data");
     String category = data[index];

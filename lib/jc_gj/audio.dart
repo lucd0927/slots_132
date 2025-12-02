@@ -2,7 +2,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 
-
 import 'log.dart';
 
 const prevVvvv = "assets/";
@@ -10,9 +9,52 @@ SSAudio bgMusic = SSAudio(
   audioKey: SSAudio.kAudioPlayerBg,
   audioPath: "${prevVvvv}audddd/bg.mp3",
 );
+SSAudio bgMusicFreeSpin = SSAudio(
+  audioKey: SSAudio.kAudioPlayerBg,
+  audioPath: "${prevVvvv}audddd/bg_freespin.mp3",
+);
 SSAudio btnJackpot = SSAudio(
   audioKey: SSAudio.kAudioPlayerScratch,
   audioPath: "${prevVvvv}audddd/jackpot.mp3",
+);
+
+SSAudio btnSpinClick = SSAudio(
+  audioKey: "xxxxxaaa",
+  audioPath: "${prevVvvv}audddd/spin_click.mp3",
+);
+SSAudio btnWheel = SSAudio(
+  audioKey: "121weaasdf",
+  audioPath: "${prevVvvv}audddd/wheel.mp3",
+);
+
+SSAudio btnBonusGameClick = SSAudio(
+  audioKey: "adf564wer",
+  audioPath: "${prevVvvv}audddd/bonus_game_click.mp3",
+);
+
+SSAudio btnFreespinPre = SSAudio(
+  audioKey: "dfg45gjrgds",
+  audioPath: "${prevVvvv}audddd/btn_freespin_pre.mp3",
+);
+
+SSAudio btnMoney = SSAudio(
+  audioKey: "dfg45gjrgds",
+  audioPath: "${prevVvvv}audddd/money.mp3",
+);
+
+SSAudio btnBoxGift = SSAudio(
+  audioKey: "ertye543ert",
+  audioPath: "${prevVvvv}audddd/boxgift.mp3",
+);
+
+SSAudio btnSpinCenterIndex = SSAudio(
+  audioKey: "btnS12pinCenterIndex",
+  audioPath: "${prevVvvv}audddd/spin_centerindex.mp3",
+);
+
+SSAudio btnSpinLastIndex = SSAudio(
+  audioKey: "btnSpin56LastIndex",
+  audioPath: "${prevVvvv}audddd/spin_lastindex.mp3",
 );
 
 class SSAudio {
@@ -32,12 +74,12 @@ class SSAudio {
 
   setReleaseMode() async {}
 
-  Future<void> play() async {
+  Future<void> play({LoopMode loopMode = LoopMode.none}) async {
     ssLogggg("=====playLocalAssetBg==hasOn:$hasOn");
     if (hasOn) {
       await audioPlayer.open(
         Audio(audioPath),
-        loopMode: LoopMode.single,
+        loopMode: loopMode,
         autoStart: true,
       );
       audioPlayer.play();
@@ -59,7 +101,7 @@ class SSAudio {
       "===GGAudioPlayer=audioKey:$audioKey=setHasOn=_hasOn=$_hasOn  state:$state",
     );
     SSHive.box.put(audioKey, isOn);
-    if(showAudioPlayOrPause){
+    if (showAudioPlayOrPause) {
       if (isOn) {
         if (state == PlayerState.stop || state == PlayerState.pause) {
           play();
@@ -70,7 +112,6 @@ class SSAudio {
         audioPlayer.pause();
       }
     }
-
   }
 
   pause() {
@@ -88,4 +129,3 @@ class SSAudio {
     }
   }
 }
-

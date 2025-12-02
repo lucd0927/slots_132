@@ -36,6 +36,7 @@ class OverlayWow {
     required ValueChanged onBtn,
     required ValueChanged onBtn2,
   }) {
+    btnMoney.play();
     SSEventReporttttt.cash_pop(pop_type: "wow", pop_from: scene.name);
     _overlay = null;
     _overlay = OverlayEntry(

@@ -83,10 +83,6 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                 ),
                 columnW(),
                 _rollerEndWidget(),
-
-
-
-
               ],
             ),
           );
@@ -95,29 +91,29 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     );
   }
 
-  Widget columnW(){
+  Widget columnW() {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(width: 64.w,),
+        SizedBox(width: 64.w),
         Container(
           width: 1.w,
           height: double.infinity,
           color: Color(0xffA43334),
         ),
-        SizedBox(width: 64.w,),
+        SizedBox(width: 64.w),
         Container(
           width: 1.w,
           height: double.infinity,
           color: Color(0xffA43334),
         ),
-        SizedBox(width: 64.w,),
+        SizedBox(width: 64.w),
         Container(
           width: 1.w,
           height: double.infinity,
           color: Color(0xffA43334),
         ),
-        SizedBox(width: 64.w,),
+        SizedBox(width: 64.w),
         Container(
           width: 1.w,
           height: double.infinity,
@@ -143,7 +139,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   Widget getCenterWidget(int column) {
-    double width = slotsItemW-1.w;
+    double width = slotsItemW - 1.w;
     // width = 100;
 
     double height = slotsItemH;
@@ -226,7 +222,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   List<Widget> _sdlrWinWidget(int column) {
-    double width = slotsItemW-1.w;
+    double width = slotsItemW - 1.w;
     // width = 100;
 
     double height = slotsItemH;
@@ -461,9 +457,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                       width: double.infinity,
                       height: double.infinity,
                       color: Colors.blueAccent.withValues(alpha: 0.0),
-                      child: Center(
-                        child: SSSpineBorder(),
-                      ),
+                      child: Center(child: SSSpineBorder()),
                     ),
                   ),
                 ],
@@ -525,7 +519,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           width: width - imgSubD,
           height: height - imgSubD,
           gaplessPlayback: true,
-          fit: BoxFit.fill,
+          fit: hasSlotWild ? BoxFit.fill : BoxFit.contain,
         ),
         // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
@@ -557,7 +551,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
               Center(
                 child: showWin && !hasSlotWild
                     ? SSAScale(
-                        child:  ShiningEffect(
+                        child: ShiningEffect(
                           shineColor: Colors.yellow,
                           opacity: 1,
                           angle: 1.8,

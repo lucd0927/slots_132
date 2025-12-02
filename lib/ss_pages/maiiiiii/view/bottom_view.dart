@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:particles_flutter/particles_engine.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -15,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/grey_widget.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_wheel_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -344,12 +346,13 @@ class BottomView extends StatelessWidget {
 
   Widget spinWidget() {
     bool showFree = MainController.to.curShowFreeSpin.value;
-
+    bool showGrey = MainController.to.hasScrollerEnd.value && !showFree;
     Widget child = Container(
       width: 125.h,
       height: 60.h,
       color: Colors.red.withValues(alpha: 0),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Image.asset(
             Assets.img.btnSpin.path,
@@ -429,17 +432,27 @@ class BottomView extends StatelessWidget {
                     ),
             ),
           ),
+          if (!showFree && !showGrey)
+            Positioned(
+              right: -20.w,
+              top: 10.h,
+
+              child: Center(
+                child: SizedBox(width: 100.w, height: 50.w, child: SpineHand()),
+              ),
+            ),
         ],
       ),
     );
 
-    return MainController.to.hasScrollerEnd.value && !showFree
+    return showGrey
         ? GreyWidget(child: child)
         : GestureDetector(
             onTap: () {
               if (showFree) {
                 return;
               }
+              btnSpinClick.play();
               MainController.to.onStartRoller();
             },
             child: child,

@@ -26,6 +26,7 @@ class OverlayFreeSpins {
 
   void show({required double money, required ValueChanged onClose}) {
     // if (_isShowing) return;
+    btnFreespinPre.play();
     _overlay = null;
     _overlay = OverlayEntry(
       builder: (context) {

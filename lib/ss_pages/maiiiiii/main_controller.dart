@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
@@ -1204,10 +1205,15 @@ class MainController extends GetxController {
     int allImgs = defaultImgName.length;
     int random = allImgs - 2;
     int time = 800 + index * 100;
+    ssLogggg("=======time:$time index:$index");
     if (index == 4) {
       time = 1100;
+      btnSpinLastIndex.play();
     }
-    ssLogggg("=======time:$time");
+    if(index == 2){
+      // btnSpinCenterIndex.play();
+    }
+
     key.currentState
         ?.smoothScrollToIndex(
           random,
@@ -1220,6 +1226,7 @@ class MainController extends GetxController {
 
           // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
           if (cunt >= 5) {
+            btnSpinLastIndex.play();
             result?.complete(5);
             result = null;
           }
@@ -1408,6 +1415,7 @@ class MainController extends GetxController {
       overlayMainTopMoney.showWithSize(
         childSize: Size(32.w, 32.w),
         onEnd: (){
+          // btnMoney.play();
           double tmpCurMmmm = curMonnnn.value;
           tmpCurMmmm = tmpCurMmmm + money;
           box.put(hkMonnnn, tmpCurMmmm);

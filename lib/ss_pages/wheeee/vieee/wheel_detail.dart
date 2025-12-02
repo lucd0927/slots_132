@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/event_bus.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -81,7 +82,7 @@ class _ControlledWheelState extends State<ControlledWheel>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(milliseconds: 4900),
     );
     _animation = AlwaysStoppedAnimation(0);
 
@@ -100,7 +101,7 @@ class _ControlledWheelState extends State<ControlledWheel>
     final fromAngle = fromIndex * segmentAngle + segmentAngle / 2;
     final toAngle = toIndex * segmentAngle + segmentAngle / 2;
     // 旋转多少圈
-    final double turns = 360 * 2; // 转2圈
+    final double turns = 360 * 10; // 转2圈
     final double target = turns + (toAngle - fromAngle);
 
     _animation = Tween<double>(begin: _startAngle, end: _startAngle + target)
@@ -244,6 +245,7 @@ class _ControlledWheelState extends State<ControlledWheel>
       widget.onEnd(null);
       return;
     }
+    btnWheel.play();
     WheController.to.subWheNum();
     int current = Random().nextInt(8);
     int target = Random().nextInt(8);

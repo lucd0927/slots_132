@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart' hide Velocity;
 import 'package:flutter/services.dart';
@@ -57,7 +58,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
 
     initNotification(showDialog: true);
-    bgMusic.play();
+    // bgMusic.play(loopMode: LoopMode.single);
   }
 
   initNotification({required bool showDialog}) async {

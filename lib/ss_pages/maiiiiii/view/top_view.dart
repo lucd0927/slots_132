@@ -217,11 +217,11 @@ class TopView extends StatelessWidget {
     // OverlayFreeSpins().show(money: 10);
 
     // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
-    OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlaySuperwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 
-    // OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  }, scene: EnumGetScene.spin);
+    OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  }, scene: EnumGetScene.spin);
     // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 

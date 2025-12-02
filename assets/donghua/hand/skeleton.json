@@ -1,0 +1,53 @@
+{
+"skeleton": {
+	"hash": "LiEXDpWlVCc",
+	"spine": "4.3.39-beta",
+	"x": -60.08406,
+	"y": -66.928894,
+	"width": 121.736946,
+	"height": 127.54898,
+	"images": null,
+	"audio": null
+},
+"bones": [
+	{ "name": "root", "x": 0.52799416, "y": 0.69599533 },
+	{ "name": "94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15", "parent": "root" },
+	{ "name": "root2", "parent": "root" }
+],
+"slots": [
+	{ "name": "root", "bone": "root2", "attachment": "light" },
+	{ "name": "94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15", "bone": "94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15", "attachment": "94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15": {
+				"94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15": { "x": 25.624893, "y": -31.624884, "width": 71, "height": 72 }
+			},
+			"root": {
+				"light": { "x": -0.61205673, "y": -0.07590675, "scaleX": 0.1, "scaleY": 0.1, "width": 1200, "height": 1200 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"94bdf4d8739c965e7d4ab56923489debd4b2f69f68d2-BXNG15": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 0.8, "y": 0.8 },
+					{ "time": 1 }
+				]
+			},
+			"root2": {
+				"scale": [
+					{ "x": 0.1, "y": 0.1 },
+					{ "time": 0.5 }
+				]
+			}
+		}
+	}
+}
+}

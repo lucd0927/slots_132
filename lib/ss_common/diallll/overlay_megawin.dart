@@ -38,6 +38,7 @@ class OverlayMegawin {
   }) {
     SSEventReporttttt.cash_pop(pop_type: "mega_win", pop_from: scene.name);
     _overlay = null;
+    btnMoney.play();
     _overlay = OverlayEntry(
       builder: (context) {
         return MegawinWidget(
