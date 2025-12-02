@@ -248,6 +248,7 @@ class MainController extends GetxController {
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
+    tmpSpinCount = 5;
 
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
@@ -344,17 +345,23 @@ class MainController extends GetxController {
         ..clear()
         ..addAll(imgCategories.sublist(12, 15));
     } else if (tmpSpinCount == 12) {
-      var imgCategories = [
-        [slotNumWild1, slotNumWild2, slotNumWild3],
-        [slotNumWild1, slotNumWild2, slotNumWild3],
-        [slotNumWild1, slotNumWild2, slotNumWild3],
-        [
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
-        ]..shuffle(),
-        [slotNumWild1, slotNumWild2, slotNumWild3],
-      ]..shuffle();
+      int random = Random().nextInt(5);
+      var imgCategories = [];
+      for (int i = 0; i < 5; i++) {
+        var item;
+        if (i <= random) {
+          item = [slotNumWild1, slotNumWild2, slotNumWild3];
+        } else {
+          item = [
+            defaultImgName[Random().nextInt(length)],
+            defaultImgName[Random().nextInt(length)],
+            defaultImgName[Random().nextInt(length)],
+          ];
+        }
+        imgCategories.add(item);
+      }
+      imgCategories.shuffle();
+
       winReel1
         ..clear()
         ..addAll(imgCategories[0]);
@@ -848,12 +855,15 @@ class MainController extends GetxController {
     });
 
     initRoller5();
-
-    _changeChild(firstRoller, 0);
-    _changeChild(secondRoller, 1);
-    _changeChild(thirdRoller, 2);
-    _changeChild(fourthRoller, 3);
-    _changeChild(fiveRoller, 4);
+    int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
+        .where((e) => e == slotNumSCATTER)
+        .length;
+    bool showScatterAnimated = slotNumSCATTERLength >= 3;
+    _changeChild(firstRoller, 0, showScatterAnimated: showScatterAnimated);
+    _changeChild(secondRoller, 1, showScatterAnimated: showScatterAnimated);
+    _changeChild(thirdRoller, 2, showScatterAnimated: showScatterAnimated);
+    _changeChild(fourthRoller, 3, showScatterAnimated: showScatterAnimated);
+    _changeChild(fiveRoller, 4, showScatterAnimated: showScatterAnimated);
 
     _resetRoller(firstRoller, 0);
     _resetRoller(secondRoller, 1);
@@ -1050,9 +1060,9 @@ class MainController extends GetxController {
         onBtn2: (money) {
           _rollerEnd(tmpAddMoney: money);
         },
-        onNotBtn: (money){
+        onNotBtn: (money) {
           _rollerEnd(tmpAddMoney: money);
-        }
+        },
       );
     }
 
@@ -1078,7 +1088,7 @@ class MainController extends GetxController {
 
     if (addBeisu >= 4) {
       OverlaySuperwin().show(
-        scene:scene,
+        scene: scene,
         money: tmpAddMoney,
         onBtn: (money) {
           onBtn(money);
@@ -1089,7 +1099,7 @@ class MainController extends GetxController {
       );
     } else if (addBeisu >= 3) {
       OverlayMegawin().show(
-        scene:scene,
+        scene: scene,
         money: tmpAddMoney,
         onBtn: (money) {
           onBtn(money);
@@ -1100,7 +1110,7 @@ class MainController extends GetxController {
       );
     } else if (addBeisu >= 2) {
       OverlayBigwin().show(
-        scene:scene,
+        scene: scene,
         money: tmpAddMoney,
         onBtn: (money) {
           onBtn(money);
@@ -1108,7 +1118,6 @@ class MainController extends GetxController {
         onBtn2: (money) {
           onBtn2(money);
         },
-
       );
     } else {
       onNotBtn?.call(tmpAddMoney);
@@ -1125,8 +1134,31 @@ class MainController extends GetxController {
         int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
             .where((e) => e == slotNumSCATTER)
             .length;
-        // slotNumSCATTERLength = 3;
+
         if (slotNumSCATTERLength >= 3) {
+          kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
+            Offset? startPosition = kZuobiao_vWidgetContextOffset[zuobiao];
+            String img = kCategoryName_vImgName[value] ?? "";
+
+            if (value == slotNumSCATTER) {
+              if (startPosition != null) {
+                img = Assets.img.slots.slotsScatter.path;
+                // img = Assets.img.slots.slotsH1.path;
+                Widget heroChild = Image.asset(img);
+
+                OverlayFly2TargetKey().showWithSizeAndEndPosition(
+                  childSize: Size(50.w, 50.w),
+                  targetLocation: Offset(
+                    ScreenUtil().screenWidth / 2 - 20.w,
+                    300.h,
+                  ),
+                  topLeftOffset: startPosition,
+                  heroChild: heroChild,
+                );
+              }
+            }
+          });
+          await Future.delayed(Duration(milliseconds: 400), () {});
           OverlayFreeSpins().show(
             money: 0,
             onClose: (value) async {
@@ -1182,9 +1214,17 @@ class MainController extends GetxController {
     );
   }
 
-  _changeChild(GlobalKey<RollerListState> key, int index) {
+  _changeChild(
+    GlobalKey<RollerListState> key,
+    int index, {
+    required bool showScatterAnimated,
+  }) {
     List<Widget> slotsWidget1 =
-        slotMachineKey.currentState?.getSlots(index) ?? [];
+        slotMachineKey.currentState?.getSlots(
+          index,
+          showScatterAnimated: showScatterAnimated,
+        ) ??
+        [];
     // ssLogggg("==onStartRoller==${slotMachineKey.currentState} slotsWidget1:${slotsWidget1.length}=",);
     key.currentState?.changeChildItem(slotsWidget1);
   }
@@ -1210,7 +1250,7 @@ class MainController extends GetxController {
       time = 1100;
       btnSpinLastIndex.play();
     }
-    if(index == 2){
+    if (index == 2) {
       // btnSpinCenterIndex.play();
     }
 
@@ -1410,11 +1450,10 @@ class MainController extends GetxController {
       return;
     }
 
-
     if (money > 0) {
       overlayMainTopMoney.showWithSize(
         childSize: Size(32.w, 32.w),
-        onEnd: (){
+        onEnd: () {
           // btnMoney.play();
           double tmpCurMmmm = curMonnnn.value;
           tmpCurMmmm = tmpCurMmmm + money;
@@ -1558,19 +1597,18 @@ class MainController extends GetxController {
         } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.spin) {
           OverlayLuckySlots().show(
             onClose: (money) {
-
               _onWinPopup(
-                  scene: EnumGetScene.single_slots,
-                  tmpAddMoney: money,
-                  onBtn: (money) {
-                    _onNextFreeSpin(money: money);
-                  },
-                  onBtn2: (money) {
-                    _onNextFreeSpin(money: money);
-                  },
-                  onNotBtn: (money){
-                    _onNextFreeSpin(money: money);
-                  }
+                scene: EnumGetScene.single_slots,
+                tmpAddMoney: money,
+                onBtn: (money) {
+                  _onNextFreeSpin(money: money);
+                },
+                onBtn2: (money) {
+                  _onNextFreeSpin(money: money);
+                },
+                onNotBtn: (money) {
+                  _onNextFreeSpin(money: money);
+                },
               );
 
               // overlayMainTopMoney.showWithSize(
@@ -1586,15 +1624,13 @@ class MainController extends GetxController {
     );
   }
 
-  _onNextFreeSpin({required double money}){
+  _onNextFreeSpin({required double money}) {
     onAddMoney(
       money,
       showMoneyAnimated: true,
       onEnd: () {
         _curFreeSpinMoney = _curFreeSpinMoney + money;
         onFreeSpin();
-
-
       },
     );
   }

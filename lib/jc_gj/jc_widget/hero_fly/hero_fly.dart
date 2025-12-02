@@ -12,7 +12,6 @@ class OverlayFly2TargetKey {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-
   void show({
     required Widget heroChild,
     required BuildContext targetContext,
@@ -61,8 +60,9 @@ class OverlayFly2TargetKey {
     Offset targetLocation,
     Size startSize,
     Size endSize,
-    VoidCallback? onEnd,
-  ) {
+    VoidCallback? onEnd, {
+    Duration animTime = const Duration(milliseconds: 1200),
+  }) {
     _overlay = OverlayEntry(
       builder: (context) {
         return Material(
@@ -74,7 +74,7 @@ class OverlayFly2TargetKey {
               arcHeight: 10,
               startSize: startSize,
               endSize: endSize,
-              duration: Duration(milliseconds: 1200),
+              duration: animTime,
               delayBetween: Duration(milliseconds: 20),
               onFinish: () {
                 close();
@@ -139,6 +139,57 @@ class OverlayFly2TargetKey {
         startSize,
         endSize,
         onEnd,
+      );
+    }
+  }
+
+  void showWithSizeAndEndPosition({
+    Widget? heroChild,
+    required Size childSize,
+    required Offset targetLocation,
+    int count = 1,
+    VoidCallback? onEnd,
+    Offset? topLeftOffset,
+  }) {
+    // if (_isShowing) return;
+    _overlay = null;
+
+    List<Widget> children = [];
+    heroChild ??= Image.asset(
+      Assets.img.money.path,
+      width: 30.h,
+      height: 28.h,
+      fit: BoxFit.fill,
+    );
+    for (int i = 0; i < count; i++) {
+      children.add(heroChild);
+    }
+
+    if (children.isEmpty) {
+      return;
+    }
+
+    Size startSize = childSize;
+    var topLeftPosition =
+        topLeftOffset ??
+        Offset(
+          ScreenUtil().screenWidth / 2 - startSize.width / 2,
+          ScreenUtil().screenHeight / 2,
+        );
+    if (true) {
+      Size endSize = Size(40.w, 40.h);
+
+      ssLogggg(
+        "=showWithSize==topLeftPosition:$topLeftPosition==targetLocation:$targetLocation",
+      );
+      _innerOverlay(
+        children,
+        topLeftPosition,
+        targetLocation,
+        startSize,
+        endSize,
+        onEnd,
+        animTime: Duration(milliseconds: 400)
       );
     }
   }
@@ -260,7 +311,6 @@ class _Source2FlyTargetState extends State<_Source2FlyTarget>
     final parabolic = 4 * arcHeight * t * (1 - t); // 抛物线
     return lerpDouble(y0, y1, t)! - parabolic;
   }
-
 
   double? lerpDouble(double a, double b, double t) => a + (b - a) * t;
 

@@ -491,7 +491,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     );
   }
 
-  List<Widget> getSlots(int column) {
+  List<Widget> getSlots(int column, {bool showScatterAnimated = false}) {
     double width = slotsItemW;
     double height = slotsItemH;
     List<Widget> result = [];
@@ -508,6 +508,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           data.contains(iiii) && MainController.to.showWinLines.value;
       String category = imgs[i];
       bool hasSlotWild = category.contains(MainController.slotNumWild);
+      bool hasSlotScatter = category.contains(MainController.slotNumSCATTER);
       if (!hasSlotWild) {
         imgSubD = 8.w;
         dd2 = 4.w;
@@ -524,16 +525,6 @@ class SSSlotMachineState extends State<SSSlotMachine> {
         // child: Text("${imgs[i]}",style: TextStyle(color: Colors.yellow),),
       );
 
-      // tmpC =  Stack(children: [
-      //   tmpC,
-      //   ShiningEffect(
-      //     shineColor: Colors.yellow,
-      //     opacity: 1,
-      //     duration: const Duration(seconds: 2),
-      //     child: tmpC,
-      //   ),
-      // ],);
-
       Widget child = Container(
         width: width - dd2,
         height: height - dd2,
@@ -549,7 +540,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
           child: Stack(
             children: [
               Center(
-                child: showWin && !hasSlotWild
+                child: (showWin && !hasSlotWild) || (showScatterAnimated && hasSlotScatter)
                     ? SSAScale(
                         child: ShiningEffect(
                           shineColor: Colors.yellow,
@@ -560,23 +551,6 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                       )
                     : child,
               ),
-              // if (showWin)
-              //   Center(
-              //     child: ZoMonoCromeBorder(
-              //       trackBorderColor: Colors.yellow,
-              //       cornerRadius: 4.w,
-              //       animationDuration: Duration(milliseconds: 800),
-              //       borderStyle: ZoMonoCromeBorderStyle.stroke,
-              //       borderWidth: 4.w,
-              //       child: Container(
-              //         width: width - 4.w,
-              //         height: height - 4.w,
-              //         // decoration: BoxDecoration(
-              //         //   border: Border.all(color: Colors.black, width: 3.w),
-              //         // ),
-              //       ),
-              //     ),
-              //   ),
             ],
           ),
         ),
