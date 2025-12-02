@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
@@ -13,6 +14,7 @@ import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/overlay_floaing.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
@@ -59,6 +61,13 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
     initNotification(showDialog: true);
     // bgMusic.play(loopMode: LoopMode.single);
+
+    Timer.periodic(Duration(seconds: 5), (timer) {
+      if (mounted) {
+        SlideAcrossOverlay().show(context);
+      }
+    });
+
   }
 
   initNotification({required bool showDialog}) async {
