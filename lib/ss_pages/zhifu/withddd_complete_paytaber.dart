@@ -20,7 +20,13 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: BoxDecoration(color: Colors.white,
+        
+        gradient: LinearGradient(colors: [
+          Color(0xff0E4D42),
+          Color(0xff0C6A5D),
+        ])
+        ),
         child: Stack(
           children: [
             Image.asset(

@@ -44,12 +44,18 @@ class OverlayJackpotMajor {
         return _JackpotWidgetMajor(
           onBtn: (double money) {
             close();
-            SSEventReporttttt.jackpot_pop_claim_all(pop_type: "major", pop_from: scene.name);
+            SSEventReporttttt.jackpot_pop_claim_all(
+              pop_type: "major",
+              pop_from: scene.name,
+            );
             onBtn(money);
           },
           onBtn2: (double money) {
             close();
-            SSEventReporttttt.jackpot_pop_claim_10(pop_type: "major", pop_from: scene.name);
+            SSEventReporttttt.jackpot_pop_claim_10(
+              pop_type: "major",
+              pop_from: scene.name,
+            );
             onBtn2(money);
           },
           money: money,
@@ -89,18 +95,29 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
   var green = Color(0xFF45CC0D);
 
   bool showAnimated = false;
+
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
-
+  bool showAnimatedBgMoney = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        showAnimated = true;
-      });
+      if (mounted) {
+        setState(() {
+          showAnimated = true;
+        });
+
+        Future.delayed(animD, () {
+          if (mounted) {
+            setState(() {
+              showAnimatedBgMoney = true;
+            });
+          }
+        });
+      }
     });
   }
 
@@ -122,15 +139,16 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Positioned.fill(
-                    top: -200.h,
-                    left: 0.w,
-
-                    child:Container(
+                  if (showAnimatedBgMoney)
+                    Positioned.fill(
+                      top: -200.h,
+                      left: 0.w,
+                      child: Container(
                         width: ScreenUtil().screenWidth,
                         height: ScreenUtil().screenHeight,
-                        child: SSSpineMoney()),
-                  ),
+                        child: SSSpineMoney(),
+                      ),
+                    ),
 
                   Positioned(
                     left: 0,
@@ -147,11 +165,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 10.h),
-                      Container(
-                        width: 350.h,
-                        height: 240.h,
-
-                      ),
+                      Container(width: 350.h, height: 240.h),
                       Container(
                         width: double.infinity,
                         height: 60.h,
@@ -172,7 +186,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                               child: Center(
                                 child: SSTxtGraBorder(
                                   text:
-                                  "${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
+                                      "${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
                                   fontSize: 42.sp,
                                   fontFamily: FontFamily.ghostKidAOEPro,
                                   height: 1,
@@ -244,7 +258,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                   bottom: 4.h,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "Collect",
+                      text: "Claim",
                       fontSize: 24.sp,
                       fontFamily: FontFamily.alkatra,
                       fontWeight: FontWeight.w700,

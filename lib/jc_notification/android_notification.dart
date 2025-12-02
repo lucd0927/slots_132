@@ -85,11 +85,20 @@ class SSTzNotificattttt {
   }
 
   List get contents => [
-
+    {"title": "tzT1".tr, "content": "tzC1".tr},
+    {"title": "tzT2".tr, "content": "tzC2".tr},
+    {"title": "tzT3".tr, "content": "tzC3".tr},
+    {"title": "tzT4".tr, "content": "tzC4".tr},
+    {"title": "tzT5".tr, "content": "tzC5".tr},
   ];
 
   List get imgTz => [
-
+    "tzimg1",
+    "tzimg2",
+    "tzimg3",
+    "tzimg4",
+    "tzimg5",
+    "tzimg6",
   ];
 
   List<T> getRandomNMinus3<T>(List<T> source) {
@@ -106,13 +115,10 @@ class SSTzNotificattttt {
     await requestNotificationPermission();
     csTzNum();
 
-    int length = contents.length;
-    int random = Random().nextInt(length);
-    int length2 = imgTz.length;
-    int random2 = Random().nextInt(length2);
-    pushIcon = imgTz[random2];
-    baioti = contents[random]['title'];
-    neirong = contents[random]['content'];
+
+    pushIcon = "";
+    baioti = "132Title";
+    neirong = "content";
 
     ssLogggg("=initNotification====init===");
     const AndroidInitializationSettings androidSettings =
@@ -162,20 +168,20 @@ class SSTzNotificattttt {
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
-    dingshi(
-      id: dingshitzid2,
-      minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
-      title: newContents[1]['title'],
-      content: newContents[1]['content'],
-      tzimage: tzimages[1],
-    );
-    dingshi(
-      id: dingshitzid3,
-      minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
-      title: newContents[2]['title'],
-      content: newContents[2]['content'],
-      tzimage: tzimages[2],
-    );
+    // dingshi(
+    //   id: dingshitzid2,
+    //   minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
+    //   title: newContents[1]['title'],
+    //   content: newContents[1]['content'],
+    //   tzimage: tzimages[1],
+    // );
+    // dingshi(
+    //   id: dingshitzid3,
+    //   minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
+    //   title: newContents[2]['title'],
+    //   content: newContents[2]['content'],
+    //   tzimage: tzimages[2],
+    // );
     fcmtongzhi();
     jiesoutz();
   }

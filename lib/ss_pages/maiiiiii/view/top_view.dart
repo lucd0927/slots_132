@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,8 @@ import 'package:slots_132/ss_common/diallll/overlay_jackpot_major.dart';
 import 'package:slots_132/ss_common/diallll/overlay_jackpot_mini.dart';
 import 'package:slots_132/ss_common/diallll/overlay_megawin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
+import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
+import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
@@ -167,6 +170,14 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
+    // OverlaySettinnn().show();
+
+
+
+    // AppSettings.openAppNotificationSettings()
+    // OverlayTzReward().show(money: 200, onClose: (v){});
+    // OverlayTzNotify().show( onClose: (v){});
+
     // OverlayFreeSpinsOver().show(
     //   money: 200,
     //   onClose: (v) {
@@ -175,7 +186,7 @@ class TopView extends StatelessWidget {
     //   spinCount: 5,
     // );
 
-    // OverlaySettinnn().show();
+
     // OverlayWithddCardPaypal().show();
     // OverlayWithddCardCashapp().show();
     // OverlayWithddCardBank().show();
@@ -200,15 +211,13 @@ class TopView extends StatelessWidget {
     // OverlayRank().show();
     // OverlayOneLastCheck().show();
     // OverlayWithddOnelastcheckJindu1().show();
-    OverlayOneLastCheckJindu2().show();
+    // OverlayOneLastCheckJindu2().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);
 
-    // OverlaySuperwin().show(money: 100);
-    // OverlayBigwin().show(money: 100);
     // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
-    // OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlaySuperwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 

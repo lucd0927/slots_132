@@ -129,8 +129,7 @@ class _MegawinWidgetState extends State<MegawinWidget> {
                   Positioned(
                     left: -0.w,
                     right: -0.w,
-                    top: 0.h,
-                    bottom: -0.h,
+                    top: -60.h,
                     child: IgnorePointer(
                       child: Center(
                         child: Container(

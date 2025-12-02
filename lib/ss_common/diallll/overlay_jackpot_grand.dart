@@ -97,16 +97,26 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
-
+  bool showAnimatedBgMoney = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        showAnimated = true;
-      });
+      if (mounted) {
+        setState(() {
+          showAnimated = true;
+        });
+
+        Future.delayed(animD, () {
+          if (mounted) {
+            setState(() {
+              showAnimatedBgMoney = true;
+            });
+          }
+        });
+      }
     });
   }
 
@@ -128,34 +138,16 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Positioned(
-                    left: -0.w,
-                    right: -0.w,
-                    top: 0.h,
-                    bottom: -0.h,
-                    child: IgnorePointer(
-                      child: Center(
-                        child: Container(
-                          width: ScreenUtil().screenWidth,
-                          height: ScreenUtil().screenHeight,
-                          // width: 375.w,
-                          // height: 812.h,
-                          color: Colors.yellow.withValues(alpha: 0.0),
-                          child: SSSpineMoney(),
-                        ),
-                      ),
-                    ),
+                  if(showAnimatedBgMoney) Positioned.fill(
+                    top: -200.h,
+                    left: 0.w,
+
+                    child:Container(
+                        width: ScreenUtil().screenWidth,
+                        height: ScreenUtil().screenHeight,
+                        child: SSSpineMoney()),
                   ),
 
-                  // Positioned.fill(
-                  //   top: -200.h,
-                  //   left: 0.w,
-                  //
-                  //   child:Container(
-                  //       width: ScreenUtil().screenWidth,
-                  //       height: ScreenUtil().screenHeight,
-                  //       child: SSSpineMoney()),
-                  // ),
 
                   Positioned(
                     left: 0,
@@ -175,44 +167,6 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                       Container(
                         width: 350.h,
                         height: 240.h,
-                        // // child: Stack(
-                        // //   alignment: Alignment.topCenter,
-                        // //   children: [
-                        // //     Image.asset(
-                        // //       Assets.img.popupJackpotBg.path,
-                        // //       width: double.infinity,
-                        // //       height: double.infinity,
-                        // //       fit: BoxFit.fill,
-                        // //     ),
-                        // //     Column(
-                        // //       mainAxisAlignment: MainAxisAlignment.center,
-                        // //       children: [
-                        // //         SSAScale(
-                        // //           child: Image.asset(
-                        // //             Assets.img.popupJackpotGrand.path,
-                        // //             width: 267.h,
-                        // //             height: 91.h,
-                        // //           ),
-                        // //         ),
-                        // //         // SSAScale(
-                        // //         //   child: Image.asset(
-                        // //         //     Assets.img.popupJackpotGrand.path,
-                        // //         //     width: 267.h,
-                        // //         //     height: 91.h,
-                        // //         //   ),
-                        // //         // ),
-                        // //         // SSAScale(
-                        // //         //   child: Image.asset(
-                        // //         //     Assets.img.popupJackpot1.path,
-                        // //         //     width: 334.h,
-                        // //         //     height: 174.h,
-                        // //         //   ),
-                        // //         // ),
-                        // //       ],
-                        // //     ),
-                        // //   ],
-                        // // ),
-                        // child: SSSpineJackpotGrand(),
                       ),
                       Container(
                         width: double.infinity,
@@ -306,7 +260,7 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                   bottom: 4.h,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "Collect",
+                      text: "Claim",
                       fontSize: 24.sp,
                       fontFamily: FontFamily.alkatra,
                       fontWeight: FontWeight.w700,

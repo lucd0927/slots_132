@@ -93,18 +93,28 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
+  bool showAnimatedBgMoney = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        showAnimated = true;
-      });
+      if (mounted) {
+        setState(() {
+          showAnimated = true;
+        });
+
+        Future.delayed(animD, () {
+          if (mounted) {
+            setState(() {
+              showAnimatedBgMoney = true;
+            });
+          }
+        });
+      }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -123,7 +133,7 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Positioned.fill(
+                 if(showAnimatedBgMoney) Positioned.fill(
                     top: -200.h,
                     left: 0.w,
 
@@ -282,7 +292,7 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
                   bottom: 4.h,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "Collect",
+                      text: "Claim",
                       fontSize: 24.sp,
                       fontFamily: FontFamily.alkatra,
                       fontWeight: FontWeight.w700,

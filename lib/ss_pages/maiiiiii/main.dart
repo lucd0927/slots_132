@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart' hide Velocity;
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,15 +8,19 @@ import 'package:get/get.dart';
 import 'package:newton_particles/newton_particles.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
+import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_notification/android_notification.dart';
+import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
@@ -48,8 +55,48 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     SSEventReporttttt.launch_page();
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
+
+    initNotification(showDialog: true);
     // bgMusic.play();
   }
+
+  initNotification({required bool showDialog}) async {
+    try {
+      ssLogggg("===initNotification==");
+      // 本地通知初始化
+      if (Platform.isIOS) {
+        // await GGLocalNotificationUtils().init();
+      } else {
+        // await GGLocalAndroidNotification().initAllNotification();
+        await SSTzNotificattttt().init();
+        ssLogggg("===initNotification==检查通知");
+        bool result = await SSTzNotificattttt().checkNotificationPermission();
+        ssLogggg("===initNotification==result:$result");
+        if (!result) {
+          await Future.delayed(Duration(milliseconds: 200),);
+          OverlayTzNotify().show( onClose: (v){
+            onDailyBonus();
+          });
+          return;
+        }
+      }
+    } catch (e) {
+      ssLogggg("===initNotification=error:$e=");
+      FirebaseCrashlytics.instance.recordError(e, null, fatal: false);
+    }
+    onDailyBonus();
+  }
+
+  onDailyBonus()async{
+    if(SSDlTracking.isFirstLoginToday){
+      await Future.delayed(Duration(milliseconds: 200));
+      OverlayDailyBonus().show();
+    }
+
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

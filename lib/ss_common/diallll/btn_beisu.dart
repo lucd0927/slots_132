@@ -98,7 +98,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
                             bottom: 4.h,
                             child: Center(
                               child: SSTxtBorder(
-                                text: "Collect",
+                                text: "Claim",
                                 fontSize: 24.sp,
                                 fontFamily: FontFamily.alkatra,
                                 fontWeight: FontWeight.w700,
@@ -125,7 +125,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
             ],
           ),
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 10.h),
         GestureDetector(
           onTap: () {
             widget.onBtn2(0.1);

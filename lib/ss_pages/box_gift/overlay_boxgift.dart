@@ -43,6 +43,7 @@ class OverlayBoxgift {
             if (time > 0) {
               return;
             }
+            HomeBoxTimeState().resetTime();
             double tmpMmm = Random().nextDouble() * 50 + 25;
             List<String> types = [
               "10spin",
@@ -443,7 +444,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       showAnimated = false;
       startScale = 1.0;
     });
-    HomeBoxTimeState().resetTime();
+
     // await Future.delayed(animD);
     widget.onBtn(money);
   }

@@ -121,7 +121,7 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
               Positioned(
                 left: 0,
                 right: 0,
-                top: 60.h,
+                top: 65.h,
                 child: Container(
                   width: 300.h * t1,
                   height: 60.h * t1,
@@ -142,10 +142,10 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
               Positioned(
                 left: 0,
                 right: 0,
-                top: 110.h + t1 * 10.h,
+                top: 115.h + t1 * 10.h,
                 child: Container(
                   width: 100.h * t2,
-                  height: 50.h * t2,
+                  height: 70.h * t2,
                   child: Center(
                     child: FittedBox(
                       child: ShiningEffect(

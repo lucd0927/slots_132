@@ -126,8 +126,7 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                   Positioned(
                     left: -0.w,
                     right: -0.w,
-                    top: 0.h,
-                    bottom: -0.h,
+                    top: -60.h,
                     child: IgnorePointer(
                       child: Center(
                         child: Container(
@@ -157,20 +156,7 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                       top: 210.h,
                       child: SSAnimatedWinBig()),
 
-                  // Positioned(
-                  //   left: 0,
-                  //   right: 0,
-                  //   top: 80.h,
-                  //   child: Center(
-                  //     child: Container(
-                  //       width: 200,
-                  //       height: 812.h*0.5,
-                  //       // clipBehavior: Clip.none,
-                  //       // color: Colors.white,
-                  //       child: SSSpineBigwin(),
-                  //     ),
-                  //   ),
-                  // ),
+
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

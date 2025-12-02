@@ -8,6 +8,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
+import 'package:slots_132/jc_gj/jc_widget/check_image_reveal.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
@@ -15,6 +16,8 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
 
 class OverlayDailyBonus {
   ///是否真正显示
@@ -31,6 +34,17 @@ class OverlayDailyBonus {
         return SettingWidget(
           onClose: () {
             close();
+            int continueDays = DailyBonusController.to.continueLoginDays.value;
+            GiftRewardModel? giftRewardModel =DailyBonusController.kDay_vGiftModel[continueDays];
+            EnumGiftRewardModel? rewardModelType = giftRewardModel?.rewardModelType;
+
+            double money = 0;
+
+            if(rewardModelType == EnumGiftRewardModel.cash){
+              money = (giftRewardModel?.num??0)*1.0;
+            }
+
+            MainController.to.onAddMoney(money, showMoneyAnimated: true);
           },
         );
       },
@@ -59,6 +73,8 @@ class _SettingWidgetState extends State<SettingWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
 
+  bool showCheckOk = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -66,9 +82,18 @@ class _SettingWidgetState extends State<SettingWidget> {
     Get.put(DailyBonusController());
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        showAnimated = true;
-      });
+      if (mounted) {
+        setState(() {
+          showAnimated = true;
+        });
+        Future.delayed(Duration(milliseconds: 300), () {
+          if (mounted) {
+            setState(() {
+              showCheckOk = true;
+            });
+          }
+        });
+      }
     });
   }
 
@@ -109,10 +134,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         SizedBox(height: 24.h),
                         bottomWidget(),
                         SizedBox(height: 4.h),
-                        Container(
-                          height: 40.h,
-                          child: DailyBonusBottomTime(),
-                        )
+                        Container(height: 40.h, child: DailyBonusBottomTime()),
                       ],
                     ),
                   ),
@@ -132,51 +154,27 @@ class _SettingWidgetState extends State<SettingWidget> {
       children: [
         centerItemDayView(
           day: 1,
-          gift: GiftRewardModel(
-            rewardModelType: EnumGiftRewardModel.cash,
-            num: 50,
-            img: Assets.img.moneyGift.path,
-          ),
+          gift: DailyBonusController.kDay_vGiftModel[1]!,
         ),
         centerItemDayView(
           day: 2,
-          gift: GiftRewardModel(
-            rewardModelType: EnumGiftRewardModel.cash,
-            num: 75,
-            img: Assets.img.moneyGift.path,
-          ),
+          gift: DailyBonusController.kDay_vGiftModel[2]!,
         ),
         centerItemDayView(
           day: 3,
-          gift: GiftRewardModel(
-            rewardModelType: EnumGiftRewardModel.spin,
-            num: 50,
-            img: Assets.img.btnTxtSpin.path,
-          ),
+          gift: DailyBonusController.kDay_vGiftModel[3]!,
         ),
         centerItemDayView(
           day: 4,
-          gift: GiftRewardModel(
-            rewardModelType: EnumGiftRewardModel.cash,
-            num: 100,
-            img: Assets.img.moneyGift.path,
-          ),
+          gift: DailyBonusController.kDay_vGiftModel[4]!,
         ),
         centerItemDayView(
           day: 5,
-          gift: GiftRewardModel(
-            rewardModelType: EnumGiftRewardModel.xp,
-            num: 2,
-            img: Assets.img.giftXpUnlock.path,
-          ),
+          gift: DailyBonusController.kDay_vGiftModel[5]!,
         ),
         centerItemDayView(
           day: 6,
-          gift: GiftRewardModel(
-            rewardModelType: EnumGiftRewardModel.iphoneCard,
-            num: 1,
-            img: Assets.img.phoneSuip.path,
-          ),
+          gift: DailyBonusController.kDay_vGiftModel[6]!,
         ),
       ],
     );
@@ -198,8 +196,9 @@ class _SettingWidgetState extends State<SettingWidget> {
     } else if (continueDays == day) {
       hasGet = true;
     }
+    bool showShimmer = hasGet && showCheckOk;
 
-    return Container(
+    Widget child = Container(
       width: 159.w,
       height: 91.h,
       child: Stack(
@@ -247,7 +246,7 @@ class _SettingWidgetState extends State<SettingWidget> {
             ],
           ),
 
-          if (hasGet)
+          if (showShimmer)
             Container(
               width: 159.w,
               height: 91.h,
@@ -255,16 +254,35 @@ class _SettingWidgetState extends State<SettingWidget> {
                 color: Colors.black.withValues(alpha: 0.2),
               ),
               child: Center(
-                child: Image.asset(
-                  Assets.img.dailyBonusOk.path,
-                  width: 54.h,
-                  height: 54.h,
+                child: CheckImageReveal(
+                  child: Shimmer(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        Colors.white.withValues(alpha: 0.1),
+                        Colors.white.withValues(alpha: 1),
+                        Colors.white.withValues(alpha: 0.1),
+                        Colors.transparent,
+                      ],
+                      stops: [0, 0.44, 0.5, 0.54, 1],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    child: Image.asset(
+                      Assets.img.dailyBonusOk.path,
+                      width: 54.h,
+                      height: 54.h,
+                    ),
+                  ),
+                  // child: Assets.img.dailyBonusOk.path,
                 ),
               ),
             ),
         ],
       ),
     );
+
+    return child;
   }
 
   bottomWidget() {
@@ -558,7 +576,6 @@ class DailyBonusBottomTime extends StatefulWidget {
 
 class _DailyBonusBottomTimeState extends State<DailyBonusBottomTime> {
   Timer? _timer;
-
 
   int maxSeconds = 60 * 60;
   String text = "";

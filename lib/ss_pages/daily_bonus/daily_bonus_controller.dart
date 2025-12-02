@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 
 class DailyBonusController extends GetxController {
   static DailyBonusController get to => Get.find();
@@ -16,6 +18,45 @@ class DailyBonusController extends GetxController {
 
   //  连续登录时间
   static const String hLianxuLoginTime = "asd54asdf45ad";
+
+
+  static final Map<int,GiftRewardModel> kDay_vGiftModel={
+    1:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
+      img: Assets.img.moneyGift.path,
+    ),
+    2:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 75,
+      img: Assets.img.moneyGift.path,
+    ),
+    3:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.spin,
+      num: 50,
+      img: Assets.img.btnTxtSpin.path,
+    ),
+    4:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 100,
+      img: Assets.img.moneyGift.path,
+    ),
+    5:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 2,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    6:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.phoneSuip.path,
+    ),
+    7:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.phoneSuip.path,
+    )
+  };
 
   /// 检查是否连续登录，并更新计数
   checkLoginStreak() {

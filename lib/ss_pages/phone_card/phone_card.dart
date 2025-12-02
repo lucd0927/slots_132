@@ -83,12 +83,10 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                           top: -80.h,
                           bottom: -80.h,
                           child: SSRotateWidget(
-                            child: SSAScale(
-                              child: Image.asset(
-                                Assets.img.phoneCardXuanguang.path,
-                                width: double.infinity,
-                                height: double.infinity,
-                              ),
+                            child: Image.asset(
+                              Assets.img.phoneCardXuanguang.path,
+                              width: double.infinity,
+                              height: double.infinity,
                             ),
                           ),
                         ),

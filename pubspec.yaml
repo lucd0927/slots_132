@@ -74,6 +74,8 @@ dependencies:
     path: ./dsfk/common_notifications-master/
   #  birdsong:
   #    path: ./dsfk/common_push-output/
+  pbpig:
+    path: ./dsfk/pbpig/
   thinkup_sdk:
     path: ./dsfk/thinkup_sdk-1.0.7/
 #  roller_list: ^1.0.3
@@ -98,6 +100,7 @@ dependencies:
   lottie: ^3.3.2
   shiny_striped_progress_bar: ^1.1.0
   particles_flutter: ^1.0.1
+  app_settings: ^7.0.0
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:

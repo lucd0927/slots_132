@@ -27,7 +27,7 @@ class SSWindsCccc {
     try {
       var src = SSBaseUuuu.decrypt(encryptTxt, code);
       ssLogggg("=====key:$src");
-      await Pbpig.instance.initddddNumsssberUdddnit(apiKey: src);
+      await SSFengKkkk.instance.initddddNumsssberUdddnit(apiKey: src);
 
       __onlineJson();
       ssLogggg("==__onlineJson:$_onlineJson====");
@@ -54,7 +54,7 @@ class SSWindsCccc {
   }
 
   static getNumberUnitID() async {
-    final did = await Pbpig.instance.getNaaaaufffbedddrUnitID(
+    final did = await SSFengKkkk.instance.getNaaaaufffbedddrUnitID(
       channel: "shumeng_117",
       message: "shumeng_msg",
     );
@@ -174,41 +174,41 @@ class SSWindsCccc {
   }
 
   static Future<bool> rootChajian() async {
-    bool hasxxx = await Pbpig.instance.rttttt();
+    bool hasxxx = await SSFengKkkk.instance.rttttt();
     return hasxxx;
   }
 
   static Future<bool> vpnChajian() async {
-    bool hasxxx = await Pbpig.instance.vpppppn();
+    bool hasxxx = await SSFengKkkk.instance.vpppppn();
     return hasxxx;
   }
 
   static Future<bool> simChajian() async {
-    bool hasxxx = await Pbpig.instance.sicccccm();
+    bool hasxxx = await SSFengKkkk.instance.sicccccm();
     return hasxxx;
   }
 
   static Future<bool> simulatorChajian() async {
-    bool hasxxx = await Pbpig.instance.sicccccmulator();
+    bool hasxxx = await SSFengKkkk.instance.sicccccmulator();
     return hasxxx;
   }
 
   static Future<bool> storeChajian() async {
-    bool hasxxx = await Pbpig.instance.stoooxxxre();
+    bool hasxxx = await SSFengKkkk.instance.stoooxxxre();
     return hasxxx;
   }
 
   static Future<bool> developerChajian() async {
-    bool hasxxx = await Pbpig.instance.dessssvewwwloffffper();
+    bool hasxxx = await SSFengKkkk.instance.dessssvewwwloffffper();
     return hasxxx;
   }
 
   static Future<void> initNumberUnitChajian(String key) async {
-    await Pbpig.instance.initddddNumsssberUdddnit(apiKey: key);
+    await SSFengKkkk.instance.initddddNumsssberUdddnit(apiKey: key);
   }
 
   static Future<String> getNumberUnitIDChajian() async {
-    var hasxxx = await Pbpig.instance.getNaaaaufffbedddrUnitID();
+    var hasxxx = await SSFengKkkk.instance.getNaaaaufffbedddrUnitID();
     return hasxxx;
   }
 
