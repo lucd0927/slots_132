@@ -18,7 +18,7 @@ class AvatarRow extends StatefulWidget {
 class _AvatarRowState extends State<AvatarRow> {
   // List<AvatarModel> avatarDatas = [];
   List<Widget> children = [];
-  int avatarLength = 6;
+  int avatarLength = 12;
 
   @override
   void initState() {
@@ -42,13 +42,32 @@ class _AvatarRowState extends State<AvatarRow> {
     return name;
   }
 
+  List <String> names = [
+   "Sarah J",
+   "Michael B",
+   "David T",
+   "Jessica M",
+   "Robert K",
+   "Jennifer L",
+   "William H",
+   "Elizabeth D",
+   "James P",
+   "Linda S",
+   "Richard G",
+   "Patricia A",
+   "Thomas C",
+   "Barbara W",
+   "Christopher R",
+  ];
+
   initData() {
-    for (int i = 1; i < 50; i++) {
+    names.shuffle();
+    for (int i = 1; i < 13; i++) {
       int aIndex = i % avatarLength + 1;
       // ssLogggg("=====aIndex:$aIndex");
       String avatar = "assets/img/avatar/avatar$aIndex.png";
-      int maxLength = Random().nextInt(8) + 2;
-      String name = randomName(maxLength: maxLength);
+      // int maxLength = Random().nextInt(8) + 2;
+      String name = names[i];
       AvatarModel data = AvatarModel(img: avatar, name: name);
       // avatarDatas.add(data);
       Widget item = avatarItem(data: data);

@@ -7,8 +7,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 
-
-
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
 // 顶层方法（不能在类里）
@@ -27,12 +25,13 @@ void backgourdListener(NotificationResponse ntftRse) {
     '${ntftRse.actionId} with'
     ' payload: ${ntftRse.payload}',
   );
-
 }
 
 class SSTzNotificattttt {
   static final SSTzNotificattttt _shli = SSTzNotificattttt._();
+
   SSTzNotificattttt._();
+
   factory SSTzNotificattttt() {
     return _shli;
   }
@@ -85,20 +84,43 @@ class SSTzNotificattttt {
   }
 
   List get contents => [
-    {"title": "tzT1".tr, "content": "tzC1".tr},
-    {"title": "tzT2".tr, "content": "tzC2".tr},
-    {"title": "tzT3".tr, "content": "tzC3".tr},
-    {"title": "tzT4".tr, "content": "tzC4".tr},
-    {"title": "tzT5".tr, "content": "tzC5".tr},
+    {"title": "", "content": "Payout Complete: Your \$1,000 Has Arrived!"},
+    {"title": "", "content": "KA-CHING! Your \$1,000 Just Hit Your Account!"},
+    {"title": "", "content": "Payout Ready! Click to Secure Your Cash! 💰"},
+    {
+      "title": "",
+      "content": "\$1K Status Check: Time to Claim Your Daily Share! 👑",
+    },
+    {
+      "title": "",
+      "content": "Final Shard Located! Tap to Forge Your iPhone! 🔨",
+    },
+    {
+      "title": "",
+      "content": "You're a Cashout King! View Your Transaction History. ✅",
+    },
+    {
+      "title": "",
+      "content": "Your Elves Are Full! Collect Your Factory Earnings Now! 🏭",
+    },
+    {"title": "", "content": "XP Boost Active! Spin Now to Hit Level 100! ✨"},
+    {
+      "title": "",
+      "content": "10th Anniv. Offer ENDS TODAY! Tap for Final Deal! ⏳",
+    },
+    {
+      "title": "",
+      "content": "VIP Partner Invite Closing Soon! Don't Miss Out! 💸",
+    },
   ];
 
   List get imgTz => [
     "tzimg1",
-    "tzimg2",
-    "tzimg3",
-    "tzimg4",
-    "tzimg5",
-    "tzimg6",
+    "tzimg1",
+    "tzimg1",
+    "tzimg1",
+    "tzimg1",
+    "tzimg1",
   ];
 
   List<T> getRandomNMinus3<T>(List<T> source) {
@@ -114,7 +136,6 @@ class SSTzNotificattttt {
   init() async {
     await requestNotificationPermission();
     csTzNum();
-
 
     pushIcon = "";
     baioti = "132Title";
@@ -164,24 +185,24 @@ class SSTzNotificattttt {
     dingshi(
       id: dingshitzid,
       minutes: SSHuanjing.hasDevvvvv() ? 1 : 30,
-      title: newContents[0]['title'],
+      title: newContents[0]['content'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
-    // dingshi(
-    //   id: dingshitzid2,
-    //   minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
-    //   title: newContents[1]['title'],
-    //   content: newContents[1]['content'],
-    //   tzimage: tzimages[1],
-    // );
-    // dingshi(
-    //   id: dingshitzid3,
-    //   minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
-    //   title: newContents[2]['title'],
-    //   content: newContents[2]['content'],
-    //   tzimage: tzimages[2],
-    // );
+    dingshi(
+      id: dingshitzid2,
+      minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
+      title: newContents[1]['content'],
+      content: newContents[1]['content'],
+      tzimage: tzimages[1],
+    );
+    dingshi(
+      id: dingshitzid3,
+      minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
+      title: newContents[2]['content'],
+      content: newContents[2]['content'],
+      tzimage: tzimages[2],
+    );
     fcmtongzhi();
     jiesoutz();
   }
@@ -214,9 +235,9 @@ class SSTzNotificattttt {
     return result;
   }
 
-  int dingshitzid = 5654;
-  int dingshitzid2 = 5655;
-  int dingshitzid3 = 5656;
+  int dingshitzid = 6667;
+  int dingshitzid2 = 6668;
+  int dingshitzid3 = 6669;
   String pushIcon = "tzimg1";
 
   Future<void> dingshi({
@@ -227,7 +248,9 @@ class SSTzNotificattttt {
     required String content,
     required String tzimage,
   }) async {
-    ssLogggg("==initNotification=_repeatNotification===id:$id minutes:$minutes");
+    ssLogggg(
+      "==initNotification=_repeatNotification===id:$id minutes:$minutes",
+    );
     //自定义通知ID
     // id = dingshitzid;
 
@@ -262,7 +285,7 @@ class SSTzNotificattttt {
     try {
       bool? result = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-           "c117fcm_piggy_br",
+            "c117fcm_piggy_br",
             AndroidNotificationDetails(
               'pbccasd',
               'fcm_notification',

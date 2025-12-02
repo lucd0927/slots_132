@@ -61,7 +61,7 @@ class OverlayFly2TargetKey {
     Size startSize,
     Size endSize,
     VoidCallback? onEnd, {
-    Duration animTime = const Duration(milliseconds: 1200),
+    Duration animTime = const Duration(milliseconds: 800),
   }) {
     _overlay = OverlayEntry(
       builder: (context) {
@@ -271,15 +271,15 @@ class _Source2FlyTargetState extends State<_Source2FlyTarget>
       //   ).chain(CurveTween(curve: Curves.easeInOut)),
       //   weight: 3, // 权重决定时长比例
       // ),
-      // // 第二段：停留在 middle
-      TweenSequenceItem(
-        tween: ConstantTween(middleOffset),
-        weight: 4, // 停留时长
-      ),
+      // // // 第二段：停留在 middle
+      // TweenSequenceItem(
+      //   tween: ConstantTween(middleOffset),
+      //   weight: 4, // 停留时长
+      // ),
       // 第三段：middle -> end
       TweenSequenceItem(
         tween: Tween(
-          begin: middleOffset,
+          begin: widget.start,
           end: widget.end,
         ).chain(CurveTween(curve: Curves.easeInOut)),
         weight: 3,

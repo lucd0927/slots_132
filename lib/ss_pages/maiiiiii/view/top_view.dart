@@ -35,6 +35,7 @@ import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_one_last_check.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_onelc_jindu2.dart';
@@ -173,6 +174,7 @@ class TopView extends StatelessWidget {
     // OverlaySettinnn().show();
 
 
+    OverlayJindu1().show();
 
     // AppSettings.openAppNotificationSettings()
     // OverlayTzReward().show(money: 200, onClose: (v){});
@@ -221,7 +223,7 @@ class TopView extends StatelessWidget {
     // OverlaySuperwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 
-    OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  }, scene: EnumGetScene.spin);
+    // OverlayJackpotGrand().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  }, scene: EnumGetScene.spin);
     // OverlayJackpotMajor().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayJackpotMini().show(money: 200, onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
 

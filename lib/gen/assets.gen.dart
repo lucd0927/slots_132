@@ -90,6 +90,10 @@ class $AssetsDonghuaGen {
   $AssetsDonghuaTancXuanguangGen get tancXuanguang =>
       const $AssetsDonghuaTancXuanguangGen();
 
+  /// Directory path: assets/donghua/wenzidonxiao
+  $AssetsDonghuaWenzidonxiaoGen get wenzidonxiao =>
+      const $AssetsDonghuaWenzidonxiaoGen();
+
   /// Directory path: assets/donghua/xiaozhuanpan
   $AssetsDonghuaXiaozhuanpanGen get xiaozhuanpan =>
       const $AssetsDonghuaXiaozhuanpanGen();
@@ -687,6 +691,10 @@ class $AssetsImgGen {
   AssetGenImage get popupBeisu =>
       const AssetGenImage('assets/img/popup_beisu.png');
 
+  /// File path: assets/img/popup_cashapp.png
+  AssetGenImage get popupCashapp =>
+      const AssetGenImage('assets/img/popup_cashapp.png');
+
   /// File path: assets/img/popup_get_freespinmoney.png
   AssetGenImage get popupGetFreespinmoney =>
       const AssetGenImage('assets/img/popup_get_freespinmoney.png');
@@ -746,6 +754,10 @@ class $AssetsImgGen {
   /// File path: assets/img/popup_moneybg_super.png
   AssetGenImage get popupMoneybgSuper =>
       const AssetGenImage('assets/img/popup_moneybg_super.png');
+
+  /// File path: assets/img/popup_paypal.png
+  AssetGenImage get popupPaypal =>
+      const AssetGenImage('assets/img/popup_paypal.png');
 
   /// File path: assets/img/popup_txt_bigwin.png
   AssetGenImage get popupTxtBigwin =>
@@ -1210,6 +1222,7 @@ class $AssetsImgGen {
     phonePopupJindu2Time,
     phoneSuip,
     popupBeisu,
+    popupCashapp,
     popupGetFreespinmoney,
     popupGetFreespinmoneyS,
     popupGetPhoneSpice,
@@ -1225,6 +1238,7 @@ class $AssetsImgGen {
     popupMoneybgBig,
     popupMoneybgMega,
     popupMoneybgSuper,
+    popupPaypal,
     popupTxtBigwin,
     popupTxtMegawin,
     popupTxtSuperwin,
@@ -1446,6 +1460,23 @@ class $AssetsDonghuaTancXuanguangGen {
 
   /// List of all assets
   List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
+}
+
+class $AssetsDonghuaWenzidonxiaoGen {
+  const $AssetsDonghuaWenzidonxiaoGen();
+
+  /// File path: assets/donghua/wenzidonxiao/skeleton.json
+  String get skeleton => 'assets/donghua/wenzidonxiao/skeleton.json';
+
+  /// File path: assets/donghua/wenzidonxiao/tanchuang.atlas
+  String get tanchuangAtlas => 'assets/donghua/wenzidonxiao/tanchuang.atlas';
+
+  /// File path: assets/donghua/wenzidonxiao/tanchuang.png
+  AssetGenImage get tanchuangPng =>
+      const AssetGenImage('assets/donghua/wenzidonxiao/tanchuang.png');
+
+  /// List of all assets
+  List<dynamic> get values => [skeleton, tanchuangAtlas, tanchuangPng];
 }
 
 class $AssetsDonghuaXiaozhuanpanGen {

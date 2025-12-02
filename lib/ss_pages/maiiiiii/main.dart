@@ -21,6 +21,7 @@ import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
+import 'package:slots_132/ss_common/sssssp/spine_txlast.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
@@ -56,7 +57,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     SSEventReporttttt.launch_page();
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
-
     initNotification(showDialog: true);
     // bgMusic.play(loopMode: LoopMode.single);
   }
@@ -74,10 +74,12 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         bool result = await SSTzNotificattttt().checkNotificationPermission();
         ssLogggg("===initNotification==result:$result");
         if (!result) {
-          await Future.delayed(Duration(milliseconds: 200),);
-          OverlayTzNotify().show( onClose: (v){
-            onDailyBonus();
-          });
+          await Future.delayed(Duration(milliseconds: 200));
+          OverlayTzNotify().show(
+            onClose: (v) {
+              onDailyBonus();
+            },
+          );
           return;
         }
       }
@@ -88,16 +90,12 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     onDailyBonus();
   }
 
-  onDailyBonus()async{
-    if(SSDlTracking.isFirstLoginToday){
+  onDailyBonus() async {
+    if (SSDlTracking.isFirstLoginToday) {
       await Future.delayed(Duration(milliseconds: 200));
       OverlayDailyBonus().show(showAddMoney: true);
     }
-
-
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +163,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                 height: ScreenUtil().screenHeight,
                 color: Colors.transparent,
               ),
-
 
 
           ],
