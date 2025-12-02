@@ -25,7 +25,9 @@ class OverlayDailyBonus {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show() {
+  void show({
+    required bool showAddMoney,
+}) {
     // if (_isShowing) return;
     _overlay = null;
     SSEventReporttttt.sign_page();
@@ -34,6 +36,11 @@ class OverlayDailyBonus {
         return SettingWidget(
           onClose: () {
             close();
+
+            if(!showAddMoney){
+              return;
+            }
+
             int continueDays = DailyBonusController.to.continueLoginDays.value;
             GiftRewardModel? giftRewardModel =DailyBonusController.kDay_vGiftModel[continueDays];
             EnumGiftRewardModel? rewardModelType = giftRewardModel?.rewardModelType;

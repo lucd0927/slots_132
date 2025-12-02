@@ -75,7 +75,7 @@ class WheController extends GetxController {
     int tmpN = curWheNum.value;
     ssLogggg("====onSpinSub==tmpN:$tmpN value:$value");
     if (tmpN < 0 || value==null) {
-      OverlayDailyBonus().show();
+      OverlayDailyBonus().show(showAddMoney: false);
       return;
     }
     wheelEnd.value = true;

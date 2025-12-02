@@ -90,7 +90,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   onDailyBonus()async{
     if(SSDlTracking.isFirstLoginToday){
       await Future.delayed(Duration(milliseconds: 200));
-      OverlayDailyBonus().show();
+      OverlayDailyBonus().show(showAddMoney: true);
     }
 
 
