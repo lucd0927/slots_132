@@ -832,7 +832,7 @@ class SSCommonAds {
     bool ignored_hasDisplayAd = false, // 是否忽略_hasDisplayAd的 判断 false不忽略 true 忽略
     bool canTryAgain = true, // 是否可以再次尝试加载广告
   }) async {
-    // return true;
+    return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,
@@ -1121,7 +1121,7 @@ class SSCommonAds {
     EnumGetScene? scene,
     bool ignored_hasDisplayAd = false,
   }) async {
-    // return true;
+    return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,

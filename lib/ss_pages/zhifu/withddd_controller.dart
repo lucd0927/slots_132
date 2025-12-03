@@ -10,6 +10,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
@@ -172,11 +173,11 @@ class WithdddController extends GetxController {
   var paimingData = {}.obs;
 
   int maxSpinCountWithWithdraw() {
-    return 3;
+    return SSFBBaseData.fee_spin();
   }
 
   int spinWithLiuceng3(){
-    return 5;
+    return SSFBBaseData.human_spin();
   }
 
   @override
