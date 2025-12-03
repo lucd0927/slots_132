@@ -76,6 +76,8 @@ dependencies:
   #    path: ./dsfk/common_push-output/
   pbpig:
     path: ./dsfk/pbpig/
+  cdslots:
+    path: ./dsfk/cdslots/
   thinkup_sdk:
     path: ./dsfk/thinkup_sdk-1.0.7/
 #  roller_list: ^1.0.3

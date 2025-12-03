@@ -420,6 +420,9 @@ class $AssetsImgGen {
   AssetGenImage get highlightsRight =>
       const AssetGenImage('assets/img/highlights_right.png');
 
+  /// File path: assets/img/huoqiu.png
+  AssetGenImage get huoqiu => const AssetGenImage('assets/img/huoqiu.png');
+
   /// File path: assets/img/lucky_slots_end.png
   AssetGenImage get luckySlotsEnd =>
       const AssetGenImage('assets/img/lucky_slots_end.png');
@@ -999,6 +1002,10 @@ class $AssetsImgGen {
   AssetGenImage get withddCashapp =>
       const AssetGenImage('assets/img/withdd_cashapp.png');
 
+  /// File path: assets/img/withdd_cashapp3.png
+  AssetGenImage get withddCashapp3 =>
+      const AssetGenImage('assets/img/withdd_cashapp3.png');
+
   /// File path: assets/img/withdd_cashapp_s.png
   AssetGenImage get withddCashappS =>
       const AssetGenImage('assets/img/withdd_cashapp_s.png');
@@ -1156,6 +1163,7 @@ class $AssetsImgGen {
     highlightsCard3,
     highlightsLeft,
     highlightsRight,
+    huoqiu,
     luckySlotsEnd,
     luckySlotsSlots,
     luckySlotsStart,
@@ -1304,6 +1312,7 @@ class $AssetsImgGen {
     withddBank2,
     withddBankS,
     withddCashapp,
+    withddCashapp3,
     withddCashappS,
     withddHistory,
     withddLook,

@@ -182,9 +182,9 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     if (showExp && showPhone) {
       img = Assets.img.phoneCardXuanguang.path;
     } else if (showExp) {
-      img = Assets.img.popupGetXpmoney.path;
+      img = Assets.img.mainTopXp.path;
     } else if (showPhone) {
-      img = Assets.img.popupGetPhonemoney.path;
+      img = Assets.img.phoneSuip.path;
     } else if (freespins) {
       img = Assets.img.popupGetFreespinmoney.path;
     }
@@ -237,12 +237,12 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              Assets.img.mainTopXp.path,
-                              width: 36.w,
-                              height: 34.h,
-                            ),
-                            SizedBox(width: 4.w),
+                            // Image.asset(
+                            //   Assets.img.mainTopXp.path,
+                            //   width: 36.w,
+                            //   height: 34.h,
+                            // ),
+                            // SizedBox(width: 4.w),
                             SSTxtBorder(
                               text: "+${widget.exp}",
                               fontWeight: FontWeight.w700,
@@ -250,19 +250,19 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                               fontColor: Color(0xffFFFF29),
                               foreground: Color(0xffDB1717),
                             ),
-                            SizedBox(width: 10.w),
+                            // SizedBox(width: 10.w),
                           ],
                         ),
                       if (showPhone)
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              Assets.img.popupGetPhoneSpice.path,
-                              width: 36.w,
-                              height: 34.h,
-                            ),
-                            SizedBox(width: 4.w),
+                            // Image.asset(
+                            //   Assets.img.popupGetPhoneSpice.path,
+                            //   width: 36.w,
+                            //   height: 34.h,
+                            // ),
+                            // SizedBox(width: 4.w),
                             SSTxtBorder(
                               text: "+${widget.phoneSpice}",
                               fontWeight: FontWeight.w700,
@@ -277,12 +277,12 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              Assets.img.popupGetFreespinmoneyS.path,
-                              width: 36.w,
-                              height: 34.h,
-                            ),
-                            SizedBox(width: 4.w),
+                            // Image.asset(
+                            //   Assets.img.popupGetFreespinmoneyS.path,
+                            //   width: 36.w,
+                            //   height: 34.h,
+                            // ),
+                            // SizedBox(width: 4.w),
                             SSTxtBorder(
                               text: "+${widget.freespins}",
                               fontWeight: FontWeight.w700,
@@ -293,7 +293,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             SizedBox(width: 10.w),
                           ],
                         ),
-                      Column(
+                      if(showMoney)Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(height: 2.h),
@@ -358,28 +358,43 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SizedBox(width: 8.w),
               Image.asset(Assets.img.money.path, width: 30.w, height: 30.w),
               SizedBox(width: 8.w),
-              SSTxtGraBorder(
-                text:
-                    "${SSCountry.curGuojiaFuhao()}${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
-                fontSize: 16.sp,
-                // fontFamily: FontFamily.alkatra,
-                height: 1,
-                fontWeight: FontWeight.w500,
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xff0FFF63),
-                    Color(0xffA4F00D),
-                    Color(0xffD0FF00),
-                    Color(0xff00FF1E),
-                    // Color(0xff0FFF63),
-                  ],
-                  end: Alignment.bottomCenter,
-                  begin: Alignment.topCenter,
+
+              SSAniiiiCount(
+                fractionDigits: 2,
+                // value: MainController.to.curSpinMoney.value,
+                value: MainController.to.curSpinMoney.value,
+                textStyle: TextStyle(
+                  fontSize: 20.sp,
+                  height: 1,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff6AFF00),
+                  fontFamily: FontFamily.ghostKidAOEPro,
                 ),
-                strokeColor: Color(0xff0C402B),
-                strokeWidth: 3.w,
-                // fontColor: Color(0xff6AFF00),
+                prefix: SSCountry.curGuojiaFuhao(),
               ),
+
+              // SSTxtGraBorder(
+              //   text:
+              //       "${SSCountry.curGuojiaFuhao()}${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
+              //   fontSize: 16.sp,
+              //   // fontFamily: FontFamily.alkatra,
+              //   height: 1,
+              //   fontWeight: FontWeight.w500,
+              //   gradient: LinearGradient(
+              //     colors: [
+              //       Color(0xff0FFF63),
+              //       Color(0xffA4F00D),
+              //       Color(0xffD0FF00),
+              //       Color(0xff00FF1E),
+              //       // Color(0xff0FFF63),
+              //     ],
+              //     end: Alignment.bottomCenter,
+              //     begin: Alignment.topCenter,
+              //   ),
+              //   strokeColor: Color(0xff0C402B),
+              //   strokeWidth: 3.w,
+              //   // fontColor: Color(0xff6AFF00),
+              // ),
             ],
           ),
           SizedBox(height: 2.h),
@@ -397,28 +412,43 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SizedBox(width: 8.w),
               Image.asset(Assets.img.mainTopXp.path, width: 30.w, height: 30.w),
               SizedBox(width: 8.w),
-              SSTxtGraBorder(
-                text:
-                    "${MainController.to.curLevelExp.value.toStringAsFixed(0)}",
-                fontSize: 16.sp,
-                // fontFamily: FontFamily.alkatra,
-                height: 1,
-                fontWeight: FontWeight.w500,
-                // gradient: LinearGradient(
-                //   colors: [
-                //     Color(0xff0FFF63),
-                //     Color(0xffA4F00D),
-                //     Color(0xffD0FF00),
-                //     Color(0xff00FF1E),
-                //     // Color(0xff0FFF63),
-                //   ],
-                //   end: Alignment.bottomCenter,
-                //   begin: Alignment.topCenter,
-                // ),
-                strokeColor: Color(0xff0C402B),
-                strokeWidth: 3.w,
-                // fontColor: Color(0xff6AFF00),
+
+              SSAniiiiCount(
+                fractionDigits: 0,
+                // value: MainController.to.curSpinMoney.value,
+                value: MainController.to.curLevelExp.value,
+                textStyle: TextStyle(
+                  fontSize: 20.sp,
+                  height: 1,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xffCB4B06),
+                  fontFamily: FontFamily.ghostKidAOEPro,
+                ),
+                prefix: "",
               ),
+
+              // SSTxtGraBorder(
+              //   text:
+              //       "${MainController.to.curLevelExp.value.toStringAsFixed(0)}",
+              //   fontSize: 16.sp,
+              //   // fontFamily: FontFamily.alkatra,
+              //   height: 1,
+              //   fontWeight: FontWeight.w500,
+              //   // gradient: LinearGradient(
+              //   //   colors: [
+              //   //     Color(0xff0FFF63),
+              //   //     Color(0xffA4F00D),
+              //   //     Color(0xffD0FF00),
+              //   //     Color(0xff00FF1E),
+              //   //     // Color(0xff0FFF63),
+              //   //   ],
+              //   //   end: Alignment.bottomCenter,
+              //   //   begin: Alignment.topCenter,
+              //   // ),
+              //   strokeColor: Color(0xff0C402B),
+              //   strokeWidth: 3.w,
+              //   // fontColor: Color(0xff6AFF00),
+              // ),
             ],
           ),
           SizedBox(height: 4.h),
@@ -439,28 +469,44 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 height: 30.w,
               ),
               SizedBox(width: 8.w),
-              SSTxtGraBorder(
-                text: "${PhoneCardController.to.collectCardNum.value}",
-                fontSize: 16.sp,
-                // fontFamily: FontFamily.alkatra,
-                fontFamily: FontFamily.ghostKidAOEPro,
-                height: 1,
-                fontWeight: FontWeight.w500,
-                // gradient: LinearGradient(
-                //   colors: [
-                //     Color(0xff0FFF63),
-                //     Color(0xffA4F00D),
-                //     Color(0xffD0FF00),
-                //     Color(0xff00FF1E),
-                //     // Color(0xff0FFF63),
-                //   ],
-                //   end: Alignment.bottomCenter,
-                //   begin: Alignment.topCenter,
-                // ),
-                strokeColor: Color(0xff0C402B),
-                strokeWidth: 3.w,
-                // fontColor: Color(0xff6AFF00),
+
+              SSAniiiiCount(
+                fractionDigits: 0,
+                // value: MainController.to.curSpinMoney.value,
+                value: PhoneCardController.to.collectCardNum.value,
+                textStyle: TextStyle(
+                  fontSize: 20.sp,
+                  height: 1,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xffCB4B06),
+                  fontFamily: FontFamily.ghostKidAOEPro,
+                ),
+                prefix: "",
               ),
+
+
+              // SSTxtGraBorder(
+              //   text: "${PhoneCardController.to.collectCardNum.value}",
+              //   fontSize: 16.sp,
+              //   // fontFamily: FontFamily.alkatra,
+              //   fontFamily: FontFamily.ghostKidAOEPro,
+              //   height: 1,
+              //   fontWeight: FontWeight.w500,
+              //   // gradient: LinearGradient(
+              //   //   colors: [
+              //   //     Color(0xff0FFF63),
+              //   //     Color(0xffA4F00D),
+              //   //     Color(0xffD0FF00),
+              //   //     Color(0xff00FF1E),
+              //   //     // Color(0xff0FFF63),
+              //   //   ],
+              //   //   end: Alignment.bottomCenter,
+              //   //   begin: Alignment.topCenter,
+              //   // ),
+              //   strokeColor: Color(0xff0C402B),
+              //   strokeWidth: 3.w,
+              //   // fontColor: Color(0xff6AFF00),
+              // ),
             ],
           ),
         ],

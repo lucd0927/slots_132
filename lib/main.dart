@@ -7,6 +7,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc_env.dart';
@@ -123,7 +124,7 @@ void lcChange() {
     // AppLifecycleState.paused
     // AppLifecycleState.detached
     if (msg == "AppLifecycleState.resumed") {
-      // bgGGAudioPlayer.resume();
+      bgMusic.resume();
       // JCShijianBaogao.session();
       _bgTtttt?.cancel();
       SystemUiHelper.restoreTransparentNavBar();
@@ -143,7 +144,7 @@ void lcChange() {
       }
       sssshowAd = false;
     } else {
-      // bgGGAudioPlayer.pause();
+      bgMusic.pause();
       if (msg == "AppLifecycleState.paused") {
         ssLogggg("====AppLifecycleState.paused===");
         // JCShijianBaogao.app_background();

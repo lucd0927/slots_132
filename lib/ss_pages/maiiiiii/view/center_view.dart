@@ -82,7 +82,7 @@ class CenterView extends StatelessWidget {
                               firstChild: leftWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
                               crossFadeState:
-                                  MainController.to.curShowFreeSpin.value
+                              MainController.to.curShowFreeSpin.value
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
                               duration: Duration(milliseconds: 200),
@@ -96,7 +96,7 @@ class CenterView extends StatelessWidget {
                               firstChild: rightWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
                               crossFadeState:
-                                  MainController.to.curShowFreeSpin.value
+                              MainController.to.curShowFreeSpin.value
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
                               duration: Duration(milliseconds: 200),
@@ -355,7 +355,7 @@ class CenterView extends StatelessWidget {
                     child: Center(
                       child: SSTxtBorder(
                         text:
-                            "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
+                        "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
                         fontColor: Color(0xff6AFF00),
                         fontSize: 16.sp,
                         fontFamily: FontFamily.alkatra,
@@ -396,7 +396,7 @@ class CenterView extends StatelessWidget {
                   child: Center(
                     child: SSTxtBorder(
                       text:
-                          "${SSCountry.curGuojiaFuhao()}${majorN.toStringAsFixed(0)}",
+                      "${SSCountry.curGuojiaFuhao()}${majorN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
                       fontFamily: FontFamily.alkatra,
@@ -436,7 +436,7 @@ class CenterView extends StatelessWidget {
                   child: Center(
                     child: SSTxtBorder(
                       text:
-                          "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
+                      "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
                       fontFamily: FontFamily.alkatra,
@@ -555,7 +555,7 @@ class CenterView extends StatelessWidget {
                       child: Center(
                         child: SSTxtGraBorder(
                           text:
-                              "$card/${PhoneCardController.to.durations.length}",
+                          "$card/${PhoneCardController.to.durations.length}",
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           strokeColor: Color(0xff30120A),
@@ -680,14 +680,16 @@ class FreeSpinState extends State<FreeSpin> {
           }
         }
         ssLogggg("====free spin=tickkk1 tmpT:$tmpT select:$select tickkk1:$tickkk1");
-        Widget heroChild = Image.asset(Assets.img.xuanguang2.path);
+        // Widget heroChild = Image.asset(Assets.img.xuanguang2.path);
+        Widget heroChild = Image.asset(Assets.img.huoqiu.path);
         // Widget heroChild = SpineFreespinXuanggg();
         OverlayFly2TargetKey().showWithSize(
-          childSize: Size(50.w, 50.w),
-          targetContext: _kFreespinIndex_vWidgetContext[select]!,
-          topLeftOffset: Offset(100.w,230.h),
-          heroChild: heroChild,
-          animTime: Duration(milliseconds: mills)
+            childSize: Size(20.w, 20.w),
+            targetContext: _kFreespinIndex_vWidgetContext[select]!,
+            topLeftOffset: Offset(100.w,230.h),
+            heroChild: heroChild,
+            count: 8,
+            animTime: Duration(milliseconds: mills)
 
         );
       }
@@ -945,15 +947,15 @@ class FreeSpinState extends State<FreeSpin> {
         ],
       ),
       child: Builder(
-        builder: (context) {
-          setFreespinContext(context, index);
-          return Image.asset(
-            icon,
-            width: childIW,
-            height: childIH,
-            gaplessPlayback: true,
-          );
-        }
+          builder: (context) {
+            setFreespinContext(context, index);
+            return Image.asset(
+              icon,
+              width: childIW,
+              height: childIH,
+              gaplessPlayback: true,
+            );
+          }
       ),
     );
 

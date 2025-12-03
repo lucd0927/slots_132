@@ -75,7 +75,7 @@ class OverlayFly2TargetKey {
               startSize: startSize,
               endSize: endSize,
               duration: animTime,
-              delayBetween: Duration(milliseconds: 20),
+              delayBetween: Duration(milliseconds: 50),
               onFinish: () {
                 close();
                 if (onEnd != null) {

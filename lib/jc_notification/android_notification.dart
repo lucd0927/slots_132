@@ -181,7 +181,7 @@ class SSTzNotificattttt {
     }
     List newContents = getRandomNMinus3(contents);
     List tzimages = getRandomNMinus3(imgTz);
-    print("=====newContents:$newContents");
+    // print("=====newContents:$newContents");
     dingshi(
       id: dingshitzid,
       minutes: SSHuanjing.hasDevvvvv() ? 1 : 30,

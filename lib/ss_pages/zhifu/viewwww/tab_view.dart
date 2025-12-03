@@ -211,7 +211,7 @@ class _SSTabViewState extends State<SSTabView> {
     if (pro < 0) {
       pro = 0;
     }
-    pro = 0.1;
+    // pro = 0.1;
 
     return Container(
       width: 128.w,
@@ -489,7 +489,7 @@ class _VipPartnerState extends State<VipPartner> {
   void onGetChange() {
     if (canclick()) {
       SSEventReporttttt.vip_partner_click();
-
+      Navigator.maybePop(context);
       OverlayActivateMyStatus().show();
     }
   }

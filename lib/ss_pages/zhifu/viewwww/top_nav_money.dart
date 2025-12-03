@@ -51,29 +51,29 @@ class _TopNavMoneyState extends State<TopNavMoney> {
               ),
               const Spacer(),
 
-              // 可点击的头像：点击调用 _pickAvatar()
-              GetBuilder<WithdddController>(
-                builder: (WithdddController controller) {
-                  return GestureDetector(
-                    onTap: _pickAvatar,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.h),
-                      child: WithdddController.to.avatarFile != null
-                          ? Image.file(
-                              WithdddController.to.avatarFile!,
-                              width: 24.h,
-                              height: 24.h,
-                              fit: BoxFit.cover,
-                            )
-                          : CircleAvatar(
-                              radius: 12.h,
-                              backgroundColor: Colors.grey.shade300,
-                              child: Image.asset(Assets.img.avatar.avatarD.path),
-                            ),
-                    ),
-                  );
-                },
-              ),
+              // // 可点击的头像：点击调用 _pickAvatar()
+              // GetBuilder<WithdddController>(
+              //   builder: (WithdddController controller) {
+              //     return GestureDetector(
+              //       onTap: _pickAvatar,
+              //       child: ClipRRect(
+              //         borderRadius: BorderRadius.circular(15.h),
+              //         child: WithdddController.to.avatarFile != null
+              //             ? Image.file(
+              //                 WithdddController.to.avatarFile!,
+              //                 width: 24.h,
+              //                 height: 24.h,
+              //                 fit: BoxFit.cover,
+              //               )
+              //             : CircleAvatar(
+              //                 radius: 12.h,
+              //                 backgroundColor: Colors.grey.shade300,
+              //                 child: Image.asset(Assets.img.avatar.avatarD.path),
+              //               ),
+              //       ),
+              //     );
+              //   },
+              // ),
               SizedBox(width: 8.w),
               GestureDetector(
                 onTap: () {

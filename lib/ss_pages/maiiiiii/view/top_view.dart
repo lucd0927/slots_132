@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +11,8 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/overlay_bigwin.dart';
@@ -67,7 +71,11 @@ class TopView extends StatelessWidget {
             gaplessPlayback: true,
           ),
 
-          Positioned(top: 48.h, left: 28.w, child: TopMoneyWidget(showOverlayMoney: true,)),
+          Positioned(
+            top: 48.h,
+            left: 28.w,
+            child: TopMoneyWidget(showOverlayMoney: true),
+          ),
 
           Positioned(
             top: 44.h,
@@ -81,14 +89,7 @@ class TopView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.red.withValues(alpha: 0.0),
                 ),
-                child: Center(
-                  child: Image.asset(
-                    WithdddController.to.currentPaymentIconSelected(),
-                    width: double.infinity,
-                    height: double.infinity,
-                    gaplessPlayback: true,
-                  ),
-                ),
+                child: MainTopCenterWidget(),
               ),
             ),
           ),
@@ -171,7 +172,9 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
+
+    // Get.toNamed(SSRouttttt.wayeeee);
 
 
     // OverlayJindu1().show();
@@ -187,7 +190,6 @@ class TopView extends StatelessWidget {
     //   },
     //   spinCount: 5,
     // );
-
 
     // OverlayWithddCardPaypal().show();
     // OverlayWithddCardCashapp().show();
@@ -207,7 +209,7 @@ class TopView extends StatelessWidget {
 
     // OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
 
-    // OverlayCommonGet().show(money: 100,exp: 0,phoneSpice: 1, onClose: () {  });
+    OverlayCommonGet().show(money: 0,exp: 1,phoneSpice: 0, onClose: () {  });
 
     // OverlayDailyBonus().show();
     // OverlayRank().show();
@@ -414,5 +416,108 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
         ),
       ),
     );
+  }
+}
+
+class MainTopCenterWidget extends StatefulWidget {
+  const MainTopCenterWidget({super.key});
+
+  @override
+  State<MainTopCenterWidget> createState() => _MainTopCenterWidgetState();
+}
+
+class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
+  late Timer _timer;
+  EnumSSPaymentMethod paymentMethod = EnumSSPaymentMethod.paypal;
+  String icon = Assets.img.withddPaypal.path;
+  bool change = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _timer = Timer.periodic(Duration(milliseconds: 1200), (time) {
+      if (mounted) {
+        setState(() {
+          var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
+          // hasLiceng3 = true;
+          if (hasLiceng3) {
+            if (icon == "Vip partner") {
+              icon = "\$1000 a day";
+            } else {
+              icon = "Vip partner";
+            }
+          } else {
+            if (paymentMethod == EnumSSPaymentMethod.paypal) {
+              paymentMethod = EnumSSPaymentMethod.cashApp;
+            } else if (paymentMethod == EnumSSPaymentMethod.cashApp) {
+              paymentMethod = EnumSSPaymentMethod.bank;
+            } else {
+              paymentMethod = EnumSSPaymentMethod.paypal;
+            }
+            icon = selectedPaymentIconSelected2(paymentMethod.name);
+          }
+          change = !change;
+        });
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      return centerIcon();
+      return AnimatedCrossFade(
+        firstChild: centerIcon(),
+        secondChild: centerIcon(),
+        crossFadeState: change
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
+        duration: Duration(milliseconds: 100),
+      );
+    });
+  }
+
+  String selectedPaymentIconSelected2(String method) {
+    if (method == EnumSSPaymentMethod.paypal.name) {
+      return Assets.img.withddPaypal.path;
+    } else if (method == EnumSSPaymentMethod.cashApp.name) {
+      return Assets.img.withddCashapp3.path;
+    } else if (method == EnumSSPaymentMethod.bank.name) {
+      return Assets.img.withddBank.path;
+    }
+    return Assets.img.withddPaypal.path; // 默认返回值，防止没有匹配情况
+  }
+
+  centerIcon() {
+    var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
+    // hasLiceng3 = true;
+    if (hasLiceng3) {
+      return Center(
+        child: SSTxtGraBorder(
+          text: icon,
+          fontFamily: FontFamily.fraunces,
+          fontSize: 14.sp,
+          strokeColor: Color(0xff085119),
+        ),
+      );
+    }
+
+    return Center(
+      child: Image.asset(
+        icon,
+        // width: double.infinity,
+        // height: double.infinity,
+        gaplessPlayback: true,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _timer.cancel();
   }
 }

@@ -1172,6 +1172,7 @@ class MainController extends GetxController {
               onFreeSpin();
             },
           );
+          return;
         } else {
           hasScrollerEnd.value = false;
         }

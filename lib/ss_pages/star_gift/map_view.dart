@@ -116,6 +116,7 @@ class _SSMapViewState extends State<SSMapView> {
     }
     // 获取女精灵总数量
     int curGirlJinglingN = MainController.to.curCollectStar.value;
+    curGirlJinglingN = 100;
     // 获取当前最大的循环数,向下取整
     int floor = (curGirlJinglingN / loopMaxN).floor();
     int loopNum = jumpToNextStar.length;
@@ -173,12 +174,12 @@ class _SSMapViewState extends State<SSMapView> {
   scrollTo(int index) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       double offset = index * (_itemH + _bottomDistance);
-      // _controllers.animateTo(
-      //   offset,
-      //   curve: Curves.easeInOut,
-      //   duration: Duration(milliseconds: 500),
-      // );
-      _controllers.jumpTo(offset);
+      _controllers.animateTo(
+        offset,
+        curve: Curves.easeInOut,
+        duration: Duration(milliseconds: 500),
+      );
+      // _controllers.jumpTo(offset);
     });
   }
 
