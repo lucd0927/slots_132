@@ -10,11 +10,13 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_common/sssssp/spine_freespin_xuanggg.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -188,6 +190,7 @@ class CenterView extends StatelessWidget {
                 ),
 
                 Positioned.fill(
+                  top: 30.h,
                   child: TweenAnimationBuilder<double>(
                     duration: const Duration(milliseconds: 400),
                     tween: Tween(
@@ -309,7 +312,6 @@ class CenterView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         SizedBox(
-
           child: Container(
             width: 120.w,
             height: 62.w,
@@ -461,14 +463,14 @@ class CenterView extends StatelessWidget {
     time = -9;
     if (time > 0) {
       ssTushi(text: "Please wait!");
-    }else{
+    } else {
       SSEventReporttttt.home_page_gift();
       OverlayBoxgift().show();
     }
   }
 
   Widget leftWidget() {
-    return Obx((){
+    return Obx(() {
       bool showTime = MainController.to.showBoxTime.value;
       return Column(
         children: [
@@ -504,7 +506,9 @@ class CenterView extends StatelessWidget {
                     left: -4.w,
                     right: -4.w,
                     bottom: 4.h,
-                    child: Center(child:showTime? HomeBoxTime():const SizedBox()),
+                    child: Center(
+                      child: showTime ? HomeBoxTime() : const SizedBox(),
+                    ),
                   ),
                 ],
               ),
@@ -551,7 +555,7 @@ class CenterView extends StatelessWidget {
                       child: Center(
                         child: SSTxtGraBorder(
                           text:
-                          "$card/${PhoneCardController.to.durations.length}",
+                              "$card/${PhoneCardController.to.durations.length}",
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           strokeColor: Color(0xff30120A),
@@ -567,8 +571,6 @@ class CenterView extends StatelessWidget {
         ],
       );
     });
-
-
   }
 
   onPhoneClick() {
@@ -620,7 +622,80 @@ class FreeSpinState extends State<FreeSpin> {
     hasQianjin = true;
   }
 
+  Map<int, Offset> _kFreespinIndex_vWidgetContextOffset = {};
+  Map<int, BuildContext> _kFreespinIndex_vWidgetContext = {};
+
   onStar({required ValueChanged<EnumGiftRewardModel> onEnd}) {
+    timer?.cancel();
+    List<int> randoms = [10, 11, 12, 13,14];
+    int tickkk1 = randoms[Random().nextInt(randoms.length)];
+    ssLogggg("====free spin=tickkk1:$tickkk1");
+    int mills = 250;
+    timer = Timer.periodic(Duration(milliseconds: mills), (v) {
+      int tmpT = v.tick;
+
+      if (tmpT == tickkk1) {
+        // await Future.delayed(Duration(milliseconds: 1000));
+        EnumGiftRewardModel tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+        setState(() {
+          if (tmpT == 40) {
+            select = 0;
+            firstH = 30.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+          } else if (tmpT == 41) {
+            select = 1;
+            secondH = 70.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+          } else if (tmpT == 42) {
+            select = 2;
+            thirdH = 110.h;
+          } else if (tmpT == 43) {
+            select = 3;
+            fourthH = 70.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+          } else if (tmpT == 44) {
+            select = 4;
+            fiveH = 30.h;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+          }
+        });
+
+        v.cancel();
+        Future.delayed(Duration(milliseconds: 1200), () {
+          setState(() {
+            reset();
+            onEnd(tmpEnumGiftRewardModel);
+          });
+        });
+      }else{
+        if (hasQianjin) {
+          select++;
+          if (select >= 4) {
+            hasQianjin = false;
+          }
+        } else {
+          select--;
+          if (select <= 0) {
+            hasQianjin = true;
+          }
+        }
+        ssLogggg("====free spin=tickkk1 tmpT:$tmpT select:$select tickkk1:$tickkk1");
+        Widget heroChild = Image.asset(Assets.img.xuanguang2.path);
+        // Widget heroChild = SpineFreespinXuanggg();
+        OverlayFly2TargetKey().showWithSize(
+          childSize: Size(50.w, 50.w),
+          targetContext: _kFreespinIndex_vWidgetContext[select]!,
+          topLeftOffset: Offset(100.w,230.h),
+          heroChild: heroChild,
+          animTime: Duration(milliseconds: mills)
+
+        );
+      }
+
+    });
+  }
+
+  onStar2({required ValueChanged<EnumGiftRewardModel> onEnd}) {
     timer?.cancel();
     List<int> randoms = [40, 41, 43, 44];
     int tickkk1 = randoms[Random().nextInt(randoms.length)];
@@ -669,7 +744,7 @@ class FreeSpinState extends State<FreeSpin> {
             }
           } else {
             select--;
-            if (select < 0) {
+            if (select <= 0) {
               hasQianjin = true;
             }
           }
@@ -693,6 +768,10 @@ class FreeSpinState extends State<FreeSpin> {
     });
   }
 
+  setFreespinContext(BuildContext context, int index) {
+    _kFreespinIndex_vWidgetContext[index] = context;
+  }
+
   freeSpinWidget() {
     double leftW = 0.w;
     double itemW = (ScreenUtil().screenWidth - leftW * 2) / 5.2;
@@ -711,62 +790,86 @@ class FreeSpinState extends State<FreeSpin> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: itemW,
-                    color: Colors.yellow.withValues(alpha: alpha),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        // SizedBox(height: firstH),
-                        AnimatedContainer(
-                          height: firstH,
-                          duration: Duration(milliseconds: 100),
+                  Builder(
+                    builder: (context) {
+                      MainController.to.setFreespinContext(context, 0);
+                      // setFreespinContext(context, 0);
+                      return Container(
+                        width: itemW,
+                        color: Colors.yellow.withValues(alpha: alpha),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            // SizedBox(height: firstH),
+                            AnimatedContainer(
+                              height: firstH,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                            childI(icon: Assets.img.mainCWheel.path, index: 0),
+                          ],
                         ),
-                        childI(icon: Assets.img.mainCWheel.path, index: 0),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: itemW,
-                    color: Colors.green.withValues(alpha: alpha),
-                    child: Column(
-                      children: [
-                        // SizedBox(height: secondH),
-                        AnimatedContainer(
-                          height: secondH,
-                          duration: Duration(milliseconds: 100),
+                  Builder(
+                    builder: (context) {
+                      MainController.to.setFreespinContext(context, 1);
+                      // setFreespinContext(context, 1);
+                      return Container(
+                        width: itemW,
+                        color: Colors.green.withValues(alpha: alpha),
+                        child: Column(
+                          children: [
+                            // SizedBox(height: secondH),
+                            AnimatedContainer(
+                              height: secondH,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                            childI(icon: Assets.img.mainCMoney.path, index: 1),
+                          ],
                         ),
-                        childI(icon: Assets.img.mainCMoney.path, index: 1),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: itemW,
-                    color: Colors.red.withValues(alpha: alpha),
-                    child: Column(
-                      children: [
-                        // SizedBox(height: thirdH),
-                        AnimatedContainer(
-                          height: thirdH,
-                          duration: Duration(milliseconds: 100),
+                  Builder(
+                    builder: (context) {
+                      MainController.to.setFreespinContext(context, 2);
+                      // setFreespinContext(context, 2);
+                      return Container(
+                        width: itemW,
+                        color: Colors.red.withValues(alpha: alpha),
+                        child: Column(
+                          children: [
+                            // SizedBox(height: thirdH),
+                            AnimatedContainer(
+                              height: thirdH,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                            childI(icon: Assets.img.mainCAvatar.path, index: 2),
+                          ],
                         ),
-                        childI(icon: Assets.img.mainCAvatar.path, index: 2),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: itemW,
-                    color: Colors.green.withValues(alpha: alpha),
-                    child: Column(
-                      children: [
-                        // SizedBox(height: fourthH),
-                        AnimatedContainer(
-                          height: fourthH,
-                          duration: Duration(milliseconds: 100),
+                  Builder(
+                    builder: (context) {
+                      MainController.to.setFreespinContext(context, 3);
+                      // setFreespinContext(context, 3);
+                      return Container(
+                        width: itemW,
+                        color: Colors.green.withValues(alpha: alpha),
+                        child: Column(
+                          children: [
+                            // SizedBox(height: fourthH),
+                            AnimatedContainer(
+                              height: fourthH,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                            childI(icon: Assets.img.mainCWheel.path, index: 3),
+                          ],
                         ),
-                        childI(icon: Assets.img.mainCWheel.path, index: 3),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                   Container(
                     width: itemW,
@@ -837,15 +940,20 @@ class FreeSpinState extends State<FreeSpin> {
           BoxShadow(
             color: Colors.white.withValues(alpha: glowOpacity * 1),
             blurRadius: 15,
-            spreadRadius: 5,
+            spreadRadius: 20,
           ),
         ],
       ),
-      child: Image.asset(
-        icon,
-        width: childIW,
-        height: childIH,
-        gaplessPlayback: true,
+      child: Builder(
+        builder: (context) {
+          setFreespinContext(context, index);
+          return Image.asset(
+            icon,
+            width: childIW,
+            height: childIH,
+            gaplessPlayback: true,
+          );
+        }
       ),
     );
 
@@ -865,6 +973,7 @@ class HomeBoxTimeState extends State<HomeBoxTime> {
   Timer? _timer;
   var box = SSHive.box;
   int maxSeconds = 60 * 60 * 8;
+
   // int maxSeconds = 60*2 ;
   String text = "";
 
@@ -885,13 +994,13 @@ class HomeBoxTimeState extends State<HomeBoxTime> {
     int diff = mill - time;
     // 剩下多少时间
     int shengyu = ((maxSeconds * 1000 - diff) / 1000).toInt();
-    if(shengyu <=0 ){
+    if (shengyu <= 0) {
       shengyu = 0;
     }
     return shengyu;
   }
 
-  resetTime(){
+  resetTime() {
     int mill = DateTime.now().millisecondsSinceEpoch;
     saveTime(mill);
     ssLogggg("====== cresetTime:$mill");
@@ -904,7 +1013,7 @@ class HomeBoxTimeState extends State<HomeBoxTime> {
     _timer?.cancel();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       int tick = timer.tick;
-      int  shengyu = shengyuTime();
+      int shengyu = shengyuTime();
       int seconds = shengyu;
       if (shengyu <= 0) {
         setState(() {

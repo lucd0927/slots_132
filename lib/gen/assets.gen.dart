@@ -70,6 +70,10 @@ class $AssetsAuddddGen {
 class $AssetsDonghuaGen {
   const $AssetsDonghuaGen();
 
+  /// Directory path: assets/donghua/freespin_xuanggg
+  $AssetsDonghuaFreespinXuangggGen get freespinXuanggg =>
+      const $AssetsDonghuaFreespinXuangggGen();
+
   /// Directory path: assets/donghua/hand
   $AssetsDonghuaHandGen get hand => const $AssetsDonghuaHandGen();
 
@@ -1355,6 +1359,23 @@ class $AssetsMyaGen {
 
   /// Directory path: assets/mya/wow
   $AssetsMyaWowGen get wow => const $AssetsMyaWowGen();
+}
+
+class $AssetsDonghuaFreespinXuangggGen {
+  const $AssetsDonghuaFreespinXuangggGen();
+
+  /// File path: assets/donghua/freespin_xuanggg/gt.atlas
+  String get gtAtlas => 'assets/donghua/freespin_xuanggg/gt.atlas';
+
+  /// File path: assets/donghua/freespin_xuanggg/gt.png
+  AssetGenImage get gtPng =>
+      const AssetGenImage('assets/donghua/freespin_xuanggg/gt.png');
+
+  /// File path: assets/donghua/freespin_xuanggg/skeleton.json
+  String get skeleton => 'assets/donghua/freespin_xuanggg/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [gtAtlas, gtPng, skeleton];
 }
 
 class $AssetsDonghuaHandGen {

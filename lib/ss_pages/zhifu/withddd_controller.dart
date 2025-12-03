@@ -326,6 +326,9 @@ class WithdddController extends GetxController {
   saveCardId(String card) {
     box.put(hksaveCardId, card);
     curSaveCardId.value = card;
+
+    MainController.to.onAddMoney(-MainController.minWithdddMoney, showMoneyAnimated: true);
+
   }
 
   onWithdraw({required double money}) {

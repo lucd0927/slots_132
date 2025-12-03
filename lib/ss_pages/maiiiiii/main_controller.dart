@@ -248,7 +248,7 @@ class MainController extends GetxController {
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
-    // tmpSpinCount = 5;
+    tmpSpinCount = 5;
 
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
@@ -1298,7 +1298,11 @@ class MainController extends GetxController {
 
   // 坐标对应的位置
   Map<int, Offset> kZuobiao_vWidgetContextOffset = {};
+  Map<int, BuildContext> kFreespinIndex_vWidgetContextOffset = {};
 
+  setFreespinContext(BuildContext context, int index) {
+    kFreespinIndex_vWidgetContextOffset[index] = context;
+  }
   setContext(BuildContext context, int index) {
     kZuobiao_vWidgetContext[index] = context;
   }

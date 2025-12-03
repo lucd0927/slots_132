@@ -115,7 +115,8 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                   SizedBox(height: 10.h),
                   Container(
                     width: 298.w,
-                    height: 333.w,
+                    height: 360.w,
+                    // color: Colors.red,
                     child: Stack(
                       clipBehavior: Clip.none,
                       alignment: Alignment.topCenter,
@@ -123,7 +124,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                         Image.asset(
                           Assets.img.freeSpinOverBg.path,
                           width: 298.w,
-                          height: 496.w,
+                          height: 333.w,
                           fit: BoxFit.fill,
                         ),
 
@@ -211,60 +212,65 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                           ],
                         ),
 
-
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Center(
-                    child: GestureDetector(
-                      onTap: onclickClaim,
-                      child: Container(
-                        width: 175.h,
-                        height: 58.h,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Image.asset(
-                              Assets.img.btnFreeSpins.path,
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.fill,
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 14.h,
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.center,
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: onclickClaim,
+                              child: Container(
+                                width: 175.h,
+                                height: 58.h,
+                                child: Stack(
+                                  clipBehavior: Clip.none,
                                   children: [
-                                    SSTxtBorder(
-                                      text: "Claim",
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 24.sp,
-                                      fontFamily: FontFamily.alkatra,
+                                    Image.asset(
+                                      Assets.img.btnFreeSpins.path,
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.fill,
                                     ),
+                                    Positioned(
+                                      left: 0,
+                                      right: 0,
+                                      top: 14.h,
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            SSTxtBorder(
+                                              text: "Claim",
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 24.sp,
+                                              fontFamily: FontFamily.alkatra,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    // Positioned(
+                                    //   right: 0,
+                                    //   top: -10.h,
+                                    //   child: Image.asset(
+                                    //     Assets.img.video.path,
+                                    //     width: 28.w,
+                                    //     height: 28.w,
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ),
                             ),
-
-                            // Positioned(
-                            //   right: 0,
-                            //   top: -10.h,
-                            //   child: Image.asset(
-                            //     Assets.img.video.path,
-                            //     width: 28.w,
-                            //     height: 28.w,
-                            //   ),
-                            // ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
+                  // SizedBox(height: 10.h),
+
                   // GestureDetector(
                   //   onTap: () {
                   //     MainController.to.curFreeSpinCount.value = baseCount;

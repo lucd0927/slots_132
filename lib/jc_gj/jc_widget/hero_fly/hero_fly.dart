@@ -99,6 +99,7 @@ class OverlayFly2TargetKey {
     int count = 1,
     VoidCallback? onEnd,
     Offset? topLeftOffset,
+    Duration animTime = const Duration(milliseconds: 800),
   }) {
     // if (_isShowing) return;
     _overlay = null;
@@ -139,6 +140,7 @@ class OverlayFly2TargetKey {
         startSize,
         endSize,
         onEnd,
+        animTime: animTime,
       );
     }
   }
@@ -189,7 +191,7 @@ class OverlayFly2TargetKey {
         startSize,
         endSize,
         onEnd,
-        animTime: Duration(milliseconds: 400)
+        animTime: Duration(milliseconds: 400),
       );
     }
   }
