@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
@@ -43,15 +45,34 @@ class OverlayBigwin {
     _overlay = OverlayEntry(
       builder: (context) {
         return BigwinWidget(
-          onBtn: (double money) {
+          onBtn: (double money) async{
             close();
             SSEventReporttttt.cash_pop_collect(pop_type: "big_win", pop_from: scene.name);
+
+
+
+            bool result = await SSCommonAds().showRewardAd(
+              adPosId: SSAdsPosId.eyomt_bigwin_rv,
+              ignored_hasDisplayAd: true,
+            );
+            if(!result){
+              money = 0;
+            }
+
+
             onBtn(money);
           },
           money: money,
-          onBtn2: (double money) {
+          onBtn2: (double money) async{
             close();
             SSEventReporttttt.cash_pop_close(pop_type: "big_win", pop_from: scene.name);
+            bool result = await SSCommonAds().showInterstitialAd(
+              adPosId: SSAdsPosId.eyomt_bigwin_int,
+              ignored_hasDisplayAd: true,
+            );
+            if(!result){
+              money = 0;
+            }
             onBtn2(money);
           },
         );

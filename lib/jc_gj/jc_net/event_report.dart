@@ -70,13 +70,13 @@ class SSEventReporttttt {
   // -impfail：展示失败（可能突然死机、卡顿、崩溃或其他问题导致展示失败）
   // -uninitialized：未初始化广告SDK
   // -notPrepared：广告未准备好"
-  static cdyun_ad_impression_fail({
+  static eyomt_ad_impression_fail({
     required String ad_pos_id,
     required String reason,
     required String ad_platform,
   }) {
     SSHttpDio().buryPoint(
-      moistValue: "cdyun_ad_impression_fail",
+      moistValue: "eyomt_ad_impression_fail",
       veinKey: "ad_pos_id",
       veinKeyValue: ad_pos_id,
       veinKey2: "reason",

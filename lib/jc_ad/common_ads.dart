@@ -226,11 +226,11 @@ class SSCommonAds {
       _hasFirstIntLoaded = false;
     }
 
-    // PBMaiDian.cdyun_ad_return(
-    //   ad_code_id: adsId,
-    //   ad_format: adsType.name,
-    //   ad_platform: platform.name,
-    // );
+    SSEventReporttttt.eyomt_ad_return(
+      ad_code_id: adsId,
+      ad_format: adsType.name,
+      ad_platform: platform.name,
+    );
   }
 
   // 加载失败
@@ -269,6 +269,13 @@ class SSCommonAds {
     // });
     // cacheCompleter.clear();
     ssLogggg("==onAdLoadFailedCallback===cacheCompleter:$cacheCompleter ");
+
+    SSEventReporttttt.eyomt_ad_return_fail(
+      ad_code_id: adsId,
+      ad_format: adsType.name,
+      ad_platform: platform.name,
+    );
+
     // 延迟2s加载
     Future.delayed(Duration(milliseconds: 2000), () {
       loadAdWithAdsId(adsType, adsId);
@@ -370,6 +377,14 @@ class SSCommonAds {
     cacheCompleter.remove(adsId);
     addAdEndCount();
     loadAdWithAdsId(adsType, adsId);
+
+
+    SSEventReporttttt.eyomt_ad_impre_close(
+      ad_code_id: adsId,
+      ad_format: adsType.name,
+      ad_pos_id: _curAdPosId,
+    );
+
   }
 
   // 下发收益
@@ -804,11 +819,11 @@ class SSCommonAds {
       }
     }
 
-    // PBMaiDian.ad_request(
-    //   ad_code_id: adsId,
-    //   ad_format: adsType,
-    //   ad_platform: platform,
-    // );
+    SSEventReporttttt.ad_request(
+      ad_code_id: adsId,
+      ad_format: adsType,
+      ad_platform: platform,
+    );
   }
 
   // adPosId 场景
@@ -928,7 +943,7 @@ class SSCommonAds {
     _hasDisplayAd = true;
     _curAdPosId = adPosId;
 
-    // PBMaiDian.cdyun_ad_chance(veinKeyValue: adPosId);
+    SSEventReporttttt.eyomt_ad_chance(veinKeyValue: adPosId);
     Completer<bool> completer = Completer();
 
     if (outCompleter != null) {
@@ -1065,7 +1080,7 @@ class SSCommonAds {
     bool result = await completer.future;
 
     if (!result) {
-      // GGEventReport.glgns_ad_impression_fail(veinKeyValue: adPosId);
+      // SSEventReporttttt.eyomt_ad_impression_fail(veinKeyValue: adPosId);
       // GGAdsTips.noAds();
 
       if (firstRequestAdsId != null) {
@@ -1076,11 +1091,11 @@ class SSCommonAds {
         );
         _loadFailReason ??= AdLoadFailReason.notPrepared;
         if (ad_platform != null) {
-          // PBMaiDian.cdyun_ad_impression_fail(
-          //   ad_pos_id: firstRequestAdsId,
-          //   reason: _loadFailReason!.name,
-          //   ad_platform: ad_platform,
-          // );
+          SSEventReporttttt.eyomt_ad_impression_fail(
+            ad_pos_id: firstRequestAdsId,
+            reason: _loadFailReason!.name,
+            ad_platform: ad_platform,
+          );
         }
       }
     }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -43,7 +45,9 @@ class WheController extends GetxController {
     }
     // tmpWheNum = 5;
     curWheNum = tmpWheNum.obs;
-    ssLogggg("=======SSDlTracking.isFirstLoginToday:${SSDlTracking.isFirstLoginToday} tmpWheNum:$tmpWheNum");
+    ssLogggg(
+      "=======SSDlTracking.isFirstLoginToday:${SSDlTracking.isFirstLoginToday} tmpWheNum:$tmpWheNum",
+    );
     // box.put(hhWheNum, curWheNum);
   }
 
@@ -105,6 +109,9 @@ class WheController extends GetxController {
     int curToday = SSDlTracking.lianxuLoginDay();
     ssLogggg("=======click btn:$data curToday:$curToday");
     if (data == true) {
+
+
+
       SSEventReporttttt.wheel_gift_pop_claim();
       double money = 0;
       int exp = 0;
@@ -125,6 +132,13 @@ class WheController extends GetxController {
         phoneSpice = giftRewardModel.num.toInt();
       }
       ssLogggg("=======rewardModelType:$rewardModelType money:$money exp:$exp");
+      bool result = await SSCommonAds().showRewardAd(
+        adPosId: SSAdsPosId.eyomt_wheel_rv,
+        ignored_hasDisplayAd: true,
+      );
+      if(!result){
+        return;
+      }
       OverlayCommonGet().show(
         money: money,
         exp: exp,
@@ -141,6 +155,11 @@ class WheController extends GetxController {
         },
       );
     } else {
+      bool result = await SSCommonAds().showInterstitialAd(
+        adPosId: SSAdsPosId.eyomt_wheel_int,
+        ignored_hasDisplayAd: true,
+      );
+
       SSEventReporttttt.wheel_gift_pop_close();
     }
   }

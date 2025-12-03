@@ -21,7 +21,7 @@ class SSDlTracking {
   static void init() {
     _jianchaDenglu();
     _jisuanqidongCishu();
-    jisuanqidongduoshaoDay();
+    _jisuanqidongduoshaoDay();
     checkLoginStreak();
   }
 
@@ -82,7 +82,7 @@ class SSDlTracking {
     return day;
   }
 
-  static int jisuanqidongduoshaoDay() {
+  static int _jisuanqidongduoshaoDay() {
     bool firstLogin = isFirstLoginToday;
     int day = box.get(_launchDay) ?? 0;
     if (firstLogin) {

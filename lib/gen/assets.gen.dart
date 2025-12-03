@@ -41,14 +41,14 @@ class $AssetsAuddddGen {
   /// File path: assets/audddd/spin_click.mp3
   String get spinClick => 'assets/audddd/spin_click.mp3';
 
+  /// File path: assets/audddd/spin_jiasu.mp3
+  String get spinJiasu => 'assets/audddd/spin_jiasu.mp3';
+
   /// File path: assets/audddd/spin_lastindex.mp3
   String get spinLastindex => 'assets/audddd/spin_lastindex.mp3';
 
   /// File path: assets/audddd/wheel.mp3
   String get wheel => 'assets/audddd/wheel.mp3';
-
-  /// File path: assets/audddd/点击SPIN加速.mp3
-  String get aSPIN => 'assets/audddd/点击SPIN加速.mp3';
 
   /// List of all assets
   List<String> get values => [
@@ -61,9 +61,9 @@ class $AssetsAuddddGen {
     money,
     spinCenterindex,
     spinClick,
+    spinJiasu,
     spinLastindex,
     wheel,
-    aSPIN,
   ];
 }
 

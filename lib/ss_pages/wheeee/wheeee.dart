@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/event_bus.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
@@ -211,6 +213,13 @@ class _WheeeeState extends State<Wheeee> {
 
   onTapSpin() async {
     SSEventReporttttt.wheel_more_pop_tap();
+    bool result = await SSCommonAds().showRewardAd(
+      adPosId: SSAdsPosId.eyomt_wheelspin_rv,
+      ignored_hasDisplayAd: true,
+    );
+    if(!result){
+      return;
+    }
     SSEventBus.fire(WheelEvent());
   }
 }

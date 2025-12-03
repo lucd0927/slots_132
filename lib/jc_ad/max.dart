@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:applovin_max/applovin_max.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:slots_132/jc_gj/base_utils.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 
@@ -25,7 +26,7 @@ class SSApplovinMax {
     RewardedAdListener? rewardedAdListener
   }) async {
     // _cacheAdsData = cacheAdsData;
-
+    int starInitTime =DateTime.now().millisecondsSinceEpoch;
     String asdfasfdmaxkey = SSBaseUuuu.decrypt(encodeKey,132);
     ssLogggg("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
@@ -42,6 +43,12 @@ class SSApplovinMax {
       // Optionally preload widget-based banner and MREC ads. Comment out if preloading isn't needed.
       initInterstitialAds(interstitialListener);
       initializeRewardedAd(rewardedAdListener);
+      int endInitTime =DateTime.now().millisecondsSinceEpoch;
+      SSEventReporttttt.eyomt_ad_initsuc(
+        ad_init_time: "${endInitTime - starInitTime}",
+        ad_platform: "max",
+      );
+
       return true;
     }
   }

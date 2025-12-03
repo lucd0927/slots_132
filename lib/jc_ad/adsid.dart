@@ -19,5 +19,7 @@ class SSAdsPosId {
   static const String eyomt_megawin_int = "eyomt_megawin_int";
   static const String eyomt_bigwin_rv = "eyomt_bigwin_rv";
   static const String eyomt_bigwin_int = "eyomt_bigwin_int";
+  static const String eyomt_wow_rv = "eyomt_wow_rv";
+  static const String eyomt_wow_int = "eyomt_wow_int";
 
 }

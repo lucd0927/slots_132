@@ -9,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newton_particles/newton_particles.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -68,6 +70,35 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         SlideAcrossOverlay().show(context);
       }
     });
+
+    jiazaiInterrrr();
+  }
+
+
+  jiazaiInterrrr() async {
+    if(SSDlTracking.qidongduoshaoDay() <= 1){
+      return;
+    }
+
+
+    int load = 1;
+    while (true) {
+      await Future.delayed(Duration(seconds: 1));
+      bool hasFirstIntLoaded = SSCommonAds.hasFirstIntLoaded;
+      if (!hasFirstIntLoaded) {
+        SSCommonAds().showInterstitialAd(
+          adPosId: SSAdsPosId.eyomt_launch,
+          ignored_hasDisplayAd: true,
+          canTryAgain: false
+        );
+        break;
+      } else {
+        load = load + 1;
+        if (load >= 10) {
+          break;
+        }
+      }
+    }
   }
 
   initNotification({required bool showDialog}) async {
