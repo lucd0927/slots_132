@@ -9,6 +9,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -29,6 +30,7 @@ class OverlayTzNotify {
   void show({ required ValueChanged onClose}) {
     // if (_isShowing) return;
     _overlay = null;
+    SSEventReporttttt.push_reopen_pop();
     _overlay = OverlayEntry(
       builder: (context) {
         return TzNotifyWidget(
@@ -125,6 +127,7 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                             child: GestureDetector(
                               onTap: (){
                                 AppSettings.openAppSettings(type: AppSettingsType.notification);
+                                SSEventReporttttt.push_repopen_pop_notify();
                                 onClose(1);
                               },
                               child: Container(
@@ -172,6 +175,7 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
       right: 20.w,
       child: GestureDetector(
         onTap: () {
+          SSEventReporttttt.push_reopen_pop_close();
           onClose(1);
         },
         child: Image.asset(

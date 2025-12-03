@@ -8,6 +8,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
@@ -24,10 +25,12 @@ class OverlayOneLastCheckJindu2 {
   void show() {
     // if (_isShowing) return;
     _overlay = null;
+    SSEventReporttttt.partner_pop();
     _overlay = OverlayEntry(
       builder: (context) {
         return OneLastCheckJindu2Widget(
           onClose: () {
+
             close();
           },
         );
@@ -153,6 +156,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                       GestureDetector(
                         onTap: () {
                           onClose();
+                          SSEventReporttttt.partner_yes();
                           Get.toNamed(SSRouttttt.withdddCompletePaytaber);
                         },
                         child: Container(

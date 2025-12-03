@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/jc_widget/roller_list/roller_list.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/num_e.dart';
@@ -105,7 +106,7 @@ class LuckySlotsController extends GetxController {
       return;
     }
     ssLogggg("==onStartRoller==start=");
-
+    btnSpinClick.play();
     cunt = 0;
     hasScrollerEnd.value = true;
     result = Completer();

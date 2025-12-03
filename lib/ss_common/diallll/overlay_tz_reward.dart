@@ -7,6 +7,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -24,15 +25,22 @@ class OverlayTzReward {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money, required ValueChanged onClose}) {
+  void show({required double money, required ValueChanged onBtn, required ValueChanged onBtn2,}) {
     // if (_isShowing) return;
     _overlay = null;
+    SSEventReporttttt.noti_pop();
     _overlay = OverlayEntry(
       builder: (context) {
         return TzRewardWidget(
           onBtn: (double money) {
             close();
-            onClose(null);
+            SSEventReporttttt.noti_pop_claim();
+            onBtn(money);
+          },
+          onBtn2: (double money) {
+            close();
+            SSEventReporttttt.noti_pop_claim();
+            onBtn2(money);
           },
           money: money,
         );
@@ -50,11 +58,17 @@ class OverlayTzReward {
 }
 
 class TzRewardWidget extends StatefulWidget {
-  const TzRewardWidget({super.key, required this.onBtn, required this.money});
+  const TzRewardWidget({
+    super.key,
+    required this.onBtn,
+    required this.money,
+    required this.onBtn2,
+  });
 
   final double money;
 
   final ValueChanged<double> onBtn;
+  final ValueChanged<double> onBtn2;
 
   @override
   State<TzRewardWidget> createState() => _TzRewardWidgetState();
@@ -149,15 +163,15 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
                                     ),
                                   ),
                                   Positioned(
-                                    left:0,
+                                    left: 0,
                                     right: 0,
                                     top: 0,
                                     bottom: 0,
                                     child: Center(
                                       child: Image.asset(
                                         Assets.img.moneyGift.path,
-                                        width: 95.w*1.5,
-                                        height: 65.w*1.5,
+                                        width: 95.w * 1.5,
+                                        height: 65.w * 1.5,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
@@ -188,7 +202,6 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
                                     ),
                                   ),
                                 ],
-
                               ),
                             ),
                             txtDesWidget(),
@@ -209,39 +222,28 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
     );
   }
 
-  txtDesWidget(){
+  txtDesWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-      Text(
-        "✓   Trusted by 1M+ Users",
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: Color(0xffFFC8C8),
+        Text(
+          "✓   Trusted by 1M+ Users",
+          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
         ),
-      ),
-      Text(
-        "✓   100% Secure Transfer",
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: Color(0xffFFC8C8),
+        Text(
+          "✓   100% Secure Transfer",
+          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
         ),
-      ),
-      Text(
-        "✓   Instant Payment",
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: Color(0xffFFC8C8),
+        Text(
+          "✓   Instant Payment",
+          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
         ),
-      ),
-      Text(
-        "✓   Direct to Your Account",
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: Color(0xffFFC8C8),
+        Text(
+          "✓   Direct to Your Account",
+          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
         ),
-      ),
-    ],);
+      ],
+    );
   }
 
   btnWidget() {
@@ -299,8 +301,10 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
 
         GestureDetector(
           onTap: () {
-            MainController.to.curFreeSpinCount.value = baseCount;
-            onClose(1);
+            double money = widget.money*0.1;
+
+            onClose(money);
+            widget.onBtn(money);
           },
           child: SSTxtBorder(
             text: "Claim  10%",
@@ -316,16 +320,20 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
 
   onClose(double money) async {
     ssLogggg("====== close money:$money");
-    setState(() {
-      showAnimated = false;
-      startScale = 1.0;
-    });
+    if(mounted){
+      setState(() {
+        showAnimated = false;
+        startScale = 1.0;
+      });
+    }
+
     // await Future.delayed(animD);
-    widget.onBtn(money);
+
   }
 
   void onclickClaim() {
-    MainController.to.curFreeSpinCount.value = baseCount + addSpinCount;
-    onClose(1);
+    double money = widget.money;
+    onClose(money);
+    widget.onBtn(money);
   }
 }

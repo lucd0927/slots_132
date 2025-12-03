@@ -7,6 +7,7 @@ import 'package:slots_132/jc_ad/guiyin/af.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_ad/uuuump.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/package.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -79,11 +80,15 @@ class SSCommonAds {
     box.put(kSWlvac, count);
     int zero = count % 5;
     bool result = zero == 0;
+    if(count == 1){
+      SSEventReporttttt.pv_numer(pv_type: "1");
+    }
     ssLogggg("=addAdEndCount=now:$count===zero:$zero  report:$result");
     if (result) {
       // todo:
       // SWEventReport.cash_ad_detail("$count");
       // PBMaiDian.cash_ad_detail(veinKeyValue: "$count");
+      SSEventReporttttt.pv_numer(pv_type: "$zero");
     }
   }
 

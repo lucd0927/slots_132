@@ -69,7 +69,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
-  int baseCount = 1;
+  int baseCount = 5;
   int addSpinCount = 4;
 
   @override

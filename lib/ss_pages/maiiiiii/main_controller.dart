@@ -913,6 +913,7 @@ class MainController extends GetxController {
       }
     });
     if (containerslotNumH1) {
+      btnSpinLastIndex.play();
       onAddCollectStar(starCount);
       await Future.delayed(Duration(milliseconds: 1000), () {});
     }
@@ -941,6 +942,7 @@ class MainController extends GetxController {
     });
 
     if (containerslotNumKEY) {
+      btnSpinLastIndex.play();
       onAddBonusGameCount(bonusGameCount);
       await Future.delayed(Duration(milliseconds: 1200), () {});
     }
@@ -967,6 +969,7 @@ class MainController extends GetxController {
       }
     });
     if (containerslotNumPhoneSpice) {
+      btnSpinLastIndex.play();
       await Future.delayed(Duration(milliseconds: 1200), () {});
       PhoneCardController.to.changeWhichStageIndex();
     }
@@ -1248,7 +1251,7 @@ class MainController extends GetxController {
     ssLogggg("=======time:$time index:$index");
     if (index == 4) {
       time = 1100;
-      btnSpinLastIndex.play();
+      // btnSpinLastIndex.play();
     }
     if (index == 2) {
       // btnSpinCenterIndex.play();
@@ -1266,7 +1269,7 @@ class MainController extends GetxController {
 
           // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
           if (cunt >= 5) {
-            btnSpinLastIndex.play();
+            // btnSpinLastIndex.play();
             result?.complete(5);
             result = null;
           }
@@ -1436,6 +1439,7 @@ class MainController extends GetxController {
       tmpLevel = tmpExp ~/ stage16_1MaxExp + stage1_5 + stage6_15;
     }
 
+
     ssLogggg("=====Level:$tmpLevel curLevelExp:$tmpLevelExp");
     return tmpLevel;
   }
@@ -1506,15 +1510,26 @@ class MainController extends GetxController {
     );
 
     if (money > 0) {
+      btnSpinLastIndex.play();
       overlayMainTopMoney.showWithSize(
         childSize: Size(32.w, 32.w),
         onEnd: () {
           // btnMoney.play();
-          double tmpCurMmmm = curMonnnn.value;
-          tmpCurMmmm = tmpCurMmmm + money;
+          double tmpCurMmmm2 = curMonnnn.value;
+          double tmpCurMmmm = tmpCurMmmm2 + money;
           box.put(hkMonnnn, tmpCurMmmm);
           curMonnnn.value = tmpCurMmmm;
           ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
+
+          double tmpCoin = tmpCurMmmm;
+          int i = tmpCurMmmm2 ~/ 100;
+          int next = tmpCoin ~/ 100;
+
+          if (i != next) {
+            SSEventReporttttt.cash_numer(number_type: "$next");
+          }
+
+
           onEnd?.call();
         },
         showTargetWidget: showTargetWidget,
@@ -1530,9 +1545,11 @@ class MainController extends GetxController {
   }
 
   onAddExp(int exp) {
-    int tmpExp = curLevelExp.value;
+    int tmpExp2 = curLevelExp.value;
 
-    tmpExp = tmpExp + exp;
+    int curLevel = level();
+
+    int tmpExp = tmpExp2 + exp;
 
     box.put(hkLevelExp, tmpExp);
     addHistory(
@@ -1543,6 +1560,14 @@ class MainController extends GetxController {
       ),
     );
     curLevelExp.value = tmpExp;
+    int nextLevel = level();
+    int i = curLevel ~/ 1;
+    int next = nextLevel ~/ 1;
+   ssLogggg("====preLevel:$curLevel= curLevel:$nextLevel");
+    if (i != next) {
+      SSEventReporttttt.level_number(level_type: "$next");
+    }
+
     ssLogggg("======tmpExp:$tmpExp=");
   }
 

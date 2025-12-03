@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 
@@ -57,7 +58,7 @@ class SSTzNotificattttt {
       ssLogggg("==initNotificationCount==localcount:$localN==");
       if (localN > 0) {
         for (int i = 0; i < localN; i++) {
-          // PBMaiDian.inform_p(veinKeyValue: "local");
+          SSEventReporttttt.all_noti_t(source_from: "local");
         }
       }
 
@@ -66,7 +67,7 @@ class SSTzNotificattttt {
       ssLogggg("==initNotificationCount==fcmcount:$fcmNnnn==");
       if (fcmNnnn > 0) {
         for (int i = 0; i < localN; i++) {
-          // PBMaiDian.inform_p(veinKeyValue: "fcm");
+          SSEventReporttttt.all_noti_t(source_from: "data_fcm");
         }
       }
 
@@ -75,7 +76,7 @@ class SSTzNotificattttt {
       ssLogggg("==initNotificationCount==unlockcount:$lockNnnn==");
       if (lockNnnn > 0) {
         for (int i = 0; i < localN; i++) {
-          // PBMaiDian.inform_p(veinKeyValue: "unlock");
+          SSEventReporttttt.all_noti_t(source_from: "lock");
         }
       }
     } catch (e) {
@@ -137,7 +138,6 @@ class SSTzNotificattttt {
     await requestNotificationPermission();
     csTzNum();
 
-    pushIcon = "";
     baioti = "132Title";
     neirong = "content";
 
@@ -211,7 +211,7 @@ class SSTzNotificattttt {
     String payload = "";
     print("====tongsongdianji==tzid:$tuisongid==");
     if (tuisongid == unlockId) {
-      payload = "unlock";
+      payload = "lock";
     } else if (tuisongid == dingshitzid ||
         tuisongid == dingshitzid2 ||
         tuisongid == dingshitzid3) {
@@ -219,6 +219,7 @@ class SSTzNotificattttt {
     } else {
       payload = "fcm";
     }
+    SSEventReporttttt.all_noti_c(source_from:payload);
     // PBMaiDian.launch_page(veinKeyValue: "push");
     // PBMaiDian.inform_c(veinKeyValue: payload);
   }
@@ -314,7 +315,7 @@ class SSTzNotificattttt {
     int length = contents.length;
     int random = Random().nextInt(length);
 
-    var tttttt = contents[random]['title'];
+    var tttttt = contents[random]['content'];
     var ccccc = contents[random]['content'];
     await AndroidFlutterLocalNotificationsPlugin().showBroadcastNotification(
       id,
@@ -324,7 +325,7 @@ class SSTzNotificattttt {
       SSHuanjing.hasDevvvvv() ? Duration(seconds: 5) : Duration(minutes: 15),
       'android.intent.action.USER_PRESENT',
       AndroidNotificationDetails(
-        'pbwwww',
+        'sslots',
         'unlock:$id',
         priority: Priority.high,
         importance: Importance.max,

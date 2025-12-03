@@ -87,7 +87,7 @@ class _ControlledWheelState extends State<ControlledWheel>
       vsync: this,
       duration: const Duration(milliseconds: 4900),
     );
-    _animation = AlwaysStoppedAnimation(0);
+    _animation = AlwaysStoppedAnimation(90);
 
     register<WheelEvent>((WheelEvent event){
       _onSpin();

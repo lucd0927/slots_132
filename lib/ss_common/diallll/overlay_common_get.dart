@@ -107,7 +107,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
 
       _timer = Timer(Duration(milliseconds: 2000), () {
         _timer?.cancel();
-        onClose(1);
+        // onClose(1);
       });
     });
   }
@@ -123,7 +123,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
         color: Colors.transparent,
         child: AnimatedContainer(
           duration: animD,
-          color: Colors.black.withValues(alpha: showAnimated ? 0.3 : 0),
+          color: Colors.black.withValues(alpha: showAnimated ? 0.4 : 0),
           child: Center(
             child: AnimatedScale(
               duration: animD,
@@ -135,24 +135,24 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    Positioned(
-                      left: -0.w,
-                      right: -0.w,
-                      top: 0.h,
-                      bottom: -0.h,
-                      child: IgnorePointer(
-                        child: Center(
-                          child: Container(
-                            width: ScreenUtil().screenWidth,
-                            height: ScreenUtil().screenHeight,
-                            // width: 375.w,
-                            // height: 812.h,
-                            color: Colors.yellow.withValues(alpha: 0.0),
-                            child: SSSpineMoney(),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Positioned(
+                    //   left: -0.w,
+                    //   right: -0.w,
+                    //   top: 0.h,
+                    //   bottom: -0.h,
+                    //   child: IgnorePointer(
+                    //     child: Center(
+                    //       child: Container(
+                    //         width: ScreenUtil().screenWidth,
+                    //         height: ScreenUtil().screenHeight,
+                    //         // width: 375.w,
+                    //         // height: 812.h,
+                    //         color: Colors.yellow.withValues(alpha: 0.0),
+                    //         child: SSSpineMoney(),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     Column(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -193,8 +193,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
       width: 270.w,
       height: 200.h,
       decoration: BoxDecoration(
-        color: Color(0xff000000).withValues(alpha: 0.5),
-        border: Border.all(color: Color(0xffFFDD00), width: 2.w),
+        color: Color(0xffffffff).withValues(alpha: 1),
+        // border: Border.all(color: Color(0xffFFDD00), width: 2.w),
         borderRadius: BorderRadius.circular(16.w),
       ),
       child: Stack(
@@ -337,8 +337,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
       width: 362.w,
       height: 127.h,
       decoration: BoxDecoration(
-        color: Color(0xff000000).withValues(alpha: 0.5),
-        border: Border.all(color: Color(0xffFFDD00), width: 2.w),
+        color: Color(0xffffffff).withValues(alpha: 1),
+        // border: Border.all(color: Color(0xffFFDD00), width: 2.w),
         borderRadius: BorderRadius.circular(16.w),
       ),
       padding: EdgeInsets.only(left: 16.w, right: 16.w),
@@ -352,7 +352,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(width: 8.w),
@@ -391,7 +391,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(width: 8.w),
@@ -429,7 +429,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(width: 8.w),

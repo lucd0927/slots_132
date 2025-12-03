@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/zhifu/chat/chat_controller.dart';
 
@@ -23,6 +24,7 @@ class _AiChatState extends State<AiChat> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    SSEventReporttttt.chat_page();
   }
 
   @override
@@ -65,6 +67,7 @@ class _AiChatState extends State<AiChat> {
       currentUserId: SSChatController.myId,
       onMessageSend: (text) async {
         ssLogggg("====text:$text=");
+        SSEventReporttttt.chat_page_send();
         SSChatController.to.aiRequest(text: text);
         SSChatController.to.onSendMsg(text, id: SSChatController.myId);
       },

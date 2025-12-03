@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -14,6 +15,14 @@ class WithdddCompletePaytaber extends StatefulWidget {
 }
 
 class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -222,6 +231,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                         SizedBox(height: 40.h),
                         GestureDetector(
                           onTap: () {
+                            SSEventReporttttt.partner_yes();
                             Navigator.maybePop(context);
                           },
                           child: Container(

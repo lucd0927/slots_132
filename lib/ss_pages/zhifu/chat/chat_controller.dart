@@ -3,6 +3,7 @@ import 'package:flutter_chat_core/flutter_chat_core.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -63,6 +64,7 @@ Use Simple Language: Use simple, direct, and attractive language (e.g., use "gra
       if(responseTxt.startsWith("\n")){
         responseTxt=responseTxt.replaceFirst("\n", "");
       }
+      SSEventReporttttt.chat_page_reply();
       onSendMsg(responseTxt, id: otherId);
     }
     hasResponing.value = false;
@@ -73,6 +75,7 @@ Use Simple Language: Use simple, direct, and attractive language (e.g., use "gra
 
   onSendMsg(String text, {required UserID id}) {
     ssLogggg("==onSendMsg==${text}");
+
     _addMessage(text, id);
   }
 

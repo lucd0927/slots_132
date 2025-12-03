@@ -171,10 +171,10 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
 
 
-    OverlayJindu1().show();
+    // OverlayJindu1().show();
 
     // AppSettings.openAppNotificationSettings()
     // OverlayTzReward().show(money: 200, onClose: (v){});
@@ -207,7 +207,7 @@ class TopView extends StatelessWidget {
 
     // OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
 
-    // OverlayCommonGet().show(money: 100,exp: 10,phoneSpice: 1);
+    // OverlayCommonGet().show(money: 100,exp: 0,phoneSpice: 1, onClose: () {  });
 
     // OverlayDailyBonus().show();
     // OverlayRank().show();

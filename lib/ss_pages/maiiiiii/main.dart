@@ -19,6 +19,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
+import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
@@ -60,14 +61,13 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
     initNotification(showDialog: true);
-    // bgMusic.play(loopMode: LoopMode.single);
+    bgMusic.play(loopMode: LoopMode.single);
 
     Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {
         SlideAcrossOverlay().show(context);
       }
     });
-
   }
 
   initNotification({required bool showDialog}) async {
@@ -97,6 +97,19 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       FirebaseCrashlytics.instance.recordError(e, null, fatal: false);
     }
     onDailyBonus();
+
+    bool clickTz = SSTzNotificattttt.clickTz;
+    if (clickTz) {
+      OverlayTzReward().show(
+        money: 50,
+        onBtn: (v) {
+          MainController.to.onAddMoney(v, showMoneyAnimated: true);
+        },
+        onBtn2: (value) {
+          MainController.to.onAddMoney(value, showMoneyAnimated: true);
+        },
+      );
+    }
   }
 
   onDailyBonus() async {

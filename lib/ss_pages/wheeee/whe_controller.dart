@@ -43,6 +43,7 @@ class WheController extends GetxController {
     }
     // tmpWheNum = 5;
     curWheNum = tmpWheNum.obs;
+    ssLogggg("=======SSDlTracking.isFirstLoginToday:${SSDlTracking.isFirstLoginToday} tmpWheNum:$tmpWheNum");
     // box.put(hhWheNum, curWheNum);
   }
 
