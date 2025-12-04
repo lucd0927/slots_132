@@ -310,7 +310,7 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
                     child: SSTxtBorder(
                       text: "Claim",
                       fontSize: 24.sp,
-                      fontFamily: FontFamily.alkatra,
+                      fontFamily: FontFamily.interBold,
                       fontWeight: FontWeight.w700,
                       foreground: Color(0xff1C5700),
                     ),
@@ -336,7 +336,7 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
           child: SSTxtBorder(
             text: "Claim 10%",
             fontSize: 16.sp,
-            fontFamily: FontFamily.alkatra,
+            fontFamily: FontFamily.interBold,
             fontWeight: FontWeight.w700,
             foreground: Color(0xff1C5700),
           ),
