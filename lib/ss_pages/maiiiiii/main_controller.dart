@@ -925,7 +925,7 @@ class MainController extends GetxController {
 
       if (value == slotNumKEY) {
         if (startPosition != null) {
-          img = Assets.img.mainBounsGame.path;
+          img = Assets.img.mainBottomBonus.path;
           // img = Assets.img.slots.slotsH1.path;
           Widget heroChild = Image.asset(img);
           containerslotNumKEY = true;
@@ -943,8 +943,9 @@ class MainController extends GetxController {
 
     if (containerslotNumKEY) {
       btnSpinLastIndex.play();
-      onAddBonusGameCount(bonusGameCount);
+
       await Future.delayed(Duration(milliseconds: 1200), () {});
+      onAddBonusGameCount(bonusGameCount);
     }
     bool containerslotNumPhoneSpice = false;
     kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
@@ -1016,7 +1017,7 @@ class MainController extends GetxController {
     }
     ssLogggg("======jackpotCount:$jackpotCount");
     // jackpotCount = 2;
-
+    await Future.delayed(Duration(milliseconds: 200), () {});
     if (jackpotCount == 2) {
       curSpinMoney.value = jacktopMini;
       OverlayJackpotMini().show(

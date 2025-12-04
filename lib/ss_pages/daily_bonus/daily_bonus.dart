@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
@@ -37,7 +38,7 @@ class OverlayDailyBonus {
         return SettingWidget(
           onClose: () {
             close();
-
+            return;
             if(!showAddMoney){
               return;
             }
@@ -81,7 +82,7 @@ class _SettingWidgetState extends State<SettingWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
 
-  bool showCheckOk = false;
+  // bool showCheckOk = false;
 
   @override
   void initState() {
@@ -94,13 +95,13 @@ class _SettingWidgetState extends State<SettingWidget> {
         setState(() {
           showAnimated = true;
         });
-        Future.delayed(Duration(milliseconds: 300), () {
-          if (mounted) {
-            setState(() {
-              showCheckOk = true;
-            });
-          }
-        });
+        // Future.delayed(Duration(milliseconds: 300), () {
+        //   if (mounted) {
+        //     setState(() {
+        //       showCheckOk = true;
+        //     });
+        //   }
+        // });
       }
     });
   }
@@ -211,13 +212,15 @@ class _SettingWidgetState extends State<SettingWidget> {
       imgW = 100.w;
       imgH = 50.h;
     }
-
+    bool showCheckOk = DailyBonusController.to.todayClickBonus.value;
     bool showShimmer = hasGet && showCheckOk;
+    bool shouwHand = hasGet && !showCheckOk;
 
     Widget child = Container(
       width: 159.w,
       height: 91.h,
       child: Stack(
+        clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
         children: [
           Image.asset(
@@ -294,11 +297,33 @@ class _SettingWidgetState extends State<SettingWidget> {
                 ),
               ),
             ),
+
+
+         if(shouwHand) Positioned(
+            right: -20.w,
+            top: 40.h,
+
+            child: Center(
+              child: SizedBox(
+                width: 65.h,
+                height: 72.h,
+                child: const SpineHand(),
+              ),
+            ),
+          ),
         ],
       ),
     );
 
-    return child;
+    return GestureDetector(
+        onTap: (){
+            if(shouwHand){
+              DailyBonusController.to.onClick(gift,(){
+                onClose();
+              });
+            }
+        },
+        child: child);
   }
 
   bottomWidget() {

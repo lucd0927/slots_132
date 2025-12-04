@@ -360,7 +360,7 @@ class CenterView extends StatelessWidget {
                             "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
                         fontColor: Color(0xff6AFF00),
                         fontSize: 16.sp,
-                        fontFamily: FontFamily.alkatra,
+                        fontFamily: FontFamily.ghostKidAOEPro,
                       ),
                     ),
                   ),
@@ -401,7 +401,7 @@ class CenterView extends StatelessWidget {
                           "${SSCountry.curGuojiaFuhao()}${majorN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
-                      fontFamily: FontFamily.alkatra,
+                      fontFamily: FontFamily.ghostKidAOEPro,
                     ),
                   ),
                 ),
@@ -441,7 +441,7 @@ class CenterView extends StatelessWidget {
                           "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
-                      fontFamily: FontFamily.alkatra,
+                      fontFamily: FontFamily.ghostKidAOEPro,
                     ),
                   ),
                 ),
@@ -470,7 +470,6 @@ class CenterView extends StatelessWidget {
       // ssLogggg("======txt:$text");
       return Column(
         children: [
-
           GestureDetector(
             onTap: () {
               OverlayDailyBonus().show(showAddMoney: false);
@@ -504,7 +503,7 @@ class CenterView extends StatelessWidget {
                     right: 46.w,
                     bottom: 4.h,
                     child: Center(
-                      child:  SSTxtGraBorder(
+                      child: SSTxtGraBorder(
                         text: "Daily\nRewards",
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
@@ -514,7 +513,6 @@ class CenterView extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -556,12 +554,12 @@ class CenterView extends StatelessWidget {
                     child: Center(
                       child: showTime
                           ? SSTxtGraBorder(
-                        text: text,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
-                        strokeColor: Color(0xff30120A),
-                        fontFamily: FontFamily.alkatra,
-                      )
+                              text: text,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14.sp,
+                              strokeColor: Color(0xff30120A),
+                              fontFamily: FontFamily.alkatra,
+                            )
                           : const SizedBox(),
                     ),
                   ),
@@ -631,17 +629,18 @@ class CenterView extends StatelessWidget {
                         ),
                       ),
                     ),
-                  if(PhoneCardController.to.canClickClaim.value)  Positioned(
-                      right: 20.w,
-                      top: 0.h,
-                      // left: -50.w,
-                      child: Container(
-                        width: 100.h,
-                        height: 60.h,
-                        // color: Colors.yellow,
-                        child: const SpineHand(),
+                    if (PhoneCardController.to.canClickClaim.value)
+                      Positioned(
+                        right: 10.w,
+                        top: 10.h,
+                        // left: -50.w,
+                        child: Container(
+                          width: 100.h,
+                          height: 60.h,
+                          // color: Colors.yellow,
+                          child: const SpineHand(),
+                        ),
                       ),
-                    ),
                   ],
                 ),
               );
@@ -1041,4 +1040,3 @@ class FreeSpinState extends State<FreeSpin> {
     return child;
   }
 }
-

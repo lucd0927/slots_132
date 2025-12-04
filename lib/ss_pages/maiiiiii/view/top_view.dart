@@ -278,6 +278,7 @@ class TopView extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: Color(0xffFFFFFF),
               fontSize: 14.sp,
+              fontFamily: FontFamily.ghostKidAOEPro
               // height: 1.1,
             ),
           ),

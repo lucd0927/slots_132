@@ -150,6 +150,7 @@ class BottomView extends StatelessWidget {
                           fontSize: 20.sp,
                           height: 1,
                           fontWeight: FontWeight.w500,
+                          fontFamily: FontFamily.ghostKidAOEPro,
                           color: Color(0xff6AFF00),
                         ),
                       ),
@@ -222,6 +223,7 @@ class BottomView extends StatelessWidget {
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
+                            fontFamily: FontFamily.ghostKidAOEPro,
                           ),
                           prefix: "${SSCountry.curGuojiaFuhao()}",
                         ),
@@ -444,7 +446,7 @@ class BottomView extends StatelessWidget {
                 child: SizedBox(
                   width: 65.h,
                   height: 72.h,
-                  child:const  SpineHand(),
+                  child: const SpineHand(),
                 ),
               ),
             ),
@@ -511,11 +513,10 @@ class BottomView extends StatelessWidget {
                   child: SizedBox(
                     width: 65.h,
                     height: 72.h,
-                    child:const  SpineHand(),
+                    child: const SpineHand(),
                   ),
                 ),
               ),
-
           ],
         ),
       ),
@@ -579,19 +580,37 @@ class BottomView extends StatelessWidget {
               ),
 
               Positioned(
-                top: -10.h,
-                left: -40.w,
-                child: Image.asset(
-                  Assets.img.mainLingdang.path,
-                  width: 82.w,
-                  height: 71.w,
-                  fit: BoxFit.fill,
-                  gaplessPlayback: true,
+                top: 0.h,
+                left: -14.w,
+                child: Container(
+                  width: 47.w,
+                  height: 50.w,
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          Assets.img.mainBottomBonus.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                          gaplessPlayback: true,
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          width: double.infinity,
+                          height: double.infinity,
+                          key: MainController.to.keyBonusGame,
+                          color: Colors.blueAccent.withValues(alpha: 0.0),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
               Positioned(
-                top: -10.h,
+                top: -20.h,
                 right: -30.w,
                 child: Container(
                   width: 89.w,
@@ -609,14 +628,7 @@ class BottomView extends StatelessWidget {
                           gaplessPlayback: true,
                         ),
                       ),
-                      Center(
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          key: MainController.to.keyBonusGame,
-                          color: Colors.blueAccent.withValues(alpha: 0.0),
-                        ),
-                      ),
+
                     ],
                   ),
                 ),

@@ -1,11 +1,15 @@
+import 'dart:ui';
+
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 
 class DailyBonusController extends GetxController {
   static DailyBonusController get to => Get.find();
-
+  var todayClickBonus = false.obs;
   var continueLoginDays = 1.obs;
   var continueLoginWeeks = 0.obs;
   var box = SSHive.box;
@@ -18,6 +22,7 @@ class DailyBonusController extends GetxController {
 
   //  连续登录时间
   static const String hLianxuLoginTime = "asd54asdf45ad";
+  static const String hkTodayClickBonus = "354ertsafgt8";
 
 
   static final Map<int,GiftRewardModel> kDay_vGiftModel={
@@ -115,5 +120,57 @@ class DailyBonusController extends GetxController {
 
     int weeks = box.get(hLianxuLoginZhouqi) ?? 0;
     continueLoginWeeks = weeks.obs;
+
+
+
+    bool tmphkTodayClickBonus = box.get(hkTodayClickBonus) ?? false;
+
+    if(SSDlTracking.isFirstLoginToday){
+      tmphkTodayClickBonus = false;
+    }
+    // tmphkTodayClickBonus = false;
+    todayClickBonus = tmphkTodayClickBonus.obs;
+    saveTodayClickBonusStatus(tmphkTodayClickBonus);
+
   }
+
+  onClick(GiftRewardModel gift,VoidCallback onEnd)async{
+    todayClickBonus.value = true;
+    saveTodayClickBonusStatus(true);
+    GiftRewardModel? giftRewardModel = gift;
+    EnumGiftRewardModel? rewardModelType =
+        giftRewardModel?.rewardModelType;
+    int exp = 0;
+    int phoneSpice = 0;
+    int freespin = 0;
+    double money2 = 0;
+    if (giftRewardModel != null && rewardModelType != null) {
+      if (rewardModelType == EnumGiftRewardModel.cash) {
+        money2 = giftRewardModel.num * 1.0;
+      } else if (rewardModelType == EnumGiftRewardModel.xp) {
+        exp = giftRewardModel.num.toInt();
+      } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
+        phoneSpice = giftRewardModel.num.toInt();
+      }else if (rewardModelType == EnumGiftRewardModel.freespin) {
+        freespin = giftRewardModel.num.toInt();
+      }
+    }
+    await Future.delayed(Duration(milliseconds: 400));
+    OverlayCommonGet().show(
+      money: money2,
+      exp: exp,
+      phoneSpice: phoneSpice,
+      onClose: () {
+        onEnd();
+        // MainController.to.onAddMoney(money, showMoneyAnimated: true);
+      },
+    );
+
+  }
+
+
+  saveTodayClickBonusStatus(bool result){
+    box.put(hkTodayClickBonus, result);
+  }
+
 }

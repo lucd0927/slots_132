@@ -464,6 +464,10 @@ class $AssetsImgGen {
   AssetGenImage get mainBottom =>
       const AssetGenImage('assets/img/main_bottom.png');
 
+  /// File path: assets/img/main_bottom_bonus.png
+  AssetGenImage get mainBottomBonus =>
+      const AssetGenImage('assets/img/main_bottom_bonus.png');
+
   /// File path: assets/img/main_bottom_max.png
   AssetGenImage get mainBottomMax =>
       const AssetGenImage('assets/img/main_bottom_max.png');
@@ -1189,6 +1193,7 @@ class $AssetsImgGen {
     mainBg,
     mainBonusBg,
     mainBottom,
+    mainBottomBonus,
     mainBottomMax,
     mainBounsGame,
     mainBox,
