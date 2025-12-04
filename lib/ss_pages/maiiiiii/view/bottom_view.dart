@@ -428,7 +428,7 @@ class BottomView extends StatelessWidget {
                           "HOLD FOR AUTO",
                           style: TextStyle(
                             fontSize: 10.sp,
-                            fontFamily: FontFamily.rubik,
+                            fontFamily: FontFamily.ghostKidAOEPro,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff2B4735),
                           ),

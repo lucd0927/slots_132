@@ -1388,6 +1388,21 @@ class MainController extends GetxController {
     return pro;
   }
 
+  int allLevelExp(int level) {
+    int tmpAllExp = 0;
+    if (level <= stage1_5) {
+      return stage1_5Exp * level;
+    } else if (level <= (stage1_5 + stage6_15)) {
+      int tmp6_15 = level - stage1_5;
+      return level1_5 + tmp6_15 * stage6_15Exp;
+    } else {
+      int tmp6_15 = level - stage1_5 - stage6_15;
+      return level1_15 + tmp6_15 * stage16_1MaxExp;
+    }
+
+    return tmpAllExp;
+  }
+
   int levelExp() {
     int tmpLevel = 1;
     int tmpLevelExp = curLevelExp.value;
@@ -1838,9 +1853,8 @@ class MainController extends GetxController {
   }
 
   initTimerBoxGift({bool hasFirst = true}) {
-
     int shengyu = shengyuTime();
-    if(hasFirst){
+    if (hasFirst) {
       boxGiftTime = shengyu.obs;
 
       textBoxGiftTime = formatDuration(shengyu).obs;

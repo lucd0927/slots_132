@@ -63,7 +63,7 @@ class SlideAcrossOverlay {
     location = EnumLocation.top;
     double top = 30;
     if (location == EnumLocation.top) {
-      top = 100.h;
+      top = 88.h;
     } else if (location == EnumLocation.center) {
       top = 150.h;
     } else if (location == EnumLocation.center2) {
@@ -75,7 +75,7 @@ class SlideAcrossOverlay {
         ? Assets.img.popupPaypal.path
         : Assets.img.popupCashapp.path;
 
-    String id = "ID${Random().nextInt(10)}***${Random().nextInt(10)} sent you ";
+    String id = "ID${Random().nextInt(10)}***${Random().nextInt(10)} Transfer Received ";
     _entry = OverlayEntry(
       builder: (context) => IgnorePointer(
         child: Stack(
@@ -110,9 +110,9 @@ class SlideAcrossOverlay {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Payment Received",
+                                    "LUCKY SLOTS TECNOLOGIA LTDA",
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black,
                                       fontFamily: FontFamily.fraunces,
@@ -131,7 +131,6 @@ class SlideAcrossOverlay {
                                             // height: 1
                                           ),
                                         ),
-                                        TextSpan(text: "for dinner"),
                                       ],
                                     ),
                                     style: TextStyle(

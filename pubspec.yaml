@@ -219,15 +219,18 @@ flutter:
     - family: Fraunces
       fonts:
         - asset: assets/fff/Fraunces-Bold.ttf
-    - family: MarkoOne
-      fonts:
-        - asset: assets/fff/MarkoOne-Regular.ttf
+#    - family: MarkoOne
+#      fonts:
+#        - asset: assets/fff/MarkoOne-Regular.ttf
     - family: Ephesis
       fonts:
         - asset: assets/fff/Ephesis-Regular.ttf
     - family: GhostKidAOE_Pro
       fonts:
         - asset: assets/fff/GhostKidAOE_Pro.ttf
+    - family: Inter_Bold
+      fonts:
+        - asset: assets/fff/Inter-Bold.ttf
 #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

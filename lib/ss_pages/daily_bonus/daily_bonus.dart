@@ -13,6 +13,7 @@ import 'package:slots_132/jc_gj/jc_widget/check_image_reveal.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
@@ -321,6 +322,12 @@ class _SettingWidgetState extends State<SettingWidget> {
               DailyBonusController.to.onClick(gift,(){
                 onClose();
               });
+            }else{
+              String txt = "Your next reward is available tomorrow.";
+              if(showShimmer){
+                txt = "Reward already claimed today.";
+              }
+              ssTushi(text: txt);
             }
         },
         child: child);

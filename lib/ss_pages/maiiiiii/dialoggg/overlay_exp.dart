@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -91,7 +92,7 @@ class _ExpWidgetState extends State<ExpWidget> {
                 // offset: showAnimated ? Offset.zero : Offset(0, -1),
                 // opacity: showAnimated ? 1 : 0,
                 scale: showAnimated ? 1 : 0,
-                alignment:Alignment(0.7, -1.0),
+                alignment: Alignment(0.7, -1.0),
                 child: Container(
                   width: 296.w,
                   height: 92.w,
@@ -118,38 +119,40 @@ class _ExpWidgetState extends State<ExpWidget> {
                           child: Column(
                             children: [
                               Text(
-                                "${MainController.to.curLevelExp.value} xp to level ${MainController.to.level()}",
+                                "${MainController.to.allLevelExp(MainController.to.level() + 1) - MainController.to.curLevelExp.value} xp to level ${MainController.to.level()+1}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
                                   color: Color(0xffFFFF8B),
+                                  fontFamily: FontFamily.ghostKidAOEPro,
                                 ),
                               ),
 
                               Row(
                                 children: [
-                                  Image.asset(
-                                    Assets.img.money.path,
-                                    width: 30.w,
-                                    height: 28.w,
-                                  ),
-                                  SizedBox(width: 8.w),
+                                  // Image.asset(
+                                  //   Assets.img.money.path,
+                                  //   width: 30.w,
+                                  //   height: 28.w,
+                                  // ),
+                                  // SizedBox(width: 8.w),
                                   Text(
-                                    "Level Up Bonus",
+                                    "Level ${MainController.to.level()}/100 • VIP Bonus \$1,000/day",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      fontSize: 18.sp,
+                                      fontSize: 14.sp,
                                       color: Color(0xffDDDDDD),
+                                      fontFamily: FontFamily.ghostKidAOEPro,
                                     ),
                                   ),
-                                  Spacer(),
-                                  SSTxtGraBorder(
-                                    text:
-                                        "${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                    strokeColor: Color(0xff0D141B),
-                                  ),
+                                  // Spacer(),
+                                  // SSTxtGraBorder(
+                                  //   text:
+                                  //       "${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
+                                  //   fontSize: 16.sp,
+                                  //   fontWeight: FontWeight.w500,
+                                  //   strokeColor: Color(0xff0D141B),
+                                  // ),
                                 ],
                               ),
                             ],

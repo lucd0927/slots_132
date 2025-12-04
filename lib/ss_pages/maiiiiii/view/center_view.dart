@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
+import 'package:slots_132/jc_gj/jc_widget/shake.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
@@ -474,46 +475,50 @@ class CenterView extends StatelessWidget {
             onTap: () {
               OverlayDailyBonus().show(showAddMoney: false);
             },
-            child: Container(
-              width: 58.h + 50.h,
-              height: 64.h,
-              // clipBehavior: Clip.none,
-              color: Colors.red.withValues(alpha: 0.0),
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(58.h),
-                    child: ShiningEffect(
-                      shineColor: Colors.yellow,
-                      opacity: 1,
-                      angle: 1.8,
-                      // topLeft: false,
-                      duration: const Duration(seconds: 2),
-                      child: Image.asset(
-                        Assets.img.mianDaily.path,
-                        width: 58.h,
-                        height: 58.h,
-                        gaplessPlayback: true,
+            child: SSHuangdongWidget(
+              mode: ShakeMode.rotate,
+              offset: 8,
+              child: Container(
+                width: 58.h + 50.h,
+                height: 64.h,
+                // clipBehavior: Clip.none,
+                color: Colors.red.withValues(alpha: 0.0),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(58.h),
+                      child: ShiningEffect(
+                        shineColor: Colors.yellow,
+                        opacity: 1,
+                        angle: 1.8,
+                        // topLeft: false,
+                        duration: const Duration(seconds: 2),
+                        child: Image.asset(
+                          Assets.img.mianDaily.path,
+                          width: 58.h,
+                          height: 58.h,
+                          gaplessPlayback: true,
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    left: -4.w,
-                    right: 46.w,
-                    bottom: 4.h,
-                    child: Center(
-                      child: SSTxtGraBorder(
-                        text: "Daily\nRewards",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
-                        strokeColor: Color(0xff30120A),
-                        fontFamily: FontFamily.alkatra,
-                        height: 1,
+                    Positioned(
+                      left: -4.w,
+                      right: 46.w,
+                      bottom: 4.h,
+                      child: Center(
+                        child: SSTxtGraBorder(
+                          text: "Daily\nRewards",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          strokeColor: Color(0xff30120A),
+                          // fontFamily: FontFamily.alkatra,
+                          height: 1,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -558,7 +563,7 @@ class CenterView extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                               fontSize: 14.sp,
                               strokeColor: Color(0xff30120A),
-                              fontFamily: FontFamily.alkatra,
+                              // fontFamily: FontFamily.alkatra,
                             )
                           : const SizedBox(),
                     ),
@@ -625,7 +630,7 @@ class CenterView extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           strokeColor: Color(0xff30120A),
-                          fontFamily: FontFamily.alkatra,
+                          // fontFamily: FontFamily.alkatra,
                         ),
                       ),
                     ),

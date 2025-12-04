@@ -23,8 +23,8 @@ class FontFamily {
   /// Font family: GhostKidAOE_Pro
   static const String ghostKidAOEPro = 'GhostKidAOE_Pro';
 
-  /// Font family: MarkoOne
-  static const String markoOne = 'MarkoOne';
+  /// Font family: Inter_Bold
+  static const String interBold = 'Inter_Bold';
 
   /// Font family: Rubik
   static const String rubik = 'Rubik';

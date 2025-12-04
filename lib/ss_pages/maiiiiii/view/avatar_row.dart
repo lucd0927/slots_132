@@ -170,7 +170,7 @@ class _AvatarRowState extends State<AvatarRow> {
                           name,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontFamily: FontFamily.rubik,
+                            // fontFamily: FontFamily.rubik,
                             fontSize: 7.sp,
                             color: Color(0xffffffff),
                             height: 1,
