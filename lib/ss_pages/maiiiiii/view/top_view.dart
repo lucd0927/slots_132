@@ -62,6 +62,7 @@ class TopView extends StatelessWidget {
     return Container(
       width: ScreenUtil().screenWidth,
       height: 90.h,
+      // color: Colors.yellow,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -174,7 +175,7 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
 
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
 
@@ -185,7 +186,7 @@ class TopView extends StatelessWidget {
     //   },
     // );
 
-    MainController.to.onAddMoney(800, showMoneyAnimated: true);
+    // MainController.to.onAddMoney(800, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
 

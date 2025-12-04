@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -203,6 +204,14 @@ class _SettingWidgetState extends State<SettingWidget> {
     } else if (continueDays == day) {
       hasGet = true;
     }
+    double imgW = 60.w;
+    double imgH = 40.h;
+
+    if(day == 3){
+      imgW = 100.w;
+      imgH = 50.h;
+    }
+
     bool showShimmer = hasGet && showCheckOk;
 
     Widget child = Container(
@@ -233,10 +242,10 @@ class _SettingWidgetState extends State<SettingWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 10.h),
-              Image.asset(centerImg, width: 60.w, height: 40.h),
+              Image.asset(centerImg, width: imgW, height: imgH),
               SSTxtGraBorder(
                 text: money,
-                // fontFamily: FontFamily.rubik,
+                fontFamily: FontFamily.ghostKidAOEPro,
                 gradient: LinearGradient(
                   end: Alignment.bottomCenter,
                   begin: Alignment.topCenter,
@@ -305,31 +314,76 @@ class _SettingWidgetState extends State<SettingWidget> {
             fit: BoxFit.fill,
           ),
           Positioned(
-            left: 120.w,
-            right: 0,
-            bottom: 4.h,
-            top: 10.h,
+            top: 12.h,
+            left: 12.w,
+            child: Transform.rotate(
+              angle: -30 * pi / 180,
+              child: SSTxtBorder(
+                text: "Day 7",
+                fontSize: 10.sp,
+                fontColor: Color(0xffFFDC16),
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 20.w,
+            // right: 0,
+            bottom: 10.h,
+            top: 24.h,
             child: Container(
-              width: double.infinity,
+              width: 188.w,
               height: double.infinity,
               color: Colors.teal.withValues(alpha: 0.0),
-              child: Column(
+              child: Row(
+
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(height: 4.h),
-                  SSTxtBorder(
-                    text: "Day 7",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  SizedBox(height: 26.h),
-                  SSTxtGraBorder(
-                    text: "REWARD x2",
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w700,
-                    strokeColor: Color(0xff460000),
-                  ),
-                ],
-              ),
+                Column(
+
+                  children: [
+
+                    Image.asset(Assets.img.moneyGift.path,width: 60.w,height: 40.h,),
+                    SSTxtGraBorder(
+                      text: "+\$150",
+                      fontFamily: FontFamily.ghostKidAOEPro,
+                      gradient: LinearGradient(
+                        end: Alignment.bottomCenter,
+                        begin: Alignment.topCenter,
+                        colors: [
+                          Color(0xff0FFF63),
+                          Color(0xffA4F00D),
+                          Color(0xffD0FF00),
+                          Color(0xff00FF1E),
+                        ],
+                      ),
+                      fontSize: 18.sp,
+                      strokeColor: Color(0xff0C402B),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset(Assets.img.popupGetPhoneSpice.path,width: 60.w,height: 40.h,),
+                    SSTxtGraBorder(
+                      text: "x1",
+                      fontFamily: FontFamily.ghostKidAOEPro,
+                      gradient: LinearGradient(
+                        end: Alignment.bottomCenter,
+                        begin: Alignment.topCenter,
+                        colors: [
+                          Color(0xff0FFF63),
+                          Color(0xffA4F00D),
+                          Color(0xffD0FF00),
+                          Color(0xff00FF1E),
+                        ],
+                      ),
+                      fontSize: 18.sp,
+                      strokeColor: Color(0xff0C402B),
+                    ),
+                  ],
+                )
+              ],),
             ),
           ),
         ],

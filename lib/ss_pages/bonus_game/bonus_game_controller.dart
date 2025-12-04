@@ -57,14 +57,17 @@ class BonusGameController extends GetxController {
     required VoidCallback onOnClose,
   }) async{
 
-
-    bool result = await SSCommonAds().showInterstitialAd(
-      adPosId: SSAdsPosId.eyomt_bonus_int,
-      ignored_hasDisplayAd: true,
-    );
-    if(!result){
-      // return;
+    int length = clickIndex.length;
+    if(length == 1){
+      bool result = await SSCommonAds().showInterstitialAd(
+        adPosId: SSAdsPosId.eyomt_bonus_int,
+        ignored_hasDisplayAd: true,
+      );
+      if(!result){
+        // return;
+      }
     }
+
 
     SSEventReporttttt.bonus_page_click();
     btnBonusGameClick.play();

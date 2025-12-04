@@ -91,7 +91,7 @@ class _AvatarRowState extends State<AvatarRow> {
     return Container(
       width: double.infinity,
       height: 60.h,
-      margin: EdgeInsets.only(top: 20.h),
+      margin: EdgeInsets.only(top: 4.h),
       padding: EdgeInsets.only(left: 20.w, right: 20.w),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,

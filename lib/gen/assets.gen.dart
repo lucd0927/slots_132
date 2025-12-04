@@ -281,6 +281,10 @@ class $AssetsImgGen {
   AssetGenImage get dailyBonusDayBg =>
       const AssetGenImage('assets/img/daily_bonus_day_bg.png');
 
+  /// File path: assets/img/daily_bonus_fresspsin.png
+  AssetGenImage get dailyBonusFresspsin =>
+      const AssetGenImage('assets/img/daily_bonus_fresspsin.png');
+
   /// File path: assets/img/daily_bonus_gift17.png
   AssetGenImage get dailyBonusGift17 =>
       const AssetGenImage('assets/img/daily_bonus_gift17.png');
@@ -548,6 +552,10 @@ class $AssetsImgGen {
 
   /// File path: assets/img/menu.png
   AssetGenImage get menu => const AssetGenImage('assets/img/menu.png');
+
+  /// File path: assets/img/mian_daily.png
+  AssetGenImage get mianDaily =>
+      const AssetGenImage('assets/img/mian_daily.png');
 
   /// File path: assets/img/money.png
   AssetGenImage get money => const AssetGenImage('assets/img/money.png');
@@ -1134,6 +1142,7 @@ class $AssetsImgGen {
     dailyBonusBg,
     dailyBonusBottomDayBg,
     dailyBonusDayBg,
+    dailyBonusFresspsin,
     dailyBonusGift17,
     dailyBonusGift22,
     dailyBonusGift30,
@@ -1203,6 +1212,7 @@ class $AssetsImgGen {
     mainTopXp,
     mainWheel,
     menu,
+    mianDaily,
     money,
     moneyGift,
     moneyLock,

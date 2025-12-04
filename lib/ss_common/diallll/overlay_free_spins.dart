@@ -302,7 +302,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
 
   void onclickClaim() async{
     int aC = baseCount + addSpinCount;
-    bool resut = await SSCommonAds().showInterstitialAd(adPosId: SSAdsPosId.eyomt_freespin_int);
+    bool resut = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_freespin_rv);
     if(!resut){
       aC = baseCount;
     }

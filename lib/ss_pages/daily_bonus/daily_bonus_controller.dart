@@ -34,7 +34,7 @@ class DailyBonusController extends GetxController {
     3:GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.freespin,
       num: 50,
-      img: Assets.img.btnTxtSpin.path,
+      img: Assets.img.dailyBonusFresspsin.path,
     ),
     4:GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
@@ -47,9 +47,9 @@ class DailyBonusController extends GetxController {
       img: Assets.img.giftXpUnlock.path,
     ),
     6:GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphoneCard,
-      num: 1,
-      img: Assets.img.phoneSuip.path,
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 85,
+      img: Assets.img.moneyGift.path,
     ),
     7:GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.iphoneCard,

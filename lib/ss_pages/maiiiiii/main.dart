@@ -13,6 +13,7 @@ import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -77,7 +78,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
 
   jiazaiInterrrr() async {
-    if(SSDlTracking.qidongduoshaoDay() <= 1){
+    if(SSDlTracking.qidongduoshaoDay() <= 1 && SSHuanjing.hasPppord()){
       return;
     }
 
@@ -95,7 +96,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         break;
       } else {
         load = load + 1;
-        if (load >= 10) {
+        if (load >= 30) {
           break;
         }
       }

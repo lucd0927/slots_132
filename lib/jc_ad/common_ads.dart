@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
+import 'package:slots_132/jc_ad/guiyin/adjust.dart';
 import 'package:slots_132/jc_ad/guiyin/af.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_ad/uuuump.dart';
@@ -174,11 +175,16 @@ class SSCommonAds {
         revenue: value,
       ),
     );
-
-    FlutterCustomFacebook.instance.logPurchase(
-      amount: value,
+    SSAdjust().adjustRevenue(
+      network: network,
       currency: currency,
+      value: value,
+      source: source,
     );
+    // FlutterCustomFacebook.instance.logPurchase(
+    //   amount: value,
+    //   currency: currency,
+    // );
   }
 
   void onAdLoadedCallback(

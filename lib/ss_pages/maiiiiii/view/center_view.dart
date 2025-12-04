@@ -20,6 +20,7 @@ import 'package:slots_132/ss_common/sssssp/spine_freespin_xuanggg.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
@@ -78,7 +79,7 @@ class CenterView extends StatelessWidget {
                         children: [
                           Positioned(
                             left: 16.w,
-                            top: 60.h,
+                            top: 40.h,
                             child: AnimatedCrossFade(
                               firstChild: leftWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
@@ -466,9 +467,60 @@ class CenterView extends StatelessWidget {
     return Obx(() {
       bool showTime = MainController.to.showBoxTime.value;
       String text = MainController.to.textBoxGiftTime.value;
-      ssLogggg("======txt:$text");
+      // ssLogggg("======txt:$text");
       return Column(
         children: [
+
+          GestureDetector(
+            onTap: () {
+              OverlayDailyBonus().show(showAddMoney: false);
+            },
+            child: Container(
+              width: 58.h + 50.h,
+              height: 64.h,
+              // clipBehavior: Clip.none,
+              color: Colors.red.withValues(alpha: 0.0),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(58.h),
+                    child: ShiningEffect(
+                      shineColor: Colors.yellow,
+                      opacity: 1,
+                      angle: 1.8,
+                      // topLeft: false,
+                      duration: const Duration(seconds: 2),
+                      child: Image.asset(
+                        Assets.img.mianDaily.path,
+                        width: 58.h,
+                        height: 58.h,
+                        gaplessPlayback: true,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: -4.w,
+                    right: 46.w,
+                    bottom: 4.h,
+                    child: Center(
+                      child:  SSTxtGraBorder(
+                        text: "Daily\nRewards",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        strokeColor: Color(0xff30120A),
+                        fontFamily: FontFamily.alkatra,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 0.h),
+
           GestureDetector(
             onTap: () {
               _onBoxGift();
@@ -515,8 +567,8 @@ class CenterView extends StatelessWidget {
                   ),
                   if (MainController.to.textBoxGiftTime.value.isEmpty)
                     Positioned(
-                      right: 20.w,
-                      top: 0.h,
+                      right: 10.w,
+                      top: 10.h,
                       // left: -50.w,
                       child: Container(
                         width: 100.h,
@@ -529,7 +581,7 @@ class CenterView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 0.h),
 
           GestureDetector(
             onTap: () {
