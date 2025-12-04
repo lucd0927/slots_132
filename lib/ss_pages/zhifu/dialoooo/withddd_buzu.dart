@@ -5,6 +5,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
@@ -14,9 +15,7 @@ class OverlayWithddBuzu {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({
-    required VoidCallback onClose,
-}) {
+  void show({required VoidCallback onClose}) {
     SSEventReporttttt.insufficient_pop();
     // if (_isShowing) return;
     _overlay = null;
@@ -74,7 +73,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
         duration: animD,
         color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
         child: Center(
-          child:  AnimatedScale(
+          child: AnimatedScale(
             duration: animD,
             scale: showAnimated ? 1.0 : 0.8,
             // curve: Curves.linearToEaseOut,
@@ -126,12 +125,12 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                               width: 145.h,
                               height: 87.h,
                             ),
-                
+
                             SizedBox(height: 20.h),
                             jinduWidget(),
-                
+
                             SizedBox(height: 20.h),
-                
+
                             GestureDetector(
                               onTap: () {
                                 SSEventReporttttt.insufficient_pop_spin();
@@ -144,15 +143,32 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                   color: Color(0xff31C520),
                                   borderRadius: BorderRadius.circular(100),
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    "Spin for Your \$1,000",
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w800,
+                                child: Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "Spin for Your \$1,000",
+                                        style: TextStyle(
+                                          color: Color(0xffffffff),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Positioned(
+                                      right: -20.w,
+                                      top: 10.h,
+
+                                      child: Center(
+                                        child: SizedBox(
+                                          width: 65.h,
+                                          height: 72.h,
+                                          child: const SpineHand(),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -182,15 +198,19 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                     ],
                   ),
                 ),
-                
+
                 SizedBox(height: 40.h),
                 GestureDetector(
-                    onTap: (){
-                      SSEventReporttttt.insufficient_pop_close();
-                      onClose();
-                    },
-                    child: Image.asset(Assets.img.closePopup.path,width: 30.h,height: 30.h,))
-                
+                  onTap: () {
+                    SSEventReporttttt.insufficient_pop_close();
+                    onClose();
+                  },
+                  child: Image.asset(
+                    Assets.img.closePopup.path,
+                    width: 30.h,
+                    height: 30.h,
+                  ),
+                ),
               ],
             ),
           ),
@@ -278,10 +298,10 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
 
   onClose() async {
     ssLogggg("======Setting close");
-    setState(() {
-      showAnimated = false;
-    });
-    await Future.delayed(animD);
+    // setState(() {
+    //   showAnimated = false;
+    // });
+    // await Future.delayed(animD);
     widget.onClose();
   }
 }

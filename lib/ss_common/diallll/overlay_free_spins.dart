@@ -7,6 +7,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -283,6 +284,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
 
   void onclickClaim() {
     MainController.to.curFreeSpinCount.value = baseCount + addSpinCount;
+    SSEventReporttttt.free_spin_add_chance();
     onClose(1);
   }
 }

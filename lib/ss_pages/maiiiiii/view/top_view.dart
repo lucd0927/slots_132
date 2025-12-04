@@ -36,6 +36,7 @@ import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_exp.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
@@ -172,9 +173,16 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
 
-    MainController.to.onAddMoney(800, showMoneyAnimated: true);
+    //
+    // OverlayWithddBuzu().show(
+    //   onClose: () {
+    //     Navigator.maybePop(Get.context!);
+    //   },
+    // );
+
+    // MainController.to.onAddMoney(800, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
 

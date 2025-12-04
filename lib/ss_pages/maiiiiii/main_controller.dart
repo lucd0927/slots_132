@@ -1168,7 +1168,7 @@ class MainController extends GetxController {
               curShowFreeSpin.value = true;
               SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
-              SSEventReporttttt.free_spin_add_chance();
+
               onFreeSpin();
             },
           );
