@@ -495,17 +495,20 @@ class _ItemWidgetState extends State<ItemWidget> {
             widget.model.giftRewardModel?.rewardModelType;
         int exp = 0;
         int phoneSpice = 0;
+        double money2 = 0;
         if (giftRewardModel != null && rewardModelType != null) {
           if (rewardModelType == EnumGiftRewardModel.cash) {
-            money = giftRewardModel.num * 1.0;
+            money2 = giftRewardModel.num * 1.0;
           } else if (rewardModelType == EnumGiftRewardModel.xp) {
             exp = giftRewardModel.num.toInt();
           } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
             phoneSpice = giftRewardModel.num.toInt();
           }
         }
+        ssLogggg("=====exp:$exp =money:$money2 phoneSpice:$phoneSpice");
+
         OverlayCommonGet().show(
-          money: money,
+          money: money2,
           exp: exp,
           phoneSpice: phoneSpice,
           onClose: () {},

@@ -82,7 +82,7 @@ class BottomView extends StatelessWidget {
     ssLogggg(
       "====jishuWidget=money:$money showWinLines:$showWinLines showNum:$showNum",
     );
-    String txt = "Good Luck";
+    String txt = "GOOD LUCK";
     if (money <= 0) {
       money = 0;
     }

@@ -248,7 +248,7 @@ class MainController extends GetxController {
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
-    tmpSpinCount = 5;
+    // tmpSpinCount = 5;
 
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
@@ -1513,41 +1513,49 @@ class MainController extends GetxController {
         img: "",
       ),
     );
-
     if (money > 0) {
       btnSpinLastIndex.play();
-      overlayMainTopMoney.showWithSize(
-        childSize: Size(32.w, 32.w),
-        onEnd: () {
-          // btnMoney.play();
-          double tmpCurMmmm2 = curMonnnn.value;
-          double tmpCurMmmm = tmpCurMmmm2 + money;
-          box.put(hkMonnnn, tmpCurMmmm);
-          curMonnnn.value = tmpCurMmmm;
-          ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
 
-          double tmpCoin = tmpCurMmmm;
-          int i = tmpCurMmmm2 ~/ 100;
-          int next = tmpCoin ~/ 100;
+      if(showMoneyAnimated){
+        overlayMainTopMoney.showWithSize(
+          childSize: Size(32.w, 32.w),
+          onEnd: () {
+            _onAddMoney(money,onEnd);
+          },
+          showTargetWidget: showTargetWidget,
+        );
+      }else{
+        _onAddMoney(money,onEnd);
+      }
 
-          if (i != next) {
-            SSEventReporttttt.cash_numer(number_type: "$next");
-          }
-
-
-          onEnd?.call();
-        },
-        showTargetWidget: showTargetWidget,
-      );
     } else {
-      double tmpCurMmmm = curMonnnn.value;
-      tmpCurMmmm = tmpCurMmmm + money;
-      box.put(hkMonnnn, tmpCurMmmm);
-      curMonnnn.value = tmpCurMmmm;
-      ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
-      onEnd?.call();
+      _onAddMoney(money,onEnd);
     }
   }
+
+  void _onAddMoney(double money,   VoidCallback? onEnd,) {
+    double tmpCurMmmm2 = curMonnnn.value;
+    double tmpCurMmmm = tmpCurMmmm2 + money;
+    box.put(hkMonnnn, tmpCurMmmm);
+    curMonnnn.value = tmpCurMmmm;
+    ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
+
+    if(money >0){
+      double tmpCoin = tmpCurMmmm;
+      int i = tmpCurMmmm2 ~/ 100;
+      int next = tmpCoin ~/ 100;
+
+      if (i != next) {
+        SSEventReporttttt.cash_numer(number_type: "${next*100}");
+      }
+
+    }
+    onEnd?.call();
+
+
+  }
+
+
 
   onAddExp(int exp) {
     int tmpExp2 = curLevelExp.value;

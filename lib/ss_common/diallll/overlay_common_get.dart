@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -46,6 +47,10 @@ class OverlayCommonGet {
             close();
             ssLogggg("=====CommonGetWidget=close");
             onClose();
+
+
+
+
           },
           money: money ?? 0.0,
           exp: exp ?? 0,
@@ -95,20 +100,83 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
   double startScale = 0.9;
   Timer? _timer;
 
+  BuildContext? moneyContext;
+  BuildContext? xpContext;
+  BuildContext? phoneContext;
+  BuildContext? childContext;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         showAnimated = true;
       });
 
-      _timer = Timer(Duration(milliseconds: 2000), () {
-        _timer?.cancel();
-        // onClose(1);
+      Future.delayed(animD, () {
+        if (mounted) {
+          if (childContext != null &&
+              (moneyContext != null ||
+                  xpContext != null ||
+                  phoneContext != null)) {
+            BuildContext? context = moneyContext;
+            String icon = Assets.img.money.path;
+            bool showMoney = widget.money > 0;
+            bool showExp = widget.exp > 0;
+            bool showPhone = widget.phoneSpice > 0;
+            bool freespins = widget.freespins > 0;
+            if (showMoney) {
+              icon = Assets.img.money.path;
+              context = moneyContext;
+            } else if (showExp) {
+              icon = Assets.img.mainTopXp.path;
+              context = xpContext;
+            } else if (showPhone) {
+              icon = Assets.img.popupGetPhoneSpice.path;
+              context = phoneContext;
+            }
+            if (mounted) {
+
+
+              OverlayFly2TargetKey().show(
+                targetContext: context!,
+                childContext:childContext!,
+                count: 5,
+                heroChild: Image.asset(icon),
+                onEnd: () {
+                  _onClcc();
+                },
+              );
+            } else {
+              _onClcc();
+            }
+          } else {
+            _onClcc();
+          }
+        }
       });
+    });
+  }
+
+  _onClcc() {
+
+    bool showMoney = widget.money > 0;
+    bool showExp = widget.exp > 0;
+    bool showPhone = widget.phoneSpice > 0;
+
+    if(showMoney){
+      MainController.to.onAddMoney(widget.money, showMoneyAnimated: false);
+    }else if(showExp){
+      MainController.to.onAddExp(widget.exp);
+    }else if(showPhone){
+      PhoneCardController.to.changeWhichStageIndex();
+    }
+
+    _timer = Timer(Duration(milliseconds: 1000), () {
+      _timer?.cancel();
+      onClose(1);
     });
   }
 
@@ -184,7 +252,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     } else if (showExp) {
       img = Assets.img.mainTopXp.path;
     } else if (showPhone) {
-      img = Assets.img.phoneSuip.path;
+      img = Assets.img.popupGetPhoneSpice.path;
     } else if (freespins) {
       img = Assets.img.popupGetFreespinmoney.path;
     }
@@ -225,7 +293,12 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 foreground: Color(0xffDB1717),
               ),
               SizedBox(height: 16.h),
-              Image.asset(img, width: 200.w, height: 80.h),
+              Builder(
+                builder: (context) {
+                  childContext = context;
+                  return Image.asset(img, width: 200.w, height: 80.h);
+                },
+              ),
               SizedBox(height: 16.h),
               Container(
                 color: Colors.blueAccent.withValues(alpha: 0),
@@ -293,34 +366,35 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             SizedBox(width: 10.w),
                           ],
                         ),
-                      if(showMoney)Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 2.h),
-                          SSTxtGraBorder(
-                            text:
-                                "+${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
-                            fontSize: 20.sp,
-                            fontFamily: FontFamily.ghostKidAOEPro,
-                            height: 1.2,
-                            fontWeight: FontWeight.w500,
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xff0FFF63),
-                                Color(0xffA4F00D),
-                                Color(0xffD0FF00),
-                                Color(0xff00FF1E),
-                                // Color(0xff0FFF63),
-                              ],
-                              end: Alignment.bottomCenter,
-                              begin: Alignment.topCenter,
+                      if (showMoney)
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 2.h),
+                            SSTxtGraBorder(
+                              text:
+                                  "+${SSCountry.curGuojiaFuhao()}${widget.money.toStringAsFixed(2)}",
+                              fontSize: 20.sp,
+                              fontFamily: FontFamily.ghostKidAOEPro,
+                              height: 1.2,
+                              fontWeight: FontWeight.w500,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xff0FFF63),
+                                  Color(0xffA4F00D),
+                                  Color(0xffD0FF00),
+                                  Color(0xff00FF1E),
+                                  // Color(0xff0FFF63),
+                                ],
+                                end: Alignment.bottomCenter,
+                                begin: Alignment.topCenter,
+                              ),
+                              strokeColor: Color(0xff0C402B),
+                              strokeWidth: 3.w,
+                              // fontColor: Color(0xff6AFF00),
                             ),
-                            strokeColor: Color(0xff0C402B),
-                            strokeWidth: 3.w,
-                            // fontColor: Color(0xff6AFF00),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
                     ],
                   ),
                 ),
@@ -356,7 +430,16 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 ),
               ),
               SizedBox(width: 8.w),
-              Image.asset(Assets.img.money.path, width: 30.w, height: 30.w),
+              Builder(
+                builder: (context) {
+                  moneyContext = context;
+                  return Image.asset(
+                    Assets.img.money.path,
+                    width: 30.w,
+                    height: 30.w,
+                  );
+                },
+              ),
               SizedBox(width: 8.w),
 
               SSAniiiiCount(
@@ -410,7 +493,16 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 ),
               ),
               SizedBox(width: 8.w),
-              Image.asset(Assets.img.mainTopXp.path, width: 30.w, height: 30.w),
+              Builder(
+                builder: (context) {
+                  xpContext = context;
+                  return Image.asset(
+                    Assets.img.mainTopXp.path,
+                    width: 30.w,
+                    height: 30.w,
+                  );
+                },
+              ),
               SizedBox(width: 8.w),
 
               SSAniiiiCount(
@@ -463,10 +555,15 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 ),
               ),
               SizedBox(width: 8.w),
-              Image.asset(
-                Assets.img.popupGetPhoneSpice.path,
-                width: 30.w,
-                height: 30.w,
+              Builder(
+                builder: (context) {
+                  phoneContext = context;
+                  return Image.asset(
+                    Assets.img.popupGetPhoneSpice.path,
+                    width: 30.w,
+                    height: 30.w,
+                  );
+                },
               ),
               SizedBox(width: 8.w),
 
@@ -483,7 +580,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 ),
                 prefix: "",
               ),
-
 
               // SSTxtGraBorder(
               //   text: "${PhoneCardController.to.collectCardNum.value}",

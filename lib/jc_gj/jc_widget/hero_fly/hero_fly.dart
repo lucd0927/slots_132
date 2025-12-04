@@ -16,13 +16,13 @@ class OverlayFly2TargetKey {
     required Widget heroChild,
     required BuildContext targetContext,
     required BuildContext childContext,
-
+    int count = 1,
     VoidCallback? onEnd,
   }) {
     try {
       _overlay = null;
       List<Widget> children = [];
-      int count = 1;
+
       for (int i = 0; i < count; i++) {
         children.add(heroChild);
       }
