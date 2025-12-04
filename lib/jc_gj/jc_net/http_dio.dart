@@ -388,7 +388,7 @@ class SSHttpDio {
     // adJson[''] = ;
 
     // adJson.addAll(stuntJson);
-    // adJson['scrawny'] = stuntJson;
+    adJson['must'] = "menial";
     var data = jsonEncode(adJson);
     ssLogggg("=========adJson:   $data");
 

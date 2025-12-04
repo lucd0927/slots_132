@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_kuangggg/base_dialog.dart';
 
@@ -9,10 +10,13 @@ showAdFailedDialog(
   required VoidCallback onClose,
 }) {
   // PBMaiDian.ad_fail_pop();
+
+  OverlayAdFailed().show(money: 0, onBtn: onBtn, onBtn2: onClose);
+  return;
   return jcShowBKuang(
     context: context,
     child: AdFailedWidget(
-      onClose: () {
+      onBtn2: () {
         onClose();
       },
       onBtn: () {
@@ -22,10 +26,47 @@ showAdFailedDialog(
   );
 }
 
-class AdFailedWidget extends StatefulWidget {
-  const AdFailedWidget({super.key, required this.onClose, required this.onBtn});
+class OverlayAdFailed {
+  ///是否真正显示
+  bool get hasShow => _isShowing;
+  bool _isShowing = false;
+  OverlayEntry? _overlay;
 
-  final VoidCallback onClose;
+  void show({
+    required double money,
+    required VoidCallback onBtn,
+    required VoidCallback onBtn2,
+  }) {
+    _overlay = null;
+    _overlay = OverlayEntry(
+      builder: (context) {
+        return AdFailedWidget(
+          onBtn2: () {
+            close();
+            onBtn2();
+          },
+          onBtn: () {
+            close();
+            onBtn();
+          },
+        );
+      },
+    );
+    Overlay.of(Get.context!).insert(_overlay!);
+    _isShowing = true;
+  }
+
+  void close() {
+    _isShowing = false;
+    _overlay?.remove();
+    _overlay = null;
+  }
+}
+
+class AdFailedWidget extends StatefulWidget {
+  const AdFailedWidget({super.key, required this.onBtn2, required this.onBtn});
+
+  final VoidCallback onBtn2;
   final VoidCallback onBtn;
 
   @override
@@ -36,51 +77,56 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
   int index = 0;
   bool showStep2 = false;
 
+  bool showAnimated = false;
+  Duration animD = Duration(milliseconds: 200);
+  double startScale = 0.8;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        showAnimated = true;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: ScreenUtil().screenWidth,
-      height: ScreenUtil().screenHeight,
-      child: IndexedStack(
-        index: index,
+    Widget child = Container(
+      // color: Colors.amber,
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // SizedBox(height: 200.h),
+          content(),
+          SizedBox(height: 40.h),
           GestureDetector(
-            onTap: () {},
-            child: Stack(
-              children: [
-                Container(
-                  // color: Colors.amber,
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // SizedBox(height: 200.h),
-                      content(),
-                      SizedBox(height: 40.h),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          widget.onClose();
-                        },
-                        child: Image.asset(
-                          Assets.img.closePopup.path,
-                          width: 30.h,
-                          height: 30.h,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            onTap: () {
+              // Navigator.pop(context);
+              widget.onBtn2();
+            },
+            child: Image.asset(
+              Assets.img.closePopup.path,
+              width: 30.h,
+              height: 30.h,
             ),
           ),
         ],
+      ),
+    );
+    return Material(
+      color: Colors.transparent,
+      child: AnimatedContainer(
+        duration: animD,
+        color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
+        child: AnimatedScale(
+          duration: animD,
+          scale: showAnimated ? 1.0 : startScale,
+          child: child,
+        ),
       ),
     );
   }
@@ -179,7 +225,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                       child: Center(
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            // Navigator.pop(context);
                             widget.onBtn();
                           },
                           child: Container(

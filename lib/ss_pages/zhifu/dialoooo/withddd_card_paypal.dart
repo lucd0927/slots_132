@@ -196,14 +196,14 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       SizedBox(height: 8.h),
                       inputWidget(),
 
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 60.h),
                       GestureDetector(
                         onTap: onWithdrawwww,
                         child: Container(
                           width: 230.h,
                           height: 42.h,
                           decoration: BoxDecoration(
-                            color: Color(0xff31C520),
+                            color: Color(0xff2E50B8),
                             borderRadius: BorderRadius.circular(100),
                           ),
                           child: Center(

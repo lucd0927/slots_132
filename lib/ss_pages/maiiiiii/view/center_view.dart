@@ -579,7 +579,7 @@ class CenterView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
+                  if(PhoneCardController.to.canClickClaim.value)  Positioned(
                       right: 20.w,
                       top: 0.h,
                       // left: -50.w,
@@ -990,106 +990,3 @@ class FreeSpinState extends State<FreeSpin> {
   }
 }
 
-//
-// class HomeBoxTime extends StatefulWidget {
-//   const HomeBoxTime({super.key});
-//
-//   @override
-//   State<HomeBoxTime> createState() => HomeBoxTimeState();
-// }
-//
-// class HomeBoxTimeState extends State<HomeBoxTime> {
-//   // static const hkTime = "4aef6hfh2j69ssr";
-//   // Timer? _timer;
-//   //
-//   // // int maxSeconds = 60 * 60 * 8;
-//   // int maxSeconds = 60 * 1;
-//   //
-//   // var text = "";
-//   //
-//   // int shengyuTime() {
-//   //   int mill = DateTime.now().millisecondsSinceEpoch;
-//   //   var tmpData = box.get(hkTime) ?? {"count": 0, "time": mill};
-//   //   int time = tmpData['time'];
-//   //   saveTime(time);
-//   //   // 过了多少时间
-//   //   int diff = mill - time;
-//   //   // 剩下多少时间
-//   //   int shengyu = ((maxSeconds * 1000 - diff) / 1000).toInt();
-//   //   if (shengyu <= 0) {
-//   //     shengyu = 0;
-//   //   }
-//   //   return shengyu;
-//   // }
-//   //
-//   // resetTime() {
-//   //   int mill = DateTime.now().millisecondsSinceEpoch;
-//   //   saveTime(mill);
-//   //   ssLogggg("====== cresetTime:$mill");
-//   // }
-//   //
-//   // _initTimer() {
-//   //   int shengyu = shengyuTime();
-//   //   ssLogggg("====_initTimer=shengyu:$shengyu");
-//   //   text = formatDuration(shengyu);
-//   //   _timer?.cancel();
-//   //   _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-//   //     int tick = timer.tick;
-//   //     int shengyu = shengyuTime();
-//   //     int seconds = shengyu;
-//   //     if (shengyu <= 0) {
-//   //       text = formatDuration(seconds);
-//   //       // MainController.to.showBoxTime.value = false;
-//   //       _timer?.cancel();
-//   //     }
-//   //     text = formatDuration(seconds);
-//   //   });
-//   // }
-//   //
-//   // var box = SSHive.box;
-//   //
-//   // saveTime(int time) {
-//   //   box.put(hkTime, {"time": time});
-//   // }
-//   //
-//   // String formatDuration(int seconds) {
-//   //   if (seconds <= 0) {
-//   //     return "";
-//   //   }
-//   //
-//   //   Duration duration = Duration(seconds: seconds);
-//   //   String twoDigits(int n) => n.toString().padLeft(2, '0');
-//   //
-//   //   String hours = twoDigits(duration.inHours);
-//   //   String minutes = twoDigits(duration.inMinutes.remainder(60));
-//   //   String secs = twoDigits(duration.inSeconds.remainder(60));
-//   //
-//   //   return '$hours:$minutes:$secs';
-//   // }
-//
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//     // _initTimer();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Obx(() {
-//       return SSTxtGraBorder(
-//         text: MainController.to.textBoxGiftTime.value,
-//         fontWeight: FontWeight.w400,
-//         fontSize: 14.sp,
-//         strokeColor: Color(0xff30120A),
-//         fontFamily: FontFamily.alkatra,
-//       );
-//     });
-//   }
-//
-//   @override
-//   void dispose() {
-//     // TODO: implement dispose
-//     super.dispose();
-//   }
-// }

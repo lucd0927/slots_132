@@ -82,7 +82,7 @@ class OverlayBoxgift {
             } else if (tmpType.contains("phoneSpice")) {
               phoneSpice = 1;
             }
-
+            await Future.delayed(Duration(milliseconds: 300));
             OverlayCommonGet().show(
               money: tmpMmm,
               exp: exp,
@@ -146,14 +146,14 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       if (time > 0) {
         return;
       }
-      Future.delayed(Duration(milliseconds: 2500), () {
+      Future.delayed(Duration(milliseconds: 500), () {
         if (mounted) {
           SSEventReporttttt.elve_page_open();
           setState(() {
             showSecondPageOpenGift = true;
           });
 
-          Future.delayed(Duration(milliseconds: 500), () {
+          Future.delayed(Duration(milliseconds: 1500), () {
             onClose(20);
           });
         }

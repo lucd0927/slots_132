@@ -108,10 +108,11 @@ class _PhoneInputNameState extends State<PhoneInputName>
           duration: animD,
           color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
           child: Center(
-            child: AnimatedSlide(
+            child: AnimatedScale(
               duration: animD,
-              offset: showAnimated ? Offset.zero : Offset(0, 1),
+              // offset: showAnimated ? Offset.zero : Offset(0, 1),
               // curve: Curves.linearToEaseOut,
+              scale: showAnimated?1:0.8,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -352,10 +353,10 @@ class _PhoneInputNameState extends State<PhoneInputName>
 
   onClose() async {
     ssLogggg("======Setting close");
-    setState(() {
-      showAnimated = false;
-    });
-    await Future.delayed(animD);
+    // setState(() {
+    //   showAnimated = false;
+    // });
+    // await Future.delayed(animD);
     widget.onClose(name);
   }
 

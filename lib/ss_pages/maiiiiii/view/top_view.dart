@@ -174,7 +174,7 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
 
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
 
@@ -185,7 +185,7 @@ class TopView extends StatelessWidget {
     //   },
     // );
 
-    // MainController.to.onAddMoney(800, showMoneyAnimated: true);
+    MainController.to.onAddMoney(800, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
 

@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -32,11 +34,18 @@ class OverlayFreeSpins {
     _overlay = OverlayEntry(
       builder: (context) {
         return FreeSpinsWidget(
-          onBtn: (double money) {
+          onBtn: (double value) async{
             close();
+
             onClose(null);
+
           },
           money: 0,
+          onBtn2: (double value)async {
+            close();
+            // MainController.to.curFreeSpinCount.value = value.toInt();
+            onClose(null);
+          },
         );
       },
     );
@@ -52,10 +61,16 @@ class OverlayFreeSpins {
 }
 
 class FreeSpinsWidget extends StatefulWidget {
-  const FreeSpinsWidget({super.key, required this.onBtn, required this.money});
+  const FreeSpinsWidget({
+    super.key,
+    required this.onBtn,
+    required this.money,
+    required this.onBtn2,
+  });
 
   final double money;
   final ValueChanged<double> onBtn;
+  final ValueChanged<double> onBtn2;
 
   @override
   State<FreeSpinsWidget> createState() => _FreeSpinsWidgetState();
@@ -70,8 +85,8 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
-  int baseCount = 1;
-  int addSpinCount = 4;
+  static int baseCount = 1;
+  static int addSpinCount = 4;
 
   @override
   void initState() {
@@ -250,10 +265,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                   ),
                   SizedBox(height: 10.h),
                   GestureDetector(
-                    onTap: () {
-                      MainController.to.curFreeSpinCount.value = baseCount;
-                      onClose(1);
-                    },
+                    onTap: onBnt2,
                     child: SSTxtBorder(
                       text: "START",
                       fontWeight: FontWeight.w700,
@@ -274,17 +286,29 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
 
   onClose(double money) async {
     ssLogggg("====== close money:$money");
-    setState(() {
-      showAnimated = false;
-      startScale = 1.0;
-    });
+    // setState(() {
+    //   showAnimated = false;
+    //   startScale = 1.0;
+    // });
     // await Future.delayed(animD);
-    widget.onBtn(money);
   }
 
-  void onclickClaim() {
-    MainController.to.curFreeSpinCount.value = baseCount + addSpinCount;
+  void onBnt2() async{
+    await SSCommonAds().showInterstitialAd(adPosId: SSAdsPosId.eyomt_freespin_int);
+    MainController.to.curFreeSpinCount.value = baseCount;
+    onClose(1);
+    widget.onBtn2(baseCount * 1.0);
+  }
+
+  void onclickClaim() async{
+    int aC = baseCount + addSpinCount;
+    bool resut = await SSCommonAds().showInterstitialAd(adPosId: SSAdsPosId.eyomt_freespin_int);
+    if(!resut){
+      aC = baseCount;
+    }
+    MainController.to.curFreeSpinCount.value = aC;
     SSEventReporttttt.free_spin_add_chance();
     onClose(1);
+    widget.onBtn(aC * 1.0);
   }
 }
