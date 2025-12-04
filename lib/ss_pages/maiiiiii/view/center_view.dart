@@ -17,6 +17,7 @@ import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_freespin_xuanggg.dart';
+import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -82,7 +83,7 @@ class CenterView extends StatelessWidget {
                               firstChild: leftWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
                               crossFadeState:
-                              MainController.to.curShowFreeSpin.value
+                                  MainController.to.curShowFreeSpin.value
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
                               duration: Duration(milliseconds: 200),
@@ -96,7 +97,7 @@ class CenterView extends StatelessWidget {
                               firstChild: rightWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
                               crossFadeState:
-                              MainController.to.curShowFreeSpin.value
+                                  MainController.to.curShowFreeSpin.value
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
                               duration: Duration(milliseconds: 200),
@@ -355,7 +356,7 @@ class CenterView extends StatelessWidget {
                     child: Center(
                       child: SSTxtBorder(
                         text:
-                        "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
+                            "${SSCountry.curGuojiaFuhao()}${grandN.toStringAsFixed(0)}",
                         fontColor: Color(0xff6AFF00),
                         fontSize: 16.sp,
                         fontFamily: FontFamily.alkatra,
@@ -396,7 +397,7 @@ class CenterView extends StatelessWidget {
                   child: Center(
                     child: SSTxtBorder(
                       text:
-                      "${SSCountry.curGuojiaFuhao()}${majorN.toStringAsFixed(0)}",
+                          "${SSCountry.curGuojiaFuhao()}${majorN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
                       fontFamily: FontFamily.alkatra,
@@ -436,7 +437,7 @@ class CenterView extends StatelessWidget {
                   child: Center(
                     child: SSTxtBorder(
                       text:
-                      "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
+                          "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
                       fontSize: 16.sp,
                       fontFamily: FontFamily.alkatra,
@@ -479,10 +480,10 @@ class CenterView extends StatelessWidget {
               _onBoxGift();
             },
             child: Container(
-              width: 58.h,
+              width: 58.h + 50.h,
               height: 64.h,
               // clipBehavior: Clip.none,
-              color: Colors.red.withValues(alpha: 0),
+              color: Colors.red.withValues(alpha: 0.0),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -504,12 +505,23 @@ class CenterView extends StatelessWidget {
                   ),
                   Positioned(
                     left: -4.w,
-                    right: -4.w,
+                    right: 46.w,
                     bottom: 4.h,
                     child: Center(
                       child: showTime ? HomeBoxTime() : const SizedBox(),
                     ),
                   ),
+                  // Positioned(
+                  //   right: 20.w,
+                  //   top: 0.h,
+                  //   // left: -50.w,
+                  //   child: Container(
+                  //     width: 100.w,
+                  //     height: 70.w,
+                  //     // color: Colors.yellow,
+                  //     child: SpineHand(),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -524,8 +536,9 @@ class CenterView extends StatelessWidget {
             child: Obx(() {
               int card = PhoneCardController.to.collectCardNum.value;
               return Container(
-                width: 58.h,
+                width: 58.h + 50.h,
                 height: 64.h,
+                // clipBehavior: Clip.none,
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
@@ -550,17 +563,28 @@ class CenterView extends StatelessWidget {
                     ),
                     Positioned(
                       left: -10.w,
-                      right: -10.w,
+                      right: 40.w,
                       bottom: 4.h,
                       child: Center(
                         child: SSTxtGraBorder(
                           text:
-                          "$card/${PhoneCardController.to.durations.length}",
+                              "$card/${PhoneCardController.to.durations.length}",
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           strokeColor: Color(0xff30120A),
                           fontFamily: FontFamily.alkatra,
                         ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 20.w,
+                      top: 0.h,
+                      // left: -50.w,
+                      child: Container(
+                        width: 100.h,
+                        height: 60.h,
+                        // color: Colors.yellow,
+                        child: const SpineHand(),
                       ),
                     ),
                   ],
@@ -627,7 +651,7 @@ class FreeSpinState extends State<FreeSpin> {
 
   onStar({required ValueChanged<EnumGiftRewardModel> onEnd}) {
     timer?.cancel();
-    List<int> randoms = [10, 11, 12, 13,14];
+    List<int> randoms = [10, 11, 12, 13, 14];
     int tickkk1 = randoms[Random().nextInt(randoms.length)];
     ssLogggg("====free spin=tickkk1:$tickkk1");
     int mills = 250;
@@ -641,7 +665,7 @@ class FreeSpinState extends State<FreeSpin> {
           if (tmpT == 40) {
             select = 0;
             firstH = 30.h;
-            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
           } else if (tmpT == 41) {
             select = 1;
             secondH = 70.h;
@@ -652,7 +676,7 @@ class FreeSpinState extends State<FreeSpin> {
           } else if (tmpT == 43) {
             select = 3;
             fourthH = 70.h;
-            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
           } else if (tmpT == 44) {
             select = 4;
             fiveH = 30.h;
@@ -667,7 +691,7 @@ class FreeSpinState extends State<FreeSpin> {
             onEnd(tmpEnumGiftRewardModel);
           });
         });
-      }else{
+      } else {
         if (hasQianjin) {
           select++;
           if (select >= 4) {
@@ -679,21 +703,21 @@ class FreeSpinState extends State<FreeSpin> {
             hasQianjin = true;
           }
         }
-        ssLogggg("====free spin=tickkk1 tmpT:$tmpT select:$select tickkk1:$tickkk1");
+        ssLogggg(
+          "====free spin=tickkk1 tmpT:$tmpT select:$select tickkk1:$tickkk1",
+        );
         // Widget heroChild = Image.asset(Assets.img.xuanguang2.path);
         Widget heroChild = Image.asset(Assets.img.huoqiu.path);
         // Widget heroChild = SpineFreespinXuanggg();
         OverlayFly2TargetKey().showWithSize(
-            childSize: Size(20.w, 20.w),
-            targetContext: _kFreespinIndex_vWidgetContext[select]!,
-            topLeftOffset: Offset(100.w,230.h),
-            heroChild: heroChild,
-            count: 8,
-            animTime: Duration(milliseconds: mills)
-
+          childSize: Size(20.w, 20.w),
+          targetContext: _kFreespinIndex_vWidgetContext[select]!,
+          topLeftOffset: Offset(100.w, 230.h),
+          heroChild: heroChild,
+          count: 8,
+          animTime: Duration(milliseconds: mills),
         );
       }
-
     });
   }
 
@@ -711,7 +735,7 @@ class FreeSpinState extends State<FreeSpin> {
           if (tmpT == 40) {
             select = 0;
             firstH = 30.h;
-            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
           } else if (tmpT == 41) {
             select = 1;
             secondH = 70.h;
@@ -722,7 +746,7 @@ class FreeSpinState extends State<FreeSpin> {
           } else if (tmpT == 43) {
             select = 3;
             fourthH = 70.h;
-            tmpEnumGiftRewardModel = EnumGiftRewardModel.spin;
+            tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
           } else if (tmpT == 44) {
             select = 4;
             fiveH = 30.h;
@@ -947,15 +971,15 @@ class FreeSpinState extends State<FreeSpin> {
         ],
       ),
       child: Builder(
-          builder: (context) {
-            setFreespinContext(context, index);
-            return Image.asset(
-              icon,
-              width: childIW,
-              height: childIH,
-              gaplessPlayback: true,
-            );
-          }
+        builder: (context) {
+          setFreespinContext(context, index);
+          return Image.asset(
+            icon,
+            width: childIW,
+            height: childIH,
+            gaplessPlayback: true,
+          );
+        },
       ),
     );
 

@@ -23,6 +23,8 @@ import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
 import 'dart:math';
 
+import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
+
 class BottomView extends StatelessWidget {
   const BottomView({super.key});
 
@@ -435,10 +437,14 @@ class BottomView extends StatelessWidget {
           if (!showFree && !showGrey)
             Positioned(
               right: -20.w,
-              top: 10.h,
+              top: 0.h,
 
               child: Center(
-                child: SizedBox(width: 100.w, height: 50.w, child: SpineHand()),
+                child: SizedBox(
+                  width: 65.h,
+                  height: 72.h,
+                  child:const  SpineHand(),
+                ),
               ),
             ),
         ],
@@ -494,6 +500,19 @@ class BottomView extends StatelessWidget {
               ),
             ),
             const SSSpineWheelMoney(),
+            if (WheController.to.curWheNum.value > 0)
+              Positioned(
+                right: -20.w,
+                top: 10.h,
+
+                child: Center(
+                  child: SizedBox(
+                    width: 65.h,
+                    height: 72.h,
+                    child:const  SpineHand(),
+                  ),
+                ),
+              ),
             // const SSSpineXiaozhuanpan(),
           ],
         ),

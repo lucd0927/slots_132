@@ -244,10 +244,16 @@ class _ControlledWheelState extends State<ControlledWheel>
     SSEventReporttttt.wheel_page_spin();
     int time = WheController.to.curWheNum.value;
     WheController.to.showOneMore.value = false;
+
     if (time <= 0) {
       widget.onEnd(null);
       return;
     }
+    if(WheController.to.wheelStar.value){
+      return;
+    }
+
+    WheController.to.wheelStar.value = true;
     btnWheel.play();
     WheController.to.subWheNum();
     int current = Random().nextInt(8);
@@ -273,7 +279,7 @@ class _ControlledWheelState extends State<ControlledWheel>
       img: Assets.img.phoneSuip.path,
     ),
     1: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.spin,
+      rewardModelType: EnumGiftRewardModel.freespin,
       num: 10,
       img: Assets.img.phoneSuip.path,
     ),

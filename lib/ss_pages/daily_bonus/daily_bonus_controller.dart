@@ -32,7 +32,7 @@ class DailyBonusController extends GetxController {
       img: Assets.img.moneyGift.path,
     ),
     3:GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.spin,
+      rewardModelType: EnumGiftRewardModel.freespin,
       num: 50,
       img: Assets.img.btnTxtSpin.path,
     ),

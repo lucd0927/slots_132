@@ -172,7 +172,9 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
+
+    MainController.to.onAddMoney(800, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
 

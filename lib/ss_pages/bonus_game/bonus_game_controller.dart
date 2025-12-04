@@ -72,10 +72,10 @@ class BonusGameController extends GetxController {
     ssLogggg("=====clickIndex:$clickIndex data:$data");
     String category = data[index];
     if (category == card_cash) {
-      overlayMainTopMoney.showWithSize(
-        childSize: Size(32.w, 32.w),
-        onEnd: () {},
-      );
+      // overlayMainTopMoney.showWithSize(
+      //   childSize: Size(32.w, 32.w),
+      //   onEnd: () {},
+      // );
     }
     double money = 0;
     List<String> newData = [];
@@ -104,7 +104,7 @@ class BonusGameController extends GetxController {
         exp: 0,
         phoneSpice: 0,
         onClose: () {
-          MainController.to.onAddMoney(money, showMoneyAnimated: true);
+          // MainController.to.onAddMoney(money, showMoneyAnimated: true);
         },
       );
     }

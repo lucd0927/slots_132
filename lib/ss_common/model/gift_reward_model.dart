@@ -1,5 +1,5 @@
 enum EnumGiftRewardModel {
-  spin("spin"),
+  freespin("freespin"),
   cash("cash"),
   iphoneCard("iphoneCard"),
   xp("xp");

@@ -22,6 +22,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
+import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
@@ -216,6 +217,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                 height: ScreenUtil().screenHeight,
                 color: Colors.transparent,
               ),
+
           ],
         ),
       );

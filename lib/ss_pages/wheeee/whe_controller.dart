@@ -30,6 +30,7 @@ class WheController extends GetxController {
 
   var curWheNum = initWheNum.obs;
   var wheelEnd = false.obs;
+  var wheelStar = false.obs;
   static List<double> beisu = [1.0, 1.2, 1.4, 1.8, 2.2, 2.6, 3.0];
 
   @override
@@ -89,7 +90,7 @@ class WheController extends GetxController {
 
   bottomWidget(GiftRewardModel giftRewardModel) async {
     EnumGiftRewardModel rewardModelType = giftRewardModel.rewardModelType;
-    if (rewardModelType == EnumGiftRewardModel.spin) {
+    if (rewardModelType == EnumGiftRewardModel.freespin) {
       showOneMore.value = true;
       addWheNum();
       SSEventReporttttt.wheel_more_pop();
@@ -108,6 +109,7 @@ class WheController extends GetxController {
     wheelEnd.value = false;
     int curToday = SSDlTracking.lianxuLoginDay();
     ssLogggg("=======click btn:$data curToday:$curToday");
+    WheController.to.wheelStar.value = false;
     if (data == true) {
 
 
@@ -147,11 +149,11 @@ class WheController extends GetxController {
           ssLogggg(
             "=======OverlayCommonGet: close$rewardModelType money:$money exp:$exp",
           );
-          MainController.to.onAddMoney(
-            money,
-            showMoneyAnimated: true,
-            showTargetWidget: true,
-          );
+          // MainController.to.onAddMoney(
+          //   money,
+          //   showMoneyAnimated: true,
+          //   showTargetWidget: true,
+          // );
         },
       );
     } else {
@@ -162,5 +164,6 @@ class WheController extends GetxController {
 
       SSEventReporttttt.wheel_gift_pop_close();
     }
+
   }
 }

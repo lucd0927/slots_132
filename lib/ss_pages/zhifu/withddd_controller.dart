@@ -14,6 +14,9 @@ import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_one_last_check.dart';
@@ -331,6 +334,23 @@ class WithdddController extends GetxController {
 
   }
 
+  onShowPayBank()async{
+    bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
+    if (!hasSaveCardddd) {
+      String payType = WithdddController.to.selectedPaymentBank.value;
+      await Future.delayed(Duration(milliseconds: 200));
+      if (payType == EnumSSPaymentMethod.bank.name) {
+        OverlayWithddCardBank().show();
+      } else if (payType == EnumSSPaymentMethod.paypal.name) {
+        OverlayWithddCardPaypal().show();
+      } else if (payType == EnumSSPaymentMethod.cashApp.name) {
+        OverlayWithddCardCashapp().show();
+      }
+
+      // OverlayJindu1().show();
+    }
+  }
+
   onWithdraw({required double money}) {
     double curMmmm = MainController.to.curMonnnn.value;
 
@@ -352,12 +372,13 @@ class WithdddController extends GetxController {
       }
     } else {
       if (curMmmm >= money) {
-        bool hasLiuceng1 = curLiucheng1SpinsOver.value;
-        if (hasLiuceng1) {
-          OverlayWithddJindu3().show();
-        } else {
-          OverlayJindu1().show();
-        }
+        // bool hasLiuceng1 = curLiucheng1SpinsOver.value;
+        // if (hasLiuceng1) {
+        //   OverlayWithddJindu3().show();
+        // } else {
+        //   OverlayJindu1().show();
+        // }
+        onShowPayBank();
       } else {
         OverlayWithddBuzu().show(
           onClose: () {

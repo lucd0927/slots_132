@@ -8,6 +8,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -127,6 +128,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             bool showExp = widget.exp > 0;
             bool showPhone = widget.phoneSpice > 0;
             bool freespins = widget.freespins > 0;
+            ssLogggg("========showMoney:$showMoney showExp:$showExp showPhone:$showPhone freespins:$freespins");
             if (showMoney) {
               icon = Assets.img.money.path;
               context = moneyContext;
@@ -136,6 +138,15 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             } else if (showPhone) {
               icon = Assets.img.popupGetPhoneSpice.path;
               context = phoneContext;
+            }else if(freespins){
+              Navigator.maybePop(Get.context!);
+              onClose(1);
+              MainController.to.curShowFreeSpin.value = true;
+              MainController.to.curFreeSpinCount.value = widget.freespins;
+              SSEventReporttttt.free_spin_add_chance();
+              MainController.to.onFreeSpin();
+
+              return;
             }
             if (mounted) {
 
@@ -184,8 +195,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _timer?.cancel();
-        onClose(1);
+        // _timer?.cancel();
+        // onClose(1);
       },
       child: Material(
         color: Colors.transparent,
@@ -445,7 +456,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               SSAniiiiCount(
                 fractionDigits: 2,
                 // value: MainController.to.curSpinMoney.value,
-                value: MainController.to.curSpinMoney.value,
+                value: MainController.to.curMonnnn.value,
                 textStyle: TextStyle(
                   fontSize: 20.sp,
                   height: 1,

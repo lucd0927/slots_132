@@ -1197,20 +1197,7 @@ class MainController extends GetxController {
         } else {
           double minWithdd = minWithdddMoney;
           if (minWithdd <= curMonnnn.value) {
-            bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
-            if (!hasSaveCardddd) {
-              String payType = WithdddController.to.selectedPaymentBank.value;
-              await Future.delayed(Duration(milliseconds: 200));
-              if (payType == EnumSSPaymentMethod.bank.name) {
-                OverlayWithddCardBank().show();
-              } else if (payType == EnumSSPaymentMethod.paypal.name) {
-                OverlayWithddCardPaypal().show();
-              } else if (payType == EnumSSPaymentMethod.cashApp.name) {
-                OverlayWithddCardCashapp().show();
-              }
-
-              // OverlayJindu1().show();
-            }
+            WithdddController.to.onShowPayBank();
           }
         }
       },
@@ -1693,7 +1680,7 @@ class MainController extends GetxController {
               _onNextFreeSpin(money: money);
             },
           );
-        } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.spin) {
+        } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.freespin) {
           OverlayLuckySlots().show(
             onClose: (money) {
               _onWinPopup(

@@ -61,7 +61,7 @@ class _SSMapViewState extends State<SSMapView> {
       img: Assets.img.moneyGift.path,
     ),
     1: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.spin,
+      rewardModelType: EnumGiftRewardModel.freespin,
       num: 20,
       img: Assets.img.giftFreespins.path,
     ),
@@ -71,7 +71,7 @@ class _SSMapViewState extends State<SSMapView> {
       img: Assets.img.popupGetPhoneSpice.path,
     ),
     4: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.spin,
+      rewardModelType: EnumGiftRewardModel.freespin,
       num: 100,
       img: Assets.img.giftFreespins.path,
     ),
@@ -495,6 +495,7 @@ class _ItemWidgetState extends State<ItemWidget> {
             widget.model.giftRewardModel?.rewardModelType;
         int exp = 0;
         int phoneSpice = 0;
+        int freespin = 0;
         double money2 = 0;
         if (giftRewardModel != null && rewardModelType != null) {
           if (rewardModelType == EnumGiftRewardModel.cash) {
@@ -503,14 +504,17 @@ class _ItemWidgetState extends State<ItemWidget> {
             exp = giftRewardModel.num.toInt();
           } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
             phoneSpice = giftRewardModel.num.toInt();
+          }else if (rewardModelType == EnumGiftRewardModel.freespin) {
+            freespin = giftRewardModel.num.toInt();
           }
         }
-        ssLogggg("=====exp:$exp =money:$money2 phoneSpice:$phoneSpice");
+        ssLogggg("=====exp:$exp =money:$money2 phoneSpice:$phoneSpice freespin:$freespin");
 
         OverlayCommonGet().show(
           money: money2,
           exp: exp,
           phoneSpice: phoneSpice,
+          freespins: freespin,
           onClose: () {},
         );
       });
