@@ -37,13 +37,13 @@ class OverlayBoxgift {
         return BoxgiftWidget(
           onBtn: (double money) async {
             close();
-            int time = HomeBoxTimeState().shengyuTime();
+            int time = MainController.to.boxGiftTime.value;
             bool showTime = MainController.to.showBoxTime.value;
             ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
             if (time > 0) {
               return;
             }
-            HomeBoxTimeState().resetTime();
+            MainController.to.resetTimeBoxGift();
             double tmpMmm = Random().nextDouble() * 50 + 25;
             List<String> types = [
               "10spin",
@@ -56,7 +56,7 @@ class OverlayBoxgift {
             ];
 
             int a = Random().nextInt(types.length);
-            // a = 5;
+            a = 5;
             String tmpType = types[a];
             int exp = 0;
             int phoneSpice = 0;
@@ -132,32 +132,29 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
     // TODO: implement initState
     super.initState();
     SSEventReporttttt.elve_page();
+    int time = MainController.to.boxGiftTime.value;
+    showSecondPage = time <=0;
     WidgetsBinding.instance.addPostFrameCallback((_) {
+
+      int time = MainController.to.boxGiftTime.value;
+      bool showTime = MainController.to.showBoxTime.value;
+      ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
+
       setState(() {
         showAnimated = true;
       });
-      int time = HomeBoxTimeState().shengyuTime();
-      bool showTime = MainController.to.showBoxTime.value;
-      ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
       if (time > 0) {
         return;
       }
-      Future.delayed(Duration(milliseconds: 5000), () {
+      Future.delayed(Duration(milliseconds: 2500), () {
         if (mounted) {
+          SSEventReporttttt.elve_page_open();
           setState(() {
-            showSecondPage = true;
+            showSecondPageOpenGift = true;
           });
-          Future.delayed(Duration(milliseconds: 2500), () {
-            if (mounted) {
-              SSEventReporttttt.elve_page_open();
-              setState(() {
-                showSecondPageOpenGift = true;
-              });
 
-              Future.delayed(Duration(milliseconds: 500), () {
-                onClose(20);
-              });
-            }
+          Future.delayed(Duration(milliseconds: 500), () {
+            onClose(20);
           });
         }
       });
@@ -292,15 +289,19 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SSTxtGraBorder(
-                        text: "Ready in: ",
-                        strokeWidth: 1.w,
-                        strokeColor: Color(0xff30120A),
-                        fontSize: 20.sp,
-                        fontColor: Color(0xffEAFF00),
-                        fontFamily: FontFamily.fraunces,
-                      ),
-                      HomeBoxTime(),
+
+                      Obx(() {
+
+
+                        return  SSTxtGraBorder(
+                          text: "Ready in: ${MainController.to.textBoxGiftTime.value}",
+                          strokeWidth: 1.w,
+                          strokeColor: Color(0xff30120A),
+                          fontSize: 20.sp,
+                          fontColor: Color(0xffEAFF00),
+                          fontFamily: FontFamily.fraunces,
+                        );
+                      }),
                     ],
                   ),
                 ),

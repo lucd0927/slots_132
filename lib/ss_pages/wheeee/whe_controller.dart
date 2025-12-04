@@ -92,6 +92,7 @@ class WheController extends GetxController {
     EnumGiftRewardModel rewardModelType = giftRewardModel.rewardModelType;
     if (rewardModelType == EnumGiftRewardModel.freespin) {
       showOneMore.value = true;
+      WheController.to.wheelStar.value = false;
       addWheNum();
       SSEventReporttttt.wheel_more_pop();
       return;

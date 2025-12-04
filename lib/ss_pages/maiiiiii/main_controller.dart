@@ -710,14 +710,14 @@ class MainController extends GetxController {
               String key = "";
               int count = 0;
               int allLenght = ddddaaa.length;
-              ssLogggg("=====win lines last=zuobiao:$ddddaaa ");
+              // ssLogggg("=====win lines last=zuobiao:$ddddaaa ");
               Set<int> tmpWinNextZuobiao = {};
               for (int i = 0; i < allLenght; i++) {
                 var zuobiao = ddddaaa[i];
                 bool result = kZuobiao_vCategory.containsKey(zuobiao);
                 if (result) {
                   var value = kZuobiao_vCategory[zuobiao] ?? "";
-                  ssLogggg("=====win lines last=zuobiao:$zuobiao key:$value");
+                  // ssLogggg("=====win lines last=zuobiao:$zuobiao key:$value");
 
                   if (value.isEmpty ||
                       value == slotNumKEY ||
@@ -1291,6 +1291,7 @@ class MainController extends GetxController {
   setFreespinContext(BuildContext context, int index) {
     kFreespinIndex_vWidgetContextOffset[index] = context;
   }
+
   setContext(BuildContext context, int index) {
     kZuobiao_vWidgetContext[index] = context;
   }
@@ -1431,7 +1432,6 @@ class MainController extends GetxController {
       tmpLevel = tmpExp ~/ stage16_1MaxExp + stage1_5 + stage6_15;
     }
 
-
     ssLogggg("=====Level:$tmpLevel curLevelExp:$tmpLevelExp");
     return tmpLevel;
   }
@@ -1503,46 +1503,40 @@ class MainController extends GetxController {
     if (money > 0) {
       btnSpinLastIndex.play();
 
-      if(showMoneyAnimated){
+      if (showMoneyAnimated) {
         overlayMainTopMoney.showWithSize(
           childSize: Size(32.w, 32.w),
           onEnd: () {
-            _onAddMoney(money,onEnd);
+            _onAddMoney(money, onEnd);
           },
           showTargetWidget: showTargetWidget,
         );
-      }else{
-        _onAddMoney(money,onEnd);
+      } else {
+        _onAddMoney(money, onEnd);
       }
-
     } else {
-      _onAddMoney(money,onEnd);
+      _onAddMoney(money, onEnd);
     }
   }
 
-  void _onAddMoney(double money,   VoidCallback? onEnd,) {
+  void _onAddMoney(double money, VoidCallback? onEnd) {
     double tmpCurMmmm2 = curMonnnn.value;
     double tmpCurMmmm = tmpCurMmmm2 + money;
     box.put(hkMonnnn, tmpCurMmmm);
     curMonnnn.value = tmpCurMmmm;
     ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
 
-    if(money >0){
+    if (money > 0) {
       double tmpCoin = tmpCurMmmm;
       int i = tmpCurMmmm2 ~/ 100;
       int next = tmpCoin ~/ 100;
 
       if (i != next) {
-        SSEventReporttttt.cash_numer(number_type: "${next*100}");
+        SSEventReporttttt.cash_numer(number_type: "${next * 100}");
       }
-
     }
     onEnd?.call();
-
-
   }
-
-
 
   onAddExp(int exp) {
     int tmpExp2 = curLevelExp.value;
@@ -1563,7 +1557,7 @@ class MainController extends GetxController {
     int nextLevel = level();
     int i = curLevel ~/ 1;
     int next = nextLevel ~/ 1;
-   ssLogggg("====preLevel:$curLevel= curLevel:$nextLevel");
+    ssLogggg("====preLevel:$curLevel= curLevel:$nextLevel");
     if (i != next) {
       SSEventReporttttt.level_number(level_type: "$next");
     }
@@ -1745,6 +1739,8 @@ class MainController extends GetxController {
     int tmpcurSpinCount = box.get(hkcurSpinCount) ?? 1;
     curSpinCount = tmpcurSpinCount.obs;
     ssLogggg("=====initOther tmpcurSpinCount:$tmpcurSpinCount");
+
+    initTimerBoxGift();
   }
 
   static Map<EnumLottieType, LottieComposition>
@@ -1807,6 +1803,84 @@ class MainController extends GetxController {
     if (tmp == null) {}
 
     return tmp;
+  }
+
+  static const hkTimeBoxGift = "af45ewrdf7u5hffj";
+  Timer? _timerBoxGfit;
+
+  // int maxSeconds = 60 * 60 * 8;
+  static const int maxSeconds = 60 * 1;
+
+  var textBoxGiftTime = "".obs;
+  var boxGiftTime = (-1).obs;
+
+  int shengyuTime() {
+    int mill = DateTime.now().millisecondsSinceEpoch;
+    var tmpData = box.get(hkTimeBoxGift) ?? {"count": 0, "time": mill};
+    int time = tmpData['time'];
+    saveTimeBoxGift(time);
+    // 过了多少时间
+    int diff = mill - time;
+    // 剩下多少时间
+    int shengyu = ((maxSeconds * 1000 - diff) / 1000).toInt();
+    if (shengyu <= 0) {
+      shengyu = 0;
+    }
+    return shengyu;
+  }
+
+  resetTimeBoxGift() {
+    int mill = DateTime.now().millisecondsSinceEpoch;
+    saveTimeBoxGift(mill);
+    initTimerBoxGift(hasFirst: false);
+    ssLogggg("====== cresetTime:$mill");
+  }
+
+  initTimerBoxGift({bool hasFirst = true}) {
+
+    int shengyu = shengyuTime();
+    if(hasFirst){
+      boxGiftTime = shengyu.obs;
+
+      textBoxGiftTime = formatDuration(shengyu).obs;
+    }
+    ssLogggg("====_initTimer=shengyu:$shengyu");
+    _timerBoxGfit?.cancel();
+    _timerBoxGfit = Timer.periodic(Duration(seconds: 1), (timer) {
+      int tick = timer.tick;
+      int shengyu = shengyuTime();
+      int seconds = shengyu;
+      if (shengyu <= 0) {
+        textBoxGiftTime.value = formatDuration(seconds);
+        boxGiftTime.value = shengyu;
+        // MainController.to.showBoxTime.value = false;
+        _timerBoxGfit?.cancel();
+        ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
+        return;
+      }
+      ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
+      textBoxGiftTime.value = formatDuration(seconds);
+      boxGiftTime.value = shengyu;
+    });
+  }
+
+  saveTimeBoxGift(int time) {
+    box.put(hkTimeBoxGift, {"time": time});
+  }
+
+  String formatDuration(int seconds) {
+    if (seconds <= 0) {
+      return "";
+    }
+
+    Duration duration = Duration(seconds: seconds);
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+
+    String hours = twoDigits(duration.inHours);
+    String minutes = twoDigits(duration.inMinutes.remainder(60));
+    String secs = twoDigits(duration.inSeconds.remainder(60));
+
+    return '$hours:$minutes:$secs';
   }
 }
 
