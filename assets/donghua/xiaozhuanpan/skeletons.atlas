@@ -1,0 +1,15 @@
+skeletons.png
+size:373,1001
+filter:Linear,Linear
+pma:true
+Group 1000005387
+bounds:301,209,70,90
+Mask group
+bounds:2,651,354,348
+offsets:3,8,361,361
+Mask group-1
+bounds:2,2,297,297
+offsets:26,25,348,348
+Mask group02
+bounds:2,301,354,348
+offsets:3,8,361,361

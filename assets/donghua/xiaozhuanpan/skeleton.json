@@ -1,46 +1,84 @@
 {
 "skeleton": {
-	"hash": "DNLatRjum8Y",
+	"hash": "Vf3cUUo9glk",
 	"spine": "4.3.39-beta",
-	"x": -58,
-	"y": -50,
-	"width": 116,
-	"height": 100,
-	"images": "../../tset/转盘钞票雨/",
-	"audio": "./audio"
+	"x": -180.5,
+	"y": -180.5,
+	"width": 361,
+	"height": 361,
+	"images": "C:/Users/Administrator/Desktop/AE-tx",
+	"audio": null
 },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root" },
+	{ "name": "Group 1000005387", "parent": "root" },
+	{ "name": "Mask group", "parent": "root" },
+	{ "name": "Mask group-1", "parent": "root" },
+	{ "name": "Mask group02", "parent": "root" }
 ],
 "slots": [
-	{ "name": "00000", "bone": "root", "attachment": "0" }
+	{ "name": "Mask group02", "bone": "Mask group02", "attachment": "Mask group02" },
+	{ "name": "Mask group", "bone": "Mask group", "attachment": "Mask group" },
+	{ "name": "Mask group-1", "bone": "Mask group-1", "attachment": "Mask group-1" },
+	{ "name": "Group 1000005387", "bone": "Group 1000005387", "attachment": "Group 1000005387" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"00000": {
-				"0": {
-					"width": 116,
-					"height": 100,
-					"sequence": { "count": 60, "start": 0, "digits": 4 }
-				}
+			"Group 1000005387": {
+				"Group 1000005387": { "y": 6.554146, "width": 70, "height": 90 }
+			},
+			"Mask group": {
+				"Mask group": { "width": 361, "height": 361 }
+			},
+			"Mask group-1": {
+				"Mask group-1": { "width": 348, "height": 348 }
+			},
+			"Mask group02": {
+				"Mask group02": { "width": 361, "height": 361 }
 			}
 		}
 	}
 ],
 "animations": {
 	"animation": {
-		"attachments": {
-			"default": {
-				"00000": {
-					"0": {
-						"sequence": [
-							{ "mode": "loop", "delay": 0.033333335 },
-							{ "time": 2, "mode": "loop", "index": 24, "delay": 0.083333336 }
-						]
-					}
-				}
+		"slots": {
+			"Mask group": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.033333335, "color": "ffffff00" },
+					{ "time": 0.06666667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.20000002, "color": "ffffffff" },
+					{ "time": 0.23333335, "color": "ffffff00" },
+					{ "time": 0.26666668, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.40000004, "color": "ffffffff" },
+					{ "time": 0.43333337, "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6, "color": "ffffffff" },
+					{ "time": 0.6333334, "color": "ffffff00" },
+					{ "time": 0.6666667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.8000001, "color": "ffffffff" },
+					{ "time": 0.8333334, "color": "ffffff00" },
+					{ "time": 0.86666673, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.0333334, "color": "ffffff00" },
+					{ "time": 1.0666667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.2, "color": "ffffffff" },
+					{ "time": 1.2333333, "color": "ffffff00" },
+					{ "time": 1.2666668, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.5000001, "color": "ffffffff" },
+					{ "time": 1.5333334, "color": "ffffff00" },
+					{ "time": 1.5666667, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"Mask group-1": {
+				"rotate": [
+					{},
+					{ "time": 1.6000001, "value": -360 }
+				]
 			}
 		}
 	}

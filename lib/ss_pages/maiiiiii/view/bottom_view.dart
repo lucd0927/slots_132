@@ -223,6 +223,7 @@ class BottomView extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
+                          prefix: "${SSCountry.curGuojiaFuhao()}",
                         ),
                       ),
                     ),
@@ -476,30 +477,31 @@ class BottomView extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            Hero(
-              tag: "Wheellll",
-              child: Image.asset(
-                Assets.img.mainWheel.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-                gaplessPlayback: true,
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: -10.w,
-              right: -10.w,
-              child: Center(
-                child: SSTxtGraBorder(
-                  text: "Wheel",
-                  strokeColor: Color(0xff30120A),
-                  fontSize: 14.sp,
-                  fontFamily: FontFamily.alkatra,
-                ),
-              ),
-            ),
-            const SSSpineWheelMoney(),
+            // Hero(
+            //   tag: "Wheellll",
+            //   child: Image.asset(
+            //     Assets.img.mainWheel.path,
+            //     width: double.infinity,
+            //     height: double.infinity,
+            //     fit: BoxFit.fill,
+            //     gaplessPlayback: true,
+            //   ),
+            // ),
+            // Positioned(
+            //   bottom: 0,
+            //   left: -10.w,
+            //   right: -10.w,
+            //   child: Center(
+            //     child: SSTxtGraBorder(
+            //       text: "Wheel",
+            //       strokeColor: Color(0xff30120A),
+            //       fontSize: 14.sp,
+            //       fontFamily: FontFamily.alkatra,
+            //     ),
+            //   ),
+            // ),
+            // const SSSpineWheelMoney(),
+            const SSSpineXiaozhuanpan(),
             if (WheController.to.curWheNum.value > 0)
               Positioned(
                 right: -20.w,
@@ -513,7 +515,7 @@ class BottomView extends StatelessWidget {
                   ),
                 ),
               ),
-            // const SSSpineXiaozhuanpan(),
+
           ],
         ),
       ),

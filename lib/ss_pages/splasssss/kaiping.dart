@@ -244,7 +244,7 @@ class _SplashProgressState extends State<SplashProgress> {
           });
         }
       });
-      // aaabbbbChushi();
+      aaabbbbChushi();
     });
   }
 

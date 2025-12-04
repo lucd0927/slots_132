@@ -46,7 +46,7 @@ class _SSSpineXiaozhuanpanState extends State<SSSpineXiaozhuanpan> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.xiaozhuanpan.xiaozhuanpanAtlas,
+      Assets.donghua.xiaozhuanpan.skeletonsAtlas,
       Assets.donghua.xiaozhuanpan.skeleton,
       controller,
     );

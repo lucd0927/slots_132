@@ -1515,16 +1515,15 @@ class $AssetsDonghuaXiaozhuanpanGen {
   /// File path: assets/donghua/xiaozhuanpan/skeleton.json
   String get skeleton => 'assets/donghua/xiaozhuanpan/skeleton.json';
 
-  /// File path: assets/donghua/xiaozhuanpan/xiaozhuanpan.atlas
-  String get xiaozhuanpanAtlas =>
-      'assets/donghua/xiaozhuanpan/xiaozhuanpan.atlas';
+  /// File path: assets/donghua/xiaozhuanpan/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/xiaozhuanpan/skeletons.atlas';
 
-  /// File path: assets/donghua/xiaozhuanpan/xiaozhuanpan.png
-  AssetGenImage get xiaozhuanpanPng =>
-      const AssetGenImage('assets/donghua/xiaozhuanpan/xiaozhuanpan.png');
+  /// File path: assets/donghua/xiaozhuanpan/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/xiaozhuanpan/skeletons.png');
 
   /// List of all assets
-  List<dynamic> get values => [skeleton, xiaozhuanpanAtlas, xiaozhuanpanPng];
+  List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
 }
 
 class $AssetsDonghuaZjmpqGen {

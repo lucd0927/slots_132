@@ -4,6 +4,7 @@ import 'dart:io';
 
 
 import 'package:rxdart/rxdart.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
@@ -290,7 +291,7 @@ class SSABChange {
       sfChushiAF = true;
 
       if (hasAdjust) {
-        await SSAdjust().initSdk("dxxu9j7r8phc");
+        await SSAdjust().initSdk(SSHuanjing.hasDevvvvv()?"4qedga65udq8":"dxxu9j7r8phc");
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";
         if (asdkasfdhka.isEmpty) {
