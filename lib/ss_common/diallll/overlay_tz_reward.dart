@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -32,14 +34,22 @@ class OverlayTzReward {
     _overlay = OverlayEntry(
       builder: (context) {
         return TzRewardWidget(
-          onBtn: (double money) {
+          onBtn: (double money) async{
             close();
             SSEventReporttttt.noti_pop_claim();
+            bool resutl = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_pushpop_rv);
+            if(!resutl){
+              money = 0;
+            }
             onBtn(money);
           },
-          onBtn2: (double money) {
+          onBtn2: (double money) async{
             close();
             SSEventReporttttt.noti_pop_claim();
+            bool resutl = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_pushpop_int);
+            if(!resutl){
+              money = 0;
+            }
             onBtn2(money);
           },
           money: money,

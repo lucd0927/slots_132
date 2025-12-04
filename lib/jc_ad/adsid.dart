@@ -21,5 +21,8 @@ class SSAdsPosId {
   static const String eyomt_bigwin_int = "eyomt_bigwin_int";
   static const String eyomt_wow_rv = "eyomt_wow_rv";
   static const String eyomt_wow_int = "eyomt_wow_int";
+  static const String eyomt_pushpop_rv = "eyomt_pushpop_rv";
+  static const String eyomt_pushpop_int = "eyomt_pushpop_int";
+  static const String eyomt_collect_rv = "eyomt_collect_rv";
 
 }

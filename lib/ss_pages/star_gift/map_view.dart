@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -474,10 +476,15 @@ class _ItemWidgetState extends State<ItemWidget> {
   double itemW = _itemW;
   double bottomDistance = _bottomDistance;
 
-  onClick() {
+  onClick() async{
     bool hasUnlock = widget.model.hasUnlock;
     ssLogggg("==onClick==hasUnlock:$hasUnlock=");
     if (hasUnlock) {
+
+      bool resutl = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_collect_rv);
+      if(!resutl){
+        return;
+      }
       SSEventReporttttt.map_page_collect();
       bool hasClick11 = sfIndexClick(widget.index);
       if (hasClick11) {

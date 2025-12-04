@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_ad/kuangkuang/ad_failed.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -174,6 +175,8 @@ class TopView extends StatelessWidget {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
     OverlaySettinnn().show();
+
+    // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
 
     //
     // OverlayWithddBuzu().show(

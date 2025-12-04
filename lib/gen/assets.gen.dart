@@ -109,6 +109,12 @@ class $AssetsDonghuaGen {
 class $AssetsImgGen {
   const $AssetsImgGen();
 
+  /// File path: assets/img/ad_img.png
+  AssetGenImage get adImg => const AssetGenImage('assets/img/ad_img.png');
+
+  /// File path: assets/img/ad_no.png
+  AssetGenImage get adNo => const AssetGenImage('assets/img/ad_no.png');
+
   /// Directory path: assets/img/avatar
   $AssetsImgAvatarGen get avatar => const $AssetsImgAvatarGen();
 
@@ -1084,6 +1090,8 @@ class $AssetsImgGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    adImg,
+    adNo,
     avatarBg,
     avatarBottom,
     bonusGameBg,
