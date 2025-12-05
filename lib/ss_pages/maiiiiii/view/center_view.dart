@@ -8,6 +8,8 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
@@ -239,71 +241,110 @@ class CenterView extends StatelessWidget {
   }
 
   centerCollectStarWidget() {
-    return GestureDetector(
-      onTap: () {
-        _onStarGift();
-      },
-      child: Container(
-        width: 280.h,
-        height: 32.h,
-        color: Colors.black.withValues(alpha: 0),
-        child: Stack(
-          children: [
-            Image.asset(
-              Assets.img.mainCollect.path,
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.fill,
-              gaplessPlayback: true,
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 3.h,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SSTxtGraBorder(
-                    text: "COLLECT 32",
-                    fontSize: 20.sp,
-                    strokeColor: Color(0xffD83507),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 4.sp),
-                    child: Image.asset(
-                      key: MainController.to.keyCenterJinling,
-                      Assets.img.slots.slotsH1.path,
-                      width: 22.h,
-                      height: 22.h,
-                      gaplessPlayback: true,
-                    ),
-                  ),
-                  SSTxtGraBorder(
-                    text: "TO",
-                    fontSize: 20.sp,
-                    strokeColor: Color(0xffD83507),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 4.sp),
-                    child: Image.asset(
-                      Assets.img.phonePopupJindu2Star.path,
-                      width: 22.h,
-                      height: 22.h,
-                      gaplessPlayback: true,
-                    ),
-                  ),
-                  SSTxtGraBorder(
-                    text: "WIN",
-                    fontSize: 20.sp,
-                    strokeColor: Color(0xffD83507),
-                  ),
-                ],
+    return Obx(() {
+      int collectStar = MainController.to.curCollectStar.value;
+      int nextNeedStar = MainController.to.nextNeedStar();
+      return GestureDetector(
+        onTap: () {
+          _onStarGift();
+        },
+        child: Container(
+          width: 280.h,
+          height: 32.h,
+          color: Colors.black.withValues(alpha: 0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Image.asset(
+                Assets.img.mainCollect.path,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
-            ),
-          ],
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 3.h,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SSTxtGraBorder(
+                      text: "COLLECT ",
+                      fontSize: 20.sp,
+                      strokeColor: Color(0xffD83507),
+                    ),
+                    SizedBox(width: 1.w,),
+                    SSAniiiiCount(
+                      value: nextNeedStar,
+                      textGradient: const LinearGradient(
+                        colors: [
+                          Color(0xffFFD70F),
+                          Color(0xffF0A00D),
+                          Color(0xffEAFF00),
+                          Color(0xffFFD500),
+                          Color(0xffFDDE51),
+                        ],
+                        end: Alignment.bottomCenter,
+                        begin: Alignment.topCenter,
+                      ),
+                      textStyle: TextStyle(fontSize: 20.sp,height: 1),
+                    ),
+                    SizedBox(width: 1.w,),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.sp),
+                      child: Image.asset(
+                        key: MainController.to.keyCenterJinling,
+                        Assets.img.slots.slotsH1.path,
+                        width: 22.h,
+                        height: 22.h,
+                        gaplessPlayback: true,
+                      ),
+                    ),
+                    SSTxtGraBorder(
+                      text: "TO",
+                      fontSize: 20.sp,
+                      strokeColor: Color(0xffD83507),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.sp),
+                      child: Image.asset(
+                        Assets.img.phonePopupJindu2Star.path,
+                        width: 22.h,
+                        height: 22.h,
+                        gaplessPlayback: true,
+                      ),
+                    ),
+                    SSAScale(
+                      minS: 0.9,
+                      maxS: 1.2,
+                      child: SSTxtGraBorder(
+                        text: "WIN",
+                        fontSize: 20.sp,
+                        strokeColor: Color(0xffD83507),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              if (collectStar <= 3 && collectStar >= 1)
+                Positioned(
+                  right: 18.w,
+                  top: -8.h,
+                  // left: -50.w,
+                  child: Container(
+                    width: 100.h,
+                    height: 60.h,
+                    // color: Colors.yellow,
+                    child: const SpineHand(),
+                  ),
+                ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Column rightWidget() {

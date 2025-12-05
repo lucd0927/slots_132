@@ -1360,6 +1360,88 @@ class MainController extends GetxController {
   static const int level6_15 = stage6_15Exp * stage6_15;
   static const int level1_15 = level1_5 + level6_15;
 
+  static final Map<int, GiftRewardModel> kStarNum_vReward = {
+    3: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img: Assets.img.moneyGift.path,
+    ),
+    6: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 200,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    2: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img: Assets.img.moneyGift.path,
+    ),
+    8: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.popupGetPhoneSpice.path,
+    ),
+    5: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 120,
+      img: Assets.img.moneyGift.path,
+    ),
+    1: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.freespin,
+      num: 20,
+      img: Assets.img.giftFreespins.path,
+    ),
+    9: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.popupGetPhoneSpice.path,
+    ),
+    4: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.freespin,
+      num: 100,
+      img: Assets.img.giftFreespins.path,
+    ),
+    7: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 200,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    10: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.iphoneCard,
+      num: 1,
+      img: Assets.img.popupGetPhoneSpice.path,
+    ),
+  };
+
+  int nextNeedStar() {
+    List<int> jumpToNextStar = kStarNum_vReward.keys.toList();
+    int loopMaxN = 0;
+    for (var v in jumpToNextStar) {
+      loopMaxN = loopMaxN + v;
+    }
+    // 获取女精灵总数量
+    int curGirlJinglingN = MainController.to.curCollectStar.value;
+    // curGirlJinglingN = 100;
+    // 取于
+    int tmpQuyu = curGirlJinglingN % loopMaxN;
+    int loopNum = jumpToNextStar.length;
+    int tmpAddN = 0;
+    int needStar = 0;
+    for (int i = 0; i < loopNum; i++) {
+      int quyu = i % loopNum;
+      int star = jumpToNextStar[quyu];
+      int tmpAddN2 = tmpAddN + star;
+      bool result = tmpQuyu < tmpAddN2;
+      if (result) {
+        needStar = tmpAddN2 - tmpQuyu;
+        break;
+      } else {
+        tmpAddN = tmpAddN2;
+      }
+    }
+    return needStar;
+  }
+
   double curLevelProgress() {
     double pro = 0.0;
     int tmpLevelExp = curLevelExp.value;

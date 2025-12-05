@@ -36,58 +36,7 @@ class _SSMapViewState extends State<SSMapView> {
   List<Widget> lineWidgetChildren = [];
 
   var box = SSHive.box;
-  Map<int, GiftRewardModel> kStarNum_vReward = {
-    3: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 25,
-      img: Assets.img.moneyGift.path,
-    ),
-    6: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.xp,
-      num: 200,
-      img: Assets.img.giftXpUnlock.path,
-    ),
-    2: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 25,
-      img: Assets.img.moneyGift.path,
-    ),
-    8: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphoneCard,
-      num: 1,
-      img: Assets.img.popupGetPhoneSpice.path,
-    ),
-    5: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.cash,
-      num: 120,
-      img: Assets.img.moneyGift.path,
-    ),
-    1: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.freespin,
-      num: 20,
-      img: Assets.img.giftFreespins.path,
-    ),
-    9: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphoneCard,
-      num: 1,
-      img: Assets.img.popupGetPhoneSpice.path,
-    ),
-    4: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.freespin,
-      num: 100,
-      img: Assets.img.giftFreespins.path,
-    ),
-    7: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.xp,
-      num: 200,
-      img: Assets.img.giftXpUnlock.path,
-    ),
-    10: GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphoneCard,
-      num: 1,
-      img: Assets.img.popupGetPhoneSpice.path,
-    ),
-  };
+
   int jumpIndex = 0;
   int unlockMaxIndex = 0;
 
@@ -107,11 +56,13 @@ class _SSMapViewState extends State<SSMapView> {
     });
   }
 
+  final _kStarNum_vReward = MainController.kStarNum_vReward;
+
   Future init() async {
     leftWidgetChildren = [];
     rightWidgetChildren = [];
     lineWidgetChildren = [];
-    List<int> jumpToNextStar = kStarNum_vReward.keys.toList();
+    List<int> jumpToNextStar = _kStarNum_vReward.keys.toList();
     int loopMaxN = 0;
     for (var v in jumpToNextStar) {
       loopMaxN = loopMaxN + v;
@@ -143,7 +94,7 @@ class _SSMapViewState extends State<SSMapView> {
       }
       double num = 25;
       String img = Assets.img.moneyGift.path;
-      GiftRewardModel? tmpGiftRewardModel = kStarNum_vReward[star];
+      GiftRewardModel? tmpGiftRewardModel = _kStarNum_vReward[star];
       if (tmpGiftRewardModel != null) {
         img = tmpGiftRewardModel.img;
         num = tmpGiftRewardModel.num;

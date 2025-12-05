@@ -90,6 +90,7 @@ class SSAniiiiCount extends StatelessWidget {
   /// Add padding for every digit, defaults is none.
   final EdgeInsets padding;
 
+  final Gradient? textGradient;
   const SSAniiiiCount({
     super.key,
     required this.value,
@@ -107,6 +108,7 @@ class SSAniiiiCount extends StatelessWidget {
     this.decimalSeparator = '.',
     this.mainAxisAlignment = MainAxisAlignment.center,
     this.padding = EdgeInsets.zero,
+    this.textGradient,
   })  : assert(fractionDigits >= 0, 'fractionDigits must be non-negative'),
         assert(wholeDigits >= 0, 'wholeDigits must be non-negative');
 
@@ -168,6 +170,7 @@ class SSAniiiiCount extends StatelessWidget {
         size: prototypeDigit.size,
         color: color,
         padding: padding,
+        textGradient: textGradient,
         // We might want to hide leading zeroes. The way we split digits, only
 
         // leading zeroes have "true zero" value. E.g. five hundred, 0500 is
@@ -248,6 +251,7 @@ class SSAniiiiCount extends StatelessWidget {
               size: prototypeDigit.size,
               color: color,
               padding: padding,
+              textGradient: textGradient,
             ),
           if (suffix != null) Text(suffix!),
         ],
@@ -264,7 +268,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
   final Color color;
   final EdgeInsets padding;
   final bool visible; // user can choose to hide leading zeroes
-
+  final Gradient? textGradient;
 // auto patch 765
   const _SingleDigitFlipCounter({
     Key? key,
@@ -277,6 +281,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
 
     required this.padding,
     this.visible = true,
+    required this.textGradient,
   }) : super(key: key);
 
   @override
@@ -301,11 +306,13 @@ class _SingleDigitFlipCounter extends StatelessWidget {
                 digit: whole % 10,
                 offset: h * decimal,
                 opacity: 1 - decimal,
+                gradient: textGradient
               ),
               _buildSingleDigit(
                 digit: (whole + 1) % 10,
                 offset: h * decimal - h,
                 opacity: decimal,
+                gradient: textGradient
               ),
             ],
           ),
@@ -314,7 +321,54 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     );
   }
 
+
   Widget _buildSingleDigit({
+    required int digit,
+    required double offset,
+    required double opacity,
+    Gradient? gradient, // 新增
+  }) {
+    // 当需要渐变时，强制文字颜色为白色（用于 mask）
+    Widget child = const SizedBox();
+    if (color.opacity == 1) {
+      // If the text style does not involve transparency, we can modify
+      // the text color directly.
+      child = Text(
+
+        '$digit',
+        textAlign: TextAlign.center,
+        style: TextStyle(color: color.withOpacity(opacity.clamp(0, 1))),
+      );
+    } else {
+      // Otherwise, we have to use the `Opacity` widget (less performant).
+      child = Opacity(
+        opacity: opacity.clamp(0, 1),
+        child: Text(
+          '$digit',
+          textAlign: TextAlign.center,
+        ),
+      );
+    }
+    // 如果使用渐变，包裹 ShaderMask
+    if (gradient != null) {
+      child = ShaderMask(
+        shaderCallback: (bounds) => gradient.createShader(bounds),
+        blendMode: BlendMode.srcIn,
+        child: child,
+      );
+    }
+
+    return Positioned(
+      left: 0,
+      right: 0,
+      bottom: offset + padding.bottom,
+      child: child,
+    );
+  }
+
+
+
+  Widget _buildSingleDigit2({
     required int digit,
 
     required double offset,
