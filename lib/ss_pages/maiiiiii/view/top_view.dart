@@ -175,8 +175,8 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
-    OverlayBonusGame().show();
+    OverlaySettinnn().show();
+    // OverlayBonusGame().show();
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
 
     //

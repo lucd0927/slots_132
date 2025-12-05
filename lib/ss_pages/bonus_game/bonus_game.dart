@@ -484,52 +484,57 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
       );
     }
 
-    return Container(
-      width: itemWidth,
-      height: itemHeight,
-      color: Colors.transparent,
-      child: Stack(
-        children: [
-          showAnimScale
-              ? SSAScale(
-                  milliseconds: 800,
-                  child: ShiningEffect(
-                    shineColor: Colors.yellow,
-                    opacity: 1,
-                    angle: 1.8,
-                    child: child,
-                  ),
-                )
-              : BonusGameController.to.canClick.value
-              ? contain
-                    ? child
-                    : Image.asset(
-                        Assets.img.bonusGameCardBack.path,
-                        width: double.infinity,
-                        height: double.infinity,
-                        fit: BoxFit.fill,
-                      )
-              : FlipCard(
-                  onFlipEnd: () {
-                    BonusGameController.to.addClickIndex(
-                      index,
-                      onOnClose: () {
-                        onClose();
+    return Builder(
+      builder: (context) {
+        BonusGameController.to.setContext(context, index);
+        return Container(
+          width: itemWidth,
+          height: itemHeight,
+          color: Colors.transparent,
+          child: Stack(
+            children: [
+              showAnimScale
+                  ? SSAScale(
+                      milliseconds: 800,
+                      child: ShiningEffect(
+                        shineColor: Colors.yellow,
+                        opacity: 1,
+                        angle: 1.8,
+                        child: child,
+                      ),
+                    )
+                  : BonusGameController.to.canClick.value
+                  ? contain
+                        ? child
+                        : Image.asset(
+                            Assets.img.bonusGameCardBack.path,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.fill,
+                          )
+                  : FlipCard(
+                      onFlipEnd: () {
+                        BonusGameController.to.addClickIndex(
+                          index,
+                          onOnClose: () {
+                            onClose();
+                          },
+                        );
                       },
-                    );
-                  },
-                  front: contain
-                      ? child
-                      : Image.asset(
-                          Assets.img.bonusGameCardBack.path,
-                          width: double.infinity,
-                          height: double.infinity,
-                          fit: BoxFit.fill,
-                        ),
-                  back: child,
-                ),
-        ],
-      ),
+                      front: contain
+                          ? child
+                          : Image.asset(
+                              Assets.img.bonusGameCardBack.path,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.fill,
+                            ),
+                      back: child,
+                    ),
+            ],
+          ),
+        );
+      }
     );
   }
 

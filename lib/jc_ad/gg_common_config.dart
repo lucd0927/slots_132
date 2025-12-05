@@ -131,7 +131,7 @@ class GGCommonJson {
   static var localTest = {
     "oxocbdkw": 100,
     "rywjknyu": 100,
-    "eyomt_switch": false,
+    "eyomt_switch": true,
     "eyomt_int": [
       {
         "ldhjempw": "67323d496e8d7453",

@@ -62,6 +62,7 @@ class OverlayFly2TargetKey {
     Size endSize,
     VoidCallback? onEnd, {
     Duration animTime = const Duration(milliseconds: 800),
+    Duration delayBetween = const Duration(milliseconds: 50),
   }) {
     _overlay = OverlayEntry(
       builder: (context) {
@@ -75,7 +76,7 @@ class OverlayFly2TargetKey {
               startSize: startSize,
               endSize: endSize,
               duration: animTime,
-              delayBetween: Duration(milliseconds: 50),
+              delayBetween: delayBetween,
               onFinish: () {
                 close();
                 if (onEnd != null) {
@@ -148,10 +149,13 @@ class OverlayFly2TargetKey {
   void showWithSizeAndEndPosition({
     Widget? heroChild,
     required Size childSize,
+    Size? endSize,
     required Offset targetLocation,
     int count = 1,
     VoidCallback? onEnd,
     Offset? topLeftOffset,
+    Duration animTime = const Duration(milliseconds: 400),
+    Duration delayBetween = const Duration(milliseconds: 50),
   }) {
     // if (_isShowing) return;
     _overlay = null;
@@ -179,7 +183,7 @@ class OverlayFly2TargetKey {
           ScreenUtil().screenHeight / 2,
         );
     if (true) {
-      Size endSize = Size(40.w, 40.h);
+      Size endSize2 = endSize ?? Size(40.w, 40.h);
 
       ssLogggg(
         "=showWithSize==topLeftPosition:$topLeftPosition==targetLocation:$targetLocation",
@@ -189,9 +193,10 @@ class OverlayFly2TargetKey {
         topLeftPosition,
         targetLocation,
         startSize,
-        endSize,
+        endSize2,
         onEnd,
-        animTime: Duration(milliseconds: 400),
+        animTime: animTime,
+        delayBetween: delayBetween,
       );
     }
   }

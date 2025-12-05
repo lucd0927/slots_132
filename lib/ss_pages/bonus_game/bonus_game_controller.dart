@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
@@ -8,6 +9,7 @@ import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
+import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/num_e.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
@@ -54,6 +56,15 @@ class BonusGameController extends GetxController {
   var categoryCount = <String, int>{}.obs;
   var canClick = false.obs;
 
+  Map<int, BuildContext> kZuobiao_vWidgetContext = {};
+
+  // 坐标对应的位置
+  Map<int, Offset> kZuobiao_vWidgetContextOffset = {};
+
+  setContext(BuildContext context, int index) {
+    kZuobiao_vWidgetContext[index] = context;
+  }
+
   addClickIndex(int index, {required VoidCallback onOnClose}) async {
     if (canClick.value) {
       return;
@@ -72,15 +83,69 @@ class BonusGameController extends GetxController {
 
     SSEventReporttttt.bonus_page_click();
     btnBonusGameClick.play();
-    clickIndex.add(index);
-    ssLogggg("=====clickIndex:$clickIndex data:$data");
+    Offset endLocation = Offset.zero;
     String category = data[index];
+    int jackpotNum = categoryCount[category] ?? -1;
+    jackpotNum = jackpotNum + 1;
+
     if (category == card_cash) {
       // overlayMainTopMoney.showWithSize(
       //   childSize: Size(32.w, 32.w),
       //   onEnd: () {},
       // );
+    } else if (category == card_grand) {
+      double dx = 175.w;
+      if (jackpotNum == 0) {
+        dx = 156.w;
+      } else if (jackpotNum == 1) {
+        dx = 175.w;
+      } else if (jackpotNum == 2) {
+        dx = 194.w;
+      }
+
+      endLocation = Offset(dx, 218.h);
+    } else if (category == card_major) {
+      double dx = 80.w;
+      if (jackpotNum == 0) {
+        dx = 60.w;
+      } else if (jackpotNum == 1) {
+        dx = 80.w;
+      } else if (jackpotNum == 2) {
+        dx = 100.w;
+      }
+
+      endLocation = Offset(dx, 284.h);
+    } else if (category == card_mini) {
+      double dx = 266.w;
+      if (jackpotNum == 0) {
+        dx = 250.w;
+      } else if (jackpotNum == 1) {
+        dx = 266.w;
+      } else if (jackpotNum == 2) {
+        dx = 285.w;
+      }
+
+      endLocation = Offset(dx, 284.h);
     }
+    // endLocation = Offset(285.w, 284.h);
+    if (endLocation.dx > 0) {
+      Widget heroChild = Image.asset(Assets.img.huoqiu.path);
+      Offset location = kZuobiao_vWidgetContextOffset[index] ?? Offset.zero;
+      OverlayFly2TargetKey().showWithSizeAndEndPosition(
+        childSize: Size(10.w, 10.w),
+        endSize: Size(30.w, 30.w),
+        targetLocation: endLocation,
+        topLeftOffset: Offset(location.dx + 40.w, location.dy + 50.h),
+        heroChild: heroChild,
+        count: 5,
+        animTime: Duration(milliseconds: 300),
+        delayBetween: Duration(milliseconds: 30),
+      );
+      await Future.delayed(Duration(milliseconds: 200));
+    }
+    clickIndex.add(index);
+    ssLogggg("=====clickIndex:$clickIndex data:$data");
+
     double money = 0;
     List<String> newData = [];
     for (var value in clickIndex) {
@@ -91,6 +156,7 @@ class BonusGameController extends GetxController {
       newData.add(category);
     }
     var res = findTripleWithScatter(newData);
+
     if (res != null) {
       canClick.value = true;
 
@@ -104,7 +170,7 @@ class BonusGameController extends GetxController {
         tmpmoney = MainController.jacktopMini;
       }
       money = tmpmoney + money;
-      await Future.delayed(Duration(milliseconds: 2000));
+      await Future.delayed(Duration(milliseconds: 2500));
       onOnClose();
 
       canClick.value = false;
@@ -180,6 +246,25 @@ class BonusGameController extends GetxController {
 
   void initData() {
     data.shuffle();
+  }
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    ssLogggg("=======kZuobiao_vWidgetContex onReady:$kZuobiao_vWidgetContext");
+    recordZuobiaoPosition();
+    ssLogggg(
+      "=======kZuobiao_vWidgetContextOffset onReady:$kZuobiao_vWidgetContextOffset",
+    );
+  }
+
+  recordZuobiaoPosition() {
+    kZuobiao_vWidgetContext.forEach((int zuobiao, BuildContext context) {
+      RenderBox targetBox = context.findRenderObject() as RenderBox;
+      var targetLocation = targetBox.localToGlobal(Offset.zero);
+      kZuobiao_vWidgetContextOffset[zuobiao] = targetLocation;
+    });
   }
 
   @override

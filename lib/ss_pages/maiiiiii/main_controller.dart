@@ -270,7 +270,7 @@ class MainController extends GetxController {
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
-    tmpSpinCount = 5;
+    // tmpSpinCount = 5;
 
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
