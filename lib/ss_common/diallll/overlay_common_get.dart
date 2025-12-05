@@ -315,7 +315,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 color: Colors.blueAccent.withValues(alpha: 0),
                 child: Center(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       if (showExp)
                         Row(
@@ -326,15 +326,15 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             //   width: 36.w,
                             //   height: 34.h,
                             // ),
-                            // SizedBox(width: 4.w),
+
                             SSTxtBorder(
-                              text: "+${widget.exp}",
+                              text: "XP +${widget.exp}",
                               fontWeight: FontWeight.w700,
                               fontSize: 20.sp,
                               fontColor: Color(0xffFFFF29),
                               foreground: Color(0xffDB1717),
                             ),
-                            // SizedBox(width: 10.w),
+                            SizedBox(width: 10.w),
                           ],
                         ),
                       if (showPhone)
@@ -346,7 +346,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             //   width: 36.w,
                             //   height: 34.h,
                             // ),
-                            // SizedBox(width: 4.w),
+                            SizedBox(width: 10.w),
                             SSTxtBorder(
                               text: "+${widget.phoneSpice}",
                               fontWeight: FontWeight.w700,
