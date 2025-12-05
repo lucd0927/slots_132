@@ -430,6 +430,9 @@ class $AssetsImgGen {
   /// File path: assets/img/huoqiu.png
   AssetGenImage get huoqiu => const AssetGenImage('assets/img/huoqiu.png');
 
+  /// File path: assets/img/huoqiu2.png
+  AssetGenImage get huoqiu2 => const AssetGenImage('assets/img/huoqiu2.png');
+
   /// File path: assets/img/lucky_slots_end.png
   AssetGenImage get luckySlotsEnd =>
       const AssetGenImage('assets/img/lucky_slots_end.png');
@@ -1182,6 +1185,7 @@ class $AssetsImgGen {
     highlightsLeft,
     highlightsRight,
     huoqiu,
+    huoqiu2,
     luckySlotsEnd,
     luckySlotsSlots,
     luckySlotsStart,
@@ -1508,8 +1512,22 @@ class $AssetsDonghuaTancXuanguangGen {
   AssetGenImage get skeletonsPng =>
       const AssetGenImage('assets/donghua/tanc_xuanguang/skeletons.png');
 
+  /// File path: assets/donghua/tanc_xuanguang/skeletons_2.png
+  AssetGenImage get skeletons2 =>
+      const AssetGenImage('assets/donghua/tanc_xuanguang/skeletons_2.png');
+
+  /// File path: assets/donghua/tanc_xuanguang/skeletons_3.png
+  AssetGenImage get skeletons3 =>
+      const AssetGenImage('assets/donghua/tanc_xuanguang/skeletons_3.png');
+
   /// List of all assets
-  List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
+  List<dynamic> get values => [
+    skeleton,
+    skeletonsAtlas,
+    skeletonsPng,
+    skeletons2,
+    skeletons3,
+  ];
 }
 
 class $AssetsDonghuaWenzidonxiaoGen {
@@ -1765,6 +1783,10 @@ class $AssetsMyaJackpotGen {
   AssetGenImage get grand =>
       const AssetGenImage('assets/mya/jackpot/grand.png');
 
+  /// File path: assets/mya/jackpot/grand_h.png
+  AssetGenImage get grandH =>
+      const AssetGenImage('assets/mya/jackpot/grand_h.png');
+
   /// File path: assets/mya/jackpot/grand_j.png
   AssetGenImage get grandJ =>
       const AssetGenImage('assets/mya/jackpot/grand_j.png');
@@ -1781,12 +1803,20 @@ class $AssetsMyaJackpotGen {
   AssetGenImage get major =>
       const AssetGenImage('assets/mya/jackpot/major.png');
 
+  /// File path: assets/mya/jackpot/major_h.png
+  AssetGenImage get majorH =>
+      const AssetGenImage('assets/mya/jackpot/major_h.png');
+
   /// File path: assets/mya/jackpot/major_j.png
   AssetGenImage get majorJ =>
       const AssetGenImage('assets/mya/jackpot/major_j.png');
 
   /// File path: assets/mya/jackpot/mini.png
   AssetGenImage get mini => const AssetGenImage('assets/mya/jackpot/mini.png');
+
+  /// File path: assets/mya/jackpot/mini_h.png
+  AssetGenImage get miniH =>
+      const AssetGenImage('assets/mya/jackpot/mini_h.png');
 
   /// File path: assets/mya/jackpot/mini_j.png
   AssetGenImage get miniJ =>
@@ -1795,12 +1825,15 @@ class $AssetsMyaJackpotGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     grand,
+    grandH,
     grandJ,
     jackpotBg,
     jackpotBg2,
     major,
+    majorH,
     majorJ,
     mini,
+    miniH,
     miniJ,
   ];
 }

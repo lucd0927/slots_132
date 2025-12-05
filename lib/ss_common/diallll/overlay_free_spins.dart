@@ -27,7 +27,7 @@ class OverlayFreeSpins {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money, required ValueChanged onClose}) {
+  void show({required double count, required ValueChanged onClose}) {
     // if (_isShowing) return;
     btnFreespinPre.play();
     _overlay = null;
@@ -40,7 +40,7 @@ class OverlayFreeSpins {
             onClose(null);
 
           },
-          money: 0,
+          money: count,
           onBtn2: (double value)async {
             close();
             // MainController.to.curFreeSpinCount.value = value.toInt();
@@ -85,7 +85,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
-  static int baseCount = 1;
+  int get baseCount => widget.money~/1;
   static int addSpinCount = 4;
 
   @override

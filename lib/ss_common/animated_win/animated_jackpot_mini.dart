@@ -116,15 +116,37 @@ class _SSAnimatedJackpotMiniState extends State<SSAnimatedJackpotMini>
               Container(
                 width: 350.h *1,
                 height: 250.h * 1,
-                child: JackpotBorder(),
+                // child: JackpotBorder(),
               ),
               Positioned(
                 left: 0,
                 right: 0,
-                top: 60.h,
+                top: 0.h,
                 child: Container(
-                  width: 300.h * t1,
-                  height: 60.h * t1,
+                  width: 102.h * t1,
+                  height: 64.h * t1,
+                  child: Center(
+                    child: FittedBox(
+                      child: ShiningEffect(
+                        shineColor: Color(0xfffff200),
+                        opacity: 1,
+                        angle: -0.9,
+                        topLeft: false,
+                        child: Image.asset(Assets.mya.jackpot.miniH.path),
+                        // child: Image.asset(Assets.mya.superwin.supers.path),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 65.h,
+                child: Container(
+                  width: 320.h * t1,
+                  height: 85.h * t1,
                   child: Center(
                     child: FittedBox(
                       child: ShiningEffect(
@@ -142,10 +164,10 @@ class _SSAnimatedJackpotMiniState extends State<SSAnimatedJackpotMini>
               Positioned(
                 left: 0,
                 right: 0,
-                top: 110.h + t1 * 10.h,
+                top: 136.h + t1 * 10.h,
                 child: Container(
-                  width: 100.h * t2,
-                  height: 50.h * t2,
+                  width: 320.h * t2,
+                  height: 70.h * t2,
                   child: Center(
                     child: FittedBox(
                       child: ShiningEffect(

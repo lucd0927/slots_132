@@ -116,15 +116,37 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
               Container(
                 width: 350.h *1,
                 height: 250.h * 1,
-                child: JackpotBorder(),
+                // child: JackpotBorder(),
               ),
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 0.h,
+                child: Container(
+                  width: 102.h * t1,
+                  height: 64.h * t1,
+                  child: Center(
+                    child: FittedBox(
+                      child: ShiningEffect(
+                        shineColor: Color(0xfffff200),
+                        opacity: 1,
+                        angle: -0.9,
+                        topLeft: false,
+                        child: Image.asset(Assets.mya.jackpot.grandH.path),
+                        // child: Image.asset(Assets.mya.superwin.supers.path),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
               Positioned(
                 left: 0,
                 right: 0,
                 top: 65.h,
                 child: Container(
-                  width: 300.h * t1,
-                  height: 60.h * t1,
+                  width: 320.h * t1,
+                  height: 85.h * t1,
                   child: Center(
                     child: FittedBox(
                       child: ShiningEffect(
@@ -142,9 +164,9 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
               Positioned(
                 left: 0,
                 right: 0,
-                top: 115.h + t1 * 10.h,
+                top: 136.h + t1 * 10.h,
                 child: Container(
-                  width: 100.h * t2,
+                  width: 320.h * t2,
                   height: 70.h * t2,
                   child: Center(
                     child: FittedBox(
@@ -167,100 +189,7 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
     );
   }
 
-  void _startAllAnimations() {
-    final controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
-    // final animation = CurvedAnimation(parent: controller, curve: Curves.linear);
-    // late Animation<double> animation;
-    // 多段动画
-    var animation = TweenSequence<double>([
-      // 第一段：从 start -> middle
-      // TweenSequenceItem(
-      //   tween: Tween<double>(
-      //     begin: 0.8,
-      //     end: 0.9,
-      //   ).chain(CurveTween(curve: Curves.linear)),
-      //   weight: 2, // 权重决定时长比例
-      // ),
-      // // 第二段：停留在 middle
-      // TweenSequenceItem(
-      //   tween: ConstantTween(0.9),
-      //   weight: 7, // 停留时长
-      // ),
-      // 第三段：middle -> end
-      TweenSequenceItem(
-        tween: Tween<double>(
-          begin: 0.4,
-          end: 1,
-        ).chain(CurveTween(curve: Curves.linear)),
-        weight: 6,
-      ),
-    ]).animate(controller);
 
-    controller.repeat();
-  }
 }
 
 
-
-class JackpotBorder extends StatefulWidget {
-  const JackpotBorder({super.key});
-
-  @override
-  State<JackpotBorder> createState() => _JackpotBorderState();
-}
-
-class _JackpotBorderState extends State<JackpotBorder> {
-  String icon = Assets.img.wheelZpF.path;
-  bool showFirst = false;
-  late Timer timer;
-  int curIndex = 0;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    timer = Timer.periodic(Duration(milliseconds: 200), (t) {
-      setState(() {
-        showFirst = !showFirst;
-        if (showFirst) {
-          curIndex = 1;
-        } else {
-          curIndex = 0;
-        }
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return IndexedStack(
-      index: curIndex,
-      children: [
-        Image.asset(
-          Assets.mya.jackpot.jackpotBg.path,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-          gaplessPlayback: true,
-        ),
-        Image.asset(
-          Assets.mya.jackpot.jackpotBg2.path,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-          gaplessPlayback: true,
-        ),
-      ],
-    );
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    timer.cancel();
-  }
-}

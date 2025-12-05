@@ -270,7 +270,7 @@ class MainController extends GetxController {
     int tmpSpinCount = tmpSpinCount1 % 15;
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
-    // tmpSpinCount = 5;
+    tmpSpinCount = 5;
 
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
@@ -1181,8 +1181,16 @@ class MainController extends GetxController {
             }
           });
           await Future.delayed(Duration(milliseconds: 400), () {});
+          double count = 6;
+          if(slotNumSCATTERLength == 3){
+            count = 6;
+          }else if(slotNumSCATTERLength == 4){
+            count = 7;
+          }else if(slotNumSCATTERLength == 5){
+            count = 8;
+          }
           OverlayFreeSpins().show(
-            money: 0,
+            count: count,
             onClose: (value) async {
               curShowFreeSpin.value = true;
               SSEventReporttttt.home_page(source_from: "FREESPIN");

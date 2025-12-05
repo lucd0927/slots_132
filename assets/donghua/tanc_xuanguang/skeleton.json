@@ -1,13 +1,13 @@
 {
 "skeleton": {
-	"hash": "XcwMjSxpmc0",
+	"hash": "lMFHWR/3Kus",
 	"spine": "4.3.39-beta",
 	"x": -232,
 	"y": -232,
 	"width": 464,
 	"height": 464,
 	"images": "C:/Users/Administrator/Desktop/tset/粒子特效",
-	"audio": null
+	"audio": "./audio"
 },
 "bones": [
 	{ "name": "root" }
