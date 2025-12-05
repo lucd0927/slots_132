@@ -39,15 +39,15 @@ class PhoneCardController extends GetxController {
   }
 
   final List<Duration> durations = [
-    const Duration(seconds: 4),
-    const Duration(seconds: 8),
-    const Duration(seconds: 4),
-    const Duration(seconds: 8),
-    const Duration(seconds: 4),
-    const Duration(seconds: 8),
-    const Duration(seconds: 4),
-    const Duration(seconds: 8),
-    const Duration(seconds: 4),
+    const Duration(days: 1),
+    const Duration(days: 1),
+    const Duration(days: 1),
+    const Duration(days: 2),
+    const Duration(days: 3),
+    const Duration(days: 5),
+    const Duration(days: 7),
+    const Duration(days: 14),
+    const Duration(days: 1),
   ];
   Timer? _timer;
 
@@ -115,6 +115,7 @@ class PhoneCardController extends GetxController {
 
   var showSelectImage = true.obs;
   static const double scale = 0.5;
+
   onclickClaim() {
     ssLogggg(
       "=====onclickClaim===canClickClaim:${PhoneCardController.to.canClickClaim.value}==",

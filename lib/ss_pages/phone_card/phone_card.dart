@@ -39,7 +39,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
             showA = true;
           });
           if (PhoneCardController.to.getUserName().isEmpty) {
-            Future.delayed(Duration(milliseconds: 500), () {
+            Future.delayed(Duration(milliseconds: 800), () {
               OverlayPhoneInputName().show();
             });
           }

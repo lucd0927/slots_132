@@ -236,6 +236,28 @@ class MainController extends GetxController {
     return tmp;
   }
 
+
+  List<String> newList(List<String> source, String removeS) {
+    List<String> tmpS = [];
+    for (var v in source) {
+      if(v != removeS){
+        tmpS.add(v);
+      }
+
+    }
+    tmpS.remove(removeS);
+    return tmpS;
+  }
+
+  List<String> pickUniqueStrings(List<String> source, int n) {
+    if (n > source.length) {
+      throw Exception("n cannot exceed source.length when unique=true");
+    }
+
+    final temp = List<String>.from(source)..shuffle();
+    return temp.take(n).toList();
+  }
+
   _resetColumnWinReel({
     required List<String> winReel1,
     required List<String> winReel2,
@@ -272,32 +294,28 @@ class MainController extends GetxController {
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
     } else if (tmpSpinCount == 5) {
+      List<String> tmpList = newList(defaultImgName, slotNumSCATTER);
+      List<String> tmpList1 =  pickUniqueStrings(tmpList,2);
+      List<String> tmpList2 =  pickUniqueStrings(tmpList,2);
+      List<String> tmpList3 =  pickUniqueStrings(tmpList,2);
+      List<String> tmpList4 =  pickUniqueStrings(defaultImgName,3);
+      List<String> tmpList5 =  pickUniqueStrings(defaultImgName,3);
       var imgCategories = [
         [
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
+          ...tmpList1,
           slotNumSCATTER,
         ]..shuffle(),
         [
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
+          ...tmpList2,
           slotNumSCATTER,
         ]..shuffle(),
         [
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
-        ]..shuffle(),
-        [
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
-        ]..shuffle(),
-        [
-          defaultImgName[Random().nextInt(length)],
-          defaultImgName[Random().nextInt(length)],
+          ...tmpList3,
           slotNumSCATTER,
         ]..shuffle(),
+        tmpList4,
+        tmpList5,
+
       ]..shuffle();
       winReel1
         ..clear()
