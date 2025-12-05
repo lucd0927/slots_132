@@ -28,9 +28,7 @@ class OverlayDailyBonus {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({
-    required bool showAddMoney,
-}) {
+  void show({required bool showAddMoney}) {
     // if (_isShowing) return;
     _overlay = null;
     SSEventReporttttt.sign_page();
@@ -40,18 +38,20 @@ class OverlayDailyBonus {
           onClose: () {
             close();
             return;
-            if(!showAddMoney){
+            if (!showAddMoney) {
               return;
             }
 
             int continueDays = DailyBonusController.to.continueLoginDays.value;
-            GiftRewardModel? giftRewardModel =DailyBonusController.kDay_vGiftModel[continueDays];
-            EnumGiftRewardModel? rewardModelType = giftRewardModel?.rewardModelType;
+            GiftRewardModel? giftRewardModel =
+                DailyBonusController.kDay_vGiftModel[continueDays];
+            EnumGiftRewardModel? rewardModelType =
+                giftRewardModel?.rewardModelType;
 
             double money = 0;
 
-            if(rewardModelType == EnumGiftRewardModel.cash){
-              money = (giftRewardModel?.num??0)*1.0;
+            if (rewardModelType == EnumGiftRewardModel.cash) {
+              money = (giftRewardModel?.num ?? 0) * 1.0;
             }
 
             MainController.to.onAddMoney(money, showMoneyAnimated: true);
@@ -209,13 +209,13 @@ class _SettingWidgetState extends State<SettingWidget> {
     double imgW = 60.w;
     double imgH = 40.h;
 
-    if(day == 3){
+    if (day == 3) {
       imgW = 100.w;
       imgH = 50.h;
     }
     bool showCheckOk = DailyBonusController.to.todayClickBonus.value;
-    bool showShimmer = hasGet && showCheckOk;
-    bool shouwHand = hasGet && !showCheckOk;
+    bool shouwHand = continueDays == day && !showCheckOk;
+    bool showShimmer = hasGet;
 
     Widget child = Container(
       width: 159.w,
@@ -266,71 +266,72 @@ class _SettingWidgetState extends State<SettingWidget> {
             ],
           ),
 
-          if (showShimmer)
-            Container(
-              width: 159.w,
-              height: 91.h,
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.2),
-              ),
-              child: Center(
-                child: CheckImageReveal(
-                  child: Shimmer(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.transparent,
-                        Colors.white.withValues(alpha: 0.1),
-                        Colors.white.withValues(alpha: 1),
-                        Colors.white.withValues(alpha: 0.1),
-                        Colors.transparent,
-                      ],
-                      stops: [0, 0.44, 0.5, 0.54, 1],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    child: Image.asset(
-                      Assets.img.dailyBonusOk.path,
-                      width: 54.h,
-                      height: 54.h,
-                    ),
-                  ),
-                  // child: Assets.img.dailyBonusOk.path,
-                ),
-              ),
-            ),
+          showShimmer
+              ? shouwHand
+                    ? Positioned(
+                        right: -20.w,
+                        top: 40.h,
 
-
-         if(shouwHand) Positioned(
-            right: -20.w,
-            top: 40.h,
-
-            child: Center(
-              child: SizedBox(
-                width: 65.h,
-                height: 72.h,
-                child: const SpineHand(),
-              ),
-            ),
-          ),
+                        child: Center(
+                          child: SizedBox(
+                            width: 65.h,
+                            height: 72.h,
+                            child: const SpineHand(),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        width: 159.w,
+                        height: 91.h,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withValues(alpha: 0.2),
+                        ),
+                        child: Center(
+                          child: CheckImageReveal(
+                            child: Shimmer(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.white.withValues(alpha: 0.1),
+                                  Colors.white.withValues(alpha: 1),
+                                  Colors.white.withValues(alpha: 0.1),
+                                  Colors.transparent,
+                                ],
+                                stops: [0, 0.44, 0.5, 0.54, 1],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              child: Image.asset(
+                                Assets.img.dailyBonusOk.path,
+                                width: 54.h,
+                                height: 54.h,
+                              ),
+                            ),
+                            // child: Assets.img.dailyBonusOk.path,
+                          ),
+                        ),
+                      )
+              : const SizedBox(),
         ],
       ),
     );
 
     return GestureDetector(
-        onTap: (){
-            if(shouwHand){
-              DailyBonusController.to.onClick(gift,(){
-                onClose();
-              });
-            }else{
-              String txt = "Your next reward is available tomorrow.";
-              if(showShimmer){
-                txt = "Reward already claimed today.";
-              }
-              ssTushi(text: txt);
-            }
-        },
-        child: child);
+      onTap: () {
+        if (shouwHand) {
+          DailyBonusController.to.onClick(gift, () {
+            onClose();
+          });
+        } else {
+          String txt = "Your next reward is available tomorrow.";
+          if (showShimmer) {
+            txt = "Reward already claimed today.";
+          }
+          ssTushi(text: txt);
+        }
+      },
+      child: child,
+    );
   }
 
   bottomWidget() {
@@ -368,54 +369,60 @@ class _SettingWidgetState extends State<SettingWidget> {
               height: double.infinity,
               color: Colors.teal.withValues(alpha: 0.0),
               child: Row(
-
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                Column(
-
-                  children: [
-
-                    Image.asset(Assets.img.moneyGift.path,width: 60.w,height: 40.h,),
-                    SSTxtGraBorder(
-                      text: "+\$150",
-                      fontFamily: FontFamily.ghostKidAOEPro,
-                      gradient: LinearGradient(
-                        end: Alignment.bottomCenter,
-                        begin: Alignment.topCenter,
-                        colors: [
-                          Color(0xff0FFF63),
-                          Color(0xffA4F00D),
-                          Color(0xffD0FF00),
-                          Color(0xff00FF1E),
-                        ],
+                  Column(
+                    children: [
+                      Image.asset(
+                        Assets.img.moneyGift.path,
+                        width: 60.w,
+                        height: 40.h,
                       ),
-                      fontSize: 18.sp,
-                      strokeColor: Color(0xff0C402B),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset(Assets.img.popupGetPhoneSpice.path,width: 60.w,height: 40.h,),
-                    SSTxtGraBorder(
-                      text: "x1",
-                      fontFamily: FontFamily.ghostKidAOEPro,
-                      gradient: LinearGradient(
-                        end: Alignment.bottomCenter,
-                        begin: Alignment.topCenter,
-                        colors: [
-                          Color(0xff0FFF63),
-                          Color(0xffA4F00D),
-                          Color(0xffD0FF00),
-                          Color(0xff00FF1E),
-                        ],
+                      SSTxtGraBorder(
+                        text: "+\$150",
+                        fontFamily: FontFamily.ghostKidAOEPro,
+                        gradient: LinearGradient(
+                          end: Alignment.bottomCenter,
+                          begin: Alignment.topCenter,
+                          colors: [
+                            Color(0xff0FFF63),
+                            Color(0xffA4F00D),
+                            Color(0xffD0FF00),
+                            Color(0xff00FF1E),
+                          ],
+                        ),
+                        fontSize: 18.sp,
+                        strokeColor: Color(0xff0C402B),
                       ),
-                      fontSize: 18.sp,
-                      strokeColor: Color(0xff0C402B),
-                    ),
-                  ],
-                )
-              ],),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Image.asset(
+                        Assets.img.popupGetPhoneSpice.path,
+                        width: 60.w,
+                        height: 40.h,
+                      ),
+                      SSTxtGraBorder(
+                        text: "x1",
+                        fontFamily: FontFamily.ghostKidAOEPro,
+                        gradient: LinearGradient(
+                          end: Alignment.bottomCenter,
+                          begin: Alignment.topCenter,
+                          colors: [
+                            Color(0xff0FFF63),
+                            Color(0xffA4F00D),
+                            Color(0xffD0FF00),
+                            Color(0xff00FF1E),
+                          ],
+                        ),
+                        fontSize: 18.sp,
+                        strokeColor: Color(0xff0C402B),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],

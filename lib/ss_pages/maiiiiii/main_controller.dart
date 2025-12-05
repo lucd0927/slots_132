@@ -1859,7 +1859,7 @@ class MainController extends GetxController {
 
       textBoxGiftTime = formatDuration(shengyu).obs;
     }
-    ssLogggg("====_initTimer=shengyu:$shengyu");
+    // ssLogggg("====_initTimer=shengyu:$shengyu");
     _timerBoxGfit?.cancel();
     _timerBoxGfit = Timer.periodic(Duration(seconds: 1), (timer) {
       int tick = timer.tick;
@@ -1870,10 +1870,10 @@ class MainController extends GetxController {
         boxGiftTime.value = shengyu;
         // MainController.to.showBoxTime.value = false;
         _timerBoxGfit?.cancel();
-        ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
+        // ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
         return;
       }
-      ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
+      // ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
       textBoxGiftTime.value = formatDuration(seconds);
       boxGiftTime.value = shengyu;
     });
