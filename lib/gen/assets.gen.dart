@@ -101,9 +101,6 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/xiaozhuanpan
   $AssetsDonghuaXiaozhuanpanGen get xiaozhuanpan =>
       const $AssetsDonghuaXiaozhuanpanGen();
-
-  /// Directory path: assets/donghua/zjmpq
-  $AssetsDonghuaZjmpqGen get zjmpq => const $AssetsDonghuaZjmpqGen();
 }
 
 class $AssetsImgGen {
@@ -1547,57 +1544,6 @@ class $AssetsDonghuaXiaozhuanpanGen {
 
   /// List of all assets
   List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
-}
-
-class $AssetsDonghuaZjmpqGen {
-  const $AssetsDonghuaZjmpqGen();
-
-  /// File path: assets/donghua/zjmpq/skeleton.json
-  String get skeleton => 'assets/donghua/zjmpq/skeleton.json';
-
-  /// File path: assets/donghua/zjmpq/skeletons.atlas
-  String get skeletonsAtlas => 'assets/donghua/zjmpq/skeletons.atlas';
-
-  /// File path: assets/donghua/zjmpq/skeletons.png
-  AssetGenImage get skeletonsPng =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons.png');
-
-  /// File path: assets/donghua/zjmpq/skeletons_2.png
-  AssetGenImage get skeletons2 =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons_2.png');
-
-  /// File path: assets/donghua/zjmpq/skeletons_3.png
-  AssetGenImage get skeletons3 =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons_3.png');
-
-  /// File path: assets/donghua/zjmpq/skeletons_4.png
-  AssetGenImage get skeletons4 =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons_4.png');
-
-  /// File path: assets/donghua/zjmpq/skeletons_5.png
-  AssetGenImage get skeletons5 =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons_5.png');
-
-  /// File path: assets/donghua/zjmpq/skeletons_6.png
-  AssetGenImage get skeletons6 =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons_6.png');
-
-  /// File path: assets/donghua/zjmpq/skeletons_7.png
-  AssetGenImage get skeletons7 =>
-      const AssetGenImage('assets/donghua/zjmpq/skeletons_7.png');
-
-  /// List of all assets
-  List<dynamic> get values => [
-    skeleton,
-    skeletonsAtlas,
-    skeletonsPng,
-    skeletons2,
-    skeletons3,
-    skeletons4,
-    skeletons5,
-    skeletons6,
-    skeletons7,
-  ];
 }
 
 class $AssetsImgAvatarGen {

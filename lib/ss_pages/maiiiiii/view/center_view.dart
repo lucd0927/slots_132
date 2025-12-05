@@ -110,7 +110,7 @@ class CenterView extends StatelessWidget {
                           Positioned(
                             left: 0,
                             right: 0,
-                            top: 4.h,
+                            top: 8.h,
                             child: Center(
                               child: MainController.to.curShowFreeSpin.value
                                   ? const SizedBox()

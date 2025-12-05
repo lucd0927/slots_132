@@ -5,6 +5,7 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart' hide Velocity;
 import 'package:flutter/services.dart';
+import 'package:flutter_floating_particles/flutter_floating_particles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newton_particles/newton_particles.dart';
@@ -66,9 +67,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
     initNotification(showDialog: true);
-    bgMusic.play(loopMode: LoopMode.single);
+    // bgMusic.play(loopMode: LoopMode.single);
 
-    Timer.periodic(Duration(seconds: 5), (timer) {
+    Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {
         SlideAcrossOverlay().show(context);
       }
@@ -77,12 +78,10 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     jiazaiInterrrr();
   }
 
-
   jiazaiInterrrr() async {
-    if(SSDlTracking.qidongduoshaoDay() <= 1 && SSHuanjing.hasPppord()){
+    if (SSDlTracking.qidongduoshaoDay() <= 1 && SSHuanjing.hasPppord()) {
       return;
     }
-
 
     int load = 1;
     while (true) {
@@ -92,7 +91,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         SSCommonAds().showInterstitialAd(
           adPosId: SSAdsPosId.eyomt_launch,
           ignored_hasDisplayAd: true,
-          canTryAgain: false
+          canTryAgain: false,
         );
         break;
       } else {
@@ -164,9 +163,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       bool showFreeSpin = MainController.to.curShowFreeSpin.value;
 
       return DefaultTextStyle(
-        style: TextStyle(
-          fontFamily: FontFamily.ghostKidAOEPro
-        ),
+        style: TextStyle(fontFamily: FontFamily.ghostKidAOEPro),
         child: SizedBox(
           width: ScreenUtil().screenWidth,
           height: ScreenUtil().screenHeight,
@@ -179,28 +176,44 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                 fit: BoxFit.fill,
                 gaplessPlayback: true,
               ),
-              Positioned.fill(
-                child: FittedBox(
-                  child: Container(
-                    width: ScreenUtil().screenWidth,
-                    height: ScreenUtil().screenHeight,
-                    // width: 311.w,
-                    // height: 232.w,
-                    // color: Colors.yellow,
-                    child: Center(child: SSSpineMainCenterpq()),
-                  ),
-                ),
-              ),
               // Positioned.fill(
-              //   top: -200.h,
-              //   left: 0.w,
-              //
-              //   child: Container(
-              //     width: ScreenUtil().screenWidth,
-              //     height: ScreenUtil().screenHeight,
-              //     child:const SSSpinePiaoqian(),
+              //   child: FittedBox(
+              //     child: Container(
+              //       width: ScreenUtil().screenWidth,
+              //       height: ScreenUtil().screenHeight,
+              //       // width: 311.w,
+              //       // height: 232.w,
+              //       // color: Colors.yellow,
+              //       child: Center(child: SSSpineMainCenterpq()),
+              //     ),
               //   ),
               // ),
+
+              ParticleEffects(
+                isEnabled:true,
+                config: ParticleConfig(
+                  particleType: ParticleType.image,
+                  direction: ParticleDirection.topToBottom,
+                  // Already falling
+                  particleCount: 10,
+                  imagePath: Assets.img.money.path,
+                  minSize: 50.w,
+                  maxSize: 50.w,
+                  enableRotation: true,
+                  enableSizeVariation: false,
+                  velocityMultiplier: 2,
+                  animationDuration: Duration(seconds: 5),
+                  minOpacity: 0.0,
+                  maxOpacity: 1.0,
+                ),
+                child: Container(
+                  width: ScreenUtil().screenWidth,
+                  height: ScreenUtil().screenHeight,
+                  // width: 375.w,
+                  // height: 400.h,
+                  color: Colors.yellow.withValues(alpha: 0.0),
+                ),
+              ),
               Column(
                 children: [
                   TopView(),

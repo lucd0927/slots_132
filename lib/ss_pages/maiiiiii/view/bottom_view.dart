@@ -1,6 +1,7 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_floating_particles/flutter_floating_particles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:particles_flutter/particles_engine.dart';
@@ -105,16 +106,45 @@ class BottomView extends StatelessWidget {
             fit: BoxFit.fill,
             gaplessPlayback: true,
           ),
-          Positioned(
-            left: 2.w,
-            right: 2.w,
-            top: 2.h,
-            bottom: 2.h,
+
+          // Positioned(
+          //   left: 2.w,
+          //   right: 2.w,
+          //   top: 2.h,
+          //   bottom: 2.h,
+          //   child: ClipRRect(
+          //     borderRadius: BorderRadiusGeometry.circular(26.h),
+          //     child: StarFieldBackground(),
+          //   ),
+          // ),
+          Positioned.fill(
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(26.h),
-              child: StarFieldBackground(),
+              child: ParticleEffects(
+                config: ParticleConfig(
+                  particleType: ParticleType.circle,
+                  direction: ParticleDirection.bottomToTop,
+                  particleCoverage: ParticleCoverage.semiFull,
+                  particleCount: 20,
+                  minSize: 5.w,
+                  maxSize: 10.w,
+                  particleColor: Colors.white,
+                  enableGlow: true,
+                  glowRadius: 1.5,
+                  velocityMultiplier: 0.8,
+                  animationDuration: Duration(seconds: 15),
+                  minOpacity: 0.6,
+                  maxOpacity: 1.0,
+                ),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.yellow.withValues(alpha: 0.0),
+                ),
+              ),
             ),
           ),
+
           Positioned(
             left: 0,
             right: 0,
@@ -502,8 +532,8 @@ class BottomView extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            // const SSSpineWheelMoney(),
             const SSSpineXiaozhuanpan(),
+            const SSSpineWheelMoney(),
             if (WheController.to.curWheNum.value > 0)
               Positioned(
                 right: -20.w,
@@ -628,7 +658,6 @@ class BottomView extends StatelessWidget {
                           gaplessPlayback: true,
                         ),
                       ),
-
                     ],
                   ),
                 ),

@@ -103,6 +103,7 @@ dependencies:
   shiny_striped_progress_bar: ^1.1.0
   particles_flutter: ^1.0.1
   app_settings: ^7.0.0
+  flutter_floating_particles: ^1.0.0
 #  scroll_to_index: ^3.0.1
 dev_dependencies:
   flutter_test:
@@ -148,7 +149,7 @@ flutter:
     - assets/donghua/piaoqian/
     - assets/donghua/tanc_xuanguang/
     - assets/donghua/sdjl/
-    - assets/donghua/zjmpq/
+#    - assets/donghua/zjmpq/
     - assets/donghua/hand/
     - assets/audddd/
     - assets/lottt/bian/
