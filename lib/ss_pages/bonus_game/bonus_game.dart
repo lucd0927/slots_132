@@ -18,6 +18,7 @@ import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game_controller.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 
 class OverlayBonusGame {
   ///是否真正显示
@@ -490,7 +491,24 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
       child: Stack(
         children: [
           showAnimScale
-              ? SSAScale(milliseconds: 800, child: child)
+              ? SSAScale(
+                  milliseconds: 800,
+                  child: ShiningEffect(
+                    shineColor: Colors.yellow,
+                    opacity: 1,
+                    angle: 1.8,
+                    child: child,
+                  ),
+                )
+              : BonusGameController.to.canClick.value
+              ? contain
+                    ? child
+                    : Image.asset(
+                        Assets.img.bonusGameCardBack.path,
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.fill,
+                      )
               : FlipCard(
                   onFlipEnd: () {
                     BonusGameController.to.addClickIndex(
@@ -701,7 +719,7 @@ class _FlipCardState extends State<FlipCard>
                 : Transform(
                     alignment: Alignment.center,
                     transform: Matrix4.rotationY(pi),
-                    child: widget.back,
+                    child: SSAScale(child: widget.back),
                   ),
           );
         },

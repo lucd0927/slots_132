@@ -185,7 +185,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
       PhoneCardController.to.changeWhichStageIndex();
     }
 
-    _timer = Timer(Duration(milliseconds: 1000), () {
+    _timer = Timer(Duration(milliseconds: 1500), () {
       _timer?.cancel();
       onClose(1);
     });

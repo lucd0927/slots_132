@@ -52,22 +52,23 @@ class BonusGameController extends GetxController {
   var cardMoney = <double>[].obs;
 
   var categoryCount = <String, int>{}.obs;
+  var canClick = false.obs;
 
-  addClickIndex(int index,{
-    required VoidCallback onOnClose,
-  }) async{
+  addClickIndex(int index, {required VoidCallback onOnClose}) async {
+    if (canClick.value) {
+      return;
+    }
 
     int length = clickIndex.length;
-    if(length == 1){
+    if (length == 1) {
       bool result = await SSCommonAds().showInterstitialAd(
         adPosId: SSAdsPosId.eyomt_bonus_int,
         ignored_hasDisplayAd: true,
       );
-      if(!result){
+      if (!result) {
         // return;
       }
     }
-
 
     SSEventReporttttt.bonus_page_click();
     btnBonusGameClick.play();
@@ -84,14 +85,15 @@ class BonusGameController extends GetxController {
     List<String> newData = [];
     for (var value in clickIndex) {
       String category = data[value];
-      if(category == card_cash){
+      if (category == card_cash) {
         money = cardMoney[0];
       }
       newData.add(category);
     }
     var res = findTripleWithScatter(newData);
     if (res != null) {
-      onOnClose();
+      canClick.value = true;
+
       find3SameCard.value = res;
       double tmpmoney = 0;
       if (res == card_grand) {
@@ -102,6 +104,10 @@ class BonusGameController extends GetxController {
         tmpmoney = MainController.jacktopMini;
       }
       money = tmpmoney + money;
+      await Future.delayed(Duration(milliseconds: 2000));
+      onOnClose();
+
+      canClick.value = false;
       OverlayCommonGet().show(
         money: money,
         exp: 0,
