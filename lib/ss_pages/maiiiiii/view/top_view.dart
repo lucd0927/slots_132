@@ -186,7 +186,7 @@ class TopView extends StatelessWidget {
     //   },
     // );
 
-    // MainController.to.onAddMoney(800, showMoneyAnimated: true);
+    // MainController.to.onAddMoney(990, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
 

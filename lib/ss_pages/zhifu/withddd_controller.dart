@@ -159,6 +159,7 @@ class WithdddController extends GetxController {
   static const String hkcurLiucheng2Paiming = "curLiucheng2Paiming";
   static const String hkcurLiucheng3SpinsOver = "curLiucheng3SpinsOver";
   static const String hkpaimingData = "paimingData";
+  static const String hkSaveBank = "selectedPaymentBankasdf";
 
   String get hksaveCardId => "saveCardId6dafs_${selectedPaymentBank.value}";
 
@@ -179,7 +180,7 @@ class WithdddController extends GetxController {
     return SSFBBaseData.fee_spin();
   }
 
-  int spinWithLiuceng3(){
+  int spinWithLiuceng3() {
     return SSFBBaseData.human_spin();
   }
 
@@ -231,8 +232,12 @@ class WithdddController extends GetxController {
     ssLogggg("======addSpinWithLiuceng3:tmpppp:$tmpppp");
 
     if (tmpppp >= spinWithLiuceng3()) {
+
+      if(!curLiucheng3SpinsOver.value){
+        OverlayWithddOnelastcheckJindu1().show();
+      }
       saveLiuceng3();
-      OverlayWithddOnelastcheckJindu1().show();
+
     }
   }
 
@@ -245,6 +250,7 @@ class WithdddController extends GetxController {
     curLiucheng2PaimingOver.value = true;
     box.put(hkcurLiucheng2Paiming, true);
   }
+
   saveLiuceng3() {
     curLiucheng3SpinsOver.value = true;
     box.put(hkcurLiucheng3SpinsOver, true);
@@ -326,15 +332,29 @@ class WithdddController extends GetxController {
     return allRank;
   }
 
-  saveCardId(String card) {
-    box.put(hksaveCardId, card);
-    curSaveCardId.value = card;
+  hasSaveBank() {
+    String saveBank = box.get(hkSaveBank) ?? "-----";
 
-    MainController.to.onAddMoney(-MainController.minWithdddMoney, showMoneyAnimated: true);
-
+    bool result = saveBank == selectedPaymentBank.value;
+    ssLogggg(
+      "======hasSaveBank:$result selectedPaymentBank:${selectedPaymentBank.value}",
+    );
+    return result;
   }
 
-  onShowPayBank()async{
+  saveCardId(String card) {
+    box.put(hksaveCardId, card);
+    box.put(hkSaveBank, selectedPaymentBank.value);
+    curSaveCardId.value = card;
+
+    MainController.to.onAddMoney(
+      -MainController.minWithdddMoney,
+      showMoneyAnimated: true,
+    );
+    ssTushi(text: "Successful!");
+  }
+
+  onShowPayBank() async {
     bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
     if (!hasSaveCardddd) {
       String payType = WithdddController.to.selectedPaymentBank.value;
@@ -364,7 +384,7 @@ class WithdddController extends GetxController {
       } else if (!hasLiuceng2) {
         OverlayRank().show();
       } else {
-        if(curLiucheng3SpinsOver.value){
+        if (curLiucheng3SpinsOver.value) {
           Get.toNamed(SSRouttttt.withdddCompletePaytaber);
           return;
         }

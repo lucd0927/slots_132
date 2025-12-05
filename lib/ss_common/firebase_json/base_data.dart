@@ -19,7 +19,7 @@ class SSFBBaseData{
     if(key.isNotEmpty){
       return int.tryParse(key)??5;
     }
-    return 10;
+    return 3;
   }
 
   static int human_spin(){
@@ -28,6 +28,6 @@ class SSFBBaseData{
     if(key.isNotEmpty){
       return int.tryParse(key)??10;
     }
-    return 10;
+    return 3;
   }
 }

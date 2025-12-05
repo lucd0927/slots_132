@@ -40,64 +40,101 @@ class _SSTabViewState extends State<SSTabView> {
     return VipPartner();
   }
 
-  itemWithdrawwww() {
+  itemTxProgress({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
-    String des = "90% of new users cash out on Day 1.";
-    String money =
-        "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value}";
-    return Container(
-      width: double.infinity,
-      height: 100.h,
-      margin: EdgeInsets.only(top: 20.w, left: 16.w, right: 16.w),
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.w),
-        color: Color(0xffffffff),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                moenyWidget(money: 1000),
-                SizedBox(height: 4.h),
-                Text(
-                  des,
-                  style: TextStyle(
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w600,
-                    height: 1,
-                    color: Color(0xff9BA3B0),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: onWithdraw,
+    String strmoney =
+        "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(0)} USD";
 
-            child: Container(
-              width: 100.w,
-              height: 32.h,
-              decoration: BoxDecoration(
-                color: WithdddController.to.bgColor(),
-                borderRadius: BorderRadius.circular(32.h),
+    bool hasOver1 = WithdddController.to.curLiucheng1SpinsOver.value;
+    bool hasOver2 = WithdddController.to.curLiucheng2PaimingOver.value;
+    bool hasOver3 = WithdddController.to.curLiucheng3SpinsOver.value;
+    String text = "";
+    double pro = 0;
+    if(!hasOver1){
+      int curaa = WithdddController.to.curSpinLiuceng1.value;
+      int curAll = WithdddController.to.maxSpinCountWithWithdraw();
+      text = "${curaa}/${curAll} SPINS";
+      pro = curaa / curAll;
+    }else if(!hasOver2){
+      int curaa = WithdddController.to.curRank();
+      int curAll = WithdddController.to.allRank();
+      text = "${curaa}/${curAll}";
+      pro = curaa / curAll;
+    }else if(!hasOver3){
+      int curaa = WithdddController.to.curSpinLiuceng3.value;
+      int curAll = WithdddController.to.spinWithLiuceng3();
+      text = "${curaa}/${curAll} SPINS";
+      pro = curaa / curAll;
+    }
+
+
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Text(
+                strmoney,
+                style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                ),
               ),
-              child: Center(
-                child: Text(
-                  "Withdraw",
-                  style: TextStyle(
-                    fontFamily: FontFamily.rubik,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xffffffff),
-                    height: 1,
+              Spacer(),
+              Icon(Icons.warning_amber, color: Color(0xffAF4A4A),size: 20.h,),
+              SizedBox(width: 4.w,),
+              Text(
+                "Securing you account...",
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                  color: Color(0xffAF4A4A),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 4.w),
+          Row(
+            children: [
+              Image.asset(selectedIcon, width: 30.h, height: 30.h),
+              SizedBox(width: 12.w),
+              SSProjjjj(
+                height: 16.h,
+                innerHeight: 14.h,
+                width: 160.w,
+                progress: pro,
+                gradientColors: [Color(0xff36F6B6), Color(0xff36F6B6)],
+                bgColor: Color(0xff232428),
+                text: text,
+              ),
+              Spacer(),
+              GestureDetector(
+                onTap: () {
+                  Navigator.maybePop(context);
+                },
+                child: Container(
+                  width: 100.w,
+                  height: 32.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32.h),
+                    color: WithdddController.to.bgColor(),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "SPIN",
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontFamily: FontFamily.interBold,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
         ],
       ),
@@ -107,14 +144,19 @@ class _SSTabViewState extends State<SSTabView> {
   itemProgressss({required double money}) {
     String des = "199 successful cash outs today! Only 10 spots left";
     String jinduTxt = "";
+    bool showTx =
+        WithdddController.to.hasSaveCardId() &&
+        WithdddController.to.hasSaveBank() &&
+        money == 1000;
     if (money == 1000) {
       int day = SSDlTracking.qidongduoshaoDay();
       des = "90% of new users cash out on Day 1.";
       if (day > 1) {
         des = "80% of  users cash out today.";
       }
-      if (WithdddController.to.hasSaveCardId()) {
-        jinduTxt = "Progress...";
+      if (WithdddController.to.hasSaveCardId() &&
+          WithdddController.to.hasSaveBank()) {
+        jinduTxt = "Securing you account...";
       }
       if (!WithdddController.to.curLiucheng1SpinsOver.value) {
         des =
@@ -135,49 +177,51 @@ class _SSTabViewState extends State<SSTabView> {
         borderRadius: BorderRadius.circular(8.w),
         color: Color(0xffffffff),
       ),
-      child: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  moenyWidget(money: money),
-                  SizedBox(height: 4.h),
-                  Spacer(),
-                  progressWidget(money: money),
-                ],
-              ),
-              SizedBox(height: 4.h),
-              Text(
-                des,
-                style: TextStyle(
-                  fontSize: 10.sp,
-                  fontWeight: FontWeight.w600,
-                  height: 1,
-                  color: Color(0xff9BA3B0),
+      child: showTx
+          ? itemTxProgress(money: money)
+          : Stack(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        moenyWidget(money: money),
+                        SizedBox(height: 4.h),
+                        Spacer(),
+                        progressWidget(money: money),
+                      ],
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      des,
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w600,
+                        height: 1,
+                        color: Color(0xff9BA3B0),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
 
-          Positioned(
-            top: 5.h,
-            right: 5.w,
-            child: Text(
-              jinduTxt,
-              style: TextStyle(
-                fontSize: 16.sp,
-                color: Colors.red,
-                fontWeight: FontWeight.w700,
-              ),
+                Positioned(
+                  top: 5.h,
+                  right: 5.w,
+                  child: Text(
+                    jinduTxt,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      color: Colors.red,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 
