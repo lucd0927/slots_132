@@ -79,7 +79,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   jiazaiInterrrr() async {
-    if (SSDlTracking.qidongduoshaoDay() <= 1 && SSHuanjing.hasPppord()) {
+    if (SSDlTracking.qidongduoshaoDay() <= 1) {
       return;
     }
 

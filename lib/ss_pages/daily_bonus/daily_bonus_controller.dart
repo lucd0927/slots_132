@@ -43,7 +43,7 @@ class DailyBonusController extends GetxController {
     ),
     4:GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 100,
+      num: 75,
       img: Assets.img.moneyGift.path,
     ),
     5:GiftRewardModel(
@@ -155,6 +155,11 @@ class DailyBonusController extends GetxController {
         freespin = giftRewardModel.num.toInt();
       }
     }
+
+    if(continueLoginDays.value == _maxStreak){
+      money2 = 150;
+    }
+
     await Future.delayed(Duration(milliseconds: 400));
     OverlayCommonGet().show(
       money: money2,

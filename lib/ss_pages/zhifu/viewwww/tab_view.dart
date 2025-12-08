@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_core/flutter_chat_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
@@ -25,15 +26,18 @@ class SSTabView extends StatefulWidget {
 class _SSTabViewState extends State<SSTabView> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          itemProgressss(money: MainController.minWithdddMoney),
-          itemProgressss(money: 5000),
-          itemVip(),
-        ],
-      ),
-    );
+    return Obx((){
+      var cardId = WithdddController.to.curSaveCardId.value;
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            itemProgressss(money: MainController.minWithdddMoney),
+            itemProgressss(money: 5000),
+            itemVip(),
+          ],
+        ),
+      );
+    });
   }
 
   itemVip() {
@@ -50,6 +54,7 @@ class _SSTabViewState extends State<SSTabView> {
     bool hasOver3 = WithdddController.to.curLiucheng3SpinsOver.value;
     String text = "";
     double pro = 0;
+    bool hasJieduan2 = false;
     if(!hasOver1){
       int curaa = WithdddController.to.curSpinLiuceng1.value;
       int curAll = WithdddController.to.maxSpinCountWithWithdraw();
@@ -59,7 +64,8 @@ class _SSTabViewState extends State<SSTabView> {
       int curaa = WithdddController.to.curRank();
       int curAll = WithdddController.to.allRank();
       text = "${curaa}/${curAll}";
-      pro = curaa / curAll;
+      pro = (curAll-curaa) / curAll;
+      hasJieduan2 = true;
     }else if(!hasOver3){
       int curaa = WithdddController.to.curSpinLiuceng3.value;
       int curAll = WithdddController.to.spinWithLiuceng3();
@@ -113,6 +119,10 @@ class _SSTabViewState extends State<SSTabView> {
               Spacer(),
               GestureDetector(
                 onTap: () {
+                  if(hasJieduan2){
+                    WithdddController.to.onWithdraw(money: MainController.minWithdddMoney);
+                    return;
+                  }
                   Navigator.maybePop(context);
                 },
                 child: Container(
@@ -124,7 +134,7 @@ class _SSTabViewState extends State<SSTabView> {
                   ),
                   child: Center(
                     child: Text(
-                      "SPIN",
+                      hasJieduan2?"RANK": "SPIN",
                       style: TextStyle(
                         fontSize: 15.sp,
                         fontFamily: FontFamily.interBold,
@@ -148,6 +158,9 @@ class _SSTabViewState extends State<SSTabView> {
         WithdddController.to.hasSaveCardId() &&
         WithdddController.to.hasSaveBank() &&
         money == 1000;
+
+    ssLogggg("=====showTx:$showTx");
+
     if (money == 1000) {
       int day = SSDlTracking.qidongduoshaoDay();
       des = "90% of new users cash out on Day 1.";

@@ -260,7 +260,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
     }
 
     WithdddController.to.saveCardId(name);
-    OverlayJindu1().show();
+
     onClose();
 
 

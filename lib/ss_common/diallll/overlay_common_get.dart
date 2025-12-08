@@ -48,10 +48,6 @@ class OverlayCommonGet {
             close();
             ssLogggg("=====CommonGetWidget=close");
             onClose();
-
-
-
-
           },
           money: money ?? 0.0,
           exp: exp ?? 0,
@@ -116,7 +112,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
         showAnimated = true;
       });
 
-      Future.delayed(animD, () {
+      Future.delayed(animD, () async{
         if (mounted) {
           if (childContext != null &&
               (moneyContext != null ||
@@ -128,17 +124,46 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             bool showExp = widget.exp > 0;
             bool showPhone = widget.phoneSpice > 0;
             bool freespins = widget.freespins > 0;
-            ssLogggg("========showMoney:$showMoney showExp:$showExp showPhone:$showPhone freespins:$freespins");
+            ssLogggg(
+              "========showMoney:$showMoney showExp:$showExp showPhone:$showPhone freespins:$freespins",
+            );
             if (showMoney) {
               icon = Assets.img.money.path;
               context = moneyContext;
+              OverlayFly2TargetKey().show(
+                targetContext: context!,
+                childContext: childContext!,
+                count: 5,
+                heroChild: Image.asset(icon),
+                onEnd: () {
+
+                },
+              );
             } else if (showExp) {
               icon = Assets.img.mainTopXp.path;
               context = xpContext;
+              OverlayFly2TargetKey().show(
+                targetContext: context!,
+                childContext: childContext!,
+                count: 5,
+                heroChild: Image.asset(icon),
+                onEnd: () {
+
+                },
+              );
             } else if (showPhone) {
               icon = Assets.img.popupGetPhoneSpice.path;
               context = phoneContext;
-            }else if(freespins){
+              OverlayFly2TargetKey().show(
+                targetContext: context!,
+                childContext: childContext!,
+                count: 5,
+                heroChild: Image.asset(icon),
+                onEnd: () {
+
+                },
+              );
+            } else if (freespins) {
               Navigator.maybePop(Get.context!);
               onClose(1);
               MainController.to.curShowFreeSpin.value = true;
@@ -148,21 +173,9 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
 
               return;
             }
-            if (mounted) {
+            await Future.delayed(Duration(milliseconds: 500));
+            _onClcc();
 
-
-              OverlayFly2TargetKey().show(
-                targetContext: context!,
-                childContext:childContext!,
-                count: 5,
-                heroChild: Image.asset(icon),
-                onEnd: () {
-                  _onClcc();
-                },
-              );
-            } else {
-              _onClcc();
-            }
           } else {
             _onClcc();
           }
@@ -172,16 +185,17 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
   }
 
   _onClcc() {
-
     bool showMoney = widget.money > 0;
     bool showExp = widget.exp > 0;
     bool showPhone = widget.phoneSpice > 0;
 
-    if(showMoney){
+    if (showMoney) {
       MainController.to.onAddMoney(widget.money, showMoneyAnimated: false);
-    }else if(showExp){
+    }
+    if (showExp) {
       MainController.to.onAddExp(widget.exp);
-    }else if(showPhone){
+    }
+    if (showPhone) {
       PhoneCardController.to.changeWhichStageIndex();
     }
 
@@ -326,7 +340,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             //   width: 36.w,
                             //   height: 34.h,
                             // ),
-
                             SSTxtBorder(
                               text: "XP +${widget.exp}",
                               fontWeight: FontWeight.w700,

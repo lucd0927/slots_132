@@ -161,7 +161,7 @@ class WithdddController extends GetxController {
   static const String hkpaimingData = "paimingData";
   static const String hkSaveBank = "selectedPaymentBankasdf";
 
-  String get hksaveCardId => "saveCardId6dafs_${selectedPaymentBank.value}";
+  String get hksaveCardId => "saveCardId6dafs_5564";
 
   var showBalance = true.obs;
 
@@ -351,6 +351,7 @@ class WithdddController extends GetxController {
       -MainController.minWithdddMoney,
       showMoneyAnimated: true,
     );
+    OverlayJindu1().show();
     ssTushi(text: "Successful!");
   }
 
