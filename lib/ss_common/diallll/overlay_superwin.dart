@@ -20,6 +20,7 @@ import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/animated_win/animated_win_super.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_superwin.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
@@ -62,10 +63,20 @@ class OverlaySuperwin {
           onBtn2: (double money)async {
             close();
             SSEventReporttttt.cash_pop_close(pop_type: "super_win", pop_from: scene.name);
-            bool result = await SSCommonAds().showInterstitialAd(
-              adPosId: SSAdsPosId.eyomt_superwin_int,
-              ignored_hasDisplayAd: true,
-            );
+
+
+            bool showIntad = SSFBBaseData.int_ad_value();
+            bool result = true;
+
+            if (showIntad) {
+              result = await SSCommonAds().showInterstitialAd(
+                adPosId: SSAdsPosId.eyomt_superwin_int,
+              );
+            }
+            // bool result = await SSCommonAds().showInterstitialAd(
+            //   adPosId: SSAdsPosId.eyomt_superwin_int,
+            //   ignored_hasDisplayAd: true,
+            // );
             if(!result){
               money = 0;
             }

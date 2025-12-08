@@ -751,7 +751,7 @@ class FreeSpinState extends State<FreeSpin> {
 
   onStar({required ValueChanged<EnumGiftRewardModel> onEnd}) {
     timer?.cancel();
-    List<int> randoms = [10, 11, 12, 13, 14];
+    List<int> randoms = [10, 11, 13, 14];
     int tickkk1 = randoms[Random().nextInt(randoms.length)];
     ssLogggg("====free spin=tickkk1:$tickkk1");
     int mills = 250;
@@ -762,22 +762,22 @@ class FreeSpinState extends State<FreeSpin> {
         // await Future.delayed(Duration(milliseconds: 1000));
         EnumGiftRewardModel tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
         setState(() {
-          if (tmpT == 40) {
+          if (tmpT == 10) {
             select = 0;
             firstH = 30.h;
             tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
-          } else if (tmpT == 41) {
+          } else if (tmpT == 11) {
             select = 1;
             secondH = 70.h;
             tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
-          } else if (tmpT == 42) {
+          } else if (tmpT == 12) {
             select = 2;
             thirdH = 110.h;
-          } else if (tmpT == 43) {
+          } else if (tmpT == 13) {
             select = 3;
             fourthH = 70.h;
             tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
-          } else if (tmpT == 44) {
+          } else if (tmpT == 14) {
             select = 4;
             fiveH = 30.h;
             tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;

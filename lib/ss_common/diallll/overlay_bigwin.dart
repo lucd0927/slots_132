@@ -20,6 +20,7 @@ import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/animated_win/animated_win_big.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_common/sssssp/spine_bigwin.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
@@ -45,32 +46,41 @@ class OverlayBigwin {
     _overlay = OverlayEntry(
       builder: (context) {
         return BigwinWidget(
-          onBtn: (double money) async{
+          onBtn: (double money) async {
             close();
-            SSEventReporttttt.cash_pop_collect(pop_type: "big_win", pop_from: scene.name);
-
-
+            SSEventReporttttt.cash_pop_collect(
+              pop_type: "big_win",
+              pop_from: scene.name,
+            );
 
             bool result = await SSCommonAds().showRewardAd(
               adPosId: SSAdsPosId.eyomt_bigwin_rv,
               ignored_hasDisplayAd: true,
             );
-            if(!result){
+            if (!result) {
               money = 0;
             }
-
 
             onBtn(money);
           },
           money: money,
-          onBtn2: (double money) async{
+          onBtn2: (double money) async {
             close();
-            SSEventReporttttt.cash_pop_close(pop_type: "big_win", pop_from: scene.name);
-            bool result = await SSCommonAds().showInterstitialAd(
-              adPosId: SSAdsPosId.eyomt_bigwin_int,
-              ignored_hasDisplayAd: true,
+            SSEventReporttttt.cash_pop_close(
+              pop_type: "big_win",
+              pop_from: scene.name,
             );
-            if(!result){
+
+            bool showIntad = SSFBBaseData.int_ad_value();
+            bool result = true;
+
+            if (showIntad) {
+              result = await SSCommonAds().showInterstitialAd(
+                adPosId: SSAdsPosId.eyomt_bigwin_int,
+              );
+            }
+
+            if (!result) {
               money = 0;
             }
             onBtn2(money);
@@ -144,7 +154,6 @@ class _BigwinWidgetState extends State<BigwinWidget> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-
                   Positioned(
                     left: -0.w,
                     right: -0.w,
@@ -173,11 +182,7 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                     ),
                   ),
 
-
-                  Positioned.fill(
-                      top: 210.h,
-                      child: SSAnimatedWinBig()),
-
+                  Positioned.fill(top: 210.h, child: SSAnimatedWinBig()),
 
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -238,9 +243,6 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                       SizedBox(height: 30.h),
                     ],
                   ),
-
-
-
                 ],
               ),
             ),

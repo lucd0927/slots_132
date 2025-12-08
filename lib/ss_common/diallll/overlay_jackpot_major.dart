@@ -20,6 +20,7 @@ import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/animated_win/animated_jackpot_major.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotGrand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_jackpotMajor.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
@@ -67,10 +68,16 @@ class OverlayJackpotMajor {
               pop_type: "major",
               pop_from: scene.name,
             );
-            bool result = await SSCommonAds().showInterstitialAd(
-              adPosId: SSAdsPosId.eyomt_majorjack_int,
-              ignored_hasDisplayAd: true,
-            );
+
+            bool showIntad = SSFBBaseData.int_ad_value();
+            bool result = true;
+
+            if (showIntad) {
+              result = await SSCommonAds().showInterstitialAd(
+                adPosId: SSAdsPosId.eyomt_majorjack_int,
+              );
+            }
+
             if(!result){
               money = 0;
             }
