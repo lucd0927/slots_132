@@ -176,8 +176,8 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
-    // OverlayBonusGame().show();
+    // OverlaySettinnn().show();
+    OverlayBonusGame().show(onEnd: () {  });
 
     // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
@@ -231,7 +231,7 @@ class TopView extends StatelessWidget {
     // OverlayDailyBonus().show();
     // OverlayRank().show();
     // OverlayOneLastCheck().show();
-    OverlayWithddOnelastcheckJindu1().show();
+    // OverlayWithddOnelastcheckJindu1().show();
     // OverlayOneLastCheckJindu2().show();
     // OverlayBonusGame().show();
     // overlayLuckySlots.show();

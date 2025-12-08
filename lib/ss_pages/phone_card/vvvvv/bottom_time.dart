@@ -60,7 +60,7 @@ class _PhoneBottomTimeState extends State<PhoneBottomTime> {
                           text: "Claim Today’s Piece",
                           fontWeight: FontWeight.w700,
                           fontSize: 24.sp,
-                          fontFamily: FontFamily.alkatra,
+                          fontFamily: FontFamily.interBold,
                         ),
                         Builder(
                           builder: (context) {

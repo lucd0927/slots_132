@@ -25,6 +25,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
+import 'package:slots_132/ss_common/sssssp/spine_freespin_selected.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
@@ -161,7 +162,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   Widget mainView() {
     return Obx(() {
       bool showFreeSpin = MainController.to.curShowFreeSpin.value;
-
+      if (MainController.to.curFreeSpinCount.value <= 0) {
+        showFreeSpin = false;
+      }
       return DefaultTextStyle(
         style: TextStyle(fontFamily: FontFamily.ghostKidAOEPro),
         child: SizedBox(
@@ -176,6 +179,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                 fit: BoxFit.fill,
                 gaplessPlayback: true,
               ),
+
               // Positioned.fill(
               //   child: FittedBox(
               //     child: Container(
@@ -188,9 +192,8 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               //     ),
               //   ),
               // ),
-
               ParticleEffects(
-                isEnabled:true,
+                isEnabled: true,
                 config: ParticleConfig(
                   particleType: ParticleType.image,
                   direction: ParticleDirection.topToBottom,
@@ -236,6 +239,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   height: ScreenUtil().screenHeight,
                   color: Colors.transparent,
                 ),
+
 
             ],
           ),

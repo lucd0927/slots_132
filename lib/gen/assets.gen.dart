@@ -70,6 +70,10 @@ class $AssetsAuddddGen {
 class $AssetsDonghuaGen {
   const $AssetsDonghuaGen();
 
+  /// Directory path: assets/donghua/freespin_s
+  $AssetsDonghuaFreespinSGen get freespinS =>
+      const $AssetsDonghuaFreespinSGen();
+
   /// Directory path: assets/donghua/freespin_xuanggg
   $AssetsDonghuaFreespinXuangggGen get freespinXuanggg =>
       const $AssetsDonghuaFreespinXuangggGen();
@@ -332,6 +336,22 @@ class $AssetsImgGen {
   /// File path: assets/img/free_spins.png
   AssetGenImage get freeSpins =>
       const AssetGenImage('assets/img/free_spins.png');
+
+  /// File path: assets/img/freespin_bingo.png
+  AssetGenImage get freespinBingo =>
+      const AssetGenImage('assets/img/freespin_bingo.png');
+
+  /// File path: assets/img/freespin_money.png
+  AssetGenImage get freespinMoney =>
+      const AssetGenImage('assets/img/freespin_money.png');
+
+  /// File path: assets/img/freespin_spin.png
+  AssetGenImage get freespinSpin =>
+      const AssetGenImage('assets/img/freespin_spin.png');
+
+  /// File path: assets/img/freespin_uns.png
+  AssetGenImage get freespinUns =>
+      const AssetGenImage('assets/img/freespin_uns.png');
 
   /// File path: assets/img/freewheel.png
   AssetGenImage get freewheel =>
@@ -1160,6 +1180,10 @@ class $AssetsImgGen {
     freeSpinOverNum,
     freeSpinesCount,
     freeSpins,
+    freespinBingo,
+    freespinMoney,
+    freespinSpin,
+    freespinUns,
     freewheel,
     giftBg,
     giftBottom,
@@ -1392,6 +1416,27 @@ class $AssetsMyaGen {
 
   /// Directory path: assets/mya/wow
   $AssetsMyaWowGen get wow => const $AssetsMyaWowGen();
+}
+
+class $AssetsDonghuaFreespinSGen {
+  const $AssetsDonghuaFreespinSGen();
+
+  /// File path: assets/donghua/freespin_s/sjq.atlas
+  String get sjqAtlas => 'assets/donghua/freespin_s/sjq.atlas';
+
+  /// File path: assets/donghua/freespin_s/sjq.png
+  AssetGenImage get sjqPng =>
+      const AssetGenImage('assets/donghua/freespin_s/sjq.png');
+
+  /// File path: assets/donghua/freespin_s/sjq_2.png
+  AssetGenImage get sjq2 =>
+      const AssetGenImage('assets/donghua/freespin_s/sjq_2.png');
+
+  /// File path: assets/donghua/freespin_s/skeleton.json
+  String get skeleton => 'assets/donghua/freespin_s/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [sjqAtlas, sjqPng, sjq2, skeleton];
 }
 
 class $AssetsDonghuaFreespinXuangggGen {

@@ -1,0 +1,52 @@
+{
+"skeleton": {
+	"hash": "B5vgOIgQbA0",
+	"spine": "4.3.39-beta",
+	"x": -200,
+	"y": -200,
+	"width": 400,
+	"height": 400,
+	"images": "../../C132-Spine-out/水晶球/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "ascasczcevsdv 2", "bone": "root", "attachment": "ascasczcevsdv 2" },
+	{ "name": "00000", "bone": "root", "attachment": "sjq/" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"00000": {
+				"sjq/": {
+					"width": 400,
+					"height": 400,
+					"sequence": { "count": 50, "start": 0, "digits": 5 }
+				}
+			},
+			"ascasczcevsdv 2": {
+				"ascasczcevsdv 2": { "width": 248, "height": 312 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"00000": {
+					"sjq/": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.016666668 },
+							{ "time": 0.8333334, "mode": "loop", "index": 10 }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

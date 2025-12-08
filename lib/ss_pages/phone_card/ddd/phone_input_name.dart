@@ -300,7 +300,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
               child: SSTxtBorder(
                 text: "Claim My New Phone",
                 fontSize: 18.sp,
-                fontFamily: FontFamily.alkatra,
+                fontFamily: FontFamily.interBold,
                 fontWeight: FontWeight.w800,
               ),
             ),

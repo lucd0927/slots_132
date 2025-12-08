@@ -266,7 +266,7 @@ class _WheBounsState extends State<WheBouns> {
                     text: "Claim Today’s Piece",
                     fontWeight: FontWeight.w700,
                     fontSize: 24.sp,
-                    fontFamily: FontFamily.alkatra,
+                    fontFamily: FontFamily.interBold,
                   ),
                 ],
               ),

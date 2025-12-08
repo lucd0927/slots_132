@@ -125,7 +125,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
             ],
           ),
         ),
-        SizedBox(height: 10.h),
+        SizedBox(height: 16.h),
         GestureDetector(
           onTap: () {
             widget.onBtn2(0.1);

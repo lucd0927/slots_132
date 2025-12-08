@@ -320,7 +320,7 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
             text: "Claim  10%",
             fontWeight: FontWeight.w700,
             fontSize: 16.sp,
-            fontFamily: FontFamily.alkatra,
+            fontFamily: FontFamily.interBold,
             fontColor: Color(0xffCCCCCC),
           ),
         ),

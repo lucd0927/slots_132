@@ -848,6 +848,8 @@ class MainController extends GetxController {
       curSpinMoney.value = tpmBeisu;
       // curShowFreeSpin.value = false;
       onAddMoney(tpmBeisu, onEnd: () {}, showMoneyAnimated: false);
+    }else{
+      btnSpinLastIndex.play();
     }
 
     await _roller(firstRoller, 0);
@@ -1052,7 +1054,9 @@ class MainController extends GetxController {
       }
     });
     if (containerslotNumH1) {
-      btnSpinLastIndex.play();
+      if(keyCenterJinling.currentContext != null) {
+        btnSpinLastIndex.play();
+      }
       onAddCollectStar(starCount);
       await Future.delayed(Duration(milliseconds: 1000), () {});
     }
@@ -1082,7 +1086,9 @@ class MainController extends GetxController {
     });
 
     if (containerslotNumKEY) {
-      btnSpinLastIndex.play();
+      if(keyBonusGame.currentContext != null) {
+        btnSpinLastIndex.play();
+      }
 
       await Future.delayed(Duration(milliseconds: 1200), () {});
       onAddBonusGameCount(bonusGameCount);
@@ -1113,7 +1119,9 @@ class MainController extends GetxController {
       }
     });
     if (containerslotNumPhoneSpice) {
-      btnSpinLastIndex.play();
+      if(keyPhoneSpice.currentContext != null) {
+        btnSpinLastIndex.play();
+      }
       await Future.delayed(Duration(milliseconds: 1200), () {});
       PhoneCardController.to.changeWhichStageIndex();
     }
@@ -1736,6 +1744,7 @@ class MainController extends GetxController {
     ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
 
     if (money > 0) {
+      // btnSpinLastIndex.play();
       double tmpCoin = tmpCurMmmm;
       int i = tmpCurMmmm2 ~/ 100;
       int next = tmpCoin ~/ 100;

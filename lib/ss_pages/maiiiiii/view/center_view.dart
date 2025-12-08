@@ -19,6 +19,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_common/sssssp/spine_freespin_selected.dart';
 import 'package:slots_132/ss_common/sssssp/spine_freespin_xuanggg.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
@@ -274,7 +275,7 @@ class CenterView extends StatelessWidget {
                       fontSize: 20.sp,
                       strokeColor: Color(0xffD83507),
                     ),
-                    SizedBox(width: 1.w,),
+                    SizedBox(width: 1.w),
                     SSAniiiiCount(
                       value: nextNeedStar,
                       textGradient: const LinearGradient(
@@ -288,9 +289,9 @@ class CenterView extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         begin: Alignment.topCenter,
                       ),
-                      textStyle: TextStyle(fontSize: 20.sp,height: 1),
+                      textStyle: TextStyle(fontSize: 20.sp, height: 1),
                     ),
-                    SizedBox(width: 1.w,),
+                    SizedBox(width: 1.w),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 4.sp),
                       child: Image.asset(
@@ -714,11 +715,18 @@ class FreeSpinState extends State<FreeSpin> {
   int select = -1;
   double scale = 1.5;
   Timer? timer;
-  double firstH = 40.w;
-  double secondH = 90.w;
+
+  // double firstH = 40.w;
+  // double secondH = 90.w;
+  // double thirdH = 110.w;
+  // double fourthH = 90.w;
+  // double fiveH = 40.w;
+
+  double firstH = 110.w;
+  double secondH = 110.w;
   double thirdH = 110.w;
-  double fourthH = 90.w;
-  double fiveH = 40.w;
+  double fourthH = 110.w;
+  double fiveH = 110.w;
 
   bool hasQianjin = true;
 
@@ -738,11 +746,11 @@ class FreeSpinState extends State<FreeSpin> {
     select = -1;
     scale = 1.5;
     timer?.cancel();
-    firstH = 40.h;
-    secondH = 90.h;
-    thirdH = 120.h;
-    fourthH = 90.h;
-    fiveH = 40.h;
+    // firstH = 40.h;
+    // secondH = 90.h;
+    // thirdH = 120.h;
+    // fourthH = 90.h;
+    // fiveH = 40.h;
     hasQianjin = true;
   }
 
@@ -750,6 +758,64 @@ class FreeSpinState extends State<FreeSpin> {
   Map<int, BuildContext> _kFreespinIndex_vWidgetContext = {};
 
   onStar({required ValueChanged<EnumGiftRewardModel> onEnd}) {
+    timer?.cancel();
+    List<int> randoms = [10, 11, 13, 14];
+    int tickkk1 = randoms[Random().nextInt(randoms.length)];
+    ssLogggg("====free spin=tickkk1:$tickkk1");
+    int mills = 1200;
+    int tmpT = tickkk1;
+    if (tmpT == tickkk1 || true) {
+      // await Future.delayed(Duration(milliseconds: 1000));
+      EnumGiftRewardModel tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+      setState(() {
+        if (tmpT == 10) {
+          select = 0;
+          // firstH = 30.h;
+          // firstH = 110.h;
+          tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
+        } else if (tmpT == 11) {
+          select = 1;
+          // secondH = 70.h;
+          // secondH = 110.h;
+          tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+        } else if (tmpT == 12) {
+          select = 2;
+          thirdH = 110.h;
+        } else if (tmpT == 13) {
+          select = 3;
+          // fourthH = 70.h;
+          // fourthH = 110.h;
+          tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
+        } else if (tmpT == 14) {
+          select = 4;
+          // fiveH = 30.h;
+          // fiveH = 110.h;
+          tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
+        }
+      });
+
+      ssLogggg("====free spin=tickkk1:$tickkk1 select:$select");
+      Widget heroChild = Image.asset(Assets.img.huoqiu.path);
+      // Widget heroChild = SpineFreespinXuanggg();
+      OverlayFly2TargetKey().showWithSize(
+        childSize: Size(20.w, 20.w),
+        targetContext: _kFreespinIndex_vWidgetContext[select]!,
+        topLeftOffset: Offset(100.w, 230.h),
+        heroChild: heroChild,
+        count: 15,
+        animTime: Duration(milliseconds: mills),
+      );
+
+      Future.delayed(Duration(milliseconds: 3000), () {
+        setState(() {
+          reset();
+          onEnd(tmpEnumGiftRewardModel);
+        });
+      });
+    }
+  }
+
+  onStar3({required ValueChanged<EnumGiftRewardModel> onEnd}) {
     timer?.cancel();
     List<int> randoms = [10, 11, 13, 14];
     int tickkk1 = randoms[Random().nextInt(randoms.length)];
@@ -765,27 +831,30 @@ class FreeSpinState extends State<FreeSpin> {
           if (tmpT == 10) {
             select = 0;
             firstH = 30.h;
+
             tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
           } else if (tmpT == 11) {
             select = 1;
             secondH = 70.h;
+
             tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
           } else if (tmpT == 12) {
             select = 2;
-            thirdH = 110.h;
           } else if (tmpT == 13) {
             select = 3;
             fourthH = 70.h;
+
             tmpEnumGiftRewardModel = EnumGiftRewardModel.freespin;
           } else if (tmpT == 14) {
             select = 4;
             fiveH = 30.h;
+
             tmpEnumGiftRewardModel = EnumGiftRewardModel.cash;
           }
         });
 
         v.cancel();
-        Future.delayed(Duration(milliseconds: 1200), () {
+        Future.delayed(Duration(milliseconds: 1800), () {
           setState(() {
             reset();
             onEnd(tmpEnumGiftRewardModel);
@@ -924,14 +993,17 @@ class FreeSpinState extends State<FreeSpin> {
                         width: itemW,
                         color: Colors.yellow.withValues(alpha: alpha),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          // crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             // SizedBox(height: firstH),
                             AnimatedContainer(
                               height: firstH,
                               duration: Duration(milliseconds: 100),
                             ),
-                            childI(icon: Assets.img.mainCWheel.path, index: 0),
+                            childI(
+                              icon: Assets.img.freespinSpin.path,
+                              index: 0,
+                            ),
                           ],
                         ),
                       );
@@ -951,7 +1023,10 @@ class FreeSpinState extends State<FreeSpin> {
                               height: secondH,
                               duration: Duration(milliseconds: 100),
                             ),
-                            childI(icon: Assets.img.mainCMoney.path, index: 1),
+                            childI(
+                              icon: Assets.img.freespinMoney.path,
+                              index: 1,
+                            ),
                           ],
                         ),
                       );
@@ -971,7 +1046,10 @@ class FreeSpinState extends State<FreeSpin> {
                               height: thirdH,
                               duration: Duration(milliseconds: 100),
                             ),
-                            childI(icon: Assets.img.mainCAvatar.path, index: 2),
+                            childI(
+                              icon: Assets.img.freespinBingo.path,
+                              index: 2,
+                            ),
                           ],
                         ),
                       );
@@ -991,7 +1069,10 @@ class FreeSpinState extends State<FreeSpin> {
                               height: fourthH,
                               duration: Duration(milliseconds: 100),
                             ),
-                            childI(icon: Assets.img.mainCWheel.path, index: 3),
+                            childI(
+                              icon: Assets.img.freespinSpin.path,
+                              index: 3,
+                            ),
                           ],
                         ),
                       );
@@ -1001,14 +1082,14 @@ class FreeSpinState extends State<FreeSpin> {
                     width: itemW,
                     color: Colors.yellow.withValues(alpha: alpha),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // SizedBox(height: fiveH),
                         AnimatedContainer(
                           height: fiveH,
                           duration: Duration(milliseconds: 100),
                         ),
-                        childI(icon: Assets.img.mainCMoney.path, index: 4),
+                        childI(icon: Assets.img.freespinMoney.path, index: 4),
                       ],
                     ),
                   ),
@@ -1025,8 +1106,8 @@ class FreeSpinState extends State<FreeSpin> {
     bool hasSelect = index == select;
     double tmpScale = hasSelect ? scale : 1;
     tmpScale = 1;
-    double childIW = 46.w * tmpScale;
-    double childIH = 58.w * tmpScale;
+    double childIW = 81.w * tmpScale;
+    double childIH = 89.w * tmpScale;
     double glowOpacity = hasSelect ? 1.0 : 0.0;
     // return  TweenAnimationBuilder<double>(
     //   duration: const Duration(milliseconds: 200),
@@ -1065,20 +1146,58 @@ class FreeSpinState extends State<FreeSpin> {
         boxShadow: [
           BoxShadow(
             color: Colors.white.withValues(alpha: glowOpacity * 1),
-            blurRadius: 15,
-            spreadRadius: 20,
+            blurRadius: 5,
+            spreadRadius: 5,
           ),
         ],
       ),
       child: Builder(
         builder: (context) {
           setFreespinContext(context, index);
-          return Image.asset(
-            icon,
-            width: childIW,
-            height: childIH,
-            gaplessPlayback: true,
+
+          return Stack(
+            clipBehavior: Clip.none,
+            children: [
+              hasSelect
+                  ? Container(
+                      width: childIW,
+                      height: childIH,
+                      child:const SpineFreespinSelected(),
+                    )
+                  : Image.asset(
+                      Assets.img.freespinUns.path,
+                      width: childIW,
+                      height: childIH,
+                      gaplessPlayback: true,
+                    ),
+              Positioned(
+                left: 0,
+                right: 0,
+                top: 14.h,
+                child: Center(
+                  child: Image.asset(
+                    icon,
+                    width: 40.w,
+                    height: 40.w,
+                    gaplessPlayback: true,
+                  ),
+                ),
+              ),
+            ],
           );
+
+          return hasSelect
+              ? Container(
+                  width: childIW,
+                  height: childIH,
+                  child: SpineFreespinSelected(),
+                )
+              : Image.asset(
+                  icon,
+                  width: childIW,
+                  height: childIH,
+                  gaplessPlayback: true,
+                );
         },
       ),
     );

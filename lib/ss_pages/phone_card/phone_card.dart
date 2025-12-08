@@ -38,11 +38,11 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
           setState(() {
             showA = true;
           });
-          if (PhoneCardController.to.getUserName().isEmpty) {
-            Future.delayed(Duration(milliseconds: 800), () {
-              OverlayPhoneInputName().show();
-            });
-          }
+          // if (PhoneCardController.to.getUserName().isEmpty) {
+          //   Future.delayed(Duration(milliseconds: 800), () {
+          //     OverlayPhoneInputName().show();
+          //   });
+          // }
         }
       });
     });
@@ -247,7 +247,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                               children: [
                                 SizedBox(height: 10.h),
                                 SSTxtGraBorder(
-                                  text: "9 pieces = Your signed phone.",
+                                  text: "9 pieces = Your phone.",
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w500,
                                 ),

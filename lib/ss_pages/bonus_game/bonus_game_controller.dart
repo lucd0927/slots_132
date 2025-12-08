@@ -66,7 +66,7 @@ class BonusGameController extends GetxController {
   }
 
   addClickIndex(int index, {required VoidCallback onOnClose}) async {
-    if (canClick.value) {
+    if (canClick.value || clickIndex.contains(index)) {
       return;
     }
 
