@@ -212,7 +212,7 @@ class SSSlotMachineState extends State<SSSlotMachine> {
     }
     List<Widget> result2 = _sdlrWinWidget(column);
 
-    ssLogggg("====kZuobiao_vWidgetContex: reset:${result.length}");
+    // ssLogggg("====kZuobiao_vWidgetContex: reset:${result.length}");
     return Stack(
       children: [
         Column(mainAxisAlignment: MainAxisAlignment.center, children: result),
@@ -252,12 +252,12 @@ class SSSlotMachineState extends State<SSSlotMachine> {
       height: slotsItemH,
       color: Colors.blueAccent.withValues(alpha: 0.0),
     );
-    ssLogggg(
-      "======data:$data showWin:${MainController.to.winCurCategoryLines}",
-    );
-    ssLogggg("======hasSlotWild:$hasSlotWild showWin:$showWin");
-    ssLogggg("======hasSlotWild1:$hasSlotWild1 showWin:$showWin1");
-    ssLogggg("======hasSlotWild2:$hasSlotWild2 showWin:$showWin2");
+    // ssLogggg(
+    //   "======data:$data showWin:${MainController.to.winCurCategoryLines}",
+    // );
+    // ssLogggg("======hasSlotWild:$hasSlotWild showWin:$showWin");
+    // ssLogggg("======hasSlotWild1:$hasSlotWild1 showWin:$showWin1");
+    // ssLogggg("======hasSlotWild2:$hasSlotWild2 showWin:$showWin2");
     List<Widget> result2 = [];
     // 第1个圣诞老人
     if (hasSlotWild && showWin) {

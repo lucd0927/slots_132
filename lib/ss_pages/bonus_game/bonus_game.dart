@@ -26,7 +26,9 @@ class OverlayBonusGame {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show() {
+  void show({
+    required VoidCallback onEnd,
+}) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -34,6 +36,7 @@ class OverlayBonusGame {
         return BonusGameWidget(
           onClose: () {
             close();
+            onEnd();
           },
         );
       },

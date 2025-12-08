@@ -56,11 +56,11 @@ class MainController extends GetxController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    ssLogggg("=======kZuobiao_vWidgetContex onReady:$kZuobiao_vWidgetContext");
+    // ssLogggg("=======kZuobiao_vWidgetContex onReady:$kZuobiao_vWidgetContext");
     recordZuobiaoPosition();
-    ssLogggg(
-      "=======kZuobiao_vWidgetContextOffset onReady:$kZuobiao_vWidgetContextOffset",
-    );
+    // ssLogggg(
+    //   "=======kZuobiao_vWidgetContextOffset onReady:$kZuobiao_vWidgetContextOffset",
+    // );
   }
 
   recordZuobiaoPosition() {
@@ -266,14 +266,16 @@ class MainController extends GetxController {
     int tmpSpinCount1 = curSpinCount.value;
 
     int tmpSpinCount = tmpSpinCount1 % 15;
-    ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
-    // tmpSpinCount = 5;
+    tmpSpinCount = 5;
     if (tmpSpinCount == 5) {
       if (hasFreeSpin) {
         tmpSpinCount = 3;
       }
     }
+    ssLogggg(
+      "===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=hasFreeSpin:$hasFreeSpin",
+    );
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
       winReel1
@@ -771,7 +773,7 @@ class MainController extends GetxController {
     // 1️⃣ 找出最大长度
     final maxLen = lists.fold<int>(
       0,
-          (prev, list) => list.length > prev ? list.length : prev,
+      (prev, list) => list.length > prev ? list.length : prev,
     );
 
     // 2️⃣ 过滤出所有长度等于 maxLen 的数组
@@ -869,12 +871,12 @@ class MainController extends GetxController {
     kZuobiao_vCategory_next.forEach((key, value) {
       kZuobiao_vCategory_cur[key] = value;
     });
-
-    initRoller5(hasFreeSpin: hasFreeSpin);
     int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
         .where((e) => e == slotNumSCATTER)
         .length;
     bool showScatterAnimated = slotNumSCATTERLength >= 3;
+    initRoller5(hasFreeSpin: showScatterAnimated || curShowFreeSpin.value);
+
     _changeChild(firstRoller, 0, showScatterAnimated: showScatterAnimated);
     _changeChild(secondRoller, 1, showScatterAnimated: showScatterAnimated);
     _changeChild(thirdRoller, 2, showScatterAnimated: showScatterAnimated);
@@ -959,19 +961,28 @@ class MainController extends GetxController {
         jackpotCount: jackpotCount,
         hasFreeSpin: hasFreeSpin,
         onBtn: (money) {
-          _rollerEnd(tmpAddMoney: money, onEnd: () {
-            rollerOver.complete();
-          });
+          _rollerEnd(
+            tmpAddMoney: money,
+            onEnd: () {
+              rollerOver.complete();
+            },
+          );
         },
         onBtn2: (money) {
-          _rollerEnd(tmpAddMoney: money, onEnd: () {
-            rollerOver.complete();
-          });
+          _rollerEnd(
+            tmpAddMoney: money,
+            onEnd: () {
+              rollerOver.complete();
+            },
+          );
         },
         onNotBtn: (money) {
-          _rollerEnd(tmpAddMoney: money, onEnd: () {
-            rollerOver.complete();
-          });
+          _rollerEnd(
+            tmpAddMoney: money,
+            onEnd: () {
+              rollerOver.complete();
+            },
+          );
         },
       );
     } else {
@@ -979,24 +990,32 @@ class MainController extends GetxController {
         scene: EnumGetScene.spin,
         tmpAddMoney: tmpAddMoney,
         onBtn: (money) {
-          _rollerEnd(tmpAddMoney: money, onEnd: () {
-            rollerOver.complete();
-          });
+          _rollerEnd(
+            tmpAddMoney: money,
+            onEnd: () {
+              rollerOver.complete();
+            },
+          );
         },
         onBtn2: (money) {
-          _rollerEnd(tmpAddMoney: money, onEnd: () {
-            rollerOver.complete();
-          });
+          _rollerEnd(
+            tmpAddMoney: money,
+            onEnd: () {
+              rollerOver.complete();
+            },
+          );
         },
         onNotBtn: (money) {
-          _rollerEnd(tmpAddMoney: money, onEnd: () {
-            rollerOver.complete();
-          });
+          _rollerEnd(
+            tmpAddMoney: money,
+            onEnd: () {
+              rollerOver.complete();
+            },
+          );
         },
         hasFreeSpin: hasFreeSpin,
       );
     }
-
 
     await rollerOver.future;
     ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
@@ -1004,8 +1023,6 @@ class MainController extends GetxController {
     ssLogggg(
       "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
     );
-
-
   }
 
   // 每个飞的动画
@@ -1022,12 +1039,15 @@ class MainController extends GetxController {
           Widget heroChild = Image.asset(img);
           containerslotNumH1 = true;
           starCount++;
-          OverlayFly2TargetKey().showWithSize(
-            childSize: Size(64.w, 64.w),
-            targetContext: keyCenterJinling.currentContext!,
-            topLeftOffset: startPosition,
-            heroChild: heroChild,
-          );
+          if(keyCenterJinling.currentContext != null){
+            OverlayFly2TargetKey().showWithSize(
+              childSize: Size(64.w, 64.w),
+              targetContext: keyCenterJinling.currentContext!,
+              topLeftOffset: startPosition,
+              heroChild: heroChild,
+            );
+          }
+
         }
       }
     });
@@ -1049,13 +1069,14 @@ class MainController extends GetxController {
           Widget heroChild = Image.asset(img);
           containerslotNumKEY = true;
           bonusGameCount++;
-
-          OverlayFly2TargetKey().showWithSize(
+          if(keyBonusGame.currentContext != null) {
+            OverlayFly2TargetKey().showWithSize(
             childSize: Size(64.w, 64.w),
             targetContext: keyBonusGame.currentContext!,
             topLeftOffset: startPosition,
             heroChild: heroChild,
           );
+          }
         }
       }
     });
@@ -1079,12 +1100,15 @@ class MainController extends GetxController {
           containerslotNumKEY = true;
           bonusGameCount++;
           containerslotNumPhoneSpice = true;
-          OverlayFly2TargetKey().showWithSize(
-            childSize: Size(80.w, 80.w),
-            targetContext: keyPhoneSpice.currentContext!,
-            topLeftOffset: startPosition,
-            heroChild: heroChild,
-          );
+          if(keyPhoneSpice.currentContext != null){
+            OverlayFly2TargetKey().showWithSize(
+              childSize: Size(80.w, 80.w),
+              targetContext: keyPhoneSpice.currentContext!,
+              topLeftOffset: startPosition,
+              heroChild: heroChild,
+            );
+          }
+
         }
       }
     });
@@ -1193,10 +1217,11 @@ class MainController extends GetxController {
     }
   }
 
-  _rollerEnd({required double tmpAddMoney,required VoidCallback onEnd,}) {
+  _rollerEnd({required double tmpAddMoney, required VoidCallback onEnd}) {
     onAddMoney(
       tmpAddMoney,
       onEnd: () async {
+        ssLogggg("======_rollerEnd");
         await Future.delayed(Duration(milliseconds: 500), () {});
         DateTime curTime2 = DateTime.now();
 
@@ -1205,6 +1230,8 @@ class MainController extends GetxController {
             .length;
 
         if (slotNumSCATTERLength >= 3) {
+          ssLogggg("======_rollerEnd 1");
+
           kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
             Offset? startPosition = kZuobiao_vWidgetContextOffset[zuobiao];
             String img = kCategoryName_vImgName[value] ?? "";
@@ -1241,6 +1268,7 @@ class MainController extends GetxController {
             count: count,
             onClose: (value) async {
               curShowFreeSpin.value = true;
+              hasScrollerStart.value = false;
               SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
               onEnd.call();
@@ -1248,9 +1276,9 @@ class MainController extends GetxController {
             },
           );
           return;
-        } else {
-          hasScrollerStart.value = false;
         }
+        ssLogggg("======_rollerEnd 1 1");
+        hasScrollerStart.value = false;
         bool hasFreeSpin = curShowFreeSpin.value;
         ssLogggg("==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=");
         bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
@@ -1268,32 +1296,38 @@ class MainController extends GetxController {
 
         int tmpBonusGameCount = curBonusGameCount.value;
         if (tmpBonusGameCount >= maxBonusGameCount) {
-          OverlayBonusGame().show();
-          resetToZeroBonusGameCount();
+          ssLogggg("======_rollerEnd 2 1 OverlayBonusGame");
+          OverlayBonusGame().show(
+            onEnd: () {
+              resetToZeroBonusGameCount();
+              onEnd.call();
+            },
+          );
         } else {
+          ssLogggg("======_rollerEnd 2 2 onShowPayBank");
           double minWithdd = minWithdddMoney;
-          if (minWithdd <= curMonnnn.value) {
+          if (minWithdd <= curMonnnn.value && !curShowFreeSpin.value) {
             WithdddController.to.onShowPayBank();
           }
+          await Future.delayed(Duration(milliseconds: 100));
+          onEnd.call();
         }
-        await Future.delayed(Duration(milliseconds: 100));
-        onEnd.call();
       },
       showMoneyAnimated: true,
     );
   }
 
   _changeChild(
-      GlobalKey<RollerListState> key,
-      int index, {
-        required bool showScatterAnimated,
-      }) {
+    GlobalKey<RollerListState> key,
+    int index, {
+    required bool showScatterAnimated,
+  }) {
     List<Widget> slotsWidget1 =
         slotMachineKey.currentState?.getSlots(
           index,
           showScatterAnimated: showScatterAnimated,
         ) ??
-            [];
+        [];
     // ssLogggg("==onStartRoller==${slotMachineKey.currentState} slotsWidget1:${slotsWidget1.length}=",);
     key.currentState?.changeChildItem(slotsWidget1);
   }
@@ -1325,21 +1359,21 @@ class MainController extends GetxController {
 
     key.currentState
         ?.smoothScrollToIndex(
-      random,
-      duration: Duration(milliseconds: time),
-      // curve: Curves.easeInOutBack,
-      curve: Cubic(0.68, -0.15, 0.265, 1.1),
-    )
+          random,
+          duration: Duration(milliseconds: time),
+          // curve: Curves.easeInOutBack,
+          curve: Cubic(0.68, -0.15, 0.265, 1.1),
+        )
         .then((v) {
-      cunt = cunt + 1;
+          cunt = cunt + 1;
 
-      // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
-      if (cunt >= 5) {
-        // btnSpinLastIndex.play();
-        result?.complete(5);
-        result = null;
-      }
-    });
+          // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
+          if (cunt >= 5) {
+            // btnSpinLastIndex.play();
+            result?.complete(5);
+            result = null;
+          }
+        });
     await Future.delayed(Duration(milliseconds: 30));
   }
 
@@ -1658,11 +1692,11 @@ class MainController extends GetxController {
   }
 
   onAddMoney(
-      double money, {
-        VoidCallback? onEnd,
-        required bool showMoneyAnimated,
-        bool showTargetWidget = false,
-      }) {
+    double money, {
+    VoidCallback? onEnd,
+    required bool showMoneyAnimated,
+    bool showTargetWidget = false,
+  }) {
     if (money == 0) {
       onEnd?.call();
       return;
@@ -1814,7 +1848,7 @@ class MainController extends GetxController {
     SSEventReporttttt.home_page(source_from: "NORMAL");
   }
 
-  onFreeSpin() {
+  onFreeSpin() async {
     int tmpCount = curFreeSpinCount.value;
     if (_curFreeSpinCount == -1) {
       _curFreeSpinCount = tmpCount;
@@ -1834,9 +1868,10 @@ class MainController extends GetxController {
 
       return;
     }
-
-    onStartRoller(hasFreeSpin: true);
-
+    ssLogggg("=======onFreeSpin=onStartRoller");
+    await onStartRoller(hasFreeSpin: true);
+    hasScrollerStart.value = false;
+    ssLogggg("=======onFreeSpin=onStartRoller end");
     keyFreeSpin.currentState?.onStar(
       onEnd: (EnumGiftRewardModel tmpEnumGiftRewardModel) {
         if (tmpEnumGiftRewardModel == EnumGiftRewardModel.cash) {

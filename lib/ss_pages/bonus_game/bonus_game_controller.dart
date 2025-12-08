@@ -184,7 +184,6 @@ class BonusGameController extends GetxController {
       }
       money = tmpmoney + money;
       await Future.delayed(Duration(milliseconds: 2500));
-      onOnClose();
 
       canClick.value = false;
       // OverlayCommonGet().show(
@@ -199,12 +198,16 @@ class BonusGameController extends GetxController {
       MainController.to.onJackpotPopup(
         jackpotCount: jackpotCount,
         onBtn: (money) {
+          onOnClose();
           MainController.to.onAddMoney(money, showMoneyAnimated: true);
         },
         onBtn2: (money) {
+          onOnClose();
           MainController.to.onAddMoney(money, showMoneyAnimated: true);
         },
         onNotBtn: (money) {
+          onOnClose();
+
           MainController.to.onAddMoney(money, showMoneyAnimated: true);
         },
         hasFreeSpin: false,
@@ -279,11 +282,11 @@ class BonusGameController extends GetxController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    ssLogggg("=======kZuobiao_vWidgetContex onReady:$kZuobiao_vWidgetContext");
+    // ssLogggg("=======kZuobiao_vWidgetContex onReady:$kZuobiao_vWidgetContext");
     recordZuobiaoPosition();
-    ssLogggg(
-      "=======kZuobiao_vWidgetContextOffset onReady:$kZuobiao_vWidgetContextOffset",
-    );
+    // ssLogggg(
+    //   "=======kZuobiao_vWidgetContextOffset onReady:$kZuobiao_vWidgetContextOffset",
+    // );
   }
 
   recordZuobiaoPosition() {
