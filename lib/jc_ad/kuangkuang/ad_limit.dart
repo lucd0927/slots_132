@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_kuangggg/base_dialog.dart';
 
 
@@ -98,34 +99,34 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
-                        fontSize: 16.sp,
+                        fontSize: 24.sp,
                       ),
                     ),
                   ],
                 ),
               ),
-              Positioned(
-                top: 0,
-                right: 20.w,
-                bottom: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                    widget.onClose();
-                  },
-                  // child: Image.asset(
-                  //   Assets.tupian.guide12Close.path,
-                  //   width: 40.h,
-                  //   height: 40.h,
-                  //   color: Color(0xffffffff),
-                  // ),
-                  child: Container(
-                    color: Color(0xffffffff),
-                    width: 20.h,
-                    height: 20.h,
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: 0,
+              //   right: 20.w,
+              //   bottom: 0,
+              //   child: GestureDetector(
+              //     onTap: () {
+              //       Navigator.pop(context);
+              //       widget.onClose();
+              //     },
+              //     // child: Image.asset(
+              //     //   Assets.tupian.guide12Close.path,
+              //     //   width: 40.h,
+              //     //   height: 40.h,
+              //     //   color: Color(0xffffffff),
+              //     // ),
+              //     child: Container(
+              //       color: Color(0xffffffff),
+              //       width: 20.h,
+              //       height: 20.h,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           Expanded(
@@ -140,32 +141,35 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 80.h),
+                    SizedBox(height: 20.h),
                     Stack(
                       children: [
-                        Container(
-                          color: Color(0xffffffff),
-                          width: 288.h/2,
-                          height: 288.h/2,
-                        ),
-                        // Image.asset(
-                        //   Assets.tupian.adLimit.path,
-                        //   width: 288.h,
-                        //   height: 288.h,
-                        //   fit: BoxFit.contain,
+                        // Container(
+                        //   color: Color(0xffffffff),
+                        //   width: 288.h/2,
+                        //   height: 288.h/2,
                         // ),
+                        Image.asset(
+                          Assets.img.adImg.path,
+                          width: 188.h,
+                          height: 188.h,
+                          fit: BoxFit.contain,
+                        ),
                       ],
                     ),
                     SizedBox(height: 20.h),
                     Center(
-                      child: Text(
-                        "You've watched all available ads for today. Try again tomorrow.",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14.sp,
-                          color: Color(0xff992D2D),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: Text(
+                          "You've watched all available ads for today. Try again tomorrow.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14.sp,
+                            color: Color(0xff992D2D),
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                     Expanded(
@@ -176,11 +180,11 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                             widget.onBtn();
                           },
                           child: Container(
-                            width: 353.w/2,
-                            height: 80.h/2,
+                            width: 180.w,
+                            height: 40.h,
                             decoration: BoxDecoration(
                               color: Color(0xffF85823),
-                              borderRadius: BorderRadius.circular(16.w),
+                              borderRadius: BorderRadius.circular(40.w),
                               border: Border.all(
                                 color: Color(0xffD04A1E),
                                 width: 2.w,
@@ -193,7 +197,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                                     "Get",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 42.sp,
+                                      fontSize: 24.sp,
                                       // foreground: Color(0xffD0871E),
                                       color: Color(0xffffffff),
                                     ),

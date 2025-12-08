@@ -4,6 +4,8 @@ import 'package:slots_132/jc_ad/kuangkuang/ad_limit.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 
 import 'fengkong.dart';
@@ -183,8 +185,8 @@ class SSWindsCccAds {
 
     int allCount = SSWindsCccc.behavior_wrong_deem_ad_more();
     // todo:一定要改
-    // bool hasInitWithdrawTask = !XianjinController.to.hasInitWithdrawTask();
-    bool hasInitWithdrawTask = false;
+    bool hasInitWithdrawTask = !WithdddController.to.hasSaveCardId();
+    // bool hasInitWithdrawTask = false;
     ssLogggg(
       "===wrong_deem_ad_more==allCount:$allCount  count:$count 提现门槛：$hasInitWithdrawTask",
     );
@@ -261,13 +263,13 @@ class SSWindsCccAds {
 
   bool wrong_deem_ad_less() {
     // todo: 一定要改
-    // double curMoney = EarnController.to.curAllMoneyAZunashiAJinZhuan;
-    // bool hasInitWithdrawTask = XianjinController.to.hasInitWithdrawTask();
-    // double minWithdrawMoney = EarnController.minWithdrawMoney;
+    double curMoney = MainController.to.curMonnnn.value;
+    bool hasInitWithdrawTask = WithdddController.to.hasSaveCardId();
+    double minWithdrawMoney = MainController.minWithdddMoney;
 
-    double curMoney = 0;
-    bool hasInitWithdrawTask = false;
-    double minWithdrawMoney = 1000;
+    // double curMoney = 0;
+    // bool hasInitWithdrawTask = false;
+    // double minWithdrawMoney = 1000;
 
     bool result = SSWindsCccc.needUibehavior();
 

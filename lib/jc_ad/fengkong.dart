@@ -20,8 +20,8 @@ class SSWindsCccc {
 
   static bool get hasRequestNet => _hasRequestNet;
   static String encryptTxt =
-      "ODMCAjEkLD8+Gi88HQMWOzQkMDc3JDQxJgI0AiY0Pzc0OCwZQT4WDxcNJCwWJzY6EiY9RRkPJwETADxaHxMTLTotBT0gLScjGEY2JxwMOzlBOEAgRSMMRgQ2Xj06Q0FaFEQvL0czMxY+OTJDTBo6AyAeNgA4B0U2NAIwNDQkSEg=";
-  static int code = 117;
+      "ycLz88DV3c7P697N7PLnysXVwcbG1cXA1/PF89fFzsbFyd3osM/n/ub81d3n1sfL49fMtOj+1vDi8c2r7uLi3Mvc9MzR3NbS6bfH1u39ysiwybHRtNL9t/XHr8zLsrCr5bXe3rbCwufPyMOyvevL8tHvx/HJ9rTHxfPBxcXVubk=";
+  static int code = 132;
 
   static Future initNumberUnit() async {
     try {
