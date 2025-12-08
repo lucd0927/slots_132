@@ -117,11 +117,15 @@ class SSTzNotificattttt {
 
   List get imgTz => [
     "tzimg1",
-    "tzimg1",
-    "tzimg1",
-    "tzimg1",
-    "tzimg1",
-    "tzimg1",
+    "tzimg2",
+    "tzimg3",
+    "tzimg4",
+    "tzimg5",
+    "tzimg6",
+    "tzimg7",
+    "tzimg8",
+    "tzimg9",
+    "tzimg10",
   ];
 
   List<T> getRandomNMinus3<T>(List<T> source) {
@@ -315,7 +319,7 @@ class SSTzNotificattttt {
     int id = unlockId;
     int length = contents.length;
     int random = Random().nextInt(length);
-
+    List tzimages = getRandomNMinus3(imgTz)..shuffle();
     var tttttt = contents[random]['content'];
     var ccccc = contents[random]['content'];
     await AndroidFlutterLocalNotificationsPlugin().showBroadcastNotification(
@@ -333,7 +337,7 @@ class SSTzNotificattttt {
         styleInformation: BeautyStyleInformation(
           tttttt,
           ccccc,
-          pushIcon,
+          tzimages[0],
           'Go Earn',
           'ic_launcher',
         ),

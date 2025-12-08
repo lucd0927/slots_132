@@ -81,7 +81,7 @@
                 android:paddingBottom="8dp"
                 android:singleLine="true"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 tools:text="This is button" />

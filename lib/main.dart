@@ -42,7 +42,6 @@ main() async {
     // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
   ]);
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,);
-
   SSHuanjing.initEvn(SSHuanjingEnv.dev);
 
   PaintingBinding.instance.imageCache.maximumSize = 2000;

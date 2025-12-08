@@ -1,47 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-
-    <!-- required -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-<!--    &lt;!&ndash; foregroundServiceType: dataSync &ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />-->
-
-<!--    &lt;!&ndash; foregroundServiceType: remoteMessaging &ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING" />-->
-
-
-
-    <!-- 读取图库（Android 13 / API 33+） -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-
-    <!-- 兼容旧设备（Android 12 及以下） -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 若需写入（旧 API），限制 maxSdkVersion -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"  />
-
     <application
-        android:largeHeap="true"
-        android:label="slots_132"
+        android:label="foreground_service_gp_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- Warning: Do not change service name. -->
-<!--        <service-->
-<!--            android:name="com.pravera.flutter_foreground_task.service.ForegroundService"-->
-<!--            android:foregroundServiceType="dataSync|remoteMessaging"-->
-<!--            android:exported="false" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:launchMode="singleTask"
-
+            android:launchMode="singleTop"
+            android:taskAffinity=""
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
@@ -64,18 +30,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <meta-data
-            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true" />
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
-
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

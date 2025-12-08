@@ -795,7 +795,7 @@ class FreeSpinState extends State<FreeSpin> {
       });
 
       ssLogggg("====free spin=tickkk1:$tickkk1 select:$select");
-      Widget heroChild = Image.asset(Assets.img.huoqiu.path);
+      Widget heroChild = Image.asset(Assets.img.huoqiu2.path);
       // Widget heroChild = SpineFreespinXuanggg();
       OverlayFly2TargetKey().showWithSize(
         childSize: Size(20.w, 20.w),
