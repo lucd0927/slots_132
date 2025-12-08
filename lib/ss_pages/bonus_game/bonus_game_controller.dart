@@ -86,13 +86,22 @@ class BonusGameController extends GetxController {
     Offset endLocation = Offset.zero;
     String category = data[index];
     int jackpotNum = categoryCount[category] ?? -1;
-    jackpotNum = jackpotNum + 1;
+    if (jackpotNum == -1) {
+      jackpotNum = 0;
+    }
 
     if (category == card_cash) {
-      // overlayMainTopMoney.showWithSize(
-      //   childSize: Size(32.w, 32.w),
-      //   onEnd: () {},
-      // );
+      overlayMainTopMoney.showWithSize(
+        childSize: Size(32.w, 32.w),
+        onEnd: () {},
+        showTargetWidget: true,
+      );
+      var money = cardMoney[0];
+      MainController.to.onAddMoney(
+        money,
+        showTargetWidget: false,
+        showMoneyAnimated: false,
+      );
     } else if (category == card_grand) {
       double dx = 175.w;
       if (jackpotNum == 0) {
@@ -145,7 +154,6 @@ class BonusGameController extends GetxController {
     }
     clickIndex.add(index);
     ssLogggg("=====clickIndex:$clickIndex data:$data");
-
     double money = 0;
     List<String> newData = [];
     for (var value in clickIndex) {
@@ -155,6 +163,7 @@ class BonusGameController extends GetxController {
       }
       newData.add(category);
     }
+
     var res = findTripleWithScatter(newData);
 
     if (res != null) {
@@ -162,11 +171,15 @@ class BonusGameController extends GetxController {
 
       find3SameCard.value = res;
       double tmpmoney = 0;
+      int jackpotCount = 2;
       if (res == card_grand) {
+        jackpotCount = 5;
         tmpmoney = MainController.jacktopGrand;
       } else if (res == card_major) {
+        jackpotCount = 4;
         tmpmoney = MainController.jacktopMajor;
       } else if (res == card_mini) {
+        jackpotCount = 2;
         tmpmoney = MainController.jacktopMini;
       }
       money = tmpmoney + money;
@@ -174,14 +187,16 @@ class BonusGameController extends GetxController {
       onOnClose();
 
       canClick.value = false;
-      OverlayCommonGet().show(
-        money: money,
-        exp: 0,
-        phoneSpice: 0,
-        onClose: () {
-          // MainController.to.onAddMoney(money, showMoneyAnimated: true);
-        },
-      );
+      // OverlayCommonGet().show(
+      //   money: money,
+      //   exp: 0,
+      //   phoneSpice: 0,
+      //   onClose: () {
+      //     // MainController.to.onAddMoney(money, showMoneyAnimated: true);
+      //   },
+      // );
+
+      MainController.to.onJackpotPopup(jackpotCount: jackpotCount);
     }
 
     ssLogggg("=====result:$res");
@@ -240,7 +255,7 @@ class BonusGameController extends GetxController {
   }
 
   double _cardMonnn() {
-    double randomDouble = 10 + Random().nextDouble() * (50 - 10);
+    double randomDouble = 10 + Random().nextDouble() * (20 - 10);
     return randomDouble.toAsFixedFloor(2);
   }
 

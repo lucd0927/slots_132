@@ -236,14 +236,12 @@ class MainController extends GetxController {
     return tmp;
   }
 
-
   List<String> newList(List<String> source, String removeS) {
     List<String> tmpS = [];
     for (var v in source) {
-      if(v != removeS){
+      if (v != removeS) {
         tmpS.add(v);
       }
-
     }
     tmpS.remove(removeS);
     return tmpS;
@@ -295,27 +293,17 @@ class MainController extends GetxController {
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
     } else if (tmpSpinCount == 5) {
       List<String> tmpList = newList(defaultImgName, slotNumSCATTER);
-      List<String> tmpList1 =  pickUniqueStrings(tmpList,2);
-      List<String> tmpList2 =  pickUniqueStrings(tmpList,2);
-      List<String> tmpList3 =  pickUniqueStrings(tmpList,2);
-      List<String> tmpList4 =  pickUniqueStrings(defaultImgName,3);
-      List<String> tmpList5 =  pickUniqueStrings(defaultImgName,3);
+      List<String> tmpList1 = pickUniqueStrings(tmpList, 2);
+      List<String> tmpList2 = pickUniqueStrings(tmpList, 2);
+      List<String> tmpList3 = pickUniqueStrings(tmpList, 2);
+      List<String> tmpList4 = pickUniqueStrings(defaultImgName, 3);
+      List<String> tmpList5 = pickUniqueStrings(defaultImgName, 3);
       var imgCategories = [
-        [
-          ...tmpList1,
-          slotNumSCATTER,
-        ]..shuffle(),
-        [
-          ...tmpList2,
-          slotNumSCATTER,
-        ]..shuffle(),
-        [
-          ...tmpList3,
-          slotNumSCATTER,
-        ]..shuffle(),
+        [...tmpList1, slotNumSCATTER]..shuffle(),
+        [...tmpList2, slotNumSCATTER]..shuffle(),
+        [...tmpList3, slotNumSCATTER]..shuffle(),
         tmpList4,
         tmpList5,
-
       ]..shuffle();
       winReel1
         ..clear()
@@ -1036,6 +1024,32 @@ class MainController extends GetxController {
     ssLogggg("======jackpotCount:$jackpotCount");
     // jackpotCount = 2;
     await Future.delayed(Duration(milliseconds: 200), () {});
+    if (jackpotCount >= 2) {
+      onJackpotPopup(jackpotCount: jackpotCount);
+    } else {
+      onWinPopup(
+        scene: EnumGetScene.spin,
+        tmpAddMoney: tmpAddMoney,
+        onBtn: (money) {
+          _rollerEnd(tmpAddMoney: money);
+        },
+        onBtn2: (money) {
+          _rollerEnd(tmpAddMoney: money);
+        },
+        onNotBtn: (money) {
+          _rollerEnd(tmpAddMoney: money);
+        },
+      );
+    }
+
+    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
+    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
+    ssLogggg(
+      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
+    );
+  }
+
+  onJackpotPopup({required int jackpotCount}) {
     if (jackpotCount == 2) {
       curSpinMoney.value = jacktopMini;
       OverlayJackpotMini().show(
@@ -1072,31 +1086,11 @@ class MainController extends GetxController {
           _rollerEnd(tmpAddMoney: value);
         },
       );
-    } else {
-      _onWinPopup(
-        scene: EnumGetScene.spin,
-        tmpAddMoney: tmpAddMoney,
-        onBtn: (money) {
-          _rollerEnd(tmpAddMoney: money);
-        },
-        onBtn2: (money) {
-          _rollerEnd(tmpAddMoney: money);
-        },
-        onNotBtn: (money) {
-          _rollerEnd(tmpAddMoney: money);
-        },
-      );
     }
-
-    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
-    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
-    ssLogggg(
-      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
-    );
   }
 
   // super win/ mega win/ mini win
-  _onWinPopup({
+  onWinPopup({
     required double tmpAddMoney,
     required ValueChanged onBtn,
     required ValueChanged onBtn2,
@@ -1182,11 +1176,11 @@ class MainController extends GetxController {
           });
           await Future.delayed(Duration(milliseconds: 400), () {});
           double count = 6;
-          if(slotNumSCATTERLength == 3){
+          if (slotNumSCATTERLength == 3) {
             count = 6;
-          }else if(slotNumSCATTERLength == 4){
+          } else if (slotNumSCATTERLength == 4) {
             count = 7;
-          }else if(slotNumSCATTERLength == 5){
+          } else if (slotNumSCATTERLength == 5) {
             count = 8;
           }
           OverlayFreeSpins().show(
@@ -1801,7 +1795,7 @@ class MainController extends GetxController {
         } else if (tmpEnumGiftRewardModel == EnumGiftRewardModel.freespin) {
           OverlayLuckySlots().show(
             onClose: (money) {
-              _onWinPopup(
+              onWinPopup(
                 scene: EnumGetScene.single_slots,
                 tmpAddMoney: money,
                 onBtn: (money) {
