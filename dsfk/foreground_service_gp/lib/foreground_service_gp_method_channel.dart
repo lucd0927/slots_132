@@ -14,4 +14,17 @@ class MethodChannelForegroundServiceGp extends ForegroundServiceGpPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<bool> start({
+    String title = 'Running',
+    String content = 'App is running in background',
+  }) async {
+    final result = await methodChannel.invokeMethod('start', {
+      'title': title,
+      'content': content,
+    });
+    print("=====result:$result=");
+    return result == true;
+  }
 }

@@ -54,8 +54,21 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: [
+            Center(
+              child: Text('Running on: $_platformVersion\n'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                ForegroundServiceGp().start(
+                  title: "App Running",
+                  content: "This is a persistent notification",
+                );
+              },
+              child: const Text('Start Service'),
+            ),
+          ],
         ),
       ),
     );

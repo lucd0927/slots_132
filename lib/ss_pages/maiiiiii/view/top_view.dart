@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foreground_service_gp/foreground_service_gp.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
@@ -178,6 +179,11 @@ class TopView extends StatelessWidget {
     SSEventReporttttt.home_page_menu();
     // OverlaySettinnn().show();
     OverlayBonusGame().show(onEnd: () {  });
+
+    ForegroundServiceGp().start(
+      title: "App Running",
+      content: "This is a persistent notification",
+    );
 
     // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });

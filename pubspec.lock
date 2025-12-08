@@ -677,6 +677,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  foreground_service_gp:
+    dependency: "direct main"
+    description:
+      path: "dsfk/foreground_service_gp"
+      relative: true
+    source: path
+    version: "0.0.1"
   forge2d:
     dependency: transitive
     description:

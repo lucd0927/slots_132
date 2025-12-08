@@ -76,6 +76,8 @@ dependencies:
   #    path: ./dsfk/common_push-output/
   pbpig:
     path: ./dsfk/pbpig/
+  foreground_service_gp:
+    path: ./dsfk/foreground_service_gp/
   cdslots:
     path: ./dsfk/cdslots/
   thinkup_sdk:

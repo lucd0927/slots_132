@@ -26,4 +26,10 @@ abstract class ForegroundServiceGpPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+  Future<bool> start({
+    String title = 'Running',
+    String content = 'App is running in background',
+  }) {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
 }
