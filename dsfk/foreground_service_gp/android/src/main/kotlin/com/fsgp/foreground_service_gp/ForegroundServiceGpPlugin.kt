@@ -19,11 +19,18 @@ class ForegroundServiceGpPlugin :
     //
     // This local reference serves to register the plugin with the Flutter Engine and unregister it
     // when the Flutter Engine is detached from the Activity
-    private lateinit var channel: MethodChannel
+//    private lateinit var channel: MethodChannel
     private lateinit var appContext: android.content.Context
+
+
+    companion object {
+        // 静态 Channel，可以在 Service 里调用
+        var channel: MethodChannel? = null
+    }
+
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "foreground_service_gp")
-        channel.setMethodCallHandler(this)
+        channel?.setMethodCallHandler(this)
         appContext = flutterPluginBinding.applicationContext
     }
 
@@ -66,6 +73,6 @@ class ForegroundServiceGpPlugin :
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        channel.setMethodCallHandler(null)
+        channel?.setMethodCallHandler(null)
     }
 }
