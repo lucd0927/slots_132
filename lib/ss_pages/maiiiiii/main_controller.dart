@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,7 +49,7 @@ class MainController extends GetxController {
   void onInit() {
     super.onInit();
     initOther();
-    initRoller5(hasFirstInit: true);
+    initRoller5(hasFirstInit: true, hasFreeSpin: false);
   }
 
   @override
@@ -79,8 +78,8 @@ class MainController extends GetxController {
   // 显示中奖路
   var showWinLines = false.obs;
 
-  // 滚动是否结束
-  var hasScrollerEnd = false.obs;
+  // 滚动是否开始
+  var hasScrollerStart = false.obs;
 
   var jackpotType = EnumJackpot.unknow.obs;
 
@@ -262,6 +261,7 @@ class MainController extends GetxController {
     required List<String> winReel3,
     required List<String> winReel4,
     required List<String> winReel5,
+    required bool hasFreeSpin,
   }) {
     int tmpSpinCount1 = curSpinCount.value;
 
@@ -269,7 +269,11 @@ class MainController extends GetxController {
     ssLogggg("===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=");
     // tmpSpinCount = 12;
     // tmpSpinCount = 5;
-
+    if (tmpSpinCount == 5) {
+      if (hasFreeSpin) {
+        tmpSpinCount = 3;
+      }
+    }
     int length = defaultImgName.length;
     if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
       winReel1
@@ -386,7 +390,7 @@ class MainController extends GetxController {
     }
   }
 
-  initRoller5({bool hasFirstInit = false}) {
+  initRoller5({bool hasFirstInit = false, required bool hasFreeSpin}) {
     // 中奖图案
     List<String> winReel1 = SSReelStrips.reel1ImgName();
     List<String> winReel2 = SSReelStrips.reel2ImgName();
@@ -400,6 +404,7 @@ class MainController extends GetxController {
       winReel3: winReel3,
       winReel4: winReel4,
       winReel5: winReel5,
+      hasFreeSpin: hasFreeSpin,
     );
     ssLogggg("rollerImgs win2:$winReel1");
     // 原来的图案
@@ -766,7 +771,7 @@ class MainController extends GetxController {
     // 1️⃣ 找出最大长度
     final maxLen = lists.fold<int>(
       0,
-      (prev, list) => list.length > prev ? list.length : prev,
+          (prev, list) => list.length > prev ? list.length : prev,
     );
 
     // 2️⃣ 过滤出所有长度等于 maxLen 的数组
@@ -818,25 +823,30 @@ class MainController extends GetxController {
   Completer<int>? result;
   int cunt = 0;
 
-  onStartRoller() async {
-    if (hasScrollerEnd.value) {
+  // hasFreeSpin 是否处于freespin的状态
+  onStartRoller({bool hasFreeSpin = false}) async {
+    if (hasScrollerStart.value) {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
     }
+    var rollerOver = Completer();
+
     SSEventReporttttt.home_page_spin();
 
     onAddSpin(1);
     ssLogggg("==onStartRoller==start=");
     kZuobiao_vWidgetContext = {};
-    curShowFreeSpin.value = false;
     showWinLines.value = false;
     cunt = 0;
-    hasScrollerEnd.value = true;
+    hasScrollerStart.value = true;
     result = Completer();
 
-    double tpmBeisu = -curBeisu.value;
-    curSpinMoney.value = tpmBeisu;
-    onAddMoney(tpmBeisu, onEnd: () {}, showMoneyAnimated: false);
+    if (!hasFreeSpin) {
+      double tpmBeisu = -curBeisu.value;
+      curSpinMoney.value = tpmBeisu;
+      // curShowFreeSpin.value = false;
+      onAddMoney(tpmBeisu, onEnd: () {}, showMoneyAnimated: false);
+    }
 
     await _roller(firstRoller, 0);
     await _roller(secondRoller, 1);
@@ -860,7 +870,7 @@ class MainController extends GetxController {
       kZuobiao_vCategory_cur[key] = value;
     });
 
-    initRoller5();
+    initRoller5(hasFreeSpin: hasFreeSpin);
     int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
         .where((e) => e == slotNumSCATTER)
         .length;
@@ -876,8 +886,11 @@ class MainController extends GetxController {
     _resetRoller(thirdRoller, 2);
     _resetRoller(fourthRoller, 3);
     _resetRoller(fiveRoller, 4);
-    // 添加经验
-    onAddExp(100);
+
+    if (!hasFreeSpin) {
+      // 添加经验
+      onAddExp(100);
+    }
 
     double tmpAddMoney = 0.0;
     List<double> payBeisu = [];
@@ -897,6 +910,106 @@ class MainController extends GetxController {
 
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
+    await onFlyHeroWidget();
+    DateTime curTime = DateTime.now();
+    ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
+
+    int jackpotCount = 0;
+    bool zuobiao1 = kZuobiao_vCategory_cur[1]?.contains(slotNumWild) ?? false;
+    bool zuobiao6 = kZuobiao_vCategory_cur[6]?.contains(slotNumWild) ?? false;
+    bool zuobiao11 = kZuobiao_vCategory_cur[11]?.contains(slotNumWild) ?? false;
+    bool column1 = zuobiao1 && zuobiao6 && zuobiao11;
+    if (column1) {
+      jackpotCount++;
+    }
+
+    bool zuobiao2 = kZuobiao_vCategory_cur[2]?.contains(slotNumWild) ?? false;
+    bool zuobiao7 = kZuobiao_vCategory_cur[7]?.contains(slotNumWild) ?? false;
+    bool zuobiao12 = kZuobiao_vCategory_cur[12]?.contains(slotNumWild) ?? false;
+    bool column2 = zuobiao2 && zuobiao7 && zuobiao12;
+    if (column2) {
+      jackpotCount++;
+    }
+    bool zuobiao3 = kZuobiao_vCategory_cur[3]?.contains(slotNumWild) ?? false;
+    bool zuobiao8 = kZuobiao_vCategory_cur[8]?.contains(slotNumWild) ?? false;
+    bool zuobiao13 = kZuobiao_vCategory_cur[13]?.contains(slotNumWild) ?? false;
+    bool column3 = zuobiao3 && zuobiao8 && zuobiao13;
+    if (column3) {
+      jackpotCount++;
+    }
+    bool zuobiao4 = kZuobiao_vCategory_cur[4]?.contains(slotNumWild) ?? false;
+    bool zuobiao9 = kZuobiao_vCategory_cur[9]?.contains(slotNumWild) ?? false;
+    bool zuobiao14 = kZuobiao_vCategory_cur[14]?.contains(slotNumWild) ?? false;
+    bool column4 = zuobiao4 && zuobiao9 && zuobiao14;
+    if (column4) {
+      jackpotCount++;
+    }
+    bool zuobiao5 = kZuobiao_vCategory_cur[5]?.contains(slotNumWild) ?? false;
+    bool zuobiao10 = kZuobiao_vCategory_cur[10]?.contains(slotNumWild) ?? false;
+    bool zuobiao15 = kZuobiao_vCategory_cur[15]?.contains(slotNumWild) ?? false;
+    bool column5 = zuobiao5 && zuobiao10 && zuobiao15;
+    if (column5) {
+      jackpotCount++;
+    }
+    ssLogggg("======jackpotCount:$jackpotCount");
+    // jackpotCount = 2;
+    await Future.delayed(Duration(milliseconds: 200), () {});
+    if (jackpotCount >= 2) {
+      onJackpotPopup(
+        jackpotCount: jackpotCount,
+        hasFreeSpin: hasFreeSpin,
+        onBtn: (money) {
+          _rollerEnd(tmpAddMoney: money, onEnd: () {
+            rollerOver.complete();
+          });
+        },
+        onBtn2: (money) {
+          _rollerEnd(tmpAddMoney: money, onEnd: () {
+            rollerOver.complete();
+          });
+        },
+        onNotBtn: (money) {
+          _rollerEnd(tmpAddMoney: money, onEnd: () {
+            rollerOver.complete();
+          });
+        },
+      );
+    } else {
+      onWinPopup(
+        scene: EnumGetScene.spin,
+        tmpAddMoney: tmpAddMoney,
+        onBtn: (money) {
+          _rollerEnd(tmpAddMoney: money, onEnd: () {
+            rollerOver.complete();
+          });
+        },
+        onBtn2: (money) {
+          _rollerEnd(tmpAddMoney: money, onEnd: () {
+            rollerOver.complete();
+          });
+        },
+        onNotBtn: (money) {
+          _rollerEnd(tmpAddMoney: money, onEnd: () {
+            rollerOver.complete();
+          });
+        },
+        hasFreeSpin: hasFreeSpin,
+      );
+    }
+
+
+    await rollerOver.future;
+    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
+    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
+    ssLogggg(
+      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
+    );
+
+
+  }
+
+  // 每个飞的动画
+  Future<void> onFlyHeroWidget() async {
     bool containerslotNumH1 = false;
     int starCount = 0;
     kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
@@ -980,86 +1093,25 @@ class MainController extends GetxController {
       await Future.delayed(Duration(milliseconds: 1200), () {});
       PhoneCardController.to.changeWhichStageIndex();
     }
-    DateTime curTime = DateTime.now();
-    ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
-
-    bool showJackpot = false;
-    int jackpotCount = 0;
-    bool zuobiao1 = kZuobiao_vCategory_cur[1]?.contains(slotNumWild) ?? false;
-    bool zuobiao6 = kZuobiao_vCategory_cur[6]?.contains(slotNumWild) ?? false;
-    bool zuobiao11 = kZuobiao_vCategory_cur[11]?.contains(slotNumWild) ?? false;
-    bool column1 = zuobiao1 && zuobiao6 && zuobiao11;
-    if (column1) {
-      jackpotCount++;
-    }
-
-    bool zuobiao2 = kZuobiao_vCategory_cur[2]?.contains(slotNumWild) ?? false;
-    bool zuobiao7 = kZuobiao_vCategory_cur[7]?.contains(slotNumWild) ?? false;
-    bool zuobiao12 = kZuobiao_vCategory_cur[12]?.contains(slotNumWild) ?? false;
-    bool column2 = zuobiao2 && zuobiao7 && zuobiao12;
-    if (column2) {
-      jackpotCount++;
-    }
-    bool zuobiao3 = kZuobiao_vCategory_cur[3]?.contains(slotNumWild) ?? false;
-    bool zuobiao8 = kZuobiao_vCategory_cur[8]?.contains(slotNumWild) ?? false;
-    bool zuobiao13 = kZuobiao_vCategory_cur[13]?.contains(slotNumWild) ?? false;
-    bool column3 = zuobiao3 && zuobiao8 && zuobiao13;
-    if (column3) {
-      jackpotCount++;
-    }
-    bool zuobiao4 = kZuobiao_vCategory_cur[4]?.contains(slotNumWild) ?? false;
-    bool zuobiao9 = kZuobiao_vCategory_cur[9]?.contains(slotNumWild) ?? false;
-    bool zuobiao14 = kZuobiao_vCategory_cur[14]?.contains(slotNumWild) ?? false;
-    bool column4 = zuobiao4 && zuobiao9 && zuobiao14;
-    if (column4) {
-      jackpotCount++;
-    }
-    bool zuobiao5 = kZuobiao_vCategory_cur[5]?.contains(slotNumWild) ?? false;
-    bool zuobiao10 = kZuobiao_vCategory_cur[10]?.contains(slotNumWild) ?? false;
-    bool zuobiao15 = kZuobiao_vCategory_cur[15]?.contains(slotNumWild) ?? false;
-    bool column5 = zuobiao5 && zuobiao10 && zuobiao15;
-    if (column5) {
-      jackpotCount++;
-    }
-    ssLogggg("======jackpotCount:$jackpotCount");
-    // jackpotCount = 2;
-    await Future.delayed(Duration(milliseconds: 200), () {});
-    if (jackpotCount >= 2) {
-      onJackpotPopup(jackpotCount: jackpotCount);
-    } else {
-      onWinPopup(
-        scene: EnumGetScene.spin,
-        tmpAddMoney: tmpAddMoney,
-        onBtn: (money) {
-          _rollerEnd(tmpAddMoney: money);
-        },
-        onBtn2: (money) {
-          _rollerEnd(tmpAddMoney: money);
-        },
-        onNotBtn: (money) {
-          _rollerEnd(tmpAddMoney: money);
-        },
-      );
-    }
-
-    ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
-    ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
-    ssLogggg(
-      "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
-    );
   }
 
-  onJackpotPopup({required int jackpotCount}) {
+  onJackpotPopup({
+    required int jackpotCount,
+    required bool hasFreeSpin,
+    required ValueChanged onBtn,
+    required ValueChanged onBtn2,
+    required ValueChanged? onNotBtn,
+  }) {
     if (jackpotCount == 2) {
       curSpinMoney.value = jacktopMini;
       OverlayJackpotMini().show(
         scene: EnumGetScene.spin,
         money: jacktopMini,
-        onBtn: (value) {
-          _rollerEnd(tmpAddMoney: value);
+        onBtn: (money) {
+          onBtn(money);
         },
-        onBtn2: (value) {
-          _rollerEnd(tmpAddMoney: value);
+        onBtn2: (money) {
+          onBtn2(money);
         },
       );
     } else if (jackpotCount == 3 || jackpotCount == 4) {
@@ -1067,23 +1119,23 @@ class MainController extends GetxController {
       OverlayJackpotMajor().show(
         scene: EnumGetScene.spin,
         money: jacktopMajor,
-        onBtn: (value) {
-          _rollerEnd(tmpAddMoney: value);
+        onBtn: (money) {
+          onBtn(money);
         },
-        onBtn2: (value) {
-          _rollerEnd(tmpAddMoney: value);
+        onBtn2: (money) {
+          onBtn2(money);
         },
       );
-    } else if (jackpotCount == 5) {
+    } else if (jackpotCount >= 5) {
       curSpinMoney.value = jacktopGrand;
       OverlayJackpotGrand().show(
         scene: EnumGetScene.spin,
         money: jacktopGrand,
-        onBtn: (value) {
-          _rollerEnd(tmpAddMoney: value);
+        onBtn: (money) {
+          onBtn(money);
         },
-        onBtn2: (value) {
-          _rollerEnd(tmpAddMoney: value);
+        onBtn2: (money) {
+          onBtn2(money);
         },
       );
     }
@@ -1096,6 +1148,7 @@ class MainController extends GetxController {
     required ValueChanged onBtn2,
     required ValueChanged? onNotBtn,
     required EnumGetScene scene,
+    required bool hasFreeSpin,
   }) {
     curSpinMoney.value = tmpAddMoney;
     double tmpBeisu = curBeisu.value;
@@ -1140,7 +1193,7 @@ class MainController extends GetxController {
     }
   }
 
-  _rollerEnd({required double tmpAddMoney}) {
+  _rollerEnd({required double tmpAddMoney,required VoidCallback onEnd,}) {
     onAddMoney(
       tmpAddMoney,
       onEnd: () async {
@@ -1183,23 +1236,25 @@ class MainController extends GetxController {
           } else if (slotNumSCATTERLength == 5) {
             count = 8;
           }
+          // count = 1;
           OverlayFreeSpins().show(
             count: count,
             onClose: (value) async {
               curShowFreeSpin.value = true;
               SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
-
+              onEnd.call();
               onFreeSpin();
             },
           );
           return;
         } else {
-          hasScrollerEnd.value = false;
+          hasScrollerStart.value = false;
         }
+        bool hasFreeSpin = curShowFreeSpin.value;
         ssLogggg("==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=");
         bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
-        if (hasSaveCardddd) {
+        if (hasSaveCardddd && !hasFreeSpin) {
           bool hasLiucheng1 = WithdddController.to.curLiucheng1SpinsOver.value;
           bool hasLiucheng2 =
               WithdddController.to.curLiucheng2PaimingOver.value;
@@ -1221,22 +1276,24 @@ class MainController extends GetxController {
             WithdddController.to.onShowPayBank();
           }
         }
+        await Future.delayed(Duration(milliseconds: 100));
+        onEnd.call();
       },
       showMoneyAnimated: true,
     );
   }
 
   _changeChild(
-    GlobalKey<RollerListState> key,
-    int index, {
-    required bool showScatterAnimated,
-  }) {
+      GlobalKey<RollerListState> key,
+      int index, {
+        required bool showScatterAnimated,
+      }) {
     List<Widget> slotsWidget1 =
         slotMachineKey.currentState?.getSlots(
           index,
           showScatterAnimated: showScatterAnimated,
         ) ??
-        [];
+            [];
     // ssLogggg("==onStartRoller==${slotMachineKey.currentState} slotsWidget1:${slotsWidget1.length}=",);
     key.currentState?.changeChildItem(slotsWidget1);
   }
@@ -1268,21 +1325,21 @@ class MainController extends GetxController {
 
     key.currentState
         ?.smoothScrollToIndex(
-          random,
-          duration: Duration(milliseconds: time),
-          // curve: Curves.easeInOutBack,
-          curve: Cubic(0.68, -0.15, 0.265, 1.1),
-        )
+      random,
+      duration: Duration(milliseconds: time),
+      // curve: Curves.easeInOutBack,
+      curve: Cubic(0.68, -0.15, 0.265, 1.1),
+    )
         .then((v) {
-          cunt = cunt + 1;
+      cunt = cunt + 1;
 
-          // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
-          if (cunt >= 5) {
-            // btnSpinLastIndex.play();
-            result?.complete(5);
-            result = null;
-          }
-        });
+      // ssLogggg("=key:$key=smoothScrollToIndex end==cunt:$cunt==time:$time");
+      if (cunt >= 5) {
+        // btnSpinLastIndex.play();
+        result?.complete(5);
+        result = null;
+      }
+    });
     await Future.delayed(Duration(milliseconds: 30));
   }
 
@@ -1601,11 +1658,11 @@ class MainController extends GetxController {
   }
 
   onAddMoney(
-    double money, {
-    VoidCallback? onEnd,
-    required bool showMoneyAnimated,
-    bool showTargetWidget = false,
-  }) {
+      double money, {
+        VoidCallback? onEnd,
+        required bool showMoneyAnimated,
+        bool showTargetWidget = false,
+      }) {
     if (money == 0) {
       onEnd?.call();
       return;
@@ -1751,7 +1808,7 @@ class MainController extends GetxController {
     _curFreeSpinCount = -1;
     _curFreeSpinMoney = 0;
     curFreeSpinCount.value = 0;
-    hasScrollerEnd.value = false;
+    hasScrollerStart.value = false;
     curShowFreeSpin.value = false;
 
     SSEventReporttttt.home_page(source_from: "NORMAL");
@@ -1777,6 +1834,9 @@ class MainController extends GetxController {
 
       return;
     }
+
+    onStartRoller(hasFreeSpin: true);
+
     keyFreeSpin.currentState?.onStar(
       onEnd: (EnumGiftRewardModel tmpEnumGiftRewardModel) {
         if (tmpEnumGiftRewardModel == EnumGiftRewardModel.cash) {
@@ -1807,6 +1867,7 @@ class MainController extends GetxController {
                 onNotBtn: (money) {
                   _onNextFreeSpin(money: money);
                 },
+                hasFreeSpin: false,
               );
 
               // overlayMainTopMoney.showWithSize(

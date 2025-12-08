@@ -196,7 +196,19 @@ class BonusGameController extends GetxController {
       //   },
       // );
 
-      MainController.to.onJackpotPopup(jackpotCount: jackpotCount);
+      MainController.to.onJackpotPopup(
+        jackpotCount: jackpotCount,
+        onBtn: (money) {
+          MainController.to.onAddMoney(money, showMoneyAnimated: true);
+        },
+        onBtn2: (money) {
+          MainController.to.onAddMoney(money, showMoneyAnimated: true);
+        },
+        onNotBtn: (money) {
+          MainController.to.onAddMoney(money, showMoneyAnimated: true);
+        },
+        hasFreeSpin: false,
+      );
     }
 
     ssLogggg("=====result:$res");

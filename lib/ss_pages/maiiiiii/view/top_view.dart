@@ -176,7 +176,7 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
     // OverlayBonusGame().show();
 
     // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
@@ -189,7 +189,7 @@ class TopView extends StatelessWidget {
     //   },
     // );
 
-    // MainController.to.onAddMoney(990, showMoneyAnimated: true);
+    MainController.to.onAddMoney(990, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
 

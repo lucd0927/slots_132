@@ -381,7 +381,7 @@ class BottomView extends StatelessWidget {
 
   Widget spinWidget() {
     bool showFree = MainController.to.curShowFreeSpin.value;
-    bool showGrey = MainController.to.hasScrollerEnd.value && !showFree;
+    bool showGrey = MainController.to.hasScrollerStart.value && !showFree;
     Widget child = Container(
       width: 125.h,
       height: 60.h,
