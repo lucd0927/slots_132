@@ -119,7 +119,7 @@ class _RankWidgetState extends State<RankWidget> {
                             text: "We've successfully sent your",
                             children: [
                               TextSpan(
-                                text: "\$50.00",
+                                text: "\$1000",
                                 style: TextStyle(color: Color(0xff20B029)),
                               ),
                               TextSpan(text: "to your bank."),

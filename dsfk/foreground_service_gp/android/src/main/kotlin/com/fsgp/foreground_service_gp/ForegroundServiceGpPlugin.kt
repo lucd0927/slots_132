@@ -3,34 +3,41 @@ package com.fsgp.foreground_service_gp
 import android.content.Intent
 import android.widget.RemoteViews
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-
-
+import io.flutter.plugin.common.PluginRegistry
 
 
 /** ForegroundServiceGpPlugin */
 class ForegroundServiceGpPlugin :
     FlutterPlugin,
-    MethodCallHandler {
+    MethodCallHandler, PluginRegistry.NewIntentListener, ActivityAware {
     // The MethodChannel that will the communication between Flutter and native Android
     //
     // This local reference serves to register the plugin with the Flutter Engine and unregister it
     // when the Flutter Engine is detached from the Activity
-//    private lateinit var channel: MethodChannel
+    private lateinit var channel: MethodChannel
     private lateinit var appContext: android.content.Context
+    private  val TGA = "ForegroundServiceGpPlugin"
 
+    private  var intentData:String? =null
 
     companion object {
         // 静态 Channel，可以在 Service 里调用
-        var channel: MethodChannel? = null
+//        var channel: MethodChannel? = null
+        // 让 Service 能访问
+        var channelRef: MethodChannel? = null
     }
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "foreground_service_gp")
-        channel?.setMethodCallHandler(this)
+        channel.setMethodCallHandler(this)
+
+        channelRef = channel   // 关键
         appContext = flutterPluginBinding.applicationContext
     }
 
@@ -57,7 +64,7 @@ class ForegroundServiceGpPlugin :
                     } else {
                         appContext.startService(intent)
                     }
-
+                    onInvo()
                     result.success(true)
                 }
 
@@ -72,7 +79,48 @@ class ForegroundServiceGpPlugin :
         }
     }
 
+
+    private fun onInvo(){
+        println("$TGA onNotificationClick intentData:$intentData")
+        if(intentData != null){
+            intentData = null
+            channelRef
+                ?.invokeMethod("onNotificationClick", true)
+        }
+
+    }
+
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        channel?.setMethodCallHandler(null)
+        channel.setMethodCallHandler(null)
+        channelRef = null
+    }
+
+    override fun onNewIntent(intent: Intent): Boolean {
+        println("$TGA onNewIntent intent:$intent")
+        onInvo()
+        return true
+    }
+
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+        val activity = binding.getActivity()
+        val activityBinding = binding
+        binding.addOnNewIntentListener(this)
+        val initIntent = activity.getIntent()
+        val a = initIntent.getStringExtra("fix_tx")
+        intentData = a
+
+    }
+
+    override fun onDetachedFromActivityForConfigChanges() {
+    }
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+//        val activity = binding.getActivity()
+//        val initIntent = activity.getIntent()
+//        onInvo()
+//        println("$TGA onReattachedToActivityForConfigChanges initIntent：$initIntent")
+    }
+
+    override fun onDetachedFromActivity() {
     }
 }

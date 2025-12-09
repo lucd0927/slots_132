@@ -1,6 +1,7 @@
 package com.fsgp.foreground_service_gp
 
 
+import android.annotation.SuppressLint
 import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Intent
@@ -23,11 +24,28 @@ class AppForegroundService : Service() {
     // BroadcastReceiver
     private val clickReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
+            println("clickReceiver action:${intent?.action}")
             if (intent?.action == ACTION_CLICK) {
-                // 回调 Flutter
-                ForegroundServiceGpPlugin.channel?.invokeMethod("onNotificationClick", null)
+                launchAppPage("/notify")
+                // ✅ 回调 Flutter
+                ForegroundServiceGpPlugin.channelRef
+                    ?.invokeMethod("onNotificationClick", null)
             }
         }
+    }
+
+    private fun launchAppPage(route: String) {
+        println("clickReceiver launchAppPage:${route}")
+        val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
+        launchIntent?.apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP
+
+            // ✅ 传递路由给 Flutter
+            putExtra("flutter_route", route)
+        }
+        startActivity(launchIntent)
     }
 
 
@@ -36,9 +54,23 @@ class AppForegroundService : Service() {
         createChannel()
 
         // 注册 BroadcastReceiver
-        val filter = IntentFilter(ACTION_CLICK)
-        registerReceiver(clickReceiver, filter)
+//        registerBroadcastReceiver()
     }
+
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
+    private fun registerBroadcastReceiver() {
+        val filter = IntentFilter(ACTION_CLICK)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(clickReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(clickReceiver, filter)
+        }
+    }
+
+    private fun unregisterBroadcastReceiver() {
+//        unregisterReceiver(clickReceiver)
+    }
+
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
@@ -49,20 +81,25 @@ class AppForegroundService : Service() {
         val remoteViews = RemoteViews(packageName, R.layout.noti_c)
         remoteViews.setTextViewText(R.id.title, title)
         remoteViews.setTextViewText(R.id.content, content)
-        val clickIntent = Intent(ACTION_CLICK)
-        val pendingIntent = PendingIntent.getBroadcast(
+        val clickIntent = applicationContext.packageManager.getLaunchIntentForPackage(packageName)
+        clickIntent?.putExtra("fix_tx","android")
+        val pendingIntent = PendingIntent.getActivity(
             this,
             0,
             clickIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        remoteViews.setOnClickPendingIntent(R.id.lltop,pendingIntent)
+
+
+
+//        remoteViews.setOnClickPendingIntent(R.id.lltop,pendingIntent)
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(content)
             .setCustomContentView(remoteViews)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setSmallIcon(android.R.drawable.menu_frame)
             .setOngoing(true)
+            .setContentIntent(pendingIntent)
             .build()
 
         startForeground(NOTIFY_ID, notification)
@@ -87,6 +124,7 @@ class AppForegroundService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         // 记得注销
-        unregisterReceiver(clickReceiver)
+//        unregisterReceiver(clickReceiver)
+        unregisterBroadcastReceiver()
     }
 }

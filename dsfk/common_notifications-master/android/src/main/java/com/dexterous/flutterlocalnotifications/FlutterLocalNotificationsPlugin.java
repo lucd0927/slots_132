@@ -426,6 +426,7 @@ public class FlutterLocalNotificationsPlugin
     setStyle(context, notificationDetails, builder, new TaskContinueUtils() {
       @Override
       public void next() {
+
         Notification notification = builder.build();
         if (notificationDetails.additionalFlags != null
             && notificationDetails.additionalFlags.length > 0) {
@@ -1309,17 +1310,38 @@ public class FlutterLocalNotificationsPlugin
     return true;
   }
 
+  public static int generateNotifyId() {
+    return (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
+  }
+
+
+//  SharedPreferences prefs = context.getSharedPreferences("notify_ids", Context.MODE_PRIVATE);
+
+  public static int getUniqueId(Context context) {
+    int id = (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
+    SharedPreferences prefs = context.getSharedPreferences("notify_ids", Context.MODE_PRIVATE);
+
+    while (prefs.getBoolean(String.valueOf(id), false)) {
+      id = (id + 1) % Integer.MAX_VALUE;
+    }
+
+    prefs.edit().putBoolean(String.valueOf(id), true).apply();
+    return id;
+  }
+
   public static void showNotification(Context context, NotificationDetails notificationDetails) {
     // noinspection Convert2Lambda
     createNotification(context, notificationDetails, new NotificationBuildListener() {
       @Override
       public void complete(Notification notification) {
+//        int id = notificationDetails.id;
+        int id = generateNotifyId();
         NotificationManagerCompat notificationManagerCompat = getNotificationManager(context);
         if (notificationDetails.tag != null) {
           notificationManagerCompat.notify(
-              notificationDetails.tag, notificationDetails.id, notification);
+              notificationDetails.tag, id, notification);
         } else {
-          notificationManagerCompat.notify(notificationDetails.id, notification);
+          notificationManagerCompat.notify(id, notification);
         }
       }
     });

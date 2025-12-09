@@ -24,7 +24,21 @@ class MethodChannelForegroundServiceGp extends ForegroundServiceGpPlatform {
       'title': title,
       'content': content,
     });
-    print("=====result:$result=");
+    print("=====MethodChannelForegroundServiceGp result:$result=");
     return result == true;
   }
+
+
+   void initListener(VoidCallback onClick) {
+     methodChannel.setMethodCallHandler((call) async {
+      if (call.method == 'onNotificationClick') {
+        print('=========通知被点击了');
+        onClick.call();
+        // 你可以在这里：
+        // Navigator.push(...)
+        // 或刷新 UI
+      }
+    });
+  }
+
 }

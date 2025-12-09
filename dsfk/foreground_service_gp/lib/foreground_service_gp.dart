@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'foreground_service_gp_platform_interface.dart';
 
 class ForegroundServiceGp {
@@ -12,5 +14,11 @@ class ForegroundServiceGp {
     String content = 'App is running in background',
   }){
     return ForegroundServiceGpPlatform.instance.start(title: title,content: content);
+  }
+
+  initListener(VoidCallback onClick){
+    ForegroundServiceGpPlatform.instance.initListener((){
+      onClick.call();
+    });
   }
 }

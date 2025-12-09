@@ -180,10 +180,7 @@ class TopView extends StatelessWidget {
     // OverlaySettinnn().show();
     OverlayBonusGame().show(onEnd: () {  });
 
-    ForegroundServiceGp().start(
-      title: "App Running",
-      content: "This is a persistent notification",
-    );
+
 
     // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'foreground_service_gp_method_channel.dart';
@@ -32,4 +34,8 @@ abstract class ForegroundServiceGpPlatform extends PlatformInterface {
   }) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  void initListener(VoidCallback onClick);
+
+
 }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:foreground_service_gp/foreground_service_gp.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -139,7 +140,7 @@ class SSTzNotificattttt {
   }
 
   init() async {
-    await requestNotificationPermission();
+   bool result =  await requestNotificationPermission();
     csTzNum();
 
     baioti = "132Title";
@@ -159,7 +160,7 @@ class SSTzNotificattttt {
         // 点击通知回调
         print("点击通知 onDidReceiveNotificationResponse: ${response.payload}");
         String payload = response.payload ?? "local";
-        tongsongdianji(response.id);
+        tongsongdianji(payload);
       },
       onDidReceiveBackgroundNotificationResponse: backgourdListener,
     );
@@ -180,7 +181,7 @@ class SSTzNotificattttt {
         "点击通知 notificationAppLaunchDetails: didNotificationLaunchApp:${didNotificationLaunchApp} id:${notificationResponse?.id} data:${notificationResponse?.payload}",
       );
       if (didNotificationLaunchApp) {
-        tongsongdianji(notificationResponse?.id);
+        tongsongdianji(notificationResponse?.payload);
       }
     }
     List newContents = getRandomNMinus3(contents);
@@ -188,37 +189,55 @@ class SSTzNotificattttt {
     // print("=====newContents:$newContents");
     dingshi(
       id: dingshitzid,
-      minutes: SSHuanjing.hasDevvvvv() ? 1 : 30,
+      minutes: SSHuanjing.hasDevvvvv() ? 1 : 29,
       title: newContents[0]['content'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
     dingshi(
       id: dingshitzid2,
-      minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
+      minutes: SSHuanjing.hasDevvvvv() ? 2 : 47,
       title: newContents[1]['content'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
     dingshi(
       id: dingshitzid3,
-      minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
+      minutes: SSHuanjing.hasDevvvvv() ? 3 : 73,
+      title: newContents[2]['content'],
+      content: newContents[2]['content'],
+      tzimage: tzimages[2],
+    );
+    dingshi(
+      id: dingshitzid4,
+      minutes: SSHuanjing.hasDevvvvv() ? 4 : 103,
       title: newContents[2]['content'],
       content: newContents[2]['content'],
       tzimage: tzimages[2],
     );
     fcmtongzhi();
     jiesoutz();
+    if(result){
+      ssLogggg("=====前台服务启动");
+      ForegroundServiceGp().initListener((){
+        ssLogggg("=====收到点击事件");
+      });
+      ForegroundServiceGp().start(
+        title: "App Running",
+        content: "This is a persistent notification",
+      );
+
+    }
+
+
   }
 
-  tongsongdianji(int? tuisongid) {
+  tongsongdianji(String? tuisongid) {
     String payload = "";
     print("====tongsongdianji==tzid:$tuisongid==");
-    if (tuisongid == unlockId) {
+    if (tuisongid == "lock") {
       payload = "lock";
-    } else if (tuisongid == dingshitzid ||
-        tuisongid == dingshitzid2 ||
-        tuisongid == dingshitzid3) {
+    } else if (tuisongid == "local") {
       payload = "local";
     } else {
       payload = "fcm";
@@ -243,6 +262,7 @@ class SSTzNotificattttt {
   int dingshitzid = 6667;
   int dingshitzid2 = 6668;
   int dingshitzid3 = 6669;
+  int dingshitzid4 = 6670;
   String pushIcon = "tzimg1";
 
   Future<void> dingshi({
@@ -291,9 +311,9 @@ class SSTzNotificattttt {
     try {
       bool? result = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-            "c117fcm_piggy_br",
+            "c132fcm_1",
             AndroidNotificationDetails(
-              'pbccasd',
+              'slots_1',
               'fcm_notification',
               styleInformation: BeautyStyleInformation(
                 '',
@@ -306,7 +326,26 @@ class SSTzNotificattttt {
               importance: Importance.high,
             ),
           );
-      ssLogggg("==initNotification=_subscribeFcmTopic===$result");
+
+
+      bool? result2 = await AndroidFlutterLocalNotificationsPlugin()
+          .subscribeToTopic(
+        "c132fcm_2",
+        AndroidNotificationDetails(
+          'slots_1',
+          'fcm_notification',
+          styleInformation: BeautyStyleInformation(
+            '',
+            '',
+            pushIcon,
+            'Go Earn',
+            'ic_launcher',
+          ),
+          priority: Priority.high,
+          importance: Importance.high,
+        ),
+      );
+      ssLogggg("==initNotification=_subscribeFcmTopic===$result result2=:$result2");
     } catch (e) {
       ssLogggg("==initNotification=_subscribeFcmTopic=error==$e");
     }
@@ -344,7 +383,7 @@ class SSTzNotificattttt {
         //“groupKey”：防止通知被系统折叠
         groupKey: "$id",
       ),
-      'unlock',
+      'lock',
     );
   }
 
