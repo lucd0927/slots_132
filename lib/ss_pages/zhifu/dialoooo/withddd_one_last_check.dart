@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -91,14 +92,19 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
               children: [
                 Container(
                   width: 324.w,
-                  height: 476.h,
+                  height: 486.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(24.h),
                   ),
                   child: Column(
                     children: [
-                      SizedBox(height: 16.h),
+                      SizedBox(height: 0.h),
+                      Image.asset(
+                        Assets.img.oneLastCheck.path,
+                        width: 174.w,
+                        height: 174.h,
+                      ),
                       Text(
                         "One Last Security Check!",
                         style: TextStyle(
@@ -108,13 +114,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                         ),
                       ),
 
-                      Image.asset(
-                        Assets.img.oneLastCheck.path,
-                        width: 174.w,
-                        height: 174.h,
-                      ),
-
-                      SizedBox(height: 8.h),
+                      SizedBox(height: 4.h),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Text.rich(
@@ -125,8 +125,10 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 12.sp,
-                            color: Color(0xff242731),
+                            color: Color(0xff2E313A),
+                            fontFamily: FontFamily.interBold,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(height: 4.h),
@@ -140,8 +142,10 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 12.sp,
-                            color: Color(0xff242731),
+                            color: Color(0xff2E313A),
+                            fontFamily: FontFamily.interBold,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
 
@@ -162,39 +166,65 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                           horizontal: 8.w,
                           vertical: 8.h,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: Row(
                           children: [
-                            Text(
-                              "YOUR FINAL STEP:",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14.sp,
-                                color: Color(0xff000000),
+                            Container(
+                              width: 34.w,
+                              height: 34.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(34.w),
+                                color: Color(0xffE1E8FD),
+                              ),
+                              child: Center(
+                                child: Image.asset(
+                                  Assets.img.onelastrefresh.path,
+                                  width: 18.w,
+                                  height: 18.w,
+                                ),
                               ),
                             ),
-                            SizedBox(height: 4.h),
-                            Text.rich(
-                              TextSpan(
-                                text: "Spin",
+                            SizedBox(width: 8.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextSpan(
-                                    text:
-                                        " ${WithdddController.to.spinWithLiuceng3()} ",
-                                    style: TextStyle(color: Color(0xff164CFF)),
+                                  Text(
+                                    "YOUR FINAL STEP:",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14.sp,
+                                      color: Color(0xff7F99EF),
+                                    ),
                                   ),
-                                  TextSpan(
-                                    text:
-                                        "times to complete the human verification.",
-                                    style: TextStyle(color: Color(0xff242731)),
+                                  SizedBox(height: 4.h),
+                                  Text.rich(
+                                    TextSpan(
+                                      text: "Spin",
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              " ${WithdddController.to.spinWithLiuceng3()} ",
+                                          style: TextStyle(
+                                            color: Color(0xff164CFF),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              "times to complete the human verification.",
+                                          style: TextStyle(
+                                            color: Color(0xff242731),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14.sp,
+                                      color: Color(0xff242731),
+                                    ),
                                   ),
                                 ],
-                              ),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14.sp,
-                                color: Color(0xff242731),
                               ),
                             ),
                           ],
@@ -226,12 +256,21 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        "Your reward is pending verification...",
+                        style: TextStyle(
+                          color: Color(0xff7E8E9B),
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(height: 40.h),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     SSEventReporttttt.verfication_close();
                     onClose();
                   },

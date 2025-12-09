@@ -30,7 +30,6 @@ class OverlayOneLastCheckJindu2 {
       builder: (context) {
         return OneLastCheckJindu2Widget(
           onClose: () {
-
             close();
           },
         );
@@ -94,21 +93,43 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
               children: [
                 Container(
                   width: 324.w,
-                  height: 488.h,
+                  height: 470.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(24.h),
                   ),
                   child: Column(
                     children: [
-                      SizedBox(height: 16.h),
+                      SizedBox(height: 0.h),
 
                       Image.asset(
                         Assets.img.txOnelastJindubank.path,
                         width: 194.w,
                         height: 194.h,
                       ),
-
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 4.h,
+                          horizontal: 12.w,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xffE7E7E7),
+                          borderRadius: BorderRadius.circular(50.w),
+                          border: Border.all(
+                            color: Color(0xffDCDCDC),
+                            width: 1.w,
+                          ),
+                        ),
+                        child: Text(
+                          "Limited Invitation",
+                          style: TextStyle(
+                            color: Color(0xff818181),
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8.h),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Text.rich(
@@ -117,7 +138,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                             children: [
                               TextSpan(
                                 text: " \$1,000/Day ",
-                                style: TextStyle(color: Color(0xff20B029)),
+                                style: TextStyle(color: Color(0xffFF8C00)),
                               ),
                               TextSpan(
                                 text: "Guaranteed",
@@ -128,13 +149,13 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 24.sp,
+                            height: 1,
                             color: Color(0xff2E313A),
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(height: 8.h),
-
 
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -145,9 +166,10 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 14.sp,
-                            color: Color(0xff2E313A),
+                            fontSize: 12.sp,
+                            color: Color(0xff6D6D6D),
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
 
@@ -179,23 +201,30 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10.h,),
+                      SizedBox(height: 10.h),
                       GestureDetector(
                         onTap: onClose,
-                        child: Text(
-                          "No thanks, I prefer earning less",
-                          style: TextStyle(
-                            color: Color(0xff7A7A7A),
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w800,
-                          ),
+                        child: Column(
+                          children: [
+                            Text(
+                              "No thanks, I prefer earning less",
+                              style: TextStyle(
+                                color: Color(0xff7A7A7A),
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.w800,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 40.h),
-
+                GestureDetector(
+                    onTap: onClose,
+                    child: Image.asset(Assets.img.closePopup.path,width: 30.h,height: 30.h,))
               ],
             ),
           ),
