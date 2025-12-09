@@ -303,7 +303,7 @@ class SSTzNotificattttt {
       importance: Importance.high,
       //“groupKey”：防止通知被系统折叠
       groupKey: "$id",
-      ongoing: true,
+      // ongoing: true,
     );
     await AndroidFlutterLocalNotificationsPlugin().periodicallyShowWithDuration(
       id,

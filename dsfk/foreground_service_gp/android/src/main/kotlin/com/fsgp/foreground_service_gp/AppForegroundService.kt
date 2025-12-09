@@ -105,9 +105,11 @@ class AppForegroundService : Service() {
 
 //        remoteViews.setOnClickPendingIntent(R.id.lltop,pendingIntent)
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle(title)
-            .setContentText(content)
+            .setCategory(NotificationCompat.CATEGORY_SERVICE)
             .setCustomContentView(remoteViews)
+            .setCustomBigContentView(remoteViews)
+            .setCustomHeadsUpContentView(remoteViews)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setSmallIcon(applicationContext.resources.getIdentifier("ic_launcher", "mipmap", packageName))
             .setOngoing(true)
             .setContentIntent(pendingIntent)

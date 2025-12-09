@@ -267,7 +267,7 @@ class MainController extends GetxController {
 
     int tmpSpinCount = tmpSpinCount1 % 15;
     // tmpSpinCount = 12;
-    tmpSpinCount = 5;
+    // tmpSpinCount = 5;
     if (tmpSpinCount == 5) {
       if (hasFreeSpin) {
         tmpSpinCount = 3;
