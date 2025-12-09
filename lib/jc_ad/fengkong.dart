@@ -64,16 +64,16 @@ class SSWindsCccc {
 
   static ip() async {
     Response? data = await SSHttpDio().post(
-      "https://ip-prod.piggybankboostreward.com/api/cape",
-      data: {"androidId": "alion"},
+      "https://ip-prod.clausslotswealth.com/api/cshark",
+      data: {"androidId": "acat"},
     );
 
     var responseData = data?.data??"";
-    var dess = decrypt(responseData, 16);
+    var dess = decrypt(responseData, 29);
     var jsonData = jsonDecode(dess);
     ssLogggg("==ip===$dess==");
     if (jsonData is Map) {
-      String key = "bduck";
+      String key = "bmouse";
       var hasBanned = jsonData[key] ?? false;
       return hasBanned;
     }
@@ -100,7 +100,7 @@ class SSWindsCccc {
         data: {
           "protocol": 2,
           "did": "$did",
-          "pkg": "com.piggybank.boostreward.pro",
+          "pkg": "com.claus.slots.wealth",
         },
       );
 

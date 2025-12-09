@@ -115,7 +115,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         }),
                         SizedBox(height: 10.h),
                         _btnWidgetItem(txt: "Privacy Policy", onTap: () {
-                          Uri uri = Uri.parse("uri");
+                          Uri uri = Uri.parse("https://clausslotswealth.com/privacy.html");
                           SSEventReporttttt.setting_page_privacy();
                           _laUuuu(uri);
                         }),
