@@ -74,15 +74,27 @@ class AppForegroundService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        val title = intent?.getStringExtra("title") ?: "Service Running"
-        val content = intent?.getStringExtra("content") ?: "App is running in background"
+        val title = intent?.getStringExtra("title") ?: "Lucky Claus Slots"
+        val content = intent?.getStringExtra("content") ?: "My Cash = $1000"
+        val imgNameBg = intent?.getStringExtra("imgNameBg") ?: ""
+        val imgNameSmall = intent?.getStringExtra("imgNameSmall") ?: ""
 
         println("===foreground=onStartCommand===title:${title}==content:$content=")
         val remoteViews = RemoteViews(packageName, R.layout.noti_c)
         remoteViews.setTextViewText(R.id.title, title)
         remoteViews.setTextViewText(R.id.content, content)
+        remoteViews.setImageViewResource(
+            R.id.noti_bg,
+            applicationContext.resources.getIdentifier(imgNameBg, "drawable", packageName)
+        )
+        remoteViews.setImageViewResource(
+            R.id.left_img,
+            applicationContext.resources.getIdentifier(imgNameSmall, "drawable", packageName)
+        )
+
+
         val clickIntent = applicationContext.packageManager.getLaunchIntentForPackage(packageName)
-        clickIntent?.putExtra("fix_tx","android")
+        clickIntent?.putExtra("fix_tx", "android")
         val pendingIntent = PendingIntent.getActivity(
             this,
             0,
@@ -91,13 +103,12 @@ class AppForegroundService : Service() {
         )
 
 
-
 //        remoteViews.setOnClickPendingIntent(R.id.lltop,pendingIntent)
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(content)
             .setCustomContentView(remoteViews)
-            .setSmallIcon(android.R.drawable.menu_frame)
+            .setSmallIcon(applicationContext.resources.getIdentifier("ic_launcher", "mipmap", packageName))
             .setOngoing(true)
             .setContentIntent(pendingIntent)
             .build()

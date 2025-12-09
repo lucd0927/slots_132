@@ -19,10 +19,14 @@ class MethodChannelForegroundServiceGp extends ForegroundServiceGpPlatform {
   Future<bool> start({
     String title = 'Running',
     String content = 'App is running in background',
+    String imgNameSmall = 'tzps',
+    String imgNameBg = 'tzp',
   }) async {
     final result = await methodChannel.invokeMethod('start', {
       'title': title,
       'content': content,
+      'imgNameSmall': imgNameSmall,
+      'imgNameBg': imgNameBg,
     });
     print("=====MethodChannelForegroundServiceGp result:$result=");
     return result == true;

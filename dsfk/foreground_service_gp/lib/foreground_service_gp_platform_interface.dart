@@ -31,6 +31,8 @@ abstract class ForegroundServiceGpPlatform extends PlatformInterface {
   Future<bool> start({
     String title = 'Running',
     String content = 'App is running in background',
+    String imgNameSmall = 'tzps',
+    String imgNameBg = 'tzp',
   }) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }

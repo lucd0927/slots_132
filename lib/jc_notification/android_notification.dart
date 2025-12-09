@@ -59,7 +59,7 @@ class SSTzNotificattttt {
       ssLogggg("==initNotificationCount==localcount:$localN==");
       if (localN > 0) {
         for (int i = 0; i < localN; i++) {
-          SSEventReporttttt.all_noti_t(source_from: "local");
+          SSEventReporttttt.all_noti_t(source_from: "time");
         }
       }
 
@@ -73,7 +73,7 @@ class SSTzNotificattttt {
       }
 
       int lockNnnn = await AndroidFlutterLocalNotificationsPlugin()
-          .extractMessageReceivedNum("unlock");
+          .extractMessageReceivedNum("lock");
       ssLogggg("==initNotificationCount==unlockcount:$lockNnnn==");
       if (lockNnnn > 0) {
         for (int i = 0; i < localN; i++) {
@@ -221,11 +221,19 @@ class SSTzNotificattttt {
       ssLogggg("=====前台服务启动");
       ForegroundServiceGp().initListener((){
         ssLogggg("=====收到点击事件");
+        SSEventReporttttt.all_noti_c(source_from: "fixed");
       });
       ForegroundServiceGp().start(
-        title: "App Running",
-        content: "This is a persistent notification",
-      );
+        title: "My Cash = \$1000",
+        content: "Withdraw",
+        imgNameBg: "tzp",
+        imgNameSmall: "tzps"
+
+      ).then((result){
+        if(result == true){
+          SSEventReporttttt.all_noti_t(source_from: "fixed");
+        }
+      });
 
     }
 
@@ -238,7 +246,9 @@ class SSTzNotificattttt {
     if (tuisongid == "lock") {
       payload = "lock";
     } else if (tuisongid == "local") {
-      payload = "local";
+      payload = "time";
+    } else if (tuisongid == "fixed") {
+      payload = "fixed";
     } else {
       payload = "fcm";
     }

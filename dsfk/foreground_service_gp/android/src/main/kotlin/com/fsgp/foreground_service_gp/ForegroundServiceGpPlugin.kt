@@ -54,10 +54,14 @@ class ForegroundServiceGpPlugin :
                 "start" -> {
                     val title = call.argument<String>("title") ?: "Running"
                     val content = call.argument<String>("content") ?: "App is running"
+                    val imgNameBg = call.argument<String>("imgNameBg") ?: ""
+                    val imgNameSmall = call.argument<String>("imgNameSmall") ?: ""
 
                     val intent = Intent(appContext, AppForegroundService::class.java)
                     intent.putExtra("title", title)
                     intent.putExtra("content", content)
+                    intent.putExtra("imgNameBg", imgNameBg)
+                    intent.putExtra("imgNameSmall", imgNameSmall)
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                         appContext.startForegroundService(intent)
