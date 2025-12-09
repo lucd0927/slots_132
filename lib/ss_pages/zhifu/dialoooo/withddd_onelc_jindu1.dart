@@ -26,7 +26,7 @@ class OverlayWithddOnelastcheckJindu1 {
         return WithddOnelastcheckJindu1Widget(
           onClose: () {
             close();
-            // OverlayOneLastCheckJindu2().show();
+            OverlayOneLastCheckJindu2().show();
           },
         );
       },
@@ -57,6 +57,7 @@ class _WithddOnelastcheckJindu1WidgetState
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 250);
   Timer? _timer;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -67,7 +68,6 @@ class _WithddOnelastcheckJindu1WidgetState
         showAnimated = true;
       });
       _timer = Timer(Duration(milliseconds: 5000), () {
-
         onClose();
       });
     });
@@ -91,7 +91,7 @@ class _WithddOnelastcheckJindu1WidgetState
               children: [
                 Container(
                   width: 324.w,
-                  height: 434.h,
+                  height: 480.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(12.h),
@@ -100,80 +100,217 @@ class _WithddOnelastcheckJindu1WidgetState
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(height: 12.h),
+                      Image.asset(
+                        Assets.img.payoutS.path,
+                        width: 83.h,
+                        height: 83.h,
+                      ),
                       Text(
-                        "Ka-Ching!",
+                        "Payout Successful!",
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 16.sp,
                           color: Color(0xff000000),
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 30.h),
-                      Image.asset(
-                        Assets.img.oneLastCheckOk.path,
-                        width: 179.h,
-                        height: 148.h,
+                      Text(
+                        "Funds successfully sent to PayPal.",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 10.sp,
+                          color: Color(0xff888888),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-
                       SizedBox(height: 20.h),
-                      jinduWidget(),
-
-                      SizedBox(height: 20.h),
-
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: Text.rich(
-                          TextSpan(
-                            text: "Your",
-                            children: [
-                              TextSpan(
-                                text: " \$1000 ",
-                                style: TextStyle(color: Color(0xff20B029)),
-                              ),
-                              TextSpan(
-                                text:
-                                    "has been sent! It should be in your account now",
-                                style: TextStyle(color: Color(0xff242731)),
-                              ),
-                            ],
+                      Container(
+                        width: 288.w,
+                        height: 116.h,
+                        decoration: BoxDecoration(
+                          color: Color(0xffF9FAFC),
+                          borderRadius: BorderRadius.circular(8.w),
+                          border: Border.all(
+                            color: Color(0xffE6E7E9),
+                            width: 1.w,
                           ),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.sp,
-                            color: Color(0xff2E313A),
-                          ),
-                          textAlign: TextAlign.center,
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 10.h),
+                            Text(
+                              "${MainController.to.minWithdddMoneyWithCountry}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 36.sp,
+                                color: Color(0xff000000),
+                              ),
+                            ),
+                            SizedBox(height: 10.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Image.asset(
+                                    WithdddController.to
+                                        .currentPaymentIconSelected(),
+                                    width: 72.w,
+                                    height: 28.w,
+                                  ),
+
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 4.w,
+                                      vertical: 4.w,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Color(0xffDCFCE7),
+                                      border: Border.all(
+                                        color: Color(0xff97F4B7),
+                                        width: 1.w,
+                                      ),
+                                      borderRadius: BorderRadius.circular(2.w),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "PAID",
+                                          style: TextStyle(
+                                            color: Color(0xff5FCE85),
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 8.sp,
+                                          ),
+                                        ),
+                                        SizedBox(width: 2.w),
+                                        Image.asset(
+                                          Assets.img.payoutOk.path,
+                                          width: 10.w,
+                                          height: 7.w,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 2.h),
-                      Padding(
+
+                      SizedBox(height: 20.h),
+
+                      Container(
+                        width: 288.w,
+                        height: 82.h,
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: Text.rich(
-                          TextSpan(
-                            text: "You're a ",
-                            children: [
-                              TextSpan(
-                                text: " Cashout King!",
-                                style: TextStyle(color: Color(0xffEF3D2D)),
-                              ),
-                              WidgetSpan(
-                                child: Image.asset(
-                                  Assets.img.oneLastCheckKing.path,
-                                  width: 31.w,
-                                  height: 20.sp,
+                        decoration: BoxDecoration(
+                          color: Color(0xff141A26),
+                          borderRadius: BorderRadius.circular(8.w),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: 30.w,
+                                  height: 30.w,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xff3A3B36),
+                                    borderRadius: BorderRadius.circular(4.w),
+                                  ),
+                                  child: Center(
+                                    child: Image.asset(
+                                      Assets.img.payoutStar.path,
+                                      width: 22.w,
+                                      height: 22.h,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            color: Color(0xff242731),
-                          ),
-                          textAlign: TextAlign.center,
+                                SizedBox(width: 8.w),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Next Milestone",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 8.sp,
+                                        color: Color(0xffA7A7A7),
+                                      ),
+                                    ),
+                                    Text(
+                                      "Become a VIP",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12.sp,
+                                        color: Color(0xffffffff),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Spacer(),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w,
+                                    vertical: 8.h,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xff3A3B36),
+                                    borderRadius: BorderRadius.circular(4.w),
+                                  ),
+                                  child: Text(
+                                    "Earn \$1,000/Day",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 10.sp,
+                                      color: Color(0xffF0CA37),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.h,),
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Progress",
+                                      style: TextStyle(
+                                        fontSize: 8.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xffA7A7A7),
+                                      ),
+                                    ),
+
+                                    Text(
+                                      "100%",
+                                      style: TextStyle(
+                                        fontSize: 8.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xffA7A7A7),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 4.h,),
+                                Image.asset(
+                                  Assets.img.payoutJindu.path,
+                                  width: 260.w,
+                                  height: 8.h,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 20.h),
                       GestureDetector(
                         onTap: () {
                           onClose();
@@ -187,7 +324,7 @@ class _WithddOnelastcheckJindu1WidgetState
                           ),
                           child: Center(
                             child: Text(
-                              "Spin for Your Next Payout!",
+                              "Spin to Unlock VIP",
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -197,12 +334,12 @@ class _WithddOnelastcheckJindu1WidgetState
                           ),
                         ),
                       ),
-                      SizedBox(height: 5.h),
+                      SizedBox(height: 10.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "( Auto-closes in 5s )",
+                            "( Automatic redirect in 5s... )",
                             style: TextStyle(
                               color: Color(0xff7E8E9B),
                               fontSize: 14.sp,
@@ -228,83 +365,6 @@ class _WithddOnelastcheckJindu1WidgetState
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  jinduWidget() {
-    double scale = 1.3;
-    Widget bgItem = Image.asset(
-      Assets.img.txBuzuJindu2.path,
-      width: 30.w * scale,
-      height: 14.w * scale,
-    );
-    Widget bgItemS = Image.asset(
-      Assets.img.txBuzuJindu.path,
-      width: 30.w * scale,
-      height: 14.w * scale,
-    );
-
-    return Container(
-      width: 250.w,
-      height: 40.h,
-      decoration: BoxDecoration(color: Colors.teal.withValues(alpha: 0.0)),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Center(
-            child: Row(children: [bgItem, bgItem, bgItem, bgItem, bgItem]),
-          ),
-          Center(child: Row(children: [bgItemS, bgItemS, bgItemS])),
-          Positioned(
-            right: 0,
-            top: 0,
-            bottom: 0,
-            child: Center(
-              child: Container(
-                width: 63.w,
-                height: 28.w,
-                color: Colors.teal.withValues(alpha: 0),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      Assets.img.txBuzuPay.path,
-                      width: 63.w,
-                      height: 28.w,
-                      fit: BoxFit.fill,
-                    ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              WithdddController.to.currentPaymentIconSelected(),
-                              width: 46.w,
-                              height: 18.w,
-                            ),
-                            Text(
-                              MainController.to.minWithdddMoneyWithCountry,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 8.sp,
-                                color: Color(0xff000000),
-                                height: 1,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

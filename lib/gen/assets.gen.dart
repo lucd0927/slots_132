@@ -616,6 +616,13 @@ class $AssetsImgGen {
   AssetGenImage get onelastrefresh =>
       const AssetGenImage('assets/img/onelastrefresh.png');
 
+  /// File path: assets/img/payout_jindu.png
+  AssetGenImage get payoutJindu =>
+      const AssetGenImage('assets/img/payout_jindu.png');
+
+  /// File path: assets/img/payout_ok.png
+  AssetGenImage get payoutOk => const AssetGenImage('assets/img/payout_ok.png');
+
   /// File path: assets/img/payout_s.png
   AssetGenImage get payoutS => const AssetGenImage('assets/img/payout_s.png');
 
@@ -1263,6 +1270,8 @@ class $AssetsImgGen {
     oneLastCheckOk,
     oneLastCheckOver,
     onelastrefresh,
+    payoutJindu,
+    payoutOk,
     payoutS,
     payoutStar,
     phoneCardBg,
