@@ -179,18 +179,17 @@ class TopView extends StatelessWidget {
     SSEventReporttttt.home_page_menu();
     // OverlaySettinnn().show();
     // OverlayBonusGame().show(onEnd: () {  });
-    OverlayWithddOnelastcheckJindu1().show();
+    // OverlayWithddOnelastcheckJindu1().show();
 
+    OverlayWithddBuzu().show(
+      onClose: () {
+        Navigator.maybePop(Get.context!);
+      },
+    );
 
     // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
 
-    //
-    // OverlayWithddBuzu().show(
-    //   onClose: () {
-    //     Navigator.maybePop(Get.context!);
-    //   },
-    // );
 
     // MainController.to.onAddMoney(990, showMoneyAnimated: true);
 

@@ -419,6 +419,9 @@ class $AssetsImgGen {
   AssetGenImage get giftXpUnlock =>
       const AssetGenImage('assets/img/gift_xp_unlock.png');
 
+  /// File path: assets/img/gurad.png
+  AssetGenImage get gurad => const AssetGenImage('assets/img/gurad.png');
+
   /// File path: assets/img/highlights.png
   AssetGenImage get highlights =>
       const AssetGenImage('assets/img/highlights.png');
@@ -595,6 +598,9 @@ class $AssetsImgGen {
   /// File path: assets/img/money_popup.png
   AssetGenImage get moneyPopup =>
       const AssetGenImage('assets/img/money_popup.png');
+
+  /// File path: assets/img/next.png
+  AssetGenImage get next => const AssetGenImage('assets/img/next.png');
 
   /// File path: assets/img/one_last_check.png
   AssetGenImage get oneLastCheck =>
@@ -1219,6 +1225,7 @@ class $AssetsImgGen {
     giftUnlockRb,
     giftXpLock,
     giftXpUnlock,
+    gurad,
     highlights,
     highlightsCard1,
     highlightsCard2,
@@ -1265,6 +1272,7 @@ class $AssetsImgGen {
     moneyGift,
     moneyLock,
     moneyPopup,
+    next,
     oneLastCheck,
     oneLastCheckKing,
     oneLastCheckOk,

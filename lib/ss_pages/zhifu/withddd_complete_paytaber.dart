@@ -117,17 +117,17 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                     ),
                     child: Column(
                       children: [
-                        SizedBox(height: 20.h),
+                        SizedBox(height: 40.h),
                         Text(
                           "YOUR TRIAL:",
                           style: TextStyle(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff000000),
+                            color: Color(0xff686868),
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 4.h),
+                        SizedBox(height: 10.h),
                         Container(
                           width: 140.h,
                           height: 140.h,
@@ -162,11 +162,11 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                         ),
 
                         SizedBox(height: 12.h),
-                        Image.asset(
-                          Assets.img.oneLastCheckOver.path,
-                          width: 316.w,
-                          height: 127.h,
-                        ),
+                        // Image.asset(
+                        //   Assets.img.oneLastCheckOver.path,
+                        //   width: 316.w,
+                        //   height: 127.h,
+                        // ),
                         SizedBox(height: 20.h),
                         Container(
                           width: 323.w,
@@ -179,7 +179,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                                     TextSpan(
                                       text: "${MainController.to.level()}",
                                       style: TextStyle(
-                                        color: Color(0xff3325FF),
+                                        color: Color(0xff26B982),
                                       ),
                                     ),
                                   ],
@@ -209,10 +209,10 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                           width: 323.w,
                           progress: 0.5,
                           gradientColors: [
-                            Color(0xff23FFB6),
-                            Color(0xff23FFB6),
+                            Color(0xff4ABCA7),
+                            Color(0xff4ABCA7),
                           ],
-                          bgColor: Color(0xff353C55),
+                          bgColor: Color(0xffCAD0E2),
                         ),
                         SizedBox(height: 2.h),
                         Container(
@@ -229,7 +229,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(height: 40.h),
+                        SizedBox(height: 140.h),
                         GestureDetector(
                           onTap: () {
                             SSEventReporttttt.partner_yes();
