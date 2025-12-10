@@ -271,7 +271,7 @@ class _WheBounsState extends State<WheBouns> {
                       text: "Claim",
                       fontWeight: FontWeight.w700,
                       fontSize: 24.sp,
-                      fontFamily: FontFamily.interBold,
+                      fontFamily: FontFamily.ghostKidAOEPro,
                     ),
                   ],
                 ),

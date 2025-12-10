@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -169,6 +170,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               MainController.to.curShowFreeSpin.value = true;
               MainController.to.curFreeSpinCount.value = widget.freespins;
               SSEventReporttttt.free_spin_add_chance();
+              bgMusic.stop();
+              bgMusicFreeSpin.play(loopMode: LoopMode.single);
               MainController.to.onFreeSpin();
 
               return;

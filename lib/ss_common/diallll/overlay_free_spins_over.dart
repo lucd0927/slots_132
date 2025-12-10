@@ -244,7 +244,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                               text: "Claim",
                                               fontWeight: FontWeight.w700,
                                               fontSize: 24.sp,
-                                              fontFamily: FontFamily.interBold,
+                                              fontFamily: FontFamily.ghostKidAOEPro,
                                             ),
                                           ],
                                         ),

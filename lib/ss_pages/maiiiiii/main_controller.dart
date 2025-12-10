@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -1280,6 +1281,8 @@ class MainController extends GetxController {
               SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
               onEnd.call();
+              bgMusic.stop();
+              bgMusicFreeSpin.play(loopMode: LoopMode.single);
               onFreeSpin();
             },
           );
@@ -1854,6 +1857,8 @@ class MainController extends GetxController {
     curFreeSpinCount.value = 0;
     hasScrollerStart.value = false;
     curShowFreeSpin.value = false;
+    bgMusicFreeSpin.stop();
+    bgMusic.play(loopMode: LoopMode.single);
 
     SSEventReporttttt.home_page(source_from: "NORMAL");
   }

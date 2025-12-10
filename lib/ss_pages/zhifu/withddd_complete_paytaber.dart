@@ -250,7 +250,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                                   color: Color(0xffffffff),
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w800,
-                                  fontFamily: FontFamily.interBold,
+                                  fontFamily: FontFamily.ghostKidAOEPro,
                                 ),
                               ),
                             ),
