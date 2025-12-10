@@ -59,9 +59,12 @@ class _AvatarRowState extends State<AvatarRow> {
           selectIndex = randomIndex;
           winSelect = randomIndex2;
           ssLogggg("=====selectIndex:$selectIndex childContext:$childContext");
-          Future.delayed(Duration(milliseconds: 300), () {
+          Future.delayed(Duration(milliseconds: 3000), () {
             if (mounted) {
-              selectIndex = -1;
+              setState(() {
+                selectIndex = -1;
+                winSelect = -1;
+              });
             }
             initTimer();
           });

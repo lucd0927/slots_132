@@ -48,7 +48,8 @@ class CenterView extends StatelessWidget {
       builder: (context, c) {
         double maxH = c.maxHeight;
         double maxW = c.maxWidth;
-        ssLogggg("===maxH:${maxH / 1.h}=maxW:$maxW");
+        final bottom2= MediaQuery.of(context).viewPadding.bottom;
+        bool showBottomNav = bottom2 > 20;
         return Obx(() {
           return Container(
             width: double.infinity,
@@ -196,7 +197,7 @@ class CenterView extends StatelessWidget {
                 ),
 
                 Positioned.fill(
-                  top: 30.h,
+                  top:showBottomNav? 10.h:30.h,
                   child: TweenAnimationBuilder<double>(
                     duration: const Duration(milliseconds: 400),
                     tween: Tween(
@@ -511,6 +512,12 @@ class CenterView extends StatelessWidget {
       bool showTime = MainController.to.showBoxTime.value;
       String text = MainController.to.textBoxGiftTime.value;
       // ssLogggg("======txt:$text");
+      final bottom2= ScreenUtil().bottomBarHeight;
+      bool showBottomNav = bottom2 > 20;
+      double itemHeight = 64.h;
+      if(showBottomNav){
+        itemHeight = 60.h;
+      }
       return Column(
         children: [
           GestureDetector(
@@ -522,7 +529,7 @@ class CenterView extends StatelessWidget {
               offset: 8,
               child: Container(
                 width: 58.h + 50.h,
-                height: 64.h,
+                height: itemHeight,
                 // clipBehavior: Clip.none,
                 color: Colors.red.withValues(alpha: 0.0),
                 child: Stack(
@@ -572,7 +579,7 @@ class CenterView extends StatelessWidget {
             },
             child: Container(
               width: 58.h + 50.h,
-              height: 64.h,
+              height: itemHeight,
               // clipBehavior: Clip.none,
               color: Colors.red.withValues(alpha: 0.0),
               child: Stack(
@@ -637,7 +644,7 @@ class CenterView extends StatelessWidget {
               int card = PhoneCardController.to.collectCardNum.value;
               return Container(
                 width: 58.h + 50.h,
-                height: 64.h,
+                height: itemHeight,
                 // clipBehavior: Clip.none,
                 child: Stack(
                   clipBehavior: Clip.none,
