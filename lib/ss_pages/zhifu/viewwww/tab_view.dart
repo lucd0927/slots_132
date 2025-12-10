@@ -10,6 +10,7 @@ import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -73,7 +74,11 @@ class _SSTabViewState extends State<SSTabView> {
       pro = curaa / curAll;
     }
 
+    ssLogggg("========hasOver1:$hasOver1  hasOver2:$hasOver2 hasOver3:$hasOver3");
+    if(hasOver3){
+      pro = 1;
 
+    }
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -119,6 +124,11 @@ class _SSTabViewState extends State<SSTabView> {
               Spacer(),
               GestureDetector(
                 onTap: () {
+                  if(hasOver3){
+                    ssTushi(text: "Withdrawal request submitted successfully. Under review.");
+                    return;
+                  }
+
                   if(hasJieduan2){
                     WithdddController.to.onWithdraw(money: MainController.minWithdddMoney);
                     return;
@@ -134,7 +144,7 @@ class _SSTabViewState extends State<SSTabView> {
                   ),
                   child: Center(
                     child: Text(
-                      hasJieduan2?"RANK": "SPIN",
+                     hasOver3?"WAIT": hasJieduan2?"RANK": "SPIN",
                       style: TextStyle(
                         fontSize: 15.sp,
                         fontFamily: FontFamily.interBold,

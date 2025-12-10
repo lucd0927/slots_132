@@ -9,33 +9,48 @@ class SSFBBaseData {
   static const String TGA = "SSFBBaseData";
 
   static int claus_spin() {
-    String key = PBFireBbbbbb().by(name: "claus_spin");
+    String key = "5";
+    try{
+      key = PBFireBbbbbb().by(name: "claus_spin");
+    }catch(e){
+      ssLogggg("======claus_spin error:$e");
+    }
 
     if (key.isNotEmpty) {
       return int.tryParse(key) ?? 5;
     }
-    return 5;
+    return 10;
   }
 
   static int fee_spin() {
     String key = PBFireBbbbbb().by(name: "fee_spin");
+    try{
+      key = PBFireBbbbbb().by(name: "fee_spin");
+    }catch(e){
+      ssLogggg("======fee_spin error:$e");
+    }
 
     if (key.isNotEmpty) {
       return int.tryParse(key) ?? 5;
     }
-    return 3;
+    return 10;
   }
 
   static int human_spin() {
-    String key = PBFireBbbbbb().by(name: "human_spin");
-
+    String key = "10";
+    try{
+      key = PBFireBbbbbb().by(name: "human_spin");
+    }catch(e){
+      ssLogggg("======human_spin error:$e");
+    }
     if (key.isNotEmpty) {
       return int.tryParse(key) ?? 10;
     }
-    return 3;
+    return 10;
   }
 
   static Map<String, dynamic>? _onlinJsonnnnn_int_ad_value;
+
 
   static Map<String, dynamic> local_int_ad_value = {
     "int_ad_value": [
@@ -102,4 +117,77 @@ class SSFBBaseData {
     );
     return showIntad;
   }
+
+
+  static Map<String, dynamic>? _onlinJsonnnnn_win_pop;
+  static Map<String, dynamic> local_int_win_pop = {
+    "win_pop": {
+      "bigwin":2,
+      "megawin":3,
+      "superwin":4
+    },
+  };
+  static _onlineJson_win_pop({bool reset = false}) {
+    if (!reset) {
+      if (_onlinJsonnnnn_win_pop != null) {
+        return;
+      }
+    }
+
+    Map<String, dynamic> localJson = local_int_win_pop;
+
+    String kFirebase = "win_pop";
+    try {
+      String name = kFirebase;
+      String key = PBFireBbbbbb().by(name: name);
+      ssLogggg("$TGA=== _onlineJson FirebaseUtils: $name string  $key");
+
+      Map<String, dynamic> json = jsonDecode(key);
+      localJson = json;
+      ssLogggg("$TGA===FirebaseUtils: $name json $json");
+    } on Exception catch (e) {
+      ssLogggg("$TGA===onlineJson error:$e");
+    }
+    _onlinJsonnnnn_win_pop = localJson;
+    // ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
+    return localJson;
+  }
+
+  static int bigwinBet(){
+    _onlineJson_win_pop();
+    _onlinJsonnnnn_win_pop ??= local_int_win_pop;
+    var win_popdata = _onlinJsonnnnn_win_pop!["win_pop"];
+    int count = 2;
+    if(win_popdata is Map){
+      count = win_popdata['bigwin']??2;
+    }
+
+    return count;
+  }
+
+  static int megawinBet(){
+    _onlineJson_win_pop();
+    _onlinJsonnnnn_win_pop ??= local_int_win_pop;
+    var win_popdata = _onlinJsonnnnn_win_pop!["win_pop"];
+    int count = 3;
+    if(win_popdata is Map){
+      count = win_popdata['megawin']??3;
+    }
+
+    return count;
+  }
+
+  static int superwinBet(){
+    _onlineJson_win_pop();
+    _onlinJsonnnnn_win_pop ??= local_int_win_pop;
+    var win_popdata = _onlinJsonnnnn_win_pop!["win_pop"];
+    int count = 4;
+    if(win_popdata is Map){
+      count = win_popdata['superwin']??4;
+    }
+
+    return count;
+  }
+
+
 }

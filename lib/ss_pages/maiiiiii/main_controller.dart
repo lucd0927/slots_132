@@ -23,6 +23,7 @@ import 'package:slots_132/ss_common/diallll/overlay_jackpot_mini.dart';
 import 'package:slots_132/ss_common/diallll/overlay_megawin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_superwin.dart';
 import 'package:slots_132/ss_common/diallll/overlay_wow.dart';
+import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_common/firebase_json/pay_table.dart';
 import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
@@ -1043,7 +1044,7 @@ class MainController extends GetxController {
           Widget heroChild = Image.asset(img);
           containerslotNumH1 = true;
           starCount++;
-          if(keyCenterJinling.currentContext != null){
+          if (keyCenterJinling.currentContext != null) {
             OverlayFly2TargetKey().showWithSize(
               childSize: Size(64.w, 64.w),
               targetContext: keyCenterJinling.currentContext!,
@@ -1051,12 +1052,11 @@ class MainController extends GetxController {
               heroChild: heroChild,
             );
           }
-
         }
       }
     });
     if (containerslotNumH1) {
-      if(keyCenterJinling.currentContext != null) {
+      if (keyCenterJinling.currentContext != null) {
         btnSpinLastIndex.play();
       }
       onAddCollectStar(starCount);
@@ -1075,20 +1075,20 @@ class MainController extends GetxController {
           Widget heroChild = Image.asset(img);
           containerslotNumKEY = true;
           bonusGameCount++;
-          if(keyBonusGame.currentContext != null) {
+          if (keyBonusGame.currentContext != null) {
             OverlayFly2TargetKey().showWithSize(
-            childSize: Size(64.w, 64.w),
-            targetContext: keyBonusGame.currentContext!,
-            topLeftOffset: startPosition,
-            heroChild: heroChild,
-          );
+              childSize: Size(64.w, 64.w),
+              targetContext: keyBonusGame.currentContext!,
+              topLeftOffset: startPosition,
+              heroChild: heroChild,
+            );
           }
         }
       }
     });
 
     if (containerslotNumKEY) {
-      if(keyBonusGame.currentContext != null) {
+      if (keyBonusGame.currentContext != null) {
         btnSpinLastIndex.play();
       }
 
@@ -1108,7 +1108,7 @@ class MainController extends GetxController {
           containerslotNumKEY = true;
           bonusGameCount++;
           containerslotNumPhoneSpice = true;
-          if(keyPhoneSpice.currentContext != null){
+          if (keyPhoneSpice.currentContext != null) {
             OverlayFly2TargetKey().showWithSize(
               childSize: Size(80.w, 80.w),
               targetContext: keyPhoneSpice.currentContext!,
@@ -1116,12 +1116,11 @@ class MainController extends GetxController {
               heroChild: heroChild,
             );
           }
-
         }
       }
     });
     if (containerslotNumPhoneSpice) {
-      if(keyPhoneSpice.currentContext != null) {
+      if (keyPhoneSpice.currentContext != null) {
         btnSpinLastIndex.play();
       }
       await Future.delayed(Duration(milliseconds: 1200), () {});
@@ -1189,7 +1188,7 @@ class MainController extends GetxController {
 
     double addBeisu = tmpAddMoney / tmpBeisu;
 
-    if (addBeisu >= 4) {
+    if (addBeisu >= SSFBBaseData.superwinBet()) {
       OverlaySuperwin().show(
         scene: scene,
         money: tmpAddMoney,
@@ -1200,7 +1199,7 @@ class MainController extends GetxController {
           onBtn2(money);
         },
       );
-    } else if (addBeisu >= 3) {
+    } else if (addBeisu >= SSFBBaseData.megawinBet()) {
       OverlayMegawin().show(
         scene: scene,
         money: tmpAddMoney,
@@ -1211,7 +1210,7 @@ class MainController extends GetxController {
           onBtn2(money);
         },
       );
-    } else if (addBeisu >= 2) {
+    } else if (addBeisu >= SSFBBaseData.bigwinBet()) {
       OverlayBigwin().show(
         scene: scene,
         money: tmpAddMoney,
@@ -1720,7 +1719,6 @@ class MainController extends GetxController {
       ),
     );
     if (money > 0) {
-
       btnSpinLastIndex.play();
 
       if (showMoneyAnimated) {

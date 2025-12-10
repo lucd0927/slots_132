@@ -5,9 +5,12 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:foreground_service_gp/foreground_service_gp.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -86,33 +89,33 @@ class SSTzNotificattttt {
   }
 
   List get contents => [
-    {"title": "", "content": "Payout Complete: Your \$1,000 Has Arrived!"},
-    {"title": "", "content": "KA-CHING! Your \$1,000 Just Hit Your Account!"},
-    {"title": "", "content": "Payout Ready! Click to Secure Your Cash! 💰"},
+    {"title": "", "content": " Your \$1,000 Has Arrived!"},
+    {"title": "", "content": " ⚠️ \$1,000 missing"},
+    {"title": "", "content": "ction Required: Finish Your Payout"},
     {
       "title": "",
-      "content": "\$1K Status Check: Time to Claim Your Daily Share! 👑",
+      "content": "ayment Received: \$50.00",
     },
     {
       "title": "",
-      "content": "Final Shard Located! Tap to Forge Your iPhone! 🔨",
+      "content": "Come back now or lose your chance to cash out \$1,000.",
     },
     {
       "title": "",
-      "content": "You're a Cashout King! View Your Transaction History. ✅",
+      "content": "We are about to cancel your pending reward. Is this a mistake? Tap to reclaim your spins.",
     },
     {
       "title": "",
-      "content": "Your Elves Are Full! Collect Your Factory Earnings Now! 🏭",
+      "content": "Oops? We added too many spins...",
     },
-    {"title": "", "content": "XP Boost Active! Spin Now to Hit Level 100! ✨"},
+    {"title": "", "content": "You forgot to unwrap this"},
     {
       "title": "",
-      "content": "10th Anniv. Offer ENDS TODAY! Tap for Final Deal! ⏳",
+      "content": "Your daily \$1,000 payout limit is ready.",
     },
     {
       "title": "",
-      "content": "VIP Partner Invite Closing Soon! Don't Miss Out! 💸",
+      "content": "Private Room Invitation",
     },
   ];
 
@@ -211,8 +214,8 @@ class SSTzNotificattttt {
     dingshi(
       id: dingshitzid4,
       minutes: SSHuanjing.hasDevvvvv() ? 4 : 103,
-      title: newContents[2]['content'],
-      content: newContents[2]['content'],
+      title: newContents[3]['content'],
+      content: newContents[3]['content'],
       tzimage: tzimages[2],
     );
     fcmtongzhi();
@@ -223,11 +226,13 @@ class SSTzNotificattttt {
         ssLogggg("=====收到点击事件");
         SSEventReporttttt.all_noti_c(source_from: "fixed");
       });
+
+      double tmpMooon = SSHive.box.get(MainController.hkMonnnn) ?? 1000;
       ForegroundServiceGp().start(
-        title: "My Cash = \$1000",
-        content: "Withdraw",
-        imgNameBg: "tzp",
-        imgNameSmall: "tzps"
+          title: "My Cash = ${SSCountry.curGuojiaFuhao()}${tmpMooon.toStringAsFixed(0)}",
+          content: "Withdraw",
+          imgNameBg: "tzp",
+          imgNameSmall: "tzps"
 
       ).then((result){
         if(result == true){
@@ -361,7 +366,7 @@ class SSTzNotificattttt {
     }
   }
 
-  int unlockId = 805;
+  int unlockId = 8777;
 
   Future<void> jiesoutz() async {
     //自定义通知ID
