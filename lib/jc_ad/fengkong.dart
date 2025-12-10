@@ -55,7 +55,7 @@ class SSWindsCccc {
 
   static getNumberUnitID() async {
     final did = await SSFengKkkk.instance.getNaaaaufffbedddrUnitID(
-      channel: "shumeng_117",
+      channel: "shumeng_132",
       message: "shumeng_msg",
     );
     ssLogggg("====did===$did");
@@ -456,10 +456,20 @@ class SSWindsCccc {
 
   //
   static Map<String, dynamic> local = {
-    "ui": {"number": 0, "behavior": 0, "device": 0},
+    "ui": {
+      "number": 0,
+      "behavior": 0,
+      "device": 0
+    },
     "behavior": {
-      "ad_short_show": {"duration": 30, "value": 3},
-      "ad_short_close": {"duration": 20, "value": 3},
+      "ad_short_show": {
+        "duration": 30,
+        "value": 3
+      },
+      "ad_short_close": {
+        "duration": 20,
+        "value": 3
+      },
       "wrong_deem_ad_less": 3,
       "wrong_deem_ad_more": 90,
       "no_install": 1,
