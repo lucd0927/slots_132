@@ -78,10 +78,11 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
       setState(() {
         showAnimated = true;
       });
-      // _timer = Timer(Duration(milliseconds: 5000), () {
-      //
-      //   onClose();
-      // });
+      Future.delayed(Duration(milliseconds: 300),(){
+        if(mounted){
+          focusNode.requestFocus();
+        }
+      });
     });
     focusListener = () {
       _listener(focusNode);

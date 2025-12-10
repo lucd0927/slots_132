@@ -71,6 +71,11 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
       setState(() {
         showAnimated = true;
       });
+      Future.delayed(Duration(milliseconds: 300),(){
+        if(mounted){
+          focusNode.requestFocus();
+        }
+      });
       // _timer = Timer(Duration(milliseconds: 5000), () {
       //
       //   onClose();

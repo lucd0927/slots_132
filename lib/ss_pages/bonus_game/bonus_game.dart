@@ -15,6 +15,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game_controller.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -487,6 +488,8 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
       );
     }
 
+    bool showHand = BonusGameController.to.showGestureHandIndex.value == index;
+    ssLogggg("=====showHand:$showHand ${ BonusGameController.to.showGestureHandIndex.value}");
     return Builder(
       builder: (context) {
         BonusGameController.to.setContext(context, index);
@@ -495,6 +498,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
           height: itemHeight,
           color: Colors.transparent,
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               showAnimScale
                   ? SSAScale(
@@ -534,6 +538,21 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
                             ),
                       back: child,
                     ),
+
+
+              if(showHand )
+                Positioned(
+                  right: -20.w,
+                  top: 40.h,
+
+                  child: Center(
+                    child: SizedBox(
+                      width: 65.h,
+                      height: 72.h,
+                      child: const SpineHand(),
+                    ),
+                  ),
+                ),
             ],
           ),
         );

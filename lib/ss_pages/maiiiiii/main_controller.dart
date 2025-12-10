@@ -269,7 +269,7 @@ class MainController extends GetxController {
 
     int tmpSpinCount = tmpSpinCount1 % 15;
     // tmpSpinCount = 12;
-    tmpSpinCount = 5;
+    // tmpSpinCount = 5;
     if (tmpSpinCount == 5) {
       if (hasFreeSpin || curFreeSpinCount.value > 0) {
         tmpSpinCount = 3;
@@ -1426,7 +1426,7 @@ class MainController extends GetxController {
   var boxHistory = SSHive.boxHistory;
   var curMonnnn = 0.0.obs;
 
-  static const int maxLevel = 32;
+  static const int maxLevel = 100;
   static const int maxStarCount = 32;
   static const int maxBonusGameCount = 10;
   static const double minWithdddMoney = 1000;

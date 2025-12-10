@@ -55,7 +55,7 @@ class _AvatarRowState extends State<AvatarRow> {
         setState(() {
           int randomIndex = Random().nextInt(4) + 1;
           int randomIndex2 = Random().nextInt(5);
-          randomIndex2 =1;
+          // randomIndex2 =1;
           selectIndex = randomIndex;
           winSelect = randomIndex2;
           ssLogggg("=====selectIndex:$selectIndex childContext:$childContext");

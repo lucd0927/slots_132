@@ -69,7 +69,7 @@ class _SSMapViewState extends State<SSMapView> {
     }
     // 获取女精灵总数量
     int curGirlJinglingN = MainController.to.curCollectStar.value;
-    // curGirlJinglingN = 100;
+    curGirlJinglingN = 100;
     // 获取当前最大的循环数,向下取整
     int floor = (curGirlJinglingN / loopMaxN).floor();
     int loopNum = jumpToNextStar.length;
@@ -100,14 +100,16 @@ class _SSMapViewState extends State<SSMapView> {
         num = tmpGiftRewardModel.num;
       }
       double money = num * 1.0;
+      bool hasEven = i.isEven;
       BoxGiftModel boxGiftModel = BoxGiftModel(
         img: img,
         money: money,
         hasUnlock: hasUnlock,
         giftRewardModel: tmpGiftRewardModel,
+        showAd: hasEven
       );
       Widget item = ItemWidget(model: boxGiftModel, index: i);
-      bool hasEven = i.isEven;
+
 
       if (hasEven) {
         leftWidgetChildren.add(item);
@@ -431,11 +433,14 @@ class _ItemWidgetState extends State<ItemWidget> {
     bool hasUnlock = widget.model.hasUnlock;
     ssLogggg("==onClick==hasUnlock:$hasUnlock=");
     if (hasUnlock) {
-
-      bool resutl = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_collect_rv);
-      if(!resutl){
-        return;
+      bool showAd =widget.model.showAd;
+      if(showAd){
+        bool resulttt = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_collect_rv);
+        if(!resulttt){
+          return;
+        }
       }
+
       SSEventReporttttt.map_page_collect();
       bool hasClick11 = sfIndexClick(widget.index);
       if (hasClick11) {
@@ -488,6 +493,7 @@ class _ItemWidgetState extends State<ItemWidget> {
         hasUnlock = false;
       }
     }
+    bool showAd =widget.model.showAd;
     return GestureDetector(
       onTap: onClick,
       child: Container(
@@ -506,7 +512,7 @@ class _ItemWidgetState extends State<ItemWidget> {
               fit: BoxFit.fill,
             ),
 
-            if (hasUnlock)
+            if (hasUnlock && showAd)
               Positioned(
                 top: -8.h,
                 right: -4.w,
@@ -627,11 +633,13 @@ class BoxGiftModel {
   bool showAdImg;
   final double money;
   final bool hasUnlock;
+  final bool showAd;
   final bool hasClickCollect;
   final GiftRewardModel? giftRewardModel;
 
-  BoxGiftModel({
+  BoxGiftModel( {
     required this.img,
+    required this.showAd,
     required this.giftRewardModel,
     this.showAdImg = true,
     this.hasClickCollect = true,

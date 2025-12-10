@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
@@ -52,6 +53,9 @@ class BonusGameController extends GetxController {
 
   var find3SameCard = "".obs;
   var cardMoney = <double>[].obs;
+
+  var showGestureHandIndex = (-1).obs;
+  Timer? handTimer;
 
   var categoryCount = <String, int>{}.obs;
   var canClick = false.obs;
@@ -194,7 +198,7 @@ class BonusGameController extends GetxController {
       //     // MainController.to.onAddMoney(money, showMoneyAnimated: true);
       //   },
       // );
-
+      handTimer?.cancel();
       MainController.to.onJackpotPopup(
         jackpotCount: jackpotCount,
         onBtn: (money) {
@@ -267,6 +271,30 @@ class BonusGameController extends GetxController {
     initData();
 
     cardMoney.add(_cardMonnn());
+    initHandTime();
+
+  }
+
+  initHandTime(){
+    handTimer?.cancel();
+    handTimer = Timer.periodic(Duration(milliseconds: 1000), (_){
+      List<int> indexes =[0,1,2,3,4,5,6,7,8]..shuffle();
+
+      for(int i =0;i < indexes.length;i++){
+        int index = indexes[0];
+        bool con = clickIndex.contains(index);
+        ssLogggg("=====initHandTime==index:$index");
+        if(!con){
+          showGestureHandIndex.value = index;
+          // initHandTime();
+          break;
+        }
+        if(i == 8){
+          handTimer?.cancel();
+        }
+      }
+
+    });
   }
 
   double _cardMonnn() {
@@ -301,6 +329,7 @@ class BonusGameController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+    handTimer?.cancel();
     ssLogggg("====BonusGameController close");
   }
 }
