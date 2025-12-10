@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:confetti/confetti.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart' hide Velocity;
 import 'package:flutter/services.dart';
@@ -51,6 +53,7 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
+  var _confettiC = ConfettiController(duration: const Duration(seconds: 10));
   @override
   void initState() {
     // TODO: implement initState
@@ -68,7 +71,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
     initNotification(showDialog: true);
-    // bgMusic.play(loopMode: LoopMode.single);
+    bgMusic.play(loopMode: LoopMode.single);
 
     Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {
@@ -77,6 +80,11 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     });
 
     jiazaiInterrrr();
+
+
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _confettiC.play();
+    });
   }
 
   jiazaiInterrrr() async {
@@ -240,7 +248,19 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   color: Colors.transparent,
                 ),
 
-
+              Positioned(
+                left: 0,
+                right: 0,
+                child: ConfettiWidget(
+                  confettiController: _confettiC,
+                  blastDirection: -pi / 2,
+                  emissionFrequency: 0.01,
+                  numberOfParticles: 20,
+                  maxBlastForce: 100,
+                  minBlastForce: 80,
+                  gravity: 0.3,
+                ),
+              ),
             ],
           ),
         ),

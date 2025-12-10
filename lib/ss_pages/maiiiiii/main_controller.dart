@@ -40,7 +40,6 @@ import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 import 'package:spine_flutter/spine_widget.dart';
-import 'package:vibration/vibration.dart';
 
 import '../../jc_gj/log.dart';
 

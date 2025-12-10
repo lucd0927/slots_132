@@ -75,7 +75,7 @@ class ControlledWheel extends StatefulWidget {
 }
 
 class _ControlledWheelState extends State<ControlledWheel>
-    with SingleTickerProviderStateMixin,SSEventBusMix {
+    with SingleTickerProviderStateMixin, SSEventBusMix {
   late AnimationController _controller;
   late Animation<double> _animation;
   double _startAngle = 0.0;
@@ -89,10 +89,9 @@ class _ControlledWheelState extends State<ControlledWheel>
     );
     _animation = AlwaysStoppedAnimation(90);
 
-    register<WheelEvent>((WheelEvent event){
+    register<WheelEvent>((WheelEvent event) {
       _onSpin();
     });
-
   }
 
   spinTo(int fromIndex, int toIndex) async {
@@ -249,7 +248,7 @@ class _ControlledWheelState extends State<ControlledWheel>
       widget.onEnd(null);
       return;
     }
-    if(WheController.to.wheelStar.value){
+    if (WheController.to.wheelStar.value) {
       return;
     }
 
@@ -258,11 +257,31 @@ class _ControlledWheelState extends State<ControlledWheel>
     WheController.to.subWheNum();
     int current = Random().nextInt(8);
     int target = Random().nextInt(8);
+
+
+
     current = 0;
     ssLogggg("=_onSpin==current:$current=target:$target=");
     if (target == 4) {
       target = 0;
     }
+    int random = Random().nextInt(100);
+    if (random > 80) {
+      target = 6;
+    } else if (random > 70) {
+      target = 7;
+    } else if (random > 50) {
+      target = 0;
+    }else if (random > 45) {
+      target = 2;
+    }else if (random > 40) {
+      target = 5;
+    }else if (random > 20) {
+      target = 1;
+    }else if (random > 10) {
+      target = 3;
+    }
+
     // target = 1;
     ssLogggg("=_onSpin==current:$current=target2:$target=");
     await spinTo(current, target);

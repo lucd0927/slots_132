@@ -258,17 +258,23 @@ class _WheBounsState extends State<WheBouns> {
               height: double.infinity,
               fit: BoxFit.fill,
             ),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SSTxtBorder(
-                    text: "Claim Today’s Piece",
-                    fontWeight: FontWeight.w700,
-                    fontSize: 24.sp,
-                    fontFamily: FontFamily.interBold,
-                  ),
-                ],
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 10.h,
+              top: 0,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SSTxtBorder(
+                      text: "Claim Today’s Piece",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24.sp,
+                      fontFamily: FontFamily.interBold,
+                    ),
+                  ],
+                ),
               ),
             ),
 
