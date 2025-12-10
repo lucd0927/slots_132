@@ -244,7 +244,7 @@ class SSTzNotificattttt {
     } else if (tuisongid == "fixed") {
       payload = "fixed";
     } else {
-      payload = "fcm";
+      payload = "data_fcm";
     }
     SSEventReporttttt.all_noti_c(source_from: payload);
     // PBMaiDian.launch_page(veinKeyValue: "push");
@@ -315,7 +315,7 @@ class SSTzNotificattttt {
     try {
       bool? result = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-            "c132fcm_1",
+           SSHuanjing.hasDevvvvv()?"test132": "c132fcm_1",
             AndroidNotificationDetails(
               'slots_1',
               'fcm_notification',
@@ -333,7 +333,7 @@ class SSTzNotificattttt {
 
       bool? result2 = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-            "c132fcm_2",
+        SSHuanjing.hasDevvvvv()?"test1321":  "c132fcm_2",
             AndroidNotificationDetails(
               'slots_1',
               'fcm_notification',

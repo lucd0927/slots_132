@@ -463,7 +463,7 @@ class SSWindsCccc {
       "wrong_deem_ad_less": 3,
       "wrong_deem_ad_more": 90,
       "no_install": 1,
-      "ad_daily_show": 60,
+      "ad_daily_show": 60
     },
     "device": [
       "vpn",
@@ -472,7 +472,7 @@ class SSWindsCccc {
       "simulator",
       "googleplay",
       "developer",
-      "ip",
-    ],
+      "ip"
+    ]
   };
 }

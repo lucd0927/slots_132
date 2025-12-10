@@ -268,7 +268,7 @@ class MainController extends GetxController {
 
     int tmpSpinCount = tmpSpinCount1 % 15;
     // tmpSpinCount = 12;
-    // tmpSpinCount = 5;
+    tmpSpinCount = 5;
     if (tmpSpinCount == 5) {
       if (hasFreeSpin || curFreeSpinCount.value > 0) {
         tmpSpinCount = 3;
@@ -1271,7 +1271,7 @@ class MainController extends GetxController {
           } else if (slotNumSCATTERLength == 5) {
             count = 8;
           }
-          // count = 1;
+          count = 3;
           OverlayFreeSpins().show(
             count: count,
             onClose: (value) async {

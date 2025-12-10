@@ -436,9 +436,9 @@ class SSHttpDio {
     Response? response = await post("", data: dataJson);
     var responseData = response?.data;
 
-    // ssLogggg(
-    //   "====url\n${_dio.options.baseUrl}\nstuntValue:$moistValue\ndata:$data\nburyPoint_responseData:$responseData",
-    // );
+    ssLogggg(
+      "====url\n${_dio.options.baseUrl}\nstuntValue:$moistValue\ndata:$data\nburyPoint_responseData:$responseData",
+    );
     // dataJson[stuntValue] = {"cloak_user": 0};
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655225772520",
+    "project_id": "slots132-44dfc",
+    "storage_bucket": "slots132-44dfc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655225772520:android:c9becda06f320a50a5ac5d",
+        "android_client_info": {
+          "package_name": "com.cdsls.slots_132"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtatiob5u3Gc_BJKteDtAMAeGeTQsiIGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
