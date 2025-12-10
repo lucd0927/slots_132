@@ -270,7 +270,7 @@ class MainController extends GetxController {
     // tmpSpinCount = 12;
     // tmpSpinCount = 5;
     if (tmpSpinCount == 5) {
-      if (hasFreeSpin) {
+      if (hasFreeSpin || curFreeSpinCount.value > 0) {
         tmpSpinCount = 3;
       }
     }
@@ -2034,8 +2034,8 @@ class MainController extends GetxController {
   static const hkTimeBoxGift = "af45ewrdf7u5hffj";
   Timer? _timerBoxGfit;
 
-  // int maxSeconds = 60 * 60 * 8;
-  static const int maxSeconds = 60 * 1;
+  int maxSeconds = 60 * 60 * 8;
+  // static const int maxSeconds = 60 * 1;
 
   var textBoxGiftTime = "".obs;
   var boxGiftTime = (-1).obs;

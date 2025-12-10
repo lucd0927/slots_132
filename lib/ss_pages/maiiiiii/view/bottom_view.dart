@@ -483,13 +483,14 @@ class BottomView extends StatelessWidget {
         ],
       ),
     );
-
+    // return SizedBox();
     return showGrey
         ? GreyWidget(child: child)
         : GestureDetector(
             onTap: () {
+              ssLogggg("====showFree:$showFree");
               if (showFree) {
-                return;
+                // return;
               }
 
               MainController.to.onStartRoller();

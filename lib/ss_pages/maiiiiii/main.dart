@@ -176,6 +176,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       if (MainController.to.curFreeSpinCount.value <= 0) {
         showFreeSpin = false;
       }
+      ssLogggg("=====showFreeSpin:$showFreeSpin hasScrollerStart:${MainController.to.hasScrollerStart.value}");
       return DefaultTextStyle(
         style: TextStyle(fontFamily: FontFamily.ghostKidAOEPro),
         child: SizedBox(
@@ -191,18 +192,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                 gaplessPlayback: true,
               ),
 
-              // Positioned.fill(
-              //   child: FittedBox(
-              //     child: Container(
-              //       width: ScreenUtil().screenWidth,
-              //       height: ScreenUtil().screenHeight,
-              //       // width: 311.w,
-              //       // height: 232.w,
-              //       // color: Colors.yellow,
-              //       child: Center(child: SSSpineMainCenterpq()),
-              //     ),
-              //   ),
-              // ),
               ParticleEffects(
                 isEnabled: true,
                 config: ParticleConfig(
@@ -250,12 +239,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   height: ScreenUtil().screenHeight,
                   color: Colors.transparent,
                 ),
-
-              // Container(
-              //     width: ScreenUtil().screenWidth,
-              //     height: ScreenUtil().screenHeight,
-              //     color: Colors.red,
-              //     child: SpineMainAvatar()),
             ],
           ),
         ),
