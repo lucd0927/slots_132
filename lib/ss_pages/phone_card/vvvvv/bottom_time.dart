@@ -52,23 +52,29 @@ class _PhoneBottomTimeState extends State<PhoneBottomTime> {
                     height: double.infinity,
                     fit: BoxFit.fill,
                   ),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SSTxtBorder(
-                          text: "Claim Today’s Piece",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 24.sp,
-                          fontFamily: FontFamily.interBold,
-                        ),
-                        Builder(
-                          builder: (context) {
-                            overlayPhoneCard.childContext = context;
-                            return Image.asset(Assets.img.phoneSuip.path,width: 34.w,height: 24,);
-                          }
-                        ),
-                      ],
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 10.h,
+                    top: 0,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SSTxtBorder(
+                            text: "Claim Today’s Piece",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20.sp,
+                            fontFamily: FontFamily.interBold,
+                          ),
+                          Builder(
+                            builder: (context) {
+                              overlayPhoneCard.childContext = context;
+                              return Image.asset(Assets.img.phoneSuip.path,width: 34.w,height: 24,);
+                            }
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -101,6 +101,8 @@ class ForegroundServiceGpPlugin :
 
     override fun onNewIntent(intent: Intent): Boolean {
         println("$TGA onNewIntent intent:$intent")
+        val a = intent.getStringExtra("fix_tx")
+        intentData = a
         onInvo()
         return true
     }

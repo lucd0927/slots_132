@@ -491,7 +491,7 @@ class BottomView extends StatelessWidget {
               if (showFree) {
                 return;
               }
-              btnSpinClick.play();
+
               MainController.to.onStartRoller();
             },
             child: child,

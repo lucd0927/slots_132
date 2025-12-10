@@ -188,7 +188,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
               child: SSTxtBorder(
                 text: "Spin For More Pieces!",
                 fontSize: 18.sp,
-                fontFamily: FontFamily.alkatra,
+                fontFamily: FontFamily.interBold,
                 fontWeight: FontWeight.w800,
               ),
             ),

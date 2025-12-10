@@ -980,6 +980,18 @@ class $AssetsImgGen {
   /// File path: assets/img/video.png
   AssetGenImage get video => const AssetGenImage('assets/img/video.png');
 
+  /// File path: assets/img/vip_1.png
+  AssetGenImage get vip1 => const AssetGenImage('assets/img/vip_1.png');
+
+  /// File path: assets/img/vip_2.png
+  AssetGenImage get vip2 => const AssetGenImage('assets/img/vip_2.png');
+
+  /// File path: assets/img/vip_3.png
+  AssetGenImage get vip3 => const AssetGenImage('assets/img/vip_3.png');
+
+  /// File path: assets/img/vip_v.png
+  AssetGenImage get vipV => const AssetGenImage('assets/img/vip_v.png');
+
   /// File path: assets/img/wheel_bg.png
   AssetGenImage get wheelBg => const AssetGenImage('assets/img/wheel_bg.png');
 
@@ -1369,6 +1381,10 @@ class $AssetsImgGen {
     txPopupTips2,
     txlastbg,
     video,
+    vip1,
+    vip2,
+    vip3,
+    vipV,
     wheelBg,
     wheelCount,
     wheelRili,

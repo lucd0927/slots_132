@@ -39,6 +39,7 @@ import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 import 'package:spine_flutter/spine_widget.dart';
+import 'package:vibration/vibration.dart';
 
 import '../../jc_gj/log.dart';
 
@@ -848,10 +849,11 @@ class MainController extends GetxController {
       curSpinMoney.value = tpmBeisu;
       // curShowFreeSpin.value = false;
       onAddMoney(tpmBeisu, onEnd: () {}, showMoneyAnimated: false);
-    }else{
-      btnSpinLastIndex.play();
     }
-
+    btnSpinClick.play();
+    // if (await Vibration.hasVibrator()) {
+    //   Vibration.vibrate();
+    // }
     await _roller(firstRoller, 0);
     await _roller(secondRoller, 1);
     await _roller(thirdRoller, 2);
@@ -1718,12 +1720,14 @@ class MainController extends GetxController {
       ),
     );
     if (money > 0) {
+
       btnSpinLastIndex.play();
 
       if (showMoneyAnimated) {
         overlayMainTopMoney.showWithSize(
           childSize: Size(32.w, 32.w),
           onEnd: () {
+            // btnSpinLastIndex.play();
             _onAddMoney(money, onEnd);
           },
           showTargetWidget: showTargetWidget,
@@ -1879,8 +1883,10 @@ class MainController extends GetxController {
     }
     ssLogggg("=======onFreeSpin=onStartRoller");
     await onStartRoller(hasFreeSpin: true);
+    await Future.delayed(Duration(milliseconds: 300));
     hasScrollerStart.value = false;
     ssLogggg("=======onFreeSpin=onStartRoller end");
+    btnBonusGameClick.play();
     keyFreeSpin.currentState?.onStar(
       onEnd: (EnumGiftRewardModel tmpEnumGiftRewardModel) {
         if (tmpEnumGiftRewardModel == EnumGiftRewardModel.cash) {
