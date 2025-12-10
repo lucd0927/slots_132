@@ -141,12 +141,18 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                                       height: double.infinity,
                                       fit: BoxFit.fill,
                                     ),
-                                    Center(
-                                      child: SSTxtBorder(
-                                        text: "YES,Notify Me!",
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 24.sp,
-                                        fontFamily: FontFamily.interBold,
+                                    Positioned(
+                                      left: 0,
+                                      right: 0,
+                                      bottom: 10.h,
+                                      top: 0,
+                                      child: Center(
+                                        child: SSTxtBorder(
+                                          text: "YES,Notify Me!",
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 24.sp,
+                                          fontFamily: FontFamily.interBold,
+                                        ),
                                       ),
                                     ),
                                   ],

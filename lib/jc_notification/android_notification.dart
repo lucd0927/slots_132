@@ -91,32 +91,21 @@ class SSTzNotificattttt {
   List get contents => [
     {"title": "", "content": " Your \$1,000 Has Arrived!"},
     {"title": "", "content": " ⚠️ \$1,000 missing"},
-    {"title": "", "content": "ction Required: Finish Your Payout"},
-    {
-      "title": "",
-      "content": "ayment Received: \$50.00",
-    },
+    {"title": "", "content": "Action Required: Finish Your Payout"},
+    {"title": "", "content": "Payment Received: \$50.00"},
     {
       "title": "",
       "content": "Come back now or lose your chance to cash out \$1,000.",
     },
     {
       "title": "",
-      "content": "We are about to cancel your pending reward. Is this a mistake? Tap to reclaim your spins.",
+      "content":
+          "We are about to cancel your pending reward. Is this a mistake? Tap to reclaim your spins.",
     },
-    {
-      "title": "",
-      "content": "Oops? We added too many spins...",
-    },
+    {"title": "", "content": "Oops? We added too many spins..."},
     {"title": "", "content": "You forgot to unwrap this"},
-    {
-      "title": "",
-      "content": "Your daily \$1,000 payout limit is ready.",
-    },
-    {
-      "title": "",
-      "content": "Private Room Invitation",
-    },
+    {"title": "", "content": "Your daily \$1,000 payout limit is ready."},
+    {"title": "", "content": "Private Room Invitation"},
   ];
 
   List get imgTz => [
@@ -132,18 +121,18 @@ class SSTzNotificattttt {
     "tzimg10",
   ];
 
-  List<T> getRandomNMinus3<T>(List<T> source) {
-    if (source.length <= 3) {
+  List<T> getRandomNMinus4<T>(List<T> source) {
+    if (source.length <= 4) {
       throw ArgumentError('数组长度必须大于 3');
     }
 
     final list = List<T>.from(source); // 拷贝一份，避免修改原数组
     list.shuffle(Random()); // 随机打乱
-    return list.sublist(0, 3);
+    return list.sublist(0, 4);
   }
 
   init() async {
-   bool result =  await requestNotificationPermission();
+    bool result = await requestNotificationPermission();
     csTzNum();
 
     baioti = "132Title";
@@ -187,9 +176,9 @@ class SSTzNotificattttt {
         tongsongdianji(notificationResponse?.payload);
       }
     }
-    List newContents = getRandomNMinus3(contents);
-    List tzimages = getRandomNMinus3(imgTz);
-    // print("=====newContents:$newContents");
+    List newContents = getRandomNMinus4(contents);
+    List tzimages = getRandomNMinus4(imgTz);
+    ssLogggg("====newContents:$newContents=tzimages:$tzimages");
     dingshi(
       id: dingshitzid,
       minutes: SSHuanjing.hasDevvvvv() ? 1 : 29,
@@ -220,29 +209,29 @@ class SSTzNotificattttt {
     );
     fcmtongzhi();
     jiesoutz();
-    if(result){
+    ssLogggg("====result:$result=前台服务启动");
+    if (result) {
       ssLogggg("=====前台服务启动");
-      ForegroundServiceGp().initListener((){
+      ForegroundServiceGp().initListener(() {
         ssLogggg("=====收到点击事件");
         SSEventReporttttt.all_noti_c(source_from: "fixed");
       });
 
       double tmpMooon = SSHive.box.get(MainController.hkMonnnn) ?? 1000;
-      ForegroundServiceGp().start(
-          title: "My Cash = ${SSCountry.curGuojiaFuhao()}${tmpMooon.toStringAsFixed(0)}",
-          content: "Withdraw",
-          imgNameBg: "tzp",
-          imgNameSmall: "tzps"
-
-      ).then((result){
-        if(result == true){
-          SSEventReporttttt.all_noti_t(source_from: "fixed");
-        }
-      });
-
+      ForegroundServiceGp()
+          .start(
+            title:
+                "My Cash = ${SSCountry.curGuojiaFuhao()}${tmpMooon.toStringAsFixed(0)}",
+            content: "Withdraw",
+            imgNameBg: "tzp",
+            imgNameSmall: "tzps",
+          )
+          .then((result) {
+            if (result == true) {
+              SSEventReporttttt.all_noti_t(source_from: "fixed");
+            }
+          });
     }
-
-
   }
 
   tongsongdianji(String? tuisongid) {
@@ -257,7 +246,7 @@ class SSTzNotificattttt {
     } else {
       payload = "fcm";
     }
-    SSEventReporttttt.all_noti_c(source_from:payload);
+    SSEventReporttttt.all_noti_c(source_from: payload);
     // PBMaiDian.launch_page(veinKeyValue: "push");
     // PBMaiDian.inform_c(veinKeyValue: payload);
   }
@@ -342,25 +331,26 @@ class SSTzNotificattttt {
             ),
           );
 
-
       bool? result2 = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-        "c132fcm_2",
-        AndroidNotificationDetails(
-          'slots_1',
-          'fcm_notification',
-          styleInformation: BeautyStyleInformation(
-            '',
-            '',
-            pushIcon,
-            'Go Earn',
-            'ic_launcher',
-          ),
-          priority: Priority.high,
-          importance: Importance.high,
-        ),
+            "c132fcm_2",
+            AndroidNotificationDetails(
+              'slots_1',
+              'fcm_notification',
+              styleInformation: BeautyStyleInformation(
+                '',
+                '',
+                pushIcon,
+                'Go Earn',
+                'ic_launcher',
+              ),
+              priority: Priority.high,
+              importance: Importance.high,
+            ),
+          );
+      ssLogggg(
+        "==initNotification=_subscribeFcmTopic===$result result2=:$result2",
       );
-      ssLogggg("==initNotification=_subscribeFcmTopic===$result result2=:$result2");
     } catch (e) {
       ssLogggg("==initNotification=_subscribeFcmTopic=error==$e");
     }
@@ -373,7 +363,7 @@ class SSTzNotificattttt {
     int id = unlockId;
     int length = contents.length;
     int random = Random().nextInt(length);
-    List tzimages = getRandomNMinus3(imgTz)..shuffle();
+    List tzimages = getRandomNMinus4(imgTz)..shuffle();
     var tttttt = contents[random]['content'];
     var ccccc = contents[random]['content'];
     await AndroidFlutterLocalNotificationsPlugin().showBroadcastNotification(

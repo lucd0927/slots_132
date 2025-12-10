@@ -268,7 +268,7 @@ class _WheBounsState extends State<WheBouns> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SSTxtBorder(
-                      text: "Claim Today’s Piece",
+                      text: "Claim",
                       fontWeight: FontWeight.w700,
                       fontSize: 24.sp,
                       fontFamily: FontFamily.interBold,

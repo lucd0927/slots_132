@@ -7,6 +7,7 @@ import 'package:confetti/confetti.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart' hide Velocity;
 import 'package:flutter/services.dart';
+import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:flutter_floating_particles/flutter_floating_particles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,6 +30,7 @@ import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
 import 'package:slots_132/ss_common/sssssp/spine_freespin_selected.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
+import 'package:slots_132/ss_common/sssssp/spine_main_avatar.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_center_pq.dart';
 import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
@@ -53,7 +55,6 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
-  var _confettiC = ConfettiController(duration: const Duration(seconds: 10));
   @override
   void initState() {
     // TODO: implement initState
@@ -83,7 +84,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
 
     WidgetsBinding.instance.addPostFrameCallback((_){
-      _confettiC.play();
+
+
+
     });
   }
 
@@ -248,19 +251,11 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   color: Colors.transparent,
                 ),
 
-              Positioned(
-                left: 0,
-                right: 0,
-                child: ConfettiWidget(
-                  confettiController: _confettiC,
-                  blastDirection: -pi / 2,
-                  emissionFrequency: 0.01,
-                  numberOfParticles: 20,
-                  maxBlastForce: 100,
-                  minBlastForce: 80,
-                  gravity: 0.3,
-                ),
-              ),
+              // Container(
+              //     width: ScreenUtil().screenWidth,
+              //     height: ScreenUtil().screenHeight,
+              //     color: Colors.red,
+              //     child: SpineMainAvatar()),
             ],
           ),
         ),

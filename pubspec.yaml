@@ -87,6 +87,7 @@ dependencies:
   zo_animated_border: ^1.0.4
   newton_particles: ^0.2.2
   confetti: ^0.8.0
+  flutter_confetti: ^0.5.1
 #  shimmer: ^3.0.0
 #  slot_machine_roller: ^1.0.1
   adjust_sdk: ^5.4.4
@@ -155,6 +156,7 @@ flutter:
     - assets/donghua/sdjl/
 #    - assets/donghua/zjmpq/
     - assets/donghua/hand/
+    - assets/donghua/avatar/
     - assets/audddd/
     - assets/lottt/bian/
     - assets/lottt/bian/images/
@@ -164,6 +166,8 @@ flutter:
     - assets/lottt/bian3/images/
     - assets/lottt/zhuanpanbj/
     - assets/lottt/zhuanpanbj/images/
+    - assets/lottt/avatar/
+    - assets/lottt/avatar/images/
     - assets/mya/bigwin/
     - assets/mya/megawin/
     - assets/mya/superwin/

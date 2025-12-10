@@ -109,6 +109,7 @@ class _SSAnimatedWinMegaState extends State<SSAnimatedWinMega>
 
         return Stack(
           alignment: Alignment.topCenter,
+          clipBehavior: Clip.none,
           children: [
 
 

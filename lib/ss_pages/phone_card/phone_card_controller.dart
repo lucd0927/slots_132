@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_source2target.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_pages/phone_card/ddd/phone_spin_to_pieces.dart';
@@ -121,6 +122,7 @@ class PhoneCardController extends GetxController {
       "=====onclickClaim===canClickClaim:${PhoneCardController.to.canClickClaim.value}==",
     );
     if (!canClickClaim.value) {
+      ssTushi(text: "Come back tomorrow! Collect shards to win a Phone! 📱🎁");
       return;
     }
 

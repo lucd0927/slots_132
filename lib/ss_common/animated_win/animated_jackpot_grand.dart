@@ -112,6 +112,7 @@ class _SSAnimatedJackpotGrandState extends State<SSAnimatedJackpotGrand>
           // color: Colors.yellow,
           child: Stack(
             alignment: Alignment.topCenter,
+            clipBehavior: Clip.none,
             children: [
               Container(
                 width: 350.h *1,

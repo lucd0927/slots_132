@@ -109,6 +109,7 @@ class _SSAnimatedWinWowState extends State<SSAnimatedWinWow>
 
         return Stack(
           alignment: Alignment.topCenter,
+          clipBehavior: Clip.none,
           children: [
 
 

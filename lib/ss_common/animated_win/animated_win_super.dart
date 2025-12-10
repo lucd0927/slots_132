@@ -150,6 +150,7 @@ class _SSAnimatedWinSuperState extends State<SSAnimatedWinSuper>
 
         return Stack(
           alignment: Alignment.topCenter,
+          clipBehavior: Clip.none,
           children: [
 
 

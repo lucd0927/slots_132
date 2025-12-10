@@ -150,6 +150,7 @@ class _SSAnimatedWinBigState extends State<SSAnimatedWinBig>
 
         return Stack(
           alignment: Alignment.topCenter,
+          clipBehavior: Clip.none,
           children: [
 
 
