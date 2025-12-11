@@ -111,10 +111,11 @@
 -keep class com.chartboost.** { *; }
 
 
+
+
 -keep class com.alex.** { *;}
 -keepclassmembers public class com.alex.** {
    public *;
 }
 -keep class com.appsflyer.** { *; }
 -keep class kotlin.jvm.internal.** { *; }
-
