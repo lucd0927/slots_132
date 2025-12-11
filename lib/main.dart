@@ -42,7 +42,7 @@ main() async {
     // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
   ]);
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,);
-  SSHuanjing.initEvn(SSHuanjingEnv.dev);
+  SSHuanjing.initEvn(SSHuanjingEnv.prod);
 
   PaintingBinding.instance.imageCache.maximumSize = 2000;
   PaintingBinding.instance.imageCache.maximumSizeBytes = 1024 * 1024 * 300; // 300MB
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
         child: ToastificationWrapper(
           child: GetMaterialApp(
             // main: MyHomePage(title: '1'),
-            title: "Slots",
+            title: "Lucky Claus Slots",
             initialRoute: SSRouttttt.splash,
             builder: (BuildContext context, Widget? child) {
               return Overlay(
