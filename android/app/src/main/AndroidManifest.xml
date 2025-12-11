@@ -29,7 +29,7 @@
 
     <application
         android:largeHeap="true"
-        android:label="slots_132"
+        android:label="Lucky Claus Slots"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <!-- Warning: Do not change service name. -->
