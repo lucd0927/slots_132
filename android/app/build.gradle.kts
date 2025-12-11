@@ -11,11 +11,14 @@ if (keystorePropertiesFile.exists()) {
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("applovin-quality-service")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
     id("com.google.gms.google-services")
 }
-
+applovin {
+    apiKey = "krw1Xc9M0vKxNQ7E1FQRLQX4RST2gVJT3mK0Vk3rXtC1Es9E0PFzdFJLTygKDrE8Ak9cAp5MPSf1DK8tcG6Cnt"
+}
 android {
     namespace = "com.cdsls.slots_132"
     compileSdk = flutter.compileSdkVersion
@@ -109,7 +112,6 @@ dependencies {
     implementation("com.applovin.mediation:bytedance-adapter:+")
     implementation("com.applovin.mediation:unityads-adapter:4.16.3.0")
     implementation("com.applovin.mediation:fyber-adapter:+")
-
 
     //TU (Necessary)
     api("com.thinkup.sdk:core-tpn:6.5.36")

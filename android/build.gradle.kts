@@ -35,6 +35,17 @@ allprojects {
         }
 
         maven { url = uri("https://artifactory.bidmachine.io/bidmachine") }
+
+    }
+
+}
+
+buildscript {
+    repositories {
+        maven { url = uri("https://artifacts.applovin.com/android") }
+    }
+    dependencies {
+        classpath ("com.applovin.quality:AppLovinQualityServiceGradlePlugin:+")
     }
 }
 
