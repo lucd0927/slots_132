@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/sssssp/spine_boxgift.dart';
@@ -29,6 +30,23 @@ class OverlayBoxgift {
   bool get hasShow => _isShowing;
   bool _isShowing = false;
   OverlayEntry? _overlay;
+  static const List<String> types = [
+    "10spin",
+    "15spin",
+    "20spin",
+    "100xp",
+    "150xp",
+    "200xp",
+    "1phoneSpice",
+  ];
+  static const String hkMoneyKey = "uio31wqr1";
+  static const String hkMoneyKey2 = "uio31wqr12";
+
+  static void resetMonnnkye() {
+    var box = SSHive.box;
+    box.delete(hkMoneyKey);
+    box.delete(hkMoneyKey2);
+  }
 
   void show() {
     // if (_isShowing) return;
@@ -45,25 +63,20 @@ class OverlayBoxgift {
               return;
             }
             MainController.to.resetTimeBoxGift();
-            double tmpMmm = Random().nextDouble() * 50 + 25;
-            List<String> types = [
-              "10spin",
-              "15spin",
-              "20spin",
-              "100xp",
-              "150xp",
-              "200xp",
-              "1phoneSpice",
-            ];
 
-            int a = Random().nextInt(types.length);
-            a = 5;
+            var box = SSHive.box;
+
+            double tmpMmm =
+                box.get(hkMoneyKey) ?? (Random().nextDouble() * 50 + 25);
+
+            int a = box.get(hkMoneyKey2) ?? Random().nextInt(types.length-1);
             String tmpType = types[a];
             int exp = 0;
             int phoneSpice = 0;
+            resetMonnnkye();
             if (tmpType.contains("spin")) {
               List data = [10, 15, 20];
-              int free = data[Random().nextInt(data.length)];
+              int free = data[Random().nextInt(data.length-1)];
               OverlayCommonGet().show(
                 money: tmpMmm,
                 freespins: free,
@@ -130,15 +143,27 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
   bool showSecondPage = false;
   bool showSecondPageOpenGift = false;
 
+  var box = SSHive.box;
+  double tmpMmmmmmm = 50;
+  int tmpMmmmmmm2 = 1;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     SSEventReporttttt.elve_page();
     int time = MainController.to.boxGiftTime.value;
-    showSecondPage = time <=0;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    showSecondPage = time <= 0;
+    if (!showSecondPage) {
+      double tmpMmm = Random().nextDouble() * 50 + 25;
+      int a = Random().nextInt(OverlayBoxgift.types.length-1);
+      tmpMmmmmmm = box.get(OverlayBoxgift.hkMoneyKey) ?? tmpMmm;
+      tmpMmmmmmm2 = box.get(OverlayBoxgift.hkMoneyKey2) ?? a;
+      box.put(OverlayBoxgift.hkMoneyKey, tmpMmmmmmm);
+      box.put(OverlayBoxgift.hkMoneyKey2, tmpMmmmmmm2);
+    }
 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       int time = MainController.to.boxGiftTime.value;
       bool showTime = MainController.to.showBoxTime.value;
       ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
@@ -245,6 +270,11 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
   }
 
   firstPage() {
+    String tmpType = OverlayBoxgift.types[tmpMmmmmmm2];
+    String imgPath = Assets.img.mainTopXp.path;
+    if(tmpType.contains("spin")){
+      imgPath = Assets.img.giftFreespins.path;
+    }
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -264,16 +294,81 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               fontFamily: FontFamily.fraunces,
             ),
           ),
-          SizedBox(height: 30.h),
+
+          SizedBox(height: 10.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                    Assets.img.moneyGift.path,
+                    width: 60.w,
+                    height: 40.h,
+                  ),
+                  SSTxtGraBorder(
+                    text:
+                        "${SSCountry.curGuojiaFuhao()}${tmpMmmmmmm.toStringAsFixed(2)}",
+                    fontSize: 24.sp,
+                    fontFamily: FontFamily.ghostKidAOEPro,
+                    strokeColor: Color(0xff0C402B),
+                    fontWeight: FontWeight.w700,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xff0FFF63),
+                        Color(0xffA4F00D),
+                        Color(0xffD0FF00),
+                        Color(0xff00FF1E),
+                      ],
+                      end: Alignment.bottomCenter,
+                      begin: Alignment.topCenter,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: 10.w,),
+              Row(
+                children: [
+                  Image.asset(
+                    imgPath,
+                    width: 60.w,
+                    height: 40.h,
+                  ),
+                  SSTxtGraBorder(
+                    text:
+                    "??",
+                    fontSize: 24.sp,
+                    fontFamily: FontFamily.ghostKidAOEPro,
+                    strokeColor: Color(0xff0C402B),
+                    fontWeight: FontWeight.w700,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xff0FFF63),
+                        Color(0xffA4F00D),
+                        Color(0xffD0FF00),
+                        Color(0xff00FF1E),
+                      ],
+                      end: Alignment.bottomCenter,
+                      begin: Alignment.topCenter,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          SizedBox(height: 20.h),
           Center(
             child: Container(
               width: ScreenUtil().screenWidth,
               height: 400.h,
               // color: Colors.teal,
-              child: Stack(children: [
-                Center(child: const SSSpineBoxgift(),),
-                Center(child: Image.asset(Assets.img.boxgiftBorder.path))
-              ],),
+              child: Stack(
+                children: [
+                  Center(child: const SSSpineBoxgift()),
+                  Center(child: Image.asset(Assets.img.boxgiftBorder.path)),
+                ],
+              ),
             ),
           ),
           SizedBox(height: 30.h),
@@ -292,12 +387,10 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
                       Obx(() {
-
-
-                        return  SSTxtGraBorder(
-                          text: "Ready in: ${MainController.to.textBoxGiftTime.value}",
+                        return SSTxtGraBorder(
+                          text:
+                              "Ready in: ${MainController.to.textBoxGiftTime.value}",
                           strokeWidth: 1.w,
                           strokeColor: Color(0xff30120A),
                           fontSize: 20.sp,

@@ -368,16 +368,36 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
       ],
     );
   }
+  //
+  // void onBtn() {
+  //   double money = widget.money * 1;
+  //   onClose(money);
+  //   widget.onBtn(money);
+  // }
+  //
+  // void obBtn2() {
+  //   double money = widget.money * 0.1;
+  //   onClose(money);
+  //   widget.onBtn2(money);
+  // }
 
+  bool canClick = true;
   void onBtn() {
-    double money = widget.money * 1;
-    onClose(money);
-    widget.onBtn(money);
+    if(canClick){
+      double money = widget.money * 1;
+      onClose(money);
+      widget.onBtn(money);
+      canClick =false;
+    }
+
   }
 
   void obBtn2() {
-    double money = widget.money * 0.1;
-    onClose(money);
-    widget.onBtn2(money);
+    if(canClick){
+      double money = widget.money * 0.1;
+      onClose(money);
+      widget.onBtn2(money);
+      canClick =false;
+    }
   }
 }

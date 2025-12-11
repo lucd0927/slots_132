@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
+import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/activate_my_status.dart';
@@ -22,6 +23,16 @@ class _TabBalanceState extends State<TabBalance> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      double money = MainController.to.curMonnnn.value;
+      String strMonnn =
+          "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(2)}";
+      if (money > 1000) {
+        int quzheng = money ~/ 1000;
+        double tpmMmmm2 = money - quzheng * 1000;
+        strMonnn =
+            "${SSCountry.curGuojiaFuhao()} ${quzheng},${tpmMmmm2.toStringAsFixed(2)} USD";
+      }
+
       return Container(
         width: double.infinity,
         padding: EdgeInsets.all(16.w),
@@ -63,11 +74,12 @@ class _TabBalanceState extends State<TabBalance> {
             SizedBox(height: 8.w),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                WithdddController.to.showBalance.value
-                    ? "${SSCountry.curGuojiaFuhao()} ${MainController.to.curMonnnn.value.toStringAsFixed(2)}"
-                    : '••••',
-                style: TextStyle(
+              child: SSAniiiiCount(
+                value: money,
+                prefix: "${SSCountry.curGuojiaFuhao()}",
+                suffix: " USD",
+                fractionDigits: 2,
+                textStyle: TextStyle(
                   fontSize: 36.sp,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff2F2F2F),

@@ -332,16 +332,23 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
       ],
     );
   }
-
+  bool canClick = true;
   void onBtn() {
-    double money = widget.money * 1;
-    onClose(money);
-    widget.onBtn(money);
+    if(canClick){
+      double money = widget.money * 1;
+      onClose(money);
+      widget.onBtn(money);
+      canClick =false;
+    }
+
   }
 
   void obBtn2() {
-    double money = widget.money * 0.1;
-    onClose(money);
-    widget.onBtn2(money);
+    if(canClick){
+      double money = widget.money * 0.1;
+      onClose(money);
+      widget.onBtn2(money);
+      canClick =false;
+    }
   }
 }

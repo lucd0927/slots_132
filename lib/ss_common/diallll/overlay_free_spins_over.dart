@@ -292,7 +292,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
       ),
     );
   }
-
+  bool canClick = true;
   onClose(double money) async {
     ssLogggg("====== close money:$money");
     setState(() {
@@ -304,7 +304,11 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   }
 
   void onclickClaim() {
-    MainController.to.curFreeSpinCount.value = baseCount + addSpinCount;
-    onClose(1);
+    if(canClick){
+      canClick = false;
+      MainController.to.curFreeSpinCount.value = baseCount + addSpinCount;
+      onClose(1);
+    }
+
   }
 }

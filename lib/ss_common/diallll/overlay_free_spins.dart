@@ -292,23 +292,31 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
     // });
     // await Future.delayed(animD);
   }
-
+  bool canClick = true;
   void onBnt2() async{
-    await SSCommonAds().showInterstitialAd(adPosId: SSAdsPosId.eyomt_freespin_int);
-    MainController.to.curFreeSpinCount.value = baseCount;
-    onClose(1);
-    widget.onBtn2(baseCount * 1.0);
+    if(canClick){
+      canClick = false;
+      await SSCommonAds().showInterstitialAd(adPosId: SSAdsPosId.eyomt_freespin_int);
+      MainController.to.curFreeSpinCount.value = baseCount;
+      onClose(1);
+      widget.onBtn2(baseCount * 1.0);
+    }
+
   }
 
   void onclickClaim() async{
-    int aC = baseCount + addSpinCount;
-    bool resut = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_freespin_rv);
-    if(!resut){
-      aC = baseCount;
+    if(canClick){
+      canClick = false;
+      int aC = baseCount + addSpinCount;
+      bool resut = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_freespin_rv);
+      if(!resut){
+        aC = baseCount;
+      }
+      MainController.to.curFreeSpinCount.value = aC;
+      SSEventReporttttt.free_spin_add_chance();
+      onClose(1);
+      widget.onBtn(aC * 1.0);
     }
-    MainController.to.curFreeSpinCount.value = aC;
-    SSEventReporttttt.free_spin_add_chance();
-    onClose(1);
-    widget.onBtn(aC * 1.0);
+
   }
 }

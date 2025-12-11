@@ -391,7 +391,7 @@ class CenterView extends StatelessWidget {
                 ),
                 Positioned(
                   top: 20.h,
-                  bottom: 18.h,
+                  bottom: 12.h,
                   left: 16.w,
                   right: 0,
                   child: Container(
@@ -432,7 +432,7 @@ class CenterView extends StatelessWidget {
               ),
               Positioned(
                 top: 20.h,
-                bottom: 18.h,
+                bottom: 12.h,
                 left: 16.w,
                 right: 0,
                 child: Container(
@@ -472,7 +472,7 @@ class CenterView extends StatelessWidget {
               ),
               Positioned(
                 top: 20.h,
-                bottom: 18.h,
+                bottom: 12.h,
                 left: 30.w,
                 right: 0,
                 child: Container(

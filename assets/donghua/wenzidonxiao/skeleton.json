@@ -1,11 +1,11 @@
 {
 "skeleton": {
-	"hash": "cTkkGX8IOqU",
+	"hash": "JqMWISxwOM0",
 	"spine": "4.3.39-beta",
-	"x": -374.99542,
-	"y": -812,
-	"width": 750.01794,
-	"height": 1624,
+	"x": -374.84082,
+	"y": -373.4528,
+	"width": 749.86334,
+	"height": 746.9056,
 	"images": "./img/",
 	"audio": "./audio"
 },
@@ -111,119 +111,119 @@
 		"slots": {
 			"All on us!": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 2.19771, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 5.0901475, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"Congrats!": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 2.19771, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 5.0901475, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.9619466, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.40444633, "color": "ffffffff" },
-					{ "time": 0.9791609, "color": "ffffff00" }
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea" },
+					{ "time": 2.334607, "color": "eaeaea00" }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 1.489542, "color": "ffffff00" },
-					{ "time": 1.5574235, "color": "ffffffff" },
-					{ "time": 2.030165, "color": "ffffff00" }
+					{ "color": "ffffff00" },
+					{ "time": 3.3978705, "color": "eaeaea00" },
+					{ "time": 3.6138215, "color": "eaeaeaea" },
+					{ "time": 4.7881145, "color": "eaeaea00" }
 				]
 			},
 			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
 				"rgba": [
-					{ "time": 1.9619466, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"Group 4899022": {
 				"rgba": [
 					{ "color": "ffffff00" },
-					{ "time": 0.33333334, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.9619466, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "time": 0.4666667, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"Rectangle 11388": {
 				"rgba": [
 					{ "color": "ffffff00" },
-					{ "time": 0.33333334, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.9619466, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "time": 0.4666667, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"Rectangle 11389": {
 				"rgba": [
 					{ "color": "ffffff00" },
-					{ "time": 0.33333334, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.9619466, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "time": 0.4666667, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			},
 			"Union": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.40444633, "color": "ffffffcd" }
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeab8" }
 				]
 			},
 			"Union2": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.47241098, "color": "ffffff00" },
-					{ "time": 0.57685727, "color": "ffffffb4" }
+					{ "color": "ffffff00" },
+					{ "time": 0.8798392, "color": "eaeaea00" },
+					{ "time": 1.1186514, "color": "eaeaea9f" }
 				]
 			},
 			"Union3": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.7109586, "color": "ffffff00" },
-					{ "time": 0.77800924, "color": "ffffff87" }
+					{ "color": "ffffff00" },
+					{ "time": 1.527135, "color": "eaeaea00" },
+					{ "time": 1.7286015, "color": "eaeaea72" }
 				]
 			},
 			"Union4": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.8450598, "color": "ffffff00" },
-					{ "time": 0.9121104, "color": "ffffff5a" }
+					{ "color": "ffffff00" },
+					{ "time": 1.9261022, "color": "eaeaea00" },
+					{ "time": 2.1303546, "color": "eaeaea45" }
 				]
 			},
 			"Union5": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.9791609, "color": "ffffff00" },
-					{ "time": 1.0462116, "color": "ffffff2d" }
+					{ "color": "ffffff00" },
+					{ "time": 2.334607, "color": "eaeaea00" },
+					{ "time": 2.5388594, "color": "eaeaea18" }
 				]
 			},
 			"You're today's lucky star—fees_": {
 				"rgba": [
-					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 2.19771, "color": "ffffffff" },
-					{ "time": 2.3977103, "color": "ffffff00" }
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 5.0901475, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
 				]
 			}
 		},
@@ -231,99 +231,102 @@
 			"Group 4899022": {
 				"translate": [
 					{ "x": -758.70184, "y": -113.31842 },
-					{ "time": 0.33333334 }
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 4.5764427, "x": -8.327944, "y": -8.327944 }
 				]
 			},
 			"Rectangle 11388": {
 				"translate": [
 					{ "x": 522.1809, "y": 108.562256 },
-					{ "time": 0.33333334 }
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 2.334607, "x": -8.328033, "y": -8.328003 }
 				]
 			},
 			"Rectangle 11389": {
 				"translate": [
 					{ "x": -550.62103, "y": -67.65527 },
-					{ "time": 0.33333334, "y": 3.427925 }
+					{ "time": 0.4666667, "x": -8.328003, "y": -4.900078 },
+					{ "time": 2.334607, "x": -8.327972, "y": -4.9000244 }
 				]
 			},
 			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
 				"rotate": [
-					{ "time": 0.33333334 },
-					{ "time": 0.6439079, "value": -20 },
-					{ "time": 0.9791609 },
-					{ "time": 1.2132622, "value": 20 },
-					{ "time": 1.4136462 },
-					{ "time": 1.7261834, "value": -20 },
-					{ "time": 1.9619466 }
+					{ "time": 0.4666667, "value": -8.328003 },
+					{ "time": 1.320068, "value": -28.328003 },
+					{ "time": 2.334607, "value": -8.328003 },
+					{ "time": 2.8431122, "value": 11.671997 },
+					{ "time": 3.1806984, "value": -8.328003 },
+					{ "time": 4.0535083, "value": -28.328003 },
+					{ "time": 4.5764427, "value": -8.327944 }
 				],
 				"translate": [
 					{ "x": -253.87177, "y": -203.94736 },
-					{ "time": 0.33333334, "curve": "stepped" },
-					{ "time": 1.9619466 },
-					{ "time": 2.3977103, "x": 233.12268, "y": 415.0355 }
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 4.5764427, "x": -8.327944, "y": -8.328005 },
+					{ "time": 5.4333334, "x": 224.79474, "y": 406.70752 }
 				],
 				"scale": [
 					{ "x": 0, "y": 0 },
-					{ "time": 0.33333334 },
-					{ "time": 0.6439079, "x": 0.9, "y": 0.9 },
-					{ "time": 0.9791609 },
-					{ "time": 1.2132622, "x": 0.9, "y": 0.9 },
-					{ "time": 1.4136462 },
-					{ "time": 1.7261834, "x": 0.9, "y": 0.9 },
-					{ "time": 1.9619466 }
+					{ "time": 0.4666667, "x": 0.91672, "y": 0.91672 },
+					{ "time": 1.320068, "x": 0.81671995, "y": 0.81671995 },
+					{ "time": 2.334607, "x": 0.91672, "y": 0.91672 },
+					{ "time": 2.8431122, "x": 0.81671995, "y": 0.81671995 },
+					{ "time": 3.1806984, "x": 0.91672, "y": 0.91672 },
+					{ "time": 4.0535083, "x": 0.81671995, "y": 0.81671995 },
+					{ "time": 4.5764427, "x": 0.91672057, "y": 0.91672057 }
 				]
 			},
 			"Union": {
 				"translate": [
-					{ "time": 0.33333334, "x": 530.4718, "y": 70.894714 },
-					{ "time": 1.4136462, "x": -394.95428, "y": -49.8891 }
+					{ "time": 0.4666667, "x": 522.1438, "y": 62.56671 },
+					{ "time": 3.1806984, "x": -403.28226, "y": -58.217064 }
 				]
 			},
 			"Union2": {
 				"translate": [
-					{ "time": 0.47241098, "x": 413.6337, "y": 55.60749 },
-					{ "time": 1.5570868, "x": -511.7947, "y": -65.176506 }
+					{ "time": 0.8798392, "x": 405.30566, "y": 47.279503 },
+					{ "time": 3.6138215, "x": -520.1227, "y": -73.504555 }
 				]
 			},
 			"Union3": {
 				"translate": [
-					{ "time": 0.7109586, "x": 295.94617, "y": 37.044395 },
-					{ "time": 1.5570868, "x": -629.48224, "y": -83.7396 }
+					{ "time": 1.527135, "x": 287.61816, "y": 28.716408 },
+					{ "time": 3.6138215, "x": -637.8103, "y": -92.06765 }
 				]
 			},
 			"Union4": {
 				"translate": [
-					{ "time": 0.8450598, "x": 175.5817, "y": 23.259491 },
-					{ "time": 1.6583017, "x": -749.8467, "y": -97.527504 }
+					{ "time": 1.9261022, "x": 167.25366, "y": 14.931435 },
+					{ "time": 3.8504643, "x": -758.1747, "y": -105.85555 }
 				]
 			},
 			"Union5": {
 				"translate": [
-					{ "time": 0.9791609, "x": 68.037964, "y": 8.723351 },
-					{ "time": 1.7940649, "x": -857.39044, "y": -112.060646 }
+					{ "time": 2.334607, "x": 59.70993, "y": 0.39536285 },
+					{ "time": 4.265115, "x": -865.7184, "y": -120.388695 }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
 				"translate": [
-					{ "time": 1.489542, "x": -90.48427, "y": -12.470825 },
-					{ "time": 2.030165, "x": 141.58089, "y": 18.33963 }
+					{ "time": 3.3978705, "x": -98.81233, "y": -20.798775 },
+					{ "time": 4.7881145, "x": 133.25291, "y": 10.011709 }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
 				"translate": [
-					{ "time": 0.33333334 },
-					{ "time": 0.9791609, "x": -247.94983, "y": -33.74463 }
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 2.334607, "x": -256.27786, "y": -42.07263 }
 				]
 			},
 			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
 				"rotate": [
-					{ "time": 0.40444633 },
-					{ "time": 1.9619466, "value": -102.63285 }
+					{ "time": 0.6723408, "value": -8.328003 },
+					{ "time": 4.5764427, "value": -110.960754 }
 				],
 				"scale": [
 					{},
-					{ "time": 0.33333334, "x": 0.1, "y": 0.1 },
-					{ "time": 0.40444633 }
+					{ "time": 0.4666667, "x": 0.016719975, "y": 0.016719975 },
+					{ "time": 0.6723408, "x": 0.91672, "y": 0.91672 }
 				]
 			}
 		}

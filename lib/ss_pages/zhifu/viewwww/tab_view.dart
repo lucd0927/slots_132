@@ -75,8 +75,12 @@ class _SSTabViewState extends State<SSTabView> {
 
   itemTxProgress({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
+    int quzheng = money ~/1000;
+
     String strmoney =
-        "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(0)} USD";
+        "${SSCountry.curGuojiaFuhao()} ${quzheng.toStringAsFixed(0)},000 USD";
+    // String strmoney =
+    //     "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(0)} USD";
 
     bool hasOver1 = WithdddController.to.curLiucheng1SpinsOver.value;
     bool hasOver2 = WithdddController.to.curLiucheng2PaimingOver.value;
@@ -218,15 +222,16 @@ class _SSTabViewState extends State<SSTabView> {
       if (WithdddController.to.hasSaveCardId() &&
           WithdddController.to.hasSaveBank()) {
         jinduTxt = "Securing you account...";
+        if (!WithdddController.to.curLiucheng1SpinsOver.value) {
+          des =
+          "You got this—finish the stage fee-free, trust us, cash out instantly! 💸";
+        } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
+          des = "You're next in line—cash out lightning-fast! 💸";
+        } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
+          des = "Quick security check! Spin %s times to get your cash.";
+        }
       }
-      if (!WithdddController.to.curLiucheng1SpinsOver.value) {
-        des =
-            "You got this—finish the stage fee-free, trust us, cash out instantly! 💸";
-      } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
-        des = "You're next in line—cash out lightning-fast! 💸";
-      } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
-        des = "Quick security check! Spin %s times to get your cash.";
-      }
+
     }
 
     return Column(
@@ -286,7 +291,7 @@ class _SSTabViewState extends State<SSTabView> {
               child: Text(
                 des,
                 style: TextStyle(
-                  fontSize: 10.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w600,
                   height: 1,
                   color: Color(0xff9BA3B0),
@@ -455,157 +460,169 @@ class _VipPartnerState extends State<VipPartner> {
         "Become a Partner and wake up to \$1000 in your account. Every. Single. Day.";
     String time = toTime();
     // ssLogggg("====time:$time");
-    return Container(
-      width: double.infinity,
-      height: 100.h,
-      margin: EdgeInsets.only(top: 20.w, left: 16.w, right: 16.w),
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.w),
-        color: Color(0xffffffff),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: double.infinity,
-            height: 30.h,
-            child: Row(
-              children: [
-                Text(
-                  "VIP Partner",
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xffE9741B),
-                  ),
-                ),
-                const Spacer(),
-                if (!hasClickVip())
-                  Row(
-                    children: [
-                      Image.asset(
-                        Assets.img.withddTime.path,
-                        width: 16.w,
-                        height: 16.w,
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        time,
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xffB12121),
-                        ),
-                      ),
-                    ],
-                  ),
-              ],
-            ),
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 100.h,
+          margin: EdgeInsets.only(top: 20.w, left: 16.w, right: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.w),
+            color: Color(0xffffffff),
           ),
-          Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Container(
+                width: double.infinity,
+                height: 30.h,
+                child: Row(
+                  children: [
+                    Text(
+                      "VIP Partner",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xffE9741B),
+                      ),
+                    ),
+                    const Spacer(),
+                    if (!hasClickVip())
+                      Row(
+                        children: [
+                          Image.asset(
+                            Assets.img.withddTime.path,
+                            width: 16.w,
+                            height: 16.w,
+                          ),
+                          SizedBox(width: 4.w),
+                          Text(
+                            time,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xffB12121),
+                            ),
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    Assets.img.withddVip.path,
-                    width: 30.w,
-                    height: 30.w,
-                  ),
-                  SizedBox(width: 2.w),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        "Daily",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          height: 1.4,
-                        ),
+                      Image.asset(
+                        Assets.img.withddVip.path,
+                        width: 30.w,
+                        height: 30.w,
                       ),
-
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 2.w),
-                        child: Text(
-                          money,
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff3AAD47),
-                            height: 1,
+                      SizedBox(width: 2.w),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "Daily",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              height: 1.4,
+                            ),
                           ),
-                        ),
-                      ),
 
-                      Text(
-                        "Payout",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          height: 1.4,
-                        ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 2.w),
+                            child: Text(
+                              money,
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff3AAD47),
+                                height: 1,
+                              ),
+                            ),
+                          ),
+
+                          Text(
+                            "Payout",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              height: 1.4,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-              // SizedBox(height: 4.h),
-              Spacer(),
-              hasClickVip()
-                  ? Text(
-                      "Level ${MainController.to.level()}/${MainController.maxLevel}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 22.sp,
-                        color: Color(0xff222317),
-                        height: 1,
-                      ),
-                    )
-                  : GestureDetector(
-                      onTap: onGetChange,
+                  // SizedBox(height: 4.h),
+                  Spacer(),
+                  hasClickVip()
+                      ? Text(
+                          "Level ${MainController.to.level()}/${MainController.maxLevel}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22.sp,
+                            color: Color(0xff222317),
+                            height: 1,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: onGetChange,
 
-                      child: Container(
-                        width: 120.w,
-                        height: 32.h,
-                        decoration: BoxDecoration(
-                          color: !canclick()
-                              ? Color(0xffBDC8D7)
-                              : WithdddController.to.bgColor(),
-                          borderRadius: BorderRadius.circular(32.h),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Get a chance to...",
-                            style: TextStyle(
-                              fontFamily: FontFamily.rubik,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xffffffff),
-                              height: 1,
+                          child: Container(
+                            width: 120.w,
+                            height: 32.h,
+                            decoration: BoxDecoration(
+                              color: !canclick()
+                                  ? Color(0xffBDC8D7)
+                                  : WithdddController.to.bgColor(),
+                              borderRadius: BorderRadius.circular(32.h),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Get a chance to...",
+                                style: TextStyle(
+                                  fontFamily: FontFamily.rubik,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xffffffff),
+                                  height: 1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
+                ],
+              ),
+
             ],
           ),
-          SizedBox(height: 4.h),
-          Text(
-            des,
-            style: TextStyle(
-              fontSize: 10.sp,
-              fontWeight: FontWeight.w600,
-              height: 1,
-              color: Color(0xff9BA3B0),
+        ),
+        SizedBox(height: 8.h),
+        Row(
+          children: [
+            SizedBox(width: 16.w,),
+            Flexible(
+              child: Text(
+                des,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                  color: Color(0xff9BA3B0),
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      ],
     );
   }
 

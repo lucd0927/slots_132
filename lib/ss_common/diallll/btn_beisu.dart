@@ -145,10 +145,11 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
   bool canClick = true;
 
   void onBtn() {
-    setState(() {
-      showGudingBeisu = !showGudingBeisu;
-    });
+
     if (canClick) {
+      setState(() {
+        showGudingBeisu = !showGudingBeisu;
+      });
       canClick = false;
       double tmpAngle = showGudingBeisuAngle ?? 0;
       double beisu = 2.0;
