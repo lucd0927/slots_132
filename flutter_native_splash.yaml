@@ -20,7 +20,7 @@ flutter_native_splash:
   ios: true
   web: false
   #  fullscreen: true
-  image: assets/tupian/splash.png
+  image: assets/img/splash.png
   android_gravity: fill
   ios_content_mode: scaleToFill
   #background_image: "assets/background.png"
@@ -68,8 +68,8 @@ flutter_native_splash:
     # 768 pixels in diameter.  To fit a 1152x1152 image within a circle with a 768 diameter, simply
     # ensure that the most important design elements of your image are placed within a circular area
     # with a 768 diameter at the center of the 1152x1152 canvas.
-    image: assets/tupian/logo.png
-    image_dark: assets/tupian/logo.png
+    image: assets/img/splash.png
+    image_dark: assets/img/splash.png
     icon_background_color: "#ffffff"
     icon_background_color_dark: "#ffffff"
     # Splash screen background color.
