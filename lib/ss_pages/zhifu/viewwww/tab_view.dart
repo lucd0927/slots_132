@@ -31,26 +31,27 @@ class _SSTabViewState extends State<SSTabView> {
   static const String khkp5000Second = "withddd_people_5000_second";
   int people5000First = 199;
   int people5000Second = 30;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    int random =Random().nextInt(4);
-    int random2 =Random().nextInt(3);
-    int save5000First = box.get(khkp5000First)??199;
-    int save5000Second = box.get(khkp5000Second)??30;
+    int random = Random().nextInt(4);
+    int random2 = Random().nextInt(3);
+    int save5000First = box.get(khkp5000First) ?? 199;
+    int save5000Second = box.get(khkp5000Second) ?? 30;
 
     people5000First = save5000First + random;
     people5000Second = save5000Second - random2;
-    if(people5000Second <= 3){
+    if (people5000Second <= 3) {
       people5000Second = 3;
     }
     box.put(khkp5000First, people5000First);
     box.put(khkp5000Second, people5000Second);
-    ssLogggg("===people5000First:$people5000First  people5000Second:$people5000Second===");
-
-
+    ssLogggg(
+      "===people5000First:$people5000First  people5000Second:$people5000Second===",
+    );
   }
 
   @override
@@ -75,7 +76,7 @@ class _SSTabViewState extends State<SSTabView> {
 
   itemTxProgress({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
-    int quzheng = money ~/1000;
+    int quzheng = money ~/ 1000;
 
     String strmoney =
         "${SSCountry.curGuojiaFuhao()} ${quzheng.toStringAsFixed(0)},000 USD";
@@ -109,9 +110,19 @@ class _SSTabViewState extends State<SSTabView> {
     ssLogggg(
       "========hasOver1:$hasOver1  hasOver2:$hasOver2 hasOver3:$hasOver3",
     );
+    String jinduTxt = "Securing you account...";
+    if (!WithdddController.to.curLiucheng1SpinsOver.value) {
+      jinduTxt = "🎫Fee";
+    } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
+      jinduTxt = "⏳Queue";
+    } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
+      jinduTxt = "🛡️Review";
+    }
     if (hasOver3) {
       pro = 1;
+      jinduTxt = "🏦Sent";
     }
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +141,7 @@ class _SSTabViewState extends State<SSTabView> {
               Icon(Icons.warning_amber, color: Color(0xffAF4A4A), size: 20.h),
               SizedBox(width: 4.w),
               Text(
-                "Securing you account...",
+                jinduTxt,
                 style: TextStyle(
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w600,
@@ -204,8 +215,8 @@ class _SSTabViewState extends State<SSTabView> {
   }
 
   itemProgressss({required double money}) {
-    String des = "${people5000First} successful cash outs today! Only $people5000Second spots left";
-    String jinduTxt = "";
+    String des =
+        "${people5000First} successful cash outs today! Only $people5000Second spots left";
     bool showTx =
         WithdddController.to.hasSaveCardId() &&
         WithdddController.to.hasSaveBank() &&
@@ -221,17 +232,34 @@ class _SSTabViewState extends State<SSTabView> {
       }
       if (WithdddController.to.hasSaveCardId() &&
           WithdddController.to.hasSaveBank()) {
-        jinduTxt = "Securing you account...";
         if (!WithdddController.to.curLiucheng1SpinsOver.value) {
-          des =
-          "You got this—finish the stage fee-free, trust us, cash out instantly! 💸";
+          des = "Stop! Don't pay the fee. 🛑";
+          bool showOther = WithdddController.to.txProgressStatus.value;
+          if (showOther) {
+            des = "Pay \$0 Fee. Keep ALL Cash.";
+          }
         } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
-          des = "You're next in line—cash out lightning-fast! 💸";
+          des = "Skip the Line. Get Paid FASTER.";
+          bool showOther = WithdddController.to.txProgressStatus.value;
+          if (showOther) {
+            des = "Boost Your Payout ";
+          }
         } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
-          des = "Quick security check! Spin %s times to get your cash.";
+          des = "Final Step!";
+          bool showOther = WithdddController.to.txProgressStatus.value;
+          if (showOther) {
+            des = "Verify it's you to secure the cash.";
+          }
+        }
+
+        if (WithdddController.to.curLiucheng3SpinsOver.value) {
+          des = "Cash Sent! 💸";
+          bool showOther = WithdddController.to.txProgressStatus.value;
+          if (showOther) {
+            des = "Don't see it? Please check with your bank.";
+          }
         }
       }
-
     }
 
     return Column(
@@ -268,37 +296,63 @@ class _SSTabViewState extends State<SSTabView> {
                       ],
                     ),
 
-                    Positioned(
-                      top: 5.h,
-                      right: 5.w,
-                      child: Text(
-                        jinduTxt,
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          color: Colors.red,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
+                    // Positioned(
+                    //   top: 5.h,
+                    //   right: 5.w,
+                    //   child: Text(
+                    //     jinduTxt,
+                    //     style: TextStyle(
+                    //       fontSize: 16.sp,
+                    //       color: Colors.red,
+                    //       fontWeight: FontWeight.w700,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
         ),
-        SizedBox(height: 8.h,),
+        SizedBox(height: 8.h),
         Row(
           children: [
-            SizedBox(width: 16.w,),
+            SizedBox(width: 16.w),
             Flexible(
-              child: Text(
-                des,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                  height: 1,
-                  color: Color(0xff9BA3B0),
-                ),
-              ),
+              child: money > 1000
+                  ? Text.rich(
+                      TextSpan(
+                        text: "",
+                        children: [
+                          TextSpan(
+                            text: "${people5000First}",
+                            style: TextStyle(color: Color(0xff3AAD47)),
+                          ),
+                          TextSpan(
+                            text: "  successful cash outs today! Only  ",
+                          ),
+                          TextSpan(
+                            text: "$people5000Second",
+                            style: TextStyle(color: Color(0xff3AAD47)),
+                          ),
+                          TextSpan(text: "  spots left"),
+                        ],
+                      ),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        height: 1,
+                        color: Color(0xff9BA3B0),
+                      ),
+                    )
+                  : Text(
+                      des,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        height: 1,
+                        color: Color(0xff9BA3B0),
+                      ),
+                    ),
             ),
-            SizedBox(width: 16.w,),
+            SizedBox(width: 16.w),
           ],
         ),
       ],
@@ -309,7 +363,7 @@ class _SSTabViewState extends State<SSTabView> {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
     String des = "90% of new users cash out on Day 1.";
 
-    int quzheng = money ~/1000;
+    int quzheng = money ~/ 1000;
 
     String strmoney =
         "${SSCountry.curGuojiaFuhao()} ${quzheng.toStringAsFixed(0)},000";
@@ -601,14 +655,13 @@ class _VipPartnerState extends State<VipPartner> {
                         ),
                 ],
               ),
-
             ],
           ),
         ),
         SizedBox(height: 8.h),
         Row(
           children: [
-            SizedBox(width: 16.w,),
+            SizedBox(width: 16.w),
             Flexible(
               child: Text(
                 des,

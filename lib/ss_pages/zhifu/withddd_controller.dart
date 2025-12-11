@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 
@@ -43,6 +44,9 @@ class WithdddController extends GetxController {
   // static const double minWithdrawMoney = 1000;
 
   // static const int vipPartnerTime = 6;
+
+  var txProgressStatus = false.obs;
+
   void onClickVipGetChange() {
     box.put(hkVipClick, true);
   }
@@ -184,6 +188,8 @@ class WithdddController extends GetxController {
     return SSFBBaseData.human_spin();
   }
 
+  Timer? txProgressTimer;
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -209,6 +215,11 @@ class WithdddController extends GetxController {
 
     Map<dynamic, dynamic> tmppaimingData = box.get(hkpaimingData) ?? {};
     paimingData = tmppaimingData.obs;
+
+    txProgressTimer = Timer.periodic(Duration(seconds: 2), (timer) {
+      bool status = txProgressStatus.value;
+      txProgressStatus.value = !status;
+    });
   }
 
   addSpinWithLiuceng1(int count) {
@@ -232,12 +243,10 @@ class WithdddController extends GetxController {
     ssLogggg("======addSpinWithLiuceng3:tmpppp:$tmpppp");
 
     if (tmpppp >= spinWithLiuceng3()) {
-
-      if(!curLiucheng3SpinsOver.value){
+      if (!curLiucheng3SpinsOver.value) {
         OverlayWithddOnelastcheckJindu1().show();
       }
       saveLiuceng3();
-
     }
   }
 
@@ -408,5 +417,12 @@ class WithdddController extends GetxController {
         );
       }
     }
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    txProgressTimer?.cancel();
   }
 }

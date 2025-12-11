@@ -119,6 +119,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               (moneyContext != null ||
                   xpContext != null ||
                   phoneContext != null)) {
+            btnBonusGameClick.play();
             BuildContext? context = moneyContext;
             String icon = Assets.img.money.path;
             bool showMoney = widget.money > 0;

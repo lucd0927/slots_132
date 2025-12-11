@@ -77,10 +77,6 @@ class $AssetsDonghuaGen {
   $AssetsDonghuaFreespinSGen get freespinS =>
       const $AssetsDonghuaFreespinSGen();
 
-  /// Directory path: assets/donghua/freespin_xuanggg
-  $AssetsDonghuaFreespinXuangggGen get freespinXuanggg =>
-      const $AssetsDonghuaFreespinXuangggGen();
-
   /// Directory path: assets/donghua/hand
   $AssetsDonghuaHandGen get hand => const $AssetsDonghuaHandGen();
 
@@ -1515,23 +1511,6 @@ class $AssetsDonghuaFreespinSGen {
 
   /// List of all assets
   List<dynamic> get values => [sjqAtlas, sjqPng, sjq2, skeleton];
-}
-
-class $AssetsDonghuaFreespinXuangggGen {
-  const $AssetsDonghuaFreespinXuangggGen();
-
-  /// File path: assets/donghua/freespin_xuanggg/gt.atlas
-  String get gtAtlas => 'assets/donghua/freespin_xuanggg/gt.atlas';
-
-  /// File path: assets/donghua/freespin_xuanggg/gt.png
-  AssetGenImage get gtPng =>
-      const AssetGenImage('assets/donghua/freespin_xuanggg/gt.png');
-
-  /// File path: assets/donghua/freespin_xuanggg/skeleton.json
-  String get skeleton => 'assets/donghua/freespin_xuanggg/skeleton.json';
-
-  /// List of all assets
-  List<dynamic> get values => [gtAtlas, gtPng, skeleton];
 }
 
 class $AssetsDonghuaHandGen {

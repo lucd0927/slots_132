@@ -178,7 +178,7 @@ class TopView extends StatelessWidget {
   onMenu() async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
 
     // OverlayBonusGame().show(onEnd: () {  });
     // OverlayWithddOnelastcheckJindu1().show();
@@ -200,7 +200,7 @@ class TopView extends StatelessWidget {
     // Get.toNamed(SSRouttttt.wayeeee);
 
 
-    // OverlayJindu1().show();
+    OverlayJindu1().show();
 
     // AppSettings.openAppNotificationSettings()
     // OverlayTzReward().show(money: 200, onClose: (v){});

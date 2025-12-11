@@ -212,7 +212,7 @@ class _SplashProgressState extends State<SplashProgress> {
   double startTime = 0.0;
   late Timer _timer;
   final Duration _delayTime = Duration(milliseconds: _oneTime);
-  double _allTime = 3000;
+  double _allTime = 10000;
   static const int _oneTime = 100;
   bool canGoToMain = true;
   Timer? _delayTimer;
@@ -257,7 +257,7 @@ class _SplashProgressState extends State<SplashProgress> {
     // ssLogggg(
     //   "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",
     // );
-    // await Future.delayed(Duration(milliseconds:SSABChange.isPackageB()? 3000:0));
+    await Future.delayed(Duration(milliseconds:SSABChange.isPackageB()? 3000:0));
     _timer.cancel();
     if (canGoToMain) {
       ssLogggg("==SSABChange().init 等待进入main page====");

@@ -56,7 +56,7 @@ class _WithddJindu2State extends State<WithddJindu2> {
   bool showAnimatedTxt = false;
   Duration animD = Duration(milliseconds: 250);
   Duration animD2 = Duration(milliseconds: 5000);
-  Duration animD3 = Duration(milliseconds: 2000);
+  Duration animD3 = Duration(milliseconds: 4000);
 
   @override
   void initState() {
