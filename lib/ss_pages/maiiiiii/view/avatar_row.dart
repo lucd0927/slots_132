@@ -259,27 +259,29 @@ class _AvatarRowState extends State<AvatarRow> {
                   top: -10.h,
                   child: Container(child: Center(child: SpineMainAvatar())),
                 ),
-              if (index == selectIndex)
+              if (index == selectIndex )
                 Positioned(
                   left: 8.w,
                   right: 8.w,
                   top: -10.h,
                   bottom: -10.h,
-                  child: Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    // color: Colors.white,
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: winSelect == 0
-                          ? SSAnimatedWinSuper()
-                          : winSelect == 1
-                          ? SSAnimatedWinMega()
-                          : winSelect == 2
-                          ? SSAnimatedWinBig()
-                          : winSelect == 3
-                          ? SSAnimatedWinWow()
-                          : SSAnimatedJackpotMini(),
+                  child: Center(
+                    child: Container(
+                      width: 30.w,
+                      height: double.infinity,
+                      // color: Colors.white,
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: winSelect == 0
+                            ? SSAnimatedWinSuper()
+                            : winSelect == 1
+                            ? SSAnimatedWinMega()
+                            : winSelect == 2
+                            ? SSAnimatedWinBig()
+                            : winSelect == 3
+                            ? SSAnimatedWinWow()
+                            : SSAnimatedJackpotMini(),
+                      ),
                     ),
                   ),
                 ),

@@ -457,7 +457,7 @@ class SSWindsCccc {
   //
   static Map<String, dynamic> local = {
     "ui": {
-      "number": 0,
+      "number": 1,
       "behavior": 0,
       "device": 0
     },

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_core/flutter_chat_core.dart';
@@ -25,9 +26,36 @@ class SSTabView extends StatefulWidget {
 }
 
 class _SSTabViewState extends State<SSTabView> {
+  var box = SSHive.box;
+  static const String khkp5000First = "withddd_people_5000_first";
+  static const String khkp5000Second = "withddd_people_5000_second";
+  int people5000First = 199;
+  int people5000Second = 30;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    int random =Random().nextInt(4);
+    int random2 =Random().nextInt(3);
+    int save5000First = box.get(khkp5000First)??199;
+    int save5000Second = box.get(khkp5000Second)??30;
+
+    people5000First = save5000First + random;
+    people5000Second = save5000Second - random2;
+    if(people5000Second <= 3){
+      people5000Second = 3;
+    }
+    box.put(khkp5000First, people5000First);
+    box.put(khkp5000Second, people5000Second);
+    ssLogggg("===people5000First:$people5000First  people5000Second:$people5000Second===");
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Obx((){
+    return Obx(() {
       var cardId = WithdddController.to.curSaveCardId.value;
       return SingleChildScrollView(
         child: Column(
@@ -56,28 +84,29 @@ class _SSTabViewState extends State<SSTabView> {
     String text = "";
     double pro = 0;
     bool hasJieduan2 = false;
-    if(!hasOver1){
+    if (!hasOver1) {
       int curaa = WithdddController.to.curSpinLiuceng1.value;
       int curAll = WithdddController.to.maxSpinCountWithWithdraw();
       text = "${curaa}/${curAll} SPINS";
       pro = curaa / curAll;
-    }else if(!hasOver2){
+    } else if (!hasOver2) {
       int curaa = WithdddController.to.curRank();
       int curAll = WithdddController.to.allRank();
       text = "${curaa}/${curAll}";
-      pro = (curAll-curaa) / curAll;
+      pro = (curAll - curaa) / curAll;
       hasJieduan2 = true;
-    }else if(!hasOver3){
+    } else if (!hasOver3) {
       int curaa = WithdddController.to.curSpinLiuceng3.value;
       int curAll = WithdddController.to.spinWithLiuceng3();
       text = "${curaa}/${curAll} SPINS";
       pro = curaa / curAll;
     }
 
-    ssLogggg("========hasOver1:$hasOver1  hasOver2:$hasOver2 hasOver3:$hasOver3");
-    if(hasOver3){
+    ssLogggg(
+      "========hasOver1:$hasOver1  hasOver2:$hasOver2 hasOver3:$hasOver3",
+    );
+    if (hasOver3) {
       pro = 1;
-
     }
     return Center(
       child: Column(
@@ -94,8 +123,8 @@ class _SSTabViewState extends State<SSTabView> {
                 ),
               ),
               Spacer(),
-              Icon(Icons.warning_amber, color: Color(0xffAF4A4A),size: 20.h,),
-              SizedBox(width: 4.w,),
+              Icon(Icons.warning_amber, color: Color(0xffAF4A4A), size: 20.h),
+              SizedBox(width: 4.w),
               Text(
                 "Securing you account...",
                 style: TextStyle(
@@ -124,13 +153,18 @@ class _SSTabViewState extends State<SSTabView> {
               Spacer(),
               GestureDetector(
                 onTap: () {
-                  if(hasOver3){
-                    ssTushi(text: "Withdrawal request submitted successfully. Under review.");
+                  if (hasOver3) {
+                    ssTushi(
+                      text:
+                          "Withdrawal request submitted successfully. Under review.",
+                    );
                     return;
                   }
 
-                  if(hasJieduan2){
-                    WithdddController.to.onWithdraw(money: MainController.minWithdddMoney);
+                  if (hasJieduan2) {
+                    WithdddController.to.onWithdraw(
+                      money: MainController.minWithdddMoney,
+                    );
                     return;
                   }
                   Navigator.maybePop(context);
@@ -144,7 +178,11 @@ class _SSTabViewState extends State<SSTabView> {
                   ),
                   child: Center(
                     child: Text(
-                     hasOver3?"VERIFY": hasJieduan2?"SPEED": "SPIN",
+                      hasOver3
+                          ? "VERIFY"
+                          : hasJieduan2
+                          ? "SPEED"
+                          : "SPIN",
                       style: TextStyle(
                         fontSize: 15.sp,
                         fontFamily: FontFamily.interBold,
@@ -162,7 +200,7 @@ class _SSTabViewState extends State<SSTabView> {
   }
 
   itemProgressss({required double money}) {
-    String des = "199 successful cash outs today! Only 10 spots left";
+    String des = "${people5000First} successful cash outs today! Only $people5000Second spots left";
     String jinduTxt = "";
     bool showTx =
         WithdddController.to.hasSaveCardId() &&
@@ -191,68 +229,85 @@ class _SSTabViewState extends State<SSTabView> {
       }
     }
 
-    return Container(
-      width: double.infinity,
-      height: 100.h,
-      margin: EdgeInsets.only(top: 20.w, left: 16.w, right: 16.w),
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.w),
-        color: Color(0xffffffff),
-      ),
-      child: showTx
-          ? itemTxProgress(money: money)
-          : Stack(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: double.infinity,
+          height: 82.h,
+          margin: EdgeInsets.only(top: 20.w, left: 16.w, right: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.w),
+            color: Color(0xffffffff),
+          ),
+          child: showTx
+              ? itemTxProgress(money: money)
+              : Stack(
                   children: [
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        moenyWidget(money: money),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            moenyWidget(money: money),
+                            SizedBox(height: 4.h),
+                            Spacer(),
+                            progressWidget(money: money),
+                          ],
+                        ),
                         SizedBox(height: 4.h),
-                        Spacer(),
-                        progressWidget(money: money),
                       ],
                     ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      des,
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w600,
-                        height: 1,
-                        color: Color(0xff9BA3B0),
+
+                    Positioned(
+                      top: 5.h,
+                      right: 5.w,
+                      child: Text(
+                        jinduTxt,
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          color: Colors.red,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],
                 ),
-
-                Positioned(
-                  top: 5.h,
-                  right: 5.w,
-                  child: Text(
-                    jinduTxt,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: Colors.red,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+        ),
+        SizedBox(height: 8.h,),
+        Row(
+          children: [
+            SizedBox(width: 16.w,),
+            Flexible(
+              child: Text(
+                des,
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                  color: Color(0xff9BA3B0),
                 ),
-              ],
+              ),
             ),
+            SizedBox(width: 16.w,),
+          ],
+        ),
+      ],
     );
   }
 
   Widget moenyWidget({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
     String des = "90% of new users cash out on Day 1.";
+
+    int quzheng = money ~/1000;
+
     String strmoney =
-        "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(0)}";
+        "${SSCountry.curGuojiaFuhao()} ${quzheng.toStringAsFixed(0)},000";
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -394,7 +449,8 @@ class _VipPartnerState extends State<VipPartner> {
 
   @override
   Widget build(BuildContext context) {
-    String money = MainController.to.minWithdddMoneyWithCountry;
+    int quzheng = MainController.minWithdddMoney ~/ 1000;
+    String money = "${SSCountry.curGuojiaFuhao()}${quzheng},000";
     String des =
         "Become a Partner and wake up to \$1000 in your account. Every. Single. Day.";
     String time = toTime();

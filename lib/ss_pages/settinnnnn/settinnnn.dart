@@ -152,6 +152,24 @@ class _SettingWidgetState extends State<SettingWidget> {
                       ),
                     ),
                   ),
+
+
+                  Positioned(
+                    bottom: 40.h,
+                    left: 70.w,
+                    child: GestureDetector(
+                      onTap: (){
+                        onClose();
+                        Get.toNamed(SSRouttttt.wayeeee);
+                      },
+                      child: Image.asset(
+                        Assets.img.h5.path,
+                        width: 36.h,
+                        height: 43.h,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

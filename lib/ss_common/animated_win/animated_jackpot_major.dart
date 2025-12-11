@@ -107,7 +107,7 @@ class _SSAnimatedJackpotMajorState extends State<SSAnimatedJackpotMajor>
         var t2 = botS;
         // t1 = t2 =1;
         return Container(
-          width: double.infinity,
+          width: ScreenUtil().screenWidth,
           height: 300.h,
           // color: Colors.yellow,
           child: Stack(

@@ -279,19 +279,19 @@ class BonusGameController extends GetxController {
     handTimer?.cancel();
     handTimer = Timer.periodic(Duration(milliseconds: 1000), (_){
       List<int> indexes =[0,1,2,3,4,5,6,7,8]..shuffle();
-
+      ssLogggg("=====initHandTime==index:$clickIndex ");
       for(int i =0;i < indexes.length;i++){
         int index = indexes[0];
         bool con = clickIndex.contains(index);
-        ssLogggg("=====initHandTime==index:$index");
+
         if(!con){
           showGestureHandIndex.value = index;
           // initHandTime();
           break;
         }
-        if(i == 8){
-          handTimer?.cancel();
-        }
+        // if(i == 8){
+        //   handTimer?.cancel();
+        // }
       }
 
     });

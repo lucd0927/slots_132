@@ -1743,6 +1743,11 @@ class MainController extends GetxController {
   void _onAddMoney(double money, VoidCallback? onEnd) {
     double tmpCurMmmm2 = curMonnnn.value;
     double tmpCurMmmm = tmpCurMmmm2 + money;
+
+    if(tmpCurMmmm <=0){
+      tmpCurMmmm =0;
+    }
+
     box.put(hkMonnnn, tmpCurMmmm);
     curMonnnn.value = tmpCurMmmm;
     ssLogggg("=======onAddMoney tmpCurMmmm:$tmpCurMmmm");
