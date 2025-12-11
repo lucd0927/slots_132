@@ -83,7 +83,7 @@ class SSAudio {
         autoStart: true,
         playInBackground: PlayInBackground.disabledPause,
       );
-      audioPlayer.play();
+      await audioPlayer.play();
 
       // await audioPlayer.play(AssetSource(audioPath), volume: 1);
     }

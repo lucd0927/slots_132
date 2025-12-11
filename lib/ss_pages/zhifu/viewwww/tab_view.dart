@@ -144,7 +144,7 @@ class _SSTabViewState extends State<SSTabView> {
                   ),
                   child: Center(
                     child: Text(
-                     hasOver3?"WAIT": hasJieduan2?"RANK": "SPIN",
+                     hasOver3?"VERIFY": hasJieduan2?"SPEED": "SPIN",
                       style: TextStyle(
                         fontSize: 15.sp,
                         fontFamily: FontFamily.interBold,

@@ -73,6 +73,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
     initNotification(showDialog: true);
     bgMusic.play(loopMode: LoopMode.single);
+    bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v){
+      bgMusicFreeSpin.pause();
+    });
 
     Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {

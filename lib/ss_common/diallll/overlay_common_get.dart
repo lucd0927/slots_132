@@ -170,8 +170,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               MainController.to.curShowFreeSpin.value = true;
               MainController.to.curFreeSpinCount.value = widget.freespins;
               SSEventReporttttt.free_spin_add_chance();
-              bgMusic.stop();
-              bgMusicFreeSpin.play(loopMode: LoopMode.single);
+              bgMusic.pause();
+              bgMusicFreeSpin.resume();
               MainController.to.onFreeSpin();
 
               return;

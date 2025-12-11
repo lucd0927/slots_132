@@ -1272,7 +1272,7 @@ class MainController extends GetxController {
           } else if (slotNumSCATTERLength == 5) {
             count = 8;
           }
-          count = 3;
+          // count = 3;
           OverlayFreeSpins().show(
             count: count,
             onClose: (value) async {
@@ -1281,8 +1281,8 @@ class MainController extends GetxController {
               SSEventReporttttt.home_page(source_from: "FREESPIN");
               await Future.delayed(Duration(milliseconds: 200));
               onEnd.call();
-              bgMusic.stop();
-              bgMusicFreeSpin.play(loopMode: LoopMode.single);
+              bgMusic.pause();
+              bgMusicFreeSpin.resume();
               onFreeSpin();
             },
           );
@@ -1857,8 +1857,8 @@ class MainController extends GetxController {
     curFreeSpinCount.value = 0;
     hasScrollerStart.value = false;
     curShowFreeSpin.value = false;
-    bgMusicFreeSpin.stop();
-    bgMusic.play(loopMode: LoopMode.single);
+    bgMusicFreeSpin.pause();
+    bgMusic.resume();
 
     SSEventReporttttt.home_page(source_from: "NORMAL");
   }

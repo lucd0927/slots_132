@@ -72,8 +72,8 @@ class OverlayBoxgift {
                   MainController.to.curShowFreeSpin.value = true;
                   MainController.to.curFreeSpinCount.value = free;
                   SSEventReporttttt.free_spin_add_chance();
-                  bgMusic.stop();
-                  bgMusicFreeSpin.play(loopMode: LoopMode.single);
+                  bgMusic.pause();
+                  bgMusicFreeSpin.resume();
                   MainController.to.onFreeSpin();
                 },
               );

@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "wpZsaK+3G7E",
+	"hash": "cTkkGX8IOqU",
 	"spine": "4.3.39-beta",
 	"x": -374.99542,
 	"y": -812,
@@ -113,117 +113,117 @@
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
 					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.36666667, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.5000001, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.19771, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"Congrats!": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
 					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.36666667, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.5000001, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.19771, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
 					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.36666667, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.3333334, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.9619466, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
 					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.36666667, "color": "ffffffff" },
-					{ "time": 0.6666667, "color": "ffffff00" }
+					{ "time": 0.40444633, "color": "ffffffff" },
+					{ "time": 0.9791609, "color": "ffffff00" }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 1.0336701, "color": "ffffff00" },
-					{ "time": 1.0670035, "color": "ffffffff" },
-					{ "time": 1.3670034, "color": "ffffff00" }
+					{ "time": 1.489542, "color": "ffffff00" },
+					{ "time": 1.5574235, "color": "ffffffff" },
+					{ "time": 2.030165, "color": "ffffff00" }
 				]
 			},
 			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
 				"rgba": [
-					{ "time": 1.3333334, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 1.9619466, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"Group 4899022": {
 				"rgba": [
 					{ "color": "ffffff00" },
 					{ "time": 0.33333334, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.3333334, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 1.9619466, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"Rectangle 11388": {
 				"rgba": [
 					{ "color": "ffffff00" },
 					{ "time": 0.33333334, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.3333334, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 1.9619466, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"Rectangle 11389": {
 				"rgba": [
 					{ "color": "ffffff00" },
 					{ "time": 0.33333334, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.3333334, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 1.9619466, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			},
 			"Union": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
 					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.36666667, "color": "ffffffcd" }
+					{ "time": 0.40444633, "color": "ffffffcd" }
 				]
 			},
 			"Union2": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.40000004, "color": "ffffff00" },
-					{ "time": 0.4666667, "color": "ffffffb4" }
+					{ "time": 0.47241098, "color": "ffffff00" },
+					{ "time": 0.57685727, "color": "ffffffb4" }
 				]
 			},
 			"Union3": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.53333336, "color": "ffffff00" },
-					{ "time": 0.5666667, "color": "ffffff87" }
+					{ "time": 0.7109586, "color": "ffffff00" },
+					{ "time": 0.77800924, "color": "ffffff87" }
 				]
 			},
 			"Union4": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.6, "color": "ffffff00" },
-					{ "time": 0.6333334, "color": "ffffff5a" }
+					{ "time": 0.8450598, "color": "ffffff00" },
+					{ "time": 0.9121104, "color": "ffffff5a" }
 				]
 			},
 			"Union5": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
-					{ "time": 0.6666667, "color": "ffffff00" },
-					{ "time": 0.70000005, "color": "ffffff2d" }
+					{ "time": 0.9791609, "color": "ffffff00" },
+					{ "time": 1.0462116, "color": "ffffff2d" }
 				]
 			},
 			"You're today's lucky star—fees_": {
 				"rgba": [
 					{ "color": "ffffff00", "curve": "stepped" },
 					{ "time": 0.33333334, "color": "ffffff00" },
-					{ "time": 0.36666667, "color": "ffffffff", "curve": "stepped" },
-					{ "time": 1.5000001, "color": "ffffffff" },
-					{ "time": 1.6666667, "color": "ffffff00" }
+					{ "time": 0.40444633, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.19771, "color": "ffffffff" },
+					{ "time": 2.3977103, "color": "ffffff00" }
 				]
 			}
 		},
@@ -249,81 +249,81 @@
 			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
 				"rotate": [
 					{ "time": 0.33333334 },
-					{ "time": 0.5, "value": -20 },
-					{ "time": 0.6666667 },
-					{ "time": 0.8333334, "value": 20 },
-					{ "time": 1 },
-					{ "time": 1.1666667, "value": -20 },
-					{ "time": 1.3333334 }
+					{ "time": 0.6439079, "value": -20 },
+					{ "time": 0.9791609 },
+					{ "time": 1.2132622, "value": 20 },
+					{ "time": 1.4136462 },
+					{ "time": 1.7261834, "value": -20 },
+					{ "time": 1.9619466 }
 				],
 				"translate": [
 					{ "x": -253.87177, "y": -203.94736 },
 					{ "time": 0.33333334, "curve": "stepped" },
-					{ "time": 1.3333334 },
-					{ "time": 1.6666667, "x": 233.12268, "y": 415.0355 }
+					{ "time": 1.9619466 },
+					{ "time": 2.3977103, "x": 233.12268, "y": 415.0355 }
 				],
 				"scale": [
 					{ "x": 0, "y": 0 },
 					{ "time": 0.33333334 },
-					{ "time": 0.5, "x": 0.9, "y": 0.9 },
-					{ "time": 0.6666667 },
-					{ "time": 0.8333334, "x": 0.9, "y": 0.9 },
-					{ "time": 1 },
-					{ "time": 1.1666667, "x": 0.9, "y": 0.9 },
-					{ "time": 1.3333334 }
+					{ "time": 0.6439079, "x": 0.9, "y": 0.9 },
+					{ "time": 0.9791609 },
+					{ "time": 1.2132622, "x": 0.9, "y": 0.9 },
+					{ "time": 1.4136462 },
+					{ "time": 1.7261834, "x": 0.9, "y": 0.9 },
+					{ "time": 1.9619466 }
 				]
 			},
 			"Union": {
 				"translate": [
 					{ "time": 0.33333334, "x": 530.4718, "y": 70.894714 },
-					{ "time": 1, "x": -394.95428, "y": -49.8891 }
+					{ "time": 1.4136462, "x": -394.95428, "y": -49.8891 }
 				]
 			},
 			"Union2": {
 				"translate": [
-					{ "time": 0.40000004, "x": 413.6337, "y": 55.60749 },
-					{ "time": 1.0666667, "x": -511.7947, "y": -65.176506 }
+					{ "time": 0.47241098, "x": 413.6337, "y": 55.60749 },
+					{ "time": 1.5570868, "x": -511.7947, "y": -65.176506 }
 				]
 			},
 			"Union3": {
 				"translate": [
-					{ "time": 0.53333336, "x": 295.94617, "y": 37.044395 },
-					{ "time": 1.0666667, "x": -629.48224, "y": -83.7396 }
+					{ "time": 0.7109586, "x": 295.94617, "y": 37.044395 },
+					{ "time": 1.5570868, "x": -629.48224, "y": -83.7396 }
 				]
 			},
 			"Union4": {
 				"translate": [
-					{ "time": 0.6, "x": 175.5817, "y": 23.259491 },
-					{ "time": 1.1333334, "x": -749.8467, "y": -97.527504 }
+					{ "time": 0.8450598, "x": 175.5817, "y": 23.259491 },
+					{ "time": 1.6583017, "x": -749.8467, "y": -97.527504 }
 				]
 			},
 			"Union5": {
 				"translate": [
-					{ "time": 0.6666667, "x": 68.037964, "y": 8.723351 },
-					{ "time": 1.2, "x": -857.39044, "y": -112.060646 }
+					{ "time": 0.9791609, "x": 68.037964, "y": 8.723351 },
+					{ "time": 1.7940649, "x": -857.39044, "y": -112.060646 }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
 				"translate": [
-					{ "time": 1.0336701, "x": -90.48427, "y": -12.470825 },
-					{ "time": 1.3670034, "x": 141.58089, "y": 18.33963 }
+					{ "time": 1.489542, "x": -90.48427, "y": -12.470825 },
+					{ "time": 2.030165, "x": 141.58089, "y": 18.33963 }
 				]
 			},
 			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
 				"translate": [
 					{ "time": 0.33333334 },
-					{ "time": 0.6666667, "x": -247.94983, "y": -33.74463 }
+					{ "time": 0.9791609, "x": -247.94983, "y": -33.74463 }
 				]
 			},
 			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
 				"rotate": [
-					{ "time": 0.36666667 },
-					{ "time": 1.3333334, "value": -102.63285 }
+					{ "time": 0.40444633 },
+					{ "time": 1.9619466, "value": -102.63285 }
 				],
 				"scale": [
 					{},
 					{ "time": 0.33333334, "x": 0.1, "y": 0.1 },
-					{ "time": 0.36666667 }
+					{ "time": 0.40444633 }
 				]
 			}
 		}
