@@ -205,7 +205,7 @@ class SSTzNotificattttt {
       minutes: SSHuanjing.hasDevvvvv() ? 4 : 103,
       title: newContents[3]['content'],
       content: newContents[3]['content'],
-      tzimage: tzimages[2],
+      tzimage: tzimages[3],
     );
     fcmtongzhi();
     jiesoutz();

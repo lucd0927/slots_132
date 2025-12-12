@@ -1510,7 +1510,7 @@ class MainController extends GetxController {
     ),
     1: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.freespin,
-      num: 20,
+      num: 5,
       img: Assets.img.giftFreespins.path,
     ),
     9: GiftRewardModel(
@@ -1520,7 +1520,7 @@ class MainController extends GetxController {
     ),
     4: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.freespin,
-      num: 100,
+      num: 10,
       img: Assets.img.giftFreespins.path,
     ),
     7: GiftRewardModel(

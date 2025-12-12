@@ -30,11 +30,12 @@ main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // // 2 本地存储
-
+  ssLogggg("====initFlutter=");
   await Hive.initFlutter();
   await Hive.openBox(SSHive.hkBbbb);
   await Hive.openBox(SSHive.hkBoxChat);
   await Hive.openBox(SSHive.hkHistory);
+  ssLogggg("====initSpineFlutter=");
   await initSpineFlutter(enableMemoryDebugging: false);
   // 设置只允许竖屏
   await SystemChrome.setPreferredOrientations([
@@ -42,10 +43,11 @@ main() async {
     // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
   ]);
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,);
-  SSHuanjing.initEvn(SSHuanjingEnv.prod);
+  SSHuanjing.initEvn(SSHuanjingEnv.dev);
 
   PaintingBinding.instance.imageCache.maximumSize = 2000;
   PaintingBinding.instance.imageCache.maximumSizeBytes = 1024 * 1024 * 300; // 300MB
+  ssLogggg("====SSDlTracking.init=");
   SSDlTracking.init();
   SSHttpChhhh().isOnline();
   ssNetChecccc.init();

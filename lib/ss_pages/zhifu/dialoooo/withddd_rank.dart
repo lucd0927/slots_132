@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/adsid.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -282,12 +284,17 @@ class _RankWidgetState extends State<RankWidget> {
   onBoostRank() async {
     // onClose();
     SSEventReporttttt.rank_pop_boost();
-    int curRank = WithdddController.to.savePaimingData();
+    bool result = await SSCommonAds().showRewardAd(
+      adPosId: SSAdsPosId.eyomt_queue_rv,
+    );
+    if (result) {
+      int curRank = WithdddController.to.savePaimingData();
 
-    if (curRank == 1) {
-      onClose();
-      WithdddController.to.saveLiuceng2();
-      OverlayOneLastCheck().show();
+      if (curRank == 1) {
+        onClose();
+        WithdddController.to.saveLiuceng2();
+        OverlayOneLastCheck().show();
+      }
     }
   }
 

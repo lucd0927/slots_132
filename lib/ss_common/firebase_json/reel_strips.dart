@@ -11,7 +11,6 @@ class SSReelStrips {
   static Map<String, dynamic>? _onlinJsonnnnn;
 
   static Map<String, dynamic> local =
-
   {
   "reel_strips": {
   "Reel1": [

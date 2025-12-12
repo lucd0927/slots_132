@@ -24,5 +24,6 @@ class SSAdsPosId {
   static const String eyomt_pushpop_rv = "eyomt_pushpop_rv";
   static const String eyomt_pushpop_int = "eyomt_pushpop_int";
   static const String eyomt_collect_rv = "eyomt_collect_rv";
+  static const String eyomt_queue_rv = "eyomt_queue_rv";
 
 }

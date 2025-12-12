@@ -67,7 +67,7 @@ class OverlayBoxgift {
             var box = SSHive.box;
 
             double tmpMmm =
-                box.get(hkMoneyKey) ?? (Random().nextDouble() * 50 + 25);
+                box.get(hkMoneyKey) ?? (Random().nextDouble() * 25 + 50);
 
             int a = box.get(hkMoneyKey2) ?? Random().nextInt(types.length-1);
             String tmpType = types[a];
@@ -155,7 +155,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
     int time = MainController.to.boxGiftTime.value;
     showSecondPage = time <= 0;
     if (!showSecondPage) {
-      double tmpMmm = Random().nextDouble() * 50 + 25;
+      double tmpMmm = Random().nextDouble() * 25 + 50;
       int a = Random().nextInt(OverlayBoxgift.types.length-1);
       tmpMmmmmmm = box.get(OverlayBoxgift.hkMoneyKey) ?? tmpMmm;
       tmpMmmmmmm2 = box.get(OverlayBoxgift.hkMoneyKey2) ?? a;
