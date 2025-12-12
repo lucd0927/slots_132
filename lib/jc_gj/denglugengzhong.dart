@@ -27,7 +27,7 @@ class SSDlTracking {
 
   /// 检查是否是当天第一次登录（基于 UTC 时间）
   static bool _jianchaDenglu() {
-    final nowUtc = DateTime.now().toUtc();
+    final nowUtc = DateTime.now();
 
     final todayUtcString = _zhuanhuashijian(nowUtc);
 
@@ -47,7 +47,7 @@ class SSDlTracking {
   }
 
   static bool isTodayLogin() {
-    final nowUtc = DateTime.now().toUtc();
+    final nowUtc = DateTime.now();
     final todayUtcString = _zhuanhuashijian(nowUtc);
     String lastLoginDate = box.get(_isTodayLogin) ?? "";
     if(lastLoginDate.isEmpty){
