@@ -1482,6 +1482,10 @@ class MainController extends GetxController {
   static const int level6_15 = stage6_15Exp * stage6_15;
   static const int level1_15 = level1_5 + level6_15;
 
+
+  static bool get hasFreeSpinStatus =>_hasFreeSpinStatus;
+  static bool _hasFreeSpinStatus = false;
+
   static final Map<int, GiftRewardModel> kStarNum_vReward = {
     3: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
@@ -1862,6 +1866,7 @@ class MainController extends GetxController {
     curFreeSpinCount.value = 0;
     hasScrollerStart.value = false;
     curShowFreeSpin.value = false;
+    _hasFreeSpinStatus = false;
     bgMusicFreeSpin.pause();
     bgMusic.resume();
 
@@ -1869,6 +1874,7 @@ class MainController extends GetxController {
   }
 
   onFreeSpin() async {
+    _hasFreeSpinStatus = true;
     int tmpCount = curFreeSpinCount.value;
     if (_curFreeSpinCount == -1) {
       _curFreeSpinCount = tmpCount;

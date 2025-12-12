@@ -16,6 +16,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -125,7 +126,12 @@ void lcChange() {
     // AppLifecycleState.paused
     // AppLifecycleState.detached
     if (msg == "AppLifecycleState.resumed") {
-      bgMusic.resume();
+      if(MainController.hasFreeSpinStatus){
+        bgMusicFreeSpin.resume();
+      }else{
+        bgMusic.resume();
+      }
+
       // JCShijianBaogao.session();
       _bgTtttt?.cancel();
       SystemUiHelper.restoreTransparentNavBar();
