@@ -77,7 +77,7 @@ class ForegroundServiceGpPlugin :
                         result.success(false)
                         return
                     }
-                    var isFg = isForeground()
+                    val isFg = isForeground()
                     println("$TGA start isForeground:$isFg AppForegroundService.sIsRunning:${AppForegroundService.sIsRunning}")
 //                    isFg = true
                     if (isFg && !AppForegroundService.sIsRunning) {

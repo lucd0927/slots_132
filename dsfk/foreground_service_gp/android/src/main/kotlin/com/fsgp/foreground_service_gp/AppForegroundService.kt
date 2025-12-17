@@ -2,7 +2,11 @@ package com.fsgp.foreground_service_gp
 
 
 import android.Manifest
-import android.app.*
+import android.app.ForegroundServiceStartNotAllowedException
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.Service
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
@@ -27,6 +31,12 @@ class AppForegroundService : Service() {
     override fun onCreate() {
         super.onCreate()
         sIsRunning = true
+    }
+    override fun onTimeout(startId: Int, fgsType: Int) {
+        //Fix: ForegroundServiceDidNotStopInTimeException on Android 15.
+        println("===foreground=onTimeout====")
+        stopSelf()
+        super.onTimeout(startId, fgsType)
     }
 
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
