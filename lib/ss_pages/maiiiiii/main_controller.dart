@@ -708,13 +708,13 @@ class MainController extends GetxController {
     ssLogggg("rollerImgs zuobiao_category:$kZuobiao_vCategory");
     kZuobiao_vCategory_next = kZuobiao_vCategory;
 
-    var paylines = SSPaylines.paylines();
+    List<List<int>> paylines = SSPaylines.paylines();
     winNextZuobiao = {};
     winNextCategoryLines = [];
-    if (paylines is List<List<int>>) {
+    if (true) {
       for (var values in winLines.values) {
         // 筛选当前数组中最长的数组，可以是多个一样长的数组线路
-        List tmpDddd = findAllLongestLists(values);
+        var tmpDddd = findAllLongestLists<int>(values);
         // ssLogggg("rollerImgs 中奖 winLines:$tmpDddd");
         for (var ddddaaa in tmpDddd) {
           // 是否再给的中奖线路上
