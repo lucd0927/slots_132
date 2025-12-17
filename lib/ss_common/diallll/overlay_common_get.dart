@@ -113,7 +113,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
         showAnimated = true;
       });
 
-      Future.delayed(animD, () async{
+      Future.delayed(animD, () async {
         if (mounted) {
           if (childContext != null &&
               (moneyContext != null ||
@@ -129,19 +129,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             ssLogggg(
               "========showMoney:$showMoney showExp:$showExp showPhone:$showPhone freespins:$freespins",
             );
-            if (showMoney) {
-              icon = Assets.img.money.path;
-              context = moneyContext;
-              OverlayFly2TargetKey().show(
-                targetContext: context!,
-                childContext: childContext!,
-                count: 5,
-                heroChild: Image.asset(icon),
-                onEnd: () {
-
-                },
-              );
-            } else if (showExp) {
+            if (showExp) {
               icon = Assets.img.mainTopXp.path;
               context = xpContext;
               OverlayFly2TargetKey().show(
@@ -149,9 +137,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 childContext: childContext!,
                 count: 5,
                 heroChild: Image.asset(icon),
-                onEnd: () {
-
-                },
+                onEnd: () {},
               );
             } else if (showPhone) {
               icon = Assets.img.popupGetPhoneSpice.path;
@@ -161,9 +147,18 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 childContext: childContext!,
                 count: 5,
                 heroChild: Image.asset(icon),
-                onEnd: () {
-
-                },
+                onEnd: () {},
+              );
+            }
+            if (showMoney) {
+              icon = Assets.img.money.path;
+              context = moneyContext;
+              OverlayFly2TargetKey().show(
+                targetContext: context!,
+                childContext: childContext!,
+                count: 5,
+                heroChild: Image.asset(icon),
+                onEnd: () {},
               );
             } else if (freespins) {
               Navigator.maybePop(Get.context!);
@@ -179,7 +174,6 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             }
             await Future.delayed(Duration(milliseconds: 500));
             _onClcc();
-
           } else {
             _onClcc();
           }

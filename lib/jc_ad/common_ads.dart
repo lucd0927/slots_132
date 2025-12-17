@@ -89,7 +89,7 @@ class SSCommonAds {
       // todo:
       // SWEventReport.cash_ad_detail("$count");
       // PBMaiDian.cash_ad_detail(veinKeyValue: "$count");
-      SSEventReporttttt.pv_numer(pv_type: "$zero");
+      SSEventReporttttt.pv_numer(pv_type: "$count");
     }
   }
 
@@ -381,7 +381,7 @@ class SSCommonAds {
     ssLogggg("==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived");
     tmpCompleter?.complete(result);
     cacheCompleter.remove(adsId);
-    addAdEndCount();
+    // addAdEndCount();
     loadAdWithAdsId(adsType, adsId);
 
 

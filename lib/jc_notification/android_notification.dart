@@ -210,7 +210,19 @@ class SSTzNotificattttt {
     fcmtongzhi();
     jiesoutz();
     ssLogggg("====result:$result=前台服务启动");
+    if(!_hasInitForegroundService){
+      initForegroundService();
+    }
+  }
+
+  static bool _hasInitForegroundService = false;
+
+  static initForegroundService() async {
+    bool result = await SSTzNotificattttt().checkNotificationPermission();
+    ssLogggg("=====initForegroundService result:$result");
     if (result) {
+      _hasInitForegroundService = true;
+      await Future.delayed(Duration(milliseconds: 5000));
       ssLogggg("=====前台服务启动");
       ForegroundServiceGp().initListener(() {
         ssLogggg("=====收到点击事件");
@@ -315,7 +327,7 @@ class SSTzNotificattttt {
     try {
       bool? result = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-           SSHuanjing.hasDevvvvv()?"test132": "c132fcm_1",
+            SSHuanjing.hasDevvvvv() ? "test132" : "c132fcm_1",
             AndroidNotificationDetails(
               'slots_1',
               'fcm_notification',
@@ -333,7 +345,7 @@ class SSTzNotificattttt {
 
       bool? result2 = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-        SSHuanjing.hasDevvvvv()?"test1321":  "c132fcm_2",
+            SSHuanjing.hasDevvvvv() ? "test1321" : "c132fcm_2",
             AndroidNotificationDetails(
               'slots_1',
               'fcm_notification',

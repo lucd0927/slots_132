@@ -1237,7 +1237,9 @@ class MainController extends GetxController {
         int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
             .where((e) => e == slotNumSCATTER)
             .length;
-
+        if(curFreeSpinCount.value >0){
+          slotNumSCATTERLength =0;
+        }
         if (slotNumSCATTERLength >= 3) {
           ssLogggg("======_rollerEnd 1");
 
@@ -1908,7 +1910,7 @@ class MainController extends GetxController {
           OverlayWow().show(
             scene: EnumGetScene.spin,
             money: money,
-            onBtn: (v) {
+            onBtn: (money) {
               _onNextFreeSpin(money: money);
             },
             onBtn2: (money) {

@@ -6,6 +6,7 @@ import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 class DailyBonusController extends GetxController {
   static DailyBonusController get to => Get.find();
@@ -148,9 +149,12 @@ class DailyBonusController extends GetxController {
       if (rewardModelType == EnumGiftRewardModel.cash) {
         money2 = giftRewardModel.num * 1.0;
       } else if (rewardModelType == EnumGiftRewardModel.xp) {
-        exp = giftRewardModel.num.toInt();
+        exp = (giftRewardModel.num * MainController.to.levelExp() * 1)
+            .toInt();
+
       } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
         phoneSpice = giftRewardModel.num.toInt();
+        money2 = 150;
       }else if (rewardModelType == EnumGiftRewardModel.freespin) {
         freespin = giftRewardModel.num.toInt();
       }

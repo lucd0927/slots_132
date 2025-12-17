@@ -1,7 +1,11 @@
 package com.fsgp.foreground_service_gp
 
+import android.app.Activity
 import android.content.Intent
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -21,7 +25,8 @@ class ForegroundServiceGpPlugin :
     // This local reference serves to register the plugin with the Flutter Engine and unregister it
     // when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
-    private lateinit var appContext: android.content.Context
+    private  var activity: Activity? =null
+//    private lateinit var appContext: android.content.Context
     private  val TGA = "ForegroundServiceGpPlugin"
 
     private  var intentData:String? =null
@@ -38,10 +43,16 @@ class ForegroundServiceGpPlugin :
         channel.setMethodCallHandler(this)
 
         channelRef = channel   // 关键
-        appContext = flutterPluginBinding.applicationContext
+//        appContext = flutterPluginBinding.applicationContext
     }
 
-
+    fun isForeground(): Boolean{
+        val result =ProcessLifecycleOwner.get()
+            .lifecycle
+            .currentState
+            .isAtLeast(Lifecycle.State.STARTED)
+        return  result
+    }
 
     override fun onMethodCall(
         call: MethodCall,
@@ -57,24 +68,37 @@ class ForegroundServiceGpPlugin :
                     val imgNameBg = call.argument<String>("imgNameBg") ?: ""
                     val imgNameSmall = call.argument<String>("imgNameSmall") ?: ""
 
-                    val intent = Intent(appContext, AppForegroundService::class.java)
+                    val intent = Intent(activity, AppForegroundService::class.java)
                     intent.putExtra("title", title)
                     intent.putExtra("content", content)
                     intent.putExtra("imgNameBg", imgNameBg)
                     intent.putExtra("imgNameSmall", imgNameSmall)
-
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        appContext.startForegroundService(intent)
-                    } else {
-                        appContext.startService(intent)
+                    if(activity == null){
+                        result.success(false)
+                        return
                     }
-                    onInvo()
-                    result.success(true)
+                    val isFg = isForeground()
+                    println("$TGA start isForeground:$isFg")
+                    if (isFg) {
+                        ContextCompat.startForegroundService(activity!!,intent)
+//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//                        activity!!.startForegroundService(intent)
+//                    } else {
+//                        activity!!.startService(intent)
+//                    }
+                        onInvo()
+                        result.success(true)
+                    } else {
+                        result.success(false)
+                    }
+
+
+
                 }
 
                 "stop" -> {
-                    val intent = Intent(appContext, AppForegroundService::class.java)
-                    appContext.stopService(intent)
+                    val intent = Intent(activity, AppForegroundService::class.java)
+                    activity?.stopService(intent)
                     result.success(true)
                 }
 
@@ -109,7 +133,7 @@ class ForegroundServiceGpPlugin :
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         val activity = binding.getActivity()
-        val activityBinding = binding
+        this.activity = activity
         binding.addOnNewIntentListener(this)
         val initIntent = activity.getIntent()
         val a = initIntent.getStringExtra("fix_tx")

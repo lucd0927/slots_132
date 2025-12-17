@@ -335,97 +335,132 @@ class _SettingWidgetState extends State<SettingWidget> {
   }
 
   bottomWidget() {
-    return Container(
-      width: 332.w,
-      height: 100.h,
-      child: Stack(
-        children: [
-          Image.asset(
-            Assets.img.dailyBonusBottomDayBg.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-          ),
-          Positioned(
-            top: 12.h,
-            left: 12.w,
-            child: Transform.rotate(
-              angle: -30 * pi / 180,
-              child: SSTxtBorder(
-                text: "Day 7",
-                fontSize: 10.sp,
-                fontColor: Color(0xffFFDC16),
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-          Positioned(
-            left: 20.w,
-            // right: 0,
-            bottom: 10.h,
-            top: 24.h,
-            child: Container(
-              width: 188.w,
+    int continueDays = DailyBonusController.to.continueLoginDays.value;
+    bool showCheckOk = DailyBonusController.to.todayClickBonus.value;
+    bool shouwHand = continueDays == 7 && !showCheckOk;
+    // shouwHand = true;
+    return GestureDetector(
+      onTap: (){
+        if (shouwHand) {
+          GiftRewardModel gift =
+              DailyBonusController.kDay_vGiftModel[7]!;
+          DailyBonusController.to.onClick(gift, () {
+            onClose();
+          });
+        } else {
+          String txt = "Your next reward is available tomorrow.";
+          if ((continueDays == 7 && showCheckOk)) {
+            txt = "Reward already claimed today.";
+          }
+          ssTushi(text: txt);
+        }
+      },
+      child: Container(
+        width: 332.w,
+        height: 100.h,
+        color: Colors.transparent,
+        child: Stack(
+          children: [
+            Image.asset(
+              Assets.img.dailyBonusBottomDayBg.path,
+              width: double.infinity,
               height: double.infinity,
-              color: Colors.teal.withValues(alpha: 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      Image.asset(
-                        Assets.img.moneyGift.path,
-                        width: 60.w,
-                        height: 40.h,
-                      ),
-                      SSTxtGraBorder(
-                        text: "+\$150",
-                        fontFamily: FontFamily.ghostKidAOEPro,
-                        gradient: LinearGradient(
-                          end: Alignment.bottomCenter,
-                          begin: Alignment.topCenter,
-                          colors: [
-                            Color(0xff0FFF63),
-                            Color(0xffA4F00D),
-                            Color(0xffD0FF00),
-                            Color(0xff00FF1E),
-                          ],
-                        ),
-                        fontSize: 18.sp,
-                        strokeColor: Color(0xff0C402B),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Image.asset(
-                        Assets.img.popupGetPhoneSpice.path,
-                        width: 60.w,
-                        height: 40.h,
-                      ),
-                      SSTxtGraBorder(
-                        text: "x1",
-                        fontFamily: FontFamily.ghostKidAOEPro,
-                        gradient: LinearGradient(
-                          end: Alignment.bottomCenter,
-                          begin: Alignment.topCenter,
-                          colors: [
-                            Color(0xff0FFF63),
-                            Color(0xffA4F00D),
-                            Color(0xffD0FF00),
-                            Color(0xff00FF1E),
-                          ],
-                        ),
-                        fontSize: 18.sp,
-                        strokeColor: Color(0xff0C402B),
-                      ),
-                    ],
-                  ),
-                ],
+              fit: BoxFit.fill,
+            ),
+            Positioned(
+              top: 12.h,
+              left: 12.w,
+              child: Transform.rotate(
+                angle: -30 * pi / 180,
+                child: SSTxtBorder(
+                  text: "Day 7",
+                  fontSize: 10.sp,
+                  fontColor: Color(0xffFFDC16),
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
-        ],
+            Positioned(
+              left: 20.w,
+              // right: 0,
+              bottom: 10.h,
+              top: 24.h,
+              child: Container(
+                width: 188.w,
+                height: double.infinity,
+                color: Colors.teal.withValues(alpha: 0.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        Image.asset(
+                          Assets.img.moneyGift.path,
+                          width: 60.w,
+                          height: 40.h,
+                        ),
+                        SSTxtGraBorder(
+                          text: "+\$150",
+                          fontFamily: FontFamily.ghostKidAOEPro,
+                          gradient: LinearGradient(
+                            end: Alignment.bottomCenter,
+                            begin: Alignment.topCenter,
+                            colors: [
+                              Color(0xff0FFF63),
+                              Color(0xffA4F00D),
+                              Color(0xffD0FF00),
+                              Color(0xff00FF1E),
+                            ],
+                          ),
+                          fontSize: 18.sp,
+                          strokeColor: Color(0xff0C402B),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Image.asset(
+                          Assets.img.popupGetPhoneSpice.path,
+                          width: 60.w,
+                          height: 40.h,
+                        ),
+                        SSTxtGraBorder(
+                          text: "x1",
+                          fontFamily: FontFamily.ghostKidAOEPro,
+                          gradient: LinearGradient(
+                            end: Alignment.bottomCenter,
+                            begin: Alignment.topCenter,
+                            colors: [
+                              Color(0xff0FFF63),
+                              Color(0xffA4F00D),
+                              Color(0xffD0FF00),
+                              Color(0xff00FF1E),
+                            ],
+                          ),
+                          fontSize: 18.sp,
+                          strokeColor: Color(0xff0C402B),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+           if(shouwHand) Positioned(
+              left: 80.w,
+              top: 40.h,
+
+              child: Center(
+                child: SizedBox(
+                  width: 65.h,
+                  height: 72.h,
+                  child: const SpineHand(),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,121 +1,143 @@
 package com.fsgp.foreground_service_gp
 
 
-import android.annotation.SuppressLint
+import android.Manifest
 import android.app.*
-import android.content.BroadcastReceiver
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import android.widget.RemoteViews
+import androidx.annotation.RequiresPermission
+import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 
-import android.content.Context
-import android.content.IntentFilter
 
 class AppForegroundService : Service() {
 
     companion object {
         const val CHANNEL_ID = "my_foreground_channel"
         const val NOTIFY_ID = 1001
-        const val ACTION_CLICK = "com.fsgp.foreground.CLICK_NOTIFICATION"
+        const val SERVICE_ID = 1002
+         var sIsRunning = false
     }
-
-    // BroadcastReceiver
-    private val clickReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            println("clickReceiver action:${intent?.action}")
-            if (intent?.action == ACTION_CLICK) {
-                launchAppPage("/notify")
-                // ✅ 回调 Flutter
-                ForegroundServiceGpPlugin.channelRef
-                    ?.invokeMethod("onNotificationClick", null)
-            }
-        }
-    }
-
-    private fun launchAppPage(route: String) {
-        println("clickReceiver launchAppPage:${route}")
-        val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
-        launchIntent?.apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                    Intent.FLAG_ACTIVITY_SINGLE_TOP or
-                    Intent.FLAG_ACTIVITY_CLEAR_TOP
-
-            // ✅ 传递路由给 Flutter
-            putExtra("flutter_route", route)
-        }
-        startActivity(launchIntent)
-    }
-
 
     override fun onCreate() {
         super.onCreate()
-        createChannel()
-
-        // 注册 BroadcastReceiver
-//        registerBroadcastReceiver()
+        sIsRunning = true
     }
 
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
-    private fun registerBroadcastReceiver() {
-        val filter = IntentFilter(ACTION_CLICK)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(clickReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
-        } else {
-            registerReceiver(clickReceiver, filter)
-        }
-    }
-
-    private fun unregisterBroadcastReceiver() {
-//        unregisterReceiver(clickReceiver)
-    }
-
-
+    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        val title = intent?.getStringExtra("title") ?: "Lucky Claus Slots"
-        val content = intent?.getStringExtra("content") ?: "My Cash = $1000"
-        val imgNameBg = intent?.getStringExtra("imgNameBg") ?: ""
-        val imgNameSmall = intent?.getStringExtra("imgNameSmall") ?: ""
+        try {
 
-        println("===foreground=onStartCommand===title:${title}==content:$content=")
-        val remoteViews = RemoteViews(packageName, R.layout.noti_c)
-        remoteViews.setTextViewText(R.id.title, title)
-        remoteViews.setTextViewText(R.id.content, content)
-        remoteViews.setImageViewResource(
-            R.id.noti_bg,
-            applicationContext.resources.getIdentifier(imgNameBg, "drawable", packageName)
-        )
-        remoteViews.setImageViewResource(
-            R.id.left_img,
-            applicationContext.resources.getIdentifier(imgNameSmall, "drawable", packageName)
-        )
+            val title = intent?.getStringExtra("title") ?: "Lucky Claus Slots"
+            val content = intent?.getStringExtra("content") ?: "My Cash = $1000"
+            val imgNameBg = intent?.getStringExtra("imgNameBg") ?: ""
+            val imgNameSmall = intent?.getStringExtra("imgNameSmall") ?: ""
 
-
-        val clickIntent = applicationContext.packageManager.getLaunchIntentForPackage(packageName)
-        clickIntent?.putExtra("fix_tx", "android")
-        val pendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            clickIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+            println("===foreground=onStartCommand===title:${title}==content:$content=")
+            val remoteViews = RemoteViews(packageName, R.layout.noti_c)
+            remoteViews.setTextViewText(R.id.title, title)
+            remoteViews.setTextViewText(R.id.content, content)
+            remoteViews.setImageViewResource(
+                R.id.noti_bg,
+                applicationContext.resources.getIdentifier(imgNameBg, "drawable", packageName)
+            )
+            remoteViews.setImageViewResource(
+                R.id.left_img,
+                applicationContext.resources.getIdentifier(imgNameSmall, "drawable", packageName)
+            )
 
 
-//        remoteViews.setOnClickPendingIntent(R.id.lltop,pendingIntent)
-        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .setCustomContentView(remoteViews)
-            .setCustomBigContentView(remoteViews)
-            .setCustomHeadsUpContentView(remoteViews)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setSmallIcon(applicationContext.resources.getIdentifier("ic_launcher", "mipmap", packageName))
-            .setOngoing(true)
-            .setContentIntent(pendingIntent)
-            .build()
+            val clickIntent =
+                applicationContext.packageManager.getLaunchIntentForPackage(packageName)
+            clickIntent?.putExtra("fix_tx", "android")
+            val pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                clickIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(
+                    applicationContext.resources.getIdentifier(
+                        "ic_launcher",
+                        "mipmap",
+                        packageName
+                    )
+                )
+                .setAutoCancel(false)
+                .setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setOngoing(true)
+                .setOnlyAlertOnce(true)
+                .setSound(null)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                .setCustomContentView(remoteViews)
+                .setCustomBigContentView(remoteViews)
+                .setCustomHeadsUpContentView(remoteViews)
+                .setContentIntent(pendingIntent)
+                .build()
 
-        startForeground(NOTIFY_ID, notification)
+            val nmc = NotificationManagerCompat.from(applicationContext)
+            nmc.createNotificationChannel(
+                NotificationChannelCompat.Builder(
+                    CHANNEL_ID,
+                    NotificationManagerCompat.IMPORTANCE_DEFAULT
+                )
+                    .setName("Slots Foreground Service")
+                    .setSound(null, null)
+                    .setLightsEnabled(false)
+                    .setShowBadge(false)
+                    .build()
+            )
+
+
+
+            nmc.notify(NOTIFY_ID, notification)
+
+
+
+
+            if (ProcessLifecycleOwner.get()
+                    .lifecycle
+                    .currentState
+                    .isAtLeast(Lifecycle.State.STARTED) && sIsRunning
+            ) {
+                // App 在前台运行
+                println("===foreground=onStartCommand===app in foreground===")
+                startForeground(NOTIFY_ID, notification)
+//            ServiceCompat.startForeground(this,NOTIFY_ID, notification,FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+//            ServiceCompat.startForeground(this,NOTIFY_ID, notification,if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//                FOREGROUND_SERVICE_TYPE_SPECIAL_USE
+//            } else {
+//                0
+//            })
+//            ServiceCompat.startForeground()
+            } else {
+                // App 在后台运行
+                println("===foreground=onStartCommand===app in background===")
+//            stopSelf()
+
+            }
+
+
+        } catch (e: Exception) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                && e is ForegroundServiceStartNotAllowedException
+            ) {
+                println("===foreground=onStartCommand===app in background===ForegroundServiceStartNotAllowedException:${e.message}")
+                // App not in a valid state to start foreground service
+                // (e.g. started from bg)
+            }
+            // ...
+        }
+
+
 
         return START_STICKY
     }
@@ -123,6 +145,8 @@ class AppForegroundService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     private fun createChannel() {
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
@@ -136,8 +160,7 @@ class AppForegroundService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // 记得注销
-//        unregisterReceiver(clickReceiver)
-        unregisterBroadcastReceiver()
+        sIsRunning = false
     }
+
 }

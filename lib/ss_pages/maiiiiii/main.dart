@@ -66,9 +66,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     Get.put(PhoneCardController());
     MainController.initLottieComposition();
 
-    SSEventReporttttt.install();
-    SSEventReporttttt.session();
-    SSEventReporttttt.launch_page();
+
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
     initNotification(showDialog: true);
@@ -86,11 +84,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     jiazaiInterrrr();
 
 
-    WidgetsBinding.instance.addPostFrameCallback((_){
-
-
-
-    });
   }
 
   jiazaiInterrrr() async {

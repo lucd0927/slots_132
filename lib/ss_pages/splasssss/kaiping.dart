@@ -13,8 +13,10 @@ import 'package:lottie/lottie.dart';
 import 'package:shiny_striped_progress_bar/shiny_striped_progress_bar.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_notification/android_notification.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
@@ -34,6 +36,10 @@ class _SSSplassssState extends State<SSSplassss> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    SSEventReporttttt.install();
+    SSEventReporttttt.session();
+    SSEventReporttttt.launch_page();
+    SSTzNotificattttt.initForegroundService();
     precashImage();
   }
 

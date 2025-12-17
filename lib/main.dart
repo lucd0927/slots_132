@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc_env.dart';
 import 'package:slots_132/jc_gj/jc_net/http_checccc.dart';
+import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -132,7 +133,7 @@ void lcChange() {
         bgMusic.resume();
       }
 
-      // JCShijianBaogao.session();
+      SSHttpDio().session();
       _bgTtttt?.cancel();
       SystemUiHelper.restoreTransparentNavBar();
       if (sssshowAd) {
