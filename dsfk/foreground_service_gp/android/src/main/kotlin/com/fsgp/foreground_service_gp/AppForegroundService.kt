@@ -121,7 +121,7 @@ class AppForegroundService : Service() {
             } else {
                 // App 在后台运行
                 println("===foreground=onStartCommand===app in background===")
-//            stopSelf()
+//              stopSelf()
 
             }
 

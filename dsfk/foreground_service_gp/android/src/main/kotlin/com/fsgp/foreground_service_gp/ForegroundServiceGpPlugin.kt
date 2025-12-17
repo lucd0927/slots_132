@@ -77,9 +77,10 @@ class ForegroundServiceGpPlugin :
                         result.success(false)
                         return
                     }
-                    val isFg = isForeground()
-                    println("$TGA start isForeground:$isFg")
-                    if (isFg) {
+                    var isFg = isForeground()
+                    println("$TGA start isForeground:$isFg AppForegroundService.sIsRunning:${AppForegroundService.sIsRunning}")
+//                    isFg = true
+                    if (isFg && !AppForegroundService.sIsRunning) {
                         ContextCompat.startForegroundService(activity!!,intent)
 //                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 //                        activity!!.startForegroundService(intent)

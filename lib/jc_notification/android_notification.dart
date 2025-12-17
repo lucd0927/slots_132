@@ -222,7 +222,7 @@ class SSTzNotificattttt {
     ssLogggg("=====initForegroundService result:$result");
     if (result) {
       _hasInitForegroundService = true;
-      await Future.delayed(Duration(milliseconds: 5000));
+      // await Future.delayed(Duration(milliseconds: 5000));
       ssLogggg("=====前台服务启动");
       ForegroundServiceGp().initListener(() {
         ssLogggg("=====收到点击事件");
