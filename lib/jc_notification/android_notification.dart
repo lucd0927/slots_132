@@ -210,9 +210,7 @@ class SSTzNotificattttt {
     fcmtongzhi();
     jiesoutz();
     ssLogggg("====result:$result=前台服务启动");
-    if(!_hasInitForegroundService){
-      initForegroundService();
-    }
+    initForegroundService();
   }
 
   static bool _hasInitForegroundService = false;
@@ -220,7 +218,7 @@ class SSTzNotificattttt {
   static initForegroundService() async {
     bool result = await SSTzNotificattttt().checkNotificationPermission();
     ssLogggg("=====initForegroundService result:$result");
-    if (result) {
+    if (result && !_hasInitForegroundService) {
       _hasInitForegroundService = true;
       // await Future.delayed(Duration(milliseconds: 5000));
       ssLogggg("=====前台服务启动");

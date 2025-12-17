@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:slots_132/jc_gj/base_utils.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 
@@ -457,7 +458,7 @@ class SSWindsCccc {
   //
   static Map<String, dynamic> local = {
     "ui": {
-      "number": 1,
+      "number": SSHuanjing.hasDevvvvv()?0:1,
       "behavior": 0,
       "device": 0
     },

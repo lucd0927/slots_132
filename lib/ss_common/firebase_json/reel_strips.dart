@@ -114,8 +114,9 @@ class SSReelStrips {
     String img3 = defaultImgName[raaa3];
 
     List<String> reel1s = [img1, img2, img3];
-    if (reel_stripsData != null) {
-      List<String> tmpReel = reel_stripsData[key];
+    if (reel_stripsData != null && reel_stripsData[key] != null) {
+      List<String> tmpReel = (reel_stripsData[key] as List).cast<String>();
+      ssLogggg("=====tmpReel:$tmpReel==");
       int startPosition2 = Random().nextInt(tmpReel.length);
 
       if (startPosition2 + 3 >= tmpReel.length) {
@@ -132,9 +133,9 @@ class SSReelStrips {
       int ra3 = startPosition2 + 2;
 
       reel1s = [];
-      img1 = tmpReel[ra];
-      img2 = tmpReel[ra2];
-      img3 = tmpReel[ra3];
+      img1 = tmpReel[ra]?.toString()??img1;
+      img2 = tmpReel[ra2]?.toString()??img2;
+      img3 = tmpReel[ra3]?.toString()??img3;
       // img1 = MainController.slotNumWild;
       // img2 = MainController.slotNumWild;
       // img3 = MainController.slotNumWild;

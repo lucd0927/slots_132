@@ -63,6 +63,17 @@ class SSFBBaseData {
     ],
   };
 
+  static Map<String, dynamic> local_int_cash_pop = {
+    "cash_pop": [
+      {"first": 0, "end": 100, "value": 0},
+      {"first": 100, "end": 300, "value": 10},
+      {"first": 300, "end": 600, "value": 30},
+      {"first": 600, "end": 900, "value": 50},
+      {"first": 900, "end": 1000, "value": 60},
+      {"first": 900, "end": 1000000, "value": 80},
+    ],
+  };
+
   static _onlineJson_int_ad_value({bool reset = false}) {
     if (!reset) {
       if (_onlinJsonnnnn_int_ad_value != null) {
