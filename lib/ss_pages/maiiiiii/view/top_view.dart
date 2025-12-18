@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foreground_service_gp/foreground_service_gp.dart';
 import 'package:get/get.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
@@ -36,6 +37,7 @@ import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_exp.dart';
+import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_money_tips.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:slots_132/ss_pages/settinnnnn/settinnnn.dart';
@@ -149,20 +151,26 @@ class TopView extends StatelessWidget {
           Positioned(
             bottom: 12.h,
             right: 4.w,
-            child: GestureDetector(
-              onTap: onMenu,
-              child: Container(
-                width: 32.h,
-                height: 32.h,
-                color: Colors.yellow.withValues(alpha: 0),
-                child: Image.asset(
-                  Assets.img.menu.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                  gaplessPlayback: true,
-                ),
-              ),
+            child: Builder(
+              builder: (context) {
+                return GestureDetector(
+                  onTap: (){
+                    onMenu(context);
+                  },
+                  child: Container(
+                    width: 32.h,
+                    height: 32.h,
+                    color: Colors.yellow.withValues(alpha: 0),
+                    child: Image.asset(
+                      Assets.img.menu.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                      gaplessPlayback: true,
+                    ),
+                  ),
+                );
+              }
             ),
           ),
         ],
@@ -175,10 +183,13 @@ class TopView extends StatelessWidget {
     Get.toNamed(SSRouttttt.withdrawwwww);
   }
 
-  onMenu() async {
+  onMenu(BuildContext context) async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
+    // Get.context?.loaderOverlay.show();
+
+    // OverlayMoneyTips().show(context: context);
 
     // OverlayBonusGame().show(onEnd: () {  });
     // OverlayWithddOnelastcheckJindu1().show();
@@ -243,7 +254,7 @@ class TopView extends StatelessWidget {
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);
 
-    OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlaySuperwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
@@ -388,6 +399,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
   onWithddd() {
     SSEventReporttttt.home_page_cash_out();
     Get.toNamed(SSRouttttt.withdrawwwww);
+
   }
 
   topMoney() {

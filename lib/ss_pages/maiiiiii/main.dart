@@ -48,6 +48,8 @@ import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/chat/chat_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
+import 'dialoggg/overlay_money_tips.dart';
+
 class Main extends StatefulWidget {
   const Main({super.key});
 
@@ -56,9 +58,9 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
-
-
-  Timer? _timer;
+  final OverlayPortalController _tooltipController = OverlayPortalController();
+  Timer? _timerWithdraw;
+  Timer? _timerMoneyTips;
 
   @override
   void initState() {
@@ -72,24 +74,33 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     Get.put(PhoneCardController());
     MainController.initLottieComposition();
 
-
     SSEventReporttttt.home_page(source_from: "NORMAL");
 
     initNotification(showDialog: true);
     bgMusic.play(loopMode: LoopMode.single);
-    bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v){
+    bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v) {
       bgMusicFreeSpin.pause();
     });
 
-   _timer =  Timer.periodic(Duration(seconds: 60), (timer) {
+    _timerWithdraw = Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {
         SlideAcrossOverlay().show(context);
       }
     });
 
+    _timerMoneyTips = Timer.periodic(Duration(seconds: 30), (timer) {
+      if (mounted) {
+        // OverlayMoneyTips().show();
+
+        if(MainController.to.curMonnnn.value >= MainController.minWithdddMoney || WithdddController.to.hasSaveCardId()){
+          _timerMoneyTips?.cancel();
+          return;
+        }
+        _tooltipController.show();
+      }
+    });
+
     jiazaiInterrrr();
-
-
   }
 
   jiazaiInterrrr() async {
@@ -161,15 +172,14 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
   onDailyBonus() async {
     if (SSDlTracking.isFirstLoginToday) {
-
       await Future.delayed(Duration(milliseconds: 200));
       bool hasClick = DailyBonusController.to.todayClickBonus.value;
-      int days= DailyBonusController.to.continueLoginDays.value;
-      int weeks =DailyBonusController.to.continueLoginWeeks.value;
+      int days = DailyBonusController.to.continueLoginDays.value;
+      int weeks = DailyBonusController.to.continueLoginWeeks.value;
 
       bool hasFirstDay = days == 1 && weeks == 0;
 
-      if(hasFirstDay && !hasClick){
+      if (hasFirstDay && !hasClick) {
         MainController.to.onAddMoney(50, showMoneyAnimated: true);
         DailyBonusController.to.todayClickBonus.value = true;
         DailyBonusController.to.saveTodayClickBonusStatus(true);
@@ -192,8 +202,13 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       if (MainController.to.curFreeSpinCount.value <= 0) {
         showFreeSpin = false;
       }
-      ssLogggg("=====showFreeSpin:$showFreeSpin hasScrollerStart:${MainController.to.hasScrollerStart.value}");
-      return DefaultTextStyle(
+      ssLogggg(
+        "=====showFreeSpin:$showFreeSpin hasScrollerStart:${MainController.to.hasScrollerStart.value}",
+      );
+
+
+
+      Widget child =  DefaultTextStyle(
         style: TextStyle(fontFamily: FontFamily.ghostKidAOEPro),
         child: SizedBox(
           width: ScreenUtil().screenWidth,
@@ -255,9 +270,23 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   height: ScreenUtil().screenHeight,
                   color: Colors.transparent,
                 ),
+
+
             ],
           ),
         ),
+      );
+
+      return  OverlayPortal(
+        controller: _tooltipController,
+        overlayChildBuilder: (BuildContext context) {
+          return MainTopMoneyTipsWidget(
+            onClose: () {
+              _tooltipController.hide();
+            },
+          );
+        },
+        child: child,
       );
     });
   }
@@ -266,11 +295,11 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
-
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _timer?.cancel();
+    _timerWithdraw?.cancel();
+    _timerMoneyTips?.cancel();
   }
 }

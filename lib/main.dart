@@ -84,6 +84,7 @@ class _MyAppState extends State<MyApp> {
             title: "Lucky Claus Slots",
             initialRoute: SSRouttttt.splash,
             builder: (BuildContext context, Widget? child) {
+              // return child!;
               return Overlay(
                 initialEntries: <OverlayEntry>[
                   OverlayEntry(
