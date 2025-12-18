@@ -142,6 +142,7 @@ class OverlayFly2TargetKey {
         endSize,
         onEnd,
         animTime: animTime,
+        delayBetween: Duration(milliseconds: 50)
       );
     }
   }

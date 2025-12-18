@@ -66,7 +66,7 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
         showAnimated = true;
       });
 
-      _timer = Timer(Duration(milliseconds: 2000), () {
+      _timer = Timer(Duration(milliseconds: 4000), () {
         _timer?.cancel();
         onClose();
       });

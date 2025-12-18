@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/ss_common/animated_win/animated_xuanguang.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
 class SpineTancXuanguang extends StatefulWidget {
@@ -27,6 +28,8 @@ class _SpineTancXuanguangState extends State<SpineTancXuanguang> {
 
   @override
   Widget build(BuildContext context) {
+    return Center(child: AnimatedXuanguang());
+
     if (!showA) {
       return const SizedBox();
     }

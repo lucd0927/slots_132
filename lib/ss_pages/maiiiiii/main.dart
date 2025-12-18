@@ -26,6 +26,7 @@ import 'package:slots_132/jc_gj/jc_widget/overlay_floaing.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
+import 'package:slots_132/ss_common/animated_win/animated_xuanguang.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
 import 'package:slots_132/ss_common/sssssp/spine_freespin_selected.dart';
