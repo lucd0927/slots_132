@@ -55,7 +55,6 @@ class BonusGameController extends GetxController {
   var cardMoney = <double>[].obs;
 
   var showGestureHandIndex = (-1).obs;
-  Timer? handTimer;
 
   var categoryCount = <String, int>{}.obs;
   var canClick = false.obs;
@@ -198,7 +197,7 @@ class BonusGameController extends GetxController {
       //     // MainController.to.onAddMoney(money, showMoneyAnimated: true);
       //   },
       // );
-      handTimer?.cancel();
+
       MainController.to.onJackpotPopup(
         jackpotCount: jackpotCount,
         onBtn: (money) {
@@ -217,6 +216,7 @@ class BonusGameController extends GetxController {
         hasFreeSpin: false,
       );
     }
+    initHandTime(hasFirst: false);
 
     ssLogggg("=====result:$res");
   }
@@ -271,30 +271,31 @@ class BonusGameController extends GetxController {
     initData();
 
     cardMoney.add(_cardMonnn());
-    initHandTime();
+    initHandTime(hasFirst: true);
 
   }
 
-  initHandTime(){
-    handTimer?.cancel();
-    handTimer = Timer.periodic(Duration(milliseconds: 1000), (_){
-      List<int> indexes =[0,1,2,3,4,5,6,7,8]..shuffle();
-      ssLogggg("=====initHandTime==index:$clickIndex ");
-      for(int i =0;i < indexes.length;i++){
-        int index = indexes[0];
-        bool con = clickIndex.contains(index);
+  initHandTime({required bool hasFirst}){
+    List<int> indexes =[0,1,2,3,4,5,6,7,8]..shuffle();
+    ssLogggg("=====initHandTime==index:$clickIndex ");
+    for(int i =0;i < indexes.length;i++){
+      int index = indexes[0];
+      bool con = clickIndex.contains(index);
 
-        if(!con){
+      if(!con){
+        if(hasFirst){
+          showGestureHandIndex = index.obs;
+        }else{
           showGestureHandIndex.value = index;
-          // initHandTime();
-          break;
         }
-        // if(i == 8){
-        //   handTimer?.cancel();
-        // }
-      }
 
-    });
+        // initHandTime();
+        break;
+      }
+      // if(i == 8){
+      //   handTimer?.cancel();
+      // }
+    }
   }
 
   double _cardMonnn() {
@@ -329,7 +330,7 @@ class BonusGameController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    handTimer?.cancel();
+
     ssLogggg("====BonusGameController close");
   }
 }

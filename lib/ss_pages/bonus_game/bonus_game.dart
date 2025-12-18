@@ -546,10 +546,12 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
                   top: 40.h,
 
                   child: Center(
-                    child: SizedBox(
-                      width: 65.h,
-                      height: 72.h,
-                      child: const SpineHand(),
+                    child: IgnorePointer(
+                      child: SizedBox(
+                        width: 65.h,
+                        height: 72.h,
+                        child: const SpineHand(),
+                      ),
                     ),
                   ),
                 ),

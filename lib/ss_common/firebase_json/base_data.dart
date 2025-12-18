@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
+import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class SSFBBaseData {
   static const String TGA = "SSFBBaseData";
@@ -52,6 +53,7 @@ class SSFBBaseData {
   static Map<String, dynamic>? _onlinJsonnnnn_int_ad_value;
 
 
+
   static Map<String, dynamic> local_int_ad_value = {
     "int_ad_value": [
       {"first": 0, "end": 100, "value": 0},
@@ -62,7 +64,7 @@ class SSFBBaseData {
       {"first": 900, "end": 1000000, "value": 80},
     ],
   };
-
+  static Map<String, dynamic>? _onlinJsonnnnn_int_ad_value_cash_pop;
   static Map<String, dynamic> local_int_cash_pop = {
     "cash_pop": [
       {"first": 0, "end": 100, "value": 0},
@@ -73,6 +75,66 @@ class SSFBBaseData {
       {"first": 900, "end": 1000000, "value": 80},
     ],
   };
+
+  static _onlineJson_int_cash_pop({bool reset = false}) {
+    if (!reset) {
+      if (_onlinJsonnnnn_int_ad_value_cash_pop != null) {
+        return;
+      }
+    }
+
+    Map<String, dynamic> localJson = local_int_cash_pop;
+
+    String kFirebase = "cash_pop";
+    try {
+      String name = kFirebase;
+      String key = PBFireBbbbbb().by(name: name);
+      ssLogggg("$TGA=== _onlineJson FirebaseUtils: $name string  $key");
+
+      Map<String, dynamic> json = jsonDecode(key);
+      localJson = json;
+      ssLogggg("$TGA===FirebaseUtils: $name json $json");
+    } on Exception catch (e) {
+      ssLogggg("$TGA===onlineJson error:$e");
+    }
+    _onlinJsonnnnn_int_ad_value_cash_pop = localJson;
+    // ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
+    return localJson;
+  }
+
+  static bool int_ad_value_cash_pop() {
+    _onlineJson_int_cash_pop();
+    _onlinJsonnnnn_int_ad_value_cash_pop ??= local_int_cash_pop;
+    var intadPointData = _onlinJsonnnnn_int_ad_value_cash_pop!["cash_pop"];
+    bool showIntad = false;
+
+    double tmpCurMoney = MainController.to.curMonnnn.value;
+    bool hasSave = WithdddController.to.hasSaveCardId();
+    if(hasSave){
+      tmpCurMoney = MainController.minWithdddMoney+200;
+    }
+    if (intadPointData is List) {
+      for (var action in intadPointData) {
+        double diyi = (action['first'] ?? 0.0) * 1.0;
+        double dier = (action['end'] ?? 0.0) * 1.0;
+
+        if (diyi <= tmpCurMoney && tmpCurMoney <= dier) {
+          double point = (action['value'] ?? 0) * 1.0;
+          double random = Random().nextDouble() * 100;
+          ssLogggg(
+            "===intad_point=point:$point random:$random diyi:$diyi dier:$dier tmpCurMoney:$tmpCurMoney",
+          );
+          showIntad = point >= random;
+          break;
+        }
+      }
+    }
+    ssLogggg(
+      "===intad_point cash pop=point showIntad：$showIntad",
+    );
+    return showIntad;
+  }
+
 
   static _onlineJson_int_ad_value({bool reset = false}) {
     if (!reset) {
@@ -107,6 +169,10 @@ class SSFBBaseData {
     bool showIntad = false;
 
     double tmpCurMoney = MainController.to.curMonnnn.value;
+    bool hasSave = WithdddController.to.hasSaveCardId();
+    if(hasSave){
+      tmpCurMoney = MainController.minWithdddMoney+200;
+    }
     if (intadPointData is List) {
       for (var action in intadPointData) {
         double diyi = (action['first'] ?? 0.0) * 1.0;
