@@ -32,8 +32,6 @@ import 'max.dart';
 import 'model/ads_json_model.dart';
 import 'topon.dart';
 
-
-
 class SSCommonAds {
   static final SSCommonAds _innnn = SSCommonAds._();
 
@@ -81,7 +79,7 @@ class SSCommonAds {
     box.put(kSWlvac, count);
     int zero = count % 5;
     bool result = zero == 0;
-    if(count == 1){
+    if (count == 1) {
       SSEventReporttttt.pv_numer(pv_type: "1");
     }
     ssLogggg("=addAdEndCount=now:$count===zero:$zero  report:$result");
@@ -113,11 +111,11 @@ class SSCommonAds {
   // 这个为true，才代表广告成功
   bool _hasRvRevenueReceived = false;
 
-  void resetRvRevenueReceived(){
+  void resetRvRevenueReceived() {
     _hasRvRevenueReceived = false;
   }
 
-  void rvRevenueReceivedTrue(){
+  void rvRevenueReceivedTrue() {
     _hasRvRevenueReceived = true;
   }
 
@@ -342,6 +340,7 @@ class SSCommonAds {
     dynamic data,
   ) {
     ssLogggg("==onAdDisplayedCallback===platform:$platform adsType:$adsType");
+    // addAdEndCount();
     // todo:
   }
 
@@ -372,25 +371,25 @@ class SSCommonAds {
         adsId = data.placementID;
         var extraMap = data.extraMap;
       }
-      if(adsType == EnumAdsType.reward){
+      if (adsType == EnumAdsType.reward) {
         result = _hasRvRevenueReceived;
       }
     }
 
     var tmpCompleter = cacheCompleter[adsId];
-    ssLogggg("==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived");
+    ssLogggg(
+      "==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived",
+    );
     tmpCompleter?.complete(result);
     cacheCompleter.remove(adsId);
-    // addAdEndCount();
+    addAdEndCount();
     loadAdWithAdsId(adsType, adsId);
-
 
     SSEventReporttttt.eyomt_ad_impre_close(
       ad_code_id: adsId,
       ad_format: adsType.name,
       ad_pos_id: _curAdPosId,
     );
-
   }
 
   // 下发收益
@@ -478,6 +477,11 @@ class SSCommonAds {
         },
         onAdDisplayedCallback: (ad) {
           ssLogggg("插屏initializeInterstitialAds======onAdDisplayedCallback");
+          onAdDisplayedCallback(
+            EnumAdsPlatform.max,
+            EnumAdsType.interstitial,
+            ad.adUnitId,
+          );
         },
         onAdDisplayFailedCallback: (ad, error) {
           ssLogggg(
@@ -526,6 +530,11 @@ class SSCommonAds {
         onAdDisplayedCallback: (ad) {
           ssLogggg("激励initializeRewardedAd======onAdDisplayedCallback");
           ssLogggg("onAdDisplayedCallback:${ad.placement}  ${ad.toString()}");
+          onAdDisplayedCallback(
+            EnumAdsPlatform.max,
+            EnumAdsType.reward,
+            ad.adUnitId,
+          );
         },
         onAdDisplayFailedCallback: (ad, error) {
           ssLogggg("激励initializeRewardedAd======onAdDisplayFailedCallback");
@@ -558,7 +567,7 @@ class SSCommonAds {
             ssLogggg(
               "=======topon激励====rewardedVideoDidFailToLoad ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
             );
-            Future.delayed(Duration(seconds: 1), () {
+            Future.delayed(Duration(seconds: 3), () {
               onAdLoadFailedCallback(
                 EnumAdsPlatform.topon,
                 EnumAdsType.reward,
@@ -655,7 +664,7 @@ class SSCommonAds {
             ssLogggg(
               "=======topon插屏====interstitialAdFailToLoadAD ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
             );
-            Future.delayed(Duration(seconds: 1), () {
+            Future.delayed(Duration(seconds: 3), () {
               onAdLoadFailedCallback(
                 EnumAdsPlatform.topon,
                 EnumAdsType.interstitial,
@@ -678,6 +687,11 @@ class SSCommonAds {
           case InterstitialStatus.interstitialAdDidStartPlaying:
             ssLogggg(
               "=======topon插屏====interstitialAdDidStartPlaying ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
+            );
+            onAdDisplayedCallback(
+              EnumAdsPlatform.topon,
+              EnumAdsType.interstitial,
+              value,
             );
             break;
           //广告视频播放结束，部分广告平台有此回调
@@ -754,11 +768,12 @@ class SSCommonAds {
     firebaseJson = _onlineJson();
 
     _interstitialAdsModel();
-    ssLogggg("====init=hashCode:${hashCode}=_interstitialData:$chapingAdsModel");
+    ssLogggg(
+      "====init=hashCode:${hashCode}=_interstitialData:$chapingAdsModel",
+    );
 
     _rewardAdsModel();
     ssLogggg("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
-
 
     ssLogggg("====init==PbUuuump start");
     await SSUMPpppp().init();
@@ -1109,9 +1124,7 @@ class SSCommonAds {
     SSAdsModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
     String? ad_platform222 = adsJsonModel?.adsPlatform;
     if (ad_platform222 == null ||
-        ad_platform222 == EnumAdsPlatform.topon.name) {
-
-    }
+        ad_platform222 == EnumAdsPlatform.topon.name) {}
     await Future.delayed(Duration(milliseconds: 100));
     resetDisplayAd();
     ssLogggg(
