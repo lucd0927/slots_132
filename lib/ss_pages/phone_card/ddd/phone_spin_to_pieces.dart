@@ -184,12 +184,18 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
               height: double.infinity,
               fit: BoxFit.fill,
             ),
-            Center(
-              child: SSTxtBorder(
-                text: "Spin For More Pieces!",
-                fontSize: 18.sp,
-                fontFamily: FontFamily.interBold,
-                fontWeight: FontWeight.w800,
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 8.h,
+              top: 0,
+              child: Center(
+                child: SSTxtBorder(
+                  text: "Spin For More Pieces!",
+                  fontSize: 18.sp,
+                  fontFamily: FontFamily.interBold,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
           ],

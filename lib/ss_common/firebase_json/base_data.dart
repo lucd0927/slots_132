@@ -91,12 +91,12 @@ class SSFBBaseData {
 
       Map<String, dynamic> json = jsonDecode(key);
       localJson = json;
-      ssLogggg("$TGA===FirebaseUtils: $name json $json");
+      ssLogggg("$TGA===FirebaseUtils:cash_pop $name json $json");
     } on Exception catch (e) {
       ssLogggg("$TGA===onlineJson error:$e");
     }
     _onlinJsonnnnn_int_ad_value_cash_pop = localJson;
-    // ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
+    // ssLogggg("$TGA===FirebaseUtils:cash_pop ${jsonEncode(localJson)}");
     return localJson;
   }
 
@@ -120,7 +120,7 @@ class SSFBBaseData {
           double point = (action['value'] ?? 0) * 1.0;
           double random = Random().nextDouble() * 100;
           ssLogggg(
-            "===intad_point=point:$point random:$random diyi:$diyi dier:$dier tmpCurMoney:$tmpCurMoney",
+            "===intad_point=point:$point random:$random diyi:$diyi dier:$dier tmpCurMoney:$tmpCurMoney action:$action",
           );
           showIntad = point >= random;
           break;
@@ -177,7 +177,7 @@ class SSFBBaseData {
           double point = (action['value'] ?? 0) * 1.0;
           double random = Random().nextDouble() * 100;
           ssLogggg(
-            "===intad_point=point:$point random:$random diyi:$diyi dier:$dier tmpCurMoney:$tmpCurMoney",
+            "===intad_point=point:$point random:$random diyi:$diyi dier:$dier tmpCurMoney:$tmpCurMoney action:$action",
           );
           showIntad = point >= random;
           break;

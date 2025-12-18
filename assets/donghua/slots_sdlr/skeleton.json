@@ -1,11 +1,11 @@
 {
 "skeleton": {
-	"hash": "lEjVtfJEVnQ",
+	"hash": "0An4EuRqoa4",
 	"spine": "4.3.39-beta",
-	"x": -128,
-	"y": -392,
-	"width": 256,
-	"height": 784,
+	"x": -256,
+	"y": -600,
+	"width": 512,
+	"height": 1200,
 	"images": "../../C132-Spine-out/sdlr/",
 	"audio": "./audio"
 },
@@ -13,17 +13,17 @@
 	{ "name": "root" }
 ],
 "slots": [
-	{ "name": "Group 1000005363_00000", "bone": "root", "attachment": "Group 1000005363_" }
+	{ "name": "00000", "bone": "root", "attachment": "新建文件夹/" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"Group 1000005363_00000": {
-				"Group 1000005363_": {
-					"width": 256,
-					"height": 784,
-					"sequence": { "count": 61, "start": 0, "digits": 5 }
+			"00000": {
+				"新建文件夹/": {
+					"width": 512,
+					"height": 1200,
+					"sequence": { "count": 60, "start": 0, "digits": 5 }
 				}
 			}
 		}
@@ -33,11 +33,11 @@
 	"animation": {
 		"attachments": {
 			"default": {
-				"Group 1000005363_00000": {
-					"Group 1000005363_": {
+				"00000": {
+					"新建文件夹/": {
 						"sequence": [
 							{ "mode": "loop", "delay": 0.041666668 },
-							{ "time": 2, "mode": "loop", "index": 24, "delay": 0.083333336 }
+							{ "time": 2, "mode": "loop", "index": 24 }
 						]
 					}
 				}
