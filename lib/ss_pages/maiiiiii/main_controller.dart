@@ -833,7 +833,7 @@ class MainController extends GetxController {
       ssLogggg("==onStartRoller=正在滚动==");
       return;
     }
-    var rollerOver = Completer();
+    Completer? rollerOver = Completer();
 
     SSEventReporttttt.home_page_spin();
 
@@ -970,7 +970,10 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              rollerOver.complete();
+              if(rollerOver != null) {
+                rollerOver?.complete();
+                rollerOver = null;
+              }
             },
           );
         },
@@ -978,7 +981,10 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              rollerOver.complete();
+              if(rollerOver != null) {
+                rollerOver?.complete();
+                rollerOver = null;
+              }
             },
           );
         },
@@ -986,7 +992,10 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              rollerOver.complete();
+              if(rollerOver != null) {
+                rollerOver?.complete();
+                rollerOver = null;
+              }
             },
           );
         },
@@ -999,7 +1008,10 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              rollerOver.complete();
+              if(rollerOver != null) {
+                rollerOver?.complete();
+                rollerOver = null;
+              }
             },
           );
         },
@@ -1007,7 +1019,10 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              rollerOver.complete();
+              if(rollerOver != null) {
+                rollerOver?.complete();
+                rollerOver = null;
+              }
             },
           );
         },
@@ -1015,7 +1030,10 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              rollerOver.complete();
+              if(rollerOver != null) {
+                rollerOver?.complete();
+                rollerOver = null;
+              }
             },
           );
         },
@@ -1023,7 +1041,7 @@ class MainController extends GetxController {
       );
     }
 
-    await rollerOver.future;
+    await rollerOver?.future;
     ssLogggg("==onStartRoller==end=winCurZuobiao:$winCurZuobiao");
     ssLogggg("==onStartRoller==end=winCurCategoryLines:$winCurCategoryLines");
     ssLogggg(
@@ -1244,8 +1262,8 @@ class MainController extends GetxController {
         int slotNumSCATTERLength = kZuobiao_vCategory_cur.values
             .where((e) => e == slotNumSCATTER)
             .length;
-        if(curFreeSpinCount.value >0){
-          slotNumSCATTERLength =0;
+        if (curFreeSpinCount.value > 0) {
+          slotNumSCATTERLength = 0;
         }
         if (slotNumSCATTERLength >= 3) {
           ssLogggg("======_rollerEnd 1");
@@ -1456,6 +1474,7 @@ class MainController extends GetxController {
   static const String hkcurGuideStep1 = "hkcurGuideStep1";
   static const double minBet = 8.0;
   static const double maxBet = 10.0;
+
   // 是否进行了第一步spin的引导
   var curGuideStepSpin1 = true.obs;
 
@@ -1494,8 +1513,7 @@ class MainController extends GetxController {
   static const int level6_15 = stage6_15Exp * stage6_15;
   static const int level1_15 = level1_5 + level6_15;
 
-
-  static bool get hasFreeSpinStatus =>_hasFreeSpinStatus;
+  static bool get hasFreeSpinStatus => _hasFreeSpinStatus;
   static bool _hasFreeSpinStatus = false;
 
   static final Map<int, GiftRewardModel> kStarNum_vReward = {
@@ -1760,8 +1778,8 @@ class MainController extends GetxController {
     double tmpCurMmmm2 = curMonnnn.value;
     double tmpCurMmmm = tmpCurMmmm2 + money;
 
-    if(tmpCurMmmm <=0){
-      tmpCurMmmm =0;
+    if (tmpCurMmmm <= 0) {
+      tmpCurMmmm = 0;
     }
 
     box.put(hkMonnnn, tmpCurMmmm);
@@ -2067,6 +2085,7 @@ class MainController extends GetxController {
   Timer? _timerBoxGfit;
 
   static const int maxSeconds = 60 * 60 * 8;
+
   // static const int maxSeconds = 60 * 1;
 
   var textBoxGiftTime = "".obs;
