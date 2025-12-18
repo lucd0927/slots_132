@@ -48,7 +48,7 @@ class _AvatarRowState extends State<AvatarRow> {
   initTimer() {
     List<int> times = [5000, 7000, 9000, 11000, 13000];
     int time = times[Random().nextInt(times.length)];
-    ssLogggg("=====avatarRow time:$time");
+    // ssLogggg("=====avatarRow time:$time");
     timer?.cancel();
     timer = Timer(Duration(milliseconds: time), () {
       if (mounted) {

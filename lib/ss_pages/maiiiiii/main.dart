@@ -203,9 +203,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       if (MainController.to.curFreeSpinCount.value <= 0) {
         showFreeSpin = false;
       }
-      ssLogggg(
-        "=====showFreeSpin:$showFreeSpin hasScrollerStart:${MainController.to.hasScrollerStart.value}",
-      );
+      // ssLogggg(
+      //   "=====showFreeSpin:$showFreeSpin hasScrollerStart:${MainController.to.hasScrollerStart.value}",
+      // );
 
 
 
