@@ -47,22 +47,25 @@ class OverlayJackpotMajor {
     _overlay = OverlayEntry(
       builder: (context) {
         return _JackpotWidgetMajor(
-          onBtn: (double money) async{
+          onBtn: (double money) async {
             close();
             SSEventReporttttt.jackpot_pop_claim_all(
               pop_type: "major",
               pop_from: scene.name,
             );
-            bool result = await SSCommonAds().showRewardAd(
-              adPosId: SSAdsPosId.eyomt_majorjack_rv,
-              ignored_hasDisplayAd: true,
-            );
-            if(!result){
-              money = 0;
+            if (!MainController.to.curGuideStepSpin1.value) {
+              bool result = await SSCommonAds().showRewardAd(
+                adPosId: SSAdsPosId.eyomt_majorjack_rv,
+                ignored_hasDisplayAd: true,
+              );
+              if (!result) {
+                money = 0;
+              }
             }
+
             onBtn(money);
           },
-          onBtn2: (double money) async{
+          onBtn2: (double money) async {
             close();
             SSEventReporttttt.jackpot_pop_claim_10(
               pop_type: "major",
@@ -78,7 +81,7 @@ class OverlayJackpotMajor {
               );
             }
 
-            if(!result){
+            if (!result) {
               money = 0;
             }
             onBtn2(money);
@@ -124,6 +127,7 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
   bool showAnimatedBgMoney = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -164,15 +168,17 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  if(showAnimatedBgMoney) Positioned.fill(
-                    top: -200.h,
-                    left: 0.w,
+                  if (showAnimatedBgMoney)
+                    Positioned.fill(
+                      top: -200.h,
+                      left: 0.w,
 
-                    child:Container(
+                      child: Container(
                         width: ScreenUtil().screenWidth,
                         height: ScreenUtil().screenHeight,
-                        child: SSSpineMoney()),
-                  ),
+                        child: SSSpineMoney(),
+                      ),
+                    ),
 
                   Positioned(
                     left: 0,
@@ -184,7 +190,6 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                       child: SpineTancXuanguang(),
                     ),
                   ),
-
 
                   Positioned(
                     left: 0,
@@ -303,15 +308,16 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
                   ),
                 ),
 
-                Positioned(
-                  top: -10.h,
-                  right: 0,
-                  child: Image.asset(
-                    Assets.img.video.path,
-                    width: 28.h,
-                    height: 28.h,
+                if (!MainController.to.curGuideStepSpin1.value)
+                  Positioned(
+                    top: -10.h,
+                    right: 0,
+                    child: Image.asset(
+                      Assets.img.video.path,
+                      width: 28.h,
+                      height: 28.h,
+                    ),
                   ),
-                ),
               ],
             ),
           ),
@@ -343,22 +349,22 @@ class _JackpotWidgetMajorState extends State<_JackpotWidgetMajor> {
   //   widget.onBtn2(money);
   // }
   bool canClick = true;
+
   void onBtn() {
-    if(canClick){
+    if (canClick) {
       double money = widget.money * 1;
       onClose(money);
       widget.onBtn(money);
-      canClick =false;
+      canClick = false;
     }
-
   }
 
   void obBtn2() {
-    if(canClick){
+    if (canClick) {
       double money = widget.money * 0.1;
       onClose(money);
       widget.onBtn2(money);
-      canClick =false;
+      canClick = false;
     }
   }
 }

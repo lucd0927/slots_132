@@ -8,10 +8,16 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 class BtnBeisuWidget extends StatefulWidget {
-  const BtnBeisuWidget({super.key, required this.onBtn, required this.onBtn2});
+  const BtnBeisuWidget({
+    super.key,
+    required this.onBtn,
+    required this.onBtn2,
+    this.showOnBtn2 = true,
+  });
 
   final ValueChanged<double> onBtn;
   final ValueChanged<double> onBtn2;
+  final bool showOnBtn2;
 
   @override
   State<BtnBeisuWidget> createState() => _BtnBeisuWidgetState();
@@ -107,7 +113,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
                             ),
                           ),
 
-                          Positioned(
+                         if(widget.showOnBtn2) Positioned(
                             top: -10.h,
                             right: 0,
                             child: Image.asset(
@@ -126,18 +132,19 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
           ),
         ),
         SizedBox(height: 16.h),
-        GestureDetector(
-          onTap: () {
-            widget.onBtn2(0.1);
-          },
-          child: SSTxtBorder(
-            text: "Claim 10%",
-            fontSize: 16.sp,
-            fontFamily: FontFamily.ghostKidAOEPro,
-            fontWeight: FontWeight.w700,
-            foreground: Color(0xff1C5700),
+        if (widget.showOnBtn2)
+          GestureDetector(
+            onTap: () {
+              widget.onBtn2(0.1);
+            },
+            child: SSTxtBorder(
+              text: "Claim 10%",
+              fontSize: 16.sp,
+              fontFamily: FontFamily.ghostKidAOEPro,
+              fontWeight: FontWeight.w700,
+              foreground: Color(0xff1C5700),
+            ),
           ),
-        ),
       ],
     );
   }
@@ -145,7 +152,6 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
   bool canClick = true;
 
   void onBtn() {
-
     if (canClick) {
       setState(() {
         showGudingBeisu = !showGudingBeisu;

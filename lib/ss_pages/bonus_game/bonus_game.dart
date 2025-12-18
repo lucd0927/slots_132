@@ -601,73 +601,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
     );
   }
 
-  topGiftDay({required String icon, required int day}) {
-    int tmpWeeks = DailyBonusController.to.continueLoginWeeks.value;
-    int tmpDays = DailyBonusController.to.continueLoginDays.value;
 
-    int tmpCurDay = tmpDays + tmpWeeks * 7;
-
-    bool hasGet = tmpCurDay >= day;
-
-    // hasGet = true;
-    return Container(
-      width: 50.h,
-      height: 70.h,
-      color: Colors.teal.withValues(alpha: 0.0),
-      child: Stack(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Image.asset(icon, width: 44.h, height: 44.h, fit: BoxFit.contain),
-              // SizedBox(height: 4.h),
-              Container(
-                width: 22.h,
-                height: 22.h,
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      Assets.img.dailyBonusGiftday.path,
-                      width: double.infinity,
-                      height: double.infinity,
-                    ),
-                    Center(
-                      child: SSTxtBorder(
-                        text: "$day",
-                        fontSize: 9.sp,
-                        strokeWidth: 0.5.w,
-                        foreground: Color(0xff8A2F2F),
-                        height: 1,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          if (hasGet)
-            Positioned(
-              right: 8.w,
-              top: 4.h,
-              child: Container(
-                width: 20.w,
-                height: 20.h,
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.0),
-                ),
-                child: Center(
-                  child: Image.asset(
-                    Assets.img.dailyBonusOk.path,
-                    width: 20.w,
-                    height: 20.h,
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
 
   @override
   void dispose() {

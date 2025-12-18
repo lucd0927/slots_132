@@ -53,10 +53,23 @@ class OverlayBigwin {
               pop_from: scene.name,
             );
 
-            bool result = await SSCommonAds().showRewardAd(
-              adPosId: SSAdsPosId.eyomt_bigwin_rv,
-              ignored_hasDisplayAd: true,
-            );
+            // bool result = await SSCommonAds().showRewardAd(
+            //   adPosId: SSAdsPosId.eyomt_bigwin_rv,
+            //   ignored_hasDisplayAd: true,
+            // );
+            // if (!result) {
+            //   money = 0;
+            // }
+
+            bool showIntad = SSFBBaseData.int_ad_value_cash_pop();
+            bool result = true;
+
+            if (showIntad) {
+              result = await SSCommonAds().showInterstitialAd(
+                adPosId: SSAdsPosId.eyomt_bigwin_int,
+              );
+            }
+
             if (!result) {
               money = 0;
             }
@@ -230,6 +243,7 @@ class _BigwinWidgetState extends State<BigwinWidget> {
                       ),
                       SizedBox(height: 10.h),
                       BtnBeisuWidget(
+                        showOnBtn2: false,
                         onBtn: (v) {
                           ssLogggg("=====beisu:$v");
                           double money = widget.money * v;

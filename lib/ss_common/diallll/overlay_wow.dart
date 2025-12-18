@@ -51,15 +51,24 @@ class OverlayWow {
               pop_type: "wow",
               pop_from: scene.name,
             );
+            //
+            // bool result = await SSCommonAds().showRewardAd(
+            //   adPosId: SSAdsPosId.eyomt_wow_rv,
+            //   ignored_hasDisplayAd: true,
+            // );
 
-            bool result = await SSCommonAds().showRewardAd(
-              adPosId: SSAdsPosId.eyomt_wow_rv,
-              ignored_hasDisplayAd: true,
-            );
+
+            bool showIntad = SSFBBaseData.int_ad_value_cash_pop();
+            bool result = true;
+
+            if (showIntad) {
+              result = await SSCommonAds().showInterstitialAd(
+                adPosId: SSAdsPosId.eyomt_wow_int,
+              );
+            }
             if(!result){
               money = 0;
             }
-
             onBtn(money);
           },
           money: money,
@@ -232,6 +241,7 @@ class _WowWidgetState extends State<WowWidget> {
                       ),
                       SizedBox(height: 10.h),
                       BtnBeisuWidget(
+                        showOnBtn2: false,
                         onBtn: (v) {
                           ssLogggg("=====beisu:$v");
                           double money = widget.money * v;

@@ -551,33 +551,21 @@ class $AssetsImgGen {
   AssetGenImage get mainPhone =>
       const AssetGenImage('assets/img/main_phone.png');
 
-  /// File path: assets/img/main_shengdaolaoren.png
-  AssetGenImage get mainShengdaolaoren =>
-      const AssetGenImage('assets/img/main_shengdaolaoren.png');
-
   /// File path: assets/img/main_slots_detail.png
   AssetGenImage get mainSlotsDetail =>
       const AssetGenImage('assets/img/main_slots_detail.png');
-
-  /// File path: assets/img/main_top_bank.png
-  AssetGenImage get mainTopBank =>
-      const AssetGenImage('assets/img/main_top_bank.png');
 
   /// File path: assets/img/main_top_bg.png
   AssetGenImage get mainTopBg =>
       const AssetGenImage('assets/img/main_top_bg.png');
 
-  /// File path: assets/img/main_top_bg2.png
-  AssetGenImage get mainTopBg2 =>
-      const AssetGenImage('assets/img/main_top_bg2.png');
+  /// File path: assets/img/main_top_money_lefttips.png
+  AssetGenImage get mainTopMoneyLefttips =>
+      const AssetGenImage('assets/img/main_top_money_lefttips.png');
 
   /// File path: assets/img/main_top_xp.png
   AssetGenImage get mainTopXp =>
       const AssetGenImage('assets/img/main_top_xp.png');
-
-  /// File path: assets/img/main_wheel.png
-  AssetGenImage get mainWheel =>
-      const AssetGenImage('assets/img/main_wheel.png');
 
   /// File path: assets/img/menu.png
   AssetGenImage get menu => const AssetGenImage('assets/img/menu.png');
@@ -786,34 +774,6 @@ class $AssetsImgGen {
   AssetGenImage get popupGetXpmoney =>
       const AssetGenImage('assets/img/popup_get_xpmoney.png');
 
-  /// File path: assets/img/popup_jackpot1.png
-  AssetGenImage get popupJackpot1 =>
-      const AssetGenImage('assets/img/popup_jackpot1.png');
-
-  /// File path: assets/img/popup_jackpot2.png
-  AssetGenImage get popupJackpot2 =>
-      const AssetGenImage('assets/img/popup_jackpot2.png');
-
-  /// File path: assets/img/popup_jackpot3.png
-  AssetGenImage get popupJackpot3 =>
-      const AssetGenImage('assets/img/popup_jackpot3.png');
-
-  /// File path: assets/img/popup_jackpot_bg.png
-  AssetGenImage get popupJackpotBg =>
-      const AssetGenImage('assets/img/popup_jackpot_bg.png');
-
-  /// File path: assets/img/popup_jackpot_grand.png
-  AssetGenImage get popupJackpotGrand =>
-      const AssetGenImage('assets/img/popup_jackpot_grand.png');
-
-  /// File path: assets/img/popup_jackpot_major.png
-  AssetGenImage get popupJackpotMajor =>
-      const AssetGenImage('assets/img/popup_jackpot_major.png');
-
-  /// File path: assets/img/popup_jackpot_mini.png
-  AssetGenImage get popupJackpotMini =>
-      const AssetGenImage('assets/img/popup_jackpot_mini.png');
-
   /// File path: assets/img/popup_moneybg_big.png
   AssetGenImage get popupMoneybgBig =>
       const AssetGenImage('assets/img/popup_moneybg_big.png');
@@ -829,22 +789,6 @@ class $AssetsImgGen {
   /// File path: assets/img/popup_paypal.png
   AssetGenImage get popupPaypal =>
       const AssetGenImage('assets/img/popup_paypal.png');
-
-  /// File path: assets/img/popup_txt_bigwin.png
-  AssetGenImage get popupTxtBigwin =>
-      const AssetGenImage('assets/img/popup_txt_bigwin.png');
-
-  /// File path: assets/img/popup_txt_megawin.png
-  AssetGenImage get popupTxtMegawin =>
-      const AssetGenImage('assets/img/popup_txt_megawin.png');
-
-  /// File path: assets/img/popup_txt_superwin.png
-  AssetGenImage get popupTxtSuperwin =>
-      const AssetGenImage('assets/img/popup_txt_superwin.png');
-
-  /// File path: assets/img/popup_txt_wow.png
-  AssetGenImage get popupTxtWow =>
-      const AssetGenImage('assets/img/popup_txt_wow.png');
 
   /// File path: assets/img/popup_zhiz.png
   AssetGenImage get popupZhiz =>
@@ -866,9 +810,6 @@ class $AssetsImgGen {
 
   /// Directory path: assets/img/slots
   $AssetsImgSlotsGen get slots => const $AssetsImgSlotsGen();
-
-  /// File path: assets/img/splash.png
-  AssetGenImage get splash => const AssetGenImage('assets/img/splash.png');
 
   /// File path: assets/img/splash_bg.png
   AssetGenImage get splashBg => const AssetGenImage('assets/img/splash_bg.png');
@@ -914,14 +855,6 @@ class $AssetsImgGen {
   /// File path: assets/img/tongz_reward_bg.png
   AssetGenImage get tongzRewardBg =>
       const AssetGenImage('assets/img/tongz_reward_bg.png');
-
-  /// File path: assets/img/tx_activate_bg.png
-  AssetGenImage get txActivateBg =>
-      const AssetGenImage('assets/img/tx_activate_bg.png');
-
-  /// File path: assets/img/tx_activate_money.png
-  AssetGenImage get txActivateMoney =>
-      const AssetGenImage('assets/img/tx_activate_money.png');
 
   /// File path: assets/img/tx_buzu_bg.png
   AssetGenImage get txBuzuBg =>
@@ -1277,13 +1210,10 @@ class $AssetsImgGen {
     mainMini,
     mainMoneyChange,
     mainPhone,
-    mainShengdaolaoren,
     mainSlotsDetail,
-    mainTopBank,
     mainTopBg,
-    mainTopBg2,
+    mainTopMoneyLefttips,
     mainTopXp,
-    mainWheel,
     menu,
     mianDaily,
     money,
@@ -1337,27 +1267,15 @@ class $AssetsImgGen {
     popupGetPhoneSpice,
     popupGetPhonemoney,
     popupGetXpmoney,
-    popupJackpot1,
-    popupJackpot2,
-    popupJackpot3,
-    popupJackpotBg,
-    popupJackpotGrand,
-    popupJackpotMajor,
-    popupJackpotMini,
     popupMoneybgBig,
     popupMoneybgMega,
     popupMoneybgSuper,
     popupPaypal,
-    popupTxtBigwin,
-    popupTxtMegawin,
-    popupTxtSuperwin,
-    popupTxtWow,
     popupZhiz,
     settiAudio,
     settiBg,
     settiMusic,
     slot1,
-    splash,
     splashBg,
     splashJindu,
     splashJindu2,
@@ -1370,8 +1288,6 @@ class $AssetsImgGen {
     tongzBg,
     tongzCashpayment,
     tongzRewardBg,
-    txActivateBg,
-    txActivateMoney,
     txBuzuBg,
     txBuzuJindu,
     txBuzuJindu2,
@@ -1473,6 +1389,9 @@ class $AssetsMyaGen {
 
   /// Directory path: assets/mya/wow
   $AssetsMyaWowGen get wow => const $AssetsMyaWowGen();
+
+  /// Directory path: assets/mya/xuanguang
+  $AssetsMyaXuanguangGen get xuanguang => const $AssetsMyaXuanguangGen();
 }
 
 class $AssetsDonghuaAvatarGen {
@@ -1988,6 +1907,21 @@ class $AssetsMyaWowGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [wow];
+}
+
+class $AssetsMyaXuanguangGen {
+  const $AssetsMyaXuanguangGen();
+
+  /// File path: assets/mya/xuanguang/xuanguang1.png
+  AssetGenImage get xuanguang1 =>
+      const AssetGenImage('assets/mya/xuanguang/xuanguang1.png');
+
+  /// File path: assets/mya/xuanguang/xuanguang2.png
+  AssetGenImage get xuanguang2 =>
+      const AssetGenImage('assets/mya/xuanguang/xuanguang2.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [xuanguang1, xuanguang2];
 }
 
 class $AssetsLotttAvatarImagesGen {

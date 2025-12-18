@@ -25,7 +25,7 @@ class AppForegroundService : Service() {
         const val CHANNEL_ID = "my_foreground_channel"
         const val NOTIFY_ID = 1001
         const val SERVICE_ID = 1002
-         var sIsRunning = false
+        var sIsRunning = false
     }
 
     override fun onCreate() {

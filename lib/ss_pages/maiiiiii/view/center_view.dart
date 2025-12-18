@@ -48,7 +48,7 @@ class CenterView extends StatelessWidget {
       builder: (context, c) {
         double maxH = c.maxHeight;
         double maxW = c.maxWidth;
-        final bottom2= MediaQuery.of(context).viewPadding.bottom;
+        final bottom2 = MediaQuery.of(context).viewPadding.bottom;
         bool showBottomNav = bottom2 > 20;
         return Obx(() {
           return Container(
@@ -197,7 +197,7 @@ class CenterView extends StatelessWidget {
                 ),
 
                 Positioned.fill(
-                  top:showBottomNav? 10.h:30.h,
+                  top: showBottomNav ? 10.h : 30.h,
                   child: TweenAnimationBuilder<double>(
                     duration: const Duration(milliseconds: 400),
                     tween: Tween(
@@ -512,10 +512,10 @@ class CenterView extends StatelessWidget {
       bool showTime = MainController.to.showBoxTime.value;
       String text = MainController.to.textBoxGiftTime.value;
       // ssLogggg("======txt:$text");
-      final bottom2= ScreenUtil().bottomBarHeight;
+      final bottom2 = ScreenUtil().bottomBarHeight;
       bool showBottomNav = bottom2 > 20;
       double itemHeight = 64.h;
-      if(showBottomNav){
+      if (showBottomNav) {
         itemHeight = 60.h;
       }
       return Column(
@@ -683,7 +683,8 @@ class CenterView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (PhoneCardController.to.canClickClaim.value)
+                    if (PhoneCardController.to.canClickClaim.value &&
+                        !MainController.to.curGuideStepSpin1.value)
                       Positioned(
                         right: 10.w,
                         top: 10.h,
@@ -1169,7 +1170,7 @@ class FreeSpinState extends State<FreeSpin> {
                   ? Container(
                       width: childIW,
                       height: childIH,
-                      child:const SpineFreespinSelected(),
+                      child: const SpineFreespinSelected(),
                     )
                   : Image.asset(
                       Assets.img.freespinUns.path,

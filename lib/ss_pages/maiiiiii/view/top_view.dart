@@ -180,7 +180,7 @@ class TopView extends StatelessWidget {
     SSEventReporttttt.home_page_menu();
     // OverlaySettinnn().show();
 
-    OverlayBonusGame().show(onEnd: () {  });
+    // OverlayBonusGame().show(onEnd: () {  });
     // OverlayWithddOnelastcheckJindu1().show();
 
     // OverlayWithddBuzu().show(
@@ -243,7 +243,7 @@ class TopView extends StatelessWidget {
     // overlayLuckySlots.show();
     // OverlayFreeSpins().show(money: 10);
 
-    // OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
+    OverlayWow().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayBigwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlaySuperwin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);
     // OverlayMegawin().show(money: 100,  onBtn: (value) {  }, onBtn2: (value) {  },scene: EnumGetScene.spin);

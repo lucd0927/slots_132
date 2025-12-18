@@ -202,7 +202,7 @@ class BottomView extends StatelessWidget {
       color: Colors.teal.withValues(alpha: 0.0),
       child: Stack(
         children: [
-          Center(child: spinWidget()),
+
           Positioned(
             top: 0,
             left: 20.w,
@@ -215,6 +215,7 @@ class BottomView extends StatelessWidget {
             bottom: 0,
             child: Center(child: addMoneyWidget()),
           ),
+          Center(child: spinWidget()),
         ],
       ),
     );
@@ -500,6 +501,8 @@ class BottomView extends StatelessWidget {
   }
 
   Widget wheelWidget() {
+    bool showHand = WheController.to.curWheNum.value > 0;
+    showHand = showHand && !MainController.to.curGuideStepSpin1.value;
     return GestureDetector(
       key: ValueKey("ttttt"),
       onTap: onWheel,
@@ -535,7 +538,7 @@ class BottomView extends StatelessWidget {
             // ),
             const SSSpineXiaozhuanpan(),
             const SSSpineWheelMoney(),
-            if (WheController.to.curWheNum.value > 0)
+            if (showHand)
               Positioned(
                 right: -20.w,
                 top: 10.h,

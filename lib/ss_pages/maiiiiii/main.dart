@@ -37,6 +37,7 @@ import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_common/sssssp/spine_txlast.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
@@ -55,11 +56,16 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
+
+
+  Timer? _timer;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Get.put(MainController());
+    Get.put(DailyBonusController());
     Get.put(WheController());
     Get.put(WithdddController());
     Get.put(SSChatController());
@@ -75,7 +81,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       bgMusicFreeSpin.pause();
     });
 
-    Timer.periodic(Duration(seconds: 60), (timer) {
+   _timer =  Timer.periodic(Duration(seconds: 60), (timer) {
       if (mounted) {
         SlideAcrossOverlay().show(context);
       }
@@ -155,7 +161,21 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
   onDailyBonus() async {
     if (SSDlTracking.isFirstLoginToday) {
+
       await Future.delayed(Duration(milliseconds: 200));
+      bool hasClick = DailyBonusController.to.todayClickBonus.value;
+      int days= DailyBonusController.to.continueLoginDays.value;
+      int weeks =DailyBonusController.to.continueLoginWeeks.value;
+
+      bool hasFirstDay = days == 1 && weeks == 0;
+
+      if(hasFirstDay && !hasClick){
+        MainController.to.onAddMoney(50, showMoneyAnimated: true);
+        DailyBonusController.to.todayClickBonus.value = true;
+        DailyBonusController.to.saveTodayClickBonusStatus(true);
+        return;
+      }
+
       OverlayDailyBonus().show(showAddMoney: true);
     }
   }
@@ -245,4 +265,12 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _timer?.cancel();
+  }
 }

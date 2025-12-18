@@ -89,7 +89,7 @@ class _SettingWidgetState extends State<SettingWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Get.put(DailyBonusController());
+
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {

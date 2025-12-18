@@ -841,6 +841,7 @@ class MainController extends GetxController {
     ssLogggg("==onStartRoller==start=");
     kZuobiao_vWidgetContext = {};
     showWinLines.value = false;
+
     cunt = 0;
     hasScrollerStart.value = true;
     result = Completer();
@@ -1028,6 +1029,11 @@ class MainController extends GetxController {
     ssLogggg(
       "==onStartRoller==end=payBeisu:$payBeisu  tmpAddMoney:$tmpAddMoney",
     );
+  }
+
+  void initGuideStepSpin1() {
+    curGuideStepSpin1.value = false;
+    box.put(hkcurGuideStep1, false);
   }
 
   // 每个飞的动画
@@ -1230,6 +1236,7 @@ class MainController extends GetxController {
     onAddMoney(
       tmpAddMoney,
       onEnd: () async {
+        initGuideStepSpin1();
         ssLogggg("======_rollerEnd");
         await Future.delayed(Duration(milliseconds: 500), () {});
         DateTime curTime2 = DateTime.now();
@@ -1446,8 +1453,11 @@ class MainController extends GetxController {
   static const String hkCollectStar = "dfgs656ytiu232wq";
   static const String hkBonusGameCount = "87sdghkjszdfght33";
   static const String hkcurSpinCount = "hkcurSpinCountaaa";
+  static const String hkcurGuideStep1 = "hkcurGuideStep1";
   static const double minBet = 8.0;
   static const double maxBet = 10.0;
+  // 是否进行了第一步spin的引导
+  var curGuideStepSpin1 = true.obs;
 
   var curBonusGameCount = 0.obs;
 
@@ -1983,6 +1993,10 @@ class MainController extends GetxController {
     int tmpcurSpinCount = box.get(hkcurSpinCount) ?? 1;
     curSpinCount = tmpcurSpinCount.obs;
     ssLogggg("=====initOther tmpcurSpinCount:$tmpcurSpinCount");
+
+    bool tmpCurGuideStepSpin1 = box.get(hkcurGuideStep1) ?? true;
+    curGuideStepSpin1 = tmpCurGuideStepSpin1.obs;
+    ssLogggg("=====initOther curGuideStepSpin1:$tmpCurGuideStepSpin1");
 
     initTimerBoxGift();
   }
