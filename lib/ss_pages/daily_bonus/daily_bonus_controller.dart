@@ -38,9 +38,9 @@ class DailyBonusController extends GetxController {
       img: Assets.img.moneyGift.path,
     ),
     3:GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.freespin,
-      num: 50,
-      img: Assets.img.dailyBonusFresspsin.path,
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 75,
+      img: Assets.img.moneyGift.path,
     ),
     4:GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
@@ -157,6 +157,8 @@ class DailyBonusController extends GetxController {
         money2 = 150;
       }else if (rewardModelType == EnumGiftRewardModel.freespin) {
         freespin = giftRewardModel.num.toInt();
+        onEnd();
+        return;
       }
     }
 
