@@ -487,8 +487,8 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
         ],
       );
     }
-
-    bool showHand = BonusGameController.to.showGestureHandIndex.value == index;
+    int showHandIndex = BonusGameController.to.showGestureHandIndex.value;
+    bool showHand =showHandIndex == index;
     ssLogggg("=====showHand:$showHand ${ BonusGameController.to.showGestureHandIndex.value}");
     return Builder(
       builder: (context) {

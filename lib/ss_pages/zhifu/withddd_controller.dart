@@ -361,7 +361,7 @@ class WithdddController extends GetxController {
       showMoneyAnimated: true,
     );
     OverlayJindu1().show();
-    ssTushi(text: "Successful!");
+    // ssTushi(text: "Successful!");
   }
 
   onShowPayBank() async {

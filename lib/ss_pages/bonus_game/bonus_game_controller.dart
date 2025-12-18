@@ -277,18 +277,16 @@ class BonusGameController extends GetxController {
 
   initHandTime({required bool hasFirst}){
     List<int> indexes =[0,1,2,3,4,5,6,7,8]..shuffle();
-    ssLogggg("=====initHandTime==index:$clickIndex ");
+
+    int lastIndex = indexes[0];
+    // ssLogggg("=====initHandTime=lastIndex:$lastIndex=index:$clickIndex indexes:$indexes ${indexes.length}");
     for(int i =0;i < indexes.length;i++){
-      int index = indexes[0];
+      int index = indexes[i];
       bool con = clickIndex.contains(index);
-
+      // ssLogggg("=====initHandTime=con:$con");
       if(!con){
-        if(hasFirst){
-          showGestureHandIndex = index.obs;
-        }else{
-          showGestureHandIndex.value = index;
-        }
-
+        // ssLogggg("=====initHandTime=i:$i");
+        lastIndex = index;
         // initHandTime();
         break;
       }
@@ -296,6 +294,13 @@ class BonusGameController extends GetxController {
       //   handTimer?.cancel();
       // }
     }
+
+    if(hasFirst){
+      showGestureHandIndex = lastIndex.obs;
+    }else{
+      showGestureHandIndex.value = lastIndex;
+    }
+    // ssLogggg("=====initHandTime=lastIndex2:$lastIndex=index:$clickIndex indexes:$indexes");
   }
 
   double _cardMonnn() {
