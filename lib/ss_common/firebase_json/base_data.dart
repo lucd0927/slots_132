@@ -11,9 +11,9 @@ class SSFBBaseData {
 
   static int claus_spin() {
     String key = "5";
-    try{
+    try {
       key = PBFireBbbbbb().by(name: "claus_spin");
-    }catch(e){
+    } catch (e) {
       ssLogggg("======claus_spin error:$e");
     }
 
@@ -25,9 +25,9 @@ class SSFBBaseData {
 
   static int fee_spin() {
     String key = PBFireBbbbbb().by(name: "fee_spin");
-    try{
+    try {
       key = PBFireBbbbbb().by(name: "fee_spin");
-    }catch(e){
+    } catch (e) {
       ssLogggg("======fee_spin error:$e");
     }
 
@@ -39,9 +39,9 @@ class SSFBBaseData {
 
   static int human_spin() {
     String key = "10";
-    try{
+    try {
       key = PBFireBbbbbb().by(name: "human_spin");
-    }catch(e){
+    } catch (e) {
       ssLogggg("======human_spin error:$e");
     }
     if (key.isNotEmpty) {
@@ -51,8 +51,6 @@ class SSFBBaseData {
   }
 
   static Map<String, dynamic>? _onlinJsonnnnn_int_ad_value;
-
-
 
   static Map<String, dynamic> local_int_ad_value = {
     "int_ad_value": [
@@ -110,8 +108,8 @@ class SSFBBaseData {
 
     double tmpCurMoney = MainController.to.curMonnnn.value;
     bool hasSave = WithdddController.to.hasSaveCardId();
-    if(hasSave){
-      tmpCurMoney = MainController.minWithdddMoney+200;
+    if (hasSave) {
+      tmpCurMoney = MainController.minWithdddMoney + 200;
     }
     if (intadPointData is List) {
       for (var action in intadPointData) {
@@ -129,12 +127,9 @@ class SSFBBaseData {
         }
       }
     }
-    ssLogggg(
-      "===intad_point cash pop=point showIntad：$showIntad",
-    );
+    ssLogggg("===intad_point cash pop=point showIntad：$showIntad");
     return showIntad;
   }
-
 
   static _onlineJson_int_ad_value({bool reset = false}) {
     if (!reset) {
@@ -170,8 +165,8 @@ class SSFBBaseData {
 
     double tmpCurMoney = MainController.to.curMonnnn.value;
     bool hasSave = WithdddController.to.hasSaveCardId();
-    if(hasSave){
-      tmpCurMoney = MainController.minWithdddMoney+200;
+    if (hasSave) {
+      tmpCurMoney = MainController.minWithdddMoney + 200;
     }
     if (intadPointData is List) {
       for (var action in intadPointData) {
@@ -189,21 +184,17 @@ class SSFBBaseData {
         }
       }
     }
-    ssLogggg(
-      "===intad_point=point showIntad：$showIntad",
-    );
+    ssLogggg("===intad_point=point showIntad：$showIntad");
+    // showIntad = true;
+
     return showIntad;
   }
 
-
   static Map<String, dynamic>? _onlinJsonnnnn_win_pop;
   static Map<String, dynamic> local_int_win_pop = {
-    "win_pop": {
-      "bigwin":2,
-      "megawin":3,
-      "superwin":4
-    },
+    "win_pop": {"bigwin": 2, "megawin": 3, "superwin": 4},
   };
+
   static _onlineJson_win_pop({bool reset = false}) {
     if (!reset) {
       if (_onlinJsonnnnn_win_pop != null) {
@@ -230,41 +221,39 @@ class SSFBBaseData {
     return localJson;
   }
 
-  static int bigwinBet(){
+  static int bigwinBet() {
     _onlineJson_win_pop();
     _onlinJsonnnnn_win_pop ??= local_int_win_pop;
     var win_popdata = _onlinJsonnnnn_win_pop!["win_pop"];
     int count = 2;
-    if(win_popdata is Map){
-      count = win_popdata['bigwin']??2;
+    if (win_popdata is Map) {
+      count = win_popdata['bigwin'] ?? 2;
     }
 
     return count;
   }
 
-  static int megawinBet(){
+  static int megawinBet() {
     _onlineJson_win_pop();
     _onlinJsonnnnn_win_pop ??= local_int_win_pop;
     var win_popdata = _onlinJsonnnnn_win_pop!["win_pop"];
     int count = 3;
-    if(win_popdata is Map){
-      count = win_popdata['megawin']??3;
+    if (win_popdata is Map) {
+      count = win_popdata['megawin'] ?? 3;
     }
 
     return count;
   }
 
-  static int superwinBet(){
+  static int superwinBet() {
     _onlineJson_win_pop();
     _onlinJsonnnnn_win_pop ??= local_int_win_pop;
     var win_popdata = _onlinJsonnnnn_win_pop!["win_pop"];
     int count = 4;
-    if(win_popdata is Map){
-      count = win_popdata['superwin']??4;
+    if (win_popdata is Map) {
+      count = win_popdata['superwin'] ?? 4;
     }
 
     return count;
   }
-
-
 }

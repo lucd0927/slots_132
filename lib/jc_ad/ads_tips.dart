@@ -16,13 +16,22 @@ class SSAdsTtt {
     required VoidCallback onTryAgain,
     required VoidCallback onClose,
   }) async {
+    bool isShowing = false;
     showAdFailedDialog(
       Get.context!,
       onBtn: () {
-        onTryAgain();
+        if(!isShowing){
+          isShowing = true;
+          onTryAgain();
+        }
+
       },
       onClose: () {
-        onClose();
+        if(!isShowing){
+          isShowing = true;
+          onClose();
+        }
+
       },
     );
   }
