@@ -5,8 +5,8 @@ import 'package:adjust_sdk/adjust_config.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/log.dart';
-
 
 class SSAdjust {
   static const String TGA = "SSAdjust";
@@ -24,7 +24,12 @@ class SSAdjust {
 
   initSdk(String appToken) async {
     // 在进行测试时，应当确保将环境设置为 AdjustEnvironment.sandbox 。请在向应用商店提交应用前将此设为 AdjustEnvironment.production。
-    AdjustConfig config = AdjustConfig(appToken, AdjustEnvironment.production);
+    AdjustConfig config = AdjustConfig(
+      appToken,
+      SSHuanjing.hasDevvvvv()
+          ? AdjustEnvironment.sandbox
+          : AdjustEnvironment.production,
+    );
     config.logLevel = AdjustLogLevel.verbose;
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // config.externalDeviceId =distinct_id;
@@ -69,18 +74,14 @@ class SSAdjust {
       }
     };
 
-    Adjust.initSdk(config,);
+    Adjust.initSdk(config);
 
-
-    Adjust.getAttribution().then((attributionChangedData){
+    Adjust.getAttribution().then((attributionChangedData) {
       String? network = attributionChangedData.network;
       ssLogggg("$TGA====network:$network");
-      SSABChange().guiyin(network??"");
+      SSABChange().guiyin(network ?? "");
     });
     // JCShijianBaogao.adjust_req();
-
-
-
   }
 
   adjustRevenue({

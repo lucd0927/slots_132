@@ -16,6 +16,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
@@ -231,7 +232,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   direction: ParticleDirection.topToBottom,
                   // Already falling
                   particleCount: 10,
-                  imagePath: Assets.img.money.path,
+                  imagePath:SSABChange.isPackageB()? Assets.img.money.path:Assets.imga.coin.path,
                   minSize: 50.w,
                   maxSize: 50.w,
                   enableRotation: true,

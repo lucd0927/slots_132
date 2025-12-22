@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -85,6 +86,7 @@ class CenterView extends StatelessWidget {
                           Positioned(
                             left: 16.w,
                             top: 40.h,
+                            bottom: 0,
                             child: AnimatedCrossFade(
                               firstChild: leftWidget(),
                               secondChild: SizedBox(width: 58.h, height: 64.h),
@@ -519,6 +521,7 @@ class CenterView extends StatelessWidget {
         itemHeight = 60.h;
       }
       return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: () {
@@ -635,7 +638,7 @@ class CenterView extends StatelessWidget {
           ),
           SizedBox(height: 0.h),
 
-          GestureDetector(
+         if(SSABChange.isPackageB()) GestureDetector(
             onTap: () {
               ssLogggg("=mainPhone==");
               onPhoneClick();
@@ -1032,7 +1035,7 @@ class FreeSpinState extends State<FreeSpin> {
                               duration: Duration(milliseconds: 100),
                             ),
                             childI(
-                              icon: Assets.img.freespinMoney.path,
+                              icon:SSABChange.isPackageB()?Assets.img.freespinMoney.path:Assets.imga.coin.path,
                               index: 1,
                             ),
                           ],
@@ -1097,7 +1100,7 @@ class FreeSpinState extends State<FreeSpin> {
                           height: fiveH,
                           duration: Duration(milliseconds: 100),
                         ),
-                        childI(icon: Assets.img.freespinMoney.path, index: 4),
+                        childI(icon: SSABChange.isPackageB()?Assets.img.freespinMoney.path:Assets.imga.coin.path, index: 4),
                       ],
                     ),
                   ),
@@ -1181,11 +1184,11 @@ class FreeSpinState extends State<FreeSpin> {
               Positioned(
                 left: 0,
                 right: 0,
-                top: 14.h,
+                top: icon==Assets.imga.coin.path?17.h: 14.h,
                 child: Center(
                   child: Image.asset(
                     icon,
-                    width: 40.w,
+                    width: icon==Assets.imga.coin.path?30.w:40.w,
                     height: 40.w,
                     gaplessPlayback: true,
                   ),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -126,7 +127,7 @@ class _LuckySlotsWidgetState extends State<LuckySlotsWidget> {
                                 fontColor: Color(0xffFFEA00),
                               ),
                               SSTxtBorder(
-                                text: " \$99.9",
+                                text: " ${SSCountry.curGuojiaFuhao()}99.9",
                                 fontSize: 24.sp,
                                 fontColor: Color(0xff00FF1E),
                               ),

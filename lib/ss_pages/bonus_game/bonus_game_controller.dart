@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/hero_fly/hero_fly.dart';
@@ -40,11 +41,13 @@ class BonusGameController extends GetxController {
     card_scatter,
   ];
 
-  static final Map<String, String> kCardCategory_vCardImg = {
+  static  Map<String, String> kCardCategory_vCardImg = {
     card_grand: Assets.img.bonusGameCardGrand.path,
     card_major: Assets.img.bonusGameCardMajor.path,
     card_mini: Assets.img.bonusGameCardMini.path,
-    card_cash: Assets.img.bonusGameCardMoney.path,
+    card_cash: SSABChange.isPackageB()
+        ? Assets.img.bonusGameCardMoney.path
+        : Assets.imga.coinBounsgame.path,
     card_scatter: Assets.img.bonusGameCardScatter.path,
     card_back: Assets.img.bonusGameCardBack.path,
   };
@@ -269,22 +272,21 @@ class BonusGameController extends GetxController {
     super.onInit();
 
     initData();
-
+    ssLogggg("onInit data:$data");
     cardMoney.add(_cardMonnn());
     initHandTime(hasFirst: true);
-
   }
 
-  initHandTime({required bool hasFirst}){
-    List<int> indexes =[0,1,2,3,4,5,6,7,8]..shuffle();
+  initHandTime({required bool hasFirst}) {
+    List<int> indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8]..shuffle();
 
     int lastIndex = indexes[0];
     // ssLogggg("=====initHandTime=lastIndex:$lastIndex=index:$clickIndex indexes:$indexes ${indexes.length}");
-    for(int i =0;i < indexes.length;i++){
+    for (int i = 0; i < indexes.length; i++) {
       int index = indexes[i];
       bool con = clickIndex.contains(index);
       // ssLogggg("=====initHandTime=con:$con");
-      if(!con){
+      if (!con) {
         // ssLogggg("=====initHandTime=i:$i");
         lastIndex = index;
         // initHandTime();
@@ -295,9 +297,9 @@ class BonusGameController extends GetxController {
       // }
     }
 
-    if(hasFirst){
+    if (hasFirst) {
       showGestureHandIndex = lastIndex.obs;
-    }else{
+    } else {
       showGestureHandIndex.value = lastIndex;
     }
     // ssLogggg("=====initHandTime=lastIndex2:$lastIndex=index:$clickIndex indexes:$indexes");

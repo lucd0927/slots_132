@@ -1,6 +1,9 @@
 
 import 'dart:io';
 
+import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
+
 
 class SSCountry {
   // 美国
@@ -25,6 +28,11 @@ class SSCountry {
 
   // 当前货币符号
   static String curGuojiaFuhao() {
+
+    if(!SSABChange.isPackageB()){
+      return "";
+    }
+
     String symbol = "\$";
     if (!hasUSA()) {
       symbol = "R\$";

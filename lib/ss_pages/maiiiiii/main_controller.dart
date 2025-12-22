@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -295,7 +296,9 @@ class MainController extends GetxController {
       winReel5
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
-    } else if (tmpSpinCount == 2 && tmpSpinCount1 == 2) {
+    } else if (tmpSpinCount == 2 &&
+        tmpSpinCount1 == 2 &&
+        SSABChange.isPackageB()) {
       winReel5 = winReel5
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
@@ -970,7 +973,7 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              if(rollerOver != null) {
+              if (rollerOver != null) {
                 rollerOver?.complete();
                 rollerOver = null;
               }
@@ -981,7 +984,7 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              if(rollerOver != null) {
+              if (rollerOver != null) {
                 rollerOver?.complete();
                 rollerOver = null;
               }
@@ -992,7 +995,7 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              if(rollerOver != null) {
+              if (rollerOver != null) {
                 rollerOver?.complete();
                 rollerOver = null;
               }
@@ -1008,7 +1011,7 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              if(rollerOver != null) {
+              if (rollerOver != null) {
                 rollerOver?.complete();
                 rollerOver = null;
               }
@@ -1019,7 +1022,7 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              if(rollerOver != null) {
+              if (rollerOver != null) {
                 rollerOver?.complete();
                 rollerOver = null;
               }
@@ -1030,7 +1033,7 @@ class MainController extends GetxController {
           _rollerEnd(
             tmpAddMoney: money,
             onEnd: () {
-              if(rollerOver != null) {
+              if (rollerOver != null) {
                 rollerOver?.complete();
                 rollerOver = null;
               }

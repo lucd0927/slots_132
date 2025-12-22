@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
@@ -35,7 +36,7 @@ class _SSSpineMoneyState extends State<SSSpineMoney> {
     //   return Lottie(composition: data,);
     // }
     // return Lottie.asset(Assets.donghua.lottieMoney.data, repeat: true,frameBuilder: (_, child, __) => child,);
-    if (!showA) {
+    if (!showA ||  !SSABChange.isPackageB()) {
       return const SizedBox();
     }
 

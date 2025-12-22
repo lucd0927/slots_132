@@ -25,8 +25,8 @@ class SSABChange {
 
   SSABChange._();
 
-  static const String cloakBData = "chromium";
-  static const String cloakAData = "sprung";
+  static const String cloakBData = "funereal";
+  static const String cloakAData = "germ";
   static const String afDataOrganic = "Organic";
 
   static const String kHivePackage = "kjdsdsfjkghj";
@@ -198,7 +198,9 @@ class SSABChange {
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
     await _chushiGuiyin();
-
+    ssLogggg(
+      "$TGA===_chushiGuiyin==end",
+    );
 
 
   }
@@ -239,7 +241,7 @@ class SSABChange {
   // auto patch 285
 
   Completer<bool>? initCompleter;
-  static const String TGA = "QuizPackage:";
+  static const String TGA = "13222222:";
 
   Future<bool> init() async {
     initCompleter = Completer<bool>();
@@ -249,7 +251,7 @@ class SSABChange {
     if(Platform.isAndroid){
       packageName = packageB;
     }
-
+    packageName = packageA;
 
     _name = packageName;
     ssLogggg("$TGA=package==init:$packageName==");

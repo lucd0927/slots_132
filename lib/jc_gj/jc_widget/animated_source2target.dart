@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/top_view.dart';
 
@@ -121,7 +122,7 @@ class SSAnimSource2TargetOverlay {
 
     List<Widget> children = [];
     heroChild ??= Image.asset(
-      Assets.img.money.path,
+      SSABChange.isPackageB()?  Assets.img.money.path:Assets.imga.coin.path,
       width: 30.h,
       height: 28.h,
       fit: BoxFit.fill,

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -303,7 +304,9 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               Row(
                 children: [
                   Image.asset(
-                    Assets.img.moneyGift.path,
+                    SSABChange.isPackageB()
+                        ? Assets.img.moneyGift.path
+                        : Assets.imga.coin.path,
                     width: 60.w,
                     height: 40.h,
                   ),
@@ -315,12 +318,19 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
                     strokeColor: Color(0xff0C402B),
                     fontWeight: FontWeight.w700,
                     gradient: LinearGradient(
-                      colors: [
-                        Color(0xff0FFF63),
-                        Color(0xffA4F00D),
-                        Color(0xffD0FF00),
-                        Color(0xff00FF1E),
-                      ],
+                      colors: SSABChange.isPackageB()
+                          ? [
+                              Color(0xff0FFF63),
+                              Color(0xffA4F00D),
+                              Color(0xffD0FF00),
+                              Color(0xff00FF1E),
+                            ]
+                          : [
+                              Color(0xffFFD700),
+                              Color(0xffFFA500),
+                              Color(0xffFF8C00),
+                              Color(0xffFF4500),
+                            ],
                       end: Alignment.bottomCenter,
                       begin: Alignment.topCenter,
                     ),
@@ -361,7 +371,11 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               // color: Colors.teal,
               child: Stack(
                 children: [
-                  Center(child: const SSSpineBoxgift()),
+                  Center(
+                    child: SSABChange.isPackageB()
+                        ? const SSSpineBoxgift()
+                        : Image.asset(Assets.imga.boxgiftJinglin.path),
+                  ),
                   Center(child: Image.asset(Assets.img.boxgiftBorder.path)),
                 ],
               ),

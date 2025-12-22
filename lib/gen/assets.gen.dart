@@ -1349,6 +1349,38 @@ class $AssetsImgGen {
   ];
 }
 
+class $AssetsImgaGen {
+  const $AssetsImgaGen();
+
+  /// File path: assets/imga/boxgift_jinglin.png
+  AssetGenImage get boxgiftJinglin =>
+      const AssetGenImage('assets/imga/boxgift_jinglin.png');
+
+  /// File path: assets/imga/coin.png
+  AssetGenImage get coin => const AssetGenImage('assets/imga/coin.png');
+
+  /// File path: assets/imga/coin_bounsgame.png
+  AssetGenImage get coinBounsgame =>
+      const AssetGenImage('assets/imga/coin_bounsgame.png');
+
+  /// File path: assets/imga/coin_freespin.png
+  AssetGenImage get coinFreespin =>
+      const AssetGenImage('assets/imga/coin_freespin.png');
+
+  /// File path: assets/imga/coin_giftbox.png
+  AssetGenImage get coinGiftbox =>
+      const AssetGenImage('assets/imga/coin_giftbox.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    boxgiftJinglin,
+    coin,
+    coinBounsgame,
+    coinFreespin,
+    coinGiftbox,
+  ];
+}
+
 class $AssetsLotttGen {
   const $AssetsLotttGen();
 
@@ -3330,6 +3362,7 @@ class Assets {
   static const $AssetsAuddddGen audddd = $AssetsAuddddGen();
   static const $AssetsDonghuaGen donghua = $AssetsDonghuaGen();
   static const $AssetsImgGen img = $AssetsImgGen();
+  static const $AssetsImgaGen imga = $AssetsImgaGen();
   static const $AssetsLotttGen lottt = $AssetsLotttGen();
   static const $AssetsMyaGen mya = $AssetsMyaGen();
 }

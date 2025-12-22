@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:particles_flutter/particles_engine.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -202,7 +203,6 @@ class BottomView extends StatelessWidget {
       color: Colors.teal.withValues(alpha: 0.0),
       child: Stack(
         children: [
-
           Positioned(
             top: 0,
             left: 20.w,
@@ -512,46 +512,62 @@ class BottomView extends StatelessWidget {
         color: Colors.red.withValues(alpha: 0.0),
         child: Stack(
           clipBehavior: Clip.none,
-          children: [
-            // Hero(
-            //   tag: "Wheellll",
-            //   child: Image.asset(
-            //     Assets.img.mainWheel.path,
-            //     width: double.infinity,
-            //     height: double.infinity,
-            //     fit: BoxFit.fill,
-            //     gaplessPlayback: true,
-            //   ),
-            // ),
-            // Positioned(
-            //   bottom: 0,
-            //   left: -10.w,
-            //   right: -10.w,
-            //   child: Center(
-            //     child: SSTxtGraBorder(
-            //       text: "Wheel",
-            //       strokeColor: Color(0xff30120A),
-            //       fontSize: 14.sp,
-            //       fontFamily: FontFamily.alkatra,
-            //     ),
-            //   ),
-            // ),
-            const SSSpineXiaozhuanpan(),
-            const SSSpineWheelMoney(),
-            if (showHand)
-              Positioned(
-                right: -20.w,
-                top: 10.h,
+          children: SSABChange.isPackageB()
+              ? [
+                  const SSSpineXiaozhuanpan(),
+                  const SSSpineWheelMoney(),
+                  if (showHand)
+                    Positioned(
+                      right: -20.w,
+                      top: 10.h,
 
-                child: Center(
-                  child: SizedBox(
-                    width: 65.h,
-                    height: 72.h,
-                    child: const SpineHand(),
+                      child: Center(
+                        child: SizedBox(
+                          width: 65.h,
+                          height: 72.h,
+                          child: const SpineHand(),
+                        ),
+                      ),
+                    ),
+                ]
+              : [
+                  Hero(
+                    tag: "Wheellll",
+                    child: Image.asset(
+                      Assets.img.freespinSpin.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.contain,
+                      gaplessPlayback: true,
+                    ),
                   ),
-                ),
-              ),
-          ],
+                  Positioned(
+                    bottom: 0,
+                    left: -10.w,
+                    right: -10.w,
+                    child: Center(
+                      child: SSTxtGraBorder(
+                        text: "Wheel",
+                        strokeColor: Color(0xff30120A),
+                        fontSize: 14.sp,
+                        fontFamily: FontFamily.alkatra,
+                      ),
+                    ),
+                  ),
+                  if (showHand)
+                    Positioned(
+                      right: -20.w,
+                      top: 10.h,
+
+                      child: Center(
+                        child: SizedBox(
+                          width: 65.h,
+                          height: 72.h,
+                          child: const SpineHand(),
+                        ),
+                      ),
+                    ),
+                ],
         ),
       ),
     );

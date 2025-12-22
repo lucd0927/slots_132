@@ -9,6 +9,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_ad/kuangkuang/ad_failed.dart';
 import 'package:slots_132/jc_ad/kuangkuang/ad_limit.dart';
 import 'package:slots_132/jc_gj/country.dart';
@@ -186,13 +187,13 @@ class TopView extends StatelessWidget {
   onMenu(BuildContext context) async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
 
     // Get.context?.loaderOverlay.show();
 
     // OverlayMoneyTips().show(context: context);
 
-    // OverlayBonusGame().show(onEnd: () {  });
+    OverlayBonusGame().show(onEnd: () {  });
     // OverlayWithddOnelastcheckJindu1().show();
 
     // OverlayWithddBuzu().show(
@@ -375,7 +376,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
                 child: Builder(
                   builder: (context) {
                     Widget child = Image.asset(
-                      Assets.img.money.path,
+                      SSABChange.isPackageB()?  Assets.img.money.path:Assets.imga.coin.path,
                       width: 30.h,
                       height: 28.h,
                       fit: BoxFit.fill,
@@ -444,7 +445,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
 
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
-              color: Color(0xff6AFF00),
+              color: SSABChange.isPackageB()?Color(0xff6AFF00):Color(0xffFFE711),
               fontSize: 16.sp,
               height: 1,
               fontFamily: FontFamily.ghostKidAOEPro,
@@ -477,6 +478,8 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
     _timer = Timer.periodic(Duration(milliseconds: 1200), (time) {
       if (mounted) {
         setState(() {
+
+
           var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
           // hasLiceng3 = true;
           if (hasLiceng3) {
@@ -529,6 +532,13 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
 
   centerIcon() {
     var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
+
+    bool hasB = SSABChange.isPackageB();
+    if(!hasB){
+      hasLiceng3 = true;
+      icon = "";
+    }
+
     // hasLiceng3 = true;
     if (hasLiceng3) {
       return Center(
