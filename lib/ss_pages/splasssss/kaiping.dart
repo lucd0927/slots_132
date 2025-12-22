@@ -36,8 +36,8 @@ class _SSSplassssState extends State<SSSplassss> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    SSEventReporttttt.install();
     SSEventReporttttt.session();
+    SSEventReporttttt.install();
     SSEventReporttttt.launch_page();
     SSTzNotificattttt.initForegroundService();
     precashImage();

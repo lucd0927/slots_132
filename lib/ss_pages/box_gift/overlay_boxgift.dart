@@ -69,14 +69,14 @@ class OverlayBoxgift {
             double tmpMmm =
                 box.get(hkMoneyKey) ?? (Random().nextDouble() * 25 + 50);
 
-            int a = box.get(hkMoneyKey2) ?? Random().nextInt(types.length-1);
+            int a = box.get(hkMoneyKey2) ?? Random().nextInt(types.length - 1);
             String tmpType = types[a];
             int exp = 0;
             int phoneSpice = 0;
             resetMonnnkye();
             if (tmpType.contains("spin")) {
               List data = [10, 15, 20];
-              int free = data[Random().nextInt(data.length-1)];
+              int free = data[Random().nextInt(data.length - 1)];
               OverlayCommonGet().show(
                 money: tmpMmm,
                 freespins: free,
@@ -156,7 +156,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
     showSecondPage = time <= 0;
     if (!showSecondPage) {
       double tmpMmm = Random().nextDouble() * 25 + 50;
-      int a = Random().nextInt(OverlayBoxgift.types.length-1);
+      int a = Random().nextInt(OverlayBoxgift.types.length - 1);
       tmpMmmmmmm = box.get(OverlayBoxgift.hkMoneyKey) ?? tmpMmm;
       tmpMmmmmmm2 = box.get(OverlayBoxgift.hkMoneyKey2) ?? a;
       box.put(OverlayBoxgift.hkMoneyKey, tmpMmmmmmm);
@@ -167,25 +167,26 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       int time = MainController.to.boxGiftTime.value;
       bool showTime = MainController.to.showBoxTime.value;
       ssLogggg("=_onBoxGift==time:$time showTime:$showTime");
-
-      setState(() {
-        showAnimated = true;
-      });
-      if (time > 0) {
-        return;
-      }
-      Future.delayed(Duration(milliseconds: 500), () {
-        if (mounted) {
-          SSEventReporttttt.elve_page_open();
-          setState(() {
-            showSecondPageOpenGift = true;
-          });
-
-          Future.delayed(Duration(milliseconds: 1500), () {
-            onClose(20);
-          });
+      if (mounted) {
+        setState(() {
+          showAnimated = true;
+        });
+        if (time > 0) {
+          return;
         }
-      });
+        Future.delayed(Duration(milliseconds: 500), () {
+          if (mounted) {
+            SSEventReporttttt.elve_page_open();
+            setState(() {
+              showSecondPageOpenGift = true;
+            });
+
+            Future.delayed(Duration(milliseconds: 1500), () {
+              onClose(20);
+            });
+          }
+        });
+      }
     });
   }
 
@@ -272,7 +273,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
   firstPage() {
     String tmpType = OverlayBoxgift.types[tmpMmmmmmm2];
     String imgPath = Assets.img.mainTopXp.path;
-    if(tmpType.contains("spin")){
+    if (tmpType.contains("spin")) {
       imgPath = Assets.img.giftFreespins.path;
     }
     return Container(
@@ -326,17 +327,12 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
                   ),
                 ],
               ),
-              SizedBox(width: 10.w,),
+              SizedBox(width: 10.w),
               Row(
                 children: [
-                  Image.asset(
-                    imgPath,
-                    width: 60.w,
-                    height: 40.h,
-                  ),
+                  Image.asset(imgPath, width: 60.w, height: 40.h),
                   SSTxtGraBorder(
-                    text:
-                    "??",
+                    text: "??",
                     fontSize: 24.sp,
                     fontFamily: FontFamily.ghostKidAOEPro,
                     strokeColor: Color(0xff0C402B),

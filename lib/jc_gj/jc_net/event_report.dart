@@ -3,6 +3,7 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/jc_hive/sshive.dart';
 
 class SSEventReporttttt {
   //ad_code_id/ad_format/ad_platform
@@ -117,19 +118,23 @@ class SSEventReporttttt {
   }
 
   static session() async {
-    Future.delayed(Duration(milliseconds: 2000), () {
-      SSHttpDio().buryPoint(moistValue: "session");
+    Future.delayed(Duration(milliseconds: 0), () {
+      // SSHttpDio().buryPoint(moistValue: "session");
       SSHttpDio().session();
     });
   }
 
   static install() {
-
-    if (SSDlTracking.qiduoCishu() == 1) {
-      Future.delayed(Duration(milliseconds: 2000), () {
-
-        SSHttpDio().buryPoint(moistValue: "install");
-        SSHttpDio().install();
+    String key = "is_install_event_reported";
+    var box = SSHive.box;
+    var data = box.get(key);
+    if (data == null) {
+      Future.delayed(Duration(milliseconds: 0), () async {
+        // SSHttpDio().buryPoint(moistValue: "install");
+        var tmpData = await SSHttpDio().install();
+        if (tmpData) {
+          box.put(key, true);
+        }
       });
     }
   }
@@ -310,7 +315,10 @@ class SSEventReporttttt {
 
   // "pop_type: wow、super_win、mega_win、big_win
   // pop_from:spin、bonus、single_slots"
-  static cash_pop_collect({required String pop_type, required String pop_from}) {
+  static cash_pop_collect({
+    required String pop_type,
+    required String pop_from,
+  }) {
     SSHttpDio().buryPoint(
       moistValue: "cash_pop_collect",
 
@@ -349,7 +357,10 @@ class SSEventReporttttt {
 
   // "pop_type:mini、major、grand
   // pop_from:spin、bonus"
-  static jackpot_pop_claim_all({required String pop_type, required String pop_from}) {
+  static jackpot_pop_claim_all({
+    required String pop_type,
+    required String pop_from,
+  }) {
     SSHttpDio().buryPoint(
       moistValue: "jackpot_pop_claim_all",
 
@@ -362,7 +373,10 @@ class SSEventReporttttt {
 
   // "pop_type:mini、major、grand
   // pop_from:spin、bonus"
-  static jackpot_pop_claim_10({required String pop_type, required String pop_from}) {
+  static jackpot_pop_claim_10({
+    required String pop_type,
+    required String pop_from,
+  }) {
     SSHttpDio().buryPoint(
       moistValue: "jackpot_pop_claim_10",
 
@@ -420,57 +434,75 @@ class SSEventReporttttt {
   static cover_pop() {
     SSHttpDio().buryPoint(moistValue: "cover_pop");
   }
+
   static cover_pop_spin() {
     SSHttpDio().buryPoint(moistValue: "cover_pop_spin");
   }
+
   static rank_pop() {
     SSHttpDio().buryPoint(moistValue: "rank_pop");
   }
+
   static rank_pop_boost() {
     SSHttpDio().buryPoint(moistValue: "rank_pop_boost");
   }
+
   static boost_pop() {
     SSHttpDio().buryPoint(moistValue: "boost_pop");
   }
+
   static boost_pop_quick() {
     SSHttpDio().buryPoint(moistValue: "boost_pop_quick");
   }
+
   static boost_pop_standard() {
     SSHttpDio().buryPoint(moistValue: "boost_pop_standard");
   }
+
   static verfication_pop() {
     SSHttpDio().buryPoint(moistValue: "verfication_pop");
   }
+
   static verfication_start() {
     SSHttpDio().buryPoint(moistValue: "verfication_start");
   }
+
   static verfication_close() {
     SSHttpDio().buryPoint(moistValue: "verfication_close");
   }
+
   static suc_pop() {
     SSHttpDio().buryPoint(moistValue: "suc_pop");
   }
+
   static partner_pop() {
     SSHttpDio().buryPoint(moistValue: "partner_pop");
   }
+
   static partner_yes() {
     SSHttpDio().buryPoint(moistValue: "partner_yes");
   }
+
   static partner_level_100() {
     SSHttpDio().buryPoint(moistValue: "partner_level_100");
   }
+
   static partner_level_100_claim() {
     SSHttpDio().buryPoint(moistValue: "partner_level_100_claim");
   }
+
   static chat_page() {
     SSHttpDio().buryPoint(moistValue: "chat_page");
   }
+
   static chat_page_send() {
     SSHttpDio().buryPoint(moistValue: "chat_page_send");
   }
+
   static chat_page_reply() {
     SSHttpDio().buryPoint(moistValue: "chat_page_reply");
   }
+
   // source_from: time、lock、noti_fcm、data_fcm
   static all_noti_t({required String source_from}) {
     SSHttpDio().buryPoint(
@@ -479,6 +511,7 @@ class SSEventReporttttt {
       veinKeyValue: source_from,
     );
   }
+
   // source_from: time、lock、noti_fcm、data_fcm
   static all_noti_c({required String source_from}) {
     SSHttpDio().buryPoint(
@@ -487,21 +520,27 @@ class SSEventReporttttt {
       veinKeyValue: source_from,
     );
   }
+
   static noti_pop() {
     SSHttpDio().buryPoint(moistValue: "noti_pop");
   }
+
   static noti_pop_claim() {
     SSHttpDio().buryPoint(moistValue: "noti_pop_claim");
   }
+
   static push_reopen_pop() {
     SSHttpDio().buryPoint(moistValue: "push_reopen_pop");
   }
+
   static push_repopen_pop_notify() {
     SSHttpDio().buryPoint(moistValue: "push_repopen_pop_notify");
   }
+
   static push_reopen_pop_close() {
     SSHttpDio().buryPoint(moistValue: "push_reopen_pop_close");
   }
+
   //number_type:100、200、300...1000
   static cash_numer({required String number_type}) {
     SSHttpDio().buryPoint(
@@ -510,6 +549,7 @@ class SSEventReporttttt {
       veinKeyValue: number_type,
     );
   }
+
   // pv_type：1，5，10，15，20...100
   static pv_numer({required String pv_type}) {
     SSHttpDio().buryPoint(
@@ -518,6 +558,7 @@ class SSEventReporttttt {
       veinKeyValue: pv_type,
     );
   }
+
   // level_type:1，2，3，4...100
   static level_number({required String level_type}) {
     SSHttpDio().buryPoint(

@@ -32,7 +32,7 @@ class OverlayBonusGame {
 }) {
     // if (_isShowing) return;
     _overlay = null;
-    Get.put(BonusGameController());
+
     _overlay = OverlayEntry(
       builder: (context) {
         return BonusGameWidget(
@@ -51,7 +51,7 @@ class OverlayBonusGame {
     _isShowing = false;
     _overlay?.remove();
     _overlay = null;
-    Get.delete<BonusGameController>();
+
   }
 }
 
@@ -73,7 +73,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
     // TODO: implement initState
     super.initState();
 
-
+    Get.put(BonusGameController());
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         showAnimated = true;
@@ -608,7 +608,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
   @override
   void dispose() {
     // TODO: implement dispose
-
+    Get.delete<BonusGameController>();
     super.dispose();
   }
 }

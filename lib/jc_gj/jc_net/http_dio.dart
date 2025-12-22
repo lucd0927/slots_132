@@ -297,7 +297,8 @@ class SSHttpDio {
 
     dataJson['must'] = "saguaro";
     dataJson.addAll(bismuth);
-    final Uri _url = Uri.parse(SSHuanjing.instance.bUuuu());
+    String url = SSHuanjing.instance.bUuuu();
+    final Uri _url = Uri.parse(url);
 
     // Dio dio = Dio(
     //   BaseOptions(headers: {'nebulae': distinct_id, 'hair': bundle_id}),
@@ -308,11 +309,13 @@ class SSHttpDio {
     // _dio.options.headers['hair'] = bundle_id;
     var data2 = jsonEncode(dataJson);
     ssLogggg("=========installJson:   $data2");
-    var response = await _dio.postUri(_url, data: dataJson);
+    // var response = await _dio.postUri(_url, data: dataJson);
+    var response = await post(url, data: dataJson);
 
-    var data = response.data;
+    var data = response?.data;
 
     ssLogggg("===install=data:$data=");
+    return data;
   }
 
   // 前后台切换的时候上报

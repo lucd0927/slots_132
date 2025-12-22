@@ -448,39 +448,41 @@ class _ItemWidgetState extends State<ItemWidget> {
         ssTushi(text: "you had collected");
         return;
       }
-
-      setState(() {
-        int index = widget.index;
-        double money = widget.model.money;
-        setIndexJson(index: index, hasClick: true, money: money);
-        GiftRewardModel? giftRewardModel = widget.model.giftRewardModel;
-        EnumGiftRewardModel? rewardModelType =
-            widget.model.giftRewardModel?.rewardModelType;
-        int exp = 0;
-        int phoneSpice = 0;
-        int freespin = 0;
-        double money2 = 0;
-        if (giftRewardModel != null && rewardModelType != null) {
-          if (rewardModelType == EnumGiftRewardModel.cash) {
-            money2 = giftRewardModel.num * 1.0;
-          } else if (rewardModelType == EnumGiftRewardModel.xp) {
-            exp = giftRewardModel.num.toInt();
-          } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
-            phoneSpice = giftRewardModel.num.toInt();
-          }else if (rewardModelType == EnumGiftRewardModel.freespin) {
-            freespin = giftRewardModel.num.toInt();
+      if(mounted){
+        setState(() {
+          int index = widget.index;
+          double money = widget.model.money;
+          setIndexJson(index: index, hasClick: true, money: money);
+          GiftRewardModel? giftRewardModel = widget.model.giftRewardModel;
+          EnumGiftRewardModel? rewardModelType =
+              widget.model.giftRewardModel?.rewardModelType;
+          int exp = 0;
+          int phoneSpice = 0;
+          int freespin = 0;
+          double money2 = 0;
+          if (giftRewardModel != null && rewardModelType != null) {
+            if (rewardModelType == EnumGiftRewardModel.cash) {
+              money2 = giftRewardModel.num * 1.0;
+            } else if (rewardModelType == EnumGiftRewardModel.xp) {
+              exp = giftRewardModel.num.toInt();
+            } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
+              phoneSpice = giftRewardModel.num.toInt();
+            }else if (rewardModelType == EnumGiftRewardModel.freespin) {
+              freespin = giftRewardModel.num.toInt();
+            }
           }
-        }
-        ssLogggg("=====exp:$exp =money:$money2 phoneSpice:$phoneSpice freespin:$freespin");
+          ssLogggg("=====exp:$exp =money:$money2 phoneSpice:$phoneSpice freespin:$freespin");
 
-        OverlayCommonGet().show(
-          money: money2,
-          exp: exp,
-          phoneSpice: phoneSpice,
-          freespins: freespin,
-          onClose: () {},
-        );
-      });
+          OverlayCommonGet().show(
+            money: money2,
+            exp: exp,
+            phoneSpice: phoneSpice,
+            freespins: freespin,
+            onClose: () {},
+          );
+        });
+      }
+
     } else {
       ssTushi(text: "Please collect star");
     }
