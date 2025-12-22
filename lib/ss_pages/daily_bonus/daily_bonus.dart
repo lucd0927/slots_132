@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -90,7 +91,6 @@ class _SettingWidgetState extends State<SettingWidget> {
     // TODO: implement initState
     super.initState();
 
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -141,7 +141,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         topWidget(),
                         SizedBox(height: 24.h),
                         buildCenterWidget(),
-                        SizedBox(height: 24.h),
+                        SizedBox(height: SSABChange.isPackageB()?24.h:12.h),
                         bottomWidget(),
                         SizedBox(height: 4.h),
                         Container(height: 40.h, child: DailyBonusBottomTime()),
@@ -340,10 +340,9 @@ class _SettingWidgetState extends State<SettingWidget> {
     bool shouwHand = continueDays == 7 && !showCheckOk;
     // shouwHand = true;
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         if (shouwHand) {
-          GiftRewardModel gift =
-              DailyBonusController.kDay_vGiftModel[7]!;
+          GiftRewardModel gift = DailyBonusController.kDay_vGiftModel[7]!;
           DailyBonusController.to.onClick(gift, () {
             onClose();
           });
@@ -355,7 +354,7 @@ class _SettingWidgetState extends State<SettingWidget> {
           ssTushi(text: txt);
         }
       },
-      child: Container(
+      child:SSABChange.isPackageB()? Container(
         width: 332.w,
         height: 100.h,
         color: Colors.transparent,
@@ -395,7 +394,9 @@ class _SettingWidgetState extends State<SettingWidget> {
                     Column(
                       children: [
                         Image.asset(
-                          Assets.img.moneyGift.path,
+                          SSABChange.isPackageB()
+                              ? Assets.img.moneyGift.path
+                              : Assets.imga.coinFreespin.path,
                           width: 60.w,
                           height: 40.h,
                         ),
@@ -447,21 +448,28 @@ class _SettingWidgetState extends State<SettingWidget> {
               ),
             ),
 
-           if(shouwHand) Positioned(
-              left: 80.w,
-              top: 40.h,
+            if (shouwHand)
+              Positioned(
+                left: 80.w,
+                top: 40.h,
 
-              child: Center(
-                child: SizedBox(
-                  width: 65.h,
-                  height: 72.h,
-                  child: const SpineHand(),
+                child: Center(
+                  child: SizedBox(
+                    width: 65.h,
+                    height: 72.h,
+                    child: const SpineHand(),
+                  ),
                 ),
               ),
-            )
           ],
         ),
-      ),
+      ): Row(children: [
+        SizedBox(width: 24.w,),
+        centerItemDayView(
+          day: 7,
+          gift: DailyBonusController.kDay_vGiftModel[7]!,
+        )
+      ],),
     );
   }
 

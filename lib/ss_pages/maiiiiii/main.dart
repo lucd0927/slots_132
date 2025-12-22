@@ -83,12 +83,14 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v) {
       bgMusicFreeSpin.pause();
     });
+    if(SSABChange.isPackageB()){
+      _timerWithdraw = Timer.periodic(Duration(seconds: 60), (timer) {
+        if (mounted) {
+          SlideAcrossOverlay().show(context);
+        }
+      });
+    }
 
-    _timerWithdraw = Timer.periodic(Duration(seconds: 60), (timer) {
-      if (mounted) {
-        SlideAcrossOverlay().show(context);
-      }
-    });
 
     _timerMoneyTips = Timer.periodic(Duration(seconds: 30), (timer) {
       if (mounted) {
@@ -159,7 +161,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     onDailyBonus();
 
     bool clickTz = SSTzNotificattttt.clickTz;
-    if (clickTz) {
+    if (clickTz && SSABChange.isPackageB()) {
       OverlayTzReward().show(
         money: 50,
         onBtn: (v) {

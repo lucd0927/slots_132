@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
@@ -25,43 +26,60 @@ class DailyBonusController extends GetxController {
   static const String hLianxuLoginTime = "asd54asdf45ad";
   static const String hkTodayClickBonus = "354ertsafgt8";
 
-
-  static final Map<int,GiftRewardModel> kDay_vGiftModel={
-    1:GiftRewardModel(
+  static Map<int, GiftRewardModel> kDay_vGiftModel = {
+    1: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 50,
-      img: Assets.img.moneyGift.path,
+      img: SSABChange.isPackageB()
+          ? Assets.img.moneyGift.path
+          : Assets.imga.coinFreespin.path,
     ),
-    2:GiftRewardModel(
+    2: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 75,
-      img: Assets.img.moneyGift.path,
+      img: SSABChange.isPackageB()
+          ? Assets.img.moneyGift.path
+          : Assets.imga.coinFreespin.path,
     ),
-    3:GiftRewardModel(
+    3: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 75,
-      img: Assets.img.moneyGift.path,
+      img: SSABChange.isPackageB()
+          ? Assets.img.moneyGift.path
+          : Assets.imga.coinFreespin.path,
     ),
-    4:GiftRewardModel(
+    4: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 75,
-      img: Assets.img.moneyGift.path,
+      img: SSABChange.isPackageB()
+          ? Assets.img.moneyGift.path
+          : Assets.imga.coinFreespin.path,
     ),
-    5:GiftRewardModel(
+    5: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.xp,
       num: 2,
       img: Assets.img.giftXpUnlock.path,
     ),
-    6:GiftRewardModel(
+    6: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 85,
-      img: Assets.img.moneyGift.path,
+      img: SSABChange.isPackageB()
+          ? Assets.img.moneyGift.path
+          : Assets.imga.coinFreespin.path,
     ),
-    7:GiftRewardModel(
-      rewardModelType: EnumGiftRewardModel.iphoneCard,
-      num: 1,
-      img: Assets.img.phoneSuip.path,
-    )
+    7: SSABChange.isPackageB()
+        ? GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.iphoneCard,
+            num: 1,
+            img: Assets.img.phoneSuip.path,
+          )
+        : GiftRewardModel(
+            rewardModelType: EnumGiftRewardModel.cash,
+            num: 150,
+            img: SSABChange.isPackageB()
+                ? Assets.img.moneyGift.path
+                : Assets.imga.coinFreespin.path,
+          ),
   };
 
   /// 检查是否连续登录，并更新计数
@@ -122,25 +140,21 @@ class DailyBonusController extends GetxController {
     int weeks = box.get(hLianxuLoginZhouqi) ?? 0;
     continueLoginWeeks = weeks.obs;
 
-
-
     bool tmphkTodayClickBonus = box.get(hkTodayClickBonus) ?? false;
 
-    if(SSDlTracking.isFirstLoginToday){
+    if (SSDlTracking.isFirstLoginToday) {
       tmphkTodayClickBonus = false;
     }
     // tmphkTodayClickBonus = false;
     todayClickBonus = tmphkTodayClickBonus.obs;
     saveTodayClickBonusStatus(tmphkTodayClickBonus);
-
   }
 
-  onClick(GiftRewardModel gift,VoidCallback onEnd)async{
+  onClick(GiftRewardModel gift, VoidCallback onEnd) async {
     todayClickBonus.value = true;
     saveTodayClickBonusStatus(true);
     GiftRewardModel? giftRewardModel = gift;
-    EnumGiftRewardModel? rewardModelType =
-        giftRewardModel?.rewardModelType;
+    EnumGiftRewardModel? rewardModelType = giftRewardModel?.rewardModelType;
     int exp = 0;
     int phoneSpice = 0;
     int freespin = 0;
@@ -149,22 +163,22 @@ class DailyBonusController extends GetxController {
       if (rewardModelType == EnumGiftRewardModel.cash) {
         money2 = giftRewardModel.num * 1.0;
       } else if (rewardModelType == EnumGiftRewardModel.xp) {
-        exp = (giftRewardModel.num * MainController.to.levelExp() * 1)
-            .toInt();
-
+        exp = (giftRewardModel.num * MainController.to.levelExp() * 1).toInt();
       } else if (rewardModelType == EnumGiftRewardModel.iphoneCard) {
         phoneSpice = giftRewardModel.num.toInt();
         money2 = 150;
-      }else if (rewardModelType == EnumGiftRewardModel.freespin) {
+      } else if (rewardModelType == EnumGiftRewardModel.freespin) {
         freespin = giftRewardModel.num.toInt();
         onEnd();
         return;
       }
     }
 
-    if(continueLoginDays.value == _maxStreak){
+    if (continueLoginDays.value == _maxStreak) {
       money2 = 150;
     }
+
+
 
     await Future.delayed(Duration(milliseconds: 400));
     OverlayCommonGet().show(
@@ -176,12 +190,9 @@ class DailyBonusController extends GetxController {
         // MainController.to.onAddMoney(money, showMoneyAnimated: true);
       },
     );
-
   }
 
-
-  saveTodayClickBonusStatus(bool result){
+  saveTodayClickBonusStatus(bool result) {
     box.put(hkTodayClickBonus, result);
   }
-
 }

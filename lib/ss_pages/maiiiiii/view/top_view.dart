@@ -181,19 +181,22 @@ class TopView extends StatelessWidget {
 
   onWithddd() {
     SSEventReporttttt.home_page_cash_out();
-    Get.toNamed(SSRouttttt.withdrawwwww);
+    if(SSABChange.isPackageB()){
+      Get.toNamed(SSRouttttt.withdrawwwww);
+    }
+
   }
 
   onMenu(BuildContext context) async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
 
     // Get.context?.loaderOverlay.show();
 
     // OverlayMoneyTips().show(context: context);
 
-    OverlayBonusGame().show(onEnd: () {  });
+    // OverlayBonusGame().show(onEnd: () {  });
     // OverlayWithddOnelastcheckJindu1().show();
 
     // OverlayWithddBuzu().show(
@@ -400,7 +403,9 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
 
   onWithddd() {
     SSEventReporttttt.home_page_cash_out();
-    Get.toNamed(SSRouttttt.withdrawwwww);
+    if(SSABChange.isPackageB()){
+      Get.toNamed(SSRouttttt.withdrawwwww);
+    }
 
   }
 
@@ -536,7 +541,27 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
     bool hasB = SSABChange.isPackageB();
     if(!hasB){
       hasLiceng3 = true;
-      icon = "";
+      icon = "Lucky Slots";
+      return Center(
+        child: SSTxtGraBorder(
+          text: icon,
+          fontFamily: FontFamily.fraunces,
+          fontSize: 14.sp,
+          strokeColor: Color(0xff085119),
+        ),
+      );
+      icon = Assets.imga.slotsLogo.path;
+      return Center(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.w),
+          child: Image.asset(
+            icon,
+            width: 30.h,
+            height: 30.h,
+            gaplessPlayback: true,
+          ),
+        ),
+      );
     }
 
     // hasLiceng3 = true;

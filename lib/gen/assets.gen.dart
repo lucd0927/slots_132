@@ -1371,6 +1371,10 @@ class $AssetsImgaGen {
   AssetGenImage get coinGiftbox =>
       const AssetGenImage('assets/imga/coin_giftbox.png');
 
+  /// File path: assets/imga/slots_logo.png
+  AssetGenImage get slotsLogo =>
+      const AssetGenImage('assets/imga/slots_logo.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     boxgiftJinglin,
@@ -1378,6 +1382,7 @@ class $AssetsImgaGen {
     coinBounsgame,
     coinFreespin,
     coinGiftbox,
+    slotsLogo,
   ];
 }
 

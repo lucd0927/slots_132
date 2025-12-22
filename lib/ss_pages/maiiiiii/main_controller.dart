@@ -1519,7 +1519,7 @@ class MainController extends GetxController {
   static bool get hasFreeSpinStatus => _hasFreeSpinStatus;
   static bool _hasFreeSpinStatus = false;
 
-  static final Map<int, GiftRewardModel> kStarNum_vReward = {
+  static  Map<int, GiftRewardModel> get kStarNum_vReward => SSABChange.isPackageB()?{
     3: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
       num: 25,
@@ -1569,6 +1569,57 @@ class MainController extends GetxController {
       rewardModelType: EnumGiftRewardModel.iphoneCard,
       num: 1,
       img: Assets.img.popupGetPhoneSpice.path,
+    ),
+  }:{
+    3: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img: Assets.imga.coinFreespin.path
+    ),
+    6: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 200,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    2: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img:Assets.imga.coinFreespin.path,
+    ),
+    8: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 25,
+      img: Assets.imga.coinFreespin.path
+    ),
+    5: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 120,
+      img: Assets.imga.coinFreespin.path
+    ),
+    1: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.freespin,
+      num: 5,
+      img: Assets.img.giftFreespins.path,
+    ),
+    9: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 75,
+      img: Assets.imga.coinFreespin.path
+    ),
+    4: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.freespin,
+      num: 10,
+      img: Assets.img.giftFreespins.path,
+    ),
+    7: GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.xp,
+      num: 200,
+      img: Assets.img.giftXpUnlock.path,
+    ),
+    10:GiftRewardModel(
+      rewardModelType: EnumGiftRewardModel.cash,
+      num: 50,
+      img: Assets.imga.coinFreespin.path
     ),
   };
 
