@@ -47,7 +47,7 @@ import '../../jc_gj/log.dart';
 
 class MainController extends GetxController {
   static MainController get to => Get.find();
-
+  static final OverlayPortalController tooltipController = OverlayPortalController();
   @override
   void onInit() {
     super.onInit();

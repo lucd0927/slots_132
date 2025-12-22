@@ -7,6 +7,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -18,6 +19,7 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,27 +29,35 @@ class OverlayTzReward {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({required double money, required ValueChanged onBtn, required ValueChanged onBtn2,}) {
+  void show({
+    required double money,
+    required ValueChanged onBtn,
+    required ValueChanged onBtn2,
+  }) {
     // if (_isShowing) return;
     _overlay = null;
     SSEventReporttttt.noti_pop();
     _overlay = OverlayEntry(
       builder: (context) {
         return TzRewardWidget(
-          onBtn: (double money) async{
+          onBtn: (double money) async {
             close();
             SSEventReporttttt.noti_pop_claim();
-            bool resutl = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_pushpop_rv);
-            if(!resutl){
+            bool resutl = await SSCommonAds().showRewardAd(
+              adPosId: SSAdsPosId.eyomt_pushpop_rv,
+            );
+            if (!resutl) {
               money = 0;
             }
             onBtn(money);
           },
-          onBtn2: (double money) async{
+          onBtn2: (double money) async {
             close();
             SSEventReporttttt.noti_pop_claim();
-            bool resutl = await SSCommonAds().showRewardAd(adPosId: SSAdsPosId.eyomt_pushpop_int);
-            if(!resutl){
+            bool resutl = await SSCommonAds().showRewardAd(
+              adPosId: SSAdsPosId.eyomt_pushpop_int,
+            );
+            if (!resutl) {
               money = 0;
             }
             onBtn2(money);
@@ -160,16 +170,19 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
                                 clipBehavior: Clip.none,
                                 children: [
                                   Positioned(
-                                    left: -80.w,
-                                    right: -80.w,
-                                    top: -80.h,
-                                    bottom: -80.h,
-                                    child: SSRotateWidget(
-                                      child: Image.asset(
-                                        Assets.img.phoneCardXuanguang.path,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                      ),
+                                    left: -40.w,
+                                    right: -40.w,
+                                    top: -40.h,
+                                    bottom: -40.h,
+                                    // child: SSRotateWidget(
+                                    //   child: Image.asset(
+                                    //     Assets.img.phoneCardXuanguang.path,
+                                    //     width: double.infinity,
+                                    //     height: double.infinity,
+                                    //   ),
+                                    // ),
+                                    child: FittedBox(
+                                      child: const SpineTancXuanguang(),
                                     ),
                                   ),
                                   Positioned(
@@ -179,7 +192,9 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
                                     bottom: 0,
                                     child: Center(
                                       child: Image.asset(
-                                        Assets.img.moneyGift.path,
+                                        SSABChange.isPackageB()
+                                            ? Assets.img.moneyGift.path
+                                            : Assets.imga.coinFreespin.path,
                                         width: 95.w * 1.5,
                                         height: 65.w * 1.5,
                                         fit: BoxFit.fill,
@@ -214,9 +229,13 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
                                 ],
                               ),
                             ),
+                            if (!SSABChange.isPackageB())
+                              SizedBox(height: 20.h),
                             txtDesWidget(),
-                            SizedBox(height: 10.w),
+                            Spacer(),
+                            SizedBox(height: 0.h),
                             btnWidget(),
+                            SizedBox(height: 44.h),
                           ],
                         ),
                       ],
@@ -233,27 +252,32 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
   }
 
   txtDesWidget() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "✓   Trusted by 1M+ Users",
-          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
-        ),
-        Text(
-          "✓   100% Secure Transfer",
-          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
-        ),
-        Text(
-          "✓   Instant Payment",
-          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
-        ),
-        Text(
-          "✓   Direct to Your Account",
-          style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
-        ),
-      ],
-    );
+    return SSABChange.isPackageB()
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "✓   Trusted by 1M+ Users",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
+              ),
+              Text(
+                "✓   100% Secure Transfer",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
+              ),
+              Text(
+                "✓   Instant Payment",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
+              ),
+              Text(
+                "✓   Direct to Your Account",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
+              ),
+            ],
+          )
+        : Text(
+            "✓   Click Claim to receive your reward",
+            style: TextStyle(fontSize: 14.sp, color: Color(0xffFFC8C8)),
+          );
   }
 
   btnWidget() {
@@ -311,7 +335,7 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
 
         GestureDetector(
           onTap: () {
-            double money = widget.money*0.1;
+            double money = widget.money * 0.1;
 
             onClose(money);
             widget.onBtn(money);
@@ -330,7 +354,7 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
 
   onClose(double money) async {
     ssLogggg("====== close money:$money");
-    if(mounted){
+    if (mounted) {
       setState(() {
         showAnimated = false;
         startScale = 1.0;
@@ -338,7 +362,6 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
     }
 
     // await Future.delayed(animD);
-
   }
 
   void onclickClaim() {

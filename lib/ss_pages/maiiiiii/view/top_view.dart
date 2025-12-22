@@ -190,7 +190,7 @@ class TopView extends StatelessWidget {
   onMenu(BuildContext context) async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    OverlaySettinnn().show();
+    // OverlaySettinnn().show();
 
     // Get.context?.loaderOverlay.show();
 
@@ -219,8 +219,8 @@ class TopView extends StatelessWidget {
     // OverlayJindu1().show();
 
     // AppSettings.openAppNotificationSettings()
-    // OverlayTzReward().show(money: 200, onClose: (v){});
-    // OverlayTzNotify().show( onClose: (v){});
+    // OverlayTzReward().show(money: 200,  onBtn: (value) {  }, onBtn2: (value) {  });
+    OverlayTzNotify().show( onClose: (v){});
 
     // OverlayFreeSpinsOver().show(
     //   money: 200,
@@ -405,6 +405,13 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
     SSEventReporttttt.home_page_cash_out();
     if(SSABChange.isPackageB()){
       Get.toNamed(SSRouttttt.withdrawwwww);
+    }else{
+      bool ishsow = MainController.tooltipController.isShowing;
+      if(ishsow){
+        // MainController.tooltipController.hide();
+        return;
+      }
+      MainController.tooltipController.show();
     }
 
   }
@@ -542,24 +549,13 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
     if(!hasB){
       hasLiceng3 = true;
       icon = "Lucky Slots";
+      // icon = "1000 coins a day";
       return Center(
         child: SSTxtGraBorder(
           text: icon,
           fontFamily: FontFamily.fraunces,
           fontSize: 14.sp,
           strokeColor: Color(0xff085119),
-        ),
-      );
-      icon = Assets.imga.slotsLogo.path;
-      return Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.w),
-          child: Image.asset(
-            icon,
-            width: 30.h,
-            height: 30.h,
-            gaplessPlayback: true,
-          ),
         ),
       );
     }

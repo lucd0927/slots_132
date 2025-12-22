@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
@@ -128,6 +129,9 @@ class SSFBBaseData {
       }
     }
     ssLogggg("===intad_point cash pop=point showIntad：$showIntad");
+    if(!SSABChange.isPackageB()){
+      showIntad = false;
+    }
     return showIntad;
   }
 
@@ -186,7 +190,9 @@ class SSFBBaseData {
     }
     ssLogggg("===intad_point=point showIntad：$showIntad");
     // showIntad = true;
-
+    if(!SSABChange.isPackageB()){
+      showIntad = false;
+    }
     return showIntad;
   }
 

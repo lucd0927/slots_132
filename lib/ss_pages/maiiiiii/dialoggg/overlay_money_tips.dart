@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -16,9 +17,7 @@ class OverlayMoneyTips {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({
-    required BuildContext context
-}) {
+  void show({required BuildContext context}) {
     // if (_isShowing) return;
     ssLogggg("===OverlayMoneyTips==show==");
     _overlay = null;
@@ -32,7 +31,7 @@ class OverlayMoneyTips {
       },
     );
     // Overlay.of(Get.context!).insert(_overlay!);
-    Overlay.of(context,rootOverlay: true).insert(_overlay!);
+    Overlay.of(context, rootOverlay: true).insert(_overlay!);
     _isShowing = true;
   }
 
@@ -57,6 +56,7 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
   Timer? _timer;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -67,28 +67,31 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
       });
 
       _timer = Timer(Duration(milliseconds: 4000), () {
-        _timer?.cancel();
+
         onClose();
       });
-
     });
   }
 
   onClose() async {
-    setState(() {
-      showAnimated = false;
-      startScale = 1.0;
-    });
-    await Future.delayed(animD);
     _timer?.cancel();
+    if(mounted){
+      setState(() {
+        showAnimated = false;
+        startScale = 1.0;
+      });
+    }
+
+    await Future.delayed(animD);
+
     widget.onClose();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    double left = MainController.minWithdddMoney - MainController.to.curMonnnn.value;
-    if(left <= 0){
+    double left =
+        MainController.minWithdddMoney - MainController.to.curMonnnn.value;
+    if (left <= 0) {
       left = 0;
     }
 
@@ -131,30 +134,38 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
                             horizontal: 10.w,
                             vertical: 0.h,
                           ),
-                          child:  Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text.rich(
-                              TextSpan(
-                                text: "${SSCountry.curGuojiaFuhao()} ${left.toStringAsFixed(2)}",
-                                children: [
-                                  TextSpan(
-                                    text: "  more to withdraw.",
+                            child: SSABChange.isPackageB()
+                                ? Text.rich(
+                                    TextSpan(
+                                      text:
+                                          "${SSCountry.curGuojiaFuhao()} ${left.toStringAsFixed(2)}",
+                                      children: [
+                                        TextSpan(
+                                          text: "  more to withdraw.",
+                                          style: TextStyle(
+                                            color: Color(0xffFFFF8B),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     style: TextStyle(
-
-                                      color: Color(0xffFFFF8B),
-
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.sp,
+                                      color: Color(0xff6AFF00),
+                                      fontFamily: FontFamily.ghostKidAOEPro,
+                                    ),
+                                  )
+                                : Text(
+                                    "  Your coins: ${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.sp,
+                                      color: Color(0xffDDDDDD),
+                                      fontFamily: FontFamily.ghostKidAOEPro,
                                     ),
                                   ),
-                                ],
-
-                              ),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.sp,
-                                color: Color(0xff6AFF00),
-                                fontFamily: FontFamily.ghostKidAOEPro,
-                              ),
-                            ),
                           ),
                         ),
                       ),
@@ -168,6 +179,4 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
       ],
     );
   }
-
-
 }

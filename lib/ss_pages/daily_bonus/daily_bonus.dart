@@ -18,6 +18,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
+import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -30,12 +31,15 @@ class OverlayDailyBonus {
   OverlayEntry? _overlay;
 
   void show({required bool showAddMoney}) {
+    Get.toNamed(SSRouttttt.dailyBonus);
+    return;
+
     // if (_isShowing) return;
     _overlay = null;
     SSEventReporttttt.sign_page();
     _overlay = OverlayEntry(
       builder: (context) {
-        return SettingWidget(
+        return DailyBonus(
           onClose: () {
             close();
             return;
@@ -71,16 +75,16 @@ class OverlayDailyBonus {
   }
 }
 
-class SettingWidget extends StatefulWidget {
-  const SettingWidget({super.key, required this.onClose});
+class DailyBonus extends StatefulWidget {
+  const DailyBonus({super.key, required this.onClose});
 
   final VoidCallback onClose;
 
   @override
-  State<SettingWidget> createState() => _SettingWidgetState();
+  State<DailyBonus> createState() => _DailyBonusState();
 }
 
-class _SettingWidgetState extends State<SettingWidget> {
+class _DailyBonusState extends State<DailyBonus> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
 
@@ -109,52 +113,54 @@ class _SettingWidgetState extends State<SettingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return Material(
-        color: Colors.transparent,
-        child: AnimatedContainer(
-          duration: animD,
-          color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: Colors.blueAccent.withValues(alpha: 0.0),
-            child: Stack(
-              children: [
-                Image.asset(
-                  Assets.img.dailyBonusBg.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-                AnimatedScale(
-                  duration: animD,
-                  // offset: showAnimated ? Offset.zero : Offset(0, 1),
-                  scale: showAnimated ? 1.0 : 0.8,
-                  child: Container(
+    return Scaffold(
+      body: Obx(() {
+        return Material(
+          color: Colors.transparent,
+          child: AnimatedContainer(
+            duration: animD,
+            color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.blueAccent.withValues(alpha: 0.0),
+              child: Stack(
+                children: [
+                  Image.asset(
+                    Assets.img.dailyBonusBg.path,
                     width: double.infinity,
                     height: double.infinity,
-                    color: Colors.blueAccent.withValues(alpha: 0.0),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 50.h),
-                        topWidget(),
-                        SizedBox(height: 24.h),
-                        buildCenterWidget(),
-                        SizedBox(height: SSABChange.isPackageB()?24.h:12.h),
-                        bottomWidget(),
-                        SizedBox(height: 4.h),
-                        Container(height: 40.h, child: DailyBonusBottomTime()),
-                      ],
+                    fit: BoxFit.fill,
+                  ),
+                  AnimatedScale(
+                    duration: animD,
+                    // offset: showAnimated ? Offset.zero : Offset(0, 1),
+                    scale: showAnimated ? 1.0 : 0.8,
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      color: Colors.blueAccent.withValues(alpha: 0.0),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 50.h),
+                          topWidget(),
+                          SizedBox(height: 24.h),
+                          buildCenterWidget(),
+                          SizedBox(height: SSABChange.isPackageB()?24.h:12.h),
+                          bottomWidget(),
+                          SizedBox(height: 4.h),
+                          Container(height: 40.h, child: DailyBonusBottomTime()),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 
   Widget buildCenterWidget() {
@@ -492,14 +498,17 @@ class _SettingWidgetState extends State<SettingWidget> {
   onClose() async {
     ssLogggg("====== close");
     SSEventReporttttt.sign_page_close();
+    Navigator.maybePop(context);
     widget.onClose();
   }
 
+
   topWidget() {
     int curLianxuDay = DailyBonusController.to.continueLoginDays.value;
+    // curLianxuDay =8;
+    int curweek = DailyBonusController.to.continueLoginWeeks.value;
     int allDay = 30;
-    double progress = curLianxuDay / allDay;
-    // progress = 0.5;
+    double progress = (curLianxuDay+7*curweek) / allDay;
     return Container(
       width: 345.h,
       height: 210.h,
@@ -528,7 +537,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                       height: 13.h,
                       innerHeight: 10.h,
                       width: 294.h,
-                      progress: progress,
+                      progress: 0,
                       gradientColors: [
                         Color(0xffFFD70F),
                         Color(0xffF0A00D),
@@ -708,6 +717,13 @@ class _SettingWidgetState extends State<SettingWidget> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
 }
 
 class DailyBonusBottomTime extends StatefulWidget {
@@ -784,7 +800,7 @@ class _DailyBonusBottomTimeState extends State<DailyBonusBottomTime> {
   @override
   void dispose() {
     // TODO: implement dispose
-    super.dispose();
     _timer?.cancel();
+    super.dispose();
   }
 }

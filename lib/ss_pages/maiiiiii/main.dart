@@ -11,6 +11,7 @@ import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:flutter_floating_particles/flutter_floating_particles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+// import 'package:move_to_background/move_to_background.dart';
 import 'package:newton_particles/newton_particles.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
@@ -25,11 +26,13 @@ import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/overlay_floaing.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
 import 'package:slots_132/ss_common/animated_win/animated_xuanguang.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
+import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_freespin_selected.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_avatar.dart';
@@ -60,7 +63,7 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
-  final OverlayPortalController _tooltipController = OverlayPortalController();
+
   Timer? _timerWithdraw;
   Timer? _timerMoneyTips;
 
@@ -97,7 +100,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
             _timerMoneyTips?.cancel();
             return;
           }
-          _tooltipController.show();
+          MainController.tooltipController.show();
         }
       });
     }
@@ -198,7 +201,20 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Scaffold(resizeToAvoidBottomInset: false, body: mainView());
+    return PopScope(
+      canPop: true,
+      // onPopInvoked: (didPop) {
+      //   if (didPop) return;
+      //
+      //   // 自己处理返回逻辑
+      //   MoveToBackground.moveTaskToBack();
+      // },
+      child: Scaffold(resizeToAvoidBottomInset: false, body: mainView()),
+      // onWillPop: () async {
+      //
+      // },
+    );
+
   }
 
   Widget mainView() {
@@ -270,10 +286,15 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               ),
 
               if (showFreeSpin)
-                Container(
-                  width: ScreenUtil().screenWidth,
-                  height: ScreenUtil().screenHeight,
-                  color: Colors.transparent,
+                GestureDetector(
+                  onTap: (){
+                    ssTushi(text: "Free Spin is in progress. Please wait until it’s over.");
+                  },
+                  child: Container(
+                    width: ScreenUtil().screenWidth,
+                    height: ScreenUtil().screenHeight,
+                    color: Colors.transparent,
+                  ),
                 ),
 
 
@@ -283,11 +304,11 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       );
 
       return  OverlayPortal(
-        controller: _tooltipController,
+        controller: MainController.tooltipController,
         overlayChildBuilder: (BuildContext context) {
           return MainTopMoneyTipsWidget(
             onClose: () {
-              _tooltipController.hide();
+              MainController.tooltipController.hide();
             },
           );
         },

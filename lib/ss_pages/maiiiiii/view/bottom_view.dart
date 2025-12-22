@@ -19,6 +19,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_common/sssssp/spine_wheel_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -531,6 +532,14 @@ class BottomView extends StatelessWidget {
                     ),
                 ]
               : [
+                  Positioned(
+                    left: -10.w,
+                    right: -10.w,
+                    top: -10.h,
+                    bottom: -10.h,
+
+                    child: FittedBox(child: const SpineTancXuanguang()),
+                  ),
                   Hero(
                     tag: "Wheellll",
                     child: Image.asset(
@@ -541,6 +550,7 @@ class BottomView extends StatelessWidget {
                       gaplessPlayback: true,
                     ),
                   ),
+
                   Positioned(
                     bottom: 0,
                     left: -10.w,

@@ -43,4 +43,12 @@ class _CheckImageRevealState extends State<CheckImageReveal>
       child: widget.child,
     );
   }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
 }

@@ -1,6 +1,7 @@
 
 
 import 'package:get/get.dart';
+import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card.dart';
 import 'package:slots_132/ss_pages/splasssss/kaiping.dart';
@@ -39,5 +40,6 @@ class SSRouttttt {
       GetPage(name: phoneCardPage, page: () =>  PhoneCardPage(),transition: Transition.cupertinoDialog),
       GetPage(name: withdddCompletePaytaber, page: () =>  WithdddCompletePaytaber(),transition: Transition.cupertinoDialog),
       GetPage(name: wayeeee, page: () =>  SSWaye(),transition: Transition.cupertinoDialog),
+      GetPage(name: dailyBonus, page: () =>  DailyBonus(onClose: (){}),transition: Transition.noTransition),
   ];
 }
