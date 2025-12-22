@@ -7,6 +7,7 @@ import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/animated_win/animated_jackpot_mini.dart';
@@ -15,6 +16,7 @@ import 'package:slots_132/ss_common/animated_win/animated_win_mega.dart';
 import 'package:slots_132/ss_common/animated_win/animated_win_super.dart';
 import 'package:slots_132/ss_common/animated_win/animated_win_wow.dart';
 import 'package:slots_132/ss_common/sssssp/spine_main_avatar.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 
 class AvatarRow extends StatefulWidget {
   const AvatarRow({super.key});
@@ -254,12 +256,20 @@ class _AvatarRowState extends State<AvatarRow> {
 
               if (index == selectIndex)
                 Positioned(
-                  left: -20.w,
-                  right: -20.w,
-                  top: -10.h,
-                  child: Container(child: Center(child: SpineMainAvatar())),
+                  left: SSABChange.isPackageB() ? -20.w : 0,
+                  right: SSABChange.isPackageB() ? -20.w : 0,
+                  top:SSABChange.isPackageB() ?  -10.h:0,
+                  bottom: SSABChange.isPackageB() ? 0:-10.h,
+                  child: Container(
+                    child: Center(
+                      child: SSABChange.isPackageB()
+                          ? const SpineMainAvatar()
+                          : FittedBox(child: const SpineTancXuanguang(),),
+                    ),
+                  ),
                 ),
-              if (index == selectIndex )
+              // SpineTancXuanguang(),
+              if (index == selectIndex)
                 Positioned(
                   left: 8.w,
                   right: 8.w,

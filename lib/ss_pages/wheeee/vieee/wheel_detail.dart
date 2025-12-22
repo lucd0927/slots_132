@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/event_bus.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -139,7 +140,7 @@ class _ControlledWheelState extends State<ControlledWheel>
             },
             child: Center(
               child: Image.asset(
-                Assets.img.wheelZp.path,
+                SSABChange.isPackageB()?  Assets.img.wheelZp.path:Assets.imga.wheelZp.path,
                 width: 362.w,
                 height: 362.w,
                 fit: BoxFit.fill,

@@ -48,6 +48,7 @@ class _SpineShengdaolaorenSlotsState extends State<SpineShengdaolaorenSlots> {
       Assets.donghua.slotsSdlr.sdlrAtlas,
       Assets.donghua.slotsSdlr.skeleton,
       controller,
+      fit: BoxFit.fill,
       sizedByBounds: true,
     );
   }

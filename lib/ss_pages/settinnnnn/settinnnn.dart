@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -81,7 +82,7 @@ class _SettingWidgetState extends State<SettingWidget> {
           child: AnimatedScale(
             duration: animD,
             // offset: showAnimated ? Offset.zero : Offset(0, 1),
-            scale: showAnimated?1.0:0.8,
+            scale: showAnimated ? 1.0 : 0.8,
             child: Container(
               width: 323.w,
               height: 370.h,
@@ -108,34 +109,42 @@ class _SettingWidgetState extends State<SettingWidget> {
                         SizedBox(height: 20.h),
                         _audddWidget(),
                         SizedBox(height: 20.h),
-                        _btnWidgetItem(txt: "PAYTABLE", onTap: () {
-                          onClose();
-                          SSEventReporttttt.setting_page_paytable();
-                          OverlayPaytable().show(money: 1);
-                        }),
-                        SizedBox(height: 10.h),
-                        _btnWidgetItem(txt: "Privacy Policy", onTap: () {
-                          Uri uri = Uri.parse("https://clausslotswealth.com/privacy.html");
-                          SSEventReporttttt.setting_page_privacy();
-                          _laUuuu(uri);
-                        }),
-                        SizedBox(height: 10.h),
-                        GestureDetector(
-                          onTap: (){
-                            // _launEeeee();
+                        _btnWidgetItem(
+                          txt: "PAYTABLE",
+                          onTap: () {
                             onClose();
-                            SSEventReporttttt.setting_page_contact_us();
-                            Get.toNamed(SSRouttttt.aichat);
-
+                            SSEventReporttttt.setting_page_paytable();
+                            OverlayPaytable().show(money: 1);
                           },
-                          child: Text(
-                            "contact us",
-                            style: TextStyle(
-                              color: Color(0xffffffff),
-                              fontSize: 16.sp,
+                        ),
+                        SizedBox(height: 10.h),
+                        _btnWidgetItem(
+                          txt: "Privacy Policy",
+                          onTap: () {
+                            Uri uri = Uri.parse(
+                              "https://clausslotswealth.com/privacy.html",
+                            );
+                            SSEventReporttttt.setting_page_privacy();
+                            _laUuuu(uri);
+                          },
+                        ),
+                        SizedBox(height: 10.h),
+                        if (SSABChange.isPackageB())
+                          GestureDetector(
+                            onTap: () {
+                              // _launEeeee();
+                              onClose();
+                              SSEventReporttttt.setting_page_contact_us();
+                              Get.toNamed(SSRouttttt.aichat);
+                            },
+                            child: Text(
+                              "contact us",
+                              style: TextStyle(
+                                color: Color(0xffffffff),
+                                fontSize: 16.sp,
+                              ),
                             ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -153,23 +162,23 @@ class _SettingWidgetState extends State<SettingWidget> {
                     ),
                   ),
 
-
-                  Positioned(
-                    bottom: 40.h,
-                    left: 70.w,
-                    child: GestureDetector(
-                      onTap: (){
-                        onClose();
-                        Get.toNamed(SSRouttttt.wayeeee);
-                      },
-                      child: Image.asset(
-                        Assets.img.h5.path,
-                        width: 36.h,
-                        height: 43.h,
-                        fit: BoxFit.fill,
+                  if (SSABChange.isPackageB())
+                    Positioned(
+                      bottom: 40.h,
+                      left: 70.w,
+                      child: GestureDetector(
+                        onTap: () {
+                          onClose();
+                          Get.toNamed(SSRouttttt.wayeeee);
+                        },
+                        child: Image.asset(
+                          Assets.img.h5.path,
+                          width: 36.h,
+                          height: 43.h,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -231,7 +240,7 @@ class _SettingWidgetState extends State<SettingWidget> {
           img: Assets.img.settiMusic.path,
           txt: "Music",
           onChange: _onBtnMusic,
-          positive: positive ,
+          positive: positive,
         ),
       ],
     );

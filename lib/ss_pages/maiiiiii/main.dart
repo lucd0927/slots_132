@@ -89,20 +89,21 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
           SlideAcrossOverlay().show(context);
         }
       });
+      _timerMoneyTips = Timer.periodic(Duration(seconds: 30), (timer) {
+        if (mounted) {
+          // OverlayMoneyTips().show();
+
+          if(MainController.to.curMonnnn.value >= MainController.minWithdddMoney || WithdddController.to.hasSaveCardId()){
+            _timerMoneyTips?.cancel();
+            return;
+          }
+          _tooltipController.show();
+        }
+      });
     }
 
 
-    _timerMoneyTips = Timer.periodic(Duration(seconds: 30), (timer) {
-      if (mounted) {
-        // OverlayMoneyTips().show();
 
-        if(MainController.to.curMonnnn.value >= MainController.minWithdddMoney || WithdddController.to.hasSaveCardId()){
-          _timerMoneyTips?.cancel();
-          return;
-        }
-        _tooltipController.show();
-      }
-    });
 
     jiazaiInterrrr();
   }

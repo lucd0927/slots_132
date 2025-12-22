@@ -92,28 +92,34 @@ class SSSlotMachineState extends State<SSSlotMachine> {
   }
 
   Widget columnW() {
+    double itemW = slotsItemW-1.w;
     return Row(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(width: 64.w),
+        Container(
+          width: 1.w,
+          height: double.infinity,
+          color: Color(0xffA43334).withValues(alpha: 0),
+        ),
+        SizedBox(width: itemW),
         Container(
           width: 1.w,
           height: double.infinity,
           color: Color(0xffA43334),
         ),
-        SizedBox(width: 64.w),
+        SizedBox(width: itemW),
         Container(
           width: 1.w,
           height: double.infinity,
           color: Color(0xffA43334),
         ),
-        SizedBox(width: 64.w),
+        SizedBox(width: itemW),
         Container(
           width: 1.w,
           height: double.infinity,
           color: Color(0xffA43334),
         ),
-        SizedBox(width: 64.w),
+        SizedBox(width: itemW),
         Container(
           width: 1.w,
           height: double.infinity,
@@ -276,12 +282,20 @@ class SSSlotMachineState extends State<SSSlotMachine> {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Container(
-                        width: ScreenUtil().screenWidth,
-                        height: ScreenUtil().screenHeight,
-                        // color: Colors.teal,
-                        child: SpineShengdaolaorenSlots(),
+
+                      Positioned(
+                        left: -2.2.w,
+                        right: -2.2.w,
+                        top: -0.h,
+                        bottom: -0.h,
+                        child: Container(
+                          width: double.infinity,
+                          height: double.infinity,
+                          color: Colors.blueAccent.withValues(alpha: 0.0),
+                          child: const SpineShengdaolaorenSlots(),
+                        ),
                       ),
+
                       Positioned(
                         left: -30.w,
                         right: -30.w,

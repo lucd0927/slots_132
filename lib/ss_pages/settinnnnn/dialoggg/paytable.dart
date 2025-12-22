@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -278,7 +279,7 @@ class _PaytableWidgetState extends State<PaytableWidget> {
         child: Row(
           children: [
             Image.asset(
-              Assets.img.highlightsCard22.path,
+              SSABChange.isPackageB()? Assets.img.highlightsCard22.path:Assets.imga.settingP.path,
               width: 92.w,
               height: 188.w,
             ),

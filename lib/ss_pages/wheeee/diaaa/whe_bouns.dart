@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -170,7 +171,9 @@ class _WheBounsState extends State<WheBouns> {
                                 child: Image.asset(
                                   widget.giftRewardModel.rewardModelType ==
                                           EnumGiftRewardModel.cash
-                                      ? Assets.img.money.path
+                                      ? (SSABChange.isPackageB()
+                                            ? Assets.img.money.path
+                                            : Assets.imga.coin.path)
                                       : widget
                                                 .giftRewardModel
                                                 .rewardModelType ==
@@ -181,7 +184,9 @@ class _WheBounsState extends State<WheBouns> {
                                                 .rewardModelType ==
                                             EnumGiftRewardModel.xp
                                       ? Assets.img.mainTopXp.path
-                                      : Assets.img.money.path,
+                                      : (SSABChange.isPackageB()
+                                            ? Assets.img.money.path
+                                            : Assets.imga.coin.path),
                                   width: 65.h,
                                   height: 50.h * 0.8,
                                 ),
@@ -299,7 +304,7 @@ class _WheBounsState extends State<WheBouns> {
     });
     await Future.delayed(Duration(milliseconds: 150));
     if (mounted) {
-      Navigator.maybePop(context,clickVideo);
+      Navigator.maybePop(context, clickVideo);
     }
   }
 }

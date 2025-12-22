@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -119,7 +120,7 @@ class _ExpWidgetState extends State<ExpWidget> {
                           child: Column(
                             children: [
                               Text(
-                                "${MainController.to.allLevelExp(MainController.to.level() + 1) - MainController.to.curLevelExp.value} xp to level ${MainController.to.level()+1}",
+                                "${MainController.to.allLevelExp(MainController.to.level() + 1) - MainController.to.curLevelExp.value} xp to level ${MainController.to.level() + 1}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
@@ -137,7 +138,9 @@ class _ExpWidgetState extends State<ExpWidget> {
                                   // ),
                                   // SizedBox(width: 8.w),
                                   Text(
-                                    "Level ${MainController.to.level()}/100 • VIP Bonus \$1,000/day",
+                                    SSABChange.isPackageB()
+                                        ? "Level ${MainController.to.level()}/100 • VIP Bonus \$1,000/day"
+                                        : "Your current coin balance: ${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14.sp,
