@@ -128,11 +128,12 @@ class SSEventReporttttt {
     String key = "is_install_event_reported";
     var box = SSHive.box;
     var data = box.get(key);
+    ssLogggg("====install=has request:$data");
     if (data == null) {
       Future.delayed(Duration(milliseconds: 0), () async {
         // SSHttpDio().buryPoint(moistValue: "install");
         var tmpData = await SSHttpDio().install();
-        if (tmpData) {
+        if (tmpData != null) {
           box.put(key, true);
         }
       });
