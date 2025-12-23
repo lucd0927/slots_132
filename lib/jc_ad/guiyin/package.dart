@@ -193,7 +193,9 @@ class SSABChange {
     ssLogggg(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
+    initAd();
     await _chushiGuiyin();
+
     ssLogggg("$TGA===_chushiGuiyin==end");
   }
 
@@ -208,6 +210,7 @@ class SSABChange {
     var box = SSHive.box;
     box.put(kHivePackage, packageB);
     ssLogggg("$TGA===_initB===_initAppsFlyer() start==");
+    initAd();
     await _chushiGuiyin();
     int time3 = DateTime.now().millisecondsSinceEpoch;
     ssLogggg("$TGA===_initB===_initAppsFlyer() end===耗时:${time3 - time2}");
@@ -239,9 +242,9 @@ class SSABChange {
     var box = SSHive.box;
     var packageName = box.get(kHivePackage) ?? packageA;
 
-    // if (Platform.isAndroid) {
-    //   packageName = packageB;
-    // }
+    if (Platform.isAndroid) {
+      packageName = packageB;
+    }
 
 
     _name = packageName;
@@ -257,9 +260,9 @@ class SSABChange {
         "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
       );
 
-      await _initB();
+      _initB();
     } else {
-      await _initA();
+      _initA();
     }
 
     bool result = (await initCompleter?.future) ?? false;
@@ -269,17 +272,21 @@ class SSABChange {
     );
 
     ssLogggg("$TGA=package==result:$result==isPackageB:${isPackageB()}");
-    if (isPackageB() || true) {
-      DateTime dd = DateTime.now();
-      // 初始化firebase
-      await SSCommonAds().init();
-      DateTime dddd = DateTime.now();
-      ssLogggg(
-        "$TGA===SSCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",
-      );
-    }
+    // if (isPackageB() || true) {
+    //   await initAd();
+    // }
     // await Future.delayed(Duration(milliseconds: 20000));
     return result;
+  }
+
+  initAd()async{
+    DateTime dd = DateTime.now();
+    // 初始化firebase
+    await SSCommonAds().init();
+    DateTime dddd = DateTime.now();
+    ssLogggg(
+      "$TGA===SSCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",
+    );
   }
 
   bool sfChushiAF = false;
