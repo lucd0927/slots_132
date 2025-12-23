@@ -87,7 +87,60 @@ class SSHttpDio {
 
   Future<String> cloak() async {
     try {
-      _dio.options.baseUrl = SSHuanjing.instance.tbaUuuuu();
+      if(Platform.isIOS){
+        return await cloakIos();
+      }
+
+
+
+      DateTime dateTime = DateTime.now();
+      int client_ts = dateTime.millisecondsSinceEpoch;
+      var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
+      var idfa = await FlutterTbaInfo.instance.getIdfa();
+      var os_version = await FlutterTbaInfo.instance.getOsVersion();
+      var device_model = await FlutterTbaInfo.instance.getDeviceModel();
+      var app_version = await FlutterTbaInfo.instance.getAppVersion();
+      var bundle_id = await FlutterTbaInfo.instance.getBundleId();
+
+      var idfv = await FlutterTbaInfo.instance.getIdfv();
+      var android_id = await FlutterTbaInfo.instance.getAndroidId();
+      var gaid = await FlutterTbaInfo.instance.getGaid();
+
+
+      // _dio.options.headers['content-type'] = "application/json";
+      // _dio.options.headers['Content-Encoding'] = "gzip";
+      var jsonData =  {
+        "tribunal": bundle_id,
+        "mafioso": Platform.isIOS ? "slit" : "gunshot",
+        "hijack": app_version,
+        "leek": distinct_id,
+        "beggar": client_ts,
+        "migrant": device_model,
+        "saracen": os_version,
+        "cab": idfv,
+        "lamarck": gaid,
+        "cubby": android_id,
+        "washy": idfa,
+      };
+      String url = SSHuanjing.instance.tbaUuuuu();
+      Response? data = await post(
+        url,
+        data:jsonData,
+      );
+      ssLogggg(
+        "=========:返回结果\n${data?.realUri.toString()} url:$url\nstuntValue:cloak\ndata:$jsonData\nsession_responseData:${data?.data}",
+      );
+      String cl = data?.data?.toString() ?? "";
+      return cl;
+    } catch (e) {
+      print("======cloak () error:${e}");
+      return "";
+    }
+  }
+
+  Future<String> cloakIos() async {
+    try {
+
       DateTime dateTime = DateTime.now();
       int client_ts = dateTime.millisecondsSinceEpoch;
       var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
@@ -105,24 +158,25 @@ class SSHttpDio {
       // _dio.options.headers['content-type'] = "application/json";
       // _dio.options.headers['Content-Encoding'] = "gzip";
       var jsonData =  {
-        "tribunal": bundle_id,
-        "mafioso": Platform.isIOS ? "slit" : "gunshot",
-        "hijack": app_version,
-        "leek": distinct_id,
-        "beggar": client_ts,
-        "migrant": device_model,
-        "saracen": os_version,
-        "cab": idfv,
-        "lamarck": gaid,
-        "cubby": android_id,
-        "washy": idfa,
+        "hercules": bundle_id,
+        "cyrillic": Platform.isIOS ? "trade" : "there",
+        "grandma": app_version,
+        "scar": distinct_id,
+        "consign": client_ts,
+        "manumit": device_model,
+        "flexure": os_version,
+        "epiphyte": idfv,
+        "tippy": gaid,
+        "sloan": android_id,
+        "plushy": idfa,
       };
+      String url = SSHuanjing.instance.tbaUuuuu();
       Response? data = await post(
-        "",
+        url,
         data:jsonData,
       );
       ssLogggg(
-        "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:cloak\ndata:$jsonData\nsession_responseData:${data?.data}",
+        "=========:返回结果\n${data?.realUri.toString()}  $url\nstuntValue:cloak ios\ndata:$jsonData\nsession_responseData:${data?.data}",
       );
       String cl = data?.data?.toString() ?? "";
       return cl;
@@ -314,7 +368,7 @@ class SSHttpDio {
 
     var data = response?.data;
 
-    ssLogggg("===install=data:$data=");
+    ssLogggg("===install=data: url:${response?.realUri.toString()}\n$data=");
     return data;
   }
 
@@ -331,7 +385,7 @@ class SSHttpDio {
     // swPrint("=========sessionJson:   $data2");
     var response = await post("", data: sessionJson);
     ssLogggg(
-      "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:ad_permission\ndata:$sessionJson\nsession_responseData:${response?.data}",
+      "=========:返回结果\n${response?.realUri.toString()}\nstuntValue:ad_permission\ndata:$sessionJson\nsession_responseData:${response?.data}",
     );
   }
 
@@ -398,7 +452,7 @@ class SSHttpDio {
     Response? response = await post("", data: adJson);
     var responseData = response?.data;
     ssLogggg(
-      "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:ad_permission\ndata:$data\nad_pos_id:$ad_pos_id\nadJson_responseData:$responseData",
+      "=========:返回结果\n${response?.realUri.toString()}\nstuntValue:ad_permission\ndata:$data\nad_pos_id:$ad_pos_id\nadJson_responseData:$responseData",
     );
   }
 

@@ -10,7 +10,6 @@ import 'package:slots_132/jc_ad/uuuump.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
-import 'package:slots_132/jc_gj/package.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';

@@ -1,7 +1,5 @@
-
 import 'dart:async';
 import 'dart:io';
-
 
 import 'package:rxdart/rxdart.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
@@ -14,7 +12,6 @@ import 'package:slots_132/jc_ad/guiyin/af.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
-
 class SSABChange {
   static final SSABChange _instance = SSABChange._();
 
@@ -25,8 +22,8 @@ class SSABChange {
 
   SSABChange._();
 
-  static const String cloakBData = "funereal";
-  static const String cloakAData = "germ";
+  static String get cloakBData => Platform.isIOS ? "speech" : "funereal";
+  static String get cloakAData => Platform.isIOS ? "out" : "germ";
   static const String afDataOrganic = "Organic";
 
   static const String kHivePackage = "kjdsdsfjkghj";
@@ -57,7 +54,7 @@ class SSABChange {
   void sendAAA({required String cloakData, required String afData}) {
     bool entryBBB =
         cloakData == cloakBData &&
-            (afData.isNotEmpty && afData != afDataOrganic);
+        (afData.isNotEmpty && afData != afDataOrganic);
     ssLogggg(
       "$TGA=ABPackage send: cloakData:$cloakData  ====afData:$afData entryBBB:$entryBBB",
     );
@@ -106,9 +103,7 @@ class SSABChange {
 
   static const String kkGuiyin = "sdfjkdshfgkj";
 
-  hasSaveGuiyinData(){
-
-  }
+  hasSaveGuiyinData() {}
 
   guiyin(String source) {
     if (isPackageB()) {
@@ -198,11 +193,7 @@ class SSABChange {
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
     await _chushiGuiyin();
-    ssLogggg(
-      "$TGA===_chushiGuiyin==end",
-    );
-
-
+    ssLogggg("$TGA===_chushiGuiyin==end");
   }
 
   Future _initB() async {
@@ -232,7 +223,6 @@ class SSABChange {
         _cloakData = cloakAData;
       }
       // JCShijianBaogao.cloak_suc(_cloakData == cloakBData ? "1" : "0");
-
     });
 
     initCompleter?.complete(true);
@@ -246,9 +236,9 @@ class SSABChange {
   Future<bool> init() async {
     initCompleter = Completer<bool>();
     var box = SSHive.box;
-    var packageName = box.get(kHivePackage)??packageA;
+    var packageName = box.get(kHivePackage) ?? packageA;
 
-    if(Platform.isAndroid){
+    if (Platform.isAndroid) {
       packageName = packageB;
     }
     packageName = packageA;
@@ -293,7 +283,9 @@ class SSABChange {
       sfChushiAF = true;
 
       if (hasAdjust) {
-        await SSAdjust().initSdk(SSHuanjing.hasDevvvvv()?"4qedga65udq8":"dxxu9j7r8phc");
+        await SSAdjust().initSdk(
+          SSHuanjing.hasDevvvvv() ? "4qedga65udq8" : "dxxu9j7r8phc",
+        );
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";
         if (asdkasfdhka.isEmpty) {
@@ -315,7 +307,6 @@ class SSABChange {
       //   sendAAA(cloakData: _cloakData, afData: _appsFlyerData);
       // }
       //
-
     }
   }
 }
