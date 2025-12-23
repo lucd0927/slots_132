@@ -77,7 +77,7 @@ class BonusGameController extends GetxController {
     }
 
     int length = clickIndex.length;
-    if (length == 1) {
+    if (length == 1 && SSABChange.isPackageB()) {
       bool result = await SSCommonAds().showInterstitialAd(
         adPosId: SSAdsPosId.eyomt_bonus_int,
         ignored_hasDisplayAd: true,

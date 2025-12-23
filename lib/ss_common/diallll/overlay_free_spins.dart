@@ -18,6 +18,7 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/firebase_json/base_data.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -296,7 +297,14 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
   void onBnt2() async{
     if(canClick){
       canClick = false;
-      await SSCommonAds().showInterstitialAd(adPosId: SSAdsPosId.eyomt_freespin_int);
+      bool showIntad = SSFBBaseData.int_ad_value();
+      bool result = true;
+
+      if (showIntad) {
+        result = await SSCommonAds().showInterstitialAd(
+          adPosId: SSAdsPosId.eyomt_freespin_int,
+        );
+      }
       MainController.to.curFreeSpinCount.value = baseCount;
       onClose(1);
       widget.onBtn2(baseCount * 1.0);
