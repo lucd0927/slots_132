@@ -51,16 +51,17 @@ class SSABChange {
 
   var box = SSHive.box;
 
-  void sendAAA({required String cloakData, required String afData}) {
+  sendAAA({required String cloakData, required String afData}) async{
     bool entryBBB =
         cloakData == cloakBData &&
         (afData.isNotEmpty && afData != afDataOrganic);
     ssLogggg(
-      "$TGA=ABPackage send: cloakData:$cloakData  ====afData:$afData entryBBB:$entryBBB",
+      "$TGA=SSABChange().listen ABPackage send: cloakData:$cloakData  ====afData:$afData entryBBB:$entryBBB",
     );
 
     var data = box.get(kHivePackage);
-
+    // entryBBB = true;
+    // await Future.delayed(Duration(milliseconds: 15000));
     if (entryBBB) {
       if (data == packageB) {
         _name = packageB;
@@ -238,15 +239,16 @@ class SSABChange {
     var box = SSHive.box;
     var packageName = box.get(kHivePackage) ?? packageA;
 
-    if (Platform.isAndroid) {
-      packageName = packageB;
-    }
-    packageName = packageA;
+    // if (Platform.isAndroid) {
+    //   packageName = packageB;
+    // }
+
 
     _name = packageName;
+    DateTime dateTime = DateTime.now();
     ssLogggg("$TGA=package==init:$packageName==");
     if (packageName == packageB) {
-      DateTime dateTime = DateTime.now();
+
       ssLogggg("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
       // 初始化firebase
       await PBFireBbbbbb().initFirebase();
@@ -261,17 +263,22 @@ class SSABChange {
     }
 
     bool result = (await initCompleter?.future) ?? false;
+    DateTime dateTimeEnd = DateTime.now();
+    ssLogggg(
+      "$TGA==SSABChange().listen==guiyin time==${dateTimeEnd.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
+    );
+
     ssLogggg("$TGA=package==result:$result==isPackageB:${isPackageB()}");
-    if (isPackageB()) {
+    if (isPackageB() || true) {
       DateTime dd = DateTime.now();
       // 初始化firebase
       await SSCommonAds().init();
       DateTime dddd = DateTime.now();
       ssLogggg(
-        "$TGA===PBCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",
+        "$TGA===SSCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",
       );
     }
-
+    // await Future.delayed(Duration(milliseconds: 20000));
     return result;
   }
 
@@ -295,18 +302,7 @@ class SSABChange {
       }
       String qs_af_on123 = PBFireBbbbbb().by(name: "qs_adjust_on");
       ssLogggg("==qs_af_on123==$qs_af_on123");
-      //
-      // String qs_af_on123 = PBFireBbbbbb().by(name: "qs_adjust_on");
-      // pbLog("$TGA==guiyin=pre==qs_af_on123:$qs_af_on123==");
-      // if (qs_af_on123.isEmpty) {
-      //   qs_af_on123 = "1";
-      // }
-      //
-      // if(qs_af_on123 == "0"){
-      //   _appsFlyerData = "qs_af_on123";
-      //   sendAAA(cloakData: _cloakData, afData: _appsFlyerData);
-      // }
-      //
+
     }
   }
 }

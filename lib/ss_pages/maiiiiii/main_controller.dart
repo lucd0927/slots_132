@@ -47,7 +47,9 @@ import '../../jc_gj/log.dart';
 
 class MainController extends GetxController {
   static MainController get to => Get.find();
-  static final OverlayPortalController tooltipController = OverlayPortalController();
+  static final OverlayPortalController tooltipController =
+      OverlayPortalController();
+
   @override
   void onInit() {
     super.onInit();
@@ -1348,7 +1350,9 @@ class MainController extends GetxController {
         } else {
           ssLogggg("======_rollerEnd 2 2 onShowPayBank");
           double minWithdd = minWithdddMoney;
-          if (minWithdd <= curMonnnn.value && !curShowFreeSpin.value  && SSABChange.isPackageB()) {
+          if (minWithdd <= curMonnnn.value &&
+              !curShowFreeSpin.value &&
+              SSABChange.isPackageB()) {
             WithdddController.to.onShowPayBank();
           }
           await Future.delayed(Duration(milliseconds: 100));
@@ -1469,13 +1473,26 @@ class MainController extends GetxController {
     return "${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}";
   }
 
-  static const String hkLevelExp = "9151iuwriyhi";
-  static const String hkBeisuNum = "fa3323werfgdsg";
-  static const String hkMonnnn = "54ewqr2g45sd4g5";
-  static const String hkCollectStar = "dfgs656ytiu232wq";
-  static const String hkBonusGameCount = "87sdghkjszdfght33";
-  static const String hkcurSpinCount = "hkcurSpinCountaaa";
-  static const String hkcurGuideStep1 = "hkcurGuideStep1";
+  static String get hkLevelExp =>
+      SSABChange.isPackageB() ? "9151iuwriyhi" : "9151iuwriyhiAaaaa";
+
+  static String get hkBeisuNum =>
+      SSABChange.isPackageB() ? "fa3323werfgdsg" : "fa3323werfgdsgAaaaa";
+
+  static String get hkMonnnn =>
+      SSABChange.isPackageB() ? "54ewqr2g45sd4g5" : "54ewqr2g45sd4g5Aaaaa";
+
+  static String get hkCollectStar =>
+      SSABChange.isPackageB() ? "dfgs656ytiu232wq" : "dfgs656ytiu232wqAaaaa";
+
+  static String get hkBonusGameCount =>
+      SSABChange.isPackageB() ? "87sdghkjszdfght33" : "87sdghkjszdfght33Aaaaa";
+
+  static String get hkcurSpinCount =>
+      SSABChange.isPackageB() ? "hkcurSpinCountaaa" : "hkcurSpinCountaaaAaaaa";
+
+  static String get hkcurGuideStep1 =>
+      SSABChange.isPackageB() ? "hkcurGuideStep1" : "hkcurGuideStep1Aaaaa";
   static const double minBet = 8.0;
   static const double maxBet = 10.0;
 
@@ -2077,6 +2094,42 @@ class MainController extends GetxController {
     initTimerBoxGift();
   }
 
+
+   resetInitDataB() {
+    int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;
+    curLevelExp.value = tmpCurLevelExp;
+    ssLogggg("=====resetInitDataB curLevelExp:$tmpCurLevelExp");
+
+    double tmpcurBeisu = box.get(hkBeisuNum) ?? 8.0;
+    curBeisu.value = tmpcurBeisu;
+    ssLogggg("=====resetInitDataB curBeisu:$tmpcurBeisu");
+
+    double tmpMooon = box.get(hkMonnnn) ?? 0.0;
+    curMonnnn.value = tmpMooon;
+    ssLogggg("=====resetInitDataB money:$tmpMooon");
+
+    int tmpCollectStar = box.get(hkCollectStar) ?? 0;
+    curCollectStar.value = tmpCollectStar;
+    ssLogggg("=====resetInitDataB tmpCollectStar:$tmpCollectStar");
+
+    int tmphkBonusGameCount = box.get(hkBonusGameCount) ?? 0;
+    curBonusGameCount.value = tmphkBonusGameCount;
+    ssLogggg("=====resetInitDataB curBonusGameCount:$curBonusGameCount");
+
+    int tmpcurSpinCount = box.get(hkcurSpinCount) ?? 1;
+    curSpinCount.value = tmpcurSpinCount;
+    ssLogggg("=====resetInitDataB tmpcurSpinCount:$tmpcurSpinCount");
+
+    bool tmpCurGuideStepSpin1 = box.get(hkcurGuideStep1) ?? true;
+    curGuideStepSpin1.value = tmpCurGuideStepSpin1;
+    ssLogggg("=====resetInitDataB curGuideStepSpin1:$tmpCurGuideStepSpin1");
+
+    initTimerBoxGift();
+
+
+    initRoller5(hasFirstInit: true, hasFreeSpin: false);
+  }
+
   static Map<EnumLottieType, LottieComposition>
   _kLottieType_vLottieComposition = {};
 
@@ -2139,7 +2192,7 @@ class MainController extends GetxController {
     return tmp;
   }
 
-  static const hkTimeBoxGift = "af45ewrdf7u5hffj";
+  static String get hkTimeBoxGift =>SSABChange.isPackageB()? "af45ewrdf7u5hffj":"af45ewrdf7u5hffjAaaa";
   Timer? _timerBoxGfit;
 
   static const int maxSeconds = 60 * 60 * 8;

@@ -87,6 +87,36 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v) {
       bgMusicFreeSpin.pause();
     });
+
+    initABListener();
+
+    initOverlayTips();
+
+    jiazaiInterrrr();
+  }
+
+  initABListener()async{
+    SSABChange().listen((packName) async{
+      ssLogggg("===SSABChange().listen==packName:$packName");
+
+      // await Future.delayed(Duration(milliseconds: 15000));
+      if (packName == SSABChange.packageB) {
+        ssLogggg("===SSABChange().listen==reset Data");
+        MainController.to.resetInitDataB();
+        DailyBonusController.to.resetDataB();
+        onDailyBonus();
+        if (Platform.isIOS) {
+          SSNotificationIos().init();
+        }
+      }else{
+
+
+
+      }
+    });
+  }
+
+  initOverlayTips(){
     if(SSABChange.isPackageB()){
       _timerWithdraw = Timer.periodic(Duration(seconds: 60), (timer) {
         if (mounted) {
@@ -105,11 +135,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         }
       });
     }
-
-
-
-
-    jiazaiInterrrr();
   }
 
   jiazaiInterrrr() async {
@@ -156,7 +181,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
       bool result = await SSNotificationIos().checkNotificationPermission();
       ssLogggg("===initNotification==result:$result");
-      if (!result) {
+      if (!result && SSABChange.isPackageB()) {
         await Future.delayed(Duration(milliseconds: 200));
         OverlayTzNotify().show(
           onClose: (v) {
@@ -173,17 +198,21 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     onDailyBonus();
 
     bool clickTz = SSTzNotificattttt.clickTz;
-    if (clickTz && SSABChange.isPackageB()) {
-      OverlayTzReward().show(
-        money: 50,
-        onBtn: (v) {
-          MainController.to.onAddMoney(v, showMoneyAnimated: true);
-        },
-        onBtn2: (value) {
-          MainController.to.onAddMoney(value, showMoneyAnimated: true);
-        },
-      );
+    if (clickTz) {
+      initTzReward();
     }
+  }
+
+  initTzReward(){
+    OverlayTzReward().show(
+      money: 50,
+      onBtn: (v) {
+        MainController.to.onAddMoney(v, showMoneyAnimated: true);
+      },
+      onBtn2: (value) {
+        MainController.to.onAddMoney(value, showMoneyAnimated: true);
+      },
+    );
   }
 
   onDailyBonus() async {

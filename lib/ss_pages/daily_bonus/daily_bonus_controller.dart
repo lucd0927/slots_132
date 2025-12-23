@@ -17,13 +17,13 @@ class DailyBonusController extends GetxController {
   var box = SSHive.box;
   static const int _maxStreak = 7; // 连续7天后重置
   // 连续登录天数
-  static const String hLianxuLoginDay = "212iouoijsadf";
+  static  String get hLianxuLoginDay =>SSABChange.isPackageB()?"212iouoijsadf":  "212iouoijsadfAaa";
 
   // 连续登录多少周
-  static const String hLianxuLoginZhouqi = "5dfgwrhs21";
+  static  String get hLianxuLoginZhouqi => SSABChange.isPackageB()?"212iouoijsadf": "5dfgwrhs21Aaa";
 
   //  连续登录时间
-  static const String hLianxuLoginTime = "asd54asdf45ad";
+  static  String get hLianxuLoginTime =>SSABChange.isPackageB()?"asd54asdf45ad": "asd54asdf45adAaa";
   static const String hkTodayClickBonus = "354ertsafgt8";
 
   static Map<int, GiftRewardModel> kDay_vGiftModel = {
@@ -133,6 +133,10 @@ class DailyBonusController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+
+  }
+
+  initData(){
     int days = checkLoginStreak();
 
     continueLoginDays = days.obs;
@@ -149,6 +153,26 @@ class DailyBonusController extends GetxController {
     todayClickBonus = tmphkTodayClickBonus.obs;
     saveTodayClickBonusStatus(tmphkTodayClickBonus);
   }
+
+
+  resetDataB(){
+    int days = checkLoginStreak();
+
+    continueLoginDays.value = days;
+
+    int weeks = box.get(hLianxuLoginZhouqi) ?? 0;
+    continueLoginWeeks.value = weeks;
+
+    bool tmphkTodayClickBonus = box.get(hkTodayClickBonus) ?? false;
+
+    if (SSDlTracking.isFirstLoginToday) {
+      tmphkTodayClickBonus = false;
+    }
+    // tmphkTodayClickBonus = false;
+    todayClickBonus.value = tmphkTodayClickBonus;
+    saveTodayClickBonusStatus(tmphkTodayClickBonus);
+  }
+
 
   onClick(GiftRewardModel gift, VoidCallback onEnd) async {
     todayClickBonus.value = true;

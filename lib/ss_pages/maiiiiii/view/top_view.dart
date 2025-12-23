@@ -548,11 +548,11 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
     bool hasB = SSABChange.isPackageB();
     if(!hasB){
       hasLiceng3 = true;
-      icon = "Lucky Slots";
+
       // icon = "1000 coins a day";
       return Center(
         child: SSTxtGraBorder(
-          text: icon,
+          text: "Lucky Slots",
           fontFamily: FontFamily.fraunces,
           fontSize: 14.sp,
           strokeColor: Color(0xff085119),

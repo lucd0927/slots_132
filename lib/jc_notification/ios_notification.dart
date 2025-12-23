@@ -78,7 +78,7 @@ class SSNotificationIos {
 
   init() async {
     if(!SSABChange.isPackageB()){
-      // return;
+      return;
     }
     await requestNotificationPermission();
 
