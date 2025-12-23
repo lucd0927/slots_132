@@ -87,11 +87,9 @@ class SSHttpDio {
 
   Future<String> cloak() async {
     try {
-      if(Platform.isIOS){
+      if (Platform.isIOS) {
         return await cloakIos();
       }
-
-
 
       DateTime dateTime = DateTime.now();
       int client_ts = dateTime.millisecondsSinceEpoch;
@@ -106,10 +104,9 @@ class SSHttpDio {
       var android_id = await FlutterTbaInfo.instance.getAndroidId();
       var gaid = await FlutterTbaInfo.instance.getGaid();
 
-
       // _dio.options.headers['content-type'] = "application/json";
       // _dio.options.headers['Content-Encoding'] = "gzip";
-      var jsonData =  {
+      var jsonData = {
         "tribunal": bundle_id,
         "mafioso": Platform.isIOS ? "slit" : "gunshot",
         "hijack": app_version,
@@ -123,10 +120,7 @@ class SSHttpDio {
         "washy": idfa,
       };
       String url = SSHuanjing.instance.tbaUuuuu();
-      Response? data = await post(
-        url,
-        data:jsonData,
-      );
+      Response? data = await post(url, data: jsonData);
       ssLogggg(
         "=========:返回结果\n${data?.realUri.toString()} url:$url\nstuntValue:cloak\ndata:$jsonData\nsession_responseData:${data?.data}",
       );
@@ -140,7 +134,6 @@ class SSHttpDio {
 
   Future<String> cloakIos() async {
     try {
-
       DateTime dateTime = DateTime.now();
       int client_ts = dateTime.millisecondsSinceEpoch;
       var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
@@ -157,9 +150,9 @@ class SSHttpDio {
 
       // _dio.options.headers['content-type'] = "application/json";
       // _dio.options.headers['Content-Encoding'] = "gzip";
-      var jsonData =  {
+      var jsonData = {
         "hercules": bundle_id,
-        "cyrillic": Platform.isIOS ? "trade" : "there",
+        "cyrillic": Platform.isIOS ? "shirk" : "there",
         "grandma": app_version,
         "scar": distinct_id,
         "consign": client_ts,
@@ -171,10 +164,7 @@ class SSHttpDio {
         "plushy": idfa,
       };
       String url = SSHuanjing.instance.tbaUuuuu();
-      Response? data = await post(
-        url,
-        data:jsonData,
-      );
+      Response? data = await post(url, data: jsonData);
       ssLogggg(
         "=========:返回结果\n${data?.realUri.toString()}  $url\nstuntValue:cloak ios\ndata:$jsonData\nsession_responseData:${data?.data}",
       );
@@ -187,6 +177,10 @@ class SSHttpDio {
   }
 
   dynamic baseData() async {
+    if (Platform.isIOS) {
+      return await baseDataIos();
+    }
+
     DateTime dateTime = DateTime.now();
     int mill = dateTime.millisecondsSinceEpoch;
     var app_version = await FlutterTbaInfo.instance.getAppVersion();
@@ -229,11 +223,10 @@ class SSHttpDio {
       "lamarck": gaid,
       "washy": idfa,
       "cubby": android_id,
-      "tribunal": bundle_id
+      "tribunal": bundle_id,
     };
 
     Map<String, Object> fabian = {
-
       // "hoofmark": null,
       // "mitosis": null,
       // "berry": 0,
@@ -241,7 +234,7 @@ class SSHttpDio {
       "saracen": os_version,
       "dodd": system_language,
       "migrant": device_model,
-      "cab": idfv
+      "cab": idfv,
     };
 
     Map<String, Object> rouge = {
@@ -253,7 +246,7 @@ class SSHttpDio {
       // "nucleant": cpu_name,
       "leek": distinct_id,
       "ganglion": operator,
-      "mafioso": Platform.isAndroid?"gunshot":"slit",
+      "mafioso": Platform.isAndroid ? "gunshot" : "slit",
       // "hardtop": "1.2.3.4",
       "nag": log_id,
       // "carboy": "1.2.4",
@@ -262,20 +255,92 @@ class SSHttpDio {
       "tacoma": os_country,
       // "original": "",
       // "tanager": "",
-      "retinal":network_type
+      "retinal": network_type,
     };
 
     Map<String, Object> dataJson = {
       "prance": prance,
       "fabian": fabian,
       "rouge": rouge,
+    };
+    return dataJson;
+  }
 
+  dynamic baseDataIos() async {
+    DateTime dateTime = DateTime.now();
+    int mill = dateTime.millisecondsSinceEpoch;
+    var app_version = await FlutterTbaInfo.instance.getAppVersion();
+    var brand = await FlutterTbaInfo.instance.getBrand();
+    var network_type = await FlutterTbaInfo.instance.getNetworkType();
+    var gaid = await FlutterTbaInfo.instance.getGaid();
+    var log_id = await FlutterTbaInfo.instance.getLogId();
+    var bundle_id = await FlutterTbaInfo.instance.getBundleId();
+    var os_country = await FlutterTbaInfo.instance.getOsCountry();
+    // var zone_offset = await FlutterTbaInfo.instance.getZoneOffset();
+    // var zone_offset = mill;
+    // zone_offset = Uri.encodeComponent(zone_offset);
+    // var cpu_arch = await FlutterTbaInfo.instance.get();
+    var idfa = await FlutterTbaInfo.instance.getIdfa();
+
+    // var os = await FlutterTbaInfo.instance.geto();
+    // var cpu_name = await FlutterTbaInfo.instance.getBrand();
+    var os_version = await FlutterTbaInfo.instance.getOsVersion();
+    // var ab_test = await FlutterTbaInfo.instance.get();
+    // var uid = await FlutterTbaInfo.instance.getBrand();
+    // var client_ts = await FlutterTbaInfo.instance.get();
+    // auto patch 368
+    var device_model = await FlutterTbaInfo.instance.getDeviceModel();
+
+    var idfv = await FlutterTbaInfo.instance.getIdfv();
+    var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
+    var manufacturer = await FlutterTbaInfo.instance.getManufacturer();
+    var android_id = await FlutterTbaInfo.instance.getAndroidId();
+    var operator = await FlutterTbaInfo.instance.getOperator();
+
+    var system_language = await FlutterTbaInfo.instance.getSystemLanguage();
+    var zone_offset = await FlutterTbaInfo.instance.getZoneOffset();
+    // var channel = await FlutterTbaInfo.instance.getc();
+    var client_ts = mill;
+
+
+
+    Map<String, Object> dataJson = {
+      "hercules": bundle_id,
+      "cyrillic": Platform.isIOS?"shirk":"there",
+      "grandma": app_version,
+      "scar": distinct_id,
+      // "organdy": "1.2.3.4",
+      "mahogany": log_id,
+      "consign": client_ts,
+      "angeline": zone_offset,
+      "pleurisy": manufacturer,
+      "coerce": brand,
+      "manumit": device_model,
+      "flexure": os_version,
+      "bereft": network_type,
+      "grossman": operator,
+      "smile": system_language,
+      // "averring": channel,
+      "sloan": android_id,
+      "plushy": idfa,
+      "epiphyte": idfv,
+      "tippy": gaid,
+      "cleft": os_country,
+      // "roadway": ab_test,
+      // "regress": uid,
+      // "hymnal": key,
+      // "chill": sdk_ver,
+      // "sincere": null,
     };
     return dataJson;
   }
 
   // 只上报一次
   install() async {
+    if (Platform.isIOS) {
+      return await installIos();
+    }
+
     // return;
     DateTime dateTime = DateTime.now();
 
@@ -372,11 +437,121 @@ class SSHttpDio {
     return data;
   }
 
+  installIos() async {
+    // return;
+    DateTime dateTime = DateTime.now();
+
+    int mill = dateTime.millisecondsSinceEpoch;
+    // var app_version = await FlutterTbaInfo.instance.getAppVersion();
+    // var brand = await FlutterTbaInfo.instance.getBrand();
+    // var network_type = await FlutterTbaInfo.instance.getNetworkType();
+    // var gaid = await FlutterTbaInfo.instance.getGaid();
+    // var log_id = await FlutterTbaInfo.instance.getLogId();
+    var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
+    var bundle_id = await FlutterTbaInfo.instance.getBundleId();
+    var gaid = await FlutterTbaInfo.instance.getGaid();
+    // var os_country = await FlutterTbaInfo.instance.getOsCountry();
+    // // var zone_offset = await FlutterTbaInfo.instance.getZoneOffset();
+    // auto patch 89
+    // // var zone_offset = mill;
+    // // zone_offset = Uri.encodeComponent(zone_offset);
+    // // var cpu_arch = await FlutterTbaInfo.instance.get();
+    // var idfa = await FlutterTbaInfo.instance.getIdfa();
+    //
+    // // var os = await FlutterTbaInfo.instance.geto();
+    // // var cpu_name = await FlutterTbaInfo.instance.getBrand();
+    // var os_version = await FlutterTbaInfo.instance.getOsVersion();
+    // // var ab_test = await FlutterTbaInfo.instance.get();
+    // // var uid = await FlutterTbaInfo.instance.getBrand();
+    // // var client_ts = await FlutterTbaInfo.instance.get();
+    // var device_model = await FlutterTbaInfo.instance.getDeviceModel();
+
+    //
+    // var idfv = await FlutterTbaInfo.instance.getIdfv();
+    // var manufacturer = await FlutterTbaInfo.instance.getManufacturer();
+    // var android_id = await FlutterTbaInfo.instance.getAndroidId();
+    // var operator = await FlutterTbaInfo.instance.getOperator();
+    //
+    //
+
+    Map<String, Object> dataJson = await baseData();
+    // auto patch 896
+    var tbaMap = await FlutterTbaInfo.instance.getReferrerMap();
+
+    var build = tbaMap['build'];
+    var install_version = tbaMap['install_version'] ?? "";
+    var user_agent = tbaMap['user_agent'];
+    var lat = tbaMap['lat'] ?? 0;
+
+    var referrer_click_timestamp_seconds =
+        tbaMap['referrer_click_timestamp_seconds'];
+    var install_begin_timestamp_seconds =
+        tbaMap['install_begin_timestamp_seconds'];
+    var referrer_click_timestamp_server_seconds =
+        tbaMap['referrer_click_timestamp_server_seconds'];
+    var install_begin_timestamp_server_seconds =
+        tbaMap['install_begin_timestamp_server_seconds'];
+    var install_first_seconds = tbaMap['install_first_seconds'];
+    var last_update_seconds = tbaMap['last_update_seconds'];
+    var google_play_instant = tbaMap['google_play_instant'];
+    var referrer_url = tbaMap['referrer_url'];
+
+    Map<String, Object> bismuth = {
+      "fallout": build,
+      "truant": referrer_url,
+      "marlowe": install_version,
+      "footstep": user_agent,
+      "saline": lat,
+      "image": referrer_click_timestamp_seconds,
+      "transect": install_begin_timestamp_seconds,
+      "diabetes": referrer_click_timestamp_server_seconds,
+      "deign": install_begin_timestamp_server_seconds,
+      "filigree": install_first_seconds,
+      "concave": last_update_seconds,
+      // "egress": google_play_instant,
+    };
+
+    dataJson['steele'] = bismuth;
+    // dataJson.addAll(bismuth);
+    String url = SSHuanjing.instance.bUuuu();
+    _dio.options.headers['gaid'] = gaid;
+    // _dio.options.headers['hair'] = bundle_id;
+    var data2 = jsonEncode(dataJson);
+    ssLogggg("=========installJson:   $data2");
+    // var response = await _dio.postUri(_url, data: dataJson);
+    var response = await post(url, data: dataJson);
+
+    var data = response?.data;
+
+    ssLogggg("===install=data: url:${response?.realUri.toString()}\n$data=");
+    return data;
+  }
+
   // 前后台切换的时候上报
   session() async {
+    if (Platform.isIOS) {
+      return await sessionIos();
+    }
+
     var dataJson = await baseData();
     var sessionJson = dataJson;
     sessionJson['must'] = "guard";
+    // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
+    // var bundle_id = await FlutterTbaInfo.instance.getBundleId();
+    // _dio.options.headers['nebulae'] = distinct_id;
+    // _dio.options.headers['hair'] = bundle_id;
+    // var data2 = jsonEncode(dataJson);
+    // swPrint("=========sessionJson:   $data2");
+    var response = await post("", data: sessionJson);
+    ssLogggg(
+      "=========:返回结果\n${response?.realUri.toString()}\nstuntValue:ad_permission\ndata:$sessionJson\nsession_responseData:${response?.data}",
+    );
+  }
+
+  sessionIos() async {
+    var dataJson = await baseData();
+    var sessionJson = dataJson;
+    sessionJson['sun'] = "hellfire";
     // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // var bundle_id = await FlutterTbaInfo.instance.getBundleId();
     // _dio.options.headers['nebulae'] = distinct_id;
@@ -401,6 +576,19 @@ class SSHttpDio {
     required String source_client, // 广告平台： max 或者topon
     required String precision_type,
   }) async {
+    if (Platform.isIOS) {
+      return await adEventIos(
+        networkName: networkName,
+        adsId: adsId,
+        format: format,
+        adPosId: adPosId,
+        currency: currency,
+        revenue: revenue,
+        source_client: source_client,
+        precision_type: precision_type,
+      );
+    }
+
     var adJson = await baseData();
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     var bundle_id = await FlutterTbaInfo.instance.getBundleId();
@@ -456,6 +644,69 @@ class SSHttpDio {
     );
   }
 
+  adEventIos({
+    required String
+    networkName, // 广告网络类型 MaxAd 取networkName，topon 取network_type
+    required String adsId, // 广告id
+    required String format, // 视频类型：reward interstitial
+    required String adPosId, // 广告场景
+    required String currency, // 货币单位
+    required double revenue, // 收益。max平台对应revenue topon 对应publisher_revenue
+    required String source_client, // 广告平台： max 或者topon
+    required String precision_type,
+  }) async {
+    var adJson = await baseData();
+    var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
+    var bundle_id = await FlutterTbaInfo.instance.getBundleId();
+
+    // auto patch 341
+    double ad_pre_ecpm = revenue;
+    String ad_network = networkName;
+    String ad_source_client = source_client;
+    String ad_code_id = adsId;
+    String ad_pos_id = adPosId;
+    String ad_rit_id = "";
+    String ad_format = format;
+    Map<String, Object> stuntJson = {
+      'cilia': ad_pre_ecpm,
+      'arson': currency,
+      'orpheus': ad_network,
+      'scion': ad_source_client,
+      'ferrer': ad_code_id,
+      'monty': ad_pos_id,
+      'terse': ad_rit_id,
+      'thermal': ad_format,
+      'penalty': precision_type,
+      'inherent': "",
+      'w': "",
+      'ecology': "",
+    };
+
+    // adJson['cilia'] = ad_pre_ecpm;
+    // adJson['arson'] = currency;
+    // adJson['orpheus'] = ad_network;
+    // adJson['scion'] = ad_source_client;
+    // adJson['ferrer'] = ad_code_id;
+    // adJson['monty'] = ad_pos_id;
+    // adJson['terse'] = ad_rit_id;
+    // adJson['thermal'] = ad_format;
+    // adJson['penalty'] = precision_type;
+    // adJson['inherent'] = "";
+    // adJson['w'] = "";
+    // adJson['ecology'] = "";
+
+    // adJson.addAll(stuntJson);
+    adJson['maddox'] = stuntJson;
+    var data = jsonEncode(adJson);
+    ssLogggg("=========adJson:   $data");
+
+    Response? response = await post("", data: adJson);
+    var responseData = response?.data;
+    ssLogggg(
+      "=========:返回结果\n${response?.realUri.toString()}\nstuntValue:ad_permission\ndata:$data\nad_pos_id:$ad_pos_id\nadJson_responseData:$responseData",
+    );
+  }
+
   buryPoint({
     required String moistValue,
     String? veinKey,
@@ -465,6 +716,18 @@ class SSHttpDio {
     String? veinKey3,
     dynamic veinKeyValue3,
   }) async {
+    if (Platform.isIOS) {
+      return await buryPointIos(
+        moistValue: moistValue,
+        veinKey: veinKey,
+        veinKeyValue: veinKeyValue,
+        veinKey2: veinKey2,
+        veinKeyValue2: veinKeyValue2,
+        veinKey3: veinKey3,
+        veinKeyValue3: veinKeyValue3,
+      );
+    }
+
     // return;
     var dataJson = await baseData();
     // ggPrint("dataJaon:${dataJson is Map}");
@@ -483,6 +746,49 @@ class SSHttpDio {
       json['$veinKey3'] = veinKeyValue3;
     }
     dataJson['$moistValue'] = json;
+
+    // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
+    // var bundle_id = await FlutterTbaInfo.instance.getBundleId();
+    // _dio.options.headers['nebulae'] = distinct_id;
+    // _dio.options.headers['hair'] = bundle_id;
+    // auto patch 104
+    var data = jsonEncode(dataJson);
+    Response? response = await post("", data: dataJson);
+    var responseData = response?.data;
+
+    ssLogggg(
+      "====url\n${_dio.options.baseUrl}\nstuntValue:$moistValue\ndata:$data\nburyPoint_responseData:$responseData",
+    );
+    // dataJson[stuntValue] = {"cloak_user": 0};
+  }
+
+  buryPointIos({
+    required String moistValue,
+    String? veinKey,
+    dynamic veinKeyValue,
+    String? veinKey2,
+    dynamic veinKeyValue2,
+    String? veinKey3,
+    dynamic veinKeyValue3,
+  }) async {
+    // return;
+    var dataJson = await baseData();
+    // ggPrint("dataJaon:${dataJson is Map}");
+    dataJson["sun"] = moistValue;
+    var json = {};
+    if (veinKey?.isNotEmpty ?? false) {
+      // auto patch 864
+      json['$veinKey'] = veinKeyValue;
+    }
+    if (veinKey2?.isNotEmpty ?? false) {
+      // auto patch 864
+      json['$veinKey2'] = veinKeyValue2;
+    }
+    if (veinKey3?.isNotEmpty ?? false) {
+      // auto patch 864
+      json['$veinKey3'] = veinKeyValue3;
+    }
+    dataJson['mildred'] = json;
 
     // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // var bundle_id = await FlutterTbaInfo.instance.getBundleId();
