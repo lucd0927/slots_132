@@ -168,8 +168,8 @@ dependencies {
     api("com.thinkup.sdk:adapter-tpn-sdm:6.5.36.2")
     api("com.smartdigimkttech.sdk:smartdigimkttech-sdk:6.5.38")
 //AppLovin
-    api("com.thinkup.sdk:adapter-tpn-applovin:6.5.36")
-    api("com.applovin:applovin-sdk:13.4.0")
+    api("com.thinkup.sdk:adapter-tpn-applovin:6.5.36.3")
+    api("com.applovin:applovin-sdk:13.5.0")
 //Mintegral
     api("com.thinkup.sdk:adapter-tpn-mintegral:6.5.36")
     api("com.mbridge.msdk.oversea:mbridge_android_sdk:16.9.91")

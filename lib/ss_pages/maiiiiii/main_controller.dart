@@ -2096,9 +2096,9 @@ class MainController extends GetxController {
     AssetLottie(Assets.lottt.bian.data).load().then((result) {
       _kLottieType_vLottieComposition[EnumLottieType.bian] = result;
     });
-    // AssetLottie(Assets.lottt.bian2.data).load().then((result) {
-    //   _kLottieType_vLottieComposition[EnumLottieType.bian2] = result;
-    // });
+    AssetLottie(Assets.lottt.bian2.data).load().then((result) {
+      _kLottieType_vLottieComposition[EnumLottieType.bian2] = result;
+    });
     AssetLottie(Assets.lottt.bian3.data).load().then((result) {
       _kLottieType_vLottieComposition[EnumLottieType.bian3] = result;
     });

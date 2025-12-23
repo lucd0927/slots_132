@@ -756,6 +756,9 @@ class SSCommonAds {
           case InterstitialStatus.interstitialUnknown:
             ssLogggg("=======topon插屏====interstitialUnknown");
             break;
+          default:
+            ssLogggg("=======topon插屏====default");
+            break;
         }
       },
     );
@@ -1156,7 +1159,7 @@ class SSCommonAds {
   _onlineJson() {
     Map<String, dynamic> localJson = GGCommonJson.local;
     try {
-      String name =Platform.isIOS?"eyomt_ad_config": "cdyun_ad_config";
+      String name = Platform.isIOS ? "eyomt_ad_config" : "cdyun_ad_config";
       String key = PBFireBbbbbb().by(name: name);
       ssLogggg(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
