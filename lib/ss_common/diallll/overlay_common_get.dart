@@ -153,7 +153,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
               );
             }
             if (showMoney && moneyContext!=null) {
-              icon = Assets.img.money.path;
+              icon = SSABChange.isPackageB()? Assets.img.money.path:Assets.imga.coin.path;
               context = moneyContext;
               OverlayFly2TargetKey().show(
                 targetContext: context!,

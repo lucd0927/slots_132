@@ -2142,9 +2142,9 @@ class MainController extends GetxController {
   static const hkTimeBoxGift = "af45ewrdf7u5hffj";
   Timer? _timerBoxGfit;
 
-  // static const int maxSeconds = 60 * 60 * 8;
+  static const int maxSeconds = 60 * 60 * 8;
 
-  static const int maxSeconds = 60 * 1;
+  // static const int maxSeconds = 60 * 1;
 
   var textBoxGiftTime = "".obs;
   var boxGiftTime = (-1).obs;
