@@ -22,15 +22,15 @@ const int zhifuNotifiC143 = 5893;
 backgroundNotfication(NotificationResponse notif) async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sp = await SharedPreferences.getInstance();
-  JCTzIossssss().shezhiTzCount(JCTzIossssss().huoquTzCount(sp), sp);
+  SSNotificationIos().setTzCount(SSNotificationIos().getTzCount(sp), sp);
 }
 
-class JCTzIossssss {
-  static final JCTzIossssss _instance = JCTzIossssss._();
+class SSNotificationIos {
+  static final SSNotificationIos _instance = SSNotificationIos._();
 
-  JCTzIossssss._();
+  SSNotificationIos._();
 
-  factory JCTzIossssss() {
+  factory SSNotificationIos() {
     return _instance;
   }
 
@@ -71,14 +71,14 @@ class JCTzIossssss {
     {"title": "", "content": "Private Room Invitation"},
   ];
 
-  void shezhiTzCount(int value, SharedPreferences sp) =>
+  void setTzCount(int value, SharedPreferences sp) =>
       sp.setInt(local_ios, value);
 
-  int huoquTzCount(SharedPreferences sp) => sp.getInt(local_ios) ?? 0;
+  int getTzCount(SharedPreferences sp) => sp.getInt(local_ios) ?? 0;
 
   init() async {
     if(!SSABChange.isPackageB()){
-      return;
+      // return;
     }
     await requestNotificationPermission();
 
@@ -120,8 +120,8 @@ class JCTzIossssss {
     }
     dingshi();
 
-    fcmtongzhi();
-    jiesoutz();
+    fcm();
+    lock();
   }
 
   tongsongdianji(int? tuisongid) {
@@ -161,51 +161,54 @@ class JCTzIossssss {
 
     ssLogggg("==initNotification=_repeatNotification=");
     int length = contents.length;
+    contents.shuffle();
     int random = Random().nextInt(length);
-    String baioti = contents[random]['title'];
-    String neirong = contents[random]['content'];
+    String baioti = "Lucky Claus Slots";
+    String baiotiA = "Lucky Claus Slots";
+    String contentA = "Come join the quiz!";
+    String neirong = contents[0]['content'];
+    String neirong1 = contents[1]['content'];
+    String neirong2 = contents[2]['content'];
+    String neirong3 = contents[3]['content'];
     _plugin.periodicallyShowWithDuration(
       gudingC143,
-      SSABChange.isPackageB() ? baioti : "QuizSpark",
-      SSABChange.isPackageB() ? neirong : "Come join the quiz!",
+      SSABChange.isPackageB() ? baioti : baiotiA,
+      SSABChange.isPackageB() ? neirong : contentA,
       Duration(minutes: 30),
     );
-    var datiC = [
-      "💰Someone just made a successful withdrawal on QuizMind！",
-      "🎁Put your knowledge to work and earn money!",
-    ];
+
     _plugin.periodicallyShowWithDuration(
       answerNotiC143,
-      SSABChange.isPackageB() ? "Answer right, Earn Big!" : "QuizSpark",
+      SSABChange.isPackageB() ?baioti : baiotiA,
       SSABChange.isPackageB()
-          ? datiC[Random.secure().nextInt(2)]
-          : "Come join the quiz!",
+          ? neirong1
+          : contentA,
       Duration(minutes: 60),
     );
     _plugin.periodicallyShowWithDuration(
       jianchaNotiC143,
-      SSABChange.isPackageB() ? "Cash in check daily" : "QuizSpark",
+      SSABChange.isPackageB() ?baioti :baiotiA,
       SSABChange.isPackageB()
-          ? "Sign up now and start earning money effortlessly."
-          : "Come join the quiz!",
+          ? neirong2
+          : contentA,
       Duration(minutes: 45),
     );
 
     _plugin.periodicallyShowWithDuration(
       zhifuNotifiC143,
-      SSABChange.isPackageB() ? "Pending withdraw amount" : "QuizSpark",
+      SSABChange.isPackageB() ? baioti: baiotiA,
       SSABChange.isPackageB()
-          ? "\$100 has arrived in your account"
-          : "Come join the quiz!",
+          ? neirong3
+          : contentA,
       Duration(minutes: 30),
     );
   }
 
-  Future<void> fcmtongzhi() async {}
+  Future<void> fcm() async {}
 
   int unlockId = 805;
 
-  Future<void> jiesoutz() async {}
+  Future<void> lock() async {}
 
   Future<bool> checkNotificationPermission() async {
     bool result = await Permission.notification.isGranted;

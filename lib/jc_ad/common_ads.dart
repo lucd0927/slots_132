@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
@@ -1155,7 +1156,7 @@ class SSCommonAds {
   _onlineJson() {
     Map<String, dynamic> localJson = GGCommonJson.local;
     try {
-      String name = "cdyun_ad_config";
+      String name =Platform.isIOS?"eyomt_ad_config": "cdyun_ad_config";
       String key = PBFireBbbbbb().by(name: name);
       ssLogggg(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",

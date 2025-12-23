@@ -29,6 +29,7 @@ import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_notification/android_notification.dart';
+import 'package:slots_132/jc_notification/ios_notification.dart';
 import 'package:slots_132/ss_common/animated_win/animated_xuanguang.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_notify.dart';
 import 'package:slots_132/ss_common/diallll/overlay_tz_reward.dart';
@@ -112,7 +113,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   jiazaiInterrrr() async {
-    if (SSDlTracking.qidongduoshaoDay() <= 1) {
+    if (SSDlTracking.qidongduoshaoDay() <= 1 || !SSABChange.isPackageB()) {
       return;
     }
 
@@ -142,22 +143,29 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       // 本地通知初始化
       if (Platform.isIOS) {
         // await GGLocalNotificationUtils().init();
+        await SSNotificationIos().init();
+
+        ssLogggg("===initNotification=ios=检查通知");
+
       } else {
         // await GGLocalAndroidNotification().initAllNotification();
         await SSTzNotificattttt().init();
-        ssLogggg("===initNotification==检查通知");
-        bool result = await SSTzNotificattttt().checkNotificationPermission();
-        ssLogggg("===initNotification==result:$result");
-        if (!result) {
-          await Future.delayed(Duration(milliseconds: 200));
-          OverlayTzNotify().show(
-            onClose: (v) {
-              onDailyBonus();
-            },
-          );
-          return;
-        }
+        ssLogggg("===initNotification=android=检查通知");
+
       }
+
+      bool result = await SSNotificationIos().checkNotificationPermission();
+      ssLogggg("===initNotification==result:$result");
+      if (!result) {
+        await Future.delayed(Duration(milliseconds: 200));
+        OverlayTzNotify().show(
+          onClose: (v) {
+            onDailyBonus();
+          },
+        );
+        return;
+      }
+
     } catch (e) {
       ssLogggg("===initNotification=error:$e=");
       FirebaseCrashlytics.instance.recordError(e, null, fatal: false);

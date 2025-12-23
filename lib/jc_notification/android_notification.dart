@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -218,7 +219,7 @@ class SSTzNotificattttt {
   static initForegroundService() async {
     bool result = await SSTzNotificattttt().checkNotificationPermission();
     ssLogggg("=====initForegroundService result:$result");
-    if (result && !_hasInitForegroundService) {
+    if (result && !_hasInitForegroundService && Platform.isAndroid) {
       _hasInitForegroundService = true;
       // await Future.delayed(Duration(milliseconds: 5000));
       ssLogggg("=====前台服务启动");
