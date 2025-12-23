@@ -254,12 +254,12 @@ class _AvatarRowState extends State<AvatarRow> {
                 ),
               ),
 
-              if (index == selectIndex)
+              if (index == selectIndex )
                 Positioned(
                   left: SSABChange.isPackageB() ? -20.w : 0,
                   right: SSABChange.isPackageB() ? -20.w : 0,
                   top:SSABChange.isPackageB() ?  -10.h:0,
-                  bottom: SSABChange.isPackageB() ? 0:-10.h,
+                  bottom: SSABChange.isPackageB() ? 0:0.h,
                   child: Container(
                     child: Center(
                       child: SSABChange.isPackageB()

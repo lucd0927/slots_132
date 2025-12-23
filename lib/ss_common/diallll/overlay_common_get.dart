@@ -123,7 +123,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                   phoneContext != null)) {
             btnBonusGameClick.play();
             BuildContext? context = moneyContext;
-            String icon = Assets.img.money.path;
+            String icon =SSABChange.isPackageB()? Assets.img.money.path:Assets.imga.coin.path;
             bool showMoney = widget.money > 0;
             bool showExp = widget.exp > 0;
             bool showPhone = widget.phoneSpice > 0;
@@ -279,7 +279,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     } else if (showPhone && SSABChange.isPackageB()) {
       img = Assets.img.popupGetPhoneSpice.path;
     } else if (freespins) {
-      img = Assets.img.popupGetFreespinmoney.path;
+      img = SSABChange.isPackageB()?Assets.img.popupGetFreespinmoney.path:Assets.imga.coinGetFreespin.path;
     }
     ssLogggg("=====showExp:$showExp showPhone:$showPhone img:$img");
     return Container(

@@ -190,7 +190,7 @@ class TopView extends StatelessWidget {
   onMenu(BuildContext context) async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
 
     // Get.context?.loaderOverlay.show();
 
@@ -248,7 +248,7 @@ class TopView extends StatelessWidget {
 
     // OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
 
-    OverlayCommonGet().show(money: 0,exp: 0,phoneSpice: 1, onClose: () {  });
+    // OverlayCommonGet().show(money: 0,exp: 0,phoneSpice: 1, onClose: () {  });
 
     // OverlayDailyBonus().show();
     // OverlayRank().show();

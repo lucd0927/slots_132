@@ -1367,6 +1367,10 @@ class $AssetsImgaGen {
   AssetGenImage get coinFreespin =>
       const AssetGenImage('assets/imga/coin_freespin.png');
 
+  /// File path: assets/imga/coin_get_freespin.png
+  AssetGenImage get coinGetFreespin =>
+      const AssetGenImage('assets/imga/coin_get_freespin.png');
+
   /// File path: assets/imga/coin_giftbox.png
   AssetGenImage get coinGiftbox =>
       const AssetGenImage('assets/imga/coin_giftbox.png');
@@ -1379,6 +1383,9 @@ class $AssetsImgaGen {
   AssetGenImage get slotsLogo =>
       const AssetGenImage('assets/imga/slots_logo.png');
 
+  /// File path: assets/imga/tz_bg.png
+  AssetGenImage get tzBg => const AssetGenImage('assets/imga/tz_bg.png');
+
   /// File path: assets/imga/wheel_zp.png
   AssetGenImage get wheelZp => const AssetGenImage('assets/imga/wheel_zp.png');
 
@@ -1388,9 +1395,11 @@ class $AssetsImgaGen {
     coin,
     coinBounsgame,
     coinFreespin,
+    coinGetFreespin,
     coinGiftbox,
     settingP,
     slotsLogo,
+    tzBg,
     wheelZp,
   ];
 }

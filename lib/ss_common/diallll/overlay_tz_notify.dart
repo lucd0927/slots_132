@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -114,7 +115,7 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                       alignment: Alignment.topCenter,
                       children: [
                         Image.asset(
-                          Assets.img.tongzBg.path,
+                         SSABChange.isPackageB()? Assets.img.tongzBg.path:Assets.imga.tzBg.path,
                           width: double.infinity,
                           height: double.infinity,
                           fit: BoxFit.fill,

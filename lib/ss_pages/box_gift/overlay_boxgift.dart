@@ -462,7 +462,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               SizedBox(height: 20.h),
               Image.asset(
                 showSecondPageOpenGift
-                    ? Assets.img.boxGiftBox2.path
+                    ? SSABChange.isPackageB()?Assets.img.boxGiftBox2.path:Assets.imga.coinGiftbox.path
                     : Assets.img.boxGiftBox1.path,
                 width: 164.w,
                 height: 146.h,
