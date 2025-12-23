@@ -220,7 +220,7 @@ class TopView extends StatelessWidget {
 
     // AppSettings.openAppNotificationSettings()
     // OverlayTzReward().show(money: 200,  onBtn: (value) {  }, onBtn2: (value) {  });
-    OverlayTzNotify().show( onClose: (v){});
+    // OverlayTzNotify().show( onClose: (v){});
 
     // OverlayFreeSpinsOver().show(
     //   money: 200,
@@ -248,7 +248,7 @@ class TopView extends StatelessWidget {
 
     // OverlayFreeSpinsOver().show(money: 10, onClose: (v){},spinCount: 5);
 
-    // OverlayCommonGet().show(money: 0,exp: 0,phoneSpice: 1, onClose: () {  });
+    OverlayCommonGet().show(money: 0,exp: 0,phoneSpice: 1, onClose: () {  });
 
     // OverlayDailyBonus().show();
     // OverlayRank().show();

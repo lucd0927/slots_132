@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -19,6 +20,7 @@ import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/diallll/btn_beisu.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_common/sssssp/spine_xiaozhuanpan.dart';
 import 'package:slots_132/ss_common/sssssp/spine_money.dart';
 import 'package:slots_132/ss_common/sssssp/spine_test.dart';
@@ -129,7 +131,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             ssLogggg(
               "========showMoney:$showMoney showExp:$showExp showPhone:$showPhone freespins:$freespins",
             );
-            if (showExp) {
+            if (showExp && xpContext!=null) {
               icon = Assets.img.mainTopXp.path;
               context = xpContext;
               OverlayFly2TargetKey().show(
@@ -139,7 +141,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 heroChild: Image.asset(icon),
                 onEnd: () {},
               );
-            } else if (showPhone) {
+            } else if (showPhone && phoneContext!=null) {
               icon = Assets.img.popupGetPhoneSpice.path;
               context = phoneContext;
               OverlayFly2TargetKey().show(
@@ -150,7 +152,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 onEnd: () {},
               );
             }
-            if (showMoney) {
+            if (showMoney && moneyContext!=null) {
               icon = Assets.img.money.path;
               context = moneyContext;
               OverlayFly2TargetKey().show(
@@ -207,8 +209,8 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // _timer?.cancel();
-        // onClose(1);
+        _timer?.cancel();
+        onClose(1);
       },
       child: Material(
         color: Colors.transparent,
@@ -268,13 +270,13 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
     bool showExp = widget.exp > 0;
     bool showPhone = widget.phoneSpice > 0;
     bool freespins = widget.freespins > 0;
-    String img = Assets.img.moneyGift.path;
+    String img = SSABChange.isPackageB()?Assets.img.moneyGift.path:Assets.imga.coinFreespin.path;
     // showExp = true;
     if (showExp && showPhone) {
       img = Assets.img.phoneCardXuanguang.path;
     } else if (showExp) {
       img = Assets.img.mainTopXp.path;
-    } else if (showPhone) {
+    } else if (showPhone && SSABChange.isPackageB()) {
       img = Assets.img.popupGetPhoneSpice.path;
     } else if (freespins) {
       img = Assets.img.popupGetFreespinmoney.path;
@@ -291,25 +293,41 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
+          // Positioned(
+          //   left: 0,
+          //   right: 0,
+          //   bottom: 10.h,
+          //   child: Center(
+          //     child: SSRotateWidget(
+          //       child: Image.asset(
+          //         Assets.img.phoneCardXuanguang.path,
+          //         width: 260.w,
+          //         height: 190.h,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Positioned(
-            left: 0,
-            right: 0,
-            bottom: 10.h,
-            child: Center(
-              child: SSRotateWidget(
-                child: Image.asset(
-                  Assets.img.phoneCardXuanguang.path,
-                  width: 260.w,
-                  height: 190.h,
-                ),
-              ),
+            left: -0.w,
+            right: -0.w,
+            top: 10.h,
+            bottom: -0.h,
+            // child: SSRotateWidget(
+            //   child: Image.asset(
+            //     Assets.img.phoneCardXuanguang.path,
+            //     width: double.infinity,
+            //     height: double.infinity,
+            //   ),
+            // ),
+            child: FittedBox(
+              child: const SpineTancXuanguang(),
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SSTxtBorder(
-                text: "Get Cash",
+                text: SSABChange.isPackageB()?"Reward earned":"Reward earned",
                 fontWeight: FontWeight.w700,
                 fontSize: 20.sp,
                 fontColor: Color(0xffFFFF29),
@@ -348,7 +366,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                             SizedBox(width: 10.w),
                           ],
                         ),
-                      if (showPhone)
+                      if (showPhone && SSABChange.isPackageB())
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -431,20 +449,20 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
   Widget topWwww() {
     return Container(
       width: 362.w,
-      height: 127.h,
+      // height: 127.h,
       decoration: BoxDecoration(
         color: Color(0xffffffff).withValues(alpha: 1),
         // border: Border.all(color: Color(0xffFFDD00), width: 2.w),
         borderRadius: BorderRadius.circular(16.w),
       ),
-      padding: EdgeInsets.only(left: 16.w, right: 16.w),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 12.h, bottom: 12.h),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             children: [
               Text(
-                "My cash",
+               SSABChange.isPackageB()? "My cash":"My coins",
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
@@ -456,7 +474,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
                 builder: (context) {
                   moneyContext = context;
                   return Image.asset(
-                    Assets.img.money.path,
+                    SSABChange.isPackageB()?  Assets.img.money.path:Assets.imga.coin.path,
                     width: 30.w,
                     height: 30.w,
                   );
@@ -566,7 +584,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             ],
           ),
           SizedBox(height: 4.h),
-          Row(
+         if( SSABChange.isPackageB()) Row(
             children: [
               Text(
                 "My",
