@@ -1435,10 +1435,9 @@ packages:
   spine_flutter:
     dependency: "direct main"
     description:
-      name: spine_flutter
-      sha256: "6008747eb19fd5f7fbbcee0883afe7aa3b5afdcfc1403c0a4590c64a5a29853e"
-      url: "https://pub.dev"
-    source: hosted
+      path: "dsfk/spine_flutter-4.3.1"
+      relative: true
+    source: path
     version: "4.3.1"
   stack_trace:
     dependency: transitive

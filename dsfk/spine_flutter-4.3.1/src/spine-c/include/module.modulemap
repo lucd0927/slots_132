@@ -1,0 +1,4 @@
+module SpineC {
+    header "spine-c.h"
+    export *
+}

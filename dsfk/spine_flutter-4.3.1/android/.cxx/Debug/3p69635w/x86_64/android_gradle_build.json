@@ -1,0 +1,38 @@
+{
+  "buildFiles": [
+    "/Users/lucd/.pub-cache/hosted/pub.dev/spine_flutter-4.3.1/src/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/lucd/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/lucd/.pub-cache/hosted/pub.dev/spine_flutter-4.3.1/android/.cxx/Debug/3p69635w/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/lucd/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/lucd/.pub-cache/hosted/pub.dev/spine_flutter-4.3.1/android/.cxx/Debug/3p69635w/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "spine_flutter::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "spine_flutter",
+      "output": "/Users/lucd/Desktop/tb_project/c143/build/spine_flutter/intermediates/cxx/Debug/3p69635w/obj/x86_64/libspine_flutter.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/lucd/Library/Android/sdk/ndk/28.1.13356709/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/lucd/Library/Android/sdk/ndk/28.1.13356709/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

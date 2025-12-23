@@ -1,0 +1,18 @@
+                        -H/Users/lucd/Desktop/tb_project/slots_132/dsfk/spine_flutter-4.3.1/src
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=21
+-DANDROID_PLATFORM=android-21
+-DANDROID_ABI=arm64-v8a
+-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a
+-DANDROID_NDK=/Users/lucd/Library/Android/sdk/ndk/28.1.13356709
+-DCMAKE_ANDROID_NDK=/Users/lucd/Library/Android/sdk/ndk/28.1.13356709
+-DCMAKE_TOOLCHAIN_FILE=/Users/lucd/Library/Android/sdk/ndk/28.1.13356709/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/lucd/Library/Android/sdk/cmake/3.22.1/bin/ninja
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/lucd/Desktop/tb_project/slots_132/build/spine_flutter/intermediates/cxx/Debug/6l1q2l66/obj/arm64-v8a
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/Users/lucd/Desktop/tb_project/slots_132/build/spine_flutter/intermediates/cxx/Debug/6l1q2l66/obj/arm64-v8a
+-DCMAKE_BUILD_TYPE=Debug
+-B/Users/lucd/Desktop/tb_project/slots_132/dsfk/spine_flutter-4.3.1/android/.cxx/Debug/6l1q2l66/arm64-v8a
+-GNinja
+                        Build command args: []
+                        Version: 2

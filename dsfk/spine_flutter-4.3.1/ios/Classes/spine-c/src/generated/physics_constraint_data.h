@@ -1,0 +1,64 @@
+#ifndef SPINE_SPINE_PHYSICS_CONSTRAINT_DATA_H
+#define SPINE_SPINE_PHYSICS_CONSTRAINT_DATA_H
+
+#include "../base.h"
+#include "types.h"
+#include "arrays.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+SPINE_C_API spine_physics_constraint_data spine_physics_constraint_data_create(const char *name);
+
+SPINE_C_API void spine_physics_constraint_data_dispose(spine_physics_constraint_data self);
+
+SPINE_C_API spine_rtti spine_physics_constraint_data_get_rtti(spine_physics_constraint_data self);
+SPINE_C_API spine_constraint spine_physics_constraint_data_create_method(spine_physics_constraint_data self, spine_skeleton skeleton);
+/**
+ * The bone constrained by this physics constraint.
+ */
+SPINE_C_API spine_bone_data spine_physics_constraint_data_get_bone(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_bone(spine_physics_constraint_data self, spine_bone_data bone);
+SPINE_C_API float spine_physics_constraint_data_get_step(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_step(spine_physics_constraint_data self, float step);
+SPINE_C_API float spine_physics_constraint_data_get_x(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_x(spine_physics_constraint_data self, float x);
+SPINE_C_API float spine_physics_constraint_data_get_y(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_y(spine_physics_constraint_data self, float y);
+SPINE_C_API float spine_physics_constraint_data_get_rotate(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_rotate(spine_physics_constraint_data self, float rotate);
+SPINE_C_API float spine_physics_constraint_data_get_scale_x(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_scale_x(spine_physics_constraint_data self, float scaleX);
+SPINE_C_API float spine_physics_constraint_data_get_shear_x(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_shear_x(spine_physics_constraint_data self, float shearX);
+SPINE_C_API float spine_physics_constraint_data_get_limit(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_limit(spine_physics_constraint_data self, float limit);
+SPINE_C_API bool spine_physics_constraint_data_get_inertia_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_inertia_global(spine_physics_constraint_data self, bool inertiaGlobal);
+SPINE_C_API bool spine_physics_constraint_data_get_strength_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_strength_global(spine_physics_constraint_data self, bool strengthGlobal);
+SPINE_C_API bool spine_physics_constraint_data_get_damping_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_damping_global(spine_physics_constraint_data self, bool dampingGlobal);
+SPINE_C_API bool spine_physics_constraint_data_get_mass_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_mass_global(spine_physics_constraint_data self, bool massGlobal);
+SPINE_C_API bool spine_physics_constraint_data_get_wind_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_wind_global(spine_physics_constraint_data self, bool windGlobal);
+SPINE_C_API bool spine_physics_constraint_data_get_gravity_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_gravity_global(spine_physics_constraint_data self, bool gravityGlobal);
+SPINE_C_API bool spine_physics_constraint_data_get_mix_global(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_mix_global(spine_physics_constraint_data self, bool mixGlobal);
+/**
+ * Resolve ambiguity by forwarding to PosedData's implementation
+ */
+SPINE_C_API const char *spine_physics_constraint_data_get_name(spine_physics_constraint_data self);
+SPINE_C_API bool spine_physics_constraint_data_get_skin_required(spine_physics_constraint_data self);
+SPINE_C_API spine_physics_constraint_pose spine_physics_constraint_data_get_setup_pose(spine_physics_constraint_data self);
+SPINE_C_API void spine_physics_constraint_data_set_skin_required(spine_physics_constraint_data self, bool skinRequired);
+SPINE_C_API spine_rtti spine_physics_constraint_data_rtti(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SPINE_SPINE_PHYSICS_CONSTRAINT_DATA_H */

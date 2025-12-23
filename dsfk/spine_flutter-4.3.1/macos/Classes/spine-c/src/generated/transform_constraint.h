@@ -1,0 +1,47 @@
+#ifndef SPINE_SPINE_TRANSFORM_CONSTRAINT_H
+#define SPINE_SPINE_TRANSFORM_CONSTRAINT_H
+
+#include "../base.h"
+#include "types.h"
+#include "arrays.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+SPINE_C_API spine_transform_constraint spine_transform_constraint_create(spine_transform_constraint_data data, spine_skeleton skeleton);
+
+SPINE_C_API void spine_transform_constraint_dispose(spine_transform_constraint self);
+
+SPINE_C_API spine_rtti spine_transform_constraint_get_rtti(spine_transform_constraint self);
+SPINE_C_API spine_transform_constraint spine_transform_constraint_copy(spine_transform_constraint self, spine_skeleton skeleton);
+/**
+ * Applies the constraint to the constrained bones.
+ */
+SPINE_C_API void spine_transform_constraint_update(spine_transform_constraint self, spine_skeleton skeleton, spine_physics physics);
+SPINE_C_API void spine_transform_constraint_sort(spine_transform_constraint self, spine_skeleton skeleton);
+SPINE_C_API bool spine_transform_constraint_is_source_active(spine_transform_constraint self);
+/**
+ * The bones that will be modified by this transform constraint.
+ */
+SPINE_C_API spine_array_bone_pose spine_transform_constraint_get_bones(spine_transform_constraint self);
+/**
+ * The bone whose world transform will be copied to the constrained bones.
+ */
+SPINE_C_API spine_bone spine_transform_constraint_get_source(spine_transform_constraint self);
+SPINE_C_API void spine_transform_constraint_set_source(spine_transform_constraint self, spine_bone source);
+SPINE_C_API spine_transform_constraint_data spine_transform_constraint_get_data(spine_transform_constraint self);
+SPINE_C_API spine_transform_constraint_pose spine_transform_constraint_get_pose(spine_transform_constraint self);
+SPINE_C_API spine_transform_constraint_pose spine_transform_constraint_get_applied_pose(spine_transform_constraint self);
+SPINE_C_API void spine_transform_constraint_reset_constrained(spine_transform_constraint self);
+SPINE_C_API void spine_transform_constraint_constrained(spine_transform_constraint self);
+SPINE_C_API bool spine_transform_constraint_is_pose_equal_to_applied(spine_transform_constraint self);
+SPINE_C_API bool spine_transform_constraint_is_active(spine_transform_constraint self);
+SPINE_C_API void spine_transform_constraint_set_active(spine_transform_constraint self, bool active);
+SPINE_C_API spine_rtti spine_transform_constraint_rtti(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SPINE_SPINE_TRANSFORM_CONSTRAINT_H */
