@@ -154,9 +154,9 @@ class _SettingWidgetState extends State<SettingWidget> {
                     child: GestureDetector(
                       onTap: onClose,
                       child: Image.asset(
-                        Assets.img.closeSetting.path,
-                        width: 33.h,
-                        height: 41.h,
+                        Assets.img.closePopup2.path,
+                        width: 40.h,
+                        height: 40.h,
                         fit: BoxFit.fill,
                       ),
                     ),

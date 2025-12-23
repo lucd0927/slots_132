@@ -1324,7 +1324,7 @@ class MainController extends GetxController {
         bool hasFreeSpin = curShowFreeSpin.value;
         ssLogggg("==onStartRoller=slotNumSCATTERLength:$slotNumSCATTERLength=");
         bool hasSaveCardddd = WithdddController.to.hasSaveCardId();
-        if (hasSaveCardddd && !hasFreeSpin) {
+        if (hasSaveCardddd && !hasFreeSpin && SSABChange.isPackageB()) {
           bool hasLiucheng1 = WithdddController.to.curLiucheng1SpinsOver.value;
           bool hasLiucheng2 =
               WithdddController.to.curLiucheng2PaimingOver.value;
@@ -1348,7 +1348,7 @@ class MainController extends GetxController {
         } else {
           ssLogggg("======_rollerEnd 2 2 onShowPayBank");
           double minWithdd = minWithdddMoney;
-          if (minWithdd <= curMonnnn.value && !curShowFreeSpin.value) {
+          if (minWithdd <= curMonnnn.value && !curShowFreeSpin.value  && SSABChange.isPackageB()) {
             WithdddController.to.onShowPayBank();
           }
           await Future.delayed(Duration(milliseconds: 100));
