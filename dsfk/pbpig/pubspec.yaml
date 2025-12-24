@@ -37,8 +37,7 @@ flutter:
       android:
         package: com.pbbt.piggg
         pluginClass: PbpigPlugin
-      ios:
-        pluginClass: PbpigPlugin
+
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
