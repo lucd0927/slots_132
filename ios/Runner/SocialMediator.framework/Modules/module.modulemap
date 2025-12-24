@@ -1,0 +1,6 @@
+framework module SocialMediator {
+  umbrella header "SocialMediator.h"
+  export *
+
+  module * { export * }
+}

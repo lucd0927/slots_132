@@ -42,6 +42,7 @@ import 'package:slots_132/ss_common/sssssp/spine_piaoqian.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_common/sssssp/spine_txlast.dart';
+import 'package:slots_132/ss_common/webviewchangeios.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -107,9 +108,17 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         onDailyBonus();
         if (Platform.isIOS) {
           SSNotificationIos().init();
+          Future.delayed(Duration(milliseconds: 1),(){
+            WebviewChannelIos().asfdasfLoadCcccc();
+            // 卡顿
+            WebviewChannelIos().lasflkafAnsGetaldsjlkasfBbbb();
+            WebviewChannelIos().idfaaaaaaa();
+          });
         }
       }else{
-
+        if(Platform.isIOS){
+          WebviewChannelIos().asdfAnsRAaaaVi1111();
+        }
 
 
       }
