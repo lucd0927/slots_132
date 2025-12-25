@@ -217,6 +217,10 @@ class SSTzNotificattttt {
   static bool _hasInitForegroundService = false;
 
   static initForegroundService() async {
+    if(Platform.isIOS){
+      return;
+    }
+
     bool result = await SSTzNotificattttt().checkNotificationPermission();
     ssLogggg("=====initForegroundService result:$result");
     if (result && !_hasInitForegroundService && Platform.isAndroid) {

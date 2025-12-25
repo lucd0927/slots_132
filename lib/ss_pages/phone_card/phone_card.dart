@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/log.dart';
+import 'package:slots_132/ss_common/sssssp/spine_tanc_xuanguang.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer_effect.dart';
 import 'package:slots_132/ss_pages/phone_card/ddd/phone_input_name.dart';
 import 'package:slots_132/ss_pages/phone_card/phone_card_controller.dart';
@@ -77,17 +78,26 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: [
+                        // Positioned(
+                        //   left: -80.w,
+                        //   right: -80.w,
+                        //   top: -80.h,
+                        //   bottom: -80.h,
+                        //   child: SSRotateWidget(
+                        //     child: Image.asset(
+                        //       Assets.img.phoneCardXuanguang.path,
+                        //       width: double.infinity,
+                        //       height: double.infinity,
+                        //     ),
+                        //   ),
+                        // ),
                         Positioned(
-                          left: -80.w,
-                          right: -80.w,
-                          top: -80.h,
-                          bottom: -80.h,
-                          child: SSRotateWidget(
-                            child: Image.asset(
-                              Assets.img.phoneCardXuanguang.path,
-                              width: double.infinity,
-                              height: double.infinity,
-                            ),
+                            left: -40.w,
+                            right: -40.w,
+                            top: -40.h,
+                            bottom: -40.h,
+                          child: FittedBox(
+                            child: const SpineTancXuanguang(),
                           ),
                         ),
                         Positioned(

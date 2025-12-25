@@ -146,19 +146,30 @@ class SSNotificationIos {
   }
 
   Future<bool> requestNotificationPermission() async {
-    bool result = await Permission.notification.isGranted;
+    final status = await Permission.notification.status;
 
-    if (await Permission.notification.isDenied) {
-      PermissionStatus permissionStatus = await Permission.notification
-          .request();
-      result = permissionStatus == PermissionStatus.granted;
+    if (status.isGranted) {
+      // 已授权
+      return true;
     }
+
+    if (status.isPermanentlyDenied) {
+      // iOS：用户点过“不允许”
+      // Android：拒绝并勾选“不再询问”
+      return false;
+    }
+
+    // 第一次请求（主要针对 Android / iOS 首次）
+    bool result = true;
+    PermissionStatus permissionStatus = await Permission.notification.request();
+    result = permissionStatus == PermissionStatus.granted;
     ssLogggg("==requestNotificationPermission=result:$result");
     return result;
   }
 
   String pushIcon = "tzimg1";
-  DarwinNotificationDetails  notificationDetails2(){
+
+  DarwinNotificationDetails notificationDetails2() {
     return DarwinNotificationDetails(
       // B. 中断级别：时效性 (穿透专注模式)
       interruptionLevel: InterruptionLevel.timeSensitive,
@@ -187,32 +198,30 @@ class SSNotificationIos {
       gudingC143,
       SSABChange.isPackageB() ? baioti : baiotiA,
       SSABChange.isPackageB() ? neirong : contentA,
-      notificationDetails:notificationDetails2(),
-      SSHuanjing.hasDevvvvv() ? Duration(minutes: 1) :  Duration(minutes: 25),
+      notificationDetails: notificationDetails2(),
+      SSHuanjing.hasDevvvvv() ? Duration(minutes: 1) : Duration(minutes: 25),
     );
 
     _plugin.periodicallyShowWithDuration(
       answerNotiC143,
       SSABChange.isPackageB() ? baioti : baiotiA,
       SSABChange.isPackageB() ? neirong1 : contentA,
-      notificationDetails:notificationDetails2(),
-      SSHuanjing.hasDevvvvv() ? Duration(minutes: 2) :Duration(minutes: 40),
+      notificationDetails: notificationDetails2(),
+      SSHuanjing.hasDevvvvv() ? Duration(minutes: 2) : Duration(minutes: 40),
     );
     _plugin.periodicallyShowWithDuration(
       jianchaNotiC143,
       SSABChange.isPackageB() ? baioti : baiotiA,
       SSABChange.isPackageB() ? neirong2 : contentA,
-      notificationDetails:notificationDetails2(),
+      notificationDetails: notificationDetails2(),
       SSHuanjing.hasDevvvvv() ? Duration(minutes: 3) : Duration(minutes: 60),
     );
-
-
 
     _plugin.periodicallyShowWithDuration(
       zhifuNotifiC143,
       SSABChange.isPackageB() ? baioti : baiotiA,
       SSABChange.isPackageB() ? neirong3 : contentA,
-      notificationDetails:notificationDetails2(),
+      notificationDetails: notificationDetails2(),
       SSHuanjing.hasDevvvvv() ? Duration(minutes: 4) : Duration(minutes: 80),
     );
   }
