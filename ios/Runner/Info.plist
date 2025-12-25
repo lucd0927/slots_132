@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Slots 132</string>
+	<string>Lucky Claus Slots</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -40,7 +40,7 @@
 		<true/>
 	</dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>To give you a better user experience, please enable access to tracking data. We only use your tracking data when necessary. Click "Allow"</string>
+	<string>To give you a better user experience, please enable access to tracking data. We only use your tracking data when necessary. Click &quot;Allow&quot;</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -1080,6 +1080,8 @@
 	<string>Main</string>
 	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>UIStatusBarStyle</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

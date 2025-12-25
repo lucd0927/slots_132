@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00A75C8F2EFBDBA3009323A3 /* SocialMediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A75C8E2EFBDBA3009323A3 /* SocialMediator.framework */; };
+		008427272EFCD23C001AA32F /* SocialMediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008427262EFCD23C001AA32F /* SocialMediator.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		263BF085A632B0011B1B33AD /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BED30F806E2C64E5AC928D1 /* Pods_Runner.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
@@ -43,7 +43,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00A75C8E2EFBDBA3009323A3 /* SocialMediator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocialMediator.framework; sourceTree = "<group>"; };
+		008427262EFCD23C001AA32F /* SocialMediator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocialMediator.framework; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		28F2A6D9772B60CD822C7B3C /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00A75C8F2EFBDBA3009323A3 /* SocialMediator.framework in Frameworks */,
+				008427272EFCD23C001AA32F /* SocialMediator.framework in Frameworks */,
 				263BF085A632B0011B1B33AD /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,7 +154,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
-				00A75C8E2EFBDBA3009323A3 /* SocialMediator.framework */,
+				008427262EFCD23C001AA32F /* SocialMediator.framework */,
 			);
 			path = Runner;
 			sourceTree = "<group>";

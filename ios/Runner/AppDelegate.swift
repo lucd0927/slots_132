@@ -20,31 +20,31 @@ import flutter_local_notifications
       #else
       print("Running on Real Device")
        if let flutterController = window?.rootViewController as? FlutterViewController {
-           let methodChannel = FlutterMethodChannel(name: "com.quizspark.web123view", binaryMessenger:flutterController.binaryMessenger)
+           let methodChannel = FlutterMethodChannel(name: "com.slots.wvc143", binaryMessenger:flutterController.binaryMessenger)
            let flutterView = flutterController.view;
            if let flutterView = flutterView {
 
                let shared = SocialMediator.commonService()
                shared.disconnectContinent(flutterController, resetCursor: flutterView)
                methodChannel.setMethodCallHandler { call, result in
-                   if (call.method == "sldkflkjadfkljd") {
+                   if (call.method == "ortejlkhdklh") {
                        //移除View
                        shared.runHero()
                    }
-                   if (call.method == "knzcvxnakjhfksdhgkjd"){
+                   if (call.method == "rty12234rsgds"){
                        //加载BasicConfig
                        shared.generateChain()
                    }
-                   if (call.method == "jaroiusnflksd") {
+                   if (call.method == "sdfg456dgh22") {
                        //加载OfferConfig if success,load success.
                        shared.squareCustom()
                    }
-                   if (call.method == "anskjdshgkjsdfhk") {
+                   if (call.method == "uyio12sadfrr") {
                        //显示WebView
                        shared.displayWisdom()
                    }
 
-                   if (call.method == "alksdfjklsajdfs") {
+                   if (call.method == "dfgh9783srgdfh") {
                       if let iafa = call.arguments as? String{
                            print("====idfa:"+iafa);
                           shared.trackerAlert = iafa;
@@ -55,9 +55,9 @@ import flutter_local_notifications
                    }
                    
                    if (call.method == "distinctID") {
-                       if let iafa = call.arguments as? String{
-                            print("====idfa:"+iafa);
-                           shared.baseIcon = iafa;
+                       if let distinctId = call.arguments as? String{
+                            print("====distinctID:"+distinctId);
+                           shared.baseIcon = distinctId;
                         };
                    }
 
