@@ -7,9 +7,9 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
-
 
 const local_ios = "c132iosnotificationcount";
 
@@ -42,10 +42,10 @@ class SSNotificationIos {
   static String contentC143 = "";
 
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
 
   final IOSFlutterLocalNotificationsPlugin _plugin =
-  IOSFlutterLocalNotificationsPlugin();
+      IOSFlutterLocalNotificationsPlugin();
 
   initNotificationCount() async {
     final String payload = "local";
@@ -63,7 +63,7 @@ class SSNotificationIos {
     {
       "title": "",
       "content":
-      "We are about to cancel your pending reward. Is this a mistake? Tap to reclaim your spins.",
+          "We are about to cancel your pending reward. Is this a mistake? Tap to reclaim your spins.",
     },
     {"title": "", "content": "Oops? We added too many spins..."},
     {"title": "", "content": "You forgot to unwrap this"},
@@ -77,8 +77,8 @@ class SSNotificationIos {
   int getTzCount(SharedPreferences sp) => sp.getInt(local_ios) ?? 0;
 
   init() async {
-    if(!SSABChange.isPackageB()){
-      return;
+    if (!SSABChange.isPackageB()) {
+      // return;
     }
     await requestNotificationPermission();
 
@@ -87,7 +87,10 @@ class SSNotificationIos {
     ssLogggg("=initNotification====init===");
 
     const InitializationSettings initSettings = InitializationSettings(
-      iOS: DarwinInitializationSettings(),
+      iOS: DarwinInitializationSettings(
+        // B. 中断级别：时效性 (穿透专注模式)
+        // InterruptionLevel.timeSensitive,
+      ),
     );
 
     await flutterLocalNotificationsPlugin.initialize(
@@ -140,7 +143,6 @@ class SSNotificationIos {
     }
 
     SSEventReporttttt.all_noti_c(source_from: payload);
-
   }
 
   Future<bool> requestNotificationPermission() async {
@@ -156,16 +158,27 @@ class SSNotificationIos {
   }
 
   String pushIcon = "tzimg1";
+  DarwinNotificationDetails  notificationDetails2(){
+    return DarwinNotificationDetails(
+      // B. 中断级别：时效性 (穿透专注模式)
+      interruptionLevel: InterruptionLevel.timeSensitive,
+      // badgeNumber: 1,
+
+      // E. 确保前台也能展示
+      presentAlert: true,
+      presentSound: true,
+      presentBanner: true,
+    );
+  }
 
   Future<void> dingshi() async {
-
     ssLogggg("==initNotification=_repeatNotification=");
     int length = contents.length;
     contents.shuffle();
     int random = Random().nextInt(length);
     String baioti = "Lucky Claus Slots";
     String baiotiA = "Lucky Claus Slots";
-    String contentA = "Come join the quiz!";
+    String contentA = "Come join the spin!";
     String neirong = contents[0]['content'];
     String neirong1 = contents[1]['content'];
     String neirong2 = contents[2]['content'];
@@ -174,33 +187,33 @@ class SSNotificationIos {
       gudingC143,
       SSABChange.isPackageB() ? baioti : baiotiA,
       SSABChange.isPackageB() ? neirong : contentA,
-      Duration(minutes: 30),
+      notificationDetails:notificationDetails2(),
+      SSHuanjing.hasDevvvvv() ? Duration(minutes: 1) :  Duration(minutes: 25),
     );
 
     _plugin.periodicallyShowWithDuration(
       answerNotiC143,
-      SSABChange.isPackageB() ?baioti : baiotiA,
-      SSABChange.isPackageB()
-          ? neirong1
-          : contentA,
-      Duration(minutes: 60),
+      SSABChange.isPackageB() ? baioti : baiotiA,
+      SSABChange.isPackageB() ? neirong1 : contentA,
+      notificationDetails:notificationDetails2(),
+      SSHuanjing.hasDevvvvv() ? Duration(minutes: 2) :Duration(minutes: 40),
     );
     _plugin.periodicallyShowWithDuration(
       jianchaNotiC143,
-      SSABChange.isPackageB() ?baioti :baiotiA,
-      SSABChange.isPackageB()
-          ? neirong2
-          : contentA,
-      Duration(minutes: 45),
+      SSABChange.isPackageB() ? baioti : baiotiA,
+      SSABChange.isPackageB() ? neirong2 : contentA,
+      notificationDetails:notificationDetails2(),
+      SSHuanjing.hasDevvvvv() ? Duration(minutes: 3) : Duration(minutes: 60),
     );
+
+
 
     _plugin.periodicallyShowWithDuration(
       zhifuNotifiC143,
-      SSABChange.isPackageB() ? baioti: baiotiA,
-      SSABChange.isPackageB()
-          ? neirong3
-          : contentA,
-      Duration(minutes: 30),
+      SSABChange.isPackageB() ? baioti : baiotiA,
+      SSABChange.isPackageB() ? neirong3 : contentA,
+      notificationDetails:notificationDetails2(),
+      SSHuanjing.hasDevvvvv() ? Duration(minutes: 4) : Duration(minutes: 80),
     );
   }
 

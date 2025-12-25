@@ -114,6 +114,7 @@ class _DailyBonusState extends State<DailyBonus> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Obx(() {
         return Material(
           color: Colors.transparent,
@@ -131,6 +132,7 @@ class _DailyBonusState extends State<DailyBonus> {
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.fill,
+                    gaplessPlayback: true,
                   ),
                   AnimatedScale(
                     duration: animD,

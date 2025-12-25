@@ -89,7 +89,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       bgMusicFreeSpin.pause();
     });
 
-    initABListener();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      initABListener();
+    });
 
     initOverlayTips();
 
@@ -97,6 +99,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   initABListener()async{
+    WebviewChannelIos().nbaIosChan(context);
     SSABChange().listen((packName) async{
       ssLogggg("===SSABChange().listen==packName:$packName");
 
@@ -188,7 +191,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
       }
 
-      bool result = await SSNotificationIos().checkNotificationPermission();
+      bool result = await SSTzNotificattttt().checkNotificationPermission();
       ssLogggg("===initNotification==result:$result");
       if (!result && SSABChange.isPackageB()) {
         await Future.delayed(Duration(milliseconds: 200));

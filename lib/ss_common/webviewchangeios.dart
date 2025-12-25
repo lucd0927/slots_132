@@ -13,7 +13,7 @@ class WebviewChannelIos {
 
   static final WebviewChannelIos _instance = WebviewChannelIos._internal();
 
-  static const MethodChannel _askfChhh = MethodChannel('com.quizspark.web123view');
+  static const MethodChannel _askfChhh = MethodChannel('com.slots.wvc143');
 
   /// 此处代码需在main文件中调用（只调用一次）
   Future<void> nbaIosChan(BuildContext context) async {
@@ -24,24 +24,24 @@ class WebviewChannelIos {
   /// 进入A面时就调用（只调用一次）
   Future<void> asdfAnsRAaaaVi1111() async {
     ssLogggg("==rightAnsRemoveView1====");
-    _askfChhh.invokeMethod('sldkflkjadfkljd');
+    _askfChhh.invokeMethod('ortejlkhdklh');
   }
 
   /// 进入B面时就调用（只调用一次）
   Future<void> asfdasfLoadCcccc() async {
     ssLogggg("==rightAnsLoadConfig====");
-    _askfChhh.invokeMethod('knzcvxnakjhfksdhgkjd');
+    _askfChhh.invokeMethod('rty12234rsgds');
   }
 
   /// 进入B面时就调用（只调用一次)
   Future<void> lasflkafAnsGetaldsjlkasfBbbb() async {
     ssLogggg("==rightAnsGetOffer====");
-    _askfChhh.invokeMethod('jaroiusnflksd');
+    _askfChhh.invokeMethod('sdfg456dgh22');
   }
   Future<void> idfaaaaaaa() async {
     String idfa = await FlutterTbaInfo().getIdfa();
     ssLogggg("==idfa====$idfa");
-    _askfChhh.invokeMethod('alksdfjklsajdfs',idfa);
+    _askfChhh.invokeMethod('dfgh9783srgdfh',idfa);
   }
 
 
@@ -55,6 +55,6 @@ class WebviewChannelIos {
   /// 点击项目右上角或其他地方打开web游戏调用（每次点击按钮调用）
   Future<void> alsdjklsfShowWvvvv() async {
     ssLogggg("==rightAnsShowWebview====");
-    _askfChhh.invokeMethod('anskjdshgkjsdfhk');
+    _askfChhh.invokeMethod('uyio12sadfrr');
   }
 }

@@ -20,7 +20,10 @@ flutter_native_splash:
   ios: true
   web: false
   #  fullscreen: true
-  image: assets/img/splash.png
+  image_android: assets/img/splash.png
+  image_dark_android: assets/img/splash.png
+  image_ios: assets/img/splash_bg.png
+  image_dark_ios: assets/img/splash_bg.png
   android_gravity: fill
   ios_content_mode: scaleToFill
   #background_image: "assets/background.png"
