@@ -141,7 +141,7 @@ class SSNotificationIos {
     } else {
       payload = "fix";
     }
-
+    payload = "time_sensitive";
     SSEventReporttttt.all_noti_c(source_from: payload);
   }
 

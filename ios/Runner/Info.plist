@@ -40,7 +40,7 @@
 		<true/>
 	</dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>To give you a better user experience, please enable access to tracking data. We only use your tracking data when necessary. Click &quot;Allow&quot;</string>
+	<string>To give you a better user experience, please enable access to tracking data. We only use your tracking data when necessary. Click "Allow"</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

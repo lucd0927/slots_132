@@ -193,7 +193,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
       bool result = await SSTzNotificattttt().checkNotificationPermission();
       ssLogggg("===initNotification==result:$result");
-      if (!result && SSABChange.isPackageB()) {
+      if (!result) {
         await Future.delayed(Duration(milliseconds: 200));
         OverlayTzNotify().show(
           onClose: (v) {
@@ -210,6 +210,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     onDailyBonus();
 
     bool clickTz = SSTzNotificattttt.clickTz;
+    if(Platform.isIOS){
+      clickTz = SSNotificationIos.clickTz;
+    }
     if (clickTz) {
       initTzReward();
     }
