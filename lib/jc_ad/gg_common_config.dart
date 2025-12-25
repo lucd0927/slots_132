@@ -149,6 +149,27 @@ class GGCommonJson {
       }
     ]
   };
+  static var localTestIos = {
+    "oxocbdkw": 100,
+    "rywjknyu": 100,
+    "eyomt_switch": true,
+    "eyomt_int": [
+      {
+        "ldhjempw": "42002dc450d2c09e",
+        "eoqcdsxf": "max",
+        "fwjysnic": "interstitial",
+        "hvmcyweh": 3000
+      }
+    ],
+    "eyomt_rv": [
+      {
+        "ldhjempw": "88eff2c28bf48703",
+        "eoqcdsxf": "max",
+        "fwjysnic": "reward",
+        "hvmcyweh": 3000
+      }
+    ]
+  };
 
 
   static var localTopon = {
@@ -173,5 +194,5 @@ class GGCommonJson {
     ]
   };
 
-  static var local =SSHuanjing.hasDevvvvv()?localTest: localB;
+  static var local =SSHuanjing.hasDevvvvv()?localTestIos: localB;
 }

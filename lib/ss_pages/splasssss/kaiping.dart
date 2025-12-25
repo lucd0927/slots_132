@@ -45,6 +45,11 @@ class _SSSplassssState extends State<SSSplassss> {
 
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+
+      Future.delayed(Duration(milliseconds: 200),(){
+        FlutterNativeSplash.remove();
+      });
+
       //
       AssetImage assetImage12 = AssetImage(Assets.img.dailyBonusBg.path);
       precacheImage(assetImage12, context);
@@ -82,7 +87,7 @@ class _SSSplassssState extends State<SSSplassss> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
+
     // Locale yuyan = ui.window.locale;
     //
     // ssLogggg("======国家：$yuyan。${"update_language".tr}");
@@ -96,7 +101,7 @@ class _SSSplassssState extends State<SSSplassss> {
         // systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Material(
-        color: Colors.white,
+        color: Colors.transparent,
         child: Stack(
           children: [
             Image.asset(

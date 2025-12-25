@@ -116,6 +116,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
             // 卡顿
             WebviewChannelIos().lasflkafAnsGetaldsjlkasfBbbb();
             WebviewChannelIos().idfaaaaaaa();
+            WebviewChannelIos().distinctID();
           });
         }
       }else{

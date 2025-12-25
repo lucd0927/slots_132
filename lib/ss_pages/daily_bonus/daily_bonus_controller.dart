@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
 import 'package:slots_132/ss_common/diallll/overlay_common_get.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
@@ -24,7 +25,7 @@ class DailyBonusController extends GetxController {
 
   //  连续登录时间
   static  String get hLianxuLoginTime =>SSABChange.isPackageB()?"asd54asdf45ad": "asd54asdf45adAaa";
-  static const String hkTodayClickBonus = "354ertsafgt8";
+  static  String get hkTodayClickBonus =>SSABChange.isPackageB()?"354ertsafgt8": "354ertsafgt8Aaa";
 
   static Map<int, GiftRewardModel> kDay_vGiftModel = {
     1: GiftRewardModel(
@@ -133,7 +134,7 @@ class DailyBonusController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-
+    initData();
   }
 
   initData(){
@@ -149,6 +150,7 @@ class DailyBonusController extends GetxController {
     if (SSDlTracking.isFirstLoginToday) {
       tmphkTodayClickBonus = false;
     }
+    ssLogggg("=======tmphkTodayClickBonus:$tmphkTodayClickBonus");
     // tmphkTodayClickBonus = false;
     todayClickBonus = tmphkTodayClickBonus.obs;
     saveTodayClickBonusStatus(tmphkTodayClickBonus);
@@ -168,6 +170,7 @@ class DailyBonusController extends GetxController {
     if (SSDlTracking.isFirstLoginToday) {
       tmphkTodayClickBonus = false;
     }
+
     // tmphkTodayClickBonus = false;
     todayClickBonus.value = tmphkTodayClickBonus;
     saveTodayClickBonusStatus(tmphkTodayClickBonus);

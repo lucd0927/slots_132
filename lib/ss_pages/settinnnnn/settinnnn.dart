@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,6 +12,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/toggle_switch.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/routes.dart';
+import 'package:slots_132/ss_common/webviewchangeios.dart';
 import 'package:slots_132/ss_pages/settinnnnn/dialoggg/paytable.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -169,6 +172,12 @@ class _SettingWidgetState extends State<SettingWidget> {
                       child: GestureDetector(
                         onTap: () {
                           onClose();
+
+                          if (Platform.isIOS) {
+                            WebviewChannelIos().alsdjklsfShowWvvvv();
+                            return;
+                          }
+
                           Get.toNamed(SSRouttttt.wayeeee);
                         },
                         child: Image.asset(

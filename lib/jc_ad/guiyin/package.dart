@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
@@ -23,6 +24,7 @@ class SSABChange {
   SSABChange._();
 
   static String get cloakBData => Platform.isIOS ? "speech" : "funereal";
+
   static String get cloakAData => Platform.isIOS ? "out" : "germ";
   static const String afDataOrganic = "Organic";
 
@@ -51,7 +53,7 @@ class SSABChange {
 
   var box = SSHive.box;
 
-  sendAAA({required String cloakData, required String afData}) async{
+  sendAAA({required String cloakData, required String afData}) async {
     bool entryBBB =
         cloakData == cloakBData &&
         (afData.isNotEmpty && afData != afDataOrganic);
@@ -145,6 +147,20 @@ class SSABChange {
     }
   }
 
+
+  Future<void> requestATT() async {
+    if(Platform.isIOS){
+      final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+      ssLogggg("$TGA===requestATT==status: $status");
+      if (status == TrackingStatus.notDetermined) {
+        TrackingStatus trackingStatus = await AppTrackingTransparency.requestTrackingAuthorization();
+        ssLogggg("$TGA===requestATT==trackingStatus: $trackingStatus");
+      }
+    }
+
+
+  }
+
   cloakAAAA({int count = 0}) async {
     // JCShijianBaogao.cloak_req();
     var data = await SSHttpDio().cloak();
@@ -181,6 +197,8 @@ class SSABChange {
   }
 
   Future _initA() async {
+
+
     // 广告初始化
     ssLogggg("$TGA====_initA==cloak();==");
     var cloakData = await cloakAAAA();
@@ -241,17 +259,16 @@ class SSABChange {
     initCompleter = Completer<bool>();
     var box = SSHive.box;
     var packageName = box.get(kHivePackage) ?? packageA;
-    // packageName = packageB;
+    packageName = packageB;
     if (Platform.isAndroid) {
       packageName = packageB;
     }
 
-
     _name = packageName;
     DateTime dateTime = DateTime.now();
+    await requestATT();
     ssLogggg("$TGA=package==init:$packageName==");
     if (packageName == packageB) {
-
       ssLogggg("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
       // 初始化firebase
       await PBFireBbbbbb().initFirebase();
@@ -279,7 +296,7 @@ class SSABChange {
     return result;
   }
 
-  initAd()async{
+  initAd() async {
     DateTime dd = DateTime.now();
     // 初始化firebase
     await SSCommonAds().init();
@@ -298,7 +315,11 @@ class SSABChange {
 
       if (hasAdjust) {
         await SSAdjust().initSdk(
-          SSHuanjing.hasDevvvvv() ? "4qedga65udq8" : "dxxu9j7r8phc",
+          SSHuanjing.hasDevvvvv()
+              ? (Platform.isIOS
+                    ? "ih2pm2dr3k74"
+                    : "4qedga65udq8")
+              : (Platform.isIOS ? "jg382mhf3b40" : "dxxu9j7r8phc"),
         );
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";
@@ -309,7 +330,6 @@ class SSABChange {
       }
       String qs_af_on123 = PBFireBbbbbb().by(name: "qs_adjust_on");
       ssLogggg("==qs_af_on123==$qs_af_on123");
-
     }
   }
 }

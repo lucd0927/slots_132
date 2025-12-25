@@ -16,6 +16,8 @@ PODS:
   - Ads-Global/TikTokBusinessSDK (7.8.0.7)
   - app_settings (6.1.2):
     - Flutter
+  - app_tracking_transparency (0.0.1):
+    - Flutter
   - applovin_max (4.6.0):
     - AppLovinSDK (= 13.5.0)
     - Flutter
@@ -351,6 +353,7 @@ PODS:
 DEPENDENCIES:
   - adjust_sdk (from `.symlinks/plugins/adjust_sdk/ios`)
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
+  - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - applovin_max (from `.symlinks/plugins/applovin_max/ios`)
   - AppLovinMediationBidMachineAdapter
   - AppLovinMediationBigoAdsAdapter
@@ -458,6 +461,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/adjust_sdk/ios"
   app_settings:
     :path: ".symlinks/plugins/app_settings/ios"
+  app_tracking_transparency:
+    :path: ".symlinks/plugins/app_tracking_transparency/ios"
   applovin_max:
     :path: ".symlinks/plugins/applovin_max/ios"
   appsflyer_sdk:
@@ -517,6 +522,7 @@ SPEC CHECKSUMS:
   AdjustSignature: 682d788005a6e21557913a9dc0381ae8d943ca0a
   Ads-Global: 2593e75545a4dd7572e345a750537f315807521c
   app_settings: 0341ec6daa4f0c50f5a421bf0ad7c36084db6e90
+  app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   applovin_max: a921604ba97b0400e3cdf4768da0aa53e756978e
   AppLovinMediationBidMachineAdapter: 782a7169e708fac8370238d6f7cd927ca8140936
   AppLovinMediationBigoAdsAdapter: ccfc2387d774c9e10aa784a21cbb5f940a6bf1a6

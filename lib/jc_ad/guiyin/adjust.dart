@@ -33,7 +33,7 @@ class SSAdjust {
     config.logLevel = AdjustLogLevel.verbose;
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // config.externalDeviceId =distinct_id;
-    ssLogggg("$TGA===initSdk=");
+    ssLogggg("$TGA===initSdk=appToken:$appToken");
     _config = config;
     Adjust.addGlobalCallbackParameter("customer_user_id", distinct_id);
     config.attributionCallback = (AdjustAttribution attributionChangedData) {
