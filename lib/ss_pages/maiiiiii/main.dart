@@ -106,13 +106,16 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       // await Future.delayed(Duration(milliseconds: 15000));
       if (packName == SSABChange.packageB) {
         ssLogggg("===SSABChange().listen==reset Data");
-        MainController.to.resetInitDataB();
-        DailyBonusController.to.resetDataB();
-        onDailyBonus();
+
 
         if (Platform.isIOS) {
+          MainController.to.resetInitDataB();
+          DailyBonusController.to.resetDataB();
+
           SSNotificationIos().init();
+          initOverlayTips();
           Future.delayed(Duration(milliseconds: 1),(){
+            onDailyBonus();
             WVChannelIosC143().asfdasfLoadCcccc();
             // 卡顿
             WVChannelIosC143().lasflkafAnsGetaldsjlkasfBbbb();
@@ -138,11 +141,13 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
   initOverlayTips(){
     if(SSABChange.isPackageB()){
+      _timerWithdraw?.cancel();
       _timerWithdraw = Timer.periodic(Duration(seconds: 60), (timer) {
         if (mounted) {
           SlideAcrossOverlay().show(context);
         }
       });
+      _timerMoneyTips?.cancel();
       _timerMoneyTips = Timer.periodic(Duration(seconds: 30), (timer) {
         if (mounted) {
           // OverlayMoneyTips().show();
