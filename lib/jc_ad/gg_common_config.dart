@@ -1,4 +1,4 @@
-
+import 'dart:io';
 
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:thinkup_sdk/at_index.dart';
@@ -21,10 +21,9 @@ class GGCommonAdsListener {
 enum EnumGetScene {
   // daily_treasure(name: "daily treasure"),
 
-  spin(name:"spin"),
-  bonus(name:"bonus"),
-  single_slots(name:"single_slots"),
-
+  spin(name: "spin"),
+  bonus(name: "bonus"),
+  single_slots(name: "single_slots"),
   unknow(name: "unknow");
 
   const EnumGetScene({required this.name});
@@ -74,7 +73,6 @@ class GGCommonJson {
   static const String k_ad_type = "fwjysnic";
   static const String k_time_out = "hvmcyweh";
 
-
   static const String k_ecpm = "ecpm";
 
   // 广告过期时间
@@ -106,27 +104,49 @@ class GGCommonJson {
     return newLocal;
   }
 
-  static var localB ={
-    "oxocbdkw": 100,
-    "rywjknyu": 100,
-    "eyomt_switch": false,
-    "eyomt_int": [
-      {
-        "ldhjempw": "cf6ef230700c5753",
-        "eoqcdsxf": "max",
-        "fwjysnic": "interstitial",
-        "hvmcyweh": 3000
-      }
-    ],
-    "eyomt_rv": [
-      {
-        "ldhjempw": "ecd48d326f269413",
-        "eoqcdsxf": "max",
-        "fwjysnic": "reward",
-        "hvmcyweh": 3000
-      }
-    ]
-  };
+  static var localB = Platform.isIOS
+      ? {
+          "oxocbdkw": 100,
+          "rywjknyu": 100,
+          "eyomt_switch": false,
+          "eyomt_int": [
+            {
+              "ldhjempw": "2ff77839ffb8b8a4",
+              "eoqcdsxf": "max",
+              "fwjysnic": "interstitial",
+              "hvmcyweh": 3000,
+            },
+          ],
+          "eyomt_rv": [
+            {
+              "ldhjempw": "161b263216add44d",
+              "eoqcdsxf": "max",
+              "fwjysnic": "reward",
+              "hvmcyweh": 3000,
+            },
+          ],
+        }
+      : {
+          "oxocbdkw": 100,
+          "rywjknyu": 100,
+          "eyomt_switch": false,
+          "eyomt_int": [
+            {
+              "ldhjempw": "cf6ef230700c5753",
+              "eoqcdsxf": "max",
+              "fwjysnic": "interstitial",
+              "hvmcyweh": 3000,
+            },
+          ],
+          "eyomt_rv": [
+            {
+              "ldhjempw": "ecd48d326f269413",
+              "eoqcdsxf": "max",
+              "fwjysnic": "reward",
+              "hvmcyweh": 3000,
+            },
+          ],
+        };
 
   static var localTest = {
     "oxocbdkw": 100,
@@ -137,17 +157,17 @@ class GGCommonJson {
         "ldhjempw": "67323d496e8d7453",
         "eoqcdsxf": "max",
         "fwjysnic": "interstitial",
-        "hvmcyweh": 3000
-      }
+        "hvmcyweh": 3000,
+      },
     ],
     "eyomt_rv": [
       {
         "ldhjempw": "b00e3491297ec4d0",
         "eoqcdsxf": "max",
         "fwjysnic": "reward",
-        "hvmcyweh": 3000
-      }
-    ]
+        "hvmcyweh": 3000,
+      },
+    ],
   };
   static var localTestIos = {
     "oxocbdkw": 100,
@@ -158,19 +178,18 @@ class GGCommonJson {
         "ldhjempw": "42002dc450d2c09e",
         "eoqcdsxf": "max",
         "fwjysnic": "interstitial",
-        "hvmcyweh": 3000
-      }
+        "hvmcyweh": 3000,
+      },
     ],
     "eyomt_rv": [
       {
         "ldhjempw": "88eff2c28bf48703",
         "eoqcdsxf": "max",
         "fwjysnic": "reward",
-        "hvmcyweh": 3000
-      }
-    ]
+        "hvmcyweh": 3000,
+      },
+    ],
   };
-
 
   static var localTopon = {
     "doubqzaq": 100,
@@ -181,18 +200,18 @@ class GGCommonJson {
         "lhewiloc": "n1grn4hvvceb6r",
         "vvmmyknm": "topon",
         "jpburjoz": "interstitial",
-        "nohbmlex": 3000
-      }
+        "nohbmlex": 3000,
+      },
     ],
     "cdyun_rv": [
       {
         "lhewiloc": "n1grn4hvvcf4pn",
         "vvmmyknm": "topon",
         "jpburjoz": "reward",
-        "nohbmlex": 3000
-      }
-    ]
+        "nohbmlex": 3000,
+      },
+    ],
   };
 
-  static var local =SSHuanjing.hasDevvvvv()?localTestIos: localB;
+  static var local = SSHuanjing.hasDevvvvv() ? localTestIos : localB;
 }

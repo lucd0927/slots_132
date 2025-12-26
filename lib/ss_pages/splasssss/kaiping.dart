@@ -109,6 +109,7 @@ class _SSSplassssState extends State<SSSplassss> {
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
+              gaplessPlayback: true,
             ),
             // Container(
             //   width: double.infinity,

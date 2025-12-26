@@ -109,6 +109,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         MainController.to.resetInitDataB();
         DailyBonusController.to.resetDataB();
         onDailyBonus();
+
         if (Platform.isIOS) {
           SSNotificationIos().init();
           Future.delayed(Duration(milliseconds: 1),(){
@@ -118,6 +119,12 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
             WVChannelIosC143().idC143faaaa();
             WVChannelIosC143().distinctID();
           });
+
+          if(mounted){
+            setState(() {
+
+            });
+          }
         }
       }else{
         if(Platform.isIOS){
