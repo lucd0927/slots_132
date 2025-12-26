@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:slots_132/jc_ad/kuangkuang/ad_limit.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
@@ -62,6 +64,11 @@ class SSWindsCccAds {
   }
 
   bool showDangerWidthInter() {
+
+    if(Platform.isIOS){
+      return false;
+    }
+
     bool fkDanger = SSWindsCccc.hasDanger;
     ssLogggg("插屏==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
     if (hasDanger || fkDanger) {
@@ -88,6 +95,10 @@ class SSWindsCccAds {
 
   // 返回激励广告是否被封控
   bool showDangerWidthRv() {
+    if(Platform.isIOS){
+      return false;
+    }
+
     // 是否被封控
     bool fkDanger = SSWindsCccc.hasDanger;
     ssLogggg("激励==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");

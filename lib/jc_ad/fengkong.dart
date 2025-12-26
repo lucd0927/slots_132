@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:slots_132/jc_gj/base_utils.dart';
@@ -7,16 +8,19 @@ import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/jc_net/http_dio.dart';
 
-
 import 'package:tuple/tuple.dart';
-
 
 import 'dsf/pbpig.dart';
 
 class SSWindsCccc {
   static bool _hasDanger = false;
 
-  static bool get hasDanger => _hasDanger;
+  static bool get hasDanger {
+    if(Platform.isIOS){
+      return false;
+    }
+    return _hasDanger;
+  }
   static bool _hasRequestNet = false;
 
   static bool get hasRequestNet => _hasRequestNet;
@@ -26,6 +30,9 @@ class SSWindsCccc {
 
   static Future initNumberUnit() async {
     try {
+      if(Platform.isIOS){
+        return;
+      }
       var src = SSBaseUuuu.decrypt(encryptTxt, code);
       ssLogggg("=====key:$src");
       await SSFengKkkk.instance.initddddNumsssberUdddnit(apiKey: src);
@@ -69,7 +76,7 @@ class SSWindsCccc {
       data: {"androidId": "acat"},
     );
 
-    var responseData = data?.data??"";
+    var responseData = data?.data ?? "";
     var dess = decrypt(responseData, 29);
     var jsonData = jsonDecode(dess);
     ssLogggg("==ip===$dess==");
@@ -98,11 +105,7 @@ class SSWindsCccc {
     try {
       Response? data = await SSHttpDio().post(
         "https://sg-ddi.shuzilm.cn/q",
-        data: {
-          "protocol": 2,
-          "did": "$did",
-          "pkg": "com.claus.slots.wealth",
-        },
+        data: {"protocol": 2, "did": "$did", "pkg": "com.claus.slots.wealth"},
       );
 
       ssLogggg("==shumeng==data:${data?.data}=");
@@ -458,23 +461,21 @@ class SSWindsCccc {
   //
   static Map<String, dynamic> local = {
     "ui": {
-      "number": SSHuanjing.hasDevvvvv()?0:1,
+      "number": SSHuanjing.hasDevvvvv()
+          ? 0
+          : Platform.isIOS
+          ? 0
+          : 1,
       "behavior": 0,
-      "device": 0
+      "device": 0,
     },
     "behavior": {
-      "ad_short_show": {
-        "duration": 30,
-        "value": 3
-      },
-      "ad_short_close": {
-        "duration": 20,
-        "value": 3
-      },
+      "ad_short_show": {"duration": 30, "value": 3},
+      "ad_short_close": {"duration": 20, "value": 3},
       "wrong_deem_ad_less": 3,
       "wrong_deem_ad_more": 90,
       "no_install": 1,
-      "ad_daily_show": 60
+      "ad_daily_show": 60,
     },
     "device": [
       "vpn",
@@ -483,7 +484,7 @@ class SSWindsCccc {
       "simulator",
       "googleplay",
       "developer",
-      "ip"
-    ]
+      "ip",
+    ],
   };
 }
