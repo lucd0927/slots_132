@@ -6,12 +6,12 @@ import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
 /// 接入示例代码Services
-class WebviewChannelIos {
-  WebviewChannelIos._internal();
+class WVChannelIosC143 {
+  WVChannelIosC143._internal();
 
-  factory WebviewChannelIos() => _instance;
+  factory WVChannelIosC143() => _instance;
 
-  static final WebviewChannelIos _instance = WebviewChannelIos._internal();
+  static final WVChannelIosC143 _instance = WVChannelIosC143._internal();
 
   static const MethodChannel _askfChhh = MethodChannel('com.slots.wvc143');
 
@@ -38,7 +38,7 @@ class WebviewChannelIos {
     ssLogggg("==rightAnsGetOffer====");
     _askfChhh.invokeMethod('sdfg456dgh22');
   }
-  Future<void> idfaaaaaaa() async {
+  Future<void> idC143faaaa() async {
     String idfa = await FlutterTbaInfo().getIdfa();
     ssLogggg("==idfa====$idfa");
     _askfChhh.invokeMethod('dfgh9783srgdfh',idfa);
@@ -53,7 +53,7 @@ class WebviewChannelIos {
 
 
   /// 点击项目右上角或其他地方打开web游戏调用（每次点击按钮调用）
-  Future<void> alsdjklsfShowWvvvv() async {
+  Future<void> showWvC143() async {
     ssLogggg("==rightAnsShowWebview====");
     _askfChhh.invokeMethod('uyio12sadfrr');
   }

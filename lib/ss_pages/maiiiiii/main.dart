@@ -99,7 +99,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   initABListener()async{
-    WebviewChannelIos().nbaIosChan(context);
+    WVChannelIosC143().nbaIosChan(context);
     SSABChange().listen((packName) async{
       ssLogggg("===SSABChange().listen==packName:$packName");
 
@@ -112,16 +112,16 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         if (Platform.isIOS) {
           SSNotificationIos().init();
           Future.delayed(Duration(milliseconds: 1),(){
-            WebviewChannelIos().asfdasfLoadCcccc();
+            WVChannelIosC143().asfdasfLoadCcccc();
             // 卡顿
-            WebviewChannelIos().lasflkafAnsGetaldsjlkasfBbbb();
-            WebviewChannelIos().idfaaaaaaa();
-            WebviewChannelIos().distinctID();
+            WVChannelIosC143().lasflkafAnsGetaldsjlkasfBbbb();
+            WVChannelIosC143().idC143faaaa();
+            WVChannelIosC143().distinctID();
           });
         }
       }else{
         if(Platform.isIOS){
-          WebviewChannelIos().asdfAnsRAaaaVi1111();
+          WVChannelIosC143().asdfAnsRAaaaVi1111();
         }
 
 

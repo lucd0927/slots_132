@@ -174,7 +174,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                           onClose();
 
                           if (Platform.isIOS) {
-                            WebviewChannelIos().alsdjklsfShowWvvvv();
+                            WVChannelIosC143().showWvC143();
                             return;
                           }
 

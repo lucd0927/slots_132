@@ -259,7 +259,7 @@ class SSABChange {
     initCompleter = Completer<bool>();
     var box = SSHive.box;
     var packageName = box.get(kHivePackage) ?? packageA;
-    packageName = packageB;
+    // packageName = packageB;
     if (Platform.isAndroid) {
       packageName = packageB;
     }
