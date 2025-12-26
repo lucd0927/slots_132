@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_settings/app_settings.dart';
+import 'package:applovin_max/applovin_max.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foreground_service_gp/foreground_service_gp.dart';
@@ -191,6 +192,9 @@ class TopView extends StatelessWidget {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
     OverlaySettinnn().show();
+    // throw Exception();
+
+    // AppLovinMAX.showMediationDebugger();
 
     // Get.context?.loaderOverlay.show();
 
