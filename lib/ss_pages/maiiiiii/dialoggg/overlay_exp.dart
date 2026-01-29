@@ -140,7 +140,7 @@ class _ExpWidgetState extends State<ExpWidget> {
                                   // SizedBox(width: 8.w),
                                   Text(
                                     SSABChange.isPackageB()
-                                        ? "${"exp_2".tr} ${MainController.to.level()}/100 • ${"exp_3".tr} ${SSCountry.curGuojiaFuhao()}1,000/${"exp_4".tr}"
+                                        ? "${"exp_2".tr} ${MainController.to.level()}/100 • ${"exp_3".tr}"
                                         : "${"exp_5".tr} ${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,

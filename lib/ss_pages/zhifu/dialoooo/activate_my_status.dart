@@ -258,7 +258,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "${"activate_my_status_7".tr} ${SSCountry.curGuojiaFuhao()}1,000",
+                                        "${"activate_my_status_7".tr}",
                                         style: TextStyle(
                                           color: Color(0xffffffff),
                                           fontSize: 14.sp,

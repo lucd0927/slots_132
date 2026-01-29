@@ -258,7 +258,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                     children: [
                                       Center(
                                         child: Text(
-                                          "${"buzu_9".tr} ${SSCountry.curGuojiaFuhao()}1,000",
+                                          "${"buzu_9".tr}",
                                           style: TextStyle(
                                             color: Color(0xffffffff),
                                             fontSize: 14.sp,
