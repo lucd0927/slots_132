@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/jc_gj/jc_kuangggg/base_dialog.dart';
 
 
@@ -94,7 +95,7 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "No network currently",
+                      "No network currently".tr,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
@@ -179,7 +180,7 @@ class _MeiwangWidgetState extends State<MeiwangWidget> {
                               children: [
                                 Center(
                                   child: Text(
-                                    "Try Again",
+                                    "Try Again".tr,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 16.sp,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_gj/jc_kuangggg/base_dialog.dart';
 
@@ -95,7 +96,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Ad Limit reached",
+                      "Ad Limit reached".tr,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
@@ -162,7 +163,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Text(
-                          "You've watched all available ads for today. Try again tomorrow.",
+                          "tomorrow".tr,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 14.sp,
@@ -194,7 +195,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                               children: [
                                 Center(
                                   child: Text(
-                                    "Get",
+                                    "Get".tr,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 24.sp,

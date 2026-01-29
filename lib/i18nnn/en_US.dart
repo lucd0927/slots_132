@@ -200,5 +200,11 @@ const Map<String, String> en_US = {
   "paytaber_5":"You are 45% of the way there. Keep going!",
   "paytaber_6":"Claim 24h of Double XP!",
 
-
+  "Ad loading failed":"Ad loading failed",
+  "Try Again":"Try Again",
+  "Ad Limit reached":"Ad Limit reached",
+  "tomorrow":"You've watched all available ads for today. Try again tomorrow.",
+  "Get":"Get",
+  "No network currently":"No network currently",
+  "loading_failed2":"Ad loading failed, please try again later",
 };

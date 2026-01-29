@@ -152,7 +152,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Ad loading failed",
+                      "Ad loading failed".tr,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xff272A2F),
@@ -243,7 +243,7 @@ class _AdFailedWidgetState extends State<AdFailedWidget> {
                               children: [
                                 Center(
                                   child: Text(
-                                    "Try Again",
+                                    "Try Again".tr,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 16.sp,

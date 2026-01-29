@@ -7,9 +7,9 @@ import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 
 class SSAdsTtt {
   static void toast({
-    String text = "Ad loading failed, please try again later",
+    String? text,
   }) {
-    ssTushi(text: text);
+    ssTushi(text: text??"loading_failed2".tr);
   }
 
   static noAds({
