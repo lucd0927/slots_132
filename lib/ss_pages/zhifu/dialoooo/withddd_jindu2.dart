@@ -120,7 +120,7 @@ class _WithddJindu2State extends State<WithddJindu2> {
                                       children: [
                                         SizedBox(height: 20.h),
                                         Text(
-                                          "( ! )Transaction Fee Required",
+                                          "jindu2_1".tr,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: 16.sp,
@@ -143,10 +143,10 @@ class _WithddJindu2State extends State<WithddJindu2> {
                                           child: Text.rich(
                                             TextSpan(
                                               text:
-                                                  "To complete your \$1000 withdrawal, a \$10.00 fee is required by the ",
+                                                  "${"jindu2_2".tr} ${SSCountry.curGuojiaFuhao()}1000 ${"jindu2_3".tr}, a ${SSCountry.curGuojiaFuhao()}10.00 ${"jindu2_4".tr} ",
                                               children: [
                                                 TextSpan(
-                                                  text: "bank.",
+                                                  text: "${"jindu2_5".tr}.",
                                                   style: TextStyle(
                                                     color: Color(0xffFE0707),
                                                   ),
@@ -186,7 +186,7 @@ class _WithddJindu2State extends State<WithddJindu2> {
                                             ),
                                             child: Center(
                                               child: Text(
-                                                "Pay \$10.00 Fee to Continue",
+                                                "jindu2_6".tr,
                                                 style: TextStyle(
                                                   color: Color(0xffffffff),
                                                   fontSize: 14.sp,

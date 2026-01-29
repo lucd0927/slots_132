@@ -121,7 +121,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           ),
                         ),
                         child: Text(
-                          "Limited Invitation",
+                          "one_last_jindu2_1".tr,
                           style: TextStyle(
                             color: Color(0xff818181),
                             fontSize: 12.sp,
@@ -134,14 +134,14 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Text.rich(
                           TextSpan(
-                            text: "Earn ",
+                            text: "${"one_last_jindu2_2".tr} ",
                             children: [
                               TextSpan(
-                                text: " \$1,000/Day ",
+                                text: " ${"one_last_jindu2_3".tr} ",
                                 style: TextStyle(color: Color(0xffFF8C00)),
                               ),
                               TextSpan(
-                                text: "Guaranteed",
+                                text: "one_last_jindu2_4".tr,
                                 style: TextStyle(color: Color(0xff242731)),
                               ),
                             ],
@@ -162,7 +162,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                         child: Text.rich(
                           TextSpan(
                             text:
-                                "You're good at this. Real good.\nWe want You on our VIP team. Get paid \$1,000 every single day, guaranteed.\nThis is a ONE-TIME deal. Right now.",
+                                "one_last_jindu2_5".tr,
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -191,7 +191,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                           ),
                           child: Center(
                             child: Text(
-                              "Accept  VIP  Invitation",
+                              "one_last_jindu2_6".tr,
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -207,7 +207,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                         child: Column(
                           children: [
                             Text(
-                              "No thanks, I prefer earning less",
+                              "one_last_jindu2_7".tr,
                               style: TextStyle(
                                 color: Color(0xff7A7A7A),
                                 fontSize: 10.sp,

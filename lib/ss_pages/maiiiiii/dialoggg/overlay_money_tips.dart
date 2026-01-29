@@ -143,7 +143,7 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
                                           "${SSCountry.curGuojiaFuhao()} ${left.toStringAsFixed(2)}",
                                       children: [
                                         TextSpan(
-                                          text: "  more to withdraw.",
+                                          text: "  ${"money_tip_1".tr}.",
                                           style: TextStyle(
                                             color: Color(0xffFFFF8B),
                                           ),
@@ -158,7 +158,7 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
                                     ),
                                   )
                                 : Text(
-                                    "  Your coins: ${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
+                                    "  ${"money_tip_2".tr}: ${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14.sp,

@@ -79,7 +79,7 @@ class _SSTabViewState extends State<SSTabView> {
     int quzheng = money ~/ 1000;
 
     String strmoney =
-        "${SSCountry.curGuojiaFuhao()} ${quzheng.toStringAsFixed(0)},000 USD";
+        "${SSCountry.curGuojiaFuhao()} ${quzheng.toStringAsFixed(0)},000";
     // String strmoney =
     //     "${SSCountry.curGuojiaFuhao()} ${money.toStringAsFixed(0)} USD";
 
@@ -92,7 +92,7 @@ class _SSTabViewState extends State<SSTabView> {
     if (!hasOver1) {
       int curaa = WithdddController.to.curSpinLiuceng1.value;
       int curAll = WithdddController.to.maxSpinCountWithWithdraw();
-      text = "${curaa}/${curAll} SPINS";
+      text = "${curaa}/${curAll} ${"tab_view_1".tr}";
       pro = curaa / curAll;
     } else if (!hasOver2) {
       int curaa = WithdddController.to.curRank();
@@ -103,24 +103,24 @@ class _SSTabViewState extends State<SSTabView> {
     } else if (!hasOver3) {
       int curaa = WithdddController.to.curSpinLiuceng3.value;
       int curAll = WithdddController.to.spinWithLiuceng3();
-      text = "${curaa}/${curAll} SPINS";
+      text = "${curaa}/${curAll} ${"tab_view_1".tr}";
       pro = curaa / curAll;
     }
 
     ssLogggg(
       "========hasOver1:$hasOver1  hasOver2:$hasOver2 hasOver3:$hasOver3",
     );
-    String jinduTxt = "Securing you account...";
+    String jinduTxt = "tab_view_2".tr;
     if (!WithdddController.to.curLiucheng1SpinsOver.value) {
-      jinduTxt = "🎫Fee";
+      jinduTxt = "tab_view_3".tr;
     } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
-      jinduTxt = "⏳Queue";
+      jinduTxt = "tab_view_4".tr;
     } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
-      jinduTxt = "🛡️Review";
+      jinduTxt = "tab_view_5".tr;
     }
     if (hasOver3) {
       pro = 1;
-      jinduTxt = "🏦Sent";
+      jinduTxt = "tab_view_6".tr;
     }
 
     return Center(
@@ -171,7 +171,7 @@ class _SSTabViewState extends State<SSTabView> {
                   if (hasOver3) {
                     ssTushi(
                       text:
-                          "Withdrawal request submitted successfully. Under review.",
+                          "tab_view_7".tr,
                     );
                     return;
                   }
@@ -194,10 +194,10 @@ class _SSTabViewState extends State<SSTabView> {
                   child: Center(
                     child: Text(
                       hasOver3
-                          ? "VERIFY"
+                          ? "VERIFY".tr
                           : hasJieduan2
-                          ? "SPEED"
-                          : "SPIN",
+                          ? "Speed".tr
+                          : "SPIN".tr,
                       style: TextStyle(
                         fontSize: 15.sp,
                         fontFamily: FontFamily.interBold,
@@ -216,7 +216,7 @@ class _SSTabViewState extends State<SSTabView> {
 
   itemProgressss({required double money}) {
     String des =
-        "${people5000First} successful cash outs today! Only $people5000Second spots left";
+        "${people5000First} ${"tab_view_8".tr} ${"Only".tr} $people5000Second ${"tab_view_9".tr}";
     bool showTx =
         WithdddController.to.hasSaveCardId() &&
         WithdddController.to.hasSaveBank() &&
@@ -226,37 +226,37 @@ class _SSTabViewState extends State<SSTabView> {
 
     if (money == 1000) {
       int day = SSDlTracking.qidongduoshaoDay();
-      des = "90% of new users cash out on Day 1.";
+      des = "tab_view_10".tr;
       if (day > 1) {
-        des = "80% of  users cash out today.";
+        des = "tab_view_11".tr;
       }
       if (WithdddController.to.hasSaveCardId() &&
           WithdddController.to.hasSaveBank()) {
         if (!WithdddController.to.curLiucheng1SpinsOver.value) {
-          des = "Stop! Don't pay the fee. 🛑";
+          des = "tab_view_12".tr;
           bool showOther = WithdddController.to.txProgressStatus.value;
           if (showOther) {
-            des = "Pay \$0 Fee. Keep ALL Cash.";
+            des = "tab_view_13".tr;
           }
         } else if (!WithdddController.to.curLiucheng2PaimingOver.value) {
-          des = "Skip the Line. Get Paid FASTER.";
+          des = "tab_view_14".tr;
           bool showOther = WithdddController.to.txProgressStatus.value;
           if (showOther) {
-            des = "Boost Your Payout ";
+            des = "${"tab_view_15".tr} ";
           }
         } else if (!WithdddController.to.curLiucheng3SpinsOver.value) {
-          des = "Final Step!";
+          des = "tab_view_16".tr;
           bool showOther = WithdddController.to.txProgressStatus.value;
           if (showOther) {
-            des = "Verify it's you to secure the cash.";
+            des = "tab_view_17".tr;
           }
         }
 
         if (WithdddController.to.curLiucheng3SpinsOver.value) {
-          des = "Cash Sent! 💸";
+          des = "tab_view_18".tr;
           bool showOther = WithdddController.to.txProgressStatus.value;
           if (showOther) {
-            des = "Don't see it? Please check with your bank.";
+            des = "tab_view_19".tr;
           }
         }
       }
@@ -326,13 +326,13 @@ class _SSTabViewState extends State<SSTabView> {
                             style: TextStyle(color: Color(0xff3AAD47)),
                           ),
                           TextSpan(
-                            text: "  successful cash outs today! Only  ",
+                            text: "  ${"tab_view_8".tr} ${"Only".tr}  ",
                           ),
                           TextSpan(
                             text: "$people5000Second",
                             style: TextStyle(color: Color(0xff3AAD47)),
                           ),
-                          TextSpan(text: "  spots left"),
+                          TextSpan(text: "  ${"tab_view_9".tr}"),
                         ],
                       ),
                       style: TextStyle(
@@ -361,7 +361,7 @@ class _SSTabViewState extends State<SSTabView> {
 
   Widget moenyWidget({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
-    String des = "90% of new users cash out on Day 1.";
+
 
     int quzheng = money ~/ 1000;
 
@@ -511,7 +511,7 @@ class _VipPartnerState extends State<VipPartner> {
     int quzheng = MainController.minWithdddMoney ~/ 1000;
     String money = "${SSCountry.curGuojiaFuhao()}${quzheng},000";
     String des =
-        "Become a Partner and wake up to \$1000 in your account. Every. Single. Day.";
+        "tab_view_20".tr;
     String time = toTime();
     // ssLogggg("====time:$time");
     return Column(
@@ -535,7 +535,7 @@ class _VipPartnerState extends State<VipPartner> {
                 child: Row(
                   children: [
                     Text(
-                      "VIP Partner",
+                      "mian_8".tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w800,
@@ -582,7 +582,7 @@ class _VipPartnerState extends State<VipPartner> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            "Daily",
+                            "activate_my_status_6".tr,
                             style: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
@@ -604,7 +604,7 @@ class _VipPartnerState extends State<VipPartner> {
                           ),
 
                           Text(
-                            "Payout",
+                            "Payout".tr,
                             style: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
@@ -619,7 +619,7 @@ class _VipPartnerState extends State<VipPartner> {
                   Spacer(),
                   hasClickVip()
                       ? Text(
-                          "Level ${MainController.to.level()}/${MainController.maxLevel}",
+                          "${"exp_2".tr} ${MainController.to.level()}/${MainController.maxLevel}",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 22.sp,
@@ -641,7 +641,7 @@ class _VipPartnerState extends State<VipPartner> {
                             ),
                             child: Center(
                               child: Text(
-                                "Get a chance to...",
+                                "tab_view_21".tr,
                                 style: TextStyle(
                                   fontFamily: FontFamily.rubik,
                                   fontSize: 12.sp,

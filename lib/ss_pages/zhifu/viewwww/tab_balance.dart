@@ -46,7 +46,7 @@ class _TabBalanceState extends State<TabBalance> {
             Row(
               children: [
                 Text(
-                  'Cash Balance',
+                  'tab_balance_1'.tr,
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
@@ -77,7 +77,7 @@ class _TabBalanceState extends State<TabBalance> {
               child: SSAniiiiCount(
                 value: money,
                 prefix: "${SSCountry.curGuojiaFuhao()}",
-                suffix: " USD",
+                suffix: "",
                 fractionDigits: 2,
                 textStyle: TextStyle(
                   fontSize: 36.sp,
@@ -102,7 +102,7 @@ class _TabBalanceState extends State<TabBalance> {
                     ),
                     child: Center(
                       child: Text(
-                        "Add money",
+                        "tab_balance_2".tr,
                         style: TextStyle(
                           fontFamily: FontFamily.rubik,
                           fontSize: 16.sp,
@@ -126,7 +126,7 @@ class _TabBalanceState extends State<TabBalance> {
                     ),
                     child: Center(
                       child: Text(
-                        "Withdraw",
+                        "withdraw".tr,
                         style: TextStyle(
                           fontFamily: FontFamily.rubik,
                           fontSize: 16.sp,

@@ -139,7 +139,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "STATUS INACTIVE",
+                                        "activate_my_status_1".tr,
                                         style: TextStyle(
                                           fontSize: 10.sp,
                                           fontWeight: FontWeight.w900,
@@ -152,7 +152,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                               ),
                               SizedBox(height: 10.h),
                               Text(
-                                "Potential Monthly Income",
+                                "activate_my_status_2".tr,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 10.sp,
@@ -172,7 +172,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                               ),
                               SizedBox(height: 4.h),
                               Text(
-                                "USD / DAILY PAYOUT",
+                                " / ${"activate_my_status_3".tr}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 10.sp,
@@ -195,7 +195,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                                         height: 30.h,
                                       ),
                                       Text(
-                                        "Instant",
+                                        "activate_my_status_4".tr,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 10.sp,
@@ -213,7 +213,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                                         height: 30.h,
                                       ),
                                       Text(
-                                        "No Fees",
+                                        "activate_my_status_5".tr,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 10.sp,
@@ -231,7 +231,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                                         height: 30.h,
                                       ),
                                       Text(
-                                        "Daily",
+                                        "activate_my_status_6".tr,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 10.sp,
@@ -258,7 +258,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "ACTIVATE DAILY \$1,000",
+                                        "${"activate_my_status_7".tr} ${SSCountry.curGuojiaFuhao()}1,000",
                                         style: TextStyle(
                                           color: Color(0xffffffff),
                                           fontSize: 14.sp,
@@ -272,7 +272,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                               SizedBox(height: 10.h),
                               Center(
                                 child: Text(
-                                  "By activating, you agree to the VIP Terms & Conditions.",
+                                  "${"activate_my_status_8".tr}.",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 10.sp,
@@ -335,7 +335,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
               SizedBox(width: 12.w),
 
               Text(
-                "CURRENT LEVEL",
+                "activate_my_status_9".tr,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 10.sp,
@@ -366,7 +366,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
                   border: Border.all(color: Color(0xffF3ECC2), width: 1.w),
                 ),
                 child: Text(
-                  "MAX LEVEL ${MainController.maxLevel}",
+                  "${"activate_my_status_10".tr} ${MainController.maxLevel}",
                   style: TextStyle(
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w900,
@@ -391,7 +391,7 @@ class _ActivateMyStatusWidgetState extends State<ActivateMyStatusWidget> {
           SizedBox(height: 10.h),
           Center(
             child: Text(
-              "You are 9 levels away from Diamond Status",
+              "activate_my_status_11".tr,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 10.sp,

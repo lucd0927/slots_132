@@ -122,7 +122,7 @@ class _LuckySlotsWidgetState extends State<LuckySlotsWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SSTxtBorder(
-                                text: "WIN UP TO MAX ",
+                                text: "lucky_slots_1".tr,
                                 fontSize: 24.sp,
                                 fontColor: Color(0xffFFEA00),
                               ),

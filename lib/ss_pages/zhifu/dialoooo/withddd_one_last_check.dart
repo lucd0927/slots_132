@@ -106,7 +106,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                         height: 174.h,
                       ),
                       Text(
-                        "One Last Security Check!",
+                        "one_last_1".tr,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 16.sp,
@@ -120,7 +120,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                         child: Text.rich(
                           TextSpan(
                             text:
-                                "To protect your cash out, we need to quickly confirm you're a real player.",
+                                "one_last_2".tr,
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -137,7 +137,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                         child: Text.rich(
                           TextSpan(
                             text:
-                                "This is a one-time check for all big winners to prevent fraud. Thanks for helping keep our community safe!",
+                                "one_last_3".tr,
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -190,7 +190,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "YOUR FINAL STEP:",
+                                    "one_last_4".tr,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 14.sp,
@@ -200,7 +200,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                                   SizedBox(height: 4.h),
                                   Text.rich(
                                     TextSpan(
-                                      text: "Spin",
+                                      text: "one_last_5".tr,
                                       children: [
                                         TextSpan(
                                           text:
@@ -211,7 +211,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                                         ),
                                         TextSpan(
                                           text:
-                                              "times to complete the human verification.",
+                                              "one_last_6".tr,
                                           style: TextStyle(
                                             color: Color(0xff242731),
                                           ),
@@ -246,7 +246,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                           ),
                           child: Center(
                             child: Text(
-                              "Start Verification",
+                              "one_last_7".tr,
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -258,7 +258,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        "Your reward is pending verification...",
+                        "one_last_8".tr,
                         style: TextStyle(
                           color: Color(0xff7E8E9B),
                           fontSize: 12.sp,

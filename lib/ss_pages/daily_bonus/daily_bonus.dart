@@ -331,9 +331,9 @@ class _DailyBonusState extends State<DailyBonus> {
             onClose();
           });
         } else {
-          String txt = "Your next reward is available tomorrow.";
+          String txt = "daily_bouns_1".tr;
           if (showShimmer) {
-            txt = "Reward already claimed today.";
+            txt = "daily_bouns_2".tr;
           }
           ssTushi(text: txt);
         }
@@ -355,9 +355,9 @@ class _DailyBonusState extends State<DailyBonus> {
             onClose();
           });
         } else {
-          String txt = "Your next reward is available tomorrow.";
+          String txt = "daily_bouns_1".tr;
           if ((continueDays == 7 && showCheckOk)) {
-            txt = "Reward already claimed today.";
+            txt = "daily_bouns_2".tr;
           }
           ssTushi(text: txt);
         }
@@ -409,7 +409,7 @@ class _DailyBonusState extends State<DailyBonus> {
                           height: 40.h,
                         ),
                         SSTxtGraBorder(
-                          text: "+\$150",
+                          text: "+${SSCountry.curGuojiaFuhao()}150",
                           fontFamily: FontFamily.ghostKidAOEPro,
                           gradient: LinearGradient(
                             end: Alignment.bottomCenter,
@@ -568,7 +568,7 @@ class _DailyBonusState extends State<DailyBonus> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SSTxtBorder(
-                                text: "Reward\nDays",
+                                text: "daily_bouns_3".tr,
                                 foreground: Color(0xff380F0F),
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w500,

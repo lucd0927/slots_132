@@ -106,7 +106,7 @@ class _RankWidgetState extends State<RankWidget> {
                       RankTopWidget(),
                       SizedBox(height: 20.h),
                       Text(
-                        "Payout Sent!",
+                        "rank_1".tr,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 16.sp,
@@ -118,13 +118,13 @@ class _RankWidgetState extends State<RankWidget> {
                         padding: EdgeInsets.symmetric(horizontal: 40.w),
                         child: Text.rich(
                           TextSpan(
-                            text: "We've successfully sent your",
+                            text: "rank_2".tr,
                             children: [
                               TextSpan(
-                                text: "\$1000",
+                                text: "rank_3".tr,
                                 style: TextStyle(color: Color(0xff20B029)),
                               ),
-                              TextSpan(text: "to your bank."),
+                              TextSpan(text: "rank_4".tr),
                             ],
                           ),
                           style: TextStyle(
@@ -140,7 +140,7 @@ class _RankWidgetState extends State<RankWidget> {
                         child: Text.rich(
                           TextSpan(
                             text:
-                                "However, the network is currently experiencing high traffic.",
+                                "rank_5".tr,
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -167,7 +167,7 @@ class _RankWidgetState extends State<RankWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "YOUR POSITION IN QUEUE",
+                              "rank_6".tr,
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 14.sp,
@@ -214,7 +214,7 @@ class _RankWidgetState extends State<RankWidget> {
                             ),
                             SizedBox(height: 8.h),
                             Text.rich(
-                              TextSpan(text: "Estimated Wait: 2-3 Days"),
+                              TextSpan(text: "rank_7".tr),
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12.sp,
@@ -240,7 +240,7 @@ class _RankWidgetState extends State<RankWidget> {
                             children: [
                               Center(
                                 child: Text(
-                                  "Boost to #1 Instantly!",
+                                  "rank_8".tr,
                                   style: TextStyle(
                                     color: Color(0xffffffff),
                                     fontSize: 14.sp,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -49,7 +50,7 @@ class _StarGiftState extends State<StarGift> {
                   child: Column(
                     children: [
                       SSTxtGraBorder(
-                        text: "Casino Royale",
+                        text: "star_gift_1".tr,
                         fontSize: 30.sp,
                         fontWeight: FontWeight.w700,
                         strokeColor: Color(0xffCC1420),
@@ -68,7 +69,7 @@ class _StarGiftState extends State<StarGift> {
                             ),
                             Center(
                               child: SSTxtGraBorder(
-                                text: "Endless Treasure",
+                                text: "star_gift_2".tr,
                                 fontSize: 16.sp,
                                 fontFamily: FontFamily.rubik,
                                 fontWeight: FontWeight.w700,

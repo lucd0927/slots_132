@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
@@ -270,7 +271,7 @@ class _SSMapViewState extends State<SSMapView> {
               top: 0,
               bottom: 5.h,
               child: Center(
-                child: SSTxtBorder(text: "Collect", fontSize: 14.sp),
+                child: SSTxtBorder(text: "map_view_1".tr, fontSize: 14.sp),
               ),
             ),
           ],
@@ -445,7 +446,7 @@ class _ItemWidgetState extends State<ItemWidget> {
       bool hasClick11 = sfIndexClick(widget.index);
       if (hasClick11) {
         ssLogggg("==onClick==hasUnlock:$hasUnlock=hasClick:$hasClick11");
-        ssTushi(text: "you had collected");
+        ssTushi(text: "map_view_2".tr);
         return;
       }
       if(mounted){
@@ -484,7 +485,7 @@ class _ItemWidgetState extends State<ItemWidget> {
       }
 
     } else {
-      ssTushi(text: "Please collect star");
+      ssTushi(text: "map_view_3".tr);
     }
   }
 
@@ -531,7 +532,7 @@ class _ItemWidgetState extends State<ItemWidget> {
               top: 0,
               bottom: 5.h,
               child: Center(
-                child: SSTxtBorder(text: "Collect", fontSize: 14.sp),
+                child: SSTxtBorder(text: "map_view_1".tr, fontSize: 14.sp),
               ),
             ),
           ],

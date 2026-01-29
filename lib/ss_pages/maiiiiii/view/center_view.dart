@@ -274,7 +274,7 @@ class CenterView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SSTxtGraBorder(
-                      text: "COLLECT ",
+                      text: "mian_4".tr,
                       fontSize: 20.sp,
                       strokeColor: Color(0xffD83507),
                     ),
@@ -306,7 +306,7 @@ class CenterView extends StatelessWidget {
                       ),
                     ),
                     SSTxtGraBorder(
-                      text: "TO",
+                      text: "mian_5".tr,
                       fontSize: 20.sp,
                       strokeColor: Color(0xffD83507),
                     ),
@@ -323,7 +323,7 @@ class CenterView extends StatelessWidget {
                       minS: 0.9,
                       maxS: 1.2,
                       child: SSTxtGraBorder(
-                        text: "WIN",
+                        text: "mian_6".tr,
                         fontSize: 20.sp,
                         strokeColor: Color(0xffD83507),
                       ),
@@ -560,7 +560,7 @@ class CenterView extends StatelessWidget {
                       bottom: 4.h,
                       child: Center(
                         child: SSTxtGraBorder(
-                          text: "Daily\nRewards",
+                          text: "mian_7".tr,
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           strokeColor: Color(0xff30120A),

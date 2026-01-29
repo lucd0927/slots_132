@@ -117,7 +117,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
                           children: [
                             SizedBox(height: 16.h),
                             Text(
-                              "Sending Your \$1000 Payout...",
+                              "${"jindu_1".tr} ${SSCountry.curGuojiaFuhao()} ${"Payout".tr} 1000 ...",
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 16.sp,
@@ -129,7 +129,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
 
                             SizedBox(height: 10.h),
                             Text(
-                              "Verifying transaction... Please wait.",
+                              "jindu_2".tr,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12.sp,
@@ -193,7 +193,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Out app",
+                          "jindu_3".tr,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xff596775),
@@ -261,7 +261,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "The bank is reviewing. Please wait.",
+                                  "jindu_4".tr,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     color: Color(0xff000000),
@@ -307,7 +307,7 @@ class _WithdddJindu1State extends State<WithdddJindu1> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Withdrawal Credited \$1000",
+                          "${"jindu_5".tr} ${SSCountry.curGuojiaFuhao()}1000",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xff596775),

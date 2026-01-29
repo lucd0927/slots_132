@@ -353,7 +353,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               if (showFreeSpin)
                 GestureDetector(
                   onTap: (){
-                    ssTushi(text: "Free Spin is in progress. Please wait until it’s over.");
+                    ssTushi(text: "mian_10".tr);
                   },
                   child: Container(
                     width: ScreenUtil().screenWidth,

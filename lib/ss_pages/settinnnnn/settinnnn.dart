@@ -105,15 +105,16 @@ class _SettingWidgetState extends State<SettingWidget> {
                       children: [
                         SizedBox(height: 40.h),
                         SSTxtGraBorder(
-                          text: "Settings",
+                          text: "setting_1".tr,
                           fontSize: 32.sp,
                           strokeColor: Color(0xffF83A00),
+                          height: 1.2,
                         ),
                         SizedBox(height: 20.h),
                         _audddWidget(),
                         SizedBox(height: 20.h),
                         _btnWidgetItem(
-                          txt: "PAYTABLE",
+                          txt: "setting_2".tr,
                           onTap: () {
                             onClose();
                             SSEventReporttttt.setting_page_paytable();
@@ -122,7 +123,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         ),
                         SizedBox(height: 10.h),
                         _btnWidgetItem(
-                          txt: "Privacy Policy",
+                          txt: "setting_3".tr,
                           onTap: () {
                             Uri uri = Uri.parse(
                               "https://clausslotswealth.com/privacy.html",
@@ -141,7 +142,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                               Get.toNamed(SSRouttttt.aichat);
                             },
                             child: Text(
-                              "contact us",
+                              "setting_4".tr,
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 16.sp,
@@ -240,14 +241,14 @@ class _SettingWidgetState extends State<SettingWidget> {
       children: [
         _audioWidgetItem(
           img: Assets.img.settiAudio.path,
-          txt: "Sound",
+          txt: "setting_5".tr,
           onChange: _onBgMusic,
           positive: positive2,
         ),
         SizedBox(width: 20.w),
         _audioWidgetItem(
           img: Assets.img.settiMusic.path,
-          txt: "Music",
+          txt: "setting_6".tr,
           onChange: _onBtnMusic,
           positive: positive,
         ),

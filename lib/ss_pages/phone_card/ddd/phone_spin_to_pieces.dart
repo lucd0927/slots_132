@@ -116,7 +116,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                           children: [
                             SizedBox(height: 20.h),
                             SSTxtGraBorder(
-                              text: "Piece",
+                              text: "input_name_1".tr,
                               fontWeight: FontWeight.w700,
                               fontSize: 48.sp,
                               fontFamily: FontFamily.alkatra,
@@ -124,7 +124,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                               strokeColor: Color(0xffCC1420),
                             ),
                             SSTxtGraBorder(
-                              text: "Collected!",
+                              text: "${"input_name_2".tr}!",
                               fontWeight: FontWeight.w700,
                               fontSize: 48.sp,
                               fontFamily: FontFamily.alkatra,
@@ -135,7 +135,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 60.w),
                               child: SSTxtGraBorder(
-                                text: "Only (  2  ) more to go!",
+                                text: "${"input_name_7".tr}!",
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20.sp,
                                 fontFamily: FontFamily.alkatra,
@@ -191,7 +191,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
               top: 0,
               child: Center(
                 child: SSTxtBorder(
-                  text: "Spin For More Pieces!",
+                  text: "${"input_name_8".tr}!",
                   fontSize: 18.sp,
                   fontFamily: FontFamily.interBold,
                   fontWeight: FontWeight.w800,
@@ -229,7 +229,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                       children: [
                         SizedBox(height: 16.h),
                         SSTxtGraBorder(
-                          text: "Your Nex Press",
+                          text: "spin_to_pieces_1".tr,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                           fontFamily: FontFamily.fraunces,
@@ -237,7 +237,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                         ),
                         SizedBox(height: 4.h),
                         SSTxtBorder(
-                          text: "your next pretty piece",
+                          text: "spin_to_pieces_2".tr,
                           fontSize: 8.sp,
                           fontWeight: FontWeight.w500,
                           fontFamily: FontFamily.rubik,
@@ -323,7 +323,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                       children: [
                         SizedBox(height: 16.h),
                         SSTxtGraBorder(
-                          text: "Find Secret",
+                          text: "spin_to_pieces_3".tr,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                           fontFamily: FontFamily.fraunces,
@@ -331,7 +331,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                         ),
                         SizedBox(height: 4.h),
                         SSTxtBorder(
-                          text: "Find a of the map",
+                          text: "spin_to_pieces_4".tr,
                           fontSize: 8.sp,
                           fontWeight: FontWeight.w500,
                           fontFamily: FontFamily.rubik,
@@ -383,7 +383,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                             ),
                             Center(
                               child: SSTxtGraBorder(
-                                text: "Our ith map",
+                                text: "spin_to_pieces_5".tr,
                                 fontFamily: FontFamily.sansitaOne,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12.sp,

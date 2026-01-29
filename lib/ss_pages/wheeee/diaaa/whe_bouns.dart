@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
@@ -131,7 +132,7 @@ class _WheBounsState extends State<WheBouns> {
                                         ),
                                       ),
                                       SSTxtBorder(
-                                        text: "Wheel Bonus",
+                                        text: "wheel_bonus_1".tr,
                                         fontSize: 14.sp,
                                         strokeWidth: 2.w,
                                         foreground: Color(0xff331C74),
@@ -273,7 +274,7 @@ class _WheBounsState extends State<WheBouns> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SSTxtBorder(
-                      text: "Claim",
+                      text: "claim_1".tr,
                       fontWeight: FontWeight.w700,
                       fontSize: 24.sp,
                       fontFamily: FontFamily.ghostKidAOEPro,

@@ -106,7 +106,7 @@ class _WithddOnelastcheckJindu1WidgetState
                         height: 83.h,
                       ),
                       Text(
-                        "Payout Successful!",
+                        "one_last_jindu_1".tr,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 16.sp,
@@ -115,7 +115,7 @@ class _WithddOnelastcheckJindu1WidgetState
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        "Funds successfully sent to PayPal.",
+                        "one_last_jindu_2".tr,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 10.sp,
@@ -176,7 +176,7 @@ class _WithddOnelastcheckJindu1WidgetState
                                     child: Row(
                                       children: [
                                         Text(
-                                          "PAID",
+                                          "one_last_jindu_3".tr,
                                           style: TextStyle(
                                             color: Color(0xff5FCE85),
                                             fontWeight: FontWeight.w900,
@@ -234,7 +234,7 @@ class _WithddOnelastcheckJindu1WidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Next Milestone",
+                                      "one_last_jindu_4".tr,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 8.sp,
@@ -242,7 +242,7 @@ class _WithddOnelastcheckJindu1WidgetState
                                       ),
                                     ),
                                     Text(
-                                      "Become a VIP",
+                                      "one_last_jindu_5".tr,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 12.sp,
@@ -262,7 +262,7 @@ class _WithddOnelastcheckJindu1WidgetState
                                     borderRadius: BorderRadius.circular(4.w),
                                   ),
                                   child: Text(
-                                    "Earn \$1,000/Day",
+                                    "one_last_jindu_6",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w900,
                                       fontSize: 10.sp,
@@ -280,7 +280,7 @@ class _WithddOnelastcheckJindu1WidgetState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Progress",
+                                      "one_last_jindu_7".tr,
                                       style: TextStyle(
                                         fontSize: 8.sp,
                                         fontWeight: FontWeight.w600,
@@ -324,7 +324,7 @@ class _WithddOnelastcheckJindu1WidgetState
                           ),
                           child: Center(
                             child: Text(
-                              "Spin to Unlock VIP",
+                              "one_last_jindu_8".tr,
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -339,7 +339,7 @@ class _WithddOnelastcheckJindu1WidgetState
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "( Automatic redirect in 5s... )",
+                            "one_last_jindu_9".tr,
                             style: TextStyle(
                               color: Color(0xff7E8E9B),
                               fontSize: 14.sp,

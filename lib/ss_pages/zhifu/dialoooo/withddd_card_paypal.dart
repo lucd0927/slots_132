@@ -140,7 +140,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       SizedBox(height: 12.h),
 
                       Text(
-                        "Withdraw funds",
+                        "card_pay_1".tr,
                         style: TextStyle(
                           color: Color(0xff252525),
                           fontSize: 20.sp,
@@ -151,7 +151,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Text(
-                          "Transfer funds instantly to your PayPal account.",
+                          "card_pay_2".tr,
                           style: TextStyle(
                             color: Color(0xff7E8E9B),
                             fontSize: 14.sp,
@@ -176,7 +176,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                         child: Row(
                           children: [
                             Text(
-                              "Withdrawal Amount",
+                              "card_pay_3".tr,
                               style: TextStyle(
                                 color: Color(0xff7E8E9B),
                                 fontSize: 14.sp,
@@ -213,7 +213,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                           ),
                           child: Center(
                             child: Text(
-                              "Withdraw ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
+                              "${"withdraw".tr} ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -230,7 +230,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                           GestureDetector(
                             onTap: onClose,
                             child: Text(
-                              "Cancel",
+                              "Cancel".tr,
                               style: TextStyle(
                                 color: Color(0xff7E8E9B),
                                 fontSize: 14.sp,
@@ -260,7 +260,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
   void onWithdrawwww() {
 
     if(name.isEmpty){
-      ssTushi(text: "Please enter a valid card number.");
+      ssTushi(text: "card_cashapp_4".tr);
       return;
     }
 
@@ -293,7 +293,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
             color: Color(0xff000000),
           ),
           decoration: InputDecoration.collapsed(
-            hintText: "PayPal email or mobile number",
+            hintText: "card_pay_4".tr,
             hintStyle: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,

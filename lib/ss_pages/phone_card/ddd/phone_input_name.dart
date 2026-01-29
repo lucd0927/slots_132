@@ -137,7 +137,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SSTxtGraBorder(
-                                text: "Piece",
+                                text: "input_name_1".tr,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 48.sp,
                                 fontFamily: FontFamily.alkatra,
@@ -145,7 +145,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
                                 strokeColor: Color(0xffCC1420),
                               ),
                               SSTxtGraBorder(
-                                text: "Collected!",
+                                text: "${"input_name_2".tr}!",
                                 fontWeight: FontWeight.w700,
                                 fontSize: 48.sp,
                                 fontFamily: FontFamily.alkatra,
@@ -156,7 +156,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 60.w),
                                 child: SSTxtGraBorder(
-                                  text: "The iPhone 17 Pro Max is yours.",
+                                  text: "input_name_3".tr,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14.sp,
                                   fontFamily: FontFamily.alkatra,
@@ -231,7 +231,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
                                 padding: EdgeInsets.symmetric(horizontal: 60.w),
                                 child: SSTxtBorder(
                                   text:
-                                      "let's put your name on it! Type your name below to make this iPhone truly yours.",
+                                      "input_name_4".tr,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12.sp,
                                   height: 1.3,
@@ -298,7 +298,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
             ),
             Center(
               child: SSTxtBorder(
-                text: "Claim My New Phone",
+                text: "input_name_5".tr,
                 fontSize: 18.sp,
                 fontFamily: FontFamily.ghostKidAOEPro,
                 fontWeight: FontWeight.w800,
@@ -334,7 +334,7 @@ class _PhoneInputNameState extends State<PhoneInputName>
             color: Color(0xffffffff),
           ),
           decoration: InputDecoration.collapsed(
-            hintText: "Enter Your Name or Nickname",
+            hintText: "input_name_6".tr,
             hintStyle: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,

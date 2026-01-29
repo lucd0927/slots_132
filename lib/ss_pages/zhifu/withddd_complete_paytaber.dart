@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -70,7 +71,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
-                          "Future Earnings",
+                          "Future Earnings".tr,
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w700,
@@ -81,7 +82,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                       ),
                       SizedBox(height: 10.h),
                       SSTxtGraBorder(
-                        text: "\$1,000/day",
+                        text: "one_last_jindu2_3".tr,
                         fontSize: 48.sp,
                         gradient: LinearGradient(
                           colors: [Color(0xffFFFFFF), Color(0xffFFD900)],
@@ -91,7 +92,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                       ),
                       SizedBox(height: 10.h),
                       Text(
-                        "Unlock Partner Status to guarantee this income.",
+                        "paytaber_1".tr,
                         style: TextStyle(
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w700,
@@ -119,7 +120,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                       children: [
                         SizedBox(height: 40.h),
                         Text(
-                          "YOUR TRIAL:",
+                          "paytaber_2".tr,
                           style: TextStyle(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.w700,
@@ -140,7 +141,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "REACH LEVEL",
+                                  "paytaber_3".tr,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 14.sp,
@@ -192,7 +193,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                               ),
                               Spacer(),
                               Text(
-                                "Target:100",
+                                "paytaber_4".tr,
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w600,
@@ -220,7 +221,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                           padding: EdgeInsets.symmetric(horizontal: 0.w),
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "You are 45% of the way there. Keep going!",
+                            "paytaber_5".tr,
                             style: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
@@ -245,7 +246,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                             ),
                             child: Center(
                               child: Text(
-                                "Claim 24h of Double XP!",
+                                "paytaber_6".tr,
                                 style: TextStyle(
                                   color: Color(0xffffffff),
                                   fontSize: 14.sp,

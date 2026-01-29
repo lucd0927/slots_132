@@ -140,7 +140,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       SizedBox(height: 12.h),
 
                       Text(
-                        "Transfer to Cash App",
+                        "card_cashapp_1".tr,
                         style: TextStyle(
                           color: Color(0xff252525),
                           fontSize: 20.sp,
@@ -151,7 +151,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Text(
-                          "Instant deposit. No fees.",
+                          "card_cashapp_2".tr,
                           style: TextStyle(
                             color: Color(0xff7E8E9B),
                             fontSize: 14.sp,
@@ -176,7 +176,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                         child: Row(
                           children: [
                             Text(
-                              "TOTAL",
+                              "card_cashapp_3".tr,
                               style: TextStyle(
                                 color: Color(0xff7E8E9B),
                                 fontSize: 14.sp,
@@ -213,7 +213,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                           ),
                           child: Center(
                             child: Text(
-                              "Cash out ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
+                              "${"card_bank_2".tr} ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 14.sp,
@@ -230,7 +230,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                           Icon(Icons.lock_outlined,color: Color(0xff7E8E9B),size: 20.h,),
                           SizedBox(width: 2.w,),
                           Text(
-                            "Encrypted & Secure",
+                            "card_bank_3".tr,
                             style: TextStyle(
                               color: Color(0xff7E8E9B),
                               fontSize: 14.sp,
@@ -266,7 +266,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
   void onWithdrawwww() {
 
     if(name.isEmpty){
-      ssTushi(text: "Please enter a valid card number.");
+      ssTushi(text: "${"card_cashapp_4".tr}.");
       return;
     }
 
@@ -299,7 +299,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
             color: Color(0xff000000),
           ),
           decoration: InputDecoration.collapsed(
-            hintText: "\$Cashtag,phone,or email",
+            hintText: "card_cashapp_5".tr,
             hintStyle: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,

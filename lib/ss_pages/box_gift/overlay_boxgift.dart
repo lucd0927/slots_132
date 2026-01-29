@@ -232,7 +232,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
                           ),
                           SizedBox(width: 8.w),
                           SSTxtGraBorder(
-                            text: "The Elves Are at Work!",
+                            text: "boxgift_1".tr,
                             fontWeight: FontWeight.w500,
                             fontSize: 16.sp,
                             strokeColor: Color(0xff30120A),
@@ -287,7 +287,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: SSTxtGraBorder(
-              text: "Your next gift from the workshop is being prepared.",
+              text: "boxgift_2".tr,
               strokeWidth: 1.w,
               strokeColor: Color(0xff30120A),
               fontSize: 20.sp,
@@ -400,7 +400,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
                       Obx(() {
                         return SSTxtGraBorder(
                           text:
-                              "Ready in: ${MainController.to.textBoxGiftTime.value}",
+                              "${"boxgift_3".tr}: ${MainController.to.textBoxGiftTime.value}",
                           strokeWidth: 1.w,
                           strokeColor: Color(0xff30120A),
                           fontSize: 20.sp,
@@ -454,7 +454,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             children: [
               SizedBox(height: 100.h),
               SSTxtGraBorder(
-                text: "Your Elf Gift Has Arrived!",
+                text: "boxgift_4".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
                 strokeColor: Color(0xff30120A),
@@ -469,7 +469,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               ),
               SizedBox(height: 20.h),
               SSTxtGraBorder(
-                text: "Open Your Gift!",
+                text: "boxgift_5".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
                 strokeColor: Color(0xff30120A),
@@ -500,7 +500,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
             children: [
               SizedBox(height: 100.h),
               SSTxtGraBorder(
-                text: "Your Elf Gift Has Arrived!",
+                text: "boxgift_4".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
                 strokeColor: Color(0xff30120A),
@@ -513,7 +513,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
               ),
               SizedBox(height: 20.h),
               SSTxtGraBorder(
-                text: "Open Your Gift!",
+                text: "boxgift_5".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
                 strokeColor: Color(0xff30120A),

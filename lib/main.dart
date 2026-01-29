@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/i18nnn/translation_i18.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
@@ -98,10 +100,13 @@ class _MyAppState extends State<MyApp> {
             },
             theme: ThemeData(fontFamily: FontFamily.rubik),
             getPages: SSRouttttt.pages,
-
-            // translations: FanyiTools(),
+            locale: ui.window.locale,
+            translations: TranslationI18(),
             // 你的翻译
-            // fallbackLocale: Locale('en', 'US'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+            // fallbackLocale: Locale('id', 'ID'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+            // fallbackLocale: Locale('ru', 'RU'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+            fallbackLocale: Locale('en', 'US'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+            // fallbackLocale: Locale('pt', 'BR'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
           ),
         ),
       ),

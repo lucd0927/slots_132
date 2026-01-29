@@ -179,7 +179,7 @@ class _ControlledWheelState extends State<ControlledWheel>
                               bottom: 0,
                               child: Center(
                                 child: SSTxtGraBorder(
-                                  text: "SPIN",
+                                  text: "spin".tr,
                                   strokeColor: Color(0xffCC1420),
                                   strokeWidth: 1.w,
                                   fontSize: 24.sp,

@@ -117,7 +117,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                     ),
                                     SizedBox(width: 4.w),
                                     Text(
-                                      "ACTION REQUIRED",
+                                      "buzu_1".tr,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 14.sp,
@@ -130,7 +130,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
 
                               SizedBox(height: 8.h),
                               Text(
-                                "SO CLOSE!",
+                                "buzu_2".tr,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16.sp,
@@ -143,15 +143,15 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                                 child: Text.rich(
                                   TextSpan(
-                                    text: "You are strictly",
+                                    text: "buzu_3".tr,
                                     children: [
                                       TextSpan(
-                                        text: "  one step away  ",
+                                        text: "  ${"buzu_4".tr}  ",
                                         style: TextStyle(
                                           color: Color(0xff000000),
                                         ),
                                       ),
-                                      TextSpan(text: "from your payout."),
+                                      TextSpan(text: "${"buzu_5".tr}."),
                                     ],
                                   ),
                                   style: TextStyle(
@@ -205,7 +205,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            "GUARANTEED PAYOUT",
+                                            "buzu_6".tr,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w700,
                                               fontSize: 14.sp,
@@ -215,11 +215,11 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                           SizedBox(height: 4.h),
                                           Text.rich(
                                             TextSpan(
-                                              text: "System algorithm guarantees win within ",
+                                              text: "${"buzu_7".tr} ",
                                               children: [
                                                 TextSpan(
                                                   text:
-                                                  " 20 spins.",
+                                                  " ${"buzu_8".tr}.",
                                                   style: TextStyle(
                                                     color: Color(0xff164CFF),
                                                   ),
@@ -258,7 +258,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                     children: [
                                       Center(
                                         child: Text(
-                                          "Spin for Your \$1,000",
+                                          "${"buzu_9".tr} ${SSCountry.curGuojiaFuhao()}1,000",
                                           style: TextStyle(
                                             color: Color(0xffffffff),
                                             fontSize: 14.sp,
@@ -288,7 +288,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                 children: [
 
                                   Text(
-                                    "Tap above to use your guaranteed spins",
+                                    "buzu_10".tr,
                                     style: TextStyle(
                                       color: Color(0xff7E8E9B),
                                       fontSize: 12.sp,
@@ -348,7 +348,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "CURRENT BALANCE",
+                "buzu_11".tr,
                 style: TextStyle(
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w700,
@@ -357,7 +357,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
               ),
 
               Text(
-                "TARGET GOAL",
+                "buzu_12".tr,
                 style: TextStyle(
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w700,

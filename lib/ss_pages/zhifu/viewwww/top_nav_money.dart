@@ -39,7 +39,7 @@ class _TopNavMoneyState extends State<TopNavMoney> {
                     ),
                     SizedBox(width: 8.w),
                     Text(
-                      'Money',
+                      'Money'.tr,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.sp,

@@ -154,7 +154,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
                       children: [
                         SizedBox(height: 12.h),
                         Text(
-                          "Instant Transfer",
+                          "card_bank_1".tr,
                           style: TextStyle(
                             color: Color(0xff252525),
                             fontSize: 20.sp,
@@ -187,7 +187,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
                             ),
                             child: Center(
                               child: Text(
-                                "Cash out ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
+                                "${"card_bank_2".tr} ${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(2)}",
                                 style: TextStyle(
                                   color: Color(0xffffffff),
                                   fontSize: 14.sp,
@@ -208,7 +208,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
                             ),
                             SizedBox(width: 2.w),
                             Text(
-                              "Encrypted & Secure",
+                              "card_bank_3".tr,
                               style: TextStyle(
                                 color: Color(0xff7E8E9B),
                                 fontSize: 14.sp,
@@ -247,7 +247,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
   }
   void onWithdrawwww() {
     if (!isNumeric(cardNumber) || cvc.isEmpty || year.isEmpty || zipcode.isEmpty) {
-      ssTushi(text: "Please complete all required information.");
+      ssTushi(text: "${"card_bank_4".tr}.");
       return;
     }
 
@@ -261,7 +261,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "CARD NUMBER",
+          "card_bank_5".tr,
           style: TextStyle(
             color: Color(0xff252525),
             fontSize: 10.sp,
@@ -325,7 +325,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "EXPIRY",
+                "card_bank_6".tr,
                 style: TextStyle(
                   color: Color(0xff252525),
                   fontSize: 10.sp,
@@ -441,7 +441,7 @@ class _WithddBankWidgetState extends State<_WithddBankWidget>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "BILLING ZIP CODE",
+          "card_bank_7".tr,
           style: TextStyle(
             color: Color(0xff252525),
             fontSize: 10.sp,

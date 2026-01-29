@@ -87,7 +87,7 @@ class BottomView extends StatelessWidget {
     ssLogggg(
       "====jishuWidget=money:$money showWinLines:$showWinLines showNum:$showNum",
     );
-    String txt = "GOOD LUCK";
+    String txt = "mian_1".tr;
     if (money <= 0) {
       money = 0;
     }
@@ -338,7 +338,7 @@ class BottomView extends StatelessWidget {
                             Positioned.fill(
                               child: Center(
                                 child: SSTxtBorder(
-                                  text: "MAX\nBET",
+                                  text: "mian_2".tr,
                                   fontSize: 10.w,
                                   fontWeight: FontWeight.w700,
                                   fontColor: Colors.white,
@@ -362,7 +362,7 @@ class BottomView extends StatelessWidget {
                           Positioned.fill(
                             child: Center(
                               child: SSTxtBorder(
-                                text: "MAX\nBET",
+                                text: "mian_2".tr,
                                 fontSize: 10.w,
                                 fontWeight: FontWeight.w700,
                                 fontColor: Colors.white,
@@ -457,7 +457,7 @@ class BottomView extends StatelessWidget {
                         ),
 
                         AutoSizeText(
-                          "HOLD FOR AUTO",
+                          "mian_3".tr,
                           style: TextStyle(
                             fontSize: 10.sp,
                             fontFamily: FontFamily.ghostKidAOEPro,

@@ -1,6 +1,7 @@
 // dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:slots_132/gen/assets.gen.dart';
@@ -76,7 +77,7 @@ class _HistoryyyyState extends State<Historyyyy> {
                     ),
                     SizedBox(width: 8.w),
                     Text(
-                      'Transaction History',
+                      'history_1'.tr,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18.sp,
@@ -101,7 +102,7 @@ class _HistoryyyyState extends State<Historyyyy> {
   _item(GiftRewardModel giftModel) {
     String leftImg = Assets.img.moneyGift.path;
 
-    String title = "Money";
+    String title = "Money".tr;
     int dtime = giftModel.time ?? 0;
     double money = giftModel.num;
     bool hasAdd = money > 0;
@@ -111,12 +112,12 @@ class _HistoryyyyState extends State<Historyyyy> {
     String rightTxt = "";
     if (giftRewardModel == EnumGiftRewardModel.cash) {
       leftImg = Assets.img.moneyGift.path;
-      title = "Money";
+      title = "Money".tr;
       rightTxt =
           "$symbol ${SSCountry.curGuojiaFuhao()}${money.toStringAsFixed(2)}";
     } else if (giftRewardModel == EnumGiftRewardModel.xp) {
       leftImg = Assets.img.mainTopXp.path;
-      title = "Exp";
+      title = "Exp".tr;
       rightTxt = "+ ${money.toStringAsFixed(0)}";
     }
 

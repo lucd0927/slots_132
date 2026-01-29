@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/country.dart';
@@ -68,7 +69,7 @@ class _WheeeBottomState extends State<WheeeBottom> {
                             bottom: -5.h,
                             child: Center(
                               child: SSTxtGraBorder(
-                                text: "STREAK",
+                                text: "wheee_bottom_1".tr,
                                 fontSize: 12.sp,
                                 strokeColor: Color(0xffCC1420),
                               ),
@@ -132,7 +133,7 @@ class _WheeeBottomState extends State<WheeeBottom> {
     String txtMoney =
         "x ${money}";
     // int today = 1;
-    String txtDay = "DAY $today";
+    String txtDay = "${"exp_4".tr.toUpperCase()} $today";
     if (today == 7) {
       icon = Assets.img.wheelTime3.path;
       topColor = Color(0xffFFffff);

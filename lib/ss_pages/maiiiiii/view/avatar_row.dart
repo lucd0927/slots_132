@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
@@ -120,7 +121,7 @@ class _AvatarRowState extends State<AvatarRow> {
       datas.add(data);
     }
     int maxLength = Random().nextInt(8) + 2;
-    String name = "You";
+    String name = "avatar_name_1".tr;
     String avatar = Assets.img.avatar.avatarD.path;
     AvatarModel data = AvatarModel(img: avatar, name: name);
     datas.shuffle();

@@ -148,7 +148,7 @@ class _WheeeeState extends State<Wheeee> {
                 end: Alignment.bottomRight,
               ),
               child: SSTxtBorder(
-                text: "Tap to Spin",
+                text: "wheee_1".tr,
                 fontColor: Color(0xffFFF700),
                 fontSize: 40.sp,
                 foreground: Color(0xffE63737),
@@ -181,7 +181,7 @@ class _WheeeeState extends State<Wheeee> {
                         ),
                         Center(
                           child: SSTxtBorder(
-                            text: "ONE MORE FREE SPIN",
+                            text: "wheee_2".tr,
                             fontColor: Color(0xffFFF700),
                             fontSize: 28.sp,
                             foreground: Color(0xffE63737),

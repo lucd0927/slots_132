@@ -123,7 +123,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                                   top: -10.h,
                                   child: Center(
                                     child: SSTxtGraBorder(
-                                      text: "A Decade of Fun.",
+                                      text: "${"phone_card_1".tr}.",
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xffEEFF00),
@@ -148,7 +148,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                                   top: 28.h,
                                   child: Center(
                                     child: SSTxtGraBorder(
-                                      text: "A Grand Prize for You.",
+                                      text: "${"phone_card_2".tr}.",
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xff00FFDD),
@@ -257,7 +257,7 @@ class _PhoneCardPageState extends State<PhoneCardPage> {
                               children: [
                                 SizedBox(height: 10.h),
                                 SSTxtGraBorder(
-                                  text: "9 pieces = Your phone.",
+                                  text: "${"phone_card_3".tr}.",
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w500,
                                 ),

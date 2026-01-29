@@ -499,10 +499,10 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
           var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
           // hasLiceng3 = true;
           if (hasLiceng3) {
-            if (icon == "Vip partner") {
-              icon = "\$1000 a day";
+            if (icon == "mian_8".tr) {
+              icon = "${SSCountry.curGuojiaFuhao()}1000 ${"mian_9".tr}";
             } else {
-              icon = "Vip partner";
+              icon = "mian_8".tr;
             }
           } else {
             if (paymentMethod == EnumSSPaymentMethod.paypal) {

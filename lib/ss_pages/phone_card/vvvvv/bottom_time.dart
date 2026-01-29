@@ -62,7 +62,7 @@ class _PhoneBottomTimeState extends State<PhoneBottomTime> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SSTxtBorder(
-                            text: "Claim Today’s Piece",
+                            text: "bottom_time_1".tr,
                             fontWeight: FontWeight.w700,
                             fontSize: 20.sp,
                             fontFamily: FontFamily.ghostKidAOEPro,
@@ -107,7 +107,7 @@ class _PhoneBottomTimeState extends State<PhoneBottomTime> {
           ),
           Center(
             child: SSTxtGraBorder(
-              text: "Ready in:  [ ${PhoneCardController.to.toTime()} ]",
+              text: "${"boxgift_3".tr}:  [ ${PhoneCardController.to.toTime()} ]",
               fontWeight: FontWeight.w400,
               fontSize: 16.sp,
               fontFamily: FontFamily.sansitaOne,

@@ -100,7 +100,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                             children: [
                               SizedBox(height: 20.h),
                               Text(
-                                "Wait! We'll Cover It for You!",
+                                "jindu3_1".tr,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16.sp,
@@ -123,7 +123,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                 child: Text.rich(
                                   TextSpan(
                                     text:
-                                        "As a valued player, we've decided to pay your \$10.00 fee as a bonus!",
+                                        "jindu3_2".tr,
                                     children: [
                                       TextSpan(
                                         text: "",
@@ -163,17 +163,17 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                       ),
                                       child: Text.rich(
                                         TextSpan(
-                                          text: "Just complete ",
+                                          text: "${"jindu3_3".tr} ",
                                           children: [
                                             TextSpan(
-                                              text: "one final ",
+                                              text: "${"jindu3_4".tr} ",
                                               style: TextStyle(
                                                 color: Color(0xffFE0707),
                                               ),
                                             ),
                                             TextSpan(
                                               text:
-                                                  "spin session to release your FULL \$1,000.00.",
+                                                  "jindu3_5".tr,
                                             ),
                                           ],
                                         ),
@@ -232,7 +232,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Start Final Spins",
+                                      "jindu3_6".tr,
                                       style: TextStyle(
                                         color: Color(0xffffffff),
                                         fontSize: 14.sp,
