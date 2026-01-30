@@ -327,7 +327,7 @@ class _CommonGetWidgetState extends State<CommonGetWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SSTxtBorder(
-                text: SSABChange.isPackageB()?"Reward earned":"Reward earned",
+                text: SSABChange.isPackageB()?"Reward earned".tr:"Reward earned",
                 fontWeight: FontWeight.w700,
                 fontSize: 20.sp,
                 fontColor: Color(0xffFFFF29),

@@ -205,4 +205,6 @@ const Map<String, String> id_ID = {
   "Get":"Dapatkan",
   "No network currently":"Tidak ada jaringan saat ini",
   "loading_failed2":"Gagal memuat iklan, silakan coba lagi nanti",
+
+  "Reward earned":"Hadiah diperoleh"
 };

@@ -114,7 +114,7 @@ class _HistoryyyyState extends State<Historyyyy> {
       leftImg = Assets.img.moneyGift.path;
       title = "Money".tr;
       rightTxt =
-          "$symbol ${SSCountry.curGuojiaFuhao()}${money.toStringAsFixed(2)}";
+          "$symbol ${SSCountry.curGuojiaFuhao()}${money.toStringAsFixed(!SSCountry.hasUSA()?0:2)}";
     } else if (giftRewardModel == EnumGiftRewardModel.xp) {
       leftImg = Assets.img.mainTopXp.path;
       title = "Exp".tr;
@@ -162,15 +162,20 @@ class _HistoryyyyState extends State<Historyyyy> {
               ),
             ],
           ),
-          const Spacer(),
-          Text(
-            rightTxt,
-            style: TextStyle(
-              color: color,
-              fontWeight: FontWeight.w600,
-              fontSize: 24.sp,
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                rightTxt,
+                style: TextStyle(
+                  color: color,
+                  fontWeight: FontWeight.w600,
+                  fontSize: SSCountry.hasUSA() ? 16.sp : 24.sp,
+                ),
+              ),
             ),
           ),
+
           SizedBox(width: 8.w),
         ],
       ),

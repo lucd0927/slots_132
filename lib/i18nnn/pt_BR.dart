@@ -205,4 +205,7 @@ const Map<String, String> pt_BR = {
   "Get":"Obter",
   "No network currently":"Sem rede no momento",
   "loading_failed2":"Falha ao carregar anúncio, por favor tente mais tarde",
+
+
+  "Reward earned":"Recompensa obtida"
 };

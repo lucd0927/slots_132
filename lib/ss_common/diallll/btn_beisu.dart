@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
@@ -104,7 +105,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
                             bottom: 4.h,
                             child: Center(
                               child: SSTxtBorder(
-                                text: "Claim",
+                                text: "Claim_1".tr,
                                 fontSize: 24.sp,
                                 fontFamily: FontFamily.ghostKidAOEPro,
                                 fontWeight: FontWeight.w700,
@@ -138,7 +139,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
               widget.onBtn2(0.1);
             },
             child: SSTxtBorder(
-              text: "Claim 10%",
+              text: "${"Claim_1".tr} 10%",
               fontSize: 16.sp,
               fontFamily: FontFamily.ghostKidAOEPro,
               fontWeight: FontWeight.w700,

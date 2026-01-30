@@ -423,6 +423,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
   topMoney() {
     double money = MainController.to.curMonnnn.value;
     // money = 30510.1;
+
     String suffix = "";
     if (money >= 1000000) {
       money = money / 1000000;
@@ -431,6 +432,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
       money = money / 1000;
       suffix = "k";
     }
+    ssLogggg("======money:$money suffix:$suffix");
     return GestureDetector(
       onTap: onWithddd,
       child: Container(
@@ -453,7 +455,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
         child: Center(
           child: SSAniiiiCount(
             duration: Duration(milliseconds: 800),
-            fractionDigits: 2,
+            fractionDigits: SSCountry.hasUSA()?2:1,
             // wholeDigits: 2,
             prefix: SSCountry.curGuojiaFuhao(),
             suffix: suffix,
