@@ -85,7 +85,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
               children: [
                 Container(
                   width: 324.w,
-                  height: 388.h,
+                  height: !SSCountry.hasUSA()?440.h:388.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(12.h),
@@ -106,6 +106,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                   fontSize: 16.sp,
                                   color: Color(0xff000000),
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                               SizedBox(height: 20.h),
 
@@ -145,7 +146,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                               SizedBox(height: 10.h),
                               Container(
                                 width: 290.w,
-                                height: 86.h,
+                                height: !SSCountry.hasUSA()?100.h:86.h,
                                 decoration: BoxDecoration(
                                   color: Color(0xffFAF8FF),
                                   borderRadius: BorderRadius.circular(12.w),
@@ -185,7 +186,7 @@ class _WithddJindu3State extends State<WithddJindu3> {
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
-                                    SizedBox(height: 20.h),
+                                    SizedBox(height: 10.h),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal: 12.w,

@@ -110,7 +110,7 @@ class SlideAcrossOverlay {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Payment Received",
+                                    "Payment Received".tr,
                                     style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,

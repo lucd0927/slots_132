@@ -71,8 +71,8 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
       setState(() {
         showAnimated = true;
       });
-      Future.delayed(Duration(milliseconds: 300),(){
-        if(mounted){
+      Future.delayed(Duration(milliseconds: 300), () {
+        if (mounted) {
           focusNode.requestFocus();
         }
       });
@@ -191,7 +191,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
                               prefix: SSCountry.curGuojiaFuhao(),
                               textStyle: TextStyle(
                                 color: Color(0xff252525),
-                                fontSize: 20.sp,
+                                fontSize: !SSCountry.hasUSA() ? 14.sp : 20.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -258,8 +258,7 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
   }
 
   void onWithdrawwww() {
-
-    if(name.isEmpty){
+    if (name.isEmpty) {
       ssTushi(text: "card_cashapp_4".tr);
       return;
     }
@@ -267,9 +266,6 @@ class _WithddPaypalWidgetState extends State<_WithddPaypalWidget>
     WithdddController.to.saveCardId(name);
 
     onClose();
-
-
-
   }
 
   inputWidget() {
