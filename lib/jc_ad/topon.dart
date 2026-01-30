@@ -121,9 +121,9 @@ class SSTopon {
     required void Function(ATInterstitialResponse)? atInterstitialResponse,
   }) async {
     try {
-      String appidS = SSHuanjing.hasDevvvvv() ? "h68f08f5ae3b21" : "h697974555e8e8";
+      String appidS = SSHuanjing.hasDevvvvv() ? "h697974555e8e8" : "h697974555e8e8";
       String appidkeyStr= SSHuanjing.hasDevvvvv()
-          ? "a6e684ab80848d5a5792d0027fb5443b5"
+          ? "ac2268a0fd877a59dc1340e7d17a50d63"
           : "ac2268a0fd877a59dc1340e7d17a50d63";
       String result = await ATInitManger.initAnyThinkSDK(
         appidStr: appidS,

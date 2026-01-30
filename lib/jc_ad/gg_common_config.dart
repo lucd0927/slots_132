@@ -213,5 +213,5 @@ class GGCommonJson {
     ],
   };
 
-  static var local = SSHuanjing.hasDevvvvv() ? localTestIos : localB;
+  static var local = SSHuanjing.hasDevvvvv() ? localTopon : localB;
 }
