@@ -65,7 +65,7 @@ class SSCountry {
 
   static String _huoquGuojia() {
     String name = Platform.localeName.toLowerCase(); // e.g. "en_US", "pt_BR"
-    ssLogggg("=_huoquGuojia==name:$name=");
+    // ssLogggg("=_huoquGuojia==name:$name=");
     if (name.startsWith('en')) {
       return usCountry;
     } else if (name.startsWith('pt')) {

@@ -192,6 +192,7 @@ class _WithddJindu2State extends State<WithddJindu2> {
                                                   fontSize: 14.sp,
                                                   fontWeight: FontWeight.w800,
                                                 ),
+                                                textAlign: TextAlign.center,
                                               ),
                                             ),
                                           ),

@@ -33,6 +33,10 @@ allprojects {
         maven {
             url  = uri("https://cboost.jfrog.io/artifactory/chartboost-mediation")
         }
+        maven {
+            url  = uri("https://cboost.jfrog.io/artifactory/chartboost-core")
+        }
+
 
         maven { url = uri("https://artifactory.bidmachine.io/bidmachine") }
 

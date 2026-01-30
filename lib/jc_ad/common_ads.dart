@@ -9,6 +9,7 @@ import 'package:slots_132/jc_ad/guiyin/af.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_ad/uuuump.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
+import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -792,11 +793,11 @@ class SSCommonAds {
       _loadFailReason = AdLoadFailReason.uninitialized;
     }
     ssLogggg("====init==initTopon");
-    // await InitManger.initTopon(
-    //   atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
-    //   atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
-    // );
-    // InitManger.setLogEnabled();
+    await InitManger.initTopon(
+      atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
+      atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
+    );
+    InitManger.setLogEnabled();
     ssLogggg("====init==end");
     _scheme =
         firebaseJson[GGCommonJson.k_which_scheme] ?? GGCommonJson.scheme_A;
@@ -1160,6 +1161,13 @@ class SSCommonAds {
     Map<String, dynamic> localJson = GGCommonJson.local;
     try {
       String name = Platform.isIOS ? "eyomt_ad_config" : "cdyun_ad_config";
+
+      if(Platform.isAndroid){
+        if(SSDlTracking.qidongduoshaoDay() > 1){
+          name = "cdyun_ad_config_olduser";
+        }
+      }
+
       String key = PBFireBbbbbb().by(name: name);
       ssLogggg(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",

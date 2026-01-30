@@ -197,7 +197,7 @@ class GGCommonJson {
     "cdyun_switch": false,
     "cdyun_int": [
       {
-        "lhewiloc": "n1grn4hvvceb6r",
+        "lhewiloc": "n1h3m43b0e4a06",
         "vvmmyknm": "topon",
         "jpburjoz": "interstitial",
         "nohbmlex": 3000,
@@ -205,7 +205,7 @@ class GGCommonJson {
     ],
     "cdyun_rv": [
       {
-        "lhewiloc": "n1grn4hvvcf4pn",
+        "lhewiloc": "n1h3m43b0e40vm",
         "vvmmyknm": "topon",
         "jpburjoz": "reward",
         "nohbmlex": 3000,
