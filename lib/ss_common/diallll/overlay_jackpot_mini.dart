@@ -332,7 +332,7 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
                   bottom: 4.h,
                   child: Center(
                     child: SSTxtBorder(
-                      text: "Claim_1".tr,
+                      text: "claim_1".tr,
                       fontSize: 24.sp,
                       fontFamily: FontFamily.ghostKidAOEPro,
                       fontWeight: FontWeight.w700,
@@ -358,7 +358,7 @@ class _JackpotWidgetMiniState extends State<_JackpotWidgetMini> {
         GestureDetector(
           onTap: obBtn2,
           child: SSTxtBorder(
-            text: "${"Claim_1".tr} 10%",
+            text: "${"claim_1".tr} 10%",
             fontSize: 16.sp,
             fontFamily: FontFamily.ghostKidAOEPro,
             fontWeight: FontWeight.w700,

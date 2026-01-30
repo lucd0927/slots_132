@@ -62,7 +62,7 @@ class _SSTabViewState extends State<SSTabView> {
         child: Column(
           children: [
             itemProgressss(money: MainController.minWithdddMoney),
-            itemProgressss(money: 5000),
+            itemProgressss(money: 5000 * MainController.countryBeisu),
             itemVip(),
           ],
         ),
@@ -169,10 +169,7 @@ class _SSTabViewState extends State<SSTabView> {
               GestureDetector(
                 onTap: () {
                   if (hasOver3) {
-                    ssTushi(
-                      text:
-                          "tab_view_7".tr,
-                    );
+                    ssTushi(text: "tab_view_7".tr);
                     return;
                   }
 
@@ -217,14 +214,16 @@ class _SSTabViewState extends State<SSTabView> {
   itemProgressss({required double money}) {
     String des =
         "${people5000First} ${"tab_view_8".tr} ${"Only".tr} $people5000Second ${"tab_view_9".tr}";
+
+    double tmpmmmm = 1000 * MainController.countryBeisu;
     bool showTx =
         WithdddController.to.hasSaveCardId() &&
         WithdddController.to.hasSaveBank() &&
-        money == 1000;
+        money == tmpmmmm;
 
     ssLogggg("=====showTx:$showTx");
 
-    if (money == 1000) {
+    if (money == tmpmmmm) {
       int day = SSDlTracking.qidongduoshaoDay();
       des = "tab_view_10".tr;
       if (day > 1) {
@@ -325,9 +324,7 @@ class _SSTabViewState extends State<SSTabView> {
                             text: "${people5000First}",
                             style: TextStyle(color: Color(0xff3AAD47)),
                           ),
-                          TextSpan(
-                            text: "  ${"tab_view_8".tr} ${"Only".tr}  ",
-                          ),
+                          TextSpan(text: "  ${"tab_view_8".tr} ${"Only".tr}  "),
                           TextSpan(
                             text: "$people5000Second",
                             style: TextStyle(color: Color(0xff3AAD47)),
@@ -362,7 +359,6 @@ class _SSTabViewState extends State<SSTabView> {
   Widget moenyWidget({required double money}) {
     String selectedIcon = WithdddController.to.currentPaymentIconS();
 
-
     int quzheng = money ~/ 1000;
 
     String strmoney =
@@ -375,7 +371,7 @@ class _SSTabViewState extends State<SSTabView> {
         Text(
           strmoney,
           style: TextStyle(
-            fontSize: 24.sp,
+            fontSize: !SSCountry.hasUSA() ? 20.sp : 24.sp,
             fontWeight: FontWeight.w600,
             height: 1,
           ),
@@ -510,8 +506,7 @@ class _VipPartnerState extends State<VipPartner> {
   Widget build(BuildContext context) {
     int quzheng = MainController.minWithdddMoney ~/ 1000;
     String money = "${SSCountry.curGuojiaFuhao()}${quzheng},000";
-    String des =
-        "tab_view_20".tr;
+    String des = "tab_view_20".tr;
     String time = toTime();
     // ssLogggg("====time:$time");
     return Column(
@@ -569,54 +564,43 @@ class _VipPartnerState extends State<VipPartner> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Assets.img.withddVip.path,
-                        width: 30.w,
-                        height: 30.w,
-                      ),
-                      SizedBox(width: 2.w),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "activate_my_status_6".tr,
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              height: 1.4,
-                            ),
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 2.w),
-                            child: Text(
-                              money,
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff3AAD47),
-                                height: 1,
+                  Flexible(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          Assets.img.withddVip.path,
+                          width: 30.w,
+                          height: 30.w,
+                        ),
+                        SizedBox(width: 2.w),
+                        Flexible(child:  Text.rich(
+                          TextSpan(
+                            text: "activate_my_status_6".tr,
+                            children: [
+                              TextSpan(
+                                text: money,
+                                style: TextStyle(
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff3AAD47),
+                                  height: 1,
+                                ),
                               ),
-                            ),
+                              TextSpan(text: "Payout".tr),
+                            ],
                           ),
-
-                          Text(
-                            "Payout".tr,
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              height: 1.4,
-                            ),
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w600,
+                            height: 1.4,
                           ),
-                        ],
-                      ),
-                    ],
+                        ),),
+                      ],
+                    ),
                   ),
-                  // SizedBox(height: 4.h),
-                  Spacer(),
+                  SizedBox(height: 4.h),
+                  // Spacer(),
                   hasClickVip()
                       ? Text(
                           "${"exp_2".tr} ${MainController.to.level()}/${MainController.maxLevel}",
@@ -644,11 +628,12 @@ class _VipPartnerState extends State<VipPartner> {
                                 "tab_view_21".tr,
                                 style: TextStyle(
                                   fontFamily: FontFamily.rubik,
-                                  fontSize: 12.sp,
+                                  fontSize: !SSCountry.hasUSA() ? 10.sp : 12.sp,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xffffffff),
                                   height: 1,
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ),

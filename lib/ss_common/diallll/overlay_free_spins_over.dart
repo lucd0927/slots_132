@@ -241,7 +241,7 @@ class _FreeSpinsWidgetState extends State<FreeSpinsWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             SSTxtBorder(
-                                              text: "Claim_1".tr,
+                                              text: "claim_1".tr,
                                               fontWeight: FontWeight.w700,
                                               fontSize: 24.sp,
                                               fontFamily: FontFamily.ghostKidAOEPro,

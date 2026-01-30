@@ -307,7 +307,7 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SSTxtBorder(
-                            text: "Claim_1".tr,
+                            text: "claim_1".tr,
                             fontWeight: FontWeight.w700,
                             fontSize: 24.sp,
                             fontFamily: FontFamily.ghostKidAOEPro,
@@ -341,7 +341,7 @@ class _TzRewardWidgetState extends State<TzRewardWidget> {
             widget.onBtn(money);
           },
           child: SSTxtBorder(
-            text: "${"Claim_1".tr}  10%",
+            text: "${"claim_1".tr}  10%",
             fontWeight: FontWeight.w700,
             fontSize: 16.sp,
             fontFamily: FontFamily.ghostKidAOEPro,

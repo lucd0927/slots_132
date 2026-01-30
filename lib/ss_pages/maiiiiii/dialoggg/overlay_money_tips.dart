@@ -67,7 +67,6 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
       });
 
       _timer = Timer(Duration(milliseconds: 4000), () {
-
         onClose();
       });
     });
@@ -75,7 +74,7 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
 
   onClose() async {
     _timer?.cancel();
-    if(mounted){
+    if (mounted) {
       setState(() {
         showAnimated = false;
         startScale = 1.0;
@@ -155,7 +154,9 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
                                       fontSize: 14.sp,
                                       color: Color(0xff6AFF00),
                                       fontFamily: FontFamily.ghostKidAOEPro,
+                                      height: 1,
                                     ),
+                                    textAlign: TextAlign.center,
                                   )
                                 : Text(
                                     "  ${"money_tip_2".tr}: ${MainController.to.curMonnnn.value.toStringAsFixed(2)}",
@@ -163,8 +164,10 @@ class _MainTopMoneyTipsWidgetState extends State<MainTopMoneyTipsWidget> {
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14.sp,
                                       color: Color(0xffDDDDDD),
+                                      height: 1,
                                       fontFamily: FontFamily.ghostKidAOEPro,
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
                           ),
                         ),

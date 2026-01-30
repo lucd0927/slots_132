@@ -148,6 +148,7 @@ class _ExpWidgetState extends State<ExpWidget> {
                                       color: Color(0xffDDDDDD),
                                       fontFamily: FontFamily.ghostKidAOEPro,
                                     ),
+
                                   ),
                                   // Spacer(),
                                   // SSTxtGraBorder(

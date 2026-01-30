@@ -283,19 +283,26 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                 ),
                               ),
                               SizedBox(height: 10.h),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
 
-                                  Text(
-                                    "buzu_10".tr,
-                                    style: TextStyle(
-                                      color: Color(0xff7E8E9B),
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w600,
+                                    Flexible(
+                                      child: Text(
+                                        "buzu_10".tr,
+                                        style: TextStyle(
+                                          color: Color(0xff7E8E9B),
+                                          fontSize: 12.sp,
+                                          height: 1,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ],
                           ),
