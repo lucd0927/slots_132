@@ -230,7 +230,8 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(height: 140.h),
+                        // SizedBox(height: 140.h),
+                        const Spacer(),
                         GestureDetector(
                           onTap: () {
                             SSEventReporttttt.partner_yes();
@@ -257,6 +258,7 @@ class _WithdddCompletePaytaberState extends State<WithdddCompletePaytaber> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 40.h),
                       ],
                     ),
                   ),

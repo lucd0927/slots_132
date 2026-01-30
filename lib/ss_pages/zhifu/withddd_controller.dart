@@ -318,7 +318,7 @@ class WithdddController extends GetxController {
 
     box.put(hkpaimingData, tmppaimingData);
 
-    ssTushi(text: "Your Current Rank: $nextRank");
+    ssTushi(text: "${"rand_des".tr}: $nextRank");
 
     update();
 

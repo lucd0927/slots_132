@@ -93,7 +93,7 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
               children: [
                 Container(
                   width: 324.w,
-                  height: 470.h,
+                  height: !SSCountry.hasUSA()?520.h:470.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(24.h),
@@ -202,20 +202,24 @@ class _OneLastCheckJindu2WidgetState extends State<OneLastCheckJindu2Widget> {
                         ),
                       ),
                       SizedBox(height: 10.h),
-                      GestureDetector(
-                        onTap: onClose,
-                        child: Column(
-                          children: [
-                            Text(
-                              "one_last_jindu2_7".tr,
-                              style: TextStyle(
-                                color: Color(0xff7A7A7A),
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w800,
-                                decoration: TextDecoration.underline,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: GestureDetector(
+                          onTap: onClose,
+                          child: Column(
+                            children: [
+                              Text(
+                                "one_last_jindu2_7".tr,
+                                style: TextStyle(
+                                  color: Color(0xff7A7A7A),
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w800,
+                                  decoration: TextDecoration.underline,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],

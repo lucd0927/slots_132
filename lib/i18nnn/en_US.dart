@@ -214,4 +214,6 @@ const Map<String, String> en_US = {
   "Reward earned": "Reward earned",
   "Transfer Received": "Transfer Received",
   "Payment Received":"Payment Received",
+
+  "rand_des":"Your Current Rank",
 };

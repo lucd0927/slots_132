@@ -92,7 +92,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
               children: [
                 Container(
                   width: 324.w,
-                  height: 486.h,
+                  height: !SSCountry.hasUSA()?540.h:486.h,
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 1.0),
                     borderRadius: BorderRadius.circular(24.h),
@@ -153,7 +153,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
 
                       Container(
                         width: 290.w,
-                        height: 86.h,
+                        height:!SSCountry.hasUSA()?110.h: 86.h,
                         decoration: BoxDecoration(
                           color: Color(0xffFAF8FF),
                           borderRadius: BorderRadius.circular(16.w),
@@ -252,6 +252,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w800,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
@@ -264,6 +265,7 @@ class _OneLastCheckWidgetState extends State<OneLastCheckWidget> {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),

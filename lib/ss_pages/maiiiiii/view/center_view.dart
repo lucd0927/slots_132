@@ -773,7 +773,7 @@ class FreeSpinState extends State<FreeSpin> {
     List<int> randoms = [10, 11, 13, 14];
     int tickkk1 = randoms[Random().nextInt(randoms.length)];
     ssLogggg("====free spin=tickkk1:$tickkk1");
-    int mills = 1200;
+    int mills = 800;
     int tmpT = tickkk1;
     if (tmpT == tickkk1 || true) {
       // await Future.delayed(Duration(milliseconds: 1000));

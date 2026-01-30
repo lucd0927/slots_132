@@ -209,5 +209,7 @@ const Map<String, String> pt_BR = {
 
   "Reward earned":"Recompensa obtida",
   "Transfer Received": "Transfer recebido",
-  "Payment Received":"Pagamento recebido"
+  "Payment Received":"Pagamento recebido",
+
+  "rand_des":"Sua classificação atual"
 };

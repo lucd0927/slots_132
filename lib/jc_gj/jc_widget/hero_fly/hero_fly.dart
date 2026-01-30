@@ -100,7 +100,7 @@ class OverlayFly2TargetKey {
     int count = 1,
     VoidCallback? onEnd,
     Offset? topLeftOffset,
-    Duration animTime = const Duration(milliseconds: 700),
+    Duration animTime = const Duration(milliseconds: 500),
   }) {
     // if (_isShowing) return;
     _overlay = null;

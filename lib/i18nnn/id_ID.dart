@@ -209,4 +209,6 @@ const Map<String, String> id_ID = {
   "Reward earned":"Hadiah diperoleh",
   "Transfer Received": "Transfer diterima",
   "Payment Received":"Pembayaran diterima",
+
+  "rand_des":"Peringkat Anda saat ini",
 };
