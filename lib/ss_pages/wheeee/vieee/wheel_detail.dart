@@ -10,6 +10,7 @@ import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/event_bus.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_count.dart';
@@ -140,7 +141,15 @@ class _ControlledWheelState extends State<ControlledWheel>
             },
             child: Center(
               child: Image.asset(
-                SSABChange.isPackageB()?  Assets.img.wheelZp.path:Assets.imga.wheelZp.path,
+                SSABChange.isPackageB()
+                    ? (SSCountry.hasUSA()
+                          ? Assets.img.wheelZp.path
+                          : SSCountry.hasBr()
+                          ? Assets.img.wheelZpBr.path
+                          : SSCountry.hasIn()
+                          ? Assets.img.wheelZpId.path
+                          : Assets.img.wheelZp.path)
+                    : Assets.imga.wheelZp.path,
                 width: 362.w,
                 height: 362.w,
                 fit: BoxFit.fill,
@@ -259,8 +268,6 @@ class _ControlledWheelState extends State<ControlledWheel>
     int current = Random().nextInt(8);
     int target = Random().nextInt(8);
 
-
-
     current = 0;
     ssLogggg("=_onSpin==current:$current=target:$target=");
     if (target == 4) {
@@ -273,13 +280,13 @@ class _ControlledWheelState extends State<ControlledWheel>
       target = 7;
     } else if (random > 50) {
       target = 0;
-    }else if (random > 45) {
+    } else if (random > 45) {
       target = 2;
-    }else if (random > 40) {
+    } else if (random > 40) {
       target = 5;
-    }else if (random > 20) {
+    } else if (random > 20) {
       target = 1;
-    }else if (random > 10) {
+    } else if (random > 10) {
       target = 3;
     }
 

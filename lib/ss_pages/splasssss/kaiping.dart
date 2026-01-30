@@ -13,6 +13,7 @@ import 'package:lottie/lottie.dart';
 import 'package:shiny_striped_progress_bar/shiny_striped_progress_bar.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/guiyin/package.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -45,8 +46,7 @@ class _SSSplassssState extends State<SSSplassss> {
 
   precashImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-
-      Future.delayed(Duration(milliseconds: 200),(){
+      Future.delayed(Duration(milliseconds: 200), () {
         FlutterNativeSplash.remove();
       });
 
@@ -81,13 +81,11 @@ class _SSSplassssState extends State<SSSplassss> {
 
       AssetImage assetImage11 = AssetImage(Assets.img.phonePopupJindu2.path);
       precacheImage(assetImage11, context);
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     // Locale yuyan = ui.window.locale;
     //
     // ssLogggg("======国家：$yuyan。${"update_language".tr}");
@@ -156,7 +154,13 @@ class _SSSplassssState extends State<SSSplassss> {
                             height: 151.h,
                           ),
                           Image.asset(
-                            Assets.img.splashTxtExcept.path,
+                            SSCountry.hasUSA()
+                                ? Assets.img.splashTxtExcept.path
+                                : SSCountry.hasIn()
+                                ? Assets.img.splashTxtExceptId.path
+                                : SSCountry.hasBr()
+                                ? Assets.img.splashTxtExceptBr.path
+                                : Assets.img.splashTxtExcept.path,
                             width: 158.h,
                             height: 58.h,
                           ),
@@ -170,7 +174,13 @@ class _SSSplassssState extends State<SSSplassss> {
                             height: 151.h,
                           ),
                           Image.asset(
-                            Assets.img.splashTxt345.path,
+                            SSCountry.hasUSA()
+                                ? Assets.img.splashTxt345.path
+                                : SSCountry.hasIn()
+                                ? Assets.img.splashTxt345Id.path
+                                : SSCountry.hasBr()
+                                ? Assets.img.splashTxt345Br.path
+                                : Assets.img.splashTxt345.path,
                             width: 158.h,
                             height: 58.h,
                           ),
@@ -270,7 +280,9 @@ class _SplashProgressState extends State<SplashProgress> {
     // ssLogggg(
     //   "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",
     // );
-    await Future.delayed(Duration(milliseconds:SSABChange.isPackageB()? 3000:0));
+    await Future.delayed(
+      Duration(milliseconds: SSABChange.isPackageB() ? 3000 : 0),
+    );
     _timer.cancel();
     if (canGoToMain) {
       ssLogggg("==SSABChange().init 等待进入main page====");
@@ -505,4 +517,3 @@ class AnimatedGradientProgressBar2 extends StatelessWidget {
     );
   }
 }
-

@@ -260,7 +260,13 @@ class _PaytableWidgetState extends State<PaytableWidget> {
           children: [
             Center(
               child: Image.asset(
-                Assets.img.highlightsCard1.path,
+                SSCountry.hasUSA()
+                    ? Assets.img.highlightsCard1.path
+                    : SSCountry.hasBr()
+                    ? Assets.img.highlightsCard1Br.path
+                    : SSCountry.hasIn()
+                    ? Assets.img.highlightsCard1Id.path
+                    : Assets.img.highlightsCard1.path,
                 width: double.infinity,
                 height: double.infinity,
               ),
@@ -279,12 +285,20 @@ class _PaytableWidgetState extends State<PaytableWidget> {
         child: Row(
           children: [
             Image.asset(
-              SSABChange.isPackageB()? Assets.img.highlightsCard22.path:Assets.imga.settingP.path,
+              SSABChange.isPackageB()
+                  ? Assets.img.highlightsCard22.path
+                  : Assets.imga.settingP.path,
               width: 92.w,
               height: 188.w,
             ),
             Image.asset(
-              Assets.img.highlightsCard2.path,
+              SSCountry.hasUSA()
+                  ? Assets.img.highlightsCard2.path
+                  : SSCountry.hasBr()
+                  ? Assets.img.highlightsCard2Br.path
+                  : SSCountry.hasIn()
+                  ? Assets.img.highlightsCard2Id.path
+                  : Assets.img.highlightsCard2.path,
               width: 190.w,
               height: 102.w,
             ),

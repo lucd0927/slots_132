@@ -28,7 +28,7 @@ class OverlayTzNotify {
   bool _isShowing = false;
   OverlayEntry? _overlay;
 
-  void show({ required ValueChanged onClose}) {
+  void show({required ValueChanged onClose}) {
     // if (_isShowing) return;
     _overlay = null;
     SSEventReporttttt.push_reopen_pop();
@@ -39,7 +39,6 @@ class OverlayTzNotify {
             close();
             onClose(null);
           },
-
         );
       },
     );
@@ -55,8 +54,7 @@ class OverlayTzNotify {
 }
 
 class TzNotifyWidget extends StatefulWidget {
-  const TzNotifyWidget({super.key, required this.onBtn,});
-
+  const TzNotifyWidget({super.key, required this.onBtn});
 
   final ValueChanged<double> onBtn;
 
@@ -115,7 +113,15 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                       alignment: Alignment.topCenter,
                       children: [
                         Image.asset(
-                         SSABChange.isPackageB()? Assets.img.tongzBg.path:Assets.imga.tzBg.path,
+                          SSABChange.isPackageB()
+                              ? (SSCountry.hasUSA()
+                                    ? Assets.img.tongzBg.path
+                                    : SSCountry.hasBr()
+                                    ? Assets.img.tongzBgBr.path
+                                    : SSCountry.hasIn()
+                                    ? Assets.img.tongzBgId.path
+                                    : Assets.img.tongzBg.path)
+                              : Assets.imga.tzBg.path,
                           width: double.infinity,
                           height: double.infinity,
                           fit: BoxFit.fill,
@@ -126,8 +132,10 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                           bottom: 30.w,
                           child: Center(
                             child: GestureDetector(
-                              onTap: (){
-                                AppSettings.openAppSettings(type: AppSettingsType.notification);
+                              onTap: () {
+                                AppSettings.openAppSettings(
+                                  type: AppSettingsType.notification,
+                                );
                                 SSEventReporttttt.push_repopen_pop_notify();
                                 onClose(1);
                               },
@@ -195,8 +203,6 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
     );
   }
 
-
-
   onClose(double money) async {
     ssLogggg("====== close money:$money");
     setState(() {
@@ -206,6 +212,4 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
     // await Future.delayed(animD);
     widget.onBtn(money);
   }
-
-
 }

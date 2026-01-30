@@ -428,6 +428,14 @@ class $AssetsImgGen {
   AssetGenImage get highlightsCard1 =>
       const AssetGenImage('assets/img/highlights_card1.png');
 
+  /// File path: assets/img/highlights_card1_br.png
+  AssetGenImage get highlightsCard1Br =>
+      const AssetGenImage('assets/img/highlights_card1_br.png');
+
+  /// File path: assets/img/highlights_card1_id.png
+  AssetGenImage get highlightsCard1Id =>
+      const AssetGenImage('assets/img/highlights_card1_id.png');
+
   /// File path: assets/img/highlights_card2.png
   AssetGenImage get highlightsCard2 =>
       const AssetGenImage('assets/img/highlights_card2.png');
@@ -435,6 +443,14 @@ class $AssetsImgGen {
   /// File path: assets/img/highlights_card22.png
   AssetGenImage get highlightsCard22 =>
       const AssetGenImage('assets/img/highlights_card22.png');
+
+  /// File path: assets/img/highlights_card2_br.png
+  AssetGenImage get highlightsCard2Br =>
+      const AssetGenImage('assets/img/highlights_card2_br.png');
+
+  /// File path: assets/img/highlights_card2_id.png
+  AssetGenImage get highlightsCard2Id =>
+      const AssetGenImage('assets/img/highlights_card2_id.png');
 
   /// File path: assets/img/highlights_card3.png
   AssetGenImage get highlightsCard3 =>
@@ -750,6 +766,10 @@ class $AssetsImgGen {
   AssetGenImage get popupCashapp =>
       const AssetGenImage('assets/img/popup_cashapp.png');
 
+  /// File path: assets/img/popup_dana.png
+  AssetGenImage get popupDana =>
+      const AssetGenImage('assets/img/popup_dana.png');
+
   /// File path: assets/img/popup_get_freespinmoney.png
   AssetGenImage get popupGetFreespinmoney =>
       const AssetGenImage('assets/img/popup_get_freespinmoney.png');
@@ -782,9 +802,19 @@ class $AssetsImgGen {
   AssetGenImage get popupMoneybgSuper =>
       const AssetGenImage('assets/img/popup_moneybg_super.png');
 
+  /// File path: assets/img/popup_ovo.png
+  AssetGenImage get popupOvo => const AssetGenImage('assets/img/popup_ovo.png');
+
+  /// File path: assets/img/popup_pagbank.png
+  AssetGenImage get popupPagbank =>
+      const AssetGenImage('assets/img/popup_pagbank.png');
+
   /// File path: assets/img/popup_paypal.png
   AssetGenImage get popupPaypal =>
       const AssetGenImage('assets/img/popup_paypal.png');
+
+  /// File path: assets/img/popup_pix.png
+  AssetGenImage get popupPix => const AssetGenImage('assets/img/popup_pix.png');
 
   /// File path: assets/img/popup_zhiz.png
   AssetGenImage get popupZhiz =>
@@ -833,9 +863,25 @@ class $AssetsImgGen {
   AssetGenImage get splashTxt345 =>
       const AssetGenImage('assets/img/splash_txt_345.png');
 
+  /// File path: assets/img/splash_txt_345_br.png
+  AssetGenImage get splashTxt345Br =>
+      const AssetGenImage('assets/img/splash_txt_345_br.png');
+
+  /// File path: assets/img/splash_txt_345_id.png
+  AssetGenImage get splashTxt345Id =>
+      const AssetGenImage('assets/img/splash_txt_345_id.png');
+
   /// File path: assets/img/splash_txt_except.png
   AssetGenImage get splashTxtExcept =>
       const AssetGenImage('assets/img/splash_txt_except.png');
+
+  /// File path: assets/img/splash_txt_except_br.png
+  AssetGenImage get splashTxtExceptBr =>
+      const AssetGenImage('assets/img/splash_txt_except_br.png');
+
+  /// File path: assets/img/splash_txt_except_id.png
+  AssetGenImage get splashTxtExceptId =>
+      const AssetGenImage('assets/img/splash_txt_except_id.png');
 
   /// File path: assets/img/splash_wild.png
   AssetGenImage get splashWild =>
@@ -846,6 +892,14 @@ class $AssetsImgGen {
 
   /// File path: assets/img/tongz_bg.png
   AssetGenImage get tongzBg => const AssetGenImage('assets/img/tongz_bg.png');
+
+  /// File path: assets/img/tongz_bg_br.png
+  AssetGenImage get tongzBgBr =>
+      const AssetGenImage('assets/img/tongz_bg_br.png');
+
+  /// File path: assets/img/tongz_bg_id.png
+  AssetGenImage get tongzBgId =>
+      const AssetGenImage('assets/img/tongz_bg_id.png');
 
   /// File path: assets/img/tongz_cashpayment.png
   AssetGenImage get tongzCashpayment =>
@@ -983,6 +1037,10 @@ class $AssetsImgGen {
   AssetGenImage get wheelZpBottomW =>
       const AssetGenImage('assets/img/wheel_zp_bottom_w.png');
 
+  /// File path: assets/img/wheel_zp_br.png
+  AssetGenImage get wheelZpBr =>
+      const AssetGenImage('assets/img/wheel_zp_br.png');
+
   /// File path: assets/img/wheel_zp_f.png
   AssetGenImage get wheelZpF =>
       const AssetGenImage('assets/img/wheel_zp_f.png');
@@ -990,6 +1048,10 @@ class $AssetsImgGen {
   /// File path: assets/img/wheel_zp_f2.png
   AssetGenImage get wheelZpF2 =>
       const AssetGenImage('assets/img/wheel_zp_f2.png');
+
+  /// File path: assets/img/wheel_zp_id.png
+  AssetGenImage get wheelZpId =>
+      const AssetGenImage('assets/img/wheel_zp_id.png');
 
   /// File path: assets/img/wheel_zz.png
   AssetGenImage get wheelZz => const AssetGenImage('assets/img/wheel_zz.png');
@@ -1222,8 +1284,12 @@ class $AssetsImgGen {
     h5,
     highlights,
     highlightsCard1,
+    highlightsCard1Br,
+    highlightsCard1Id,
     highlightsCard2,
     highlightsCard22,
+    highlightsCard2Br,
+    highlightsCard2Id,
     highlightsCard3,
     highlightsLeft,
     highlightsRight,
@@ -1305,6 +1371,7 @@ class $AssetsImgGen {
     phoneSuip,
     popupBeisu,
     popupCashapp,
+    popupDana,
     popupGetFreespinmoney,
     popupGetFreespinmoneyS,
     popupGetPhoneSpice,
@@ -1313,7 +1380,10 @@ class $AssetsImgGen {
     popupMoneybgBig,
     popupMoneybgMega,
     popupMoneybgSuper,
+    popupOvo,
+    popupPagbank,
     popupPaypal,
+    popupPix,
     popupZhiz,
     settiAudio,
     settiBg,
@@ -1326,10 +1396,16 @@ class $AssetsImgGen {
     splashScatter,
     splashTitle,
     splashTxt345,
+    splashTxt345Br,
+    splashTxt345Id,
     splashTxtExcept,
+    splashTxtExceptBr,
+    splashTxtExceptId,
     splashWild,
     tCashapp,
     tongzBg,
+    tongzBgBr,
+    tongzBgId,
     tongzCashpayment,
     tongzRewardBg,
     txBuzuBg,
@@ -1366,8 +1442,10 @@ class $AssetsImgGen {
     wheelZpBottomBg,
     wheelZpBottomMoneyBg,
     wheelZpBottomW,
+    wheelZpBr,
     wheelZpF,
     wheelZpF2,
+    wheelZpId,
     wheelZz,
     withddAi,
     withddBank,

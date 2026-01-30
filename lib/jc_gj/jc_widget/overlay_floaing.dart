@@ -72,10 +72,23 @@ class SlideAcrossOverlay {
       top = 250.h;
     }
     String icon = Random().nextInt(10) > 5
-        ? Assets.img.popupPaypal.path
-        : Assets.img.popupCashapp.path;
+        ? (SSCountry.hasUSA()
+              ? Assets.img.popupPaypal.path
+              : SSCountry.hasBr()
+              ? Assets.img.popupPagbank.path
+              : SSCountry.hasIn()
+              ? Assets.img.popupOvo.path
+              : Assets.img.popupPaypal.path)
+        : (SSCountry.hasUSA()
+              ? Assets.img.popupCashapp.path
+              : SSCountry.hasBr()
+              ? Assets.img.popupPix.path
+              : SSCountry.hasIn()
+              ? Assets.img.popupDana.path
+              : Assets.img.popupCashapp.path);
 
-    String id = "ID${Random().nextInt(10)}***${Random().nextInt(10)} ${"Transfer Received".tr} ";
+    String id =
+        "ID${Random().nextInt(10)}***${Random().nextInt(10)} ${"Transfer Received".tr} ";
     _entry = OverlayEntry(
       builder: (context) => IgnorePointer(
         child: Stack(
