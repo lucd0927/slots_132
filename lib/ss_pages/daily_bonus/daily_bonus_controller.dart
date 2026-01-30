@@ -30,28 +30,28 @@ class DailyBonusController extends GetxController {
   static Map<int, GiftRewardModel> kDay_vGiftModel = {
     1: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
+      num: 50*MainController.countryBeisu,
       img: SSABChange.isPackageB()
           ? Assets.img.moneyGift.path
           : Assets.imga.coinFreespin.path,
     ),
     2: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 75,
+      num: 75*MainController.countryBeisu,
       img: SSABChange.isPackageB()
           ? Assets.img.moneyGift.path
           : Assets.imga.coinFreespin.path,
     ),
     3: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 75,
+      num: 75*MainController.countryBeisu,
       img: SSABChange.isPackageB()
           ? Assets.img.moneyGift.path
           : Assets.imga.coinFreespin.path,
     ),
     4: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 75,
+      num: 75*MainController.countryBeisu,
       img: SSABChange.isPackageB()
           ? Assets.img.moneyGift.path
           : Assets.imga.coinFreespin.path,
@@ -63,7 +63,7 @@ class DailyBonusController extends GetxController {
     ),
     6: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 85,
+      num: 85*MainController.countryBeisu,
       img: SSABChange.isPackageB()
           ? Assets.img.moneyGift.path
           : Assets.imga.coinFreespin.path,

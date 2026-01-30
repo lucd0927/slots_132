@@ -807,6 +807,9 @@ class $AssetsImgGen {
   /// Directory path: assets/img/slots
   $AssetsImgSlotsGen get slots => const $AssetsImgSlotsGen();
 
+  /// File path: assets/img/splash.png
+  AssetGenImage get splash => const AssetGenImage('assets/img/splash.png');
+
   /// File path: assets/img/splash_bg.png
   AssetGenImage get splashBg => const AssetGenImage('assets/img/splash_bg.png');
 
@@ -1272,6 +1275,7 @@ class $AssetsImgGen {
     settiBg,
     settiMusic,
     slot1,
+    splash,
     splashBg,
     splashJindu,
     splashJindu2,

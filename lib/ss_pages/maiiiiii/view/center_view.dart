@@ -275,7 +275,7 @@ class CenterView extends StatelessWidget {
                   children: [
                     SSTxtGraBorder(
                       text: "mian_4".tr,
-                      fontSize: 20.sp,
+                      fontSize:SSCountry.hasUSA()? 20.sp:12.sp,
                       strokeColor: Color(0xffD83507),
                     ),
                     SizedBox(width: 1.w),
@@ -292,7 +292,7 @@ class CenterView extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         begin: Alignment.topCenter,
                       ),
-                      textStyle: TextStyle(fontSize: 20.sp, height: 1),
+                      textStyle: TextStyle(  fontSize:SSCountry.hasUSA()? 20.sp:12.sp, height: 1),
                     ),
                     SizedBox(width: 1.w),
                     Padding(
@@ -307,7 +307,7 @@ class CenterView extends StatelessWidget {
                     ),
                     SSTxtGraBorder(
                       text: "mian_5".tr,
-                      fontSize: 20.sp,
+                      fontSize:SSCountry.hasUSA()? 20.sp:12.sp,
                       strokeColor: Color(0xffD83507),
                     ),
                     Padding(
@@ -324,7 +324,7 @@ class CenterView extends StatelessWidget {
                       maxS: 1.2,
                       child: SSTxtGraBorder(
                         text: "mian_6".tr,
-                        fontSize: 20.sp,
+                        fontSize:SSCountry.hasUSA()? 20.sp:12.sp,
                         strokeColor: Color(0xffD83507),
                       ),
                     ),
@@ -475,7 +475,7 @@ class CenterView extends StatelessWidget {
               Positioned(
                 top: 20.h,
                 bottom: 12.h,
-                left: 30.w,
+                left: 20.w,
                 right: 0,
                 child: Container(
                   color: Colors.red.withValues(alpha: 0),

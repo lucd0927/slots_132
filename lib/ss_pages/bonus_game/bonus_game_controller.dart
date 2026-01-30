@@ -307,7 +307,7 @@ class BonusGameController extends GetxController {
 
   double _cardMonnn() {
     double randomDouble = 10 + Random().nextDouble() * (20 - 10);
-    return randomDouble.toAsFixedFloor(2);
+    return (randomDouble*MainController.countryBeisu).toAsFixedFloor(2);
   }
 
   void initData() {

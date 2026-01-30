@@ -97,7 +97,7 @@ class BottomView extends StatelessWidget {
     }
 
     return Container(
-      width: 165.h,
+      width: 170.h,
       height: 26.h,
       child: Stack(
         children: [
@@ -179,7 +179,7 @@ class BottomView extends StatelessWidget {
                       child: Text(
                         txt,
                         style: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize: 16.sp,
                           height: 1,
                           fontWeight: FontWeight.w500,
                           fontFamily: FontFamily.ghostKidAOEPro,
@@ -464,6 +464,8 @@ class BottomView extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                             color: Color(0xff2B4735),
                           ),
+                          minFontSize: 8.sp,
+                          stepGranularity: 8.sp,
                         ),
                       ],
                     ),

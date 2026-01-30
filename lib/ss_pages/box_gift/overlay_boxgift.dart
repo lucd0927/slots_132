@@ -159,6 +159,7 @@ class _BoxgiftWidgetState extends State<BoxgiftWidget> {
       double tmpMmm = Random().nextDouble() * 25 + 50;
       int a = Random().nextInt(OverlayBoxgift.types.length - 1);
       tmpMmmmmmm = box.get(OverlayBoxgift.hkMoneyKey) ?? tmpMmm;
+      tmpMmmmmmm = tmpMmmmmmm *MainController.countryBeisu;
       tmpMmmmmmm2 = box.get(OverlayBoxgift.hkMoneyKey2) ?? a;
       box.put(OverlayBoxgift.hkMoneyKey, tmpMmmmmmm);
       box.put(OverlayBoxgift.hkMoneyKey2, tmpMmmmmmm2);

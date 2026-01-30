@@ -1,0 +1,48 @@
+{
+"skeleton": {
+	"hash": "nxlHauxjYI8",
+	"spine": "4.3.39-beta",
+	"x": -480,
+	"y": -480,
+	"width": 960,
+	"height": 960,
+	"images": "../../Downloads/新建文件夹 (3)/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "frame_001", "bone": "root", "attachment": "frame_" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"frame_001": {
+				"frame_": {
+					"width": 960,
+					"height": 960,
+					"sequence": { "count": 120, "digits": 3 }
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"attachments": {
+			"default": {
+				"frame_001": {
+					"frame_": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.016666668 },
+							{ "time": 2, "mode": "loop", "index": 24, "delay": 0.033333335 }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

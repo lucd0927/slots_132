@@ -192,7 +192,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
 
   jackpotItemGrand() {
     String symbol = SSCountry.curGuojiaFuhao();
-    String grandMoney = "${symbol}${MainController.jacktopGrand}";
+    String grandMoney = "${symbol}${MainController.jacktopGrand.toStringAsFixed(0)}";
 
     Widget bottomW = jackpotItemBottomSelect(
       cardCategory: BonusGameController.card_grand,
@@ -249,7 +249,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
 
   jackpotItemMajor() {
     String symbol = SSCountry.curGuojiaFuhao();
-    String grandMoney = "${symbol}${MainController.jacktopMajor}";
+    String grandMoney = "${symbol}${MainController.jacktopMajor.toStringAsFixed(0)}";
     Widget bottomW = jackpotItemBottomSelect(
       cardCategory: BonusGameController.card_major,
     );
@@ -303,7 +303,7 @@ class _BonusGameWidgetState extends State<BonusGameWidget> {
 
   jackpotItemMini() {
     String symbol = SSCountry.curGuojiaFuhao();
-    String grandMoney = "$symbol${MainController.jacktopMini}";
+    String grandMoney = "$symbol${MainController.jacktopMini.toStringAsFixed(0)}";
     Widget bottomW = jackpotItemBottomSelect(
       cardCategory: BonusGameController.card_mini,
     );

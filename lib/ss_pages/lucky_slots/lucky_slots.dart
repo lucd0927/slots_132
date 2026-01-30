@@ -12,6 +12,7 @@ import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots_controller.dart';
 import 'package:slots_132/ss_pages/lucky_slots/viewwww/slot_machine_lucky.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 
 OverlayLuckySlots overlayLuckySlots = OverlayLuckySlots();
 
@@ -30,6 +31,7 @@ class OverlayLuckySlots {
         return LuckySlotsWidget(
           onClose: (v) {
             close();
+            v = v * MainController.countryBeisu;
             onClose(v);
           },
         );

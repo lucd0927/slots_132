@@ -86,7 +86,7 @@ class SSAnimSource2TargetOverlay {
               arcHeight: 10,
               startSize: startSize,
               endSize: endSize,
-              duration: Duration(milliseconds: 1200),
+              duration: Duration(milliseconds: 700),
               delayBetween: Duration(milliseconds: 20),
               onFinish: () {
                 close();

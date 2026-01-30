@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
+import 'package:slots_132/jc_gj/log.dart';
 
 
 class SSCountry {
@@ -38,7 +39,7 @@ class SSCountry {
     // ggPrint("=Country====isUSA==$result=");
     return result;
   }
-  static bool hasId() {
+  static bool hasIn() {
     bool result = _huoquGuojia() == idCountry;
     // result = false;
     // ggPrint("=Country====isUSA==$result=");
@@ -64,7 +65,7 @@ class SSCountry {
 
   static String _huoquGuojia() {
     String name = Platform.localeName.toLowerCase(); // e.g. "en_US", "pt_BR"
-    // pbLog("=_huoquGuojia==name:$name=");
+    ssLogggg("=_huoquGuojia==name:$name=");
     if (name.startsWith('en')) {
       return usCountry;
     } else if (name.startsWith('pt')) {
@@ -74,7 +75,7 @@ class SSCountry {
     } else if (name.startsWith('ru')) {
       return ruCountry;
     }
-    return usCountry;
+    return idCountry;
   }
 
 }

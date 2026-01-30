@@ -921,7 +921,7 @@ class MainController extends GetxController {
       tmpAddMoney = tmpAddMoney + tmpPayyy;
       payBeisu.add(tmpPay);
     }
-
+    tmpAddMoney = tmpAddMoney * countryBeisu;
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
     await onFlyHeroWidget();
@@ -1423,22 +1423,6 @@ class MainController extends GetxController {
     await Future.delayed(Duration(milliseconds: 30));
   }
 
-  // BuildContext? keyWidgetZuobiao_1;
-  // BuildContext? keyWidgetZuobiao_2;
-  // BuildContext? keyWidgetZuobiao_3;
-  // BuildContext? keyWidgetZuobiao_4;
-  // BuildContext? keyWidgetZuobiao_5;
-  // BuildContext? keyWidgetZuobiao_6;
-  // BuildContext? keyWidgetZuobiao_7;
-  // BuildContext? keyWidgetZuobiao_8;
-  // BuildContext? keyWidgetZuobiao_9;
-  // BuildContext? keyWidgetZuobiao_10;
-  // BuildContext? keyWidgetZuobiao_11;
-  // BuildContext? keyWidgetZuobiao_12;
-  // BuildContext? keyWidgetZuobiao_13;
-  // BuildContext? keyWidgetZuobiao_14;
-  // BuildContext? keyWidgetZuobiao_15;
-  // BuildContext? keyWidgetZuobiao_16;
 
   Map<int, BuildContext> kZuobiao_vWidgetContext = {};
 
@@ -1464,10 +1448,41 @@ class MainController extends GetxController {
   static const int maxLevel = 100;
   static const int maxStarCount = 32;
   static const int maxBonusGameCount = 10;
-  static const double minWithdddMoney = 1000;
-  static const double jacktopGrand = 128.0;
-  static const double jacktopMajor = 80.0;
-  static const double jacktopMini = 48.0;
+
+  static double get minWithdddMoney {
+    double tmp = 1000.0;
+    tmp = countryBeisu * tmp;
+    return tmp;
+  }
+
+  static double get jacktopGrand {
+    double tmp = 128.0;
+    tmp = countryBeisu * tmp;
+    return tmp;
+  }
+
+  static double get jacktopMajor {
+    double tmp = 80.0;
+    tmp = countryBeisu * tmp;
+    return tmp;
+  }
+
+  static double get jacktopMini {
+    double tmp = 48.0;
+
+    tmp = countryBeisu * tmp;
+    return tmp;
+  }
+
+  static double get countryBeisu{
+    double beishu = 1.0;
+    if (SSCountry.hasBr()) {
+      beishu = 5.0;
+    } else if (SSCountry.hasIn()) {
+      beishu = 10000.0;
+    }
+    return beishu;
+  }
 
   String get minWithdddMoneyWithCountry {
     return "${SSCountry.curGuojiaFuhao()}${MainController.minWithdddMoney.toStringAsFixed(0)}";
@@ -1542,7 +1557,7 @@ class MainController extends GetxController {
       ? {
           3: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.cash,
-            num: 25,
+            num: 25*MainController.countryBeisu,
             img: Assets.img.moneyGift.path,
           ),
           6: GiftRewardModel(
@@ -1552,7 +1567,7 @@ class MainController extends GetxController {
           ),
           2: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.cash,
-            num: 25,
+            num: 25*MainController.countryBeisu,
             img: Assets.img.moneyGift.path,
           ),
           8: GiftRewardModel(
@@ -1562,7 +1577,7 @@ class MainController extends GetxController {
           ),
           5: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.cash,
-            num: 120,
+            num: 120*MainController.countryBeisu,
             img: Assets.img.moneyGift.path,
           ),
           1: GiftRewardModel(
@@ -1577,7 +1592,7 @@ class MainController extends GetxController {
           ),
           4: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.freespin,
-            num: 10,
+            num: 10*MainController.countryBeisu,
             img: Assets.img.giftFreespins.path,
           ),
           7: GiftRewardModel(
@@ -2009,6 +2024,7 @@ class MainController extends GetxController {
       onEnd: (EnumGiftRewardModel tmpEnumGiftRewardModel) {
         if (tmpEnumGiftRewardModel == EnumGiftRewardModel.cash) {
           double money = Random().nextDouble() * 20 + 10;
+          money = money * countryBeisu;
           SSEventReporttttt.free_spin_cash();
           OverlayWow().show(
             scene: EnumGetScene.spin,
@@ -2094,8 +2110,7 @@ class MainController extends GetxController {
     initTimerBoxGift();
   }
 
-
-   resetInitDataB() {
+  resetInitDataB() {
     int tmpCurLevelExp = box.get(hkLevelExp) ?? 0;
     curLevelExp.value = tmpCurLevelExp;
     ssLogggg("=====resetInitDataB curLevelExp:$tmpCurLevelExp");
@@ -2125,7 +2140,6 @@ class MainController extends GetxController {
     ssLogggg("=====resetInitDataB curGuideStepSpin1:$tmpCurGuideStepSpin1");
 
     initTimerBoxGift();
-
 
     initRoller5(hasFirstInit: true, hasFreeSpin: false);
   }
@@ -2192,7 +2206,8 @@ class MainController extends GetxController {
     return tmp;
   }
 
-  static String get hkTimeBoxGift =>SSABChange.isPackageB()? "af45ewrdf7u5hffj":"af45ewrdf7u5hffjAaaa";
+  static String get hkTimeBoxGift =>
+      SSABChange.isPackageB() ? "af45ewrdf7u5hffj" : "af45ewrdf7u5hffjAaaa";
   Timer? _timerBoxGfit;
 
   static const int maxSeconds = 60 * 60 * 8;

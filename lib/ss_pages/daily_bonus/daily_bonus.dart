@@ -409,7 +409,7 @@ class _DailyBonusState extends State<DailyBonus> {
                           height: 40.h,
                         ),
                         SSTxtGraBorder(
-                          text: "+${SSCountry.curGuojiaFuhao()}150",
+                          text: "+${SSCountry.curGuojiaFuhao()}${(150*MainController.countryBeisu).toStringAsFixed(0)}",
                           fontFamily: FontFamily.ghostKidAOEPro,
                           gradient: LinearGradient(
                             end: Alignment.bottomCenter,
