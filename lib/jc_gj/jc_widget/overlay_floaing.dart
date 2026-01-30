@@ -75,7 +75,7 @@ class SlideAcrossOverlay {
         ? Assets.img.popupPaypal.path
         : Assets.img.popupCashapp.path;
 
-    String id = "ID${Random().nextInt(10)}***${Random().nextInt(10)} Transfer Received ";
+    String id = "ID${Random().nextInt(10)}***${Random().nextInt(10)} ${"Transfer Received".tr} ";
     _entry = OverlayEntry(
       builder: (context) => IgnorePointer(
         child: Stack(
@@ -110,7 +110,7 @@ class SlideAcrossOverlay {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "LUCKY SLOTS TECNOLOGIA LTDA",
+                                    "Payment Received",
                                     style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
@@ -125,7 +125,7 @@ class SlideAcrossOverlay {
                                       text: id,
                                       children: [
                                         TextSpan(
-                                          text: " \$1000 ",
+                                          text: " ${"rank_3".tr} ",
                                           style: TextStyle(
                                             color: Color(0xff48CE44),
                                             // height: 1

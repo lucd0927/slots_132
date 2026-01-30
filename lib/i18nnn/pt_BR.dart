@@ -207,5 +207,7 @@ const Map<String, String> pt_BR = {
   "loading_failed2":"Falha ao carregar anúncio, por favor tente mais tarde",
 
 
-  "Reward earned":"Recompensa obtida"
+  "Reward earned":"Recompensa obtida",
+  "Transfer Received": "Transfer recebido",
+  "Payment Received":"Pagamento recebido"
 };
