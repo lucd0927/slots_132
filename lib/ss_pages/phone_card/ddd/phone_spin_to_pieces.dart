@@ -143,7 +143,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                                 strokeColor: Color(0xff30120A),
                               ),
                             ),
-                            SizedBox(height: 30.h),
+                            SizedBox(height: 20.h),
                             centerWidget(),
 
                             SizedBox(height: 10.h),
@@ -216,10 +216,11 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
             Container(
               height: double.infinity,
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   Container(
                     width: 120.w,
-                    height: 164.h,
+                    height: 180.h,
                     decoration: BoxDecoration(
                       color: Colors.red.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(12.w),
@@ -274,7 +275,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                   Positioned(
                     left: 0,
                     right: 0,
-                    bottom: 0,
+                    bottom: -10.h,
                     child: Center(
                       child: Container(
                         width: 100.h,
@@ -310,10 +311,11 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
             Container(
               height: double.infinity,
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   Container(
                     width: 120.w,
-                    height: 164.h,
+                    height: 180.h,
                     decoration: BoxDecoration(
                       color: Colors.red.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(12.w),
@@ -368,7 +370,7 @@ class _PhoneSpinToPiecesState extends State<PhoneSpinToPieces> {
                   Positioned(
                     left: 0,
                     right: 0,
-                    bottom: 0,
+                    bottom: -10.h,
                     child: Center(
                       child: Container(
                         width: 100.h,

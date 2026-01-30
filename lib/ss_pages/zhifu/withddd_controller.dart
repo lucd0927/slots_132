@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:slots_132/gen/assets.gen.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_gj/restore_bottom_bar.dart';
@@ -27,6 +28,10 @@ import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_rank.dart';
 enum EnumSSPaymentMethod {
   paypal('paypal'),
   cashApp('cashApp'),
+  ovo('ovo'),
+  dana('dana'),
+  pagbank('pagbank'),
+  pix('pix'),
   bank('bankTransfer');
 
   final String name;
@@ -112,6 +117,14 @@ class WithdddController extends GetxController {
       return Assets.img.withddCashapp.path;
     } else if (method == EnumSSPaymentMethod.bank.name) {
       return Assets.img.withddBank.path;
+    } else if (method == EnumSSPaymentMethod.ovo.name) {
+      return Assets.img.withddOvo.path;
+    } else if (method == EnumSSPaymentMethod.dana.name) {
+      return Assets.img.withddDana.path;
+    } else if (method == EnumSSPaymentMethod.pagbank.name) {
+      return Assets.img.withddPagbank.path;
+    } else if (method == EnumSSPaymentMethod.pix.name) {
+      return Assets.img.withddPix.path;
     }
     return ''; // 默认返回值，防止没有匹配情况
   }
@@ -127,6 +140,14 @@ class WithdddController extends GetxController {
       return Assets.img.withddCashapp.path;
     } else if (method == EnumSSPaymentMethod.bank.name) {
       return Assets.img.withddBank2.path;
+    } else if (method == EnumSSPaymentMethod.ovo.name) {
+      return Assets.img.withddOvo2.path;
+    } else if (method == EnumSSPaymentMethod.dana.name) {
+      return Assets.img.withddDana2.path;
+    } else if (method == EnumSSPaymentMethod.pagbank.name) {
+      return Assets.img.withddPagbank2.path;
+    } else if (method == EnumSSPaymentMethod.pix.name) {
+      return Assets.img.withddPix2.path;
     }
     return ''; // 默认返回值，防止没有匹配情况
   }
@@ -142,6 +163,14 @@ class WithdddController extends GetxController {
       return Assets.img.withddCashappS.path;
     } else if (method == EnumSSPaymentMethod.bank.name) {
       return Assets.img.withddBankS.path;
+    } else if (method == EnumSSPaymentMethod.ovo.name) {
+      return Assets.img.withddOvo2.path;
+    } else if (method == EnumSSPaymentMethod.dana.name) {
+      return Assets.img.withddDanaS.path;
+    } else if (method == EnumSSPaymentMethod.pagbank.name) {
+      return Assets.img.withddPagbankS.path;
+    } else if (method == EnumSSPaymentMethod.pix.name) {
+      return Assets.img.withddPixS.path;
     }
     return ''; // 默认返回值
   }
@@ -153,6 +182,14 @@ class WithdddController extends GetxController {
       return Color(0xFF3AAD47);
     } else if (selectedPaymentBank.value == EnumSSPaymentMethod.bank.name) {
       return Color(0xFF000000);
+    }else if (selectedPaymentBank.value == EnumSSPaymentMethod.dana.name) {
+      return Color(0xFF008CEB);
+    }else if (selectedPaymentBank.value == EnumSSPaymentMethod.ovo.name) {
+      return Color(0xFF4C3494);
+    }else if (selectedPaymentBank.value == EnumSSPaymentMethod.pagbank.name) {
+      return Color(0xFF33A4A7);
+    }else if (selectedPaymentBank.value == EnumSSPaymentMethod.pix.name) {
+      return Color(0xFF17A590);
     }
     return Color(0xFF263DD9); // 默认颜色
   }
@@ -220,6 +257,14 @@ class WithdddController extends GetxController {
       bool status = txProgressStatus.value;
       txProgressStatus.value = !status;
     });
+
+    if (SSCountry.hasUSA()) {
+      selectedPaymentBank = EnumSSPaymentMethod.paypal.name.obs;
+    } else if (SSCountry.hasBr()) {
+      selectedPaymentBank = EnumSSPaymentMethod.pagbank.name.obs;
+    } else if (SSCountry.hasIn()) {
+      selectedPaymentBank = EnumSSPaymentMethod.ovo.name.obs;
+    }
   }
 
   addSpinWithLiuceng1(int count) {

@@ -783,7 +783,7 @@ class _DailyBonusBottomTimeState extends State<DailyBonusBottomTime> {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        text: "Next reward available in ",
+        text: "${"daily_des".tr} ",
         children: [
           TextSpan(
             text: text,

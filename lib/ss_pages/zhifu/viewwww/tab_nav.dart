@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/ss_pages/zhifu/withddd_controller.dart';
 
 class TabNav extends StatefulWidget {
@@ -20,9 +21,25 @@ class _TabNavState extends State<TabNav> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            tabItem(method: EnumSSPaymentMethod.paypal),
+            tabItem(
+              method: SSCountry.hasUSA()
+                  ? EnumSSPaymentMethod.paypal
+                  : SSCountry.hasBr()
+                  ? EnumSSPaymentMethod.pagbank
+                  : SSCountry.hasIn()
+                  ? EnumSSPaymentMethod.dana
+                  : EnumSSPaymentMethod.paypal,
+            ),
             const SizedBox(width: 8),
-            tabItem(method: EnumSSPaymentMethod.cashApp),
+            tabItem(
+              method: SSCountry.hasUSA()
+                  ? EnumSSPaymentMethod.cashApp
+                  : SSCountry.hasBr()
+                  ? EnumSSPaymentMethod.pix
+                  : SSCountry.hasIn()
+                  ? EnumSSPaymentMethod.ovo
+                  : EnumSSPaymentMethod.paypal,
+            ),
             const SizedBox(width: 8),
             tabItem(method: EnumSSPaymentMethod.bank),
           ],

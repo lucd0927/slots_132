@@ -211,5 +211,6 @@ const Map<String, String> pt_BR = {
   "Transfer Received": "Transfer recebido",
   "Payment Received":"Pagamento recebido",
 
-  "rand_des":"Sua classificação atual"
+  "rand_des":"Sua classificação atual",
+  "daily_des":"Próxima recompensa disponível em",
 };

@@ -216,4 +216,5 @@ const Map<String, String> en_US = {
   "Payment Received":"Payment Received",
 
   "rand_des":"Your Current Rank",
+  "daily_des":"Next reward available in"
 };

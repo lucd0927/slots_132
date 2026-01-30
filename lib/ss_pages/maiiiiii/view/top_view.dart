@@ -47,6 +47,7 @@ import 'package:slots_132/ss_pages/zhifu/dialoooo/activate_my_status.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_common.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_one_last_check.dart';
@@ -191,9 +192,9 @@ class TopView extends StatelessWidget {
   onMenu(BuildContext context) async {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
-    // OverlaySettinnn().show();
+    OverlaySettinnn().show();
 
-    OverlayWithddCardCashapp().show();
+    // OverlayWithddCardCommon().show();
     // throw Exception();
 
     // AppLovinMAX.showMediationDebugger();
