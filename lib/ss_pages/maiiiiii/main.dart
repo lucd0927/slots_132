@@ -259,7 +259,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       bool hasFirstDay = days == 1 && weeks == 0;
       ssLogggg("====onDailyBonus==hasFirstDay:$hasFirstDay days:$days weeks:$weeks hasClick:$hasClick ");
       if (hasFirstDay && !hasClick) {
-        MainController.to.onAddMoney(50, showMoneyAnimated: true);
+        MainController.to.onAddMoney(50*MainController.countryBeisu, showMoneyAnimated: true);
         DailyBonusController.to.todayClickBonus.value = true;
         DailyBonusController.to.saveTodayClickBonusStatus(true);
         return;

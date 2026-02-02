@@ -287,8 +287,8 @@ class _SSTabViewState extends State<SSTabView> {
                           children: [
                             moenyWidget(money: money),
                             SizedBox(height: 4.h),
-                            Spacer(),
-                            progressWidget(money: money),
+                            Expanded(child: progressWidget(money: money),),
+
                           ],
                         ),
                         SizedBox(height: 4.h),

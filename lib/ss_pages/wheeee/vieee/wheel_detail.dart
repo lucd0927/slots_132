@@ -182,8 +182,8 @@ class _ControlledWheelState extends State<ControlledWheel>
                               gaplessPlayback: true,
                             ),
                             Positioned(
-                              left: 0,
-                              right: 0,
+                              left: -10.w,
+                              right: -10.w,
                               top: 20.h,
                               bottom: 0,
                               child: Center(
@@ -191,7 +191,7 @@ class _ControlledWheelState extends State<ControlledWheel>
                                   text: "spin".tr,
                                   strokeColor: Color(0xffCC1420),
                                   strokeWidth: 1.w,
-                                  fontSize: 24.sp,
+                                  fontSize: SSCountry.hasUSA() ? 24.sp:16.sp,
                                 ),
                               ),
                             ),

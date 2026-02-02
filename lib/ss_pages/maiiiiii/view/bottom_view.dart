@@ -165,7 +165,7 @@ class BottomView extends StatelessWidget {
                           // value: MainController.to.curSpinMoney.value,
                           value: MainController.to.curSpinMoney.value,
                           textStyle: TextStyle(
-                            fontSize: 20.sp,
+                            fontSize: SSCountry.hasUSA()? 20.sp:16.sp,
                             height: 1,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff6AFF00),
@@ -179,12 +179,13 @@ class BottomView extends StatelessWidget {
                       child: Text(
                         txt,
                         style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize:SSCountry.hasUSA()? 16.sp:14.sp,
                           height: 1,
                           fontWeight: FontWeight.w500,
                           fontFamily: FontFamily.ghostKidAOEPro,
                           color: Color(0xff6AFF00),
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
@@ -459,11 +460,13 @@ class BottomView extends StatelessWidget {
                         AutoSizeText(
                           "mian_3".tr,
                           style: TextStyle(
-                            fontSize: 10.sp,
+                            fontSize: SSCountry.hasUSA()?10.sp:8.sp,
                             fontFamily: FontFamily.ghostKidAOEPro,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff2B4735),
+                            height: 1
                           ),
+                          textAlign: TextAlign.center,
                           minFontSize: 8.sp,
                           stepGranularity: 8.sp,
                         ),

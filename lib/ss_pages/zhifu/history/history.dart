@@ -170,7 +170,7 @@ class _HistoryyyyState extends State<Historyyyy> {
                 style: TextStyle(
                   color: color,
                   fontWeight: FontWeight.w600,
-                  fontSize: SSCountry.hasUSA() ? 14.sp : 24.sp,
+                  fontSize: SSCountry.hasUSA() ? 14.sp : 12.sp,
                 ),
               ),
             ),

@@ -264,6 +264,7 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w800,
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                       Positioned(
@@ -377,9 +378,9 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
           Row(
             children: [
               Text(
-                curMmmm.toStringAsFixed(2),
+                curMmmm.toStringAsFixed(0),
                 style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: SSCountry.hasUSA()?20.sp:14.sp,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff000000),
                 ),
@@ -394,9 +395,9 @@ class _WithdddBuzuState extends State<WithdddBuzu> {
                 ),
               ),
               Text(
-                "${minW}",
+                "${minW.toStringAsFixed(0)}",
                 style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: SSCountry.hasUSA()?20.sp:14.sp,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff23A007),
                 ),

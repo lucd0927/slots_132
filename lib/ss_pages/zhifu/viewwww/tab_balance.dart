@@ -80,7 +80,7 @@ class _TabBalanceState extends State<TabBalance> {
                 suffix: "",
                 fractionDigits: 2,
                 textStyle: TextStyle(
-                  fontSize: 36.sp,
+                  fontSize: SSCountry.hasUSA()?36.sp:20.sp,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff2F2F2F),
                 ),

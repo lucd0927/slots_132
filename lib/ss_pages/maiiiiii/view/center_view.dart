@@ -497,7 +497,7 @@ class CenterView extends StatelessWidget {
                       text:
                           "${SSCountry.curGuojiaFuhao()}${miniN.toStringAsFixed(0)}",
                       fontColor: Color(0xff6AFF00),
-                      fontSize: 16.sp,
+                      fontSize: SSCountry.hasUSA()?16.sp:12.sp,
                       fontFamily: FontFamily.ghostKidAOEPro,
                     ),
                   ),

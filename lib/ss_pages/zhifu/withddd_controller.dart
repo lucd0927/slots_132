@@ -18,6 +18,7 @@ import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_buzu.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_bank.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_cashapp.dart';
+import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_common.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_card_paypal.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu1.dart';
 import 'package:slots_132/ss_pages/zhifu/dialoooo/withddd_jindu3.dart';
@@ -420,6 +421,8 @@ class WithdddController extends GetxController {
         OverlayWithddCardPaypal().show();
       } else if (payType == EnumSSPaymentMethod.cashApp.name) {
         OverlayWithddCardCashapp().show();
+      }else  {
+        OverlayWithddCardCommon().show();
       }
 
       // OverlayJindu1().show();
@@ -430,7 +433,7 @@ class WithdddController extends GetxController {
     double curMmmm = MainController.to.curMonnnn.value;
 
     bool hasSaveCardddd = hasSaveCardId();
-    ssLogggg("=========onWithdraw==hasSaveCardId:$hasSaveCardddd");
+    ssLogggg("=========onWithdraw==hasSaveCardId:$hasSaveCardddd curMmmm:$curMmmm money:$money");
     if (hasSaveCardddd) {
       bool hasLiuceng1 = curLiucheng1SpinsOver.value;
       bool hasLiuceng2 = curLiucheng2PaimingOver.value;

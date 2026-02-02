@@ -125,12 +125,12 @@ class _LuckySlotsWidgetState extends State<LuckySlotsWidget> {
                             children: [
                               SSTxtBorder(
                                 text: "lucky_slots_1".tr,
-                                fontSize: 24.sp,
+                                fontSize:SSCountry.hasUSA()? 24.sp:14.sp,
                                 fontColor: Color(0xffFFEA00),
                               ),
                               SSTxtBorder(
-                                text: " ${SSCountry.curGuojiaFuhao()}99.9",
-                                fontSize: 24.sp,
+                                text: " ${SSCountry.curGuojiaFuhao()}${(99.9*MainController.countryBeisu).toStringAsFixed(0)}",
+                                fontSize: SSCountry.hasUSA()?24.sp:14.sp,
                                 fontColor: Color(0xff00FF1E),
                               ),
                             ],
