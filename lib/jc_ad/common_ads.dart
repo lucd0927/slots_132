@@ -758,7 +758,10 @@ class SSCommonAds {
             ssLogggg("=======topon插屏====interstitialUnknown");
             break;
           default:
-            ssLogggg("=======topon插屏====default");
+            ssLogggg("=======topon插屏====default interstatus:${value.interstatus}");
+            ssLogggg(
+              "=======topon插屏====interstitialAdFailToLoadAD ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
+            );
             break;
         }
       },
@@ -857,7 +860,7 @@ class SSCommonAds {
     bool ignored_hasDisplayAd = false, // 是否忽略_hasDisplayAd的 判断 false不忽略 true 忽略
     bool canTryAgain = true, // 是否可以再次尝试加载广告
   }) async {
-    return true;
+    // return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,
@@ -1144,7 +1147,7 @@ class SSCommonAds {
     EnumGetScene? scene,
     bool ignored_hasDisplayAd = false,
   }) async {
-    return true;
+    // return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,

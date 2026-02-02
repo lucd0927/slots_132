@@ -192,23 +192,23 @@ class GGCommonJson {
   };
 
   static var localTopon = {
-    "doubqzaq": 100,
-    "ddixmpdd": 100,
-    "cdyun_switch": false,
-    "cdyun_int": [
+    "oxocbdkw": 100,
+    "rywjknyu": 100,
+    "eyomt_switch": true,
+    "eyomt_int": [
       {
-        "lhewiloc": "n1h3m43b0e4a06",
-        "vvmmyknm": "topon",
-        "jpburjoz": "interstitial",
-        "nohbmlex": 3000,
+        "ldhjempw": "n1h3m43b0e4a06",
+        "eoqcdsxf": "topon",
+        "fwjysnic": "interstitial",
+        "hvmcyweh": 3000,
       },
     ],
-    "cdyun_rv": [
+    "eyomt_rv": [
       {
-        "lhewiloc": "n1h3m43b0e40vm",
-        "vvmmyknm": "topon",
-        "jpburjoz": "reward",
-        "nohbmlex": 3000,
+        "ldhjempw": "n1h3m43b0e40vm",
+        "eoqcdsxf": "topon",
+        "fwjysnic": "reward",
+        "hvmcyweh": 3000,
       },
     ],
   };
