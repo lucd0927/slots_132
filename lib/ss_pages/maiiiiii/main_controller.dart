@@ -1423,7 +1423,6 @@ class MainController extends GetxController {
     await Future.delayed(Duration(milliseconds: 30));
   }
 
-
   Map<int, BuildContext> kZuobiao_vWidgetContext = {};
 
   // 坐标对应的位置
@@ -1474,7 +1473,7 @@ class MainController extends GetxController {
     return tmp;
   }
 
-  static double get countryBeisu{
+  static double get countryBeisu {
     double beishu = 1.0;
     if (SSCountry.hasBr()) {
       beishu = 5.0;
@@ -1508,8 +1507,10 @@ class MainController extends GetxController {
 
   static String get hkcurGuideStep1 =>
       SSABChange.isPackageB() ? "hkcurGuideStep1" : "hkcurGuideStep1Aaaaa";
-  static const double minBet = 8.0;
-  static const double maxBet = 10.0;
+
+  static double get minBet => 8.0 * MainController.countryBeisu;
+
+  static double get maxBet => 10.0 * MainController.countryBeisu;
 
   // 是否进行了第一步spin的引导
   var curGuideStepSpin1 = true.obs;
@@ -1557,7 +1558,7 @@ class MainController extends GetxController {
       ? {
           3: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.cash,
-            num: 25*MainController.countryBeisu,
+            num: 25 * MainController.countryBeisu,
             img: Assets.img.moneyGift.path,
           ),
           6: GiftRewardModel(
@@ -1567,7 +1568,7 @@ class MainController extends GetxController {
           ),
           2: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.cash,
-            num: 25*MainController.countryBeisu,
+            num: 25 * MainController.countryBeisu,
             img: Assets.img.moneyGift.path,
           ),
           8: GiftRewardModel(
@@ -1577,7 +1578,7 @@ class MainController extends GetxController {
           ),
           5: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.cash,
-            num: 120*MainController.countryBeisu,
+            num: 120 * MainController.countryBeisu,
             img: Assets.img.moneyGift.path,
           ),
           1: GiftRewardModel(
@@ -1592,7 +1593,7 @@ class MainController extends GetxController {
           ),
           4: GiftRewardModel(
             rewardModelType: EnumGiftRewardModel.freespin,
-            num: 10*MainController.countryBeisu,
+            num: 10 * MainController.countryBeisu,
             img: Assets.img.giftFreespins.path,
           ),
           7: GiftRewardModel(
@@ -1929,11 +1930,11 @@ class MainController extends GetxController {
 
   onChangeBeisu(double addNum) {
     double beisu = curBeisu.value + addNum * 1.0;
-    if (beisu < 8.0) {
-      beisu = 8.0;
+    if (beisu < 8.0 * MainController.countryBeisu) {
+      beisu = 8.0 * MainController.countryBeisu;
     }
-    if (beisu > 10.0) {
-      beisu = 10.0;
+    if (beisu > 10.0 * MainController.countryBeisu) {
+      beisu = 10.0 * MainController.countryBeisu;
     }
 
     box.put(hkBeisuNum, beisu);
@@ -1942,8 +1943,9 @@ class MainController extends GetxController {
   }
 
   onAddMaxBeisu() {
-    box.put(hkBeisuNum, 10.0);
-    curBeisu.value = 10.0;
+    double tmpNnn = 10.0 * MainController.countryBeisu;
+    box.put(hkBeisuNum, tmpNnn);
+    curBeisu.value = tmpNnn;
     SSEventReporttttt.home_page_bet();
     ssLogggg("=====addMaxBeisu curBeisu:10.0");
   }
@@ -2083,7 +2085,8 @@ class MainController extends GetxController {
     curLevelExp = tmpCurLevelExp.obs;
     ssLogggg("=====initOther curLevelExp:$tmpCurLevelExp");
 
-    double tmpcurBeisu = box.get(hkBeisuNum) ?? 8.0;
+    double tmpcurBeisu =
+        box.get(hkBeisuNum) ?? 8.0 * MainController.countryBeisu;
     curBeisu = tmpcurBeisu.obs;
     ssLogggg("=====initOther curBeisu:$tmpcurBeisu");
 
@@ -2115,7 +2118,8 @@ class MainController extends GetxController {
     curLevelExp.value = tmpCurLevelExp;
     ssLogggg("=====resetInitDataB curLevelExp:$tmpCurLevelExp");
 
-    double tmpcurBeisu = box.get(hkBeisuNum) ?? 8.0;
+    double tmpcurBeisu =
+        box.get(hkBeisuNum) ?? 8.0 * MainController.countryBeisu;
     curBeisu.value = tmpcurBeisu;
     ssLogggg("=====resetInitDataB curBeisu:$tmpcurBeisu");
 

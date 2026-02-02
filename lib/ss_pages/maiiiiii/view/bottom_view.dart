@@ -165,7 +165,7 @@ class BottomView extends StatelessWidget {
                           // value: MainController.to.curSpinMoney.value,
                           value: MainController.to.curSpinMoney.value,
                           textStyle: TextStyle(
-                            fontSize: SSCountry.hasUSA()? 20.sp:16.sp,
+                            fontSize: SSCountry.hasUSA() ? 20.sp : 16.sp,
                             height: 1,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff6AFF00),
@@ -179,7 +179,7 @@ class BottomView extends StatelessWidget {
                       child: Text(
                         txt,
                         style: TextStyle(
-                          fontSize:SSCountry.hasUSA()? 16.sp:14.sp,
+                          fontSize: SSCountry.hasUSA() ? 16.sp : 14.sp,
                           height: 1,
                           fontWeight: FontWeight.w500,
                           fontFamily: FontFamily.ghostKidAOEPro,
@@ -229,7 +229,9 @@ class BottomView extends StatelessWidget {
 
       bool hasMin = curBeisu == MainController.minBet;
       bool hasMax = curBeisu == MainController.maxBet;
-
+      if (curBeisu > 10000) {
+        curBeisu = curBeisu / 1000;
+      }
       return Container(
         width: 100.w,
         height: 40.h,
@@ -251,13 +253,18 @@ class BottomView extends StatelessWidget {
                       ),
                       child: Center(
                         child: SSAniiiiCount(
-                          value: MainController.to.curBeisu.value,
+                          value: curBeisu,
                           textStyle: TextStyle(
-                            fontSize: 12.sp,
+                            fontSize: SSCountry.hasUSA() ? 12.sp : 8.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                             fontFamily: FontFamily.ghostKidAOEPro,
                           ),
+                          suffix: SSCountry.hasUSA()
+                              ? ""
+                              : SSCountry.hasBr()
+                              ? ""
+                              : "K",
                           prefix: "${SSCountry.curGuojiaFuhao()}",
                         ),
                       ),
@@ -278,7 +285,9 @@ class BottomView extends StatelessWidget {
                           )
                         : GestureDetector(
                             onTap: () {
-                              MainController.to.onChangeBeisu(-1.0);
+                              MainController.to.onChangeBeisu(
+                                -1.0 * MainController.countryBeisu,
+                              );
                             },
                             child: Image.asset(
                               Assets.img.mainMaxSub.path,
@@ -303,7 +312,9 @@ class BottomView extends StatelessWidget {
                           )
                         : GestureDetector(
                             onTap: () {
-                              MainController.to.onChangeBeisu(1.0);
+                              MainController.to.onChangeBeisu(
+                                1.0 * MainController.countryBeisu,
+                              );
                             },
                             child: Image.asset(
                               Assets.img.mainMaxAdd.path,
@@ -460,11 +471,11 @@ class BottomView extends StatelessWidget {
                         AutoSizeText(
                           "mian_3".tr,
                           style: TextStyle(
-                            fontSize: SSCountry.hasUSA()?10.sp:8.sp,
+                            fontSize: SSCountry.hasUSA() ? 10.sp : 8.sp,
                             fontFamily: FontFamily.ghostKidAOEPro,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff2B4735),
-                            height: 1
+                            height: 1,
                           ),
                           textAlign: TextAlign.center,
                           minFontSize: 8.sp,
