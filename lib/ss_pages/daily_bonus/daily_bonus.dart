@@ -570,7 +570,7 @@ class _DailyBonusState extends State<DailyBonus> {
                               SSTxtBorder(
                                 text: "daily_bouns_3".tr,
                                 foreground: Color(0xff380F0F),
-                                fontSize: 12.sp,
+                                fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
                                 height: 1,
                                 fontColor: Color(0xffFFFF00),

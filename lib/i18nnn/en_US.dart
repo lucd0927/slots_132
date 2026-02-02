@@ -216,5 +216,10 @@ const Map<String, String> en_US = {
   "Payment Received":"Payment Received",
 
   "rand_des":"Your Current Rank",
-  "daily_des":"Next reward available in"
+  "daily_des":"Next reward available in",
+
+  "chat_1":"Agent Alex",
+  "chat_2":"Type a message",
+  "chat_3":"Typing...",
+  "chat_4":"No messages yet",
 };

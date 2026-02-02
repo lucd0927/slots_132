@@ -110,6 +110,7 @@ class _TabBalanceState extends State<TabBalance> {
                           color: Color(0xff000000),
                           height: 1,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),

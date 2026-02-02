@@ -157,7 +157,7 @@ class TopView extends StatelessWidget {
             child: Builder(
               builder: (context) {
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     onMenu(context);
                   },
                   child: Container(
@@ -173,7 +173,7 @@ class TopView extends StatelessWidget {
                     ),
                   ),
                 );
-              }
+              },
             ),
           ),
         ],
@@ -183,10 +183,9 @@ class TopView extends StatelessWidget {
 
   onWithddd() {
     SSEventReporttttt.home_page_cash_out();
-    if(SSABChange.isPackageB()){
+    if (SSABChange.isPackageB()) {
       Get.toNamed(SSRouttttt.withdrawwwww);
     }
-
   }
 
   onMenu(BuildContext context) async {
@@ -217,11 +216,9 @@ class TopView extends StatelessWidget {
     // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
     // showAdFailedDialog(Get.context!,onBtn: () {  }, onClose: () {  });
 
-
     // MainController.to.onAddMoney(990, showMoneyAnimated: true);
 
     // Get.toNamed(SSRouttttt.wayeeee);
-
 
     // OverlayJindu1().show();
 
@@ -310,7 +307,7 @@ class TopView extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: Color(0xffFFFFFF),
               fontSize: 14.sp,
-              fontFamily: FontFamily.ghostKidAOEPro
+              fontFamily: FontFamily.ghostKidAOEPro,
               // height: 1.1,
             ),
           ),
@@ -386,7 +383,9 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
                 child: Builder(
                   builder: (context) {
                     Widget child = Image.asset(
-                      SSABChange.isPackageB()?  Assets.img.money.path:Assets.imga.coin.path,
+                      SSABChange.isPackageB()
+                          ? Assets.img.money.path
+                          : Assets.imga.coin.path,
                       width: 30.h,
                       height: 28.h,
                       fit: BoxFit.fill,
@@ -410,17 +409,16 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
 
   onWithddd() {
     SSEventReporttttt.home_page_cash_out();
-    if(SSABChange.isPackageB()){
+    if (SSABChange.isPackageB()) {
       Get.toNamed(SSRouttttt.withdrawwwww);
-    }else{
+    } else {
       bool ishsow = MainController.tooltipController.isShowing;
-      if(ishsow){
+      if (ishsow) {
         // MainController.tooltipController.hide();
         return;
       }
       MainController.tooltipController.show();
     }
-
   }
 
   topMoney() {
@@ -458,7 +456,7 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
         child: Center(
           child: SSAniiiiCount(
             duration: Duration(milliseconds: 800),
-            fractionDigits: SSCountry.hasUSA()?2:1,
+            fractionDigits: SSCountry.hasUSA() ? 2 : 1,
             // wholeDigits: 2,
             prefix: SSCountry.curGuojiaFuhao(),
             suffix: suffix,
@@ -466,7 +464,9 @@ class _TopMoneyWidgetState extends State<TopMoneyWidget> {
 
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
-              color: SSABChange.isPackageB()?Color(0xff6AFF00):Color(0xffFFE711),
+              color: SSABChange.isPackageB()
+                  ? Color(0xff6AFF00)
+                  : Color(0xffFFE711),
               fontSize: 16.sp,
               height: 1,
               fontFamily: FontFamily.ghostKidAOEPro,
@@ -495,12 +495,17 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    if (SSCountry.hasBr()) {
+      paymentMethod = EnumSSPaymentMethod.pagbank;
+    } else if (SSCountry.hasIn()) {
+      paymentMethod = EnumSSPaymentMethod.dana;
+    }else{
+      paymentMethod = EnumSSPaymentMethod.paypal;
+    }
+    ssLogggg("=====paymentMethod:$paymentMethod");
     _timer = Timer.periodic(Duration(milliseconds: 1200), (time) {
       if (mounted) {
         setState(() {
-
-
           var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
           // hasLiceng3 = true;
           if (hasLiceng3) {
@@ -510,16 +515,35 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
               icon = "mian_8".tr;
             }
           } else {
-            if (paymentMethod == EnumSSPaymentMethod.paypal) {
-              paymentMethod = EnumSSPaymentMethod.cashApp;
-            } else if (paymentMethod == EnumSSPaymentMethod.cashApp) {
-              paymentMethod = EnumSSPaymentMethod.bank;
+            if (SSCountry.hasBr()) {
+              if (paymentMethod == EnumSSPaymentMethod.pagbank) {
+                paymentMethod = EnumSSPaymentMethod.pix;
+              } else if (paymentMethod == EnumSSPaymentMethod.pix) {
+                paymentMethod = EnumSSPaymentMethod.bank;
+              } else {
+                paymentMethod = EnumSSPaymentMethod.pagbank;
+              }
+            } else if (SSCountry.hasIn()) {
+              if (paymentMethod == EnumSSPaymentMethod.dana) {
+                paymentMethod = EnumSSPaymentMethod.ovo;
+              } else if (paymentMethod == EnumSSPaymentMethod.ovo) {
+                paymentMethod = EnumSSPaymentMethod.bank;
+              } else {
+                paymentMethod = EnumSSPaymentMethod.dana;
+              }
             } else {
-              paymentMethod = EnumSSPaymentMethod.paypal;
+              if (paymentMethod == EnumSSPaymentMethod.paypal) {
+                paymentMethod = EnumSSPaymentMethod.cashApp;
+              } else if (paymentMethod == EnumSSPaymentMethod.cashApp) {
+                paymentMethod = EnumSSPaymentMethod.bank;
+              } else {
+                paymentMethod = EnumSSPaymentMethod.paypal;
+              }
+
             }
             icon = selectedPaymentIconSelected2(paymentMethod.name);
+            change = !change;
           }
-          change = !change;
         });
       }
     });
@@ -547,6 +571,14 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
       return Assets.img.withddCashapp3.path;
     } else if (method == EnumSSPaymentMethod.bank.name) {
       return Assets.img.withddBank.path;
+    } else if (method == EnumSSPaymentMethod.pagbank.name) {
+      return Assets.img.withddPagbank.path;
+    } else if (method == EnumSSPaymentMethod.pix.name) {
+      return Assets.img.withddPix.path;
+    } else if (method == EnumSSPaymentMethod.dana.name) {
+      return Assets.img.withddDana.path;
+    } else if (method == EnumSSPaymentMethod.ovo.name) {
+      return Assets.img.withddOvo.path;
     }
     return Assets.img.withddPaypal.path; // 默认返回值，防止没有匹配情况
   }
@@ -555,7 +587,7 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
     var hasLiceng3 = WithdddController.to.curLiucheng3SpinsOver.value;
 
     bool hasB = SSABChange.isPackageB();
-    if(!hasB){
+    if (!hasB) {
       hasLiceng3 = true;
 
       // icon = "1000 coins a day";

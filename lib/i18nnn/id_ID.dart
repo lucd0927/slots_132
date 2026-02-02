@@ -212,4 +212,9 @@ const Map<String, String> id_ID = {
 
   "rand_des":"Peringkat Anda saat ini",
   "daily_des":"Hadiah berikutnya tersedia dalam",
+
+  "chat_1": "Agen Alex",
+  "chat_2": "Ketik pesan",
+  "chat_3": "Mengetik...",
+  "chat_4": "Belum ada pesan"
 };

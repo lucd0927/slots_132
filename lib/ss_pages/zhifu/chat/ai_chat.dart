@@ -73,6 +73,12 @@ class _AiChatState extends State<AiChat> {
       },
       // 使用 chatMessageBuilder 在默认 child 外包一层 Row，插入头像
       builders: Builders(
+        composerBuilder: (context) {
+          return Composer(hintText: "chat_2".tr);
+        },
+        emptyChatListBuilder: (context) {
+          return EmptyChatList(text: "chat_4".tr,);
+        },
         imageMessageBuilder:
             (
               BuildContext context,
@@ -94,7 +100,7 @@ class _AiChatState extends State<AiChat> {
               required bool isSentByMe,
               MessageGroupStatus? groupStatus,
             }) {
-              final avatar = _avatarForMessage(message,isSentByMe);
+              final avatar = _avatarForMessage(message, isSentByMe);
               // 根据是否为自己消息决定头像在左还是右
               final messageRow = isSentByMe
                   ? Row(
@@ -144,11 +150,15 @@ class _AiChatState extends State<AiChat> {
   }
 
   // 辅助方法：根据 message 尝试读取作者信息并返回头像 Widget
-  Widget _avatarForMessage(Message message,bool isSentByMe) {
+  Widget _avatarForMessage(Message message, bool isSentByMe) {
     if (message is TextMessage) {
       return CircleAvatar(
         radius: 18,
-        backgroundImage: AssetImage(isSentByMe?Assets.img.avatar.avatarD.path:Assets.img.withddAi.path),
+        backgroundImage: AssetImage(
+          isSentByMe
+              ? Assets.img.avatar.avatarD.path
+              : Assets.img.withddAi.path,
+        ),
       );
     }
 
@@ -156,11 +166,11 @@ class _AiChatState extends State<AiChat> {
   }
 
   Widget _buildHeader(BuildContext context) {
-    return Obx((){
+    return Obx(() {
       String text = "";
       bool hasRespone = SSChatController.to.hasResponing.value;
-      if(hasRespone){
-        text="Typing...";
+      if (hasRespone) {
+        text = "chat_3".tr;
       }
       return GestureDetector(
         onTap: () => Navigator.of(context).maybePop(),
@@ -171,7 +181,7 @@ class _AiChatState extends State<AiChat> {
               Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 24.h),
               SizedBox(width: 8.w),
               Text(
-                'Agent Alex',
+                'chat_1'.tr,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,

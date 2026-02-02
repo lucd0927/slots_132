@@ -213,4 +213,9 @@ const Map<String, String> pt_BR = {
 
   "rand_des":"Sua classificação atual",
   "daily_des":"Próxima recompensa disponível em",
+
+  "chat_1": "Agente Alex",
+  "chat_2": "Digite uma mensagem",
+  "chat_3": "Digitando...",
+  "chat_4": "Nenhuma mensagem ainda"
 };

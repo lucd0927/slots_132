@@ -103,9 +103,9 @@ class _MyAppState extends State<MyApp> {
             locale: ui.window.locale,
             translations: TranslationI18(),
             // 你的翻译
-            fallbackLocale: Locale('id', 'ID'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+            // fallbackLocale: Locale('id', 'ID'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
             // fallbackLocale: Locale('ru', 'RU'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
-            // fallbackLocale: Locale('en', 'US'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
+            fallbackLocale: Locale('en', 'US'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
             // fallbackLocale: Locale('pt', 'BR'), // 添加一个回调语言选项，以备上面指定的语言翻译不存在
           ),
         ),

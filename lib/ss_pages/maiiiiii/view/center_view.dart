@@ -275,7 +275,9 @@ class CenterView extends StatelessWidget {
                   children: [
                     SSTxtGraBorder(
                       text: "mian_4".tr,
-                      fontSize:SSCountry.hasUSA()? 20.sp:12.sp,
+                      fontSize: SSCountry.hasUSA()
+                          ? 20.sp
+                          : (SSCountry.hasBr() ? 16.sp : 12.sp),
                       strokeColor: Color(0xffD83507),
                     ),
                     SizedBox(width: 1.w),
@@ -292,7 +294,12 @@ class CenterView extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         begin: Alignment.topCenter,
                       ),
-                      textStyle: TextStyle(  fontSize:SSCountry.hasUSA()? 20.sp:12.sp, height: 1),
+                      textStyle: TextStyle(
+                        fontSize: SSCountry.hasUSA()
+                            ? 20.sp
+                            : (SSCountry.hasBr() ? 16.sp : 12.sp),
+                        height: 1,
+                      ),
                     ),
                     SizedBox(width: 1.w),
                     Padding(
@@ -307,7 +314,9 @@ class CenterView extends StatelessWidget {
                     ),
                     SSTxtGraBorder(
                       text: "mian_5".tr,
-                      fontSize:SSCountry.hasUSA()? 20.sp:12.sp,
+                      fontSize: SSCountry.hasUSA()
+                          ? 20.sp
+                          : (SSCountry.hasBr() ? 16.sp : 12.sp),
                       strokeColor: Color(0xffD83507),
                     ),
                     Padding(
@@ -324,7 +333,9 @@ class CenterView extends StatelessWidget {
                       maxS: 1.2,
                       child: SSTxtGraBorder(
                         text: "mian_6".tr,
-                        fontSize:SSCountry.hasUSA()? 20.sp:12.sp,
+                        fontSize: SSCountry.hasUSA()
+                            ? 20.sp
+                            : (SSCountry.hasBr() ? 16.sp : 12.sp),
                         strokeColor: Color(0xffD83507),
                       ),
                     ),
@@ -638,72 +649,73 @@ class CenterView extends StatelessWidget {
           ),
           SizedBox(height: 0.h),
 
-         if(SSABChange.isPackageB()) GestureDetector(
-            onTap: () {
-              ssLogggg("=mainPhone==");
-              onPhoneClick();
-            },
-            child: Obx(() {
-              int card = PhoneCardController.to.collectCardNum.value;
-              return Container(
-                width: 58.h + 50.h,
-                height: itemHeight,
-                // clipBehavior: Clip.none,
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(58.h),
-                      child: ShiningEffect(
-                        shineColor: Colors.yellow,
-                        opacity: 1,
-                        angle: 1.8,
-                        duration: const Duration(seconds: 2),
-                        child: Hero(
-                          tag: "Phoneeee",
-                          child: Image.asset(
-                            key: MainController.to.keyPhoneSpice,
-                            Assets.img.mainPhone.path,
-                            width: 58.h,
-                            height: 58.h,
-                            gaplessPlayback: true,
+          if (SSABChange.isPackageB())
+            GestureDetector(
+              onTap: () {
+                ssLogggg("=mainPhone==");
+                onPhoneClick();
+              },
+              child: Obx(() {
+                int card = PhoneCardController.to.collectCardNum.value;
+                return Container(
+                  width: 58.h + 50.h,
+                  height: itemHeight,
+                  // clipBehavior: Clip.none,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(58.h),
+                        child: ShiningEffect(
+                          shineColor: Colors.yellow,
+                          opacity: 1,
+                          angle: 1.8,
+                          duration: const Duration(seconds: 2),
+                          child: Hero(
+                            tag: "Phoneeee",
+                            child: Image.asset(
+                              key: MainController.to.keyPhoneSpice,
+                              Assets.img.mainPhone.path,
+                              width: 58.h,
+                              height: 58.h,
+                              gaplessPlayback: true,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      left: -10.w,
-                      right: 40.w,
-                      bottom: 4.h,
-                      child: Center(
-                        child: SSTxtGraBorder(
-                          text:
-                              "$card/${PhoneCardController.to.durations.length}",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                          strokeColor: Color(0xff30120A),
-                          // fontFamily: FontFamily.alkatra,
-                        ),
-                      ),
-                    ),
-                    if (PhoneCardController.to.canClickClaim.value &&
-                        !MainController.to.curGuideStepSpin1.value)
                       Positioned(
-                        right: 10.w,
-                        top: 10.h,
-                        // left: -50.w,
-                        child: Container(
-                          width: 100.h,
-                          height: 60.h,
-                          // color: Colors.yellow,
-                          child: const SpineHand(),
+                        left: -10.w,
+                        right: 40.w,
+                        bottom: 4.h,
+                        child: Center(
+                          child: SSTxtGraBorder(
+                            text:
+                                "$card/${PhoneCardController.to.durations.length}",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                            strokeColor: Color(0xff30120A),
+                            // fontFamily: FontFamily.alkatra,
+                          ),
                         ),
                       ),
-                  ],
-                ),
-              );
-            }),
-          ),
+                      if (PhoneCardController.to.canClickClaim.value &&
+                          !MainController.to.curGuideStepSpin1.value)
+                        Positioned(
+                          right: 10.w,
+                          top: 10.h,
+                          // left: -50.w,
+                          child: Container(
+                            width: 100.h,
+                            height: 60.h,
+                            // color: Colors.yellow,
+                            child: const SpineHand(),
+                          ),
+                        ),
+                    ],
+                  ),
+                );
+              }),
+            ),
         ],
       );
     });
@@ -1035,7 +1047,9 @@ class FreeSpinState extends State<FreeSpin> {
                               duration: Duration(milliseconds: 100),
                             ),
                             childI(
-                              icon:SSABChange.isPackageB()?Assets.img.freespinMoney.path:Assets.imga.coin.path,
+                              icon: SSABChange.isPackageB()
+                                  ? Assets.img.freespinMoney.path
+                                  : Assets.imga.coin.path,
                               index: 1,
                             ),
                           ],
@@ -1100,7 +1114,12 @@ class FreeSpinState extends State<FreeSpin> {
                           height: fiveH,
                           duration: Duration(milliseconds: 100),
                         ),
-                        childI(icon: SSABChange.isPackageB()?Assets.img.freespinMoney.path:Assets.imga.coin.path, index: 4),
+                        childI(
+                          icon: SSABChange.isPackageB()
+                              ? Assets.img.freespinMoney.path
+                              : Assets.imga.coin.path,
+                          index: 4,
+                        ),
                       ],
                     ),
                   ),
@@ -1184,11 +1203,11 @@ class FreeSpinState extends State<FreeSpin> {
               Positioned(
                 left: 0,
                 right: 0,
-                top: icon==Assets.imga.coin.path?17.h: 14.h,
+                top: icon == Assets.imga.coin.path ? 17.h : 14.h,
                 child: Center(
                   child: Image.asset(
                     icon,
-                    width: icon==Assets.imga.coin.path?30.w:40.w,
+                    width: icon == Assets.imga.coin.path ? 30.w : 40.w,
                     height: 40.w,
                     gaplessPlayback: true,
                   ),

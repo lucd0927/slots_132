@@ -11,8 +11,8 @@ class TranslationI18 extends Translations {
   // static const fallbackLocale = Locale('en', 'US');
   @override
   Map<String, Map<String, String>> get keys => {
-    'en_US': en_US,
-    'id_ID': id_ID,
+    // 'en_US': en_US,
+    // 'id_ID': id_ID,
     'pt_BR': pt_BR,
   };
 }
