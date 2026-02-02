@@ -7,6 +7,7 @@ import 'package:confetti/confetti.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart' hide Velocity;
 import 'package:flutter/services.dart';
+import 'package:flutter_app_minimizer_plus/flutter_app_minimizer_plus.dart';
 import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:flutter_floating_particles/flutter_floating_particles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -99,6 +100,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   initABListener()async{
+    if(Platform.isAndroid || SSABChange.isPackageB()){
+      return;
+    }
     WVChannelIosC143().nbaIosChan(context);
     SSABChange().listen((packName) async{
       ssLogggg("===SSABChange().listen==packName:$packName");
@@ -163,10 +167,12 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   jiazaiInterrrr() async {
-    if (SSDlTracking.qidongduoshaoDay() <= 1 || !SSABChange.isPackageB()) {
+    if (SSDlTracking.qiduoCishu() <= 1) {
       return;
     }
-
+    if(!SSABChange.isPackageB()){
+      return;
+    }
     int load = 1;
     while (true) {
       await Future.delayed(Duration(seconds: 1));
@@ -251,7 +257,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       int weeks = DailyBonusController.to.continueLoginWeeks.value;
 
       bool hasFirstDay = days == 1 && weeks == 0;
-
+      ssLogggg("====onDailyBonus==hasFirstDay:$hasFirstDay days:$days weeks:$weeks hasClick:$hasClick ");
       if (hasFirstDay && !hasClick) {
         MainController.to.onAddMoney(50, showMoneyAnimated: true);
         DailyBonusController.to.todayClickBonus.value = true;
@@ -267,13 +273,14 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context);
     return PopScope(
-      canPop: true,
-      // onPopInvoked: (didPop) {
-      //   if (didPop) return;
-      //
-      //   // 自己处理返回逻辑
-      //   MoveToBackground.moveTaskToBack();
-      // },
+      canPop: false,
+      onPopInvokedWithResult:(bool didPop, result2){
+        ssLogggg("=======main page didPop:$didPop");
+        if(didPop){
+          return;
+        }
+        FlutterAppMinimizerPlus.minimizeApp();
+      },
       child: Scaffold(resizeToAvoidBottomInset: false, body: mainView()),
       // onWillPop: () async {
       //

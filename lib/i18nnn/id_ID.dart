@@ -206,7 +206,7 @@ const Map<String, String> id_ID = {
   "No network currently":"Tidak ada jaringan saat ini",
   "loading_failed2":"Gagal memuat iklan, silakan coba lagi nanti",
 
-  "Reward earned":"Hadiah diperoleh",
+  "Reward earned":"Hadiah Diperoleh",
   "Transfer Received": "Transfer diterima",
   "Payment Received":"Pembayaran diterima",
 

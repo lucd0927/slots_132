@@ -21,7 +21,7 @@ class DailyBonusController extends GetxController {
   static  String get hLianxuLoginDay =>SSABChange.isPackageB()?"212iouoijsadf":  "212iouoijsadfAaa";
 
   // 连续登录多少周
-  static  String get hLianxuLoginZhouqi => SSABChange.isPackageB()?"212iouoijsadf": "5dfgwrhs21Aaa";
+  static  String get hLianxuLoginZhouqi => SSABChange.isPackageB()?"212iouoijsadfBbb": "5dfgwrhs21Aaa";
 
   //  连续登录时间
   static  String get hLianxuLoginTime =>SSABChange.isPackageB()?"asd54asdf45ad": "asd54asdf45adAaa";
@@ -127,6 +127,7 @@ class DailyBonusController extends GetxController {
   setWeeks(int week) {
     int value = week;
     value = value + 1;
+    ssLogggg("==hLianxuLoginZhouqi====setWeeks=value:$value");
     box.put(hLianxuLoginZhouqi, value);
   }
 
@@ -144,12 +145,13 @@ class DailyBonusController extends GetxController {
 
     int weeks = box.get(hLianxuLoginZhouqi) ?? 0;
     continueLoginWeeks = weeks.obs;
-
+    ssLogggg("==hLianxuLoginZhouqi=====continueLoginWeeks:$continueLoginWeeks");
     bool tmphkTodayClickBonus = box.get(hkTodayClickBonus) ?? false;
 
     if (SSDlTracking.isFirstLoginToday) {
       tmphkTodayClickBonus = false;
     }
+
     ssLogggg("=======tmphkTodayClickBonus:$tmphkTodayClickBonus");
     // tmphkTodayClickBonus = false;
     todayClickBonus = tmphkTodayClickBonus.obs;

@@ -93,6 +93,14 @@ class $AssetsDonghuaGen {
   $AssetsDonghuaSlotsSdlrGen get slotsSdlr =>
       const $AssetsDonghuaSlotsSdlrGen();
 
+  /// Directory path: assets/donghua/tanchuan_br
+  $AssetsDonghuaTanchuanBrGen get tanchuanBr =>
+      const $AssetsDonghuaTanchuanBrGen();
+
+  /// Directory path: assets/donghua/tanchuan_id
+  $AssetsDonghuaTanchuanIdGen get tanchuanId =>
+      const $AssetsDonghuaTanchuanIdGen();
+
   /// Directory path: assets/donghua/wenzidonxiao
   $AssetsDonghuaWenzidonxiaoGen get wenzidonxiao =>
       const $AssetsDonghuaWenzidonxiaoGen();
@@ -1706,6 +1714,41 @@ class $AssetsDonghuaSlotsSdlrGen {
 
   /// List of all assets
   List<dynamic> get values => [sdlrAtlas, sdlrPng, skeleton];
+}
+
+class $AssetsDonghuaTanchuanBrGen {
+  const $AssetsDonghuaTanchuanBrGen();
+
+  /// File path: assets/donghua/tanchuan_br/skeleton.json
+  String get skeleton => 'assets/donghua/tanchuan_br/skeleton.json';
+
+  /// File path: assets/donghua/tanchuan_br/tanchuan-baxi.atlas
+  String get tanchuanBaxiAtlas =>
+      'assets/donghua/tanchuan_br/tanchuan-baxi.atlas';
+
+  /// File path: assets/donghua/tanchuan_br/tanchuan-baxi.png
+  AssetGenImage get tanchuanBaxiPng =>
+      const AssetGenImage('assets/donghua/tanchuan_br/tanchuan-baxi.png');
+
+  /// List of all assets
+  List<dynamic> get values => [skeleton, tanchuanBaxiAtlas, tanchuanBaxiPng];
+}
+
+class $AssetsDonghuaTanchuanIdGen {
+  const $AssetsDonghuaTanchuanIdGen();
+
+  /// File path: assets/donghua/tanchuan_id/skeleton.json
+  String get skeleton => 'assets/donghua/tanchuan_id/skeleton.json';
+
+  /// File path: assets/donghua/tanchuan_id/yinni.atlas
+  String get yinniAtlas => 'assets/donghua/tanchuan_id/yinni.atlas';
+
+  /// File path: assets/donghua/tanchuan_id/yinni.png
+  AssetGenImage get yinniPng =>
+      const AssetGenImage('assets/donghua/tanchuan_id/yinni.png');
+
+  /// List of all assets
+  List<dynamic> get values => [skeleton, yinniAtlas, yinniPng];
 }
 
 class $AssetsDonghuaWenzidonxiaoGen {

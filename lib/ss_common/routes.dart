@@ -31,7 +31,7 @@ class SSRouttttt {
 
   static List<GetPage> pages = [
       GetPage(name: splash, page: () =>  SSSplassss()),
-      GetPage(name: main, page: () =>  Main()),
+      GetPage(name: main, page: () =>  Main(),transition: Transition.noTransition),
       GetPage(name: starGift, page: () =>  StarGift(),transition: Transition.cupertinoDialog),
       GetPage(name: wheeee, page: () =>  Wheeee(),transition: Transition.cupertinoDialog),
       GetPage(name: withdrawwwww, page: () =>  Withdrawwwww(),transition: Transition.cupertinoDialog),

@@ -211,7 +211,7 @@ const Map<String, String> en_US = {
   "No network currently": "No network currently",
   "loading_failed2": "Ad loading failed, please try again later",
 
-  "Reward earned": "Reward earned",
+  "Reward earned": "Reward Earned",
   "Transfer Received": "Transfer Received",
   "Payment Received":"Payment Received",
 

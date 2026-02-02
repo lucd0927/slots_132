@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slots_132/jc_gj/country.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 
 import '../../gen/assets.gen.dart';
@@ -44,7 +45,19 @@ class _SSSpineTxLastState extends State<SSSpineTxLast> {
         // controller.animationState.addAnimationByName(0, "run", true, 0);
       },
     );
-
+    if (SSCountry.hasBr()) {
+      return SpineWidget.fromAsset(
+        Assets.donghua.tanchuanBr.tanchuanBaxiAtlas,
+        Assets.donghua.tanchuanBr.skeleton,
+        controller,
+      );
+    } else if (SSCountry.hasIn()) {
+      return SpineWidget.fromAsset(
+        Assets.donghua.tanchuanId.yinniAtlas,
+        Assets.donghua.tanchuanId.skeleton,
+        controller,
+      );
+    }
     return SpineWidget.fromAsset(
       Assets.donghua.wenzidonxiao.tanchuangAtlas,
       Assets.donghua.wenzidonxiao.skeleton,
