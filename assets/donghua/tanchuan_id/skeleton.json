@@ -1,0 +1,335 @@
+{
+"skeleton": {
+	"hash": "kYkzqAqWPOI",
+	"spine": "4.3.39-beta",
+	"x": -374.84082,
+	"y": -373.4528,
+	"width": 749.86334,
+	"height": 746.9056,
+	"images": "./img-印尼/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Group 4899022", "parent": "root" },
+	{ "name": "Union", "parent": "root", "x": -63.383396, "y": 1.2192612 },
+	{ "name": "Union2", "parent": "root", "x": 53.454723, "y": 16.506508 },
+	{ "name": "Union3", "parent": "root", "x": 171.14223, "y": 35.069603 },
+	{ "name": "Union4", "parent": "root", "x": 291.5067, "y": 48.857506 },
+	{ "name": "Union5", "parent": "root", "x": 399.05045, "y": 63.390648 },
+	{ "name": "f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1", "parent": "root", "x": -266.5005, "y": -86.384705 },
+	{ "name": "Rectangle 11388", "parent": "root", "x": 197.47208, "y": -118.56482 },
+	{ "name": "Rectangle 11389", "parent": "root", "x": -195.5961, "y": 122.6897 },
+	{ "name": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1", "parent": "root", "x": -87.195404, "y": 107.19275 },
+	{ "name": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2", "parent": "root", "x": 253.81075, "y": -79.72039 },
+	{ "name": "edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1", "parent": "root" },
+	{ "name": "All on us!", "parent": "root", "x": 97.226135, "y": -54.2222 },
+	{ "name": "Congrats!", "parent": "root", "x": 57.33847, "y": 83.51465 },
+	{ "name": "You're today's lucky star—fees_", "parent": "root", "x": 88.50067, "y": 21.813538 }
+],
+"slots": [
+	{ "name": "zz", "bone": "root", "attachment": "zz" },
+	{ "name": "edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1", "bone": "edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1", "attachment": "edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1" },
+	{ "name": "Group 4899022", "bone": "Group 4899022", "attachment": "Group 4899022" },
+	{ "name": "Rectangle 11388", "bone": "Rectangle 11388", "attachment": "Rectangle 11388" },
+	{ "name": "Rectangle 11389", "bone": "Rectangle 11389", "attachment": "Rectangle 11388" },
+	{ "name": "Union", "bone": "Union", "color": "ffffffcc", "attachment": "Union" },
+	{ "name": "Union2", "bone": "Union2", "color": "ffffffb4", "attachment": "Union" },
+	{ "name": "Union3", "bone": "Union3", "color": "ffffff86", "attachment": "Union" },
+	{ "name": "Union4", "bone": "Union4", "color": "ffffff59", "attachment": "Union" },
+	{ "name": "Union5", "bone": "Union5", "color": "ffffff2d", "attachment": "Union" },
+	{ "name": "f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1", "bone": "f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1", "attachment": "f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1" },
+	{ "name": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1", "bone": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1", "attachment": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1" },
+	{ "name": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2", "bone": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2", "attachment": "f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2" },
+	{ "name": "All on us!", "bone": "All on us!", "attachment": "All on us!" },
+	{ "name": "Congrats!", "bone": "Congrats!", "attachment": "Congrats!" },
+	{ "name": "You're today's lucky star—fees_", "bone": "You're today's lucky star—fees_", "attachment": "You're today's lucky star—fees_" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"All on us!": {
+				"All on us!": { "width": 428, "height": 97 }
+			},
+			"Congrats!": {
+				"Congrats!": { "width": 215, "height": 63 }
+			},
+			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
+				"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": { "rotation": 0.06959343, "width": 746, "height": 746 }
+			},
+			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
+				"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": { "width": 396, "height": 129 }
+			},
+			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
+				"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": { "x": 0.016479492, "y": -3.0740051, "width": 599, "height": 248 }
+			},
+			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
+				"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": { "width": 256, "height": 256 }
+			},
+			"Group 4899022": {
+				"Group 4899022": { "width": 750, "height": 341 }
+			},
+			"Rectangle 11388": {
+				"Rectangle 11388": { "width": 372, "height": 70 }
+			},
+			"Rectangle 11389": {
+				"Rectangle 11388": { "rotation": 179.31982, "width": 372, "height": 70 }
+			},
+			"Union": {
+				"Union": { "x": 0.8067627, "y": 0.80682373, "width": 174, "height": 228 }
+			},
+			"Union2": {
+				"Union": { "width": 174, "height": 228 }
+			},
+			"Union3": {
+				"Union": { "width": 174, "height": 228 }
+			},
+			"Union4": {
+				"Union": { "width": 174, "height": 228 }
+			},
+			"Union5": {
+				"Union": { "width": 174, "height": 228 }
+			},
+			"You're today's lucky star—fees_": {
+				"You're today's lucky star—fees_": { "width": 488, "height": 150 }
+			},
+			"zz": {
+				"zz": {
+					"type": "clipping",
+					"end": "zz",
+					"vertexCount": 4,
+					"vertices": [ -374.58, 811.99, -375, -812.05, 375.05, -811.98, 374.98, 812.02 ],
+					"color": "ce3a3aff"
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"All on us!": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 5.0901475, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"Congrats!": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 5.0901475, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea" },
+					{ "time": 2.334607, "color": "eaeaea00" }
+				]
+			},
+			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 3.3978705, "color": "eaeaea00" },
+					{ "time": 3.6138215, "color": "eaeaeaea" },
+					{ "time": 4.7881145, "color": "eaeaea00" }
+				]
+			},
+			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
+				"rgba": [
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"Group 4899022": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"Rectangle 11388": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"Rectangle 11389": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 4.5764427, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			},
+			"Union": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeab8" }
+				]
+			},
+			"Union2": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.8798392, "color": "eaeaea00" },
+					{ "time": 1.1186514, "color": "eaeaea9f" }
+				]
+			},
+			"Union3": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 1.527135, "color": "eaeaea00" },
+					{ "time": 1.7286015, "color": "eaeaea72" }
+				]
+			},
+			"Union4": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 1.9261022, "color": "eaeaea00" },
+					{ "time": 2.1303546, "color": "eaeaea45" }
+				]
+			},
+			"Union5": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 2.334607, "color": "eaeaea00" },
+					{ "time": 2.5388594, "color": "eaeaea18" }
+				]
+			},
+			"You're today's lucky star—fees_": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4666667, "color": "eaeaea00" },
+					{ "time": 0.6723408, "color": "eaeaeaea", "curve": "stepped" },
+					{ "time": 5.0901475, "color": "eaeaeaea" },
+					{ "time": 5.4333334, "color": "eaeaea00" }
+				]
+			}
+		},
+		"bones": {
+			"Group 4899022": {
+				"translate": [
+					{ "x": -758.70184, "y": -113.31842 },
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 4.5764427, "x": -8.327944, "y": -8.327944 }
+				]
+			},
+			"Rectangle 11388": {
+				"translate": [
+					{ "x": 522.1809, "y": 108.562256 },
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 2.334607, "x": -8.328033, "y": -8.328003 }
+				]
+			},
+			"Rectangle 11389": {
+				"translate": [
+					{ "x": -550.62103, "y": -67.65527 },
+					{ "time": 0.4666667, "x": -8.328003, "y": -4.900078 },
+					{ "time": 2.334607, "x": -8.327972, "y": -4.9000244 }
+				]
+			},
+			"f362cc4f98f5743112ac3bfcaba37dc2c817aa093d81b-gAL4dq 1": {
+				"rotate": [
+					{ "time": 0.4666667, "value": -8.328003 },
+					{ "time": 1.320068, "value": -28.328003 },
+					{ "time": 2.334607, "value": -8.328003 },
+					{ "time": 2.8431122, "value": 11.671997 },
+					{ "time": 3.1806984, "value": -8.328003 },
+					{ "time": 4.0535083, "value": -28.328003 },
+					{ "time": 4.5764427, "value": -8.327944 }
+				],
+				"translate": [
+					{ "x": -253.87177, "y": -203.94736 },
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 4.5764427, "x": -8.327944, "y": -8.328005 },
+					{ "time": 5.4333334, "x": 224.79474, "y": 406.70752 }
+				],
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.4666667, "x": 0.91672, "y": 0.91672 },
+					{ "time": 1.320068, "x": 0.81671995, "y": 0.81671995 },
+					{ "time": 2.334607, "x": 0.91672, "y": 0.91672 },
+					{ "time": 2.8431122, "x": 0.81671995, "y": 0.81671995 },
+					{ "time": 3.1806984, "x": 0.91672, "y": 0.91672 },
+					{ "time": 4.0535083, "x": 0.81671995, "y": 0.81671995 },
+					{ "time": 4.5764427, "x": 0.91672057, "y": 0.91672057 }
+				]
+			},
+			"Union": {
+				"translate": [
+					{ "time": 0.4666667, "x": 522.1438, "y": 62.56671 },
+					{ "time": 3.1806984, "x": -403.28226, "y": -58.217064 }
+				]
+			},
+			"Union2": {
+				"translate": [
+					{ "time": 0.8798392, "x": 405.30566, "y": 47.279503 },
+					{ "time": 3.6138215, "x": -520.1227, "y": -73.504555 }
+				]
+			},
+			"Union3": {
+				"translate": [
+					{ "time": 1.527135, "x": 287.61816, "y": 28.716408 },
+					{ "time": 3.6138215, "x": -637.8103, "y": -92.06765 }
+				]
+			},
+			"Union4": {
+				"translate": [
+					{ "time": 1.9261022, "x": 167.25366, "y": 14.931435 },
+					{ "time": 3.8504643, "x": -758.1747, "y": -105.85555 }
+				]
+			},
+			"Union5": {
+				"translate": [
+					{ "time": 2.334607, "x": 59.70993, "y": 0.39536285 },
+					{ "time": 4.265115, "x": -865.7184, "y": -120.388695 }
+				]
+			},
+			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 2": {
+				"translate": [
+					{ "time": 3.3978705, "x": -98.81233, "y": -20.798775 },
+					{ "time": 4.7881145, "x": 133.25291, "y": 10.011709 }
+				]
+			},
+			"f1a4a9953a69b9d3db58bbf44bd28dee6342fe111f1de-SeV19Q 1": {
+				"translate": [
+					{ "time": 0.4666667, "x": -8.328003, "y": -8.328003 },
+					{ "time": 2.334607, "x": -256.27786, "y": -42.07263 }
+				]
+			},
+			"edd5cb329ba1408850f5ba3dd4fc04519b3ae272e81ed-kOQIp5_fw1200 1": {
+				"rotate": [
+					{ "time": 0.6723408, "value": -8.328003 },
+					{ "time": 4.5764427, "value": -110.960754 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.4666667, "x": 0.016719975, "y": 0.016719975 },
+					{ "time": 0.6723408, "x": 0.91672, "y": 0.91672 }
+				]
+			}
+		}
+	}
+}
+}

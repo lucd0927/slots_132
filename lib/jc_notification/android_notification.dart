@@ -386,7 +386,7 @@ class SSTzNotificattttt {
       tttttt,
       ccccc,
       //两次发送解锁通知的间隔，根据需求设置
-      SSHuanjing.hasDevvvvv() ? Duration(seconds: 5) : Duration(minutes: 15),
+      SSHuanjing.hasDevvvvv() ? Duration(seconds: 5) : Duration(seconds: 5),
       'android.intent.action.USER_PRESENT',
       AndroidNotificationDetails(
         'sslots',
