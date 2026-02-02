@@ -167,7 +167,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   jiazaiInterrrr() async {
-    if (SSDlTracking.qiduoCishu() <= 1) {
+    if (SSDlTracking.qidongduoshaoDay() <= 1) {
       return;
     }
     if(!SSABChange.isPackageB()){
