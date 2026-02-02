@@ -142,6 +142,7 @@ class WheController extends GetxController {
       if(!result){
         return;
       }
+
       OverlayCommonGet().show(
         money: money,
         exp: exp,

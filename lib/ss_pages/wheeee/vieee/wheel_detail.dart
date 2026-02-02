@@ -18,6 +18,7 @@ import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_common/ss_event_bus.dart';
+import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/wheeee/whe_controller.dart';
 
 class SSWheelDetail extends StatefulWidget {
@@ -302,7 +303,7 @@ class _ControlledWheelState extends State<ControlledWheel>
   Map<int, GiftRewardModel> vIndex_vReward = {
     0: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
+      num: 50 * MainController.countryBeisu,
       img: Assets.img.phoneSuip.path,
     ),
     1: GiftRewardModel(
@@ -312,7 +313,7 @@ class _ControlledWheelState extends State<ControlledWheel>
     ),
     2: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 150,
+      num: 150 * MainController.countryBeisu,
       img: Assets.img.phoneSuip.path,
     ),
     3: GiftRewardModel(
@@ -328,17 +329,17 @@ class _ControlledWheelState extends State<ControlledWheel>
 
     5: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 150,
+      num: 150 * MainController.countryBeisu,
       img: Assets.img.phoneSuip.path,
     ),
     6: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
+      num: 50 * MainController.countryBeisu,
       img: Assets.img.phoneSuip.path,
     ),
     7: GiftRewardModel(
       rewardModelType: EnumGiftRewardModel.cash,
-      num: 50,
+      num: 50 * MainController.countryBeisu,
       img: Assets.img.phoneSuip.path,
     ),
   };
