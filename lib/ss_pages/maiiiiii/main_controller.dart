@@ -921,7 +921,7 @@ class MainController extends GetxController {
       tmpAddMoney = tmpAddMoney + tmpPayyy;
       payBeisu.add(tmpPay);
     }
-    tmpAddMoney = tmpAddMoney * countryBeisu;
+    // tmpAddMoney = tmpAddMoney * countryBeisu;
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
     await onFlyHeroWidget();

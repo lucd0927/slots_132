@@ -149,7 +149,7 @@ const Map<String, String> pt_BR = {
   "one_last_jindu2_2":"Ganhe",
   "one_last_jindu2_3":"R\$5000/Dia",
   "one_last_jindu2_4":"Garantido",
-  "one_last_jindu2_5":"Você é bom nisso. Muito bom.\nQueremos VOCÊ em nossa equipe VIP. Receba \$1.000 todos os dias, garantido.\nEsta é uma oferta ÚNICA. Agora mesmo.",
+  "one_last_jindu2_5":"Você é bom nisso. Muito bom.\nQueremos VOCÊ em nossa equipe VIP. Receba R\$5000 todos os dias, garantido.\nEsta é uma oferta ÚNICA. Agora mesmo.",
   "one_last_jindu2_6":"Aceitar Convite VIP",
   "one_last_jindu2_7":"Não, obrigado, prefiro ganhar menos",
   "rank_1":"Pagamento Enviado!",
