@@ -45,11 +45,12 @@ class _SpineShengdaolaorenState extends State<SpineShengdaolaoren> {
     );
 
     return SpineWidget.fromAsset(
-      Assets.donghua.sdlr.skeletonsAtlas,
-      // Assets.donghua.sdlr.a1Atlas,
-      Assets.donghua.sdlr.skeleton,
+      Assets.donghua.sdlr2.a1Atlas,
+      Assets.donghua.sdlr2.skeleton,
+      // Assets.donghua.sdlr.skeletonsAtlas,
+      // Assets.donghua.sdlr.skeleton,
       controller,
-      sizedByBounds: true,
+      // sizedByBounds: true,
     );
   }
 }

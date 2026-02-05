@@ -26,6 +26,7 @@ import 'package:slots_132/ss_common/sssssp/spine_hand.dart';
 import 'package:slots_132/ss_common/sssssp/spine_sdlr.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
+import 'package:slots_132/ss_pages/guide/guide0.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/cycle_roller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/shimmer/shimmer.dart';
@@ -59,9 +60,9 @@ class CenterView extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Positioned(
-                  left: 20.w,
+                  left: 0.w,
                   top: 40.h,
-                  right: 20.w,
+                  right: 0.w,
                   child: Container(
                     key: ValueKey("SpineShengdaolaoren"),
                     // width: 10.w,
@@ -217,25 +218,7 @@ class CenterView extends StatelessWidget {
                   ),
                 ),
 
-                // Positioned.fill(
-                //   child: Container(
-                //     width: double.infinity,
-                //     height: double.infinity,
-                //     // color: Colors.white,
-                //
-                //     child: AnimatedBuilder(animation: animation, builder: builder),
-                //
-                //     // child: AnimatedCrossFade(
-                //     //   firstChild: SizedBox(width: 58.h, height: 64.h),
-                //     //   secondChild: FreeSpin(),
-                //     //   crossFadeState: MainController.to.showFreeSpin.value
-                //     //       ? CrossFadeState.showSecond
-                //     //       : CrossFadeState.showFirst,
-                //     //   secondCurve: Curves.linear,
-                //     //   duration: Duration(milliseconds: 200),
-                //     // ),
-                //   ),
-                // ),
+
               ],
             ),
           );
@@ -649,7 +632,7 @@ class CenterView extends StatelessWidget {
           ),
           SizedBox(height: 0.h),
 
-          if (SSABChange.isPackageB())
+          SSABChange.isPackageB()?
             GestureDetector(
               onTap: () {
                 ssLogggg("=mainPhone==");
@@ -715,7 +698,39 @@ class CenterView extends StatelessWidget {
                   ),
                 );
               }),
+            ): GestureDetector(
+            onTap: () {
+              ssLogggg("=mainPhone==");
+              OverlayGuide0BGuide().show();
+            },
+            child:  Container(
+              width: 58.h + 50.h,
+              height: itemHeight,
+              // clipBehavior: Clip.none,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(58.h),
+                    child: ShiningEffect(
+                      shineColor: Colors.yellow,
+                      opacity: 1,
+                      angle: 1.8,
+                      duration: const Duration(seconds: 2),
+                      child: Image.asset(
+                        key: MainController.to.keyPhoneSpice,
+                        Assets.imga2.guide4Task.path,
+                        width: 58.h,
+                        height: 58.h,
+                        gaplessPlayback: true,
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
             ),
+          ),
         ],
       );
     });

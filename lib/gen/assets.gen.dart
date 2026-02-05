@@ -73,6 +73,9 @@ class $AssetsDonghuaGen {
   /// Directory path: assets/donghua/avatar
   $AssetsDonghuaAvatarGen get avatar => const $AssetsDonghuaAvatarGen();
 
+  /// Directory path: assets/donghua/dlxwdonx
+  $AssetsDonghuaDlxwdonxGen get dlxwdonx => const $AssetsDonghuaDlxwdonxGen();
+
   /// Directory path: assets/donghua/freespin_s
   $AssetsDonghuaFreespinSGen get freespinS =>
       const $AssetsDonghuaFreespinSGen();
@@ -88,6 +91,9 @@ class $AssetsDonghuaGen {
 
   /// Directory path: assets/donghua/sdlr
   $AssetsDonghuaSdlrGen get sdlr => const $AssetsDonghuaSdlrGen();
+
+  /// Directory path: assets/donghua/sdlr2
+  $AssetsDonghuaSdlr2Gen get sdlr2 => const $AssetsDonghuaSdlr2Gen();
 
   /// Directory path: assets/donghua/slots_sdlr
   $AssetsDonghuaSlotsSdlrGen get slotsSdlr =>
@@ -1549,6 +1555,140 @@ class $AssetsImgaGen {
   ];
 }
 
+class $AssetsImga2Gen {
+  const $AssetsImga2Gen();
+
+  /// File path: assets/imga2/btn_startengine.png
+  AssetGenImage get btnStartengine =>
+      const AssetGenImage('assets/imga2/btn_startengine.png');
+
+  /// File path: assets/imga2/duihuakuang.png
+  AssetGenImage get duihuakuang =>
+      const AssetGenImage('assets/imga2/duihuakuang.png');
+
+  /// File path: assets/imga2/gesture2.png
+  AssetGenImage get gesture2 =>
+      const AssetGenImage('assets/imga2/gesture2.png');
+
+  /// File path: assets/imga2/gesture_down.png
+  AssetGenImage get gestureDown =>
+      const AssetGenImage('assets/imga2/gesture_down.png');
+
+  /// File path: assets/imga2/gesture_left_down.png
+  AssetGenImage get gestureLeftDown =>
+      const AssetGenImage('assets/imga2/gesture_left_down.png');
+
+  /// File path: assets/imga2/guide0_0.png
+  AssetGenImage get guide00 => const AssetGenImage('assets/imga2/guide0_0.png');
+
+  /// File path: assets/imga2/guide0_00.png
+  AssetGenImage get guide000 =>
+      const AssetGenImage('assets/imga2/guide0_00.png');
+
+  /// File path: assets/imga2/guide0_1.png
+  AssetGenImage get guide01 => const AssetGenImage('assets/imga2/guide0_1.png');
+
+  /// File path: assets/imga2/guide0_11.png
+  AssetGenImage get guide011 =>
+      const AssetGenImage('assets/imga2/guide0_11.png');
+
+  /// File path: assets/imga2/guide0_sdlr.png
+  AssetGenImage get guide0Sdlr =>
+      const AssetGenImage('assets/imga2/guide0_sdlr.png');
+
+  /// File path: assets/imga2/guide1.png
+  AssetGenImage get guide1 => const AssetGenImage('assets/imga2/guide1.png');
+
+  /// File path: assets/imga2/guide1_sdlr.png
+  AssetGenImage get guide1Sdlr =>
+      const AssetGenImage('assets/imga2/guide1_sdlr.png');
+
+  /// File path: assets/imga2/guide2.png
+  AssetGenImage get guide2 => const AssetGenImage('assets/imga2/guide2.png');
+
+  /// File path: assets/imga2/guide2_sdlr.png
+  AssetGenImage get guide2Sdlr =>
+      const AssetGenImage('assets/imga2/guide2_sdlr.png');
+
+  /// File path: assets/imga2/guide3.png
+  AssetGenImage get guide3 => const AssetGenImage('assets/imga2/guide3.png');
+
+  /// File path: assets/imga2/guide3_1.png
+  AssetGenImage get guide31 => const AssetGenImage('assets/imga2/guide3_1.png');
+
+  /// File path: assets/imga2/guide3_1_2.png
+  AssetGenImage get guide312 =>
+      const AssetGenImage('assets/imga2/guide3_1_2.png');
+
+  /// File path: assets/imga2/guide3_2.png
+  AssetGenImage get guide32 => const AssetGenImage('assets/imga2/guide3_2.png');
+
+  /// File path: assets/imga2/guide3_sdlr.png
+  AssetGenImage get guide3Sdlr =>
+      const AssetGenImage('assets/imga2/guide3_sdlr.png');
+
+  /// File path: assets/imga2/guide4_ok.png
+  AssetGenImage get guide4Ok =>
+      const AssetGenImage('assets/imga2/guide4_ok.png');
+
+  /// File path: assets/imga2/guide4_play.png
+  AssetGenImage get guide4Play =>
+      const AssetGenImage('assets/imga2/guide4_play.png');
+
+  /// File path: assets/imga2/guide4_task.png
+  AssetGenImage get guide4Task =>
+      const AssetGenImage('assets/imga2/guide4_task.png');
+
+  /// File path: assets/imga2/guide4_task_bg.png
+  AssetGenImage get guide4TaskBg =>
+      const AssetGenImage('assets/imga2/guide4_task_bg.png');
+
+  /// File path: assets/imga2/guide4_task_play.png
+  AssetGenImage get guide4TaskPlay =>
+      const AssetGenImage('assets/imga2/guide4_task_play.png');
+
+  /// File path: assets/imga2/next.png
+  AssetGenImage get next => const AssetGenImage('assets/imga2/next.png');
+
+  /// File path: assets/imga2/star.png
+  AssetGenImage get star => const AssetGenImage('assets/imga2/star.png');
+
+  /// File path: assets/imga2/xuanguang.png
+  AssetGenImage get xuanguang =>
+      const AssetGenImage('assets/imga2/xuanguang.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    btnStartengine,
+    duihuakuang,
+    gesture2,
+    gestureDown,
+    gestureLeftDown,
+    guide00,
+    guide000,
+    guide01,
+    guide011,
+    guide0Sdlr,
+    guide1,
+    guide1Sdlr,
+    guide2,
+    guide2Sdlr,
+    guide3,
+    guide31,
+    guide312,
+    guide32,
+    guide3Sdlr,
+    guide4Ok,
+    guide4Play,
+    guide4Task,
+    guide4TaskBg,
+    guide4TaskPlay,
+    next,
+    star,
+    xuanguang,
+  ];
+}
+
 class $AssetsLotttGen {
   const $AssetsLotttGen();
 
@@ -1590,6 +1730,119 @@ class $AssetsMyaGen {
   $AssetsMyaXuanguangGen get xuanguang => const $AssetsMyaXuanguangGen();
 }
 
+class $AssetsTaskGen {
+  const $AssetsTaskGen();
+
+  /// File path: assets/task/task_1.png
+  AssetGenImage get task1 => const AssetGenImage('assets/task/task_1.png');
+
+  /// File path: assets/task/task_10.png
+  AssetGenImage get task10 => const AssetGenImage('assets/task/task_10.png');
+
+  /// File path: assets/task/task_11.png
+  AssetGenImage get task11 => const AssetGenImage('assets/task/task_11.png');
+
+  /// File path: assets/task/task_12.png
+  AssetGenImage get task12 => const AssetGenImage('assets/task/task_12.png');
+
+  /// File path: assets/task/task_13.png
+  AssetGenImage get task13 => const AssetGenImage('assets/task/task_13.png');
+
+  /// File path: assets/task/task_14.png
+  AssetGenImage get task14 => const AssetGenImage('assets/task/task_14.png');
+
+  /// File path: assets/task/task_15.png
+  AssetGenImage get task15 => const AssetGenImage('assets/task/task_15.png');
+
+  /// File path: assets/task/task_16.png
+  AssetGenImage get task16 => const AssetGenImage('assets/task/task_16.png');
+
+  /// File path: assets/task/task_17.png
+  AssetGenImage get task17 => const AssetGenImage('assets/task/task_17.png');
+
+  /// File path: assets/task/task_18.png
+  AssetGenImage get task18 => const AssetGenImage('assets/task/task_18.png');
+
+  /// File path: assets/task/task_19.png
+  AssetGenImage get task19 => const AssetGenImage('assets/task/task_19.png');
+
+  /// File path: assets/task/task_2.png
+  AssetGenImage get task2 => const AssetGenImage('assets/task/task_2.png');
+
+  /// File path: assets/task/task_20.png
+  AssetGenImage get task20 => const AssetGenImage('assets/task/task_20.png');
+
+  /// File path: assets/task/task_21.png
+  AssetGenImage get task21 => const AssetGenImage('assets/task/task_21.png');
+
+  /// File path: assets/task/task_22.png
+  AssetGenImage get task22 => const AssetGenImage('assets/task/task_22.png');
+
+  /// File path: assets/task/task_23.png
+  AssetGenImage get task23 => const AssetGenImage('assets/task/task_23.png');
+
+  /// File path: assets/task/task_3.png
+  AssetGenImage get task3 => const AssetGenImage('assets/task/task_3.png');
+
+  /// File path: assets/task/task_4.png
+  AssetGenImage get task4 => const AssetGenImage('assets/task/task_4.png');
+
+  /// File path: assets/task/task_5.png
+  AssetGenImage get task5 => const AssetGenImage('assets/task/task_5.png');
+
+  /// File path: assets/task/task_6.png
+  AssetGenImage get task6 => const AssetGenImage('assets/task/task_6.png');
+
+  /// File path: assets/task/task_7.png
+  AssetGenImage get task7 => const AssetGenImage('assets/task/task_7.png');
+
+  /// File path: assets/task/task_8.png
+  AssetGenImage get task8 => const AssetGenImage('assets/task/task_8.png');
+
+  /// File path: assets/task/task_9.png
+  AssetGenImage get task9 => const AssetGenImage('assets/task/task_9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    task1,
+    task10,
+    task11,
+    task12,
+    task13,
+    task14,
+    task15,
+    task16,
+    task17,
+    task18,
+    task19,
+    task2,
+    task20,
+    task21,
+    task22,
+    task23,
+    task3,
+    task4,
+    task5,
+    task6,
+    task7,
+    task8,
+    task9,
+  ];
+}
+
+class $AssetsVideoGen {
+  const $AssetsVideoGen();
+
+  /// File path: assets/video/fire.mp4
+  String get fire => 'assets/video/fire.mp4';
+
+  /// File path: assets/video/splash.mp4
+  String get splash => 'assets/video/splash.mp4';
+
+  /// List of all assets
+  List<String> get values => [fire, splash];
+}
+
 class $AssetsDonghuaAvatarGen {
   const $AssetsDonghuaAvatarGen();
 
@@ -1605,6 +1858,23 @@ class $AssetsDonghuaAvatarGen {
 
   /// List of all assets
   List<dynamic> get values => [e8, jinbiAtlas, jinbiPng];
+}
+
+class $AssetsDonghuaDlxwdonxGen {
+  const $AssetsDonghuaDlxwdonxGen();
+
+  /// File path: assets/donghua/dlxwdonx/skeleton.json
+  String get skeleton => 'assets/donghua/dlxwdonx/skeleton.json';
+
+  /// File path: assets/donghua/dlxwdonx/skeletons.atlas
+  String get skeletonsAtlas => 'assets/donghua/dlxwdonx/skeletons.atlas';
+
+  /// File path: assets/donghua/dlxwdonx/skeletons.png
+  AssetGenImage get skeletonsPng =>
+      const AssetGenImage('assets/donghua/dlxwdonx/skeletons.png');
+
+  /// List of all assets
+  List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
 }
 
 class $AssetsDonghuaFreespinSGen {
@@ -1697,6 +1967,46 @@ class $AssetsDonghuaSdlrGen {
 
   /// List of all assets
   List<dynamic> get values => [skeleton, skeletonsAtlas, skeletonsPng];
+}
+
+class $AssetsDonghuaSdlr2Gen {
+  const $AssetsDonghuaSdlr2Gen();
+
+  /// File path: assets/donghua/sdlr2/1.atlas
+  String get a1Atlas => 'assets/donghua/sdlr2/1.atlas';
+
+  /// File path: assets/donghua/sdlr2/1.png
+  AssetGenImage get a1Png => const AssetGenImage('assets/donghua/sdlr2/1.png');
+
+  /// File path: assets/donghua/sdlr2/1_2.png
+  AssetGenImage get a12 => const AssetGenImage('assets/donghua/sdlr2/1_2.png');
+
+  /// File path: assets/donghua/sdlr2/1_3.png
+  AssetGenImage get a13 => const AssetGenImage('assets/donghua/sdlr2/1_3.png');
+
+  /// File path: assets/donghua/sdlr2/1_4.png
+  AssetGenImage get a14 => const AssetGenImage('assets/donghua/sdlr2/1_4.png');
+
+  /// File path: assets/donghua/sdlr2/1_5.png
+  AssetGenImage get a15 => const AssetGenImage('assets/donghua/sdlr2/1_5.png');
+
+  /// File path: assets/donghua/sdlr2/1_6.png
+  AssetGenImage get a16 => const AssetGenImage('assets/donghua/sdlr2/1_6.png');
+
+  /// File path: assets/donghua/sdlr2/skeleton.json
+  String get skeleton => 'assets/donghua/sdlr2/skeleton.json';
+
+  /// List of all assets
+  List<dynamic> get values => [
+    a1Atlas,
+    a1Png,
+    a12,
+    a13,
+    a14,
+    a15,
+    a16,
+    skeleton,
+  ];
 }
 
 class $AssetsDonghuaSlotsSdlrGen {
@@ -3566,8 +3876,11 @@ class Assets {
   static const $AssetsDonghuaGen donghua = $AssetsDonghuaGen();
   static const $AssetsImgGen img = $AssetsImgGen();
   static const $AssetsImgaGen imga = $AssetsImgaGen();
+  static const $AssetsImga2Gen imga2 = $AssetsImga2Gen();
   static const $AssetsLotttGen lottt = $AssetsLotttGen();
   static const $AssetsMyaGen mya = $AssetsMyaGen();
+  static const $AssetsTaskGen task = $AssetsTaskGen();
+  static const $AssetsVideoGen video = $AssetsVideoGen();
 }
 
 class AssetGenImage {

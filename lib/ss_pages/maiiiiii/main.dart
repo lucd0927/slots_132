@@ -12,6 +12,7 @@ import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:flutter_floating_particles/flutter_floating_particles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 // import 'package:move_to_background/move_to_background.dart';
 import 'package:newton_particles/newton_particles.dart';
 import 'package:slots_132/gen/assets.gen.dart';
@@ -46,6 +47,7 @@ import 'package:slots_132/ss_common/sssssp/spine_txlast.dart';
 import 'package:slots_132/ss_common/webviewchangeios.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus_controller.dart';
+import 'package:slots_132/ss_pages/guide/guide0.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/avatar_row.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/bottom_view.dart';
@@ -66,9 +68,10 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
-
   Timer? _timerWithdraw;
   Timer? _timerMoneyTips;
+
+  bool showAGuide = true;
 
   @override
   void initState() {
@@ -89,9 +92,18 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v) {
       bgMusicFreeSpin.pause();
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_){
+    showAGuide = !SSABChange.isPackageB();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       initABListener();
+      if (!SSABChange.isPackageB()) {
+        Future.delayed(Duration(milliseconds: 100), () {
+          if (mounted) {
+            setState(() {
+              showAGuide = false;
+            });
+          }
+        });
+      }
     });
 
     initOverlayTips();
@@ -99,18 +111,19 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     jiazaiInterrrr();
   }
 
-  initABListener()async{
-    if(Platform.isAndroid || SSABChange.isPackageB()){
+  initABListener() async {
+
+    if (Platform.isAndroid || SSABChange.isPackageB()) {
       return;
     }
+    OverlayGuide0BGuide().show();
     WVChannelIosC143().nbaIosChan(context);
-    SSABChange().listen((packName) async{
+    SSABChange().listen((packName) async {
       ssLogggg("===SSABChange().listen==packName:$packName");
 
       // await Future.delayed(Duration(milliseconds: 15000));
       if (packName == SSABChange.packageB) {
         ssLogggg("===SSABChange().listen==reset Data");
-
 
         if (Platform.isIOS) {
           MainController.to.resetInitDataB();
@@ -118,7 +131,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
           SSNotificationIos().init();
           initOverlayTips();
-          Future.delayed(Duration(milliseconds: 1),(){
+          Future.delayed(Duration(milliseconds: 1), () {
             onDailyBonus();
             WVChannelIosC143().asfdasfLoadCcccc();
             // 卡顿
@@ -127,24 +140,20 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
             WVChannelIosC143().distinctID();
           });
 
-          if(mounted){
-            setState(() {
-
-            });
+          if (mounted) {
+            setState(() {});
           }
         }
-      }else{
-        if(Platform.isIOS){
+      } else {
+        if (Platform.isIOS) {
           WVChannelIosC143().asdfAnsRAaaaVi1111();
         }
-
-
       }
     });
   }
 
-  initOverlayTips(){
-    if(SSABChange.isPackageB()){
+  initOverlayTips() {
+    if (SSABChange.isPackageB()) {
       _timerWithdraw?.cancel();
       _timerWithdraw = Timer.periodic(Duration(seconds: 60), (timer) {
         if (mounted) {
@@ -156,7 +165,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         if (mounted) {
           // OverlayMoneyTips().show();
 
-          if(MainController.to.curMonnnn.value >= MainController.minWithdddMoney || WithdddController.to.hasSaveCardId()){
+          if (MainController.to.curMonnnn.value >=
+                  MainController.minWithdddMoney ||
+              WithdddController.to.hasSaveCardId()) {
             _timerMoneyTips?.cancel();
             return;
           }
@@ -170,7 +181,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     if (SSDlTracking.qidongduoshaoDay() <= 1) {
       return;
     }
-    if(!SSABChange.isPackageB()){
+    if (!SSABChange.isPackageB()) {
       return;
     }
     int load = 1;
@@ -202,12 +213,10 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         await SSNotificationIos().init();
 
         ssLogggg("===initNotification=ios=检查通知");
-
       } else {
         // await GGLocalAndroidNotification().initAllNotification();
         await SSTzNotificattttt().init();
         ssLogggg("===initNotification=android=检查通知");
-
       }
 
       bool result = await SSTzNotificattttt().checkNotificationPermission();
@@ -221,7 +230,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         );
         return;
       }
-
     } catch (e) {
       ssLogggg("===initNotification=error:$e=");
       FirebaseCrashlytics.instance.recordError(e, null, fatal: false);
@@ -229,7 +237,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     onDailyBonus();
 
     bool clickTz = SSTzNotificattttt.clickTz;
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       clickTz = SSNotificationIos.clickTz;
     }
     if (clickTz) {
@@ -237,7 +245,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     }
   }
 
-  initTzReward(){
+  initTzReward() {
     OverlayTzReward().show(
       money: 50,
       onBtn: (v) {
@@ -257,14 +265,20 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       int weeks = DailyBonusController.to.continueLoginWeeks.value;
 
       bool hasFirstDay = days == 1 && weeks == 0;
-      ssLogggg("====onDailyBonus==hasFirstDay:$hasFirstDay days:$days weeks:$weeks hasClick:$hasClick ");
+      ssLogggg(
+        "====onDailyBonus==hasFirstDay:$hasFirstDay days:$days weeks:$weeks hasClick:$hasClick ",
+      );
       if (hasFirstDay && !hasClick) {
-        MainController.to.onAddMoney(50*MainController.countryBeisu, showMoneyAnimated: true);
+        bool res = Guide0BGuideWidgetState.guide0Done >= 0;
+        ssLogggg("==onDailyBonus=_rollerEnd====res:$res");
+        MainController.to.onAddMoney(
+          50 * MainController.countryBeisu,
+          showMoneyAnimated: res || SSABChange.isPackageB(),
+        );
         DailyBonusController.to.todayClickBonus.value = true;
         DailyBonusController.to.saveTodayClickBonusStatus(true);
         return;
       }
-
       OverlayDailyBonus().show(showAddMoney: true);
     }
   }
@@ -274,9 +288,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     super.build(context);
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult:(bool didPop, result2){
+      onPopInvokedWithResult: (bool didPop, result2) {
         ssLogggg("=======main page didPop:$didPop");
-        if(didPop){
+        if (didPop) {
           return;
         }
         FlutterAppMinimizerPlus.minimizeApp();
@@ -286,7 +300,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       //
       // },
     );
-
   }
 
   Widget mainView() {
@@ -299,9 +312,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       //   "=====showFreeSpin:$showFreeSpin hasScrollerStart:${MainController.to.hasScrollerStart.value}",
       // );
 
-
-
-      Widget child =  DefaultTextStyle(
+      Widget child = DefaultTextStyle(
         style: TextStyle(fontFamily: FontFamily.ghostKidAOEPro),
         child: SizedBox(
           width: ScreenUtil().screenWidth,
@@ -323,7 +334,9 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                   direction: ParticleDirection.topToBottom,
                   // Already falling
                   particleCount: 10,
-                  imagePath:SSABChange.isPackageB()? Assets.img.money.path:Assets.imga.coin.path,
+                  imagePath: SSABChange.isPackageB()
+                      ? Assets.img.money.path
+                      : Assets.imga.coin.path,
                   minSize: 50.w,
                   maxSize: 50.w,
                   enableRotation: true,
@@ -359,13 +372,24 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
 
               if (showFreeSpin)
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     ssTushi(text: "mian_10".tr);
                   },
                   child: Container(
                     width: ScreenUtil().screenWidth,
                     height: ScreenUtil().screenHeight,
                     color: Colors.transparent,
+                  ),
+                ),
+              if (showAGuide)
+                GestureDetector(
+                  onTap: () {
+                    ssTushi(text: "mian_10".tr);
+                  },
+                  child: Container(
+                    width: ScreenUtil().screenWidth,
+                    height: ScreenUtil().screenHeight,
+                    color: Colors.black,
                   ),
                 ),
 
@@ -375,7 +399,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         ),
       );
 
-      return  OverlayPortal(
+      return OverlayPortal(
         controller: MainController.tooltipController,
         overlayChildBuilder: (BuildContext context) {
           return MainTopMoneyTipsWidget(

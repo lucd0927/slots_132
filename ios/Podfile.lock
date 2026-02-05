@@ -345,6 +345,9 @@ PODS:
   - UnityAds (4.16.5)
   - url_launcher_ios (0.0.1):
     - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - VungleAds (7.6.3)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
@@ -393,6 +396,7 @@ DEPENDENCIES:
   - spine_flutter (from `.symlinks/plugins/spine_flutter/ios`)
   - thinkup_sdk (from `.symlinks/plugins/thinkup_sdk/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/darwin`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/darwin`)
 
 SPEC REPOS:
@@ -513,6 +517,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/thinkup_sdk/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/darwin"
   webview_flutter_wkwebview:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
@@ -602,6 +608,7 @@ SPEC CHECKSUMS:
   TPNiOS: 1c5f1a4a449e1e6483dffd3d6fef44dd41aa33e9
   UnityAds: 8b9e0ecf7c4aa7334d15f81efb58db279e28f502
   url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b
+  video_player_avfoundation: dd410b52df6d2466a42d28550e33e4146928280a
   VungleAds: 40e87d1eaba17ac818b0f94461fd8ed21ad768dc
   webview_flutter_wkwebview: 8ebf4fded22593026f7dbff1fbff31ea98573c8d
 

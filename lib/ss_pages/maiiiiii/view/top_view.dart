@@ -37,6 +37,7 @@ import 'package:slots_132/ss_common/routes.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
 import 'package:slots_132/ss_pages/box_gift/overlay_boxgift.dart';
 import 'package:slots_132/ss_pages/daily_bonus/daily_bonus.dart';
+import 'package:slots_132/ss_pages/guide/guide0.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_exp.dart';
 import 'package:slots_132/ss_pages/maiiiiii/dialoggg/overlay_money_tips.dart';
@@ -192,6 +193,8 @@ class TopView extends StatelessWidget {
     ssLogggg("====onMenu");
     SSEventReporttttt.home_page_menu();
     OverlaySettinnn().show();
+
+    // OverlayGuide0BGuide().show();
 
     // OverlayWithddCardCommon().show();
     // throw Exception();

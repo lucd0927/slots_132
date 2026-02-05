@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
@@ -31,6 +32,7 @@ import 'package:slots_132/ss_common/firebase_json/paylines.dart';
 import 'package:slots_132/ss_common/firebase_json/reel_strips.dart';
 import 'package:slots_132/ss_common/model/gift_reward_model.dart';
 import 'package:slots_132/ss_pages/bonus_game/bonus_game.dart';
+import 'package:slots_132/ss_pages/guide/guide0.dart';
 import 'package:slots_132/ss_pages/lucky_slots/lucky_slots.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/center_view.dart';
 import 'package:slots_132/ss_pages/maiiiiii/view/slot_machine.dart';
@@ -283,7 +285,49 @@ class MainController extends GetxController {
       "===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=hasFreeSpin:$hasFreeSpin",
     );
     int length = defaultImgName.length;
-    if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
+    bool result = tmpSpinCount == 1 && tmpSpinCount1 == 1;
+    if (!SSABChange.isPackageB() && result) {
+
+      result = true;
+      if (result) {
+        List<String> tmpdefaultImgName = [];
+        for (int i = 0; i < length; i++) {
+            String name = defaultImgName[i];
+            if (name != slotNumH1) {
+              tmpdefaultImgName.add(name);
+            }
+        }
+        tmpdefaultImgName.shuffle();
+        List<String> tmpList1 = pickUniqueStrings(tmpdefaultImgName, 3);
+        List<String> tmpList2 = pickUniqueStrings(tmpdefaultImgName, 3);
+        List<String> tmpList3 = pickUniqueStrings(tmpdefaultImgName, 3);
+        List<String> tmpList4 = pickUniqueStrings(tmpdefaultImgName, 3);
+        List<String> tmpList43 = pickUniqueStrings(tmpdefaultImgName, 2);
+        List<String> tmpList5 = [slotNumH1,slotNumH1,slotNumH1];
+        var imgCategories = [
+          tmpList1,
+          tmpList2,
+          tmpList3,
+          tmpList4,
+          tmpList5,
+        ]..shuffle();
+        winReel1
+          ..clear()
+          ..addAll(imgCategories[0]);
+        winReel2
+          ..clear()
+          ..addAll(imgCategories[1]);
+        winReel3
+          ..clear()
+          ..addAll(imgCategories[2]);
+        winReel4
+          ..clear()
+          ..addAll(imgCategories[3]);
+        winReel5
+          ..clear()
+          ..addAll(imgCategories[4]);
+      }
+    } else if (tmpSpinCount == 1 && tmpSpinCount1 == 1) {
       winReel1
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumWild3]);
@@ -1091,6 +1135,11 @@ class MainController extends GetxController {
       }
       onAddCollectStar(starCount);
       await Future.delayed(Duration(milliseconds: 1000), () {});
+      if(!SSABChange.isPackageB() && starCount >=3){
+        box.put(Guide0BGuideWidgetState.key_guide3_done_starengine, true);
+        OverlayGuide0BGuide().show();
+        return;
+      }
     }
     bool containerslotNumKEY = false;
     int bonusGameCount = 0;
@@ -1257,6 +1306,8 @@ class MainController extends GetxController {
   }
 
   _rollerEnd({required double tmpAddMoney, required VoidCallback onEnd}) {
+    bool res = Guide0BGuideWidgetState.guide0Done >=0;
+    ssLogggg("===_rollerEnd====res:$res");
     onAddMoney(
       tmpAddMoney,
       onEnd: () async {
@@ -1359,7 +1410,7 @@ class MainController extends GetxController {
           onEnd.call();
         }
       },
-      showMoneyAnimated: true,
+      showMoneyAnimated:  res|| SSABChange.isPackageB(),
     );
   }
 
@@ -1953,6 +2004,9 @@ class MainController extends GetxController {
   onAddCollectStar(int star) {
     int tmpCount = curCollectStar.value;
     tmpCount = tmpCount + star;
+    if(tmpCount <=0){
+      tmpCount = 0;
+    }
     box.put(hkCollectStar, tmpCount);
     curCollectStar.value = tmpCount;
     ssLogggg("======onAddCollectStar:$tmpCount=");

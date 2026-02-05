@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/floating.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/ss_pages/maiiiiii/main_controller.dart';
@@ -10,7 +11,7 @@ class SSPayTable {
   static const String TGA = "SSPayTable";
   static Map<String, dynamic>? _onlinJsonnnnn;
 
-  static Map<String, dynamic> local =
+  static Map<String, dynamic> local =SSABChange.isPackageB()?
   {
     "paytable": {
       // "WILD_x5": 70,
@@ -38,6 +39,33 @@ class SSPayTable {
       "L2_x4": 7,
       "L2_x3": 5
     }
+  }: {
+  "paytable": {
+  "WILD_x5": 400,
+  "WILD_x4": 138,
+  "WILD_x3": 34,
+  "H1_x5": 400,
+  "H1_x4": 104,
+  "H1_x3": 27,
+  "H2_x5": 277,
+  "H2_x4": 69,
+  "H2_x3": 20,
+  "H3_x5": 208,
+  "H3_x4": 55,
+  "H3_x3": 13,
+  "M1_x5": 104,
+  "M1_x4": 34,
+  "M1_x3": 10,
+  "M2_x5": 69,
+  "M2_x4": 27,
+  "M2_x3": 6,
+  "L1_x5": 34,
+  "L1_x4": 13,
+  "L1_x3": 3,
+  "L2_x5": 34,
+  "L2_x4": 13,
+  "L2_x3": 3,
+  },
   };
 
   static int lines() {
@@ -89,6 +117,9 @@ class SSPayTable {
     }
     _onlinJsonnnnn = localJson;
     ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
+    if(!SSABChange.isPackageB()){
+      _onlinJsonnnnn = local;
+    }
     return localJson;
   }
 }

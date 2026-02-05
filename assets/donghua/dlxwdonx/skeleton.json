@@ -1,0 +1,58 @@
+{
+"skeleton": {
+	"hash": "5MON+qdy0Hg",
+	"spine": "4.3.39-beta",
+	"x": -360,
+	"y": -640,
+	"width": 720,
+	"height": 1280,
+	"images": "C:/Users/Administrator/Downloads/selected_frames_121_1770098181873",
+	"audio": null
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "frame_001", "bone": "root", "attachment": "frame_" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"frame_001": {
+				"frame_": {
+					"width": 720,
+					"height": 1280,
+					"sequence": { "count": 121, "digits": 3 }
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"frame_001": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.16666667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 3.7333336, "color": "ffffffff" },
+					{ "time": 3.9, "color": "ffffff00" }
+				]
+			}
+		},
+		"attachments": {
+			"default": {
+				"frame_001": {
+					"frame_": {
+						"sequence": [
+							{ "mode": "loop", "delay": 0.032258064 },
+							{ "time": 3.9, "mode": "loop", "index": 48, "delay": 0.083333336 }
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}
