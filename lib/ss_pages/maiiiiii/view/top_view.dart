@@ -186,6 +186,8 @@ class TopView extends StatelessWidget {
     SSEventReporttttt.home_page_cash_out();
     if (SSABChange.isPackageB()) {
       Get.toNamed(SSRouttttt.withdrawwwww);
+    } else {
+      OverlayGuide0BGuide().show(showTask: false);
     }
   }
 
@@ -502,7 +504,7 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
       paymentMethod = EnumSSPaymentMethod.pagbank;
     } else if (SSCountry.hasIn()) {
       paymentMethod = EnumSSPaymentMethod.dana;
-    }else{
+    } else {
       paymentMethod = EnumSSPaymentMethod.paypal;
     }
     ssLogggg("=====paymentMethod:$paymentMethod");
@@ -542,7 +544,6 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
               } else {
                 paymentMethod = EnumSSPaymentMethod.paypal;
               }
-
             }
             icon = selectedPaymentIconSelected2(paymentMethod.name);
             change = !change;
@@ -595,11 +596,11 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
 
       // icon = "1000 coins a day";
       return Center(
-        child: SSTxtGraBorder(
-          text: "Lucky Slots",
-          fontFamily: FontFamily.fraunces,
-          fontSize: 14.sp,
-          strokeColor: Color(0xff085119),
+        child: Image.asset(
+          Assets.imga2.homeicon.path,
+          width: double.infinity,
+          height: 24.h,
+          gaplessPlayback: true,
         ),
       );
     }

@@ -12,6 +12,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
+import 'package:slots_132/jc_gj/jc_widget/pb_progress.dart';
 import 'package:slots_132/jc_gj/jc_widget/pb_tushi.dart';
 import 'package:slots_132/jc_gj/jc_widget/ss_rotate.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -32,7 +33,7 @@ class OverlayGuide0BGuide {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({bool showTask = true}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -46,6 +47,7 @@ class OverlayGuide0BGuide {
                 ssLogggg("=====OverlayGuideTestAnim=close");
                 close();
               },
+              showTask: showTask,
             ),
           ),
         );
@@ -68,12 +70,12 @@ class Guide0BGuideWidget extends StatefulWidget {
   const Guide0BGuideWidget({
     super.key,
     required this.onClose,
-    required this.coins,
+    required this.coins, required this.showTask,
   });
 
   final VoidCallback onClose;
   final double coins;
-
+  final bool showTask;
   @override
   State<Guide0BGuideWidget> createState() => Guide0BGuideWidgetState();
 }
@@ -90,10 +92,11 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
   Duration _nextDuration = Duration(milliseconds: 2500);
   Timer? _timer0;
   static var box = SSHive.box;
-  static const String key_guide0_done = "key_guide0_done";
-  static const String key_guide4_done = "key_guide4_done11";
-  static const String key_guide4_play = "key_guide4_play";
-  static const String key_guide3_done_starengine = "key_guide3_done_starengine";
+  static const String key_guide0_done = "key_guide0_done1";
+  static const String key_guide4_done = "key_guide4_done121";
+  static const String key_guide4_play = "key_guide4_play1";
+  static const String key_guide3_done_starengine =
+      "key_guide3_done_starengine2";
 
   static int get guide0Done => box.get(key_guide0_done, defaultValue: -1);
 
@@ -101,6 +104,7 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    showStep4Task = widget.showTask;
     stepIndex = guide0Done;
     if (stepIndex <= 0) {
       stepIndex = 0;
@@ -236,6 +240,7 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
   bool showStep4Tips2 = false;
   bool showStep4Tips3 = false;
   bool showStep4Tips4 = false;
+  bool showStep4Task = true;
 
   btn4Play() {
     return GestureDetector(
@@ -430,11 +435,22 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     List<Widget> taskItems2 = [];
     for (int i = 0; i < _tasks.length; i++) {
       var task = _tasks[i];
+      double progress = 0.0;
+      String progressText = "";
       String imgPath2 = Assets.imga2.guide4TaskPlay.path;
       if (i <= 1) {
         imgPath2 = Assets.imga2.guide4Ok.path;
+        progress = 1;
+        progressText = "${i + 1}/${i + 1}";
       } else if (i == 2) {
         imgPath2 = Assets.imga2.guide4Play.path;
+        int collected = MainController.to.curCollectStar.value;
+        int max = (i + 1) * (i + 1);
+        progress = collected / max;
+        progressText = "${collected}/${max}";
+      } else {
+        progress = 0;
+        progressText = "0/${(i + 1) * (i + 1)}";
       }
 
       Widget imte = GestureDetector(
@@ -451,6 +467,8 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           imgPath: task["imgPath"],
           title: task["title"],
           imgPath2: imgPath2,
+          progress: progress,
+          progressText: progressText,
         ),
       );
 
@@ -470,9 +488,10 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
             fit: BoxFit.fill,
           ),
           Positioned.fill(
+            top: 20.h,
             bottom: 20.h,
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(top: 20.w, bottom: 20.w),
+              padding: EdgeInsets.only(top: 0.w, bottom: 20.w),
               child: Column(children: taskItems2),
             ),
           ),
@@ -485,6 +504,8 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     required String imgPath,
     required String title,
     required String imgPath2,
+    required double progress,
+    required String progressText,
   }) {
     return Container(
       width: 317.w,
@@ -521,9 +542,24 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           ),
           SizedBox(width: 10.w),
           Expanded(
-            child: Text(
-              title,
-              style: TextStyle(fontSize: 14.sp, color: Color(0xff431414)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 14.sp, color: Color(0xff431414)),
+                ),
+                SSProjjjj(
+                  height: 20.h,
+                  innerHeight: 16.h,
+                  width: 140.w,
+                  progress: progress,
+                  gradientColors: [Color(0xff48EF04), Color(0xff008301)],
+                  bgColor: Color(0xff090909),
+                  text: progressText,
+                ),
+              ],
             ),
           ),
           SizedBox(width: 10.w),
@@ -541,10 +577,11 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           setSafeSetState(() {
             showStep4Tips3 = true;
             box.put(key_guide4_done, true);
+            MainController.to.onAddCollectStar(-2);
           });
         } else if (showStep4Tips3) {
           box.put(key_guide4_done, true);
-          widget.onClose();
+          // widget.onClose();
         }
       },
       child: Container(
@@ -556,8 +593,12 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           clipBehavior: Clip.none,
           children: [
             Image.asset(
-              showStep4Tips1
+              showStep4Tips3
                   ? Assets.imga2.guide32.path
+                  : showStep4Tips2
+                  ? Assets.imga2.guide312.path
+                  : showStep4Tips1
+                  ? Assets.imga2.guide3.path
                   : Assets.imga2.guide3.path,
               width: double.infinity,
               height: double.infinity,
@@ -700,19 +741,52 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
               duration: Duration(milliseconds: 300),
               top: showStep4Tips3 ? 30.h : -200.h,
               left: 20.w,
-              child: Image.asset(
-                Assets.imga2.guide4Task.path,
-                width: 76.w,
-                height: 86.h,
+              child: GestureDetector(
+                onTap: () {
+                  setSafeSetState(() {
+                    showStep4Task = !showStep4Task;
+                  });
+                },
+                child: Image.asset(
+                  Assets.imga2.guide4Task.path,
+                  width: 76.w,
+                  height: 86.h,
+                ),
               ),
             ),
             AnimatedPositioned(
               duration: Duration(milliseconds: 400),
               left: 0,
-              right: 0,
-              bottom: showStep4Tips3 ? 80.h : -700.h,
-              child: Center(child: taskWidget()),
+              right: showStep4Tips3 ? 0.h : -1000.w,
+              // right: 0,
+              bottom: 80.h,
+              child: AnimatedSize(
+                alignment: Alignment.topCenter,
+                duration: Duration(milliseconds: 300),
+                child: showStep4Task
+                    ? Center(child: taskWidget())
+                    : SizedBox(width: double.infinity),
+              ),
             ),
+            if (!showStep4Task)
+              Positioned(
+                right: -10.w,
+                top: 200.h,
+                child: GestureDetector(
+                  onTap: () {
+                    setSafeSetState(() {
+                      showStep4Task = !showStep4Task;
+                    });
+                  },
+                  child: SSAScale(
+                    child: Image.asset(
+                      Assets.imga2.gesture2.path,
+                      width: 100.w,
+                      height: 130.h,
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),
@@ -808,7 +882,7 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                                                 child: AnimatedTextKit(
                                                   animatedTexts: [
                                                     TypewriterAnimatedText(
-                                                      'It works! We got some Star!',
+                                                      'It works! We got some Stars!',
                                                       textStyle: TextStyle(
                                                         fontSize: 16.sp,
                                                         fontWeight:

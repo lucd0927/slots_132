@@ -130,7 +130,9 @@ class _SSSplassssState extends State<SSSplassss> {
                       angle: -0.9,
                       topLeft: false,
                       child: Image.asset(
-                        Assets.img.splashTitle.path,
+                        Platform.isAndroid
+                            ? Assets.img.splashTitle.path
+                            : Assets.imga2.splashLuckclasu.path,
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.contain,
@@ -143,51 +145,52 @@ class _SSSplassssState extends State<SSSplassss> {
                     // ),
                   ),
                   SizedBox(height: 230.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          Image.asset(
-                            Assets.img.splashWild.path,
-                            width: 151.h,
-                            height: 151.h,
-                          ),
-                          Image.asset(
-                            SSCountry.hasUSA()
-                                ? Assets.img.splashTxtExcept.path
-                                : SSCountry.hasIn()
-                                ? Assets.img.splashTxtExceptId.path
-                                : SSCountry.hasBr()
-                                ? Assets.img.splashTxtExceptBr.path
-                                : Assets.img.splashTxtExcept.path,
-                            width: 158.h,
-                            height: 58.h,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Image.asset(
-                            Assets.img.splashScatter.path,
-                            width: 151.h,
-                            height: 151.h,
-                          ),
-                          Image.asset(
-                            SSCountry.hasUSA()
-                                ? Assets.img.splashTxt345.path
-                                : SSCountry.hasIn()
-                                ? Assets.img.splashTxt345Id.path
-                                : SSCountry.hasBr()
-                                ? Assets.img.splashTxt345Br.path
-                                : Assets.img.splashTxt345.path,
-                            width: 158.h,
-                            height: 58.h,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  if (SSABChange.isPackageB())
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Image.asset(
+                              Assets.img.splashWild.path,
+                              width: 151.h,
+                              height: 151.h,
+                            ),
+                            Image.asset(
+                              SSCountry.hasUSA()
+                                  ? Assets.img.splashTxtExcept.path
+                                  : SSCountry.hasIn()
+                                  ? Assets.img.splashTxtExceptId.path
+                                  : SSCountry.hasBr()
+                                  ? Assets.img.splashTxtExceptBr.path
+                                  : Assets.img.splashTxtExcept.path,
+                              width: 158.h,
+                              height: 58.h,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              Assets.img.splashScatter.path,
+                              width: 151.h,
+                              height: 151.h,
+                            ),
+                            Image.asset(
+                              SSCountry.hasUSA()
+                                  ? Assets.img.splashTxt345.path
+                                  : SSCountry.hasIn()
+                                  ? Assets.img.splashTxt345Id.path
+                                  : SSCountry.hasBr()
+                                  ? Assets.img.splashTxt345Br.path
+                                  : Assets.img.splashTxt345.path,
+                              width: 158.h,
+                              height: 58.h,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
 
                   // SizedBox(height: 30.h),
                 ],

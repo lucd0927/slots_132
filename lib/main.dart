@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -83,7 +84,7 @@ class _MyAppState extends State<MyApp> {
         child: ToastificationWrapper(
           child: GetMaterialApp(
             // main: MyHomePage(title: '1'),
-            title: "Lucky Claus Slots",
+            title: Platform.isAndroid?"Lucky Claus SLots":"Lucky Claus",
             initialRoute: SSRouttttt.splash,
             builder: (BuildContext context, Widget? child) {
               // return child!;

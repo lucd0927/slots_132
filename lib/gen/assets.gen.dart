@@ -1647,8 +1647,16 @@ class $AssetsImga2Gen {
   AssetGenImage get guide4TaskPlay =>
       const AssetGenImage('assets/imga2/guide4_task_play.png');
 
+  /// File path: assets/imga2/homeicon.png
+  AssetGenImage get homeicon =>
+      const AssetGenImage('assets/imga2/homeicon.png');
+
   /// File path: assets/imga2/next.png
   AssetGenImage get next => const AssetGenImage('assets/imga2/next.png');
+
+  /// File path: assets/imga2/splash_luckclasu.png
+  AssetGenImage get splashLuckclasu =>
+      const AssetGenImage('assets/imga2/splash_luckclasu.png');
 
   /// File path: assets/imga2/star.png
   AssetGenImage get star => const AssetGenImage('assets/imga2/star.png');
@@ -1683,7 +1691,9 @@ class $AssetsImga2Gen {
     guide4Task,
     guide4TaskBg,
     guide4TaskPlay,
+    homeicon,
     next,
+    splashLuckclasu,
     star,
     xuanguang,
   ];

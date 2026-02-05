@@ -8,6 +8,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -61,7 +62,7 @@ class OverlayWow {
             bool showIntad = SSFBBaseData.int_ad_value_cash_pop();
             bool result = true;
 
-            if (showIntad) {
+            if (showIntad && SSABChange.isPackageB()) {
               result = await SSCommonAds().showInterstitialAd(
                 adPosId: SSAdsPosId.eyomt_wow_int,
               );

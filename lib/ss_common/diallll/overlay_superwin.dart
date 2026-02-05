@@ -8,6 +8,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -48,14 +49,16 @@ class OverlaySuperwin {
           onBtn: (double money) async{
             close();
             SSEventReporttttt.cash_pop_collect(pop_type: "super_win", pop_from: scene.name);
-
-            bool result = await SSCommonAds().showRewardAd(
-              adPosId: SSAdsPosId.eyomt_superwin_rv,
-              ignored_hasDisplayAd: true,
-            );
-            if(!result){
-              money = 0;
+            if (SSABChange.isPackageB()){
+              bool result = await SSCommonAds().showRewardAd(
+                adPosId: SSAdsPosId.eyomt_superwin_rv,
+                ignored_hasDisplayAd: true,
+              );
+              if(!result){
+                money = 0;
+              }
             }
+
 
             onBtn(money);
           },

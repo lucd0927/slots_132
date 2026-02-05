@@ -968,7 +968,19 @@ class MainController extends GetxController {
     // tmpAddMoney = tmpAddMoney * countryBeisu;
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
-    await onFlyHeroWidget();
+    bool resulll =await onFlyHeroWidget();
+    if(!resulll){
+      _rollerEnd(
+        tmpAddMoney: tmpAddMoney,
+        onEnd: () {
+          if (rollerOver != null) {
+            rollerOver?.complete();
+            rollerOver = null;
+          }
+        },
+      );
+      return;
+    }
     DateTime curTime = DateTime.now();
     ssLogggg("==onStartRoller==end=curTime:${curTime.millisecondsSinceEpoch}");
 
@@ -1105,7 +1117,7 @@ class MainController extends GetxController {
   }
 
   // 每个飞的动画
-  Future<void> onFlyHeroWidget() async {
+  Future<bool> onFlyHeroWidget() async {
     bool containerslotNumH1 = false;
     int starCount = 0;
     kZuobiao_vCategory_cur.forEach((int zuobiao, value) {
@@ -1136,9 +1148,13 @@ class MainController extends GetxController {
       onAddCollectStar(starCount);
       await Future.delayed(Duration(milliseconds: 1000), () {});
       if(!SSABChange.isPackageB() && starCount >=3){
+        bool result = box.get(Guide0BGuideWidgetState.key_guide3_done_starengine, defaultValue: false);
+        if(!result){
+          OverlayGuide0BGuide().show();
+        }
         box.put(Guide0BGuideWidgetState.key_guide3_done_starengine, true);
-        OverlayGuide0BGuide().show();
-        return;
+
+        return false;
       }
     }
     bool containerslotNumKEY = false;
@@ -1205,6 +1221,7 @@ class MainController extends GetxController {
       await Future.delayed(Duration(milliseconds: 1200), () {});
       PhoneCardController.to.changeWhichStageIndex();
     }
+    return true;
   }
 
   onJackpotPopup({
@@ -1410,7 +1427,7 @@ class MainController extends GetxController {
           onEnd.call();
         }
       },
-      showMoneyAnimated:  res|| SSABChange.isPackageB(),
+      showMoneyAnimated:  res || SSABChange.isPackageB(),
     );
   }
 

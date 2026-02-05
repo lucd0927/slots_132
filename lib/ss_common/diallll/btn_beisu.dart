@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/log.dart';
 
@@ -114,7 +115,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
                             ),
                           ),
 
-                         if(widget.showOnBtn2) Positioned(
+                         if(widget.showOnBtn2&& SSABChange.isPackageB()) Positioned(
                             top: -10.h,
                             right: 0,
                             child: Image.asset(
@@ -133,7 +134,7 @@ class _BtnBeisuWidgetState extends State<BtnBeisuWidget> {
           ),
         ),
         SizedBox(height: 16.h),
-        if (widget.showOnBtn2)
+        if (widget.showOnBtn2 && SSABChange.isPackageB())
           GestureDetector(
             onTap: () {
               widget.onBtn2(0.1);

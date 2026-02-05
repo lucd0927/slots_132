@@ -263,7 +263,7 @@ class SSABChange {
     if (Platform.isAndroid) {
       packageName = packageB;
     }
-    packageName = packageA;
+    // packageName = packageA;
     _name = packageName;
     DateTime dateTime = DateTime.now();
     await requestATT();

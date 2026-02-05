@@ -8,6 +8,7 @@ import 'package:slots_132/gen/fonts.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_ad/gg_common_config.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/audio.dart';
 import 'package:slots_132/jc_gj/country.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
@@ -47,22 +48,25 @@ class OverlayJackpotGrand {
     _overlay = OverlayEntry(
       builder: (context) {
         return _JackpotWidgetGrand(
-          onBtn: (double money) async{
+          onBtn: (double money) async {
             close();
             SSEventReporttttt.jackpot_pop_claim_all(
               pop_type: "grand",
               pop_from: scene.name,
             );
-            bool result = await SSCommonAds().showRewardAd(
-              adPosId: SSAdsPosId.eyomt_grandjack_rv,
-              ignored_hasDisplayAd: true,
-            );
-            if(!result){
-              money = 0;
+            if (SSABChange.isPackageB()) {
+              bool result = await SSCommonAds().showRewardAd(
+                adPosId: SSAdsPosId.eyomt_grandjack_rv,
+                ignored_hasDisplayAd: true,
+              );
+              if (!result) {
+                money = 0;
+              }
             }
+
             onBtn(money);
           },
-          onBtn2: (double money) async{
+          onBtn2: (double money) async {
             close();
             SSEventReporttttt.jackpot_pop_claim_10(
               pop_type: "grand",
@@ -77,7 +81,7 @@ class OverlayJackpotGrand {
               );
             }
 
-            if(!result){
+            if (!result) {
               money = 0;
             }
             onBtn2(money);
@@ -122,6 +126,7 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
   bool showAnimatedBgMoney = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -162,15 +167,17 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  if(showAnimatedBgMoney) Positioned.fill(
-                    top: -200.h,
-                    left: 0.w,
+                  if (showAnimatedBgMoney)
+                    Positioned.fill(
+                      top: -200.h,
+                      left: 0.w,
 
-                    child:Container(
+                      child: Container(
                         width: ScreenUtil().screenWidth,
                         height: ScreenUtil().screenHeight,
-                        child: SSSpineMoney()),
-                  ),
+                        child: SSSpineMoney(),
+                      ),
+                    ),
 
                   Positioned(
                     left: 0,
@@ -183,8 +190,6 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                     ),
                   ),
 
-
-
                   Positioned(
                     left: 0,
                     right: 0,
@@ -193,17 +198,14 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                       width: ScreenUtil().screenWidth,
                       height: ScreenUtil().screenHeight,
 
-                      child: Center(child:const SSAnimatedJackpotGrand()),
+                      child: Center(child: const SSAnimatedJackpotGrand()),
                     ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 10.h),
-                      Container(
-                        width: 350.h,
-                        height: 240.h,
-                      ),
+                      Container(width: 350.h, height: 240.h),
                       Container(
                         width: double.infinity,
                         height: 60.h,
@@ -305,7 +307,7 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
                   ),
                 ),
 
-                Positioned(
+                if(SSABChange.isPackageB())  Positioned(
                   top: -10.h,
                   right: 0,
                   child: Image.asset(
@@ -332,23 +334,24 @@ class _JackpotWidgetGrandState extends State<_JackpotWidgetGrand> {
       ],
     );
   }
+
   bool canClick = true;
+
   void onBtn() {
-    if(canClick){
+    if (canClick) {
       double money = widget.money * 1;
       onClose(money);
       widget.onBtn(money);
-      canClick =false;
+      canClick = false;
     }
-
   }
 
   void obBtn2() {
-    if(canClick){
+    if (canClick) {
       double money = widget.money * 0.1;
       onClose(money);
       widget.onBtn2(money);
-      canClick =false;
+      canClick = false;
     }
   }
 }
