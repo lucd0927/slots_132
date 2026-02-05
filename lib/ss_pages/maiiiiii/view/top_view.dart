@@ -599,7 +599,7 @@ class _MainTopCenterWidgetState extends State<MainTopCenterWidget> {
         child: Image.asset(
           Assets.imga2.homeicon.path,
           width: double.infinity,
-          height: 24.h,
+          height: 20.h,
           gaplessPlayback: true,
         ),
       );

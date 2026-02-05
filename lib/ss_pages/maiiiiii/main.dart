@@ -96,7 +96,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       initABListener();
       if (!SSABChange.isPackageB()) {
-        Future.delayed(Duration(milliseconds: 100), () {
+        Future.delayed(Duration(milliseconds: 300), () {
           if (mounted) {
             setState(() {
               showAGuide = false;
@@ -112,11 +112,13 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   }
 
   initABListener() async {
-
-    if (Platform.isAndroid || SSABChange.isPackageB()) {
+    if (SSABChange.isPackageB()) {
       return;
     }
     OverlayGuide0BGuide().show();
+    if (Platform.isAndroid) {
+      return;
+    }
     WVChannelIosC143().nbaIosChan(context);
     SSABChange().listen((packName) async {
       ssLogggg("===SSABChange().listen==packName:$packName");
@@ -269,7 +271,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
         "====onDailyBonus==hasFirstDay:$hasFirstDay days:$days weeks:$weeks hasClick:$hasClick ",
       );
       if (hasFirstDay && !hasClick) {
-        bool res = Guide0BGuideWidgetState.guide0Done >= 0;
+        bool res = Guide0BGuideWidgetState.guide4Done();
         ssLogggg("==onDailyBonus=_rollerEnd====res:$res");
         MainController.to.onAddMoney(
           50 * MainController.countryBeisu,
@@ -357,7 +359,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
               Column(
                 children: [
                   TopView(),
-                  AvatarRow(),
+                  SSABChange.isPackageB()?  AvatarRow():const SizedBox(),
                   Expanded(child: CenterView()),
                   BottomView(key: ValueKey("mainBottomView")),
                   Container(
@@ -392,8 +394,6 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
                     color: Colors.black,
                   ),
                 ),
-
-
             ],
           ),
         ),

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/jc_ad/adsid.dart';
 import 'package:slots_132/jc_ad/common_ads.dart';
+import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
@@ -135,12 +136,14 @@ class WheController extends GetxController {
         phoneSpice = giftRewardModel.num.toInt();
       }
       ssLogggg("=======rewardModelType:$rewardModelType money:$money exp:$exp");
-      bool result = await SSCommonAds().showRewardAd(
-        adPosId: SSAdsPosId.eyomt_wheel_rv,
-        ignored_hasDisplayAd: true,
-      );
-      if(!result){
-        return;
+      if(SSABChange.isPackageB()){
+        bool result = await SSCommonAds().showRewardAd(
+          adPosId: SSAdsPosId.eyomt_wheel_rv,
+          ignored_hasDisplayAd: true,
+        );
+        if(!result){
+          return;
+        }
       }
 
       OverlayCommonGet().show(

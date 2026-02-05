@@ -1425,151 +1425,165 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
 
   bool showStep1Tips1 = false;
   bool showStep1Tips2 = false;
+  bool showStep1Tips2_1 = false;
   bool showStep1Tips3 = false;
 
   stepWidget1() {
     // if(stepIndex != 1){
     //   return SizedBox(width: double.infinity);
     // }
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      alignment: Alignment.center,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Image.asset(
-            Assets.imga2.guide01.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-            gaplessPlayback: true,
-          ),
-          SnowWidget(),
-          AnimatedContainer(
-            duration: Duration(milliseconds: 500),
-            width: double.infinity,
-            height: double.infinity,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: showStep1Tips1
-                    ? [
-                        Color(0xff000000).withValues(alpha: 0.6),
-                        Color(0xff000000).withValues(alpha: 0),
-                        Color(0xff000000).withValues(alpha: 0.2),
-                      ]
-                    : [
-                        Color(0xff000000).withValues(alpha: 0.0),
-                        Color(0xff000000).withValues(alpha: 0),
-                        Color(0xff000000).withValues(alpha: 0.0),
-                      ],
-                stops: [0.0, 0.5, 1.0],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+    return GestureDetector(
+      onTap: (){
+        // if(showStep1Tips1){
+        //   showStep1Tips1 = true;
+        // }else if(showStep1Tips2_1){
+        //
+        // }
+        // setSafeSetState(() {
+        //
+        //
+        // });
+      },
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        alignment: Alignment.center,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              Assets.imga2.guide01.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+              gaplessPlayback: true,
+            ),
+            SnowWidget(),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              width: double.infinity,
+              height: double.infinity,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: showStep1Tips1
+                      ? [
+                          Color(0xff000000).withValues(alpha: 0.6),
+                          Color(0xff000000).withValues(alpha: 0),
+                          Color(0xff000000).withValues(alpha: 0.2),
+                        ]
+                      : [
+                          Color(0xff000000).withValues(alpha: 0.0),
+                          Color(0xff000000).withValues(alpha: 0),
+                          Color(0xff000000).withValues(alpha: 0.0),
+                        ],
+                  stops: [0.0, 0.5, 1.0],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            bottom: 50.h,
-            child: AnimatedSize(
-              alignment: Alignment.topCenter,
-              duration: Duration(milliseconds: 1200),
-              child: showStep1Tips1
-                  ? Container(
-                      width: 364.w,
-                      height: 320.h,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Image.asset(
-                            Assets.imga2.guide0Sdlr.path,
-                            width: 180.w,
-                            height: 320.h,
-                            fit: BoxFit.contain,
-                            gaplessPlayback: true,
-                          ),
-                          AnimatedPositioned(
-                            duration: Duration(milliseconds: 300),
-                            left: 0,
-                            right: 0,
-                            bottom: showStep1Tips2 ? 0.h : -200.h,
-                            child: Center(child: btn1()),
-                          ),
-                          showStep1Tips2
-                              ? const SizedBox()
-                              : Positioned(
-                                  bottom: 0,
-                                  child: stepIndex == 1
-                                      ? Container(
-                                          width: 360.w,
-                                          height: 130.h,
-                                          child: Stack(
-                                            children: [
-                                              Image.asset(
-                                                Assets.imga2.duihuakuang.path,
-                                                width: 360.w,
-                                                height: 130.h,
-                                                fit: BoxFit.fill,
-                                                gaplessPlayback: true,
-                                              ),
-                                              Center(
-                                                child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal: 16.w,
-                                                  ),
-                                                  child: AnimatedTextKit(
-                                                    animatedTexts: [
-                                                      TypewriterAnimatedText(
-                                                        'Oh no! The Great Blizzard ruined the cabin !',
-                                                        textStyle: TextStyle(
-                                                          fontSize: 16.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              FontFamily.rubik,
-                                                        ),
-                                                        speed: const Duration(
-                                                          milliseconds: 100,
-                                                        ),
-                                                      ),
-                                                    ],
-
-                                                    totalRepeatCount: 1,
-                                                    pause: const Duration(
-                                                      milliseconds: 10,
+            Positioned(
+              bottom: 50.h,
+              child: AnimatedSize(
+                alignment: Alignment.topCenter,
+                duration: Duration(milliseconds: 1200),
+                child: showStep1Tips1
+                    ? Container(
+                        width: 364.w,
+                        height: 320.h,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Image.asset(
+                              Assets.imga2.guide0Sdlr.path,
+                              width: 180.w,
+                              height: 320.h,
+                              fit: BoxFit.contain,
+                              gaplessPlayback: true,
+                            ),
+                            AnimatedPositioned(
+                              duration: Duration(milliseconds: 300),
+                              left: 0,
+                              right: 0,
+                              bottom: showStep1Tips2 ? 0.h : -200.h,
+                              child: Center(child: btn1()),
+                            ),
+                            showStep1Tips2
+                                ? const SizedBox()
+                                : Positioned(
+                                    bottom: 0,
+                                    child: stepIndex == 1
+                                        ? Container(
+                                            width: 360.w,
+                                            height: 130.h,
+                                            child: Stack(
+                                              children: [
+                                                Image.asset(
+                                                  Assets.imga2.duihuakuang.path,
+                                                  width: 360.w,
+                                                  height: 130.h,
+                                                  fit: BoxFit.fill,
+                                                  gaplessPlayback: true,
+                                                ),
+                                                Center(
+                                                  child: Padding(
+                                                    padding: EdgeInsets.symmetric(
+                                                      horizontal: 16.w,
                                                     ),
-                                                    displayFullTextOnTap: true,
-                                                    stopPauseOnTap: true,
+                                                    child: AnimatedTextKit(
+                                                      animatedTexts: [
+                                                        TypewriterAnimatedText(
+                                                          'Oh no! The Great Blizzard ruined the cabin !',
+                                                          textStyle: TextStyle(
+                                                            fontSize: 16.sp,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                FontFamily.rubik,
+                                                          ),
+                                                          speed: const Duration(
+                                                            milliseconds: 100,
+                                                          ),
+                                                        ),
+                                                      ],
+
+                                                      totalRepeatCount: 1,
+                                                      pause: const Duration(
+                                                        milliseconds: 10,
+                                                      ),
+                                                      displayFullTextOnTap: true,
+                                                      stopPauseOnTap: true,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      : SizedBox(width: 360.w),
-                                ),
-                        ],
-                      ),
-                    )
-                  : Container(width: 364.w),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
-            // bottom: 100.h,
-            right: 77.w,
-            bottom: showStep1Tips2 ? 100.h : -200.h,
-            child: Center(
-              child: Image.asset(
-                Assets.imga2.next.path,
-                width: 129.w,
-                height: 141.h,
-                fit: BoxFit.fill,
+                                              ],
+                                            ),
+                                          )
+                                        : SizedBox(width: 360.w),
+                                  ),
+                          ],
+                        ),
+                      )
+                    : Container(width: 364.w),
               ),
             ),
-          ),
-        ],
+            AnimatedPositioned(
+              duration: Duration(milliseconds: 300),
+              // bottom: 100.h,
+              right: 77.w,
+              bottom: showStep1Tips2 ? 100.h : -200.h,
+              child: Center(
+                child: Image.asset(
+                  Assets.imga2.next.path,
+                  width: 129.w,
+                  height: 141.h,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

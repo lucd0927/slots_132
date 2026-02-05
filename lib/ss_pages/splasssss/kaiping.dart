@@ -279,12 +279,16 @@ class _SplashProgressState extends State<SplashProgress> {
     ssLogggg("==SSABChange().init start====");
     // // // 5 ab包逻辑
     bool result = await SSABChange().init();
-    // int time2 = DateTime.now().millisecondsSinceEpoch;
-    // ssLogggg(
-    //   "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",
-    // );
+    int time2 = DateTime.now().millisecondsSinceEpoch;
+    int diffTime =_allTime.toInt() - (time2 - time);
+    if(diffTime <= 0){
+      diffTime = 0;
+    }
+    ssLogggg(
+      "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time} diffTime:$diffTime",
+    );
     await Future.delayed(
-      Duration(milliseconds: SSABChange.isPackageB() ? 3000 : 0),
+      Duration(milliseconds: SSABChange.isPackageB() ? 3000 : diffTime),
     );
     _timer.cancel();
     if (canGoToMain) {

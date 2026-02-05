@@ -211,7 +211,7 @@ class SSABChange {
     ssLogggg(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
-    initAd();
+    // initAd();
     await _chushiGuiyin();
 
     ssLogggg("$TGA===_chushiGuiyin==end");
@@ -263,7 +263,7 @@ class SSABChange {
     if (Platform.isAndroid) {
       packageName = packageB;
     }
-    // packageName = packageA;
+    packageName = packageA;
     _name = packageName;
     DateTime dateTime = DateTime.now();
     await requestATT();

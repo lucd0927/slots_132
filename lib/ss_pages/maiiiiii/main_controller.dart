@@ -271,8 +271,11 @@ class MainController extends GetxController {
     required bool hasFreeSpin,
   }) {
     int tmpSpinCount1 = curSpinCount.value;
-
-    int tmpSpinCount = tmpSpinCount1 % 15;
+    int maxCount = 15;
+    if (!SSABChange.isPackageB()) {
+      maxCount = 100;
+    }
+    int tmpSpinCount = tmpSpinCount1 % maxCount;
     // tmpSpinCount = 12;
     // tmpSpinCount = 5;
     // tmpSpinCount = tmpSpinCount1 = 1;
@@ -287,15 +290,15 @@ class MainController extends GetxController {
     int length = defaultImgName.length;
     bool result = tmpSpinCount == 1 && tmpSpinCount1 == 1;
     if (!SSABChange.isPackageB() && result) {
-
       result = true;
       if (result) {
         List<String> tmpdefaultImgName = [];
         for (int i = 0; i < length; i++) {
-            String name = defaultImgName[i];
-            if (name != slotNumH1) {
-              tmpdefaultImgName.add(name);
-            }
+          String name = defaultImgName[i];
+          if (name == slotNumH1 || name == slotNumSCATTER) {
+          } else {
+            tmpdefaultImgName.add(name);
+          }
         }
         tmpdefaultImgName.shuffle();
         List<String> tmpList1 = pickUniqueStrings(tmpdefaultImgName, 3);
@@ -303,14 +306,9 @@ class MainController extends GetxController {
         List<String> tmpList3 = pickUniqueStrings(tmpdefaultImgName, 3);
         List<String> tmpList4 = pickUniqueStrings(tmpdefaultImgName, 3);
         List<String> tmpList43 = pickUniqueStrings(tmpdefaultImgName, 2);
-        List<String> tmpList5 = [slotNumH1,slotNumH1,slotNumH1];
-        var imgCategories = [
-          tmpList1,
-          tmpList2,
-          tmpList3,
-          tmpList4,
-          tmpList5,
-        ]..shuffle();
+        List<String> tmpList5 = [slotNumH1, slotNumH1, slotNumH1];
+        var imgCategories = [tmpList1, tmpList2, tmpList3, tmpList4, tmpList5]
+          ..shuffle();
         winReel1
           ..clear()
           ..addAll(imgCategories[0]);
@@ -349,8 +347,9 @@ class MainController extends GetxController {
       winReel5 = winReel5
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
-    } else if (tmpSpinCount == 5) {
+    } else if (tmpSpinCount == 5 || true) {
       List<String> tmpList = newList(defaultImgName, slotNumSCATTER);
+
       List<String> tmpList1 = pickUniqueStrings(tmpList, 2);
       List<String> tmpList2 = pickUniqueStrings(tmpList, 2);
       List<String> tmpList3 = pickUniqueStrings(tmpList, 2);
@@ -968,8 +967,8 @@ class MainController extends GetxController {
     // tmpAddMoney = tmpAddMoney * countryBeisu;
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
-    bool resulll =await onFlyHeroWidget();
-    if(!resulll){
+    bool resulll = await onFlyHeroWidget();
+    if (!resulll) {
       _rollerEnd(
         tmpAddMoney: tmpAddMoney,
         onEnd: () {
@@ -1147,9 +1146,12 @@ class MainController extends GetxController {
       }
       onAddCollectStar(starCount);
       await Future.delayed(Duration(milliseconds: 1000), () {});
-      if(!SSABChange.isPackageB() && starCount >=3){
-        bool result = box.get(Guide0BGuideWidgetState.key_guide3_done_starengine, defaultValue: false);
-        if(!result){
+      if (!SSABChange.isPackageB() && starCount >= 3) {
+        bool result = box.get(
+          Guide0BGuideWidgetState.key_guide3_done_starengine,
+          defaultValue: false,
+        );
+        if (!result) {
           OverlayGuide0BGuide().show();
         }
         box.put(Guide0BGuideWidgetState.key_guide3_done_starengine, true);
@@ -1323,7 +1325,7 @@ class MainController extends GetxController {
   }
 
   _rollerEnd({required double tmpAddMoney, required VoidCallback onEnd}) {
-    bool res = Guide0BGuideWidgetState.guide0Done >=0;
+    bool res = Guide0BGuideWidgetState.guide0Done >= 0;
     ssLogggg("===_rollerEnd====res:$res");
     onAddMoney(
       tmpAddMoney,
@@ -1427,7 +1429,7 @@ class MainController extends GetxController {
           onEnd.call();
         }
       },
-      showMoneyAnimated:  res || SSABChange.isPackageB(),
+      showMoneyAnimated: res || SSABChange.isPackageB(),
     );
   }
 
@@ -2021,7 +2023,7 @@ class MainController extends GetxController {
   onAddCollectStar(int star) {
     int tmpCount = curCollectStar.value;
     tmpCount = tmpCount + star;
-    if(tmpCount <=0){
+    if (tmpCount <= 0) {
       tmpCount = 0;
     }
     box.put(hkCollectStar, tmpCount);

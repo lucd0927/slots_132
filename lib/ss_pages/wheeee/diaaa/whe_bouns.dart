@@ -284,7 +284,7 @@ class _WheBounsState extends State<WheBouns> {
               ),
             ),
 
-            Positioned(
+            if(SSABChange.isPackageB()) Positioned(
               top: -10.h,
               right: 0,
               child: Image.asset(

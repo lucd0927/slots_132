@@ -65,8 +65,9 @@ class CenterView extends StatelessWidget {
                   right: 0.w,
                   child: Container(
                     key: ValueKey("SpineShengdaolaoren"),
-                    // width: 10.w,
+                    // width: 360.w,
                     height: 250.h,
+
                     child: const SpineShengdaolaoren(
                       key: ValueKey("ooeirtjtjkl"),
                     ),
@@ -200,7 +201,7 @@ class CenterView extends StatelessWidget {
                 ),
 
                 Positioned.fill(
-                  top: showBottomNav ? 10.h : 30.h,
+                  top:SSABChange.isPackageB()?  (showBottomNav ? 10.h : 30.h):70.h,
                   child: TweenAnimationBuilder<double>(
                     duration: const Duration(milliseconds: 400),
                     tween: Tween(

@@ -43,14 +43,19 @@ class _SpineShengdaolaorenState extends State<SpineShengdaolaoren> {
         // controller.animationState.addAnimationByName(0, "run", true, 0);
       },
     );
-
+  //	"x": -480,
+    // 	"y": -480,
+    // 	"width": 960,
+    // 	"height": 960,
     return SpineWidget.fromAsset(
+      fit: BoxFit.contain,
       Assets.donghua.sdlr2.a1Atlas,
       Assets.donghua.sdlr2.skeleton,
       // Assets.donghua.sdlr.skeletonsAtlas,
       // Assets.donghua.sdlr.skeleton,
       controller,
-      // sizedByBounds: true,
+      sizedByBounds: true,
+      // boundsProvider: RawBounds(-480,-480,960,960,),
     );
   }
 }

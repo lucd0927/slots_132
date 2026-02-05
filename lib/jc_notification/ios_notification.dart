@@ -187,8 +187,8 @@ class SSNotificationIos {
     int length = contents.length;
     contents.shuffle();
     int random = Random().nextInt(length);
-    String baioti = "Lucky Claus Slots";
-    String baiotiA = "Lucky Claus Slots";
+    String baioti = "Lucky Claus";
+    String baiotiA = "Lucky Claus";
     String contentA = "Come join the spin!";
     String neirong = contents[0]['content'];
     String neirong1 = contents[1]['content'];
