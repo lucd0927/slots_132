@@ -14,16 +14,16 @@ flutter_native_splash:
   # of your splash screen to a solid color.  Use background_image to set the background of your
   # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
   # size of the app. Only one parameter can be used, color and background_image cannot both be set.
-  color: "#000000"
-  color_dark: "#000000"
+  color: "#ffffff"
+  color_dark: "#ffffff"
   android: true
   ios: true
   web: false
   #  fullscreen: true
   image_android: assets/img/splash.png
   image_dark_android: assets/img/splash.png
-  image_ios: assets/img/splash_bg.png
-  image_dark_ios: assets/img/splash_bg.png
+  image_ios: assets/imga2/splash.png
+  image_dark_ios: assets/imga2/splash.png
   android_gravity: fill
   ios_content_mode: scaleToFill
   #background_image: "assets/background.png"

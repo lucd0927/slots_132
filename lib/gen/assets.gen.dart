@@ -1654,6 +1654,9 @@ class $AssetsImga2Gen {
   /// File path: assets/imga2/next.png
   AssetGenImage get next => const AssetGenImage('assets/imga2/next.png');
 
+  /// File path: assets/imga2/splash.png
+  AssetGenImage get splash => const AssetGenImage('assets/imga2/splash.png');
+
   /// File path: assets/imga2/splash_luckclasu.png
   AssetGenImage get splashLuckclasu =>
       const AssetGenImage('assets/imga2/splash_luckclasu.png');
@@ -1696,6 +1699,7 @@ class $AssetsImga2Gen {
     guide4TaskPlay,
     homeicon,
     next,
+    splash,
     splashLuckclasu,
     star,
     taksbg,

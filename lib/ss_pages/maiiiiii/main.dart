@@ -115,7 +115,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     if (SSABChange.isPackageB()) {
       return;
     }
-    OverlayGuide0BGuide().show();
+    OverlayGuide0BGuide().show(showTask: false);
     if (Platform.isAndroid) {
       return;
     }

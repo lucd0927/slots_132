@@ -103,7 +103,9 @@ class _SSSplassssState extends State<SSSplassss> {
         child: Stack(
           children: [
             Image.asset(
-              Assets.img.splashBg.path,
+              Platform.isIOS
+                  ? Assets.imga2.splash.path
+                  : Assets.img.splashBg.path,
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
@@ -280,8 +282,8 @@ class _SplashProgressState extends State<SplashProgress> {
     // // // 5 ab包逻辑
     bool result = await SSABChange().init();
     int time2 = DateTime.now().millisecondsSinceEpoch;
-    int diffTime =_allTime.toInt() - (time2 - time);
-    if(diffTime <= 0){
+    int diffTime = _allTime.toInt() - (time2 - time);
+    if (diffTime <= 0) {
       diffTime = 0;
     }
     ssLogggg(
