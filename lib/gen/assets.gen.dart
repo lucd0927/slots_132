@@ -1661,6 +1661,9 @@ class $AssetsImga2Gen {
   /// File path: assets/imga2/star.png
   AssetGenImage get star => const AssetGenImage('assets/imga2/star.png');
 
+  /// File path: assets/imga2/taksbg.png
+  AssetGenImage get taksbg => const AssetGenImage('assets/imga2/taksbg.png');
+
   /// File path: assets/imga2/xuanguang.png
   AssetGenImage get xuanguang =>
       const AssetGenImage('assets/imga2/xuanguang.png');
@@ -1695,6 +1698,7 @@ class $AssetsImga2Gen {
     next,
     splashLuckclasu,
     star,
+    taksbg,
     xuanguang,
   ];
 }

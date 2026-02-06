@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slots_132/gen/assets.gen.dart';
 import 'package:slots_132/gen/fonts.gen.dart';
+import 'package:slots_132/jc_ad/common_ads.dart';
 import 'package:slots_132/jc_gj/jc_widget/animated_scale.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_border.dart';
 import 'package:slots_132/jc_gj/jc_widget/font_gradient_border.dart';
@@ -70,12 +71,14 @@ class Guide0BGuideWidget extends StatefulWidget {
   const Guide0BGuideWidget({
     super.key,
     required this.onClose,
-    required this.coins, required this.showTask,
+    required this.coins,
+    required this.showTask,
   });
 
   final VoidCallback onClose;
   final double coins;
   final bool showTask;
+
   @override
   State<Guide0BGuideWidget> createState() => Guide0BGuideWidgetState();
 }
@@ -115,7 +118,10 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
         setState(() {
           showAnimated = true;
         });
+        if(stepIndex >= 1){
+          SSCommonAds().init();
 
+        }
         if (stepIndex == 1) {
           _guide0Next();
         } else if (stepIndex == 2) {
@@ -241,6 +247,54 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
   bool showStep4Tips3 = false;
   bool showStep4Tips4 = false;
   bool showStep4Task = true;
+
+  btn4clear() {
+    return GestureDetector(
+      onTap: () {
+        setSafeSetState(() {
+          box.put(key_guide4_done, true);
+          showStep4Task = true;
+          widget.onClose();
+        });
+      },
+      child: Container(
+        width: 277.h,
+        height: 48.h,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              Assets.img.btnWheel.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fitHeight,
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 8.h,
+              top: 0,
+              child: Center(
+                child: SSTxtBorder(
+                  text: "PLAY",
+                  fontSize: 18.sp,
+                  fontFamily: FontFamily.interBold,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+
+            Positioned(
+              child: Center(child: StarWidget(height: 30.h, star: -2)),
+              left: 0,
+              right: 0,
+              bottom: -40.h,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   btn4Play() {
     return GestureDetector(
@@ -438,11 +492,11 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
       double progress = 0.0;
       String progressText = "";
       String imgPath2 = Assets.imga2.guide4TaskPlay.path;
-      if (i <= 1) {
+      if (i <= 0) {
         imgPath2 = Assets.imga2.guide4Ok.path;
         progress = 1;
         progressText = "${i + 1}/${i + 1}";
-      } else if (i == 2) {
+      } else if (i == 1) {
         imgPath2 = Assets.imga2.guide4Play.path;
         int collected = MainController.to.curCollectStar.value;
         int max = (i + 1) * (i + 1);
@@ -455,9 +509,9 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
 
       Widget imte = GestureDetector(
         onTap: () {
-          if (i == 2) {
+          if (i == 1) {
             widget.onClose();
-          } else if (i > 2) {
+          } else if (i > 1) {
             ssTushi(text: "Coming Soon!");
           } else {
             ssTushi(text: "Task Completed!");
@@ -574,15 +628,16 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     Widget child = GestureDetector(
       onTap: () {
         if (showStep4Tips2 && !showStep4Tips3) {
-          setSafeSetState(() {
-            showStep4Tips3 = true;
-            box.put(key_guide4_done, true);
-            MainController.to.onAddCollectStar(-2);
-          });
+          showStep4Tips3 = true;
+          showStep4Task = false;
+          box.put(key_guide4_done, true);
         } else if (showStep4Tips3) {
           box.put(key_guide4_done, true);
+          showStep4Task = true;
+
           // widget.onClose();
         }
+        setSafeSetState(() {});
       },
       child: Container(
         width: double.infinity,
@@ -593,12 +648,8 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           clipBehavior: Clip.none,
           children: [
             Image.asset(
-              showStep4Tips3
-                  ? Assets.imga2.guide32.path
-                  : showStep4Tips2
+              showStep4Tips1
                   ? Assets.imga2.guide312.path
-                  : showStep4Tips1
-                  ? Assets.imga2.guide3.path
                   : Assets.imga2.guide3.path,
               width: double.infinity,
               height: double.infinity,
@@ -768,22 +819,81 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                     : SizedBox(width: double.infinity),
               ),
             ),
-            if (!showStep4Task)
+
+            // if (!showStep4Task)
+            //   Positioned(
+            //     right: -10.w,
+            //     top: 200.h,
+            //     child: GestureDetector(
+            //       onTap: () {
+            //         setSafeSetState(() {
+            //           showStep4Task = !showStep4Task;
+            //         });
+            //       },
+            //       child: SSAScale(
+            //         child: Image.asset(
+            //           Assets.imga2.gesture2.path,
+            //           width: 100.w,
+            //           height: 130.h,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            if (showStep4Tips3 && !showStep4Task)
               Positioned(
-                right: -10.w,
-                top: 200.h,
-                child: GestureDetector(
-                  onTap: () {
-                    setSafeSetState(() {
-                      showStep4Task = !showStep4Task;
-                    });
-                  },
-                  child: SSAScale(
-                    child: Image.asset(
-                      Assets.imga2.gesture2.path,
-                      width: 100.w,
-                      height: 130.h,
-                    ),
+                left: 20.w,
+                bottom: 150.h,
+                child: Container(
+                  width: 330.w,
+                  height: 400.h,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 330.w,
+                        height: 300.h,
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              Assets.imga2.guide3Sdlr.path,
+                              width: 148.w,
+                              height: 262.h,
+                              fit: BoxFit.contain,
+                              gaplessPlayback: true,
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              child: Container(
+                                width: 330.w,
+                                height: 120.h,
+                                child: Stack(
+                                  children: [
+                                    Image.asset(
+                                      Assets.imga2.taksbg.path,
+                                      width: 330.w,
+                                      height: 120.h,
+                                      fit: BoxFit.fill,
+                                      gaplessPlayback: true,
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        "Clean Floor",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.w900,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 40.h),
+                      btn4clear(),
+                    ],
                   ),
                 ),
               ),
@@ -799,8 +909,8 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     );
   }
 
-  bool showStep3Tips1 = false;
-  bool showStep3Tips2 = false;
+  bool showStep3Tips1 = true;
+  bool showStep3Tips2 = true;
   bool showStep3Tips3 = false;
   bool showStep3Tips4 = false;
 
@@ -1086,7 +1196,7 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                   child: AnimatedSize(
                     alignment: Alignment.topCenter,
                     duration: Duration(milliseconds: 1200),
-                    child: showStep3Tips2
+                    child: showStep3Tips1
                         ? Container(
                             width: 364.w,
                             height: 320.h,
@@ -1161,7 +1271,7 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
       onTap: () {
         setSafeSetState(() {
           showStep3Tips1 = true;
-          Future.delayed(Duration(milliseconds: 3000), () {
+          Future.delayed(Duration(milliseconds: 2000), () {
             setSafeSetState(() {
               showStep3Tips2 = true;
             });
@@ -1202,123 +1312,151 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
 
   bool showStep2Tips1 = false;
   bool showStep2Tips2 = false;
+  bool showStep2Tips3 = false;
 
   stepWidget2() {
-    Widget child = Container(
-      width: double.infinity,
-      height: double.infinity,
-      alignment: Alignment.center,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Image.asset(
-            Assets.imga2.guide1.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-            gaplessPlayback: true,
-          ),
-          SnowWidget(),
-          Positioned(
-            bottom: 50.h,
-            child: AnimatedSize(
-              alignment: Alignment.topCenter,
-              duration: Duration(milliseconds: 1200),
-              child: showStep2Tips1
-                  ? Container(
-                      width: 364.w,
-                      height: 320.h,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Image.asset(
-                            Assets.imga2.guide1Sdlr.path,
-                            width: 180.w,
-                            height: 320.h,
-                            fit: BoxFit.contain,
-                            gaplessPlayback: true,
-                          ),
-                          AnimatedPositioned(
-                            duration: Duration(milliseconds: 300),
-                            left: 0,
-                            right: 0,
-                            bottom: showStep2Tips2 ? 0.h : -200.h,
-                            child: Center(child: btn2()),
-                          ),
+    Widget child = GestureDetector(
+      onTap: () {
+        if (showStep2Tips3) {
+          setSafeSetState(() {
+            stepIndex = 3;
+            saveGuide0Done(3);
+          });
+        } else if (showStep2Tips2) {
+          setSafeSetState(() {
+            showStep2Tips3 = true;
+          });
+        }
+      },
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        alignment: Alignment.center,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Image.asset(
+              Assets.imga2.guide1.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+              gaplessPlayback: true,
+            ),
+            SnowWidget(),
+            Positioned(
+              bottom: 50.h,
+              child: AnimatedSize(
+                alignment: Alignment.topCenter,
+                duration: Duration(milliseconds: 1200),
+                child: showStep2Tips1
+                    ? Container(
+                        width: 364.w,
+                        height: 320.h,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            if (showStep2Tips2)
+                              Image.asset(
+                                Assets.imga2.guide1Sdlr.path,
+                                width: 180.w,
+                                height: 320.h,
+                                fit: BoxFit.contain,
+                                gaplessPlayback: true,
+                              ),
+                            AnimatedPositioned(
+                              duration: Duration(milliseconds: 300),
+                              left: 0,
+                              right: 0,
+                              bottom: showStep2Tips1 ? 0.h : -200.h,
+                              child: Center(child: btn2()),
+                            ),
 
-                          AnimatedPositioned(
-                            duration: Duration(milliseconds: 300),
-                            right: 0,
-                            bottom: showStep2Tips2 ? 10.h : -200.h,
-                            child: SSAScale(
-                              child: Image.asset(
-                                Assets.imga2.gestureLeftDown.path,
-                                width: 104.w,
-                                height: 97.h,
-                                fit: BoxFit.fill,
+                            AnimatedPositioned(
+                              duration: Duration(milliseconds: 300),
+                              right: 0,
+                              bottom: showStep2Tips1 ? 10.h : -200.h,
+                              child: SSAScale(
+                                child: Image.asset(
+                                  Assets.imga2.gestureLeftDown.path,
+                                  width: 104.w,
+                                  height: 97.h,
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
-                          ),
-                          showStep2Tips2
-                              ? const SizedBox()
-                              : Positioned(
-                                  bottom: 0,
-                                  child: stepIndex == 2
-                                      ? Container(
-                                          width: 360.w,
-                                          height: 130.h,
-                                          child: Stack(
-                                            children: [
-                                              Image.asset(
-                                                Assets.imga2.duihuakuang.path,
-                                                width: 360.w,
-                                                height: 130.h,
-                                                fit: BoxFit.fill,
-                                                gaplessPlayback: true,
-                                              ),
-                                              Center(
-                                                child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal: 16.w,
-                                                  ),
-                                                  child: AnimatedTextKit(
-                                                    animatedTexts: [
-                                                      TypewriterAnimatedText(
-                                                        'I remember we have a Magic Workshop in the basement',
-                                                        textStyle: TextStyle(
-                                                          fontSize: 16.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              FontFamily.rubik,
+                            showStep2Tips2
+                                ? Positioned(
+                                    bottom: 0,
+                                    child: stepIndex == 2
+                                        ? Container(
+                                            width: 360.w,
+                                            height: 130.h,
+                                            child: Stack(
+                                              children: [
+                                                Image.asset(
+                                                  Assets.imga2.duihuakuang.path,
+                                                  width: 360.w,
+                                                  height: 130.h,
+                                                  fit: BoxFit.fill,
+                                                  gaplessPlayback: true,
+                                                ),
+                                                Center(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          horizontal: 16.w,
                                                         ),
-                                                        speed: const Duration(
-                                                          milliseconds: 100,
-                                                        ),
+                                                    child: AnimatedTextKit(
+                                                      key: ValueKey(
+                                                        showStep2Tips3
+                                                            ? "dadaf"
+                                                            : "eiuryhiu",
                                                       ),
-                                                    ],
+                                                      animatedTexts: [
+                                                        TypewriterAnimatedText(
+                                                          showStep2Tips3
+                                                              ? "It creates Magic Stars from energy. Let's try it!"
+                                                              : 'I remember we have a Magic Workshop in the basement',
+                                                          textStyle: TextStyle(
+                                                            fontSize: 16.sp,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                FontFamily
+                                                                    .rubik,
+                                                          ),
+                                                          speed: const Duration(
+                                                            milliseconds: 100,
+                                                          ),
+                                                        ),
+                                                      ],
 
-                                                    totalRepeatCount: 1,
-                                                    pause: const Duration(
-                                                      milliseconds: 10,
+                                                      totalRepeatCount: 1,
+                                                      pause: const Duration(
+                                                        milliseconds: 10,
+                                                      ),
+                                                      displayFullTextOnTap:
+                                                          true,
+                                                      stopPauseOnTap: true,
                                                     ),
-                                                    displayFullTextOnTap: true,
-                                                    stopPauseOnTap: true,
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      : SizedBox(width: 360.w),
-                                ),
-                        ],
-                      ),
-                    )
-                  : Container(width: 364.w),
+                                              ],
+                                            ),
+                                          )
+                                        : SizedBox(width: 360.w),
+                                  )
+                                : showStep2Tips1
+                                ? const SizedBox()
+                                : const SizedBox(),
+                          ],
+                        ),
+                      )
+                    : Container(width: 364.w),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
 
@@ -1333,8 +1471,9 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     return GestureDetector(
       onTap: () {
         setSafeSetState(() {
-          stepIndex = 3;
-          saveGuide0Done(3);
+          // stepIndex = 3;
+          // saveGuide0Done(3);
+          showStep2Tips2 = true;
         });
       },
       child: Container(
@@ -1370,14 +1509,14 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
   }
 
   _guide1Next() {
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(Duration(milliseconds: 200), () {
       setSafeSetState(() {
         showStep2Tips1 = true;
-        Future.delayed(Duration(milliseconds: 6000), () {
-          setSafeSetState(() {
-            showStep2Tips2 = true;
-          });
-        });
+        // Future.delayed(Duration(milliseconds: 6000), () {
+        //   setSafeSetState(() {
+        //     showStep2Tips2 = true;
+        //   });
+        // });
       });
     });
   }
@@ -1424,25 +1563,23 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
   }
 
   bool showStep1Tips1 = false;
-  bool showStep1Tips2 = false;
-  bool showStep1Tips2_1 = false;
+  bool showStep1Tips2_txt = false;
+  bool showStep1Tips2_1_text = false;
   bool showStep1Tips3 = false;
 
   stepWidget1() {
     // if(stepIndex != 1){
     //   return SizedBox(width: double.infinity);
     // }
+    ssLogggg("=====showStep1Tips2:$showStep1Tips2_txt");
     return GestureDetector(
-      onTap: (){
-        // if(showStep1Tips1){
-        //   showStep1Tips1 = true;
-        // }else if(showStep1Tips2_1){
-        //
-        // }
-        // setSafeSetState(() {
-        //
-        //
-        // });
+      onTap: () {
+        if (showStep1Tips1 && !showStep1Tips2_txt) {
+          showStep1Tips2_txt = true;
+        } else if (showStep1Tips1 && !showStep1Tips2_1_text) {
+          showStep1Tips2_1_text = true;
+        }
+        setSafeSetState(() {});
       },
       child: Container(
         width: double.infinity,
@@ -1506,10 +1643,13 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                               duration: Duration(milliseconds: 300),
                               left: 0,
                               right: 0,
-                              bottom: showStep1Tips2 ? 0.h : -200.h,
+                              bottom:
+                                  showStep1Tips2_txt && showStep1Tips2_1_text
+                                  ? 0.h
+                                  : -200.h,
                               child: Center(child: btn1()),
                             ),
-                            showStep1Tips2
+                            showStep1Tips2_txt && showStep1Tips2_1_text
                                 ? const SizedBox()
                                 : Positioned(
                                     bottom: 0,
@@ -1517,6 +1657,7 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                                         ? Container(
                                             width: 360.w,
                                             height: 130.h,
+                                            // color: Colors.black,
                                             child: Stack(
                                               children: [
                                                 Image.asset(
@@ -1528,19 +1669,28 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                                                 ),
                                                 Center(
                                                   child: Padding(
-                                                    padding: EdgeInsets.symmetric(
-                                                      horizontal: 16.w,
-                                                    ),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          horizontal: 16.w,
+                                                        ),
                                                     child: AnimatedTextKit(
+                                                      key: ValueKey(
+                                                        showStep1Tips2_txt
+                                                            ? "ddd"
+                                                            : "xxx",
+                                                      ),
                                                       animatedTexts: [
                                                         TypewriterAnimatedText(
-                                                          'Oh no! The Great Blizzard ruined the cabin !',
+                                                          showStep1Tips2_txt
+                                                              ? "The elves are frozen. We need to fix this place, fast!"
+                                                              : 'Oh no! The Great Blizzard ruined the cabin !',
                                                           textStyle: TextStyle(
                                                             fontSize: 16.sp,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
-                                                                FontFamily.rubik,
+                                                                FontFamily
+                                                                    .rubik,
                                                           ),
                                                           speed: const Duration(
                                                             milliseconds: 100,
@@ -1552,7 +1702,8 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                                                       pause: const Duration(
                                                         milliseconds: 10,
                                                       ),
-                                                      displayFullTextOnTap: true,
+                                                      displayFullTextOnTap:
+                                                          true,
                                                       stopPauseOnTap: true,
                                                     ),
                                                   ),
@@ -1572,7 +1723,9 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
               duration: Duration(milliseconds: 300),
               // bottom: 100.h,
               right: 77.w,
-              bottom: showStep1Tips2 ? 100.h : -200.h,
+              bottom: showStep1Tips2_txt && showStep1Tips2_1_text
+                  ? 100.h
+                  : -200.h,
               child: Center(
                 child: Image.asset(
                   Assets.imga2.next.path,
@@ -1664,11 +1817,11 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
       setSafeSetState(() {
         showStep1Tips1 = true;
 
-        Future.delayed(Duration(milliseconds: 5000), () {
-          setSafeSetState(() {
-            showStep1Tips2 = true;
-          });
-        });
+        // Future.delayed(Duration(milliseconds: 5000), () {
+        //   setSafeSetState(() {
+        //     showStep1Tips2 = true;
+        //   });
+        // });
       });
     });
   }

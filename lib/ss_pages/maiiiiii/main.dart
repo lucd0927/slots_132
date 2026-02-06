@@ -86,8 +86,8 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
     MainController.initLottieComposition();
 
     SSEventReporttttt.home_page(source_from: "NORMAL");
-
     initNotification(showDialog: true);
+
     bgMusic.play(loopMode: LoopMode.single);
     bgMusicFreeSpin.play(loopMode: LoopMode.single).then((v) {
       bgMusicFreeSpin.pause();

@@ -191,27 +191,29 @@ class GGCommonJson {
     ],
   };
 
-  static var localTopon = {
-    "oxocbdkw": 100,
-    "rywjknyu": 100,
-    "eyomt_switch": true,
-    "eyomt_int": [
-      {
-        "ldhjempw": "n1h3m43b0e4a06",
-        "eoqcdsxf": "topon",
-        "fwjysnic": "interstitial",
-        "hvmcyweh": 3000,
-      },
-    ],
-    "eyomt_rv": [
-      {
-        "ldhjempw": "n1h3m43b0e40vm",
-        "eoqcdsxf": "topon",
-        "fwjysnic": "reward",
-        "hvmcyweh": 3000,
-      },
-    ],
-  };
+  static var localTopon = Platform.isIOS
+      ? localTestIos
+      : {
+          "oxocbdkw": 100,
+          "rywjknyu": 100,
+          "eyomt_switch": true,
+          "eyomt_int": [
+            {
+              "ldhjempw": "n1h3m43b0e4a06",
+              "eoqcdsxf": "topon",
+              "fwjysnic": "interstitial",
+              "hvmcyweh": 3000,
+            },
+          ],
+          "eyomt_rv": [
+            {
+              "ldhjempw": "n1h3m43b0e40vm",
+              "eoqcdsxf": "topon",
+              "fwjysnic": "reward",
+              "hvmcyweh": 3000,
+            },
+          ],
+        };
 
   static var local = SSHuanjing.hasDevvvvv() ? localTopon : localB;
 }

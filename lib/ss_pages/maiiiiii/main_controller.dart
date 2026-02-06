@@ -288,7 +288,7 @@ class MainController extends GetxController {
       "===tmpSpinCount1:$tmpSpinCount1=tmpSpinCount:$tmpSpinCount=hasFreeSpin:$hasFreeSpin",
     );
     int length = defaultImgName.length;
-    bool result = tmpSpinCount == 1 && tmpSpinCount1 == 1;
+    bool result = tmpSpinCount <= 2 && tmpSpinCount1 <= 2;
     if (!SSABChange.isPackageB() && result) {
       result = true;
       if (result) {
@@ -306,7 +306,8 @@ class MainController extends GetxController {
         List<String> tmpList3 = pickUniqueStrings(tmpdefaultImgName, 3);
         List<String> tmpList4 = pickUniqueStrings(tmpdefaultImgName, 3);
         List<String> tmpList43 = pickUniqueStrings(tmpdefaultImgName, 2);
-        List<String> tmpList5 = [slotNumH1, slotNumH1, slotNumH1];
+        // List<String> tmpList5 = [slotNumH1, slotNumH1, slotNumH1];
+        List<String> tmpList5 = [slotNumH1, ...tmpList43];
         var imgCategories = [tmpList1, tmpList2, tmpList3, tmpList4, tmpList5]
           ..shuffle();
         winReel1
@@ -347,14 +348,23 @@ class MainController extends GetxController {
       winReel5 = winReel5
         ..clear()
         ..addAll([slotNumWild1, slotNumWild2, slotNumPhoneSpice]);
-    } else if (tmpSpinCount == 5 || true) {
+    } else if (tmpSpinCount == 5) {
       List<String> tmpList = newList(defaultImgName, slotNumSCATTER);
+      if (!SSABChange.isPackageB()) {
+        tmpList = newList(tmpList, slotNumH1);
+      }
+      List<String> tmpList222 = newList(tmpList, slotNumH1);
 
       List<String> tmpList1 = pickUniqueStrings(tmpList, 2);
       List<String> tmpList2 = pickUniqueStrings(tmpList, 2);
       List<String> tmpList3 = pickUniqueStrings(tmpList, 2);
       List<String> tmpList4 = pickUniqueStrings(defaultImgName, 3);
       List<String> tmpList5 = pickUniqueStrings(defaultImgName, 3);
+
+      if (!SSABChange.isPackageB()) {
+        tmpList4 = pickUniqueStrings(tmpList222, 3);
+        tmpList5 = pickUniqueStrings(tmpList222, 3);
+      }
       var imgCategories = [
         [...tmpList1, slotNumSCATTER]..shuffle(),
         [...tmpList2, slotNumSCATTER]..shuffle(),
@@ -415,11 +425,21 @@ class MainController extends GetxController {
         if (i <= random) {
           item = [slotNumWild1, slotNumWild2, slotNumWild3];
         } else {
-          item = [
-            defaultImgName[Random().nextInt(length)],
-            defaultImgName[Random().nextInt(length)],
-            defaultImgName[Random().nextInt(length)],
-          ];
+          if (!SSABChange.isPackageB()) {
+            List<String> tmpList = newList(defaultImgName, slotNumH1);
+            int length = tmpList.length;
+            item = [
+              tmpList[Random().nextInt(length)],
+              tmpList[Random().nextInt(length)],
+              tmpList[Random().nextInt(length)],
+            ];
+          } else {
+            item = [
+              defaultImgName[Random().nextInt(length)],
+              defaultImgName[Random().nextInt(length)],
+              defaultImgName[Random().nextInt(length)],
+            ];
+          }
         }
         imgCategories.add(item);
       }
@@ -968,15 +988,18 @@ class MainController extends GetxController {
     ssLogggg("====winCurZuobiao:$winCurZuobiao");
     ssLogggg("====kZuobiao_vCategory_cur:$kZuobiao_vCategory_cur");
     bool resulll = await onFlyHeroWidget();
-    if (!resulll) {
-      _rollerEnd(
-        tmpAddMoney: tmpAddMoney,
+    int tmpSpinCount1 = curSpinCount.value;
+    if (!resulll && tmpSpinCount1 < 4) {
+      onAddMoney(
+        tmpAddMoney,
         onEnd: () {
+          hasScrollerStart.value = false;
           if (rollerOver != null) {
             rollerOver?.complete();
             rollerOver = null;
           }
         },
+        showMoneyAnimated: false,
       );
       return;
     }
@@ -1146,13 +1169,15 @@ class MainController extends GetxController {
       }
       onAddCollectStar(starCount);
       await Future.delayed(Duration(milliseconds: 1000), () {});
-      if (!SSABChange.isPackageB() && starCount >= 3) {
+      if (!SSABChange.isPackageB() && starCount >= 1) {
         bool result = box.get(
           Guide0BGuideWidgetState.key_guide3_done_starengine,
           defaultValue: false,
         );
-        if (!result) {
-          OverlayGuide0BGuide().show();
+        int tmpSpinCount1 = curSpinCount.value;
+        ssLogggg("=====tmpSpinCount1:$tmpSpinCount1==");
+        if (tmpSpinCount1 <= 4) {
+          OverlayGuide0BGuide().show(showTask: tmpSpinCount1 != 3);
         }
         box.put(Guide0BGuideWidgetState.key_guide3_done_starengine, true);
 

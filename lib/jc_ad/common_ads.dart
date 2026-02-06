@@ -984,7 +984,7 @@ class SSCommonAds {
     ssLogggg(
       "$text=======adPosId:$adPosId _scheme:$_scheme adsModel:$adIdWithJsonModel",
     );
-    if (_scheme == GGCommonJson.scheme_A) {
+    if (_scheme == GGCommonJson.scheme_A || hasInter) {
       for (var action in adIdWithJsonModel.keys) {
         String adsId = action;
         // 记录第一个广告id情况
