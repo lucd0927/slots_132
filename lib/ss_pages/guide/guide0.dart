@@ -119,8 +119,6 @@ class Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           showAnimated = true;
         });
         if(stepIndex >= 1){
-          SSCommonAds().init();
-
         }
         if (stepIndex == 1) {
           _guide0Next();

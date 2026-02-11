@@ -126,7 +126,7 @@ class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
       // await Future.delayed(Duration(milliseconds: 15000));
       if (packName == SSABChange.packageB) {
         ssLogggg("===SSABChange().listen==reset Data");
-
+        SSCommonAds().init();
         if (Platform.isIOS) {
           MainController.to.resetInitDataB();
           DailyBonusController.to.resetDataB();
