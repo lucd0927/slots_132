@@ -790,6 +790,9 @@ class SSReelStrips {
   };
 
   static _onlineJson({bool reset = false}) {
+    if (!SSABChange.isPackageB()) {
+      return local;
+    }
     if (!reset) {
       if (_onlinJsonnnnn != null) {
         return;
@@ -811,9 +814,7 @@ class SSReelStrips {
       ssLogggg("$TGA===onlineJson error:$e");
     }
     _onlinJsonnnnn = localJson;
-    if (!SSABChange.isPackageB()) {
-      _onlinJsonnnnn = local;
-    }
+
     // ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
     return localJson;
   }

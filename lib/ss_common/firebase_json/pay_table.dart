@@ -95,6 +95,9 @@ class SSPayTable {
   }
 
   static _onlineJson({bool reset = false}) {
+    if (!SSABChange.isPackageB()) {
+      return local;
+    }
     if (!reset) {
       if (_onlinJsonnnnn != null) {
         return;
@@ -117,9 +120,6 @@ class SSPayTable {
     }
     _onlinJsonnnnn = localJson;
     ssLogggg("$TGA===FirebaseUtils: ${jsonEncode(localJson)}");
-    if(!SSABChange.isPackageB()){
-      _onlinJsonnnnn = local;
-    }
     return localJson;
   }
 }
