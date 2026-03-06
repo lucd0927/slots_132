@@ -10,6 +10,7 @@ import 'package:slots_132/jc_ad/guiyin/package.dart';
 import 'package:slots_132/jc_ad/uuuump.dart';
 import 'package:slots_132/jc_ad/guiyin/firebbbbbb.dart';
 import 'package:slots_132/jc_gj/denglugengzhong.dart';
+import 'package:slots_132/jc_gj/jc_huanjing/cccc.dart';
 import 'package:slots_132/jc_gj/jc_net/event_report.dart';
 import 'package:slots_132/jc_gj/log.dart';
 import 'package:slots_132/jc_hive/sshive.dart';
@@ -186,11 +187,11 @@ class SSCommonAds {
     // );
   }
 
-  void onAdLoadedCallback(
+   onAdLoadedCallback(
     EnumAdsPlatform platform,
     EnumAdsType adsType,
     dynamic data,
-  ) {
+  ) async{
     DateTime curDateTime = DateTime.now();
     int curTime = curDateTime.millisecondsSinceEpoch;
     String adsId = "";
@@ -212,10 +213,38 @@ class SSCommonAds {
       if (data is ATInterstitialResponse || data is ATRewardResponse) {
         adsId = data.placementID;
         var extraMap = data.extraMap;
-        ecpm = extraMap['publisher_revenue'] ?? 0;
-        ssLogggg(
-          "==onAdLoadedCallback===platform adsId topon:$adsId data:${data.extraMap}",
-        );
+        ecpm = extraMap['adsource_price'] ?? 0.0;
+        try{
+          String jsonTxt = "{}";
+          if (adsType == EnumAdsType.reward) {
+            jsonTxt = await ATRewardedManager.getRewardedVideoValidAds(
+              placementID: adsId,
+            );
+          } else if (adsType == EnumAdsType.interstitial) {
+            jsonTxt = await ATInterstitialManager.getInterstitialValidAds(
+              placementID: adsId,
+            );
+          }
+          var tmpCacheData = jsonDecode(jsonTxt);
+          if(tmpCacheData is List && tmpCacheData.isNotEmpty){
+            var tmpCache2 = tmpCacheData[0];
+            ssLogggg(
+              "==onAdLoadedCallback===platform adsId topon:$adsId   tmpCacheData length:${tmpCacheData.length}",
+            );
+            if(tmpCache2 is Map){
+              ecpm = tmpCache2['adsource_price']??0.0;
+            }
+          }
+          ssLogggg(
+            "==onAdLoadedCallback===platform adsId topon:$adsId ecpm:$ecpm  tmpCacheData:${tmpCacheData} ",
+          );
+        }catch(e){
+          ssLogggg(
+            "==onAdLoadedCallback===platform adsId topon:$adsId 解析出错",
+          );
+        }
+
+
       }
     }
     cacheAdsData[adsId] = {
@@ -775,32 +804,60 @@ class SSCommonAds {
     firebaseJson = _onlineJson();
 
     _interstitialAdsModel();
-    ssLogggg(
-      "====init=hashCode:${hashCode}=_interstitialData:$chapingAdsModel",
-    );
+    ssLogggg("====init=hashCode:${hashCode}=_interstitialData:$chapingAdsModel");
 
     _rewardAdsModel();
     ssLogggg("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
 
+    final Set<String> adPlatforms = <String>{};
+    chapingAdsModel.forEach((_, value) {
+      adPlatforms.add(value.adsPlatform);
+    });
+    jiliAdsModel.forEach((_, value) {
+      adPlatforms.add(value.adsPlatform);
+    });
+    bool needInitMax = adPlatforms.contains(GGCommonJson.ad_platfrom_max);
+    bool needInitTopon = adPlatforms.contains(
+      GGCommonJson.ad_platfrom_topon,
+    );
+    ssLogggg(
+      "====init==adPlatforms:$adPlatforms needInitMax:$needInitMax needInitTopon:$needInitTopon",
+    );
+    if (needInitMax && needInitTopon) {
+      ssLogggg(
+        "====init==Both MAX and TopOn are enabled. If Moloco is configured on both sides with different app keys, Moloco may fail to initialize.",
+      );
+    }
+
     ssLogggg("====init==PbUuuump start");
     await SSUMPpppp().init();
     ssLogggg("====init==PbUuuump end");
-    ssLogggg("====init==initMax");
-    bool result = await SSApplovinMax.initMax(
-      encodeKey: GGCommonJson.maxkeyEncode,
-      cacheAdsData: cacheAdsData,
-      interstitialListener: _ggCommonAdsListener!.interstitialListener,
-      rewardedAdListener: _ggCommonAdsListener!.rewardedAdListener,
-    );
-    if (!result) {
-      _loadFailReason = AdLoadFailReason.uninitialized;
+    if (needInitMax) {
+      ssLogggg("====init==initMax");
+      bool result = await SSApplovinMax.initMax(
+        encodeKey: GGCommonJson.maxkeyEncode,
+        cacheAdsData: cacheAdsData,
+        interstitialListener: _ggCommonAdsListener!.interstitialListener,
+        rewardedAdListener: _ggCommonAdsListener!.rewardedAdListener,
+      );
+      if (!result) {
+        _loadFailReason = AdLoadFailReason.uninitialized;
+      }
     }
-    ssLogggg("====init==initTopon");
-    await InitManger.initTopon(
-      atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
-      atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
-    );
-    InitManger.setLogEnabled();
+
+    if (needInitTopon) {
+      ssLogggg("====init==initTopon");
+      bool result = await InitManger.initTopon(
+        atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
+        atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
+      );
+      if (!result) {
+        _loadFailReason = AdLoadFailReason.uninitialized;
+      }
+      if (SSHuanjing.hasDevvvvv()) {
+        InitManger.setLogEnabled();
+      }
+    }
     ssLogggg("====init==end");
     _scheme =
         firebaseJson[GGCommonJson.k_which_scheme] ?? GGCommonJson.scheme_A;
