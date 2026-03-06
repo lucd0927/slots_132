@@ -122,6 +122,9 @@ class _ControlledWheelState extends State<ControlledWheel>
 
   @override
   void dispose() {
+    WheController.to.wheelEnd.value = false;
+    WheController.to.wheelStar.value = false;
+    btnWheel.stop();
     _controller.dispose();
     super.dispose();
   }
@@ -251,18 +254,21 @@ class _ControlledWheelState extends State<ControlledWheel>
   }
 
   _onSpin() async {
+    ssLogggg("===_onSpin=");
     SSEventReporttttt.wheel_page_spin();
     int time = WheController.to.curWheNum.value;
     WheController.to.showOneMore.value = false;
 
     if (time <= 0) {
+      ssLogggg("===_onSpin=1");
       widget.onEnd(null);
       return;
     }
     if (WheController.to.wheelStar.value) {
+      ssLogggg("===_onSpin=2");
       return;
     }
-
+    ssLogggg("===_onSpin=3");
     WheController.to.wheelStar.value = true;
     btnWheel.play();
     WheController.to.subWheNum();
