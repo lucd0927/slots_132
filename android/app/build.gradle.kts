@@ -193,5 +193,5 @@ dependencies {
 //Tramini
     api("com.thinkup.sdk:tramini-plugin-tpn:6.5.71")
 
-
+    api("io.github.alex-only:max_adapter_tu:1.2.5")
 }

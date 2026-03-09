@@ -132,8 +132,10 @@ class SSTopon {
       interstitialListener(atInterstitialResponse);
       rewardListener(atRewardResponse);
       ssLogggg("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
+      return true;
     } catch (e) {
       ssLogggg("==initTopon====error:$e");
+      return false;
     }
   }
 
