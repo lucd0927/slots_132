@@ -1,3 +1,0 @@
-/Users/lucd/.pub-cache/hosted/pub.dev/spine_flutter-4.3.1/android/.cxx/RelWithDebInfo/r382h6y5/x86_64/CMakeFiles/spine_flutter.dir
-/Users/lucd/.pub-cache/hosted/pub.dev/spine_flutter-4.3.1/android/.cxx/RelWithDebInfo/r382h6y5/x86_64/CMakeFiles/edit_cache.dir
-/Users/lucd/.pub-cache/hosted/pub.dev/spine_flutter-4.3.1/android/.cxx/RelWithDebInfo/r382h6y5/x86_64/CMakeFiles/rebuild_cache.dir
