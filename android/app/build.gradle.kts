@@ -86,6 +86,32 @@ flutter {
     source = "../.."
 }
 
+// AGP can occasionally skip generating the L8 baseline profile file for
+// desugared libraries, which then makes compile*ArtProfile fail on a missing
+// input. Creating an empty fallback keeps the profile merge step stable.
+tasks.configureEach {
+    if (name.startsWith("compile") && name.endsWith("ArtProfile")) {
+        doFirst {
+            val variantName = name.removePrefix("compile").removeSuffix("ArtProfile")
+            val variantDir = variantName.replaceFirstChar { it.lowercase() }
+            val l8ProfileFile = layout.buildDirectory
+                .file(
+                    "intermediates/l8_art_profile/" +
+                        "$variantDir/" +
+                        "l8DexDesugarLib$variantName/" +
+                        "baseline-prof.txt"
+                )
+                .get()
+                .asFile
+
+            if (!l8ProfileFile.exists()) {
+                l8ProfileFile.parentFile.mkdirs()
+                l8ProfileFile.writeText("")
+            }
+        }
+    }
+}
+
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
