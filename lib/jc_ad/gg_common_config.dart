@@ -196,7 +196,7 @@ class GGCommonJson {
       : {
           "oxocbdkw": 100,
           "rywjknyu": 100,
-          "eyomt_switch": true,
+          "eyomt_switch": false,
           "eyomt_int": [
             {
               "ldhjempw": "n1h3m43b0e4a06",
@@ -215,5 +215,5 @@ class GGCommonJson {
           ],
         };
 
-  static var local = SSHuanjing.hasDevvvvv() ? localTopon : localB;
+  static var local = SSHuanjing.hasDevvvvv() ? localTopon : localTopon;
 }

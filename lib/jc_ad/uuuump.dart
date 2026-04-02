@@ -153,7 +153,7 @@ class SSUMPpppp {
     String fghhdfhsaefsadf = sdfgsdfgds.countryCode ?? "6565";
     // todo: 去掉
     if(SSHuanjing.hasDevvvvv()){
-      fghhdfhsaefsadf = "CH";
+      // fghhdfhsaefsadf = "CH";
     }
 
     bool asfasdfasdf = countryCoddddd.contains(fghhdfhsaefsadf);
